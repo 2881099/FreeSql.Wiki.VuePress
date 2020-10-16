@@ -1,0 +1,154 @@
+---
+layout: default
+---
+
+FreeSql是功能强大的 .NET ORM，支持 .NetFramework 4.0+、.NetCore 2.1+、Xamarin 等支持 NetStandard 所有运行平台。
+
+支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/MsAccess 数据库。
+
+QQ群：4336577(已满)、8578575(在线)、52508226(在线)
+
+## 模型
+
+FreeSql 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
+
+可从现有数据库生成实体模型，FreeSql 提供 IDbFirst 接口实现 [生成实体模型](/db-first)。
+
+或者手动创建模型，基于模型创建或修改数据库，提供 ICodeFirst 同步结构的 API（甚至可以做到开发阶段自动同步）。
+
+```csharp
+using FreeSql.DataAnnotations;
+using System;
+
+public class Blog {
+    [Column(IsIdentity = true, IsPrimary = true)]
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public int Rating { get; set; }
+}
+```
+
+
+## 安装包
+FreeSql.Provider.xxx([可选的驱动](https://www.nuget.org/packages?q=FreeSql.Provider))
+```bash
+dotnet add packages FreeSql
+dotnet add packages FreeSql.Provider.Sqlite
+```
+or
+```
+Install-Package FreeSql
+Install-Package FreeSql.Provider.Sqlite
+```
+## 声明
+```csharp
+static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+    .UseAutoSyncStructure(true) //自动同步实体结构到数据库
+    .Build(); //请务必定义成 Singleton 单例模式
+```
+
+注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
+
+- .NET Core 单例
+Startup.cs
+```
+public void ConfigureServices(IServiceCollection services)
+{
+    IFreeSql fsql = new FreeSqlBuilder().xxxx.Build();
+    services.AddSingleton<IFreeSql>(fsql);
+}
+```
+- .NET Framework 单例
+```
+public class DB
+{
+    static Lazy<IFreeSql> mysqlLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder().xxx.Build());
+    public static IFreeSql MySql=> mysqlLazy.Value;
+}
+```
+
+## 迁移
+
+程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的，可参阅 [CodeFirst](/code-first)
+
+> 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
+
+> 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
+
+> 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
+
+## 查询
+
+```csharp
+var blogs = fsql.Select<Blog>()
+    .Where(b => b.Rating > 3)
+    .OrderBy(b => b.Url)
+    .Skip(100)
+    .Limit(10) //第100行-110行的记录
+    .ToList();
+```
+
+## 插入
+
+```csharp
+var blog = new Blog { Url = "http://sample.com" };
+blog.BlogId = (int)fsql.Insert<Blog>()
+    .AppendData(blog)
+    .ExecuteIdentity();
+```
+
+## 更新
+
+```csharp
+fsql.Update<Blog>()
+    .Set(b => b.Url, "http://sample2222.com")
+    .Where(b => b.Url == "http://sample.com")
+    .ExecuteAffrows();
+```
+
+## 删除
+
+```csharp
+fsql.Delete<Blog>()
+    .Where(b => b.Url == "http://sample.com")
+    .ExecuteAffrows();
+```
+
+# FreeSqlBuilder
+
+| 方法 | 返回值 | 说明 |
+| -- | -- | -- |
+| UseConnectionString | this | 设置连接串 |
+| UseSlave | this | 设置从数据库，支持多个 |
+| UseConnectionFactory | this | 设置自定义数据库连接对象（放弃内置对象连接池技术） |
+| UseAutoSyncStructure | this | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构 |
+| UseNoneCommandParameter | this | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter() |
+| UseGenerateCommandParameterWithLambda | this | 生成命令参数化执行，针对 lambda 表达式解析 |
+| UseLazyLoading | this | 开启延时加载功能 |
+| UseMonitorCommand | this | 监视全局 SQL 执行前后 |
+| UseNameConvert | this | 自动转换名称 Entity -\> Db |
+| UseExitAutoDisposePool | this | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认true) |
+| Build\<T\> | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建 |
+
+# ConnectionStrings
+
+| DataType | ConnectionString |
+| --- | --- |
+| DataType.MySql | Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1 |
+| DataType.PostgreSQL | Host=192.168.164.10;Port=5432;Username=postgres;Password=123456; Database=tedb;Pooling=true;Minimum Pool Size=1 |
+| DataType.SqlServer | Data Source=.;Integrated Security=True;Initial Catalog=freesqlTest;Pooling=true;Min Pool Size=1 |
+| DataType.Oracle | user id=user1;password=123456; data source=//127.0.0.1:1521/XE;Pooling=true;Min Pool Size=1 |
+| DataType.Sqlite | Data Source=\|DataDirectory\|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1 |
+| DataType.Firebird | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456 |
+| DataType.MsAccess | Provider=Microsoft.Jet.OleDb.4.0;Data Source=d:/accdb/2003.mdb |
+| DataType.Dameng(达梦) | server=127.0.0.1;port=5236;user id=2user;password=123456789;database=2user;poolsize=5 |
+| DataType.ShenTong(神通) | HOST=192.168.164.10;PORT=2003;DATABASE=OSRDB;USERNAME=SYSDBA;PASSWORD=szoscar55;MAXPOOLSIZE=2 |
+| DataType.KingbaseES(人大金仓) | Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST;MAXPOOLSIZE=2 |
+| DataType.OdbcMySql | Driver={MySQL ODBC 8.0 Unicode Driver}; Server=127.0.0.1;Persist Security Info=False; Trusted_Connection=Yes;UID=root;PWD=root; DATABASE=cccddd_odbc;Charset=utf8; SslMode=none;Min Pool Size=1 |
+| DataType.OdbcSqlServer | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min Pool Size=1 |
+| DataType.OdbcOracle | Driver={Oracle in XE};Server=//127.0.0.1:1521/XE; Persist Security Info=False; Trusted_Connection=Yes;UID=odbc1;PWD=123456; Min Pool Size=1 |
+| DataType.OdbcPostgreSQL | Driver={PostgreSQL Unicode(x64)};Server=192.168.164.10; Port=5432;UID=postgres;PWD=123456; Database=tedb_odbc;Pooling=true;Min Pool Size=1 |
+| DataType.OdbcDameng (达梦) | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789 |
+| DataType.OdbcKingbaseES (人大金仓) | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST |
+| DataType.Odbc | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1 |

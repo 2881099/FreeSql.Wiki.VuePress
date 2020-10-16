@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "description": "FreeSql Docs",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotnetcore/FreeSql.git"
+  },
+  "keywords": [
+    "freesql",
+    "docs"
+  ],
+  "bugs": {
+    "url": "https://github.com/dotnetcore/FreeSql/issues"
+  },
+  "homepage": "https://github.com/dotnetcore/FreeSql#readme",
+  "devDependencies": {
+    "vuepress": "^1.7.1"
+  }
+}
