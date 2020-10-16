@@ -34,7 +34,7 @@ jobs:
           npm install
           npm run docs:build
       
-      #
+      # https://github.com/marketplace/actions/ssh-deploy
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
