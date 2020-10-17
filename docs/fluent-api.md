@@ -36,7 +36,7 @@ class TestFluenttb2 {
 
 > 这段配置尽量只执行一次，避免性能损耗
 
-参考：[《实体特性说明》](/entity-attribute)
+参考：[《实体特性说明》](entity-attribute.md)
 
 > FreeSql.DbContext v1.4.0+ 实现了 EfCore FluentApi 99% 相似的语法
 

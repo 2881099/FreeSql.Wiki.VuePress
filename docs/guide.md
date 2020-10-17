@@ -25,34 +25,34 @@ QQ群：4336577(已满)、8578575(在线)、52508226(在线)
 
 ## 学习指南
 
-FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（[DbFirst](/db-first)），和支持基于模型创建数据库（[CodeFirst](/code-first))。
+FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（[DbFirst](db-first.md)），和支持基于模型创建数据库（[CodeFirst](code-first.md))。
 
 #### 基础
 
-- [《学习FreeSql之一：添加数据》](/insert)
-- [《学习FreeSql之二：删除数据》](/delete)
-- [《学习FreeSql之三：修改数据》](/update)
-- [《学习FreeSql之四：查询数据》](/select)
-- [《仓储层Repository》](/repository)
+- [《学习FreeSql之一：添加数据》](insert.md)
+- [《学习FreeSql之二：删除数据》](delete.md)
+- [《学习FreeSql之三：修改数据》](update.md)
+- [《学习FreeSql之四：查询数据》](select.md)
+- [《仓储层Repository》](repository.md)
 
 #### 进阶
 
-* [《CodeFirst模式开发介绍》](/code-first)
-    * [《CodeFirst模式之一：实体特性》](/entity-attribute)
-    * [《CodeFirst模式之二：FluentApi》](/fluent-api)
-    * [《CodeFirst模式之三：自定义特性》](/custom-attribute)
-    * [《CodeFirst模式之四：类型映射》](/type-mapping)
-    * [《CodeFirst模式之五：迁移结构》](/code-first#迁移结构)
-- [《DbFirst模式开发介绍》](/db-first)
+* [《CodeFirst模式开发介绍》](code-first.md)
+    * [《CodeFirst模式之一：实体特性》](entity-attribute.md)
+    * [《CodeFirst模式之二：FluentApi》](fluent-api.md)
+    * [《CodeFirst模式之三：自定义特性》](custom-attribute.md)
+    * [《CodeFirst模式之四：类型映射》](type-mapping.md)
+    * [《CodeFirst模式之五：迁移结构》](code-first.md#迁移结构)
+- [《DbFirst模式开发介绍》](db-first.md)
 
 #### 高级
 
-- [《数据库事务》](/transaction)
-- [《使用读写分离》](/read-write-splitting)
-- [《分表分库》](/sharding)
-- [《多租户》](/multi-tenancy)
-- [《返回数据》](/select-return-data)
-- [《优化之：延时加载》](/select-lazy-loading)
-- [《优化之：贪婪加载》](/select-include)
-- [《Expression 表达式函数》](/expression-function)
-- [《AOP》](/aop)
+- [《数据库事务》](transaction.md)
+- [《使用读写分离》](read-write-splitting.md)
+- [《分表分库》](sharding.md)
+- [《多租户》](multi-tenancy.md)
+- [《返回数据》](select-return-data.md)
+- [《优化之：延时加载》](select-lazy-loading.md)
+- [《优化之：贪婪加载》](select-include.md)
+- [《Expression 表达式函数》](expression-function.md)
+- [《AOP》](aop.md)

@@ -12,7 +12,7 @@ QQ群：4336577(已满)、8578575(在线)、52508226(在线)
 
 FreeSql 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
 
-可从现有数据库生成实体模型，FreeSql 提供 IDbFirst 接口实现 [生成实体模型](/db-first)。
+可从现有数据库生成实体模型，FreeSql 提供 IDbFirst 接口实现 [生成实体模型](db-first.md)。
 
 或者手动创建模型，基于模型创建或修改数据库，提供 ICodeFirst 同步结构的 API（甚至可以做到开发阶段自动同步）。
 
@@ -70,7 +70,7 @@ public class DB
 
 ## 迁移
 
-程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的，可参阅 [CodeFirst](/code-first)
+程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的，可参阅 [CodeFirst](code-first.md)
 
 > 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
 

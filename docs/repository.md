@@ -72,7 +72,7 @@ public SongsController(IBaseRepository<Song> repos1) {
 
 > 依赖注入的方式可实现全局【过滤与验证】的设定，方便租户功能的设计；
 
-更多内容可参阅：[《过滤器》](/filters)
+更多内容可参阅：[《过滤器》](filters.md)
 
 ## 状态管理
 
@@ -142,7 +142,7 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 
 ## 联级保存
 
-请移步文档 [《联级保存》](/cascade-saving)
+请移步文档 [《联级保存》](cascade-saving.md)
 
 ## API
 

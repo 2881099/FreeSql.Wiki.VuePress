@@ -37,7 +37,7 @@ var repo = fsql.GetRepository<T>();
 repo.InsertOrUpdate(实体);
 ```
 
-> 更多内容可参阅：[添加或修改](/insert-or-update)
+> 更多内容可参阅：[添加或修改](insert-or-update.md)
 
 ---
 

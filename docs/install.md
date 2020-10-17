@@ -16,8 +16,8 @@ dotnet add package FreeSql
 
 | Package Name | Version | 说明 |
 |--------------|  ------- | --- |
-| [FreeSql.Repository](/repository) | NETStandard2.0、net45、net40 | 通用仓储 + UnitOfWork 实现 |
-| [FreeSql.DbContext](/db-context) | NETStandard2.0、net45、net40 | EFCore 的使用风格实现 |
+| [FreeSql.Repository](repository.md) | NETStandard2.0、net45、net40 | 通用仓储 + UnitOfWork 实现 |
+| [FreeSql.DbContext](db-context.md) | NETStandard2.0、net45、net40 | EFCore 的使用风格实现 |
 | FreeSql.Provider.MySql | NETStandard2.0、net45、net40 | 基于 MySql.Data（Oracle官方） |
 | FreeSql.Provider.MySqlConnector | NETStandard2.0、net45 | 基于 MySqlConnector |
 | FreeSql.Provider.PostgreSQL | NETStandard2.0、net45 | 基于 PostgreSQL 9.5+ |

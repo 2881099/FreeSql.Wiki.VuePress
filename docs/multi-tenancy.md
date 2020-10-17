@@ -68,11 +68,11 @@ var reposTopic = orm.GetGuidRepository<Topic>(null, oldname => $"{oldname}{tenan
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Topic_1 表。
 
-> 更多说明参考：[《FreeSql.Repository 仓储》](/repository)
+> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)
 
 ### 方案三：按租户分库
 
-与方案二相同，只是表存储的位置不同，请查看 [《FreeSql.Repository 仓储》](/repository)、[《分表分库》](/sharding)。
+与方案二相同，只是表存储的位置不同，请查看 [《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
 
 ### 多表查询
 
@@ -99,4 +99,4 @@ LEFT JOIN "TopicType_1" b ON a."TypeId" = b."Id"
 
 FreeSql.Repository Autofac 注入方式实现了全局【过滤与验证】的设定，方便租户功能的设计；
 
-具体可参考：[《过滤器》](/filters)
+具体可参考：[《过滤器》](filters.md)
