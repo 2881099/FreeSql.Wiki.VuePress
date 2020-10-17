@@ -102,8 +102,13 @@ module.exports = {
         lastUpdated: '更新于',
         nextLinks: true,
         prevLinks: true,
+        repo: 'https://github.com/dotnetcore/FreeSql',
+        repoLabel: 'Github',
+        docsRepo: 'https://github.com/taadis/FreeSql.Wiki.VuePress',
+        docsDir: 'docs',
+        docsBranch: 'main',
         editLinks: true,
-        editLinkText: '改进此文档',
+        editLinkText: '可以帮我们改进此文档哦',
         smoothScroll: true,
         markdown: {
             lineNumbers: true
