@@ -1,3 +1,5 @@
+const dayjs = require('dayjs')
+
 module.exports = {
     base: '/',
     title: 'FreeSql',
@@ -106,5 +108,16 @@ module.exports = {
         markdown: {
             lineNumbers: true
         },
-    }
+    },
+    plugins: [
+        [
+            '@vuepress/last-updated',
+            {
+                transformer: (timestamp, lang) => {
+                    const dayjs = require('dayjs')
+                    return dayjs().format('YYYY-MM-DD HH:mm:ss')
+                }
+            }
+        ]
+    ]
 }
