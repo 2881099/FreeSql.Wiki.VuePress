@@ -124,6 +124,6 @@ module.exports = {
                     return dayjs().format('YYYY-MM-DD HH:mm:ss')
                 }
             }
-        ]
+        ], ['@vuepress/back-to-top']
     ]
 }

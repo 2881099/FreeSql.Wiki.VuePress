@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dotnetcore/FreeSql#readme",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.7.1",
     "dayjs": "^1.9.3",
     "vuepress": "^1.7.1"
   }
