@@ -102,8 +102,9 @@ module.exports = {
         lastUpdated: '更新于',
         nextLinks: true,
         prevLinks: true,
-        repo: 'https://github.com/dotnetcore/FreeSql',
-        repoLabel: 'Github',
+        // 这里的 repo 配置会导致页面的 nav 配置冗余追加, 所以这里注释咯.
+        //repo: 'https://github.com/dotnetcore/FreeSql',
+        //repoLabel: 'Github',
         docsRepo: 'https://github.com/taadis/FreeSql.Wiki.VuePress',
         docsDir: 'docs',
         docsBranch: 'main',
