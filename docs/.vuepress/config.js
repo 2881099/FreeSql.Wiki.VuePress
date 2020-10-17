@@ -4,6 +4,9 @@ module.exports = {
     base: '/',
     title: 'FreeSql',
     description: 'freesql.net',
+    markdown: {
+        lineNumbers: true
+    },
     theme: '@vuepress/theme-default',
     themeConfig: {
         logo: '/logo.png',
@@ -110,10 +113,7 @@ module.exports = {
         docsBranch: 'main',
         editLinks: true,
         editLinkText: '可以帮我们改进此文档哦',
-        smoothScroll: true,
-        markdown: {
-            lineNumbers: true
-        },
+        smoothScroll: true
     },
     plugins: [
         [
