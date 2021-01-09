@@ -18,6 +18,10 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ## 迁移结构
 
+| 创建数据库 | Sqlite|Sql Server | MySql|PostgreSQL|Oracle
+| - | - | - | - | - | - |
+|   | √ | X | X | X | X |
+
 | 实体＆表对比 | 添加 | 改名 | 删除 |
 | - | - | - | - |
 |  | √ | √ | X |
@@ -54,7 +58,7 @@ fsql.CodeFirst.IsAutoSyncDataStructure = true;
 
 
 - 注意：只有当CURD到此表时，才会自动生成表结构。如需系统运行时迁移表结构，请使用**SyncStructure**方法
-- FreeSql不会帮你生成数据库，需要你手动创建数据库。**如果你使用Mysql、Sql Server，需要自动创建数据库.请参考此代码，自行copy，[FreeSqlExtensions.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql/FreeSqlExtensions.cs)**
+- `FreeSql`不会帮你生成数据库，需要你手动创建数据库。**如果你使用`Mysql`、`Sql Server`，需要自动创建数据库.请参考此代码，自行copy，[FreeSqlExtension.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs)**
 
 ### 禁用迁移
 
