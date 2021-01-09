@@ -3,7 +3,7 @@ layout: default
 ---
 
 # API 文档
-- [http://111.231.197.142:8082/api/FreeSql.html](http://111.231.197.142:8082/api/FreeSql.html)
+- [http://124.70.130.97:8082/api/FreeSql.html](http://124.70.130.97:8082/api/FreeSql.html)
 # FreeSqlBuilder
 
 | 方法 | 返回值 | 说明 |
