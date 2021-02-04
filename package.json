@@ -1,6 +1,8 @@
 {
-  "private": true,
+  "name": "FreeSql.Wiki.VuePress",
+  "version": "1.0.0",
   "description": "FreeSql Docs",
+  "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
@@ -9,17 +11,18 @@
     "type": "git",
     "url": "git+https://github.com/dotnetcore/FreeSql.git"
   },
-  "keywords": [
-    "freesql",
-    "docs"
-  ],
+  "author": "2881099",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dotnetcore/FreeSql/issues"
   },
   "homepage": "https://github.com/dotnetcore/FreeSql#readme",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.7.1",
-    "dayjs": "^1.9.3",
-    "vuepress": "^1.7.1"
+    "vuepress": "^2.0.0-alpha.19"
+  },
+  "dependencies": {
+    "@vuepress/plugin-docsearch": "^2.0.0-alpha.19",
+    "@vuepress/plugin-pwa": "^2.0.0-alpha.19",
+    "@vuepress/plugin-pwa-popup": "^2.0.0-alpha.19"
   }
 }

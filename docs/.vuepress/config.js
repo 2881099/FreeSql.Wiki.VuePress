@@ -1,129 +1,234 @@
-const dayjs = require('dayjs')
-
 module.exports = {
     base: '/',
-    title: 'FreeSql',
-    description: 'freesql.net',
-    markdown: {
-        lineNumbers: true
+    locales: {
+        '/': {
+            lang: 'zh-CN',
+            title: 'FreeSql 官方文档',
+            description: 'FreeSql Documents'
+        },
+        '/en/': {
+            lang: 'en-US',
+            title: 'FreeSql Documents',
+            description: 'FreeSql Documents'
+        }
     },
-    theme: '@vuepress/theme-default',
+    theme: '@vuepress/default',
+    head: [
+        ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        // ...其他标签
+    ],
     themeConfig: {
         logo: '/logo.png',
-        navbar: true,
-        nav: [
-            { text: '首页', link: '/' },
-            { text: '指南', link: '/guide' },
-            { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
-            { text: 'Github', link: 'https://github.com/dotnetcore/FreeSql' },
-        ],
-        //sidebar: 'auto',
-        sidebar: [
-            ['/guide', '指南'],
-            {
-                title: '基础文档',
-                collapsable: true,
-                sidebarDepth: 1,
-                children: [
-                    ['/getting-started', '入门'],
-                    ['/install', '安装'],
-                    ['/insert', '添加'],
-                    ['/delete', '删除'],
-                    ['/update', '修改'],
-                    ['/insert-or-update', '添加或修改✨'],
+        repo: '2881099/FreeSql.Wiki.VuePress',
+        // docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
+        docsDir: 'docs',
+        lastUpdated: true,
+        lastUpdatedText: '上次更新',
+        locales: {
+            '/': {
+                navbar: [
+                    { text: '指南', link: '/guide/' },
                     {
-                        title: '查询',
+                        text: '参考', children: [
+                            {
+                                text: '参考',
+                                children: [
+                                    '/reference/api.md',
+                                    '/reference/change-log.md',
+                                    '/reference/vs-dapper.md',
+                                    '/reference/vs-entity-framework.md'
+                                ]
+                            },
+                            {
+                                text: '学习与交流',
+                                children: [
+                                    '/reference/faq.md',
+                                    {
+                                        text: '提Issues',
+                                        link: 'https://github.com/2881099/FreeSql/issues/new'
+                                    }]
+                            }
+                        ]
+                    },
+                    { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
+                ],
+                sidebar:
+                {
+                    '/guide/': [
+
+                        {
+                            isGroup: true,
+                            text: '基础文档',
+                            children: [
+                                '/guide/README.md',
+                                '/guide/getting-started.md',
+                                '/guide/install.md',
+                                '/guide/insert.md',
+                                '/guide/delete.md',
+                                '/guide/update.md',
+                                '/guide/insert-or-update.md'
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: '查询',
+                            children: [
+                                '/guide/select.md',
+                                '/guide/paging.md',
+                                '/guide/select-single-table.md',
+                                '/guide/select-multi-table.md',
+                                '/guide/select-group-by.md',
+                                '/guide/select-return-data.md',
+                                '/guide/select-lazy-loading.md',
+                                '/guide/select-include.md',
+                                '/guide/linq-to-sql.md',
+                                '/guide/select-as-tree.md',
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: '仓储层',
+                            children: [
+                                '/guide/repository.md',
+                                '/guide/unit-of-work.md',
+                                '/guide/cascade-saving.md'
+                            ]
+                        },
+                        {
+                            text: 'DbContext',
+                            link: '/guide/db-context.md',
+                        },
+                        {
+                            isGroup: true,
+                            text: 'CodeFirst',
+                            children: [
+                                '/guide/code-first.md',
+                                '/guide/entity-attribute.md',
+                                '/guide/fluent-api.md',
+                                '/guide/custom-attribute.md',
+                                '/guide/type-mapping.md',
+                                '/guide/navigate-attribute.md'
+                            ]
+                        },
+                        '/guide/db-first.md',
+                        '/guide/expression-function.md',
+                        '/guide/transaction.md',
+                        '/guide/filters.md',
+                        '/guide/aop.md',
+                        '/guide/read-write-splitting.md',
+                        '/guide/sharding.md',
+                        '/guide/multi-tenancy.md',
+                        '/guide/performance.md',
+                        '/guide/more.md'
+                    ],
+                    '/reference/': [{
+                        isGroup: true,
+                        text: '参考',
                         children: [
-                            ['/select', '查询'],
-                            ['/paging', '分页查询'],
-                            ['/select-single-table', '单表查询'],
-                            ['/select-multi-table', '多表查询'],
-                            ['/select-group-by', '分组聚合'],
-                            ['/select-return-data', '返回数据✨'],
-                            ['/select-lazy-loading', '延时加载'],
-                            ['/select-include', '贪婪加载✨'],
-                            ['/linq-to-sql', 'LinqToSql'],
-                            ['/select-as-tree', '树型查询✨'],
+                            '/reference/api.md',
+                            '/reference/change-log.md',
+                            '/reference/vs-dapper.md',
+                            '/reference/vs-entity-framework.md',
                         ]
                     },
                     {
-                        title: '仓储层',
+                        isGroup: true,
+                        text: '学习与交流',
                         children: [
-                            ['/repository', '仓储对象'],
-                            ['/unit-of-work', '工作单元'],
-                            ['/cascade-saving', '级联保存'],
-                        ],
-                    },
-                    ['/db-context', 'DbContext'],
+                            '/reference/faq.md'
+                        ]
+                    }
+
+                    ]
+
+                },
+                selectLanguageName: '简体中文',
+                selectLanguageText: '选择语言',
+                selectLanguageAriaLabel: '选择语言',
+
+                // page meta
+                editLinkText: '在 GitHub 上编辑此页',
+                lastUpdated: true,
+                lastUpdatedText: '上次更新',
+                contributors: false,
+                contributorsText: '贡献者',
+
+                // custom containers
+                tip: '提示',
+                warning: '注意',
+                danger: '警告',
+
+                // 404 page
+                notFound: [
+                    '这里什么都没有',
+                    '我们怎么到这来了？',
+                    '这是一个 404 页面',
+                    '看起来我们进入了错误的链接',
+                ],
+                backToHome: '返回首页',
+
+                // other
+                openInNewWindow: '在新窗口打开',
+            },
+            '/en/': {
+                navbar: [
+                    { text: 'Guide', link: '/en/guide/' },
+                    { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
+                ],
+                sidebar: [
                     {
-                        title: 'CodeFirst',
-                        children: [
-                            ['/code-first', '代码先行'],
-                            ['/entity-attribute', '实体特性✨'],
-                            ['/fluent-api', '流式接口'],
-                            ['/custom-attribute', '自定义特性'],
-                            ['/type-mapping', '类型映射'],
-                            ['/navigate-attribute', '导航属性✨'],
-                        ],
+                        '/guide/': [
+
+                            {
+                                isGroup: true,
+                                text: '基础文档',
+                                children: [
+                                    '/en/guide/README.md',
+                                ]
+                            },
+
+                        ]
                     },
-                    ['/db-first', '数据库先行'],
-                    ['/expression-function', '表达式函数'],
-                    ['/transaction', '事务'],
-                    ['/filters', '过滤器'],
-                    ['/aop', 'AOP✨'],
-                    ['/read-write-splitting', '读写分离'],
-                    ['/sharding', '分表分库'],
-                    ['/multi-tenancy', '多租户'],
-                    ['/performance', '性能'],
-                    ['/more', '你不知道的功能✨'],
-                    ['/api-references', 'API 参考'],
-                ]
-            },
-            {
-                title: '友谊第一',
-                children: [
-                    ['/vs-dapper', '与 Dapper 比较'],
-                    ['/vs-entity-framework.md', '与 EntityFramework 比较'],
-                ]
-            },
-            {
-                title: '学习与交流',
-                collapsable: false,
-                children: [
-                    ['/faq.md', '常见问题'],
-                    ['https://github.com/2881099/FreeSql/issues/new', '提交问题']
-                ]
-            },
-            {
-                title: '更多信息',
-                collapsable: false,
-                children: [
-                    ['/change-log.md', '更新日志']
-                ]
+                ],
+                selectLanguageName: 'English',
             }
-        ],
-        lastUpdated: '更新于',
-        nextLinks: true,
-        prevLinks: true,
-        // 这里的 repo 配置会导致页面的 nav 配置冗余追加, 所以这里注释咯.
-        //repo: 'https://github.com/dotnetcore/FreeSql',
-        //repoLabel: 'Github',
-        docsRepo: 'https://github.com/taadis/FreeSql.Wiki.VuePress',
-        docsDir: 'docs',
-        docsBranch: 'main',
-        editLinks: true,
-        editLinkText: '可以帮我们改进此文档哦',
-        smoothScroll: true
+        },
     },
     plugins: [
-        [
-            '@vuepress/last-updated',
+        ['@vuepress/git'],
+        ['@vuepress/medium-zoom'],
+        ['@vuepress/pwa',
             {
-                transformer: (timestamp, lang) => {
-                    const dayjs = require('dayjs')
-                    return dayjs().format('YYYY-MM-DD HH:mm:ss')
-                }
+                skipWaiting: true,
             }
-        ], ['@vuepress/back-to-top']
-    ]
+        ],
+        [
+            '@vuepress/plugin-docsearch',
+            {
+                apiKey: 'd33b85d622e4b61625bf17443031804c',
+                indexName: 'freesql',
+                searchParameters: {
+                    facetFilters: [''],
+                },
+                locales: {
+                    '/': {
+                        placeholder: '搜索文档',
+                    },
+                },
+            },
+        ],
+        [
+            '@vuepress/pwa-popup',
+            {
+                locales: {
+                    '/': {
+                        message: '发现新内容可用',
+                        buttonText: '刷新',
+                    },
+                },
+            },
+        ],
+
+    ],
 }
