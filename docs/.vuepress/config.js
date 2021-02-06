@@ -115,6 +115,7 @@ module.exports = {
                         '/guide/expression-function.md',
                         '/guide/transaction.md',
                         '/guide/filters.md',
+                        '/guide/ado.md',
                         '/guide/aop.md',
                         '/guide/read-write-splitting.md',
                         '/guide/sharding.md',
