@@ -39,4 +39,4 @@ dotnet add package FreeSql
 
 ## 学习指南
 
-FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（[db-first](DbFirst)），和支持基于模型创建数据库（[code-first](CodeFirst))。
+FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（[db-first](db-first])），和支持基于模型创建数据库（[code-first](code-first))。
