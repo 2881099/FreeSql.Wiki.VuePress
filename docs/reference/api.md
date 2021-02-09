@@ -19,30 +19,30 @@
 
 ## IFreeSql
 
-| 属性                       | 返回值       | 说明                                                                                           |
-| -------------------------- | ------------ | ---------------------------------------------------------------------------------------------- |
-| Ado                        | IAdo         | 数据库访问对象，封装了类似 SqlHelper 操作：ExecuteNonQuery/ExecuteScalar/ExecuteConnectTest 等 |
-| [Aop](aop.md)              | IAop         | 所有 AOP 拦截方法都在这里                                                                      |
-| [CodeFirst](code-first.md) | ICodeFirst   | 封装 CodeFirst 模式开发相关方法                                                                |
-| [DbFirst](db-first.md)     | IDbFirst     | 封装 DbFirst 模式开发相关方法                                                                  |
-| [GlobalFilter](filters.md) | GlobalFilter | 全局过滤设置，可默认附加为 Select/Update/Delete 条件                                           |
+| 属性                                | 返回值       | 说明                                                                                           |
+| ----------------------------------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| [Ado](../guide/ado.md)              | IAdo         | 数据库访问对象，封装了类似 SqlHelper 操作：ExecuteNonQuery/ExecuteScalar/ExecuteConnectTest 等 |
+| [Aop](../guide/aop.md)              | IAop         | 所有 AOP 拦截方法都在这里                                                                      |
+| [CodeFirst](../guide/code-first.md) | ICodeFirst   | 封装 CodeFirst 模式开发相关方法                                                                |
+| [DbFirst](../guide/db-first.md)     | IDbFirst     | 封装 DbFirst 模式开发相关方法                                                                  |
+| [GlobalFilter](../guide/filters.md) | GlobalFilter | 全局过滤设置，可默认附加为 Select/Update/Delete 条件                                           |
 
-| 方法                      | 返回值                     | 参数                 | 说明                                               |
-| ------------------------- | -------------------------- | -------------------- | -------------------------------------------------- |
-| Select\<TEntity\>         | ISelect\<TEntity\>         | 无                   | 准备查询数据                                       |
-| Insert\<TEntity\>         | IInsert\<TEntity\>         | 无/TEntity/TEntity[] | 准备插入                                           |
-| Update\<TEntity\>         | IUpdate\<TEntity\>         | 无                   | 准备更新数据                                       |
-| Delete\<TEntity\>         | IDelete\<TEntity\>         | 无                   | 准备删除                                           |
-| InsertOrUpdate\<TEntity\> | IInsertOrUpdate\<TEntity\> | 无                   | 插入或更新数据                                     |
-| Transaction               | void                       | Action               | 开启事务（不支持异步），[其他事务](transaction.md) |
+| 方法                      | 返回值                     | 参数                 | 说明                                                        |
+| ------------------------- | -------------------------- | -------------------- | ----------------------------------------------------------- |
+| Select\<TEntity\>         | ISelect\<TEntity\>         | 无                   | 准备查询数据                                                |
+| Insert\<TEntity\>         | IInsert\<TEntity\>         | 无/TEntity/TEntity[] | 准备插入                                                    |
+| Update\<TEntity\>         | IUpdate\<TEntity\>         | 无                   | 准备更新数据                                                |
+| Delete\<TEntity\>         | IDelete\<TEntity\>         | 无                   | 准备删除                                                    |
+| InsertOrUpdate\<TEntity\> | IInsertOrUpdate\<TEntity\> | 无                   | 插入或更新数据                                              |
+| Transaction               | void                       | Action               | 开启事务（不支持异步），[其他事务](../guide/transaction.md) |
 
-| 扩展方法                                        | 返回值         | 参数   | 说明                                                |
-| ----------------------------------------------- | -------------- | ------ | --------------------------------------------------- |
-| Select\<T1, T2, ... T10\>                       | ISelect        | 无     | 准备多表查询                                        |
-| [CreateDbContext](db-context.md)                | DbContext      | 无     | 创建普通数据上下文档对象，该对象功能类似于 EFCore   |
-| SetDbContextOptions                             | -              | Action | 设置此 IFreeSql 下 DbContext 选项设置               |
-| [GetRepository](repository.md)\<TEntity, TKey\> | BaseRepository | 无     | 返回默认仓库功能实现                                |
-| [CreateUnitOfWork](unit-of-work.md)             | IUnitOfWork    | 无     | 创建基于仓储功能的工作单元，务必使用 using 包含使用 |
+| 扩展方法                                                 | 返回值         | 参数   | 说明                                                |
+| -------------------------------------------------------- | -------------- | ------ | --------------------------------------------------- |
+| Select\<T1, T2, ... T10\>                                | ISelect        | 无     | 准备多表查询                                        |
+| [CreateDbContext](../guide/db-context.md)                | DbContext      | 无     | 创建普通数据上下文档对象，该对象功能类似于 EFCore   |
+| SetDbContextOptions                                      | -              | Action | 设置此 IFreeSql 下 DbContext 选项设置               |
+| [GetRepository](../guide/repository.md)\<TEntity, TKey\> | BaseRepository | 无     | 返回默认仓库功能实现                                |
+| [CreateUnitOfWork](../guide/unit-of-work.md)             | IUnitOfWork    | 无     | 创建基于仓储功能的工作单元，务必使用 using 包含使用 |
 
 ---
 
