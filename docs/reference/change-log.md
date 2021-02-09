@@ -1,9 +1,89 @@
 # 更新日志
 
-每个月一个版本号，如：1.0/1.1/1.2，修复后 bug 会发布 1.0.1/1.0.2
+每三个月一次版本号：2.3/2.6/2.9，修复严重 bug 会发布 2.3.x
 
-## v1.10.0-preview
 
+## v2.3-preview (myget.org)
+
+> 安装前添加源：https://www.myget.org/F/ncc/api/v3/index.json
+
+- 增加 FreeSql.Provider.Custom 自定义适配访问任何数据库；
+- 增加 Column 特性 RewriteSql/RereadSql；
+- 增加 ISelect.OrderByRandom() 随机排序适配；
+- 增加 SqlExt.DistinctCount 扩展方法；#674 #533
+- 优化 ManyToMany 导航属性子查询支持 ToList；
+- 优化 HzyTuple 子查询解析；
+- 优化 指定 Dto 查询对 c# 字段的支持；
+- 优化 GlobalFilter 子查询传播重复的问题；#642
+- 优化 Console.Write 平台兼容问题；#643
+- 优化 DbSet/Repository 级联保存时，忽略未配置的导航属性；
+- 优化 FreeSql.Extensions.Linq Select 选定字段查询方法；#674 #533
+- 优化 Repository.DataFilter 可禁用 GlobalFilter；
+- 优化 WhereDynamicFilter；
+- 修复 延时属性时级联保存失败的 bug；
+- 修复 分组查询后，无法使用子查询的问题；
+- 修复 UseGenerateCommandParameterWithLambda + Enum + MapType(string) bug；
+- 修复 ToChunk + IncludeMany 二级集合属性的 bug；
+- 修复 JsonMap 序列化判断 bug；
+- 修复 Sqlite DbFirst 获取自增的 bug；
+- 修复 Oracle DbFirst date 类型 bug；#627
+- 修复 ISelect2`16 OrderByIf bug；
+- 修复 神通 Linux not supported 问题；#656
+- 修复 WhereDynamicFilter 普通多表查询时别名判断的 bug；
+- 修复 AsTreeCte 事务传播 bug；
+- 修复 表达式树解析 MapType 把小数位转换丢失的 bug；
+- 修复 SqlServer 支持 Chinese_PRC_CS_AS 区分小大写；#684
+
+## v2.0.105
+
+- 修复 Ado.Net 扩展方法的多表查询 bug；#592
+- 优化 ToSql 别名大小写问题；#467
+- 优化 IUnitOfWork/DbContext/Repository .Orm.Ado 和 CRUD 都与自身事务保持一致；
+- 完善 IDelete WhereIf(bool, sql) 方法；
+
+## v2.0.102
+
+- 优化 DbFirst 模式长内容未设置 StringLength = -1 写入问题；
+- 优化 子查询(多表)别名；
+- 优化 IUpdate.Set 支持位运算表达式树解析；
+- 优化 单表查询 ExpressionTree 性能；
+- 修复 ISelect.InsertInto 设置别名时无法使用的错误；#576
+
+## v2.0
+
+- 增加 IncludeByPropertyName 按属性名进行 Include/IncludeMany 操作；#278
+- 增加 ISelect\<...> 多表查询 HzyTuple 新姿势；（感谢 HZY 贡献）
+- 增加 ISelect Cancel 用于取消本次查询；
+- 增加 IncludeIf/IncludeByPropertyNameIf 方法；
+- 增加 表达式树函数解析 byte[] Length；#505
+- 增加 FreeSql Async CancellationToken 参数；#537
+- 增加 FreeSql.DbContext/Repository Async CancellationToken 参数；#537
+- 增加 Oracle/达梦 BulkCopy 支持；
+- 增加 IsVersion 对 byte[] 的支持；#548
+- 增加 IN 参数扩展 where id in @ids；#560
+- 增加 IAdo.QuerySingle 查询单条记录；#560
+- 增加 pgsql 表达式树解析 hstore[""]；
+- 优化 varchar/nvarchar 的 NoneParameter 处理；#519
+- 优化 表达式树 SqlExt.IsNull 对布尔类型的解析；#500
+- 优化 MapRead 对 NULL 字段的处理；
+- 优化 表达式树三元表达式解析，当 Test 为变量时不解析成 case when end；
+- 优化 AsTreeCte 对 MySql 5.6 的兼容；#536
+- 优化 分页 Page(..).Count() 顺序问题；
+- 优化 自动 IsIgnore 处理；
+- 移除 ISelect\<T\>/IUpdate\<T\>/IDelete\<T\> class 约束限制；
+- 修复 线程事务嵌套事务的 bug；#502
+- 修复 #454 优化遗留的 bug，影响 Aop.AuditValue 事件；#521
+- 修复 实体类拥有构造参数时，ToList\<DTO\> 映射查询无效的 bug；
+- 修复 FreeSql.Generator 处理 SqlServer 默认值的问题；
+- 修复 SqlServer RowNumber 分页有可能产生顺序不对的 bug；
+- 修复 .net5 单文本部署读取注释报错；
+
+
+## v1.10.1
+
+- 增加 ISelect.InsertInto 将查询转换为 INSERT INTO t1 SELECT ... FROM t2 执行插入；#469
+- 增加 GlobalFilter.ApplyOnly 继承的实体才生效；#495
+- 增加 FreeSql.Generator 参数 -readkey 0 的设置；
 - 优化 WhereDynamicFilter 支持 string 比较大小 > < >= <=；#479
 - 优化 IncludeMany 筛选字段中未指定主键，并且 then.IncludeMany 继续向下，则自动附加查询主键；
 - 优化 WhereDynamic 传入 DynamicFilterInfo 也能执行；
@@ -11,12 +91,17 @@
 - 优化 实体类注释，基类在其他 Assembly 时也能读取；
 - 优化 支持实体类使用 new 重写属性；
 - 优化 ToAggregate 执行时忽略已设置的 OrderBy；
+- 优化 dto 映射查询时忽略已指定的映射，避免重复查询字段；#494
+- 优化 MySql CodeFirst 索引的建立 ；#498
 - 补充 异步方法 ToListAsync(a => {}) 对 IncludeMany 的支持；
 - 修复 AsTreeCte 开启自动迁移时，错误的创建了 as_tree_cte 表；#476
 - 修复 内部 decimal 默认值在 core 3.1+ 报错的问题；
 - 修复 decimal? 可空数字设置 Column Scale 无效的问题(decimal正常)；
 - 修复 DbContext/UnitOfWork EntityChangeReport 参数 BeforeObject 值无效的 bug；
 - 修复 lambda 表达式解析变量转换时的 bug；#490
+- 修复 Firebird Embedded 版本系统表 isidentity_type 兼容问题；
+- 修复 Firebird Embedded 2.5 不支持 boolean 的 bug；
+
 
 ## v1.9.0
 

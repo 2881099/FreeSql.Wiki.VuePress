@@ -62,7 +62,42 @@ fsql.Select<T>().WithSql(sql).Page(1, 10).ToList();
 
 ---
 
-### 7、错误：ObjectPool.Get 获取超时（10秒）。
+
+### 7、错误：【主库】对象池已释放，无法访问。
+
+原因一：手工调用了 fsql.Dispose，之后仍然使用它
+
+原因二：使用了 IdleBus 管理 IFreeSql，错误的方式如下：
+
+- a) 不要构建了 IFreeSql 再丢去注册
+
+```c#
+var fsql = new FreeSqlBulder()...Build();
+ib.Register("key01", () => fsql); //错了，错了，错了
+
+ib.Register("key01", () => new FreeSqlBulder()...Build()); //正确
+```
+
+- b) 尽量每次都使用 ib.Get 获得 IFreeSql 对象(避免存对象引用)，IdleBus 内部超时释机制一时触发，再使用引用对象，就会报这个报错
+
+原因三：检查项目的系统事件，是否在异常之前触发
+
+```c#
+AppDomain.CurrentDomain.ProcessExit += (s1, e1) =>
+{
+  //记录日志
+};
+Console.CancelKeyPress += (s1, e1) =>
+{
+  //记录日志  
+};
+```
+
+如果确定问题，可以在 FreeSqlBuilder 构建对象的时候 UseExitAutoDisposePool(false) 关闭这个机制
+
+---
+
+### 8、错误：ObjectPool.Get 获取超时（10秒）。
 
 原因一：UnitOfWork 使用未释放，请保证程序内使用 UnitOfWork 的地方会执行 Dispose
 
@@ -78,5 +113,7 @@ GetAsync await 为异步方法获取连接的排队数量
 ```
   
 监视 FreeSql.UnitOfWork.DebugBeingUsed 这个静态字典，存储正在使用事务的工作单元
+
+注意：尽量不要使用 fsql.Ado.MasterPool.Get() 或 GetAsync() 方法，否则请检查姿势。
 
 ---

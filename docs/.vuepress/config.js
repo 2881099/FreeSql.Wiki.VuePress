@@ -47,11 +47,16 @@ module.exports = {
                                     {
                                         text: '提Issues',
                                         link: 'https://github.com/2881099/FreeSql/issues/new'
-                                    }]
+                                    },
+                                    {
+                                        text: 'NuGet',
+                                        link: 'https://www.nuget.org/packages?q=freesql'
+                                    }
+                                ]
+
                             }
                         ]
                     },
-                    { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
                 ],
                 sidebar:
                 {
@@ -130,14 +135,16 @@ module.exports = {
                             '/reference/api.md',
                             '/reference/change-log.md',
                             '/reference/vs-dapper.md',
-                            '/reference/vs-entity-framework.md',
+                            '/reference/vs-entity-framework.md'
                         ]
                     },
                     {
                         isGroup: true,
                         text: '学习与交流',
                         children: [
-                            '/reference/faq.md'
+                            '/reference/faq.md',
+                            '/reference/donation.md',
+                            '/reference/awesome-freesql.md'
                         ]
                     }
 

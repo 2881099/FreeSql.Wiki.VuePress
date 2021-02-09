@@ -9,7 +9,7 @@ Ado 是 IFreeSql 下重要的对象之一，它包括所有对 SQL 操作的封�
 List<T> list = fsql.Ado.Query<T>("select * from t1");
 
 //返回单条记录
-T item = fsql.Ado.QuerySingle("select * from t1 where id = @id", new { id = 1 });
+T item = fsql.Ado.QuerySingle<T>("select * from t1 where id = @id", new { id = 1 });
 
 //返回多个结果集
 var result = fsql.Ado.Query<T1, T2>("select * from t1; select * from t2");
