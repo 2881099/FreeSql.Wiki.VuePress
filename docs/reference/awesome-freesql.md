@@ -11,12 +11,13 @@
 - [API参考](http://124.70.130.97:8082/api/index.html)
 
 ## 源码
-- Gitee  [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
-- GitHub [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
+- GitHub  [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
+- Gitee [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
 
 ## 相关文档指南
 - [FreeSql接入CAP的实践](https://www.cnblogs.com/igeekfan/p/cap_freesql_flush.html)
 - [FreeSql.Generator命令行代码生成器是如何实现的](https://www.cnblogs.com/igeekfan/p/freesql-generator.html)
+- [AOP +FreeSql 跨方法异步事务](https://www.cnblogs.com/igeekfan/p/aop-freesql-autofac.html)
 
 
 ### 以下可从[GitHub Issues Docs](https://github.com/dotnetcore/FreeSql/issues?q=label%3Adocs)找到
