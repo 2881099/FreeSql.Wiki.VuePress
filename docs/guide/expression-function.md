@@ -1,6 +1,25 @@
 # 表达式函数
 
-这是 FreeSql 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、IN查询、数组（PostgreSQL的数组）、字典（PostgreSQL HStore)等等。
+这是 ``FreeSql`` 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、``IN``查询、数组（``PostgreSQL``的数组）、字典（PostgreSQL HStore)等等。
+
+## 动态Lambda表达式
+- ``And``、``Or``扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
+
+示例
+```csharp
+Expression<Func<T, bool>> where = a => a.id == Guid.Empty;
+where = where.And(b => b.num > 0);
+where = where.Or(b => b.num > 0);
+```
+
+动态拼接``Or``,通过``Or``扩展方法动态拼接``Lambda``表达式
+```csharp
+Expression<Func<T, bool>> where = a => null;
+if (xxx)
+{
+   where = where.Or(b => b.num > 0);  
+}
+```
 
 ## In查询
 
