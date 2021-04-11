@@ -8,7 +8,8 @@
 ## 官方文档
 - [http://freesql.net](http://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API参考](http://124.70.130.97:8082/api/index.html)
+- [API参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
+- [API参考](https://docs.dotnet-china.org/FreeSql/index.html)
 
 ## 源码
 - GitHub  [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
@@ -38,4 +39,5 @@
 - [EasyCms 企业建站，事业单位使用的CMS管理系统](https://github.com/jasonyush/EasyCMS)
 - [内容管理系统](https://github.com/hejiyong/fscms)
 - [FreeSql的各种工程demo, console,xamarin app,ios,android,wpf,blazor,nf461 ...](https://github.com/densen2014/FreeSqlDemos)
--  [基于.Net Core 3.1或 .Net 5 框架简单2层架构，实现基于权限角色的页面级权限后台框架](https://gitee.com/sundayisblue/BoYuanCore/)
+- [基于.Net Core 3.1或 .Net 5 框架简单2层架构，实现基于权限角色的页面级权限后台框架](https://gitee.com/sundayisblue/BoYuanCore/)
+- [基于.Net 5平台的快速开发框架](https://gitee.com/rongguohao/HaoHaoPlay_Back)

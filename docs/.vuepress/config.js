@@ -44,6 +44,26 @@ module.exports = {
                                 text: '学习与交流',
                                 children: [
                                     '/reference/faq.md',
+                                    '/reference/donation.md',
+                                    '/reference/awesome-freesql.md',
+                                ]
+
+                            }
+                        ]
+                    },  
+                       {
+                        text: 'API', children: [
+                            {
+                                text: '学习与交流',
+                                children: [
+                                    {
+                                        text: '浏览API',
+                                        link: 'https://docs.dotnet-china.org/FreeSql/api/index.html'
+                                    },
+                                    {
+                                        text: '浏览API（国内镜像）',
+                                        link: 'http://124.70.130.97:8082/api/index.html'
+                                    },
                                     {
                                         text: '提Issues',
                                         link: 'https://github.com/2881099/FreeSql/issues/new'
@@ -183,6 +203,7 @@ module.exports = {
                 navbar: [
                     { text: 'Guide', link: '/en/guide/' },
                     { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
+                    { text: 'Api', link: 'https://docs.dotnet-china.org/FreeSql/api/index.html' },
                 ],
                 sidebar: [
                     {
@@ -197,7 +218,7 @@ module.exports = {
                             },
 
                         ]
-                    },
+                    }
                 ],
                 selectLanguageName: 'English',
             }
