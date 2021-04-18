@@ -100,19 +100,19 @@ fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
 | 【条件】            |
 | Where               | \<this\>        | Lambda                             | 支持多表查询表达式，多次使用相当于AND                                                                                                                                  |
 | WhereIf             | \<this\>        | bool, Lambda                       | 支持多表查询表达式                                                                                                                                                     |
-| Where               | \<this\>        | string, parms                      | 原生sql语法条件，Where("id = ?id", new { id = 1 })                                                                                                                     |
-| WhereIf             | \<this\>        | bool, string, parms                | 原生sql语法条件，WhereIf(true, "id = ?id", new { id = 1 })                                                                                                             |
+| Where               | \<this\>        | string, parms                      | 原生sql语法条件，Where("id = @id", new { id = 1 }  ,[注意前缀@,根据具体数据库决定](ado.md#参数化) 其他地方不再说明。同理 )                                                                                                                     |
+| WhereIf             | \<this\>        | bool, string, parms                | 原生sql语法条件，WhereIf(true, "id = @id", new { id = 1 }                                                                                                            |
 | WhereCascade        | \<this\>        | Lambda                             | 实现多表查询时，向每个表中附加条件                                                                                                                                     |
 | WhereDynamicFilter  | \<this\>        | DynamicFilterInfo                  | 动态过滤条件(与前端交互)                                                                                                                                               |
 | 【分组】            |
 | GroupBy             | \<this\>        | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)                                                                                                                                   | GroupBy(a => new{a.Name,a.Time}) |
-| GroupBy             | \<this\>        | string, parms                      | 按原生sql语法分组，GroupBy("concat(name, ?cc)", new { cc = 1 })                                                                                                        |
-| Having              | \<this\>        | string, parms                      | 按原生sql语法聚合条件过滤，Having("count(name) = ?cc", new { cc = 1 })                                                                                                 |
+| GroupBy             | \<this\>        | string, parms                      | 按原生sql语法分组，GroupBy("concat(name, @cc)", new { cc = 1 })                                                                                                        |
+| Having              | \<this\>        | string, parms                      | 按原生sql语法聚合条件过滤，Having("count(name) = @cc", new { cc = 1 })                                                                                                 |
 | Disdinct            | \<this\>        |                                    | .Distinct().ToList(x => x.GroupName) 是对指定字段                                                                                                                      |
 | 【排序】            |
 | OrderBy             | \<this\>        | Lambda                             | 按列排序，OrderBy(a => a.Time)，可多次使用                                                                                                                             |
 | OrderByDescending   | \<this\>        | Lambda                             | 按列倒向排序，OrderByDescending(a => a.Time)                                                                                                                           |
-| OrderBy             | \<this\>        | string, parms                      | 按原生sql语法排序，OrderBy("count(name) + ?cc", new { cc = 1 })                                                                                                        |
+| OrderBy             | \<this\>        | string, parms                      | 按原生sql语法排序，OrderBy("count(name) + @cc", new { cc = 1 })                                                                                                        |
 | OrderByPropertyName | string, bool    | 按属性名字符串排序（支持导航属性） |
 | 【联表】            |
 | LeftJoin            | \<this\>        | Lambda                             | 左联查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
