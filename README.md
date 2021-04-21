@@ -19,8 +19,8 @@ npm run docs:build
 
 
 ## 源码
-- Gitee  [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
-- GitHub [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
+- GitHub [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
+- Gitee [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
 
 ## 官方文档
 - [http://freesql.net](http://freesql.net)
