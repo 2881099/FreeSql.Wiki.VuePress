@@ -2,15 +2,34 @@
 
 每三个月一次版本号：2.3/2.6/2.9，修复严重 bug 会发布 2.3.x
 
+## v2.5.100
 
-## v2.3-preview (myget.org)
+- 增加 ISelect.Page(BasePagingInfo pagingInfo) 方法重载；
+- 修复 IncludeMany + AsTreeCte 不能组合使用的问题；#760
+- 修复 Ado.CommandFluent 存储过程参数化问题；#739
+- 修复 IUpdate.SetDto bug；#754
+- 修复 pgsql 中 hstore 中 value 错误赋值为 key 的问题，并允许 value 值为 NULL；
+- 修复 byte[]类型的乐观锁初始化问题；
 
-> 安装前添加源：https://www.myget.org/F/ncc/api/v3/index.json
+## v2.3.200
+
+- 修复 Repository/DbContext 批量修改可能无效的 bug；#709
+- 修复 Oracle/Dameng 分组查询后分页的 bug；#710
+- 优化 fsql.Transaction 线程事务；
+
+## v2.3.106
+
+- 修复 v2.3.100 GlobalFilter 在 Repository 失效的 bug；
+- 优化 BaseDbProvider、AdoNetExtensions 内部定义；
+- 增加 IUpdate.SetSource 批量更新时指定主键；#337
+
+## v2.3.100
 
 - 增加 FreeSql.Provider.Custom 自定义适配访问任何数据库；
 - 增加 Column 特性 RewriteSql/RereadSql；
 - 增加 ISelect.OrderByRandom() 随机排序适配；
 - 增加 SqlExt.DistinctCount 扩展方法；#674 #533
+- 增加 Aop Before/After States 共享状态；
 - 优化 ManyToMany 导航属性子查询支持 ToList；
 - 优化 HzyTuple 子查询解析；
 - 优化 指定 Dto 查询对 c# 字段的支持；
