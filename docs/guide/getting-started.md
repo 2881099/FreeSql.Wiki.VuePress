@@ -86,7 +86,7 @@ fsql.GlobalFilter; //全局过滤器对象
 
 ## 迁移
 
-程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的,更多请查看[CodeFirst](CodeFirst)文档，
+程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的,更多请查看[CodeFirst](code-first.md)文档，
 
 > 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
 
