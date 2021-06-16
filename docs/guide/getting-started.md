@@ -1,18 +1,18 @@
 # 入门
 
-FreeSql是功能强大的 .NET ORM，支持 .NetFramework 4.0+、.NetCore 2.1+、Xamarin 等支持 NetStandard 所有运行平台。
+`FreeSql`是功能强大的 `.NET ORM`，支持 `.NetFramework 4.0+`、`.NetCore 2.1+`、`Xamarin`等支持 NetStandard 所有运行平台。
 
-支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/翰高/华为GaussDB/MsAccess 数据库。
+支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/翰高/华为GaussDB/MsAccess` 数据库。
 
-QQ群：4336577(已满)、8578575(在线)、52508226(在线)
+QQ群：4336577(已满)、8578575(已满)、`52508226(在线)`
 
 ## 模型
 
-FreeSql 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
+`FreeSql` 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
 
-可从现有数据库生成实体模型，FreeSql 提供 IDbFirst 接口实现[生成实体模型](db-first.md)。
+可从现有数据库生成实体模型，`FreeSql` 提供 `IDbFirst` 接口实现[生成实体模型](db-first.md)。
 
-或者手动创建模型，基于模型创建或修改数据库，提供 ICodeFirst 同步结构的 API（甚至可以做到开发阶段自动同步）。
+或者手动创建模型，基于模型创建或修改数据库，提供 `ICodeFirst` 同步结构的 `API`（甚至可以做到开发阶段自动同步）。
 
 ```csharp
 using FreeSql.DataAnnotations;
@@ -57,6 +57,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IFreeSql>(fsql);
 }
 ```
+- [.NET Core注入多个FreeSql实例](https://github.com/dotnetcore/FreeSql/issues/44)
 - .NET Framework 单例
 ```csharp
 public class DB
@@ -66,7 +67,7 @@ public class DB
 }
 ```
 
-IFreeSql 是 ORM 最顶级对象，所有操作都是使用它的方法或者属性：
+`IFreeSql` 是 `ORM` 最顶级对象，所有操作都是使用它的方法或者属性：
 
 ```c#
 
@@ -86,7 +87,7 @@ fsql.GlobalFilter; //全局过滤器对象
 
 ## 迁移
 
-程序运行中FreeSql会检查AutoSyncStructure参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的,更多请查看[CodeFirst](code-first.md)文档，
+程序运行中`FreeSql`会检查`AutoSyncStructure`参数，以此条件判断是否对比实体与数据库结构之间的变化，达到自动迁移的目的,更多请查看[CodeFirst](code-first.md)文档，
 
 > 注意：谨慎、谨慎、谨慎在生产环境中使用该功能。
 

@@ -1,6 +1,6 @@
 # 修改
 
-FreeSql提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。
+`FreeSql`提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()

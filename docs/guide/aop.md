@@ -135,4 +135,4 @@ fsql.Aop.ParseExpression += (s, e) => {
 };
 ```
 
-这个解析有点复杂，当 e.Expression 很复杂的时候，我们还提供了 e.FreeParse 方法，使用它相当于调用 FreeSql 内置表达式解析引擎，辅助您进行解析。
+这个解析有点复杂，当 `e.Expression` 很复杂的时候，我们还提供了 `e.FreeParse` 方法，使用它相当于调用 `FreeSql` 内置表达式解析引擎，辅助您进行解析。

@@ -50,8 +50,8 @@ module.exports = {
 
                             }
                         ]
-                    },  
-                       {
+                    },
+                    {
                         text: 'API', children: [
                             {
                                 text: '学习与交流',
@@ -108,6 +108,7 @@ module.exports = {
                                 '/guide/select-lazy-loading.md',
                                 '/guide/select-include.md',
                                 '/guide/linq-to-sql.md',
+                                '/guide/withsql.md',
                                 '/guide/select-as-tree.md',
                             ]
                         },

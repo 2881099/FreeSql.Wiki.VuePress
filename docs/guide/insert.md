@@ -1,6 +1,6 @@
 # 新增
 
-FreeSql 提供单条和批量插入数据的方法，在特定的数据库执行还可以返回插入后的记录。
+`FreeSql` 提供单条和批量插入数据的方法，在特定的数据库执行还可以返回插入后的记录。
 
 ```csharp
 var connectionString = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" + 
@@ -147,12 +147,32 @@ var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).Ex
 全部列 < 指定列(InsertColumns) < 忽略列(IgnoreColumns)
 ```
 
-在没有使用 InsertColumns/IgnoreColumns 的情况下，实体所有列将被插入数据库；
+在没有使用 `InsertColumns/IgnoreColumns` 的情况下，实体所有列将被插入数据库；
 
-在使用 InsertColumns，没有使用 IgnoreColumns 的情况下，只有指定的列插入数据库；
+在使用 `InsertColumns`，没有使用 `IgnoreColumns` 的情况下，只有指定的列插入数据库；
 
-在使用 IgnoreColumns 的情况下，只有未被指定的列插入数据库；
+在使用 `IgnoreColumns` 的情况下，只有未被指定的列插入数据库；
 
+## 7、导入表数据
+
+
+```csharp
+int affrows = fsql.Select<Topic>()
+  .Limit(10)
+  .InsertInto(null, a => new Topic2
+  {
+    Title = a.Title
+  });
+```
+
+```sql
+INSERT INTO `Topic2`(`Title`, `Clicks`, `CreateTime`)
+SELECT a.`Title`, 0, '0001-01-01 00:00:00' 
+FROM `Topic` a 
+limit 10
+```
+
+注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性` [Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c# `默认值。
 ## 7、MySql 特有功能 Insert Ignore Into
 
 ```csharp
@@ -162,13 +182,20 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 8、MySql 特有功能 On Duplicate Key Update
+## 8、MySql 特有功能 Insert Ignore Into
 
-可参阅 []()
+```csharp
+fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
+///INSERT IGNORE INTO `Topic`(`Clicks`) 
+//VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4), 
+//(@Clicks5), (@Clicks6), (@Clicks7), (@Clicks8), (@Clicks9)
+```
 
-## 9、PostgreSQL 特有功能 On Conflict Do Update
+## 9、MySql 特有功能 `On Duplicate Key Update`
 
-可参阅 []()
+
+## 10、PostgreSQL 特有功能 On Conflict Do Update
+
 
 ## API
 

@@ -1,8 +1,8 @@
 # 删除
 
-删除是一个非常危险的操作，FreeSql对删除支持并不强大，默认仅支持单表、且有条件的删除方法。
+删除是一个非常危险的操作，`FreeSql`对删除支持并不强大，默认仅支持单表、且有条件的删除方法。
 
-若Where条件为空的时候执行，仅返回0或默认值，不执行真正的SQL删除操作。
+若`Where`条件为空的时候执行，仅返回0或默认值，不执行真正的SQL删除操作。
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
