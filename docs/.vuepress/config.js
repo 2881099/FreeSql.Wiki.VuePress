@@ -1,3 +1,7 @@
+
+
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = {
     base: '/',
     locales: {
@@ -14,10 +18,44 @@ module.exports = {
     },
     theme: '@vuepress/default',
     head: [
+        [
+            'link',
+            {
+                rel: 'icon',
+                type: 'image/png',
+                sizes: '16x16',
+                href: `/favicon-16x16.png`,
+            },
+        ],
+        [
+            'link',
+            {
+                rel: 'icon',
+                type: 'image/png',
+                sizes: '32x32',
+                href: `/favicon-32x32.png`,
+            },
+        ],
         ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+        ['meta', { name: 'application-name', content: 'VuePress' }],
+        ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
+        [
+            'meta',
+            { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+        ],
+        [
+            'link',
+            { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
+        ],
+        ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         // ...其他标签
     ],
+    bundler:
+        // specify bundler via environment variable
+        process.env.DOCS_BUNDLER ??
+        // use vite in dev, use webpack in prod
+        (isProd ? '@vuepress/webpack' : '@vuepress/vite'),
     themeConfig: {
         logo: '/logo.png',
         repo: '2881099/FreeSql.Wiki.VuePress',
@@ -225,13 +263,30 @@ module.exports = {
             }
         },
     },
+    themePlugins: {
+        // only enable git plugin in production mode
+        git: isProd,
+    },
     plugins: [
-        ['@vuepress/git'],
-        ['@vuepress/medium-zoom'],
-        ['@vuepress/pwa',
-            {
+        [
+            '@vuepress/plugin-pwa', {
                 skipWaiting: true,
-            }
+            },
+        ],
+        [
+            '@vuepress/plugin-pwa-popup',
+            {
+                locales: {
+                    '/': {
+                        message: '发现新内容可用',
+                        buttonText: '刷新',
+                    },
+                    '/en/': {
+                        message: 'New content is available.',
+                        buttonText: 'Refresh',
+                    }
+                },
+            },
         ],
         [
             '@vuepress/plugin-docsearch',
@@ -248,17 +303,12 @@ module.exports = {
                 },
             },
         ],
-        [
-            '@vuepress/pwa-popup',
-            {
-                locales: {
-                    '/': {
-                        message: '发现新内容可用',
-                        buttonText: '刷新',
-                    },
-                },
-            },
-        ],
-
+        // [
+        //     '@vuepress/plugin-shiki',
+        //     {
+        //         theme: 'dark-plus',
+        //         langs: []
+        //     },
+        // ],
     ],
 }

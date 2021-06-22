@@ -30,16 +30,16 @@ var t3 = fsql.DbFirst.GetTableByName("table1");
 代码生成器`FreeSql.Generator`,是FreeSql的代码生成器，可生成实体类，支持将数据库实体动态生成实体，默认有二个模板，基于Razor，可指定自定义模板
 
 - `dotnet-tool`安装 `FreeSql.Generator`
-```dotnetcli
+```bash
 dotnet tool install -g FreeSql.Generator
 ```
 - 更新`FreeSql.Generator`
-```dotnetcli
+```bash
 dotnet tool update -g FreeSql.Generator
 ```
 
 新建目录，在地址栏输入 cmd 快速打开命令窗口，输入命令：
-```dotnetcli
+```bash
 FreeSql.Generator --help
 ```
 命令行工具生成实体类极大好处，后续再次生成覆盖操作等于一键完成，并且支持 Mac/Linux 平台。
