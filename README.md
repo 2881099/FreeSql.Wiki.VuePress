@@ -2,7 +2,10 @@
 
 - http://freesql.net
 
-
+## install
+```bash
+yarn install
+```
 ## run
 ```bash
 npm run docs:dev

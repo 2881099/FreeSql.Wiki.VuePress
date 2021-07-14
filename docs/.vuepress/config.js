@@ -158,8 +158,12 @@ module.exports = {
                             ]
                         },
                         {
+                            isGroup: true,
                             text: 'DbContext',
-                            link: '/guide/db-context.md',
+                            children: [
+                                '/guide/db-context.md',
+                                '/guide/ifreesql-context.md',
+                            ]
                         },
                         {
                             isGroup: true,

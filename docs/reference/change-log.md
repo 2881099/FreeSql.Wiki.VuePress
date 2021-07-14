@@ -2,6 +2,17 @@
 
 每三个月一次版本号：2.3/2.6/2.9，修复严重 bug 会发布 2.3.x
 
+## 未发布
+- 修复 fix sqlite AddMinutes seconds->minutes [#774](https://github.com/dotnetcore/FreeSql/issues/774) 
+- 修复 Update操作的时候CanUpdate=false 未生效 [#803](https://github.com/dotnetcore/FreeSql/issues/803) 
+- 优化 将Freesql的dynamicfilterinfo标记为[serialable] [#802](https://github.com/dotnetcore/FreeSql/issues/802) 
+- 修复 Sqlite where.And(x => x.PublishTime.Year == 2021); 查询问题 [#804](https://github.com/dotnetcore/FreeSql/issues/802) 
+- 增加 支持符号调试 [#679](https://github.com/dotnetcore/FreeSql/issues/679) 
+
+## v2.5.200
+- 修复 Repository/DbContext 批量修改可能无效的 bug；[#709](https://github.com/dotnetcore/FreeSql/issues/709)
+- 修复  fix ExecuteMySqlBulkCopyAsync .net core 3.1 Method not found [#783](https://github.com/dotnetcore/FreeSql/issues/783) 需升级 v2.5.201
+- 
 ## v2.5.100
 
 - 增加 ISelect.Page(BasePagingInfo pagingInfo) 方法重载；

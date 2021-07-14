@@ -1,6 +1,6 @@
 ---
 ---
-
+# DbContext
 FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终通过 SaveChanges 方法提交事务。
 
 ## 特性
