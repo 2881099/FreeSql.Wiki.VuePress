@@ -4,7 +4,7 @@
 
 ## install
 ```bash
-yarn install
+npm(yarn) install
 ```
 ## run
 ```bash
@@ -14,6 +14,14 @@ npm run docs:dev
 
 ```bash
 npm run docs:build
+```
+
+## upgrade package
+```bash
+npm i vuepress@2.0.0-beta.24
+npm i @vuepress/plugin-docsearch@2.0.0-beta.24
+npm i @vuepress/plugin-pwa-popup@2.0.0-beta.24
+npm i vuepress-vite@2.0.0-beta.24
 ```
 
 ## vuepress-next

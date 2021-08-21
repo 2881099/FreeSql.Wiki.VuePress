@@ -117,7 +117,6 @@ module.exports = {
                 sidebar:
                 {
                     '/guide/': [
-
                         {
                             isGroup: true,
                             text: '基础文档',
@@ -154,7 +153,8 @@ module.exports = {
                             children: [
                                 '/guide/repository.md',
                                 '/guide/unit-of-work.md',
-                                '/guide/cascade-saving.md'
+                                '/guide/cascade-saving.md',
+                                '/guide/unitofwork-manager.md'
                             ]
                         },
                         {
@@ -213,8 +213,8 @@ module.exports = {
 
                 },
                 selectLanguageName: '简体中文',
-                selectLanguageText: '选择语言',
-                selectLanguageAriaLabel: '选择语言',
+                selectLanguageText: 'Languages',
+                selectLanguageAriaLabel: 'Languages',
 
                 // page meta
                 editLinkText: '在 GitHub 上编辑此页',
@@ -246,21 +246,42 @@ module.exports = {
                     { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
                     { text: 'Api', link: 'https://docs.dotnet-china.org/FreeSql/api/index.html' },
                 ],
-                sidebar: [
-                    {
-                        '/guide/': [
-
-                            {
-                                isGroup: true,
-                                text: '基础文档',
-                                children: [
-                                    '/en/guide/README.md',
-                                ]
-                            },
-
-                        ]
-                    }
-                ],
+                sidebar:
+                {
+                    '/en/guide/': [
+                        {
+                            isGroup: true,
+                            text: 'Basics',
+                            children: [
+                                '/en/guide/README.md',
+                                '/en/guide/getting-started.md',
+                                '/en/guide/install.md',
+                                '/en/guide/insert.md',
+                                '/en/guide/delete.md',
+                                '/en/guide/update.md',
+                                '/en/guide/insert-or-update.md'
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: 'Query',
+                            children: [
+                                '/en/guide/select.md',
+                                '/en/guide/paging.md',
+                                '/en/guide/select-single-table.md',
+                                '/en/guide/select-multi-table.md'
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: 'CodeFirst',
+                            children: [
+                                '/en/guide/type-mapping.md',
+                            ]
+                        },
+                    ]
+                }
+                ,
                 selectLanguageName: 'English',
             }
         },
