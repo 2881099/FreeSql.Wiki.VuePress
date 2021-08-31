@@ -106,6 +106,7 @@ public async Task UpdateBlogAsync(int id)
 | void Commit()                                   | 提交事务                                                                                             |
 | void Rollback()                                 | 回滚事务                                                                                             |
 | DbContext.EntityChangeReport EntityChangeReport | 工作单元内的实体变化跟踪                                                                             |
+| Dictionary\<string, object\> States             | 用户自定义的状态数据，便于扩展                                                                       |
 
 #### 完整的代码
 - [Blog.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Blog.cs)

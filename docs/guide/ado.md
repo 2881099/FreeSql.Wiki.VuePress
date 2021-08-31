@@ -15,6 +15,10 @@ T item = fsql.Ado.QuerySingle<T>("select * from t1 where id = @id", new { id = 1
 var result = fsql.Ado.Query<T1, T2>("select * from t1; select * from t2");
 List<T1> list1 = result.Item1;
 List<T2> list2 = result.Item2;
+
+// like 查询 
+string searchText = "abc";
+List<T> users = _fsql.Ado.Query<T>("select * from t1 where name like @name", new { name = "%" + searchText + "%" });
 ```
 
 ## 参数化
