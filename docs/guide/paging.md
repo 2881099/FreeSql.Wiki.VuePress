@@ -26,6 +26,17 @@ var list = fsql.Select<Topic>()
     .Tolist();
 ```
 
+> 注意： 上述例子是对单表进行的查询。如果您正在对多表进行查询，必须要在Count之前先进行排序，防止出现不可理解的分页情况。当然，即使是单表，为了防止让分页的次序明确，也建议先排序。
+
+```csharp
+var list = fsql.Select<Topic>()
+    .Where(a => a.Id > 10)
+    .OrderBy(a => a.MsgTime)
+    .Count(out var total) //总记录数量
+    .Page(1, 20)
+    .Tolist();
+```
+
 ## 优化
 
 SqlServer 2012 以前的版本，使用 row_number 分页；
