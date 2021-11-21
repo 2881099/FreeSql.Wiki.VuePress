@@ -19,7 +19,7 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 | 创建数据库 | Sqlite | Sql Server | MySql | PostgreSQL | Oracle |
 | ---------- | ------ | ---------- | ----- | ---------- | ------ |
-|            | √      | X          | X     | X          | X      |
+|   | √ | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L153) | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L129)| X[参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L233) | X |
 
 | 实体＆表对比 | 添加 | 改名 | 删除 |
 | ------------ | ---- | ---- | ---- |

@@ -7,14 +7,14 @@
 
 示例
 ```csharp
-Expression<Func<T, bool>> where = a => a.id == Guid.Empty;
+Expression<Func<T, bool>> where = null;
 where = where.And(b => b.num > 0);
 where = where.Or(b => b.num > 0);
 ```
 
 动态拼接``Or``,通过``Or``扩展方法动态拼接``Lambda``表达式
 ```csharp
-Expression<Func<T, bool>> where = a => null;
+Expression<Func<T, bool>> where = null;
 if (xxx)
 {
    where = where.Or(b => b.num > 0);  

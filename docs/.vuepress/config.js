@@ -94,7 +94,7 @@ module.exports = {
                                 children: [
                                     {
                                         text: '浏览API',
-                                        link: 'https://docs.dotnet-china.org/FreeSql/api/index.html'
+                                        link: 'https://docs.dotnet-china.com/FreeSql/api/index.html'
                                     },
                                     {
                                         text: '浏览API（国内镜像）',
@@ -244,7 +244,7 @@ module.exports = {
                 navbar: [
                     { text: 'Guide', link: '/en/guide/' },
                     { text: 'NuGet', link: 'https://www.nuget.org/packages?q=freesql' },
-                    { text: 'Api', link: 'https://docs.dotnet-china.org/FreeSql/api/index.html' },
+                    { text: 'Api', link: 'https://docs.dotnet-china.com/FreeSql/api/index.html' },
                 ],
                 sidebar:
                 {

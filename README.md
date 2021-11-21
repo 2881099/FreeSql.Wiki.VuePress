@@ -37,4 +37,4 @@ npm i vuepress-vite@2.0.0-beta.24
 - [http://freesql.net](http://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
 - [API参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
-- [API参考](https://docs.dotnet-china.org/FreeSql/index.html)
+- [API参考](https://docs.dotnet-china.com/FreeSql/index.html)
