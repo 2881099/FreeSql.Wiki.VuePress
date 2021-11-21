@@ -134,7 +134,7 @@ module.exports = {
                             isGroup: true,
                             text: '查询',
                             children: [
-                                '/guide/select.md',
+                                '/guide/Query-Data.md',
                                 '/guide/paging.md',
                                 '/guide/select-single-table.md',
                                 '/guide/select-multi-table.md',
@@ -254,22 +254,39 @@ module.exports = {
                             text: 'Basics',
                             children: [
                                 '/en/guide/README.md',
-                                '/en/guide/getting-started.md',
-                                '/en/guide/install.md',
-                                '/en/guide/insert.md',
-                                '/en/guide/delete.md',
-                                '/en/guide/update.md',
-                                '/en/guide/insert-or-update.md'
+                                '/en/guide/Getting-Started.md',
+                                '/en/guide/Install.md',
+                                '/en/guide/Insert-Data.md',
+                                '/en/guide/Delete-Data.md',
+                                '/en/guide/Update-Data.md',
+                                '/en/guide/Insert-or-Update.md'
                             ]
                         },
                         {
                             isGroup: true,
                             text: 'Query',
                             children: [
-                                '/en/guide/select.md',
-                                '/en/guide/paging.md',
-                                '/en/guide/select-single-table.md',
-                                '/en/guide/select-multi-table.md'
+                                '/en/guide/Query-Data.md',
+                                '/en/guide/Pagination.md',
+                                '/en/guide/Query-from-Single-Table.md',
+                                '/en/guide/Query-from-Multi-Table.md',
+                                '/en/guide/Group-Aggregation-Query.md',
+                                '/en/guide/Return-Data.md',
+                                '/en/guide/Lazy-Loading.md',
+                                '/en/guide/Greed-Loading.md',
+                                '/en/guide/Linq-to-Sql.md',
+                                '/en/guide/With-Sql.md',
+                                '/en/guide/Parent-Child-Relationship-Query.md'
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: 'Repository',
+                            children: [
+                                '/en/guide/Repository-Layer.md',
+                                '/en/guide/Cascade-Saving.md',
+                                '/en/guide/Unit-of-Work.md',
+                                '/en/guide/Unit-of-Work-Manager.md',
                             ]
                         },
                         {

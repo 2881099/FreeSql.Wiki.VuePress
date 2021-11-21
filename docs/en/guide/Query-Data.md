@@ -4,7 +4,7 @@ FreeSql has made great efforts in querying data, especially the functions such a
 
 - [《Paging Query》](Pagination)
 - [《Query from Single Table》](Query-from-Single-Table)
-- [《Query from Multi Tables》](Query-from-Multi-Tablea)
+- [《Query from Multi Tables》](Query-from-Multi-Table)
 - [《Grouped Aggregate Query》](Grouped-Aggregate-Query)
 - [《Return Data》](Return-Data)
 - [《LinqToSql》](Linq-to-Sql)
