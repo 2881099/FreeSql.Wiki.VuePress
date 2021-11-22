@@ -134,7 +134,7 @@ module.exports = {
                             isGroup: true,
                             text: '查询',
                             children: [
-                                '/guide/Query-Data.md',
+                                '/guide/select.md',
                                 '/guide/paging.md',
                                 '/guide/select-single-table.md',
                                 '/guide/select-multi-table.md',
