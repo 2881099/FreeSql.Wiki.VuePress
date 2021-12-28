@@ -15,11 +15,19 @@
         public decimal Point { get; set; }
         public Sex? Sex { get; set; }
     }
+    public enum Sex
+    {
+        Boy,
+        Girl
+    }
+
     public class TestClssDto
     {
         public string ID { get; set; }
 
         public int? Age { get; set; }
+
+        public DateTime? Birthday { get; set; }
     }
 ```
 
@@ -105,11 +113,11 @@ var list4 = _fsql.Select<object>()
 	.WhereIf(true, "1=1")
 	.Page(1, 10)
 	.OrderBy("ID DESC")
-	.ToList<TestClssDto>("ID,Age");
+	.ToList<TestClssDto>("ID,Age,BIRTH_DAY as Birthday");
 ```
 
 ```sql
-SELECT ID, Age
+SELECT ID, Age,BIRTH_DAY as Birthday
 	FROM(select * from TestClass  ) a
 	WHERE(1 = 1)
 	ORDER BY ID DESC
