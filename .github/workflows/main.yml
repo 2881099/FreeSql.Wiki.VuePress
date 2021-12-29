@@ -6,9 +6,9 @@ name: CI
 # events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,19 +21,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       # Setup Node
       # https://github.com/marketplace/actions/setup-node-js-environment
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: "14"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           npm install
           npm run docs:build
-      
+
       # https://github.com/marketplace/actions/ssh-deploy
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
