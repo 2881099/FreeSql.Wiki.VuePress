@@ -136,3 +136,18 @@ fsql.Aop.ParseExpression += (s, e) => {
 ```
 
 这个解析有点复杂，当 `e.Expression` 很复杂的时候，我们还提供了 `e.FreeParse` 方法，使用它相当于调用 `FreeSql` 内置表达式解析引擎，辅助您进行解析。
+
+
+## 修改decimal默认特性
+因为默认decimal只支持decimal(10,2)，范围太小，我们可以全局修改decimal类型的支持范围，比如支持decimal(18,6)
+```csharp
+fsql1.Aop.ConfigEntityProperty += (s, e) =>
+{
+    if (e.Property.PropertyType == typeof(decimal)|| e.Property.PropertyType == typeof(decimal?))
+    {
+       e.ModifyResult.Precision = 18;
+       e.ModifyResult.Scale = 6;
+    }
+};
+```
+
