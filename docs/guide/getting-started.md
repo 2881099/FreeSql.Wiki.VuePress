@@ -53,7 +53,10 @@ Startup.cs
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    IFreeSql fsql = new FreeSqlBuilder().xxxx.Build();
+    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+      .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+      .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+      .Build();
     services.AddSingleton<IFreeSql>(fsql);
 }
 ```
@@ -62,8 +65,12 @@ public void ConfigureServices(IServiceCollection services)
 ```csharp
 public class DB
 {
-    static Lazy<IFreeSql> mysqlLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder().xxx.Build());
-    public static IFreeSql MySql=> mysqlLazy.Value;
+   static Lazy<IFreeSql>sqliteLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder()
+         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+         .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+         .Build());
+
+    public static IFreeSql Sqlite => sqliteLazy.Value;
 }
 ```
 
