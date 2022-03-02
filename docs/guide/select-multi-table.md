@@ -59,6 +59,14 @@ fsql.Select<Topic>().From<Category, CategoryType>((s, b, c) => s
   .LeftJoin(a => b.ParentId == c.Id))
   .Where((a,b,c) => c.Id > 0)
   .ToList((a,b,c) => new { a,b,c });
+  
+//减少定义 a,b,c 写法
+fsql.Select<Topic, Category, CategoryType>()
+  .LeftJoin(w => w.t1.CategoryId == w.t2.Id)
+  .LeftJoin(w => w.t2.ParentId == w.t3.Id)
+  .Where(w => w.t3.Id > 0)
+  .ToList(w => new { w.t1,w.t2,w.t3 });
+  
 //SELECT ...
 //FROM `Topic` a
 //LEFT JOIN `Category` b ON a.`CategoryId` = b.`Id`
