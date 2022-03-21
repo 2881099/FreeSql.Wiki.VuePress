@@ -1,13 +1,53 @@
 # 更新日志
 
-每三个月一次版本号：2.3/2.6/2.9，修复严重 bug 会发布 2.3.x
+大约每三个月一次版本号，暂时以修复 bug 为主
 
-## 未发布
+## v3.2.100
+
+- 增加 UseSlaveWeight 读权重设置；#1046
+- 修复 OR 表达式处理情况；#1047
+- 修复 ClickHouse 设置 NoneParameter 会报错问题；
+- 修复 Clickhouse 连接池使用问题；#646 #968 #969 #943
+- 修复 pgsql DbFirst IsPrimary bug；
+- 修复 JsonMap 与导航属性的联表查询报错的 bug；#996
+- 修复 子查询 WhereIf 可能失败的 bug；
+- 修复 StringLength 设置后 IsNullable = false 无生效的问题；
+- 修复 UseConnectionFactory 参数化问题；
+- 修复 参数值为原始 DbParameter 时转换类型报错；
+- 修复 UseGenerateCommandParameterWithLambda 子查询 IN bug；#900
+- 新增[FreeSql.Provider.SqliteCore](https://www.nuget.org/packages/FreeSql.Provider.SqliteCore/) 支持Sqlite加密
+## v3.0.100
+
+- 增加 南大通用 Gbase 国产数据库支持；
+- 增加 ClickHouse 数据库语法支持；
+- 增加 DbContext/Repository 比较变化方法 CompareState；
+- 增加 DynamicFilter Custom 自定义解析；
+- 增加 ToDataTableByPropertyName 动态查询功能；
+- 优化 兼容排序 OrderBy(a => new {}) 语法；
+- 优化 pgsql jsonb 映射，支持 List，mysql limit in 子查询；
+- 优化 InsertOrUpdate<> 使用 InsertOrUpdate<list<>>时，提示友好异常。
+- 修复 BulkCopy 与线程事务未传播的 bug；#962
+- 修复 AsTreeCte + RereadSql 不能同时使用的 bug；#964
+- 修复 FreeSql.Generator 工具生成model失败  [#882](https://github.com/dotnetcore/FreeSql/issues/882) 
+
+## v2.6.100
+
 - 修复 fix sqlite AddMinutes seconds->minutes [#774](https://github.com/dotnetcore/FreeSql/issues/774) 
 - 修复 Update操作的时候CanUpdate=false 未生效 [#803](https://github.com/dotnetcore/FreeSql/issues/803) 
 - 优化 将Freesql的dynamicfilterinfo标记为[serialable] [#802](https://github.com/dotnetcore/FreeSql/issues/802) 
 - 修复 Sqlite where.And(x => x.PublishTime.Year == 2021); 查询问题 [#804](https://github.com/dotnetcore/FreeSql/issues/802) 
 - 增加 支持符号调试 [#679](https://github.com/dotnetcore/FreeSql/issues/679) 
+- 增加 IUnitOfWork.States 自定义状态管理，便于扩展；
+
+## v2.5.300
+
+- 修复 ISelect.AsTable 后 .ToUpdate/ToDelete 无效的 bug；#815
+- 修复 MERGE INTO 别名与 SQL 关键字冲突的 bug；#816
+- 修复 Oracle IncludeMany IN 元素超过 500 数目的问题；#843
+- fix IgnoreColumns CanUpdate false not work #803 
+- fix sqlite where datetime year,month 查不出来数据,Ticks 精度到毫秒，处理Millisecond无值的情况 #804
+- Add Serializable #802
+- Add string.Concat 返回 string.Empty
 
 ## v2.5.200
 - 修复 Repository/DbContext 批量修改可能无效的 bug；[#709](https://github.com/dotnetcore/FreeSql/issues/709)
