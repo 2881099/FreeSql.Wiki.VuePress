@@ -1,5 +1,4 @@
 # 常见问题
-
 ### 1、如何监视 SQL？
 
 方法一：UseMonitorCommand + UseNoneCommandParameter
@@ -16,7 +15,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 fsql.Aop.CurdAfter += (s, e) =>
 {
   if (e.ElapsedMilliseconds > 200)
-    Console.WriteLine($"线程：{e.Sql}\r\n")
+    Console.WriteLine($"线程：{e.Sql}\r\n");
 };
 ```
 ---
@@ -62,7 +61,6 @@ fsql.Select<T>().WithSql(sql).Page(1, 10).ToList();
 
 ---
 
-
 ### 7、错误：【主库】对象池已释放，无法访问。
 
 原因一：手工调用了 fsql.Dispose，之后仍然使用它
@@ -71,7 +69,7 @@ fsql.Select<T>().WithSql(sql).Page(1, 10).ToList();
 
 - a) 不要构建了 IFreeSql 再丢去注册
 
-```c#
+```csharp
 var fsql = new FreeSqlBulder()...Build();
 ib.Register("key01", () => fsql); //错了，错了，错了
 
@@ -82,7 +80,7 @@ ib.Register("key01", () => new FreeSqlBulder()...Build()); //正确
 
 原因三：检查项目的系统事件，是否在异常之前触发
 
-```c#
+```csharp
 AppDomain.CurrentDomain.ProcessExit += (s1, e1) =>
 {
   //记录日志
@@ -117,3 +115,69 @@ GetAsync await 为异步方法获取连接的排队数量
 注意：尽量不要使用 fsql.Ado.MasterPool.Get() 或 GetAsync() 方法，否则请检查姿势。
 
 ---
+
+### 9、多平台代码参考,使用自定义SqliteProvider,例如Sqlite用Microsoft.Data.Sqlite或者反射Mono.Data.Sqlite.
+
+[arm/树莓派](https://github.com/densen2014/FreeSqlDemos/tree/master/ARM_ConsoleApp)
+
+**有条件的同学直接试试 FreeSql.Provider.SqliteCore 包,使用的就是Microsoft.Data.Sqlite驱动.**
+
+1.添加包
+
+```xml
+<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.0.100" />
+<PackageReference Include = "Microsoft.Data.Sqlite" Version="6.0.3" />
+```
+
+2.代码
+
+```csharp
+Microsoft.Data.Sqlite.SqliteConnection _database = new Microsoft.Data.Sqlite.SqliteConnection($"Data Source=document.db");
+
+var fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionFactory(FreeSql.DataType.Sqlite, () => _database, typeof(FreeSql.Sqlite.SqliteProvider<>))
+        .UseAutoSyncStructure(true)
+        .UseNoneCommandParameter(true) //必须开启,因为Microsoft.Data.Sqlite内插处理有bug
+        .UseMonitorCommand(cmd => Console.Write(cmd.CommandText))
+        .Build();
+```
+
+[UWP](https://github.com/densen2014/FreeSqlDemos/tree/master/UWP1)
+
+```csharp
+using System.Data.SQLite;
+
+string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "sqliteSample.db");
+SQLiteConnection _database = new SQLiteConnection($"Data Source={dbpath}");
+var fsql = new FreeSql.FreeSqlBuilder()
+           .UseConnectionFactory(FreeSql.DataType.Sqlite, () => _database, typeof(FreeSql.Sqlite.SqliteProvider<>))
+           .Build();
+```
+
+[Xamarin Forms,代码较多](https://github.com/densen2014/FreeSqlDemos/tree/master/xamarinFormApps)
+主程序,接口获取rovider,各个平台自己实现.
+```csharp
+if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+{
+   fsql = new FreeSql.FreeSqlBuilder()
+          .UseConnectionFactory(FreeSql.DataType.Sqlite, () => DependencyService.Get<ISQLite>().GetConnectionSqlite("document"), typeof(FreeSql.Sqlite.SqliteProvider<>))
+          .UseNoneCommandParameter(true)
+          .Build();
+}
+```
+
+[iOS部分](https://github.com/densen2014/FreeSqlDemos/blob/master/xamarinFormApps/xamarinFormApp.iOS/SQLite_iOS.cs)
+
+[安卓部分](https://github.com/densen2014/FreeSqlDemos/blob/master/xamarinFormApps/xamarinFormApp.Android/SQLite_droid.cs)
+
+---
+
+### 10、 2.6.100升级到3.0.100 后无法连接 sqlserver 提示证书无效, 提示证书链是由不受信任的颁发机构颁发的. 
+
+请尝试: 
+
+1.连接字符串里加入 "Encrypt=True; TrustServerCertificate=True;"
+
+2.使用FreeSql.Provider.SqlServerForSystem替换FreeSql.Provider.SqlServer 
+
+深入讨论请转到 https://github.com/dotnetcore/FreeSql/issues/992#issuecomment-1005305027

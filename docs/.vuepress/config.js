@@ -56,7 +56,7 @@ module.exports = {
         (isProd ? '@vuepress/webpack' : '@vuepress/vite'),
     themeConfig: {
         logo: '/logo.png',
-        repo: '2881099/FreeSql.Wiki.VuePress',
+        repo: 'dotnetcore/FreeSql',
         // docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
         docsDir: 'docs',
         lastUpdated: true,
@@ -155,6 +155,13 @@ module.exports = {
                                 '/guide/unit-of-work.md',
                                 '/guide/cascade-saving.md',
                                 '/guide/unitofwork-manager.md'
+                            ]
+                        },
+                        {
+                            isGroup: true,
+                            text: '数据库提供程序',
+                            children: [
+                                '/guide/freesql-provider-sqlitecore.md',
                             ]
                         },
                         {
