@@ -150,7 +150,17 @@ All Columns < Specified columns (InsertColumns) < Ignored Columns (IgnoreColumns
 - Otherwise, when using `InsertColumns` and not using `IgnoreColumns`, only the specified columns are inserted into the database;
 - Otherwise, in the case of using `IgnoreColumns`, only unspecified columns are inserted into the database.
 
-## 7. Import table data
+## 7、Dictionary Insert
+
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
+```
+
+## 8. Import table data
 
 ```csharp
 int affrows = fsql.Select<Topic>()
@@ -178,14 +188,6 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4), 
 //(@Clicks5), (@Clicks6), (@Clicks7), (@Clicks8), (@Clicks9)
 ```
-
-## 9. `On Duplicate Key Update` (MySql only)
-
-[More information...](%e6%b7%bb%e5%8a%a0%e6%88%96%e4%bf%ae%e6%94%b9#mysql-%E7%89%B9%E6%9C%89%E5%8A%9F%E8%83%BD-on-duplicate-key-update)
-
-## 10. `On Conflict Do Update` (PostgreSQL only)
-
-[More information...](%e6%b7%bb%e5%8a%a0%e6%88%96%e4%bf%ae%e6%94%b9#postgresql-%E7%89%B9%E6%9C%89%E5%8A%9F%E8%83%BD-on-conflict-do-update)
 
 ## Reference
 

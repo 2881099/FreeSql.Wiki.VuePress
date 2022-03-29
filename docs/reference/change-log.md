@@ -2,6 +2,11 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.200
+- 增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481
+- 修复 MySql Set 类型空格处理问题；#1059
+- 修复 SaveManyAsync 多对多历史漏改的问题（同步无问题）；
+
 ## v3.2.100
 
 - 增加 UseSlaveWeight 读权重设置；#1046

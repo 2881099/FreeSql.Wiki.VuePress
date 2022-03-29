@@ -27,7 +27,19 @@ Note: the common repository in `FreeSql.Repository` also has `InsertOrUpdate` me
 
 ---
 
-## 2. InsertOrUpdate in `FreeSql.Repository` 
+
+## 2. IFreeSql.InsertOrUpdateDict
+
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
+//The generated SQL is the same as above
+```
+
+## 3. InsertOrUpdate in `FreeSql.Repository` 
 
 To use this method, you need to reference the `FreeSql.Repository` or `FreeSql.DbContext` extensions package.
 
@@ -46,7 +58,7 @@ Disadvantages: does not support batch operations
 
 ---
 
-## 3. Batch Editing: `BeginEdit`
+## 4. Batch Editing: `BeginEdit`
 
 ```csharp
 [Fact]

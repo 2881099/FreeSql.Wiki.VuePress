@@ -1,17 +1,16 @@
 # 新增和修改
-
 ## 1、IFreeSql.InsertOrUpdate
 
 IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用数据库特性：(v1.5.0+)
 
-| Database   | Features                |     | Database | Features              |
-| ---------- | ----------------------- | --- | -------- | --------------------- |
-| MySql      | on duplicate key update |     | 达梦     | merge into            |
-| PostgreSQL | on conflict do update   |     | 人大金仓 | on conflict do update |
-| SqlServer  | merge into              |     | 神通     | merge into            |
-| Oracle     | merge into              |     | MsAccess | 不支持                |
-| Sqlite     | replace into            |     |          |                       |
-| Firebird   | merge into              |     |          |                       |
+| Database | Features | | Database | Features |
+| -- | -- | -- | -- | -- |
+| MySql | on duplicate key update | | 达梦 | merge into |
+| PostgreSQL | on conflict do update | | 人大金仓 | on conflict do update |
+| SqlServer | merge into | | 神通 | merge into |
+| Oracle | merge into | | 南大通用 | merge into |
+| Sqlite | replace into | | MsAccess | 不支持 |
+| Firebird | merge into | | | |
 
 ```csharp
 fsql.InsertOrUpdate<T>()
@@ -26,7 +25,20 @@ fsql.InsertOrUpdate<T>()
 
 ---
 
-## 2、FreeSql.Repository 之 InsertOrUpdate
+## 2、字典插入或更新
+
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
+//（产生 SQL 同上）
+```
+
+---
+
+## 3、FreeSql.Repository 之 InsertOrUpdate
 
 使用此方法需要引用 FreeSql.Repository 或 FreeSql.DbContext 功能包。
 
@@ -45,7 +57,7 @@ repo.InsertOrUpdate(实体);
 
 ---
 
-## 3、BeginEdit 批量编辑
+## 4、BeginEdit 批量编辑
 
 ```csharp
 [Fact]
@@ -96,7 +108,7 @@ DELETE FROM "BeginEdit01" WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd11bcf54dc')
 
 提醒：该操作只对变量 cts 有效，不是针对全表对比更新。
 
-## 4、MySql 特有功能 On Duplicate Key Update
+## 5、MySql 特有功能 On Duplicate Key Update
 
 FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。
 
@@ -122,14 +134,14 @@ fsql.Insert(item)
 
 OnDuplicateKeyUpdate() 之后可以调用的方法：
 
-| 方法名         | 描述                                            |
-| -------------- | ----------------------------------------------- |
-| IgnoreColumns  | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
-| UpdateColumns  | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
-| Set            | 手工指定更新的列，与 IUpdate.Set 功能一样       |
-| SetRaw         | 作为 Set 方法的补充，可传入 SQL 字符串          |
-| ToSql          | 返回即将执行的 SQL 语句                         |
-| ExecuteAffrows | 执行，返回影响的行数                            |
+| 方法名 | 描述 |
+| -- | -- |
+| IgnoreColumns | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
+| UpdateColumns | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
+| Set | 手工指定更新的列，与 IUpdate.Set 功能一样 |
+| SetRaw | 作为 Set 方法的补充，可传入 SQL 字符串 |
+| ToSql | 返回即将执行的 SQL 语句 |
+| ExecuteAffrows | 执行，返回影响的行数 |
 
 IInsert 与 OnDuplicateKeyUpdate 都有 IgnoreColumns、UpdateColumns 方法。
 
@@ -154,7 +166,7 @@ fsql.Insert(item)
 
 ---
 
-## 5、PostgreSQL 特有功能 On Conflict Do Update
+## 6、PostgreSQL 特有功能 On Conflict Do Update
 
 FreeSql.Provider.PostgreSQL 支持 PostgreSQL 9.5+ 特有的功能，On Conflict(id) Do Update。
 
@@ -185,3 +197,4 @@ fsql.Insert(items)
 //WHEN 201 THEN '2000-01-01 00:00:00.000000' 
 //WHEN 202 THEN '2000-01-01 00:00:00.000000' END::timestamp
 ```
+

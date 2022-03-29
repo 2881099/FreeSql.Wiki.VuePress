@@ -153,8 +153,16 @@ var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).Ex
 
 在使用 `IgnoreColumns` 的情况下，只有未被指定的列插入数据库；
 
-## 7、导入表数据
+## 7、字典插入
 
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
+```
+## 8、导入表数据
 
 ```csharp
 int affrows = fsql.Select<Topic>()
@@ -173,7 +181,8 @@ limit 10
 ```
 
 注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性` [Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c# `默认值。
-## 7、MySql 特有功能 Insert Ignore Into
+
+## 9、MySql 特有功能 Insert Ignore Into
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
@@ -182,7 +191,7 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 8、MySql 特有功能 Insert Ignore Into
+## 10、MySql 特有功能 `On Duplicate Key Update`
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
@@ -190,13 +199,6 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4), 
 //(@Clicks5), (@Clicks6), (@Clicks7), (@Clicks8), (@Clicks9)
 ```
-
-## 9、MySql 特有功能 `On Duplicate Key Update`
-
-
-## 10、PostgreSQL 特有功能 On Conflict Do Update
-
-
 ## API
 
 | 方法                 | 返回值                     | 参数                    | 描述                                                  |

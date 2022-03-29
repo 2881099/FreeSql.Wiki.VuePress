@@ -66,6 +66,16 @@ var t8 = fsql.Delete<Topic>().Where(items).ToSql();
 //DELETE FROM `Topic` WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 ```
 
+## Dictionary Delete
+
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.DeleteDict(dic).AsTable("table1").ExecuteAffrows();
+```
+
 ## `ISelect.ToDelete` Advanced Delete
 
 `IDelete` does not support navigation objects, multi-table association, etc. By default, `ISelect.ToDelete` can convert the query to `IDelete` so that the navigation object can be used to delete data:

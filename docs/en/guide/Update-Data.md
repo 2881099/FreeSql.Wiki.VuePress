@@ -193,7 +193,16 @@ The three of them are functions of the same level, corresponding to:
 
 - `SetDto` is a batch operation of `Set`
 
-## 7. Optimistic Lock
+## 7、Dictionary Update
+
+```csharp
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.UpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
+```
+## 8. Optimistic Lock
 
 When updating the entire entity data, it is very easy to cause the old data to update the new record in the case of concurrency.
 
@@ -203,7 +212,7 @@ Each entity only supports one optimistic lock attribute, mark the attribute befo
 
 > Applicable to SetSource update, the value of `version` will increase by `1` each time it is updated.
 
-## 8. Pessimistic Lock
+## 9. Pessimistic Lock
 
 ```csharp
 var user = fsql.Select<User>()
@@ -219,7 +228,7 @@ var user = fsql.Select<User>()
 SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ```
 
-## 9. Advanced Update: `ISelect.ToUpdate`
+## 10. Advanced Update: `ISelect.ToUpdate`
 
 `IUpdate` does not support navigation objects, multi-table association, etc. by default. `ISelect.ToUpdate` can convert the query to `IUpdate` to update the data using the navigation object, as follows:
 
