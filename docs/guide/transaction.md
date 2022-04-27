@@ -154,4 +154,5 @@ using (var uowManager = new UnitOfWorkManager(fsql)) //使用 UnitOfWorkManager 
 - FreeSql.DbContext 自带事务；
 - UnitOfWorkManager 适合做跨方法事务；
 
-[扩展阅读：IFreeSql 事务另类玩法，理解上面各种事务场景之后再看会更佳](https://github.com/dotnetcore/FreeSql/issues/322)
+- [扩展阅读：IFreeSql 事务另类玩法，理解上面各种事务场景之后再看会更佳](https://github.com/dotnetcore/FreeSql/issues/322)
+- [扩展阅读 2：对以上各种事务的理解及演变](https://www.cnblogs.com/kellynic/p/13551855.html)

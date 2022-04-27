@@ -2,14 +2,19 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
-## v3.2.200
+## v3.2-last
+
 - 增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481
+- 增加 UseSlaveWeight 读权重设置；#1046
+- 增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066
+- 修复 Delete.Where in 查询为空时，异步操作仍然执行删除；#1068 **【受影响版本 v3.2.302】**
+- 修复 InsertOrUpdateDict 异常；#1067 **【受影响版本 v3.2.301、v3.2.300、v3.2.200】**
+- 修复 InsertDict 部分新功能遗留问题(特别是 Oracle)；**【受影响版本 v3.2.301、v3.2.300、v3.2.200】**
+- 修复 InsertDict/UpdateDict 等字典操作在 DbContext.Orm 下无法使用的 bug；#1064 **【受影响版本 v3.2.300、v3.2.200】**
+- 修复 MapType 复杂表达式树解析 bug；#1062
+- 修复 UseGenerateCommandParameterWithLambda 对不可参数化的数据类型冲突的 bug；#1061 #900
 - 修复 MySql Set 类型空格处理问题；#1059
 - 修复 SaveManyAsync 多对多历史漏改的问题（同步无问题）；
-
-## v3.2.100
-
-- 增加 UseSlaveWeight 读权重设置；#1046
 - 修复 OR 表达式处理情况；#1047
 - 修复 ClickHouse 设置 NoneParameter 会报错问题；
 - 修复 Clickhouse 连接池使用问题；#646 #968 #969 #943
@@ -20,7 +25,10 @@
 - 修复 UseConnectionFactory 参数化问题；
 - 修复 参数值为原始 DbParameter 时转换类型报错；
 - 修复 UseGenerateCommandParameterWithLambda 子查询 IN bug；#900
-- 新增[FreeSql.Provider.SqliteCore](https://www.nuget.org/packages/FreeSql.Provider.SqliteCore/) 支持Sqlite加密
+- 完善 SqlServer BulkCopy 插入 DateTime 最小值问题；
+- 优化 DbContext/Repository Update 实体有 ServerTime 既使无状态变化也必然更新的逻辑；
+- 新增[FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持Sqlite加密
+
 ## v3.0.100
 
 - 增加 南大通用 Gbase 国产数据库支持；
