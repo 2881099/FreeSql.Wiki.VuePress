@@ -18,12 +18,12 @@ dotnet add package FreeSql.Provider.SqliteCore
 dotnet add package SQLitePCLRaw.bundle_e_sqlite3 
 dotnet add package FreeSql.Provider.SqliteCore
 ```
-直接正常使用其他包一样使用FreeSql即可。`SQLitePCLRaw.bundle_e_sqlite3 `包不支持加密，但此种方式是官方实现的`SQlite`版本
+直接正常使用其他包一样使用FreeSql即可。`SQLitePCLRaw.bundle_e_sqlite3 `包不支持加密，但此种方式是官方实现的`SQlite`版本,二选一就行
 
 捆绑 | 描述
 ---|---
 SQLitePCLRaw.bundle_e_sqlite3| 在所有平台上提供一致版本的 `SQLite`。 包括 FTS4、FTS5、JSON1 和 R* 树扩展。 建议使用
-SQLitePCLRaw.bundle_e_sqlcipher | 提供 `SQLCipher` 的非官方开放源代码内部版本。
+SQLitePCLRaw.bundle_e_sqlcipher | 提供 `SQLCipher` 的非官方开放源代码内部版本，**支持加密**。
 
 
 # FreeSql.Provider.SqliteCore如何加密
@@ -198,3 +198,20 @@ public class g
 #### 完整代码 
 
 - [https://github.com/luoyunchong/dotnetcore-examples/blob/master/Database-Drivers/OvOv.FreeSqlMicrosoftSqliteCore/Program.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/Database-Drivers/OvOv.FreeSqlMicrosoftSqliteCore/Program.cs)
+
+
+## iOS
+
+[https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/xamarin#ios](https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/xamarin#ios)
+
+`Microsoft.Data.Sqlite` 尝试自动初始化 `SQLitePCLRaw` 捆绑。 遗憾的是，由于针对 `Xamarin.iOS` 的预先 (AOT) 编译存在限制，因此尝试失败，并出现以下错误。
+
+>需要调用 `SQLitePCL.raw.SetProvider()`。 如果使用的是捆绑包，可以通过调用 `SQLitePCL.Batteries.Init()` 来完成此操作。
+
+若要初始化该绑定，请在使用 `Microsoft.Data.Sqlite` 之前，将以下代码行添加到应用。
+
+```cs
+SQLitePCL.Batteries_V2.Init();
+```
+
+即在上方定义`FreeSql`单例时，在`new Lazy`内，调用一次即可

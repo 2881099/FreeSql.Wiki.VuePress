@@ -57,7 +57,7 @@ module.exports = {
     themeConfig: {
         logo: '/logo.png',
         repo: 'dotnetcore/FreeSql',
-        // docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
+        docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
         docsDir: 'docs',
         lastUpdated: true,
         lastUpdatedText: '上次更新',
