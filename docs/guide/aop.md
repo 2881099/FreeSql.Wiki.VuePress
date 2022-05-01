@@ -9,11 +9,13 @@ FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强�
 FreeSql 支持简单的类似功能：
 
 ```csharp
-fsql.Aop.CurdAfter += (s, e) => {
-	if (e.ElapsedMilliseconds > 200) {
-		//记录日志
-		//发送短信给负责人
-	}
+fsql.Aop.CurdAfter += (s, e) => 
+{
+    if (e.ElapsedMilliseconds > 200) 
+    {
+        //记录日志
+        //发送短信给负责人
+    }
 };
 ```
 
@@ -26,10 +28,11 @@ fsql.Aop.CurdAfter += (s, e) => {
 实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。
 
 ```csharp
-fsql.Aop.AuditValue += (s, e) => {
-    if (e.Column.CsType == typeof(long) 
-        && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null
-        && e.Value?.ToString() == 0)
+fsql.Aop.AuditValue += (s, e) => 
+{
+    if (e.Column.CsType == typeof(long) && 
+        e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null && 
+        e.Value?.ToString() == "0")
         e.Value = new Snowflake().GetId();
 };
 
@@ -45,6 +48,25 @@ class Order {
 
 如果命名规范，可以在 aop 里判断，if (e.Property.Name == "createtime") e.Value = DateTime.Now;
 
+## 审计命令
+
+fsql.Aop.CommandBefore、fsql.Aop.CommandAfterHandler 这两个事件触发所有 SQL 命令的执行前、和执行后。
+
+执行后的事件会附带异常信息、耗时信息等。
+
+建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。
+
+> 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
+```csharp
+fsql1.Aop.CommandAfter += new EventHandler<CommandAfterEventArgs>((s, e) =>
+{
+   if (e.Exception != null)
+   {
+     //做一些日志记录的操作。以下为示例。
+     Trace.WriteLine($"Message:{e.Exception.Message }\r\nStackTrace:{e.Exception.StackTrace}\r\nCommandText:{e.Command.CommandText}");
+   }
+});
+```
 ## 审计迁移脚本
 
 FreeSql 自带迁移功能，那么迁移的 SQL 语句长啥样，你可能会好奇。
@@ -76,36 +98,41 @@ FreeSql 提供 AOP 自定义特性功能，实现与多个 orm 共同拥有一�
 > v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column
 
 ```csharp
-fsql.Aop.ConfigEntity += (s, e) => {
-  var attr = e.EntityType.GetCustomAttributes(typeof(MyTableAttribute), false).FirstOrDefault() as MyTableAttribute;
-  if (attr != null)
-    e.ModifyResult.Name = attr.Name; //表名
+fsql.Aop.ConfigEntity += (s, e) => 
+{
+    var attr = e.EntityType.GetCustomAttributes(typeof(MyTableAttribute), false).FirstOrDefault() as MyTableAttribute;
+    if (attr != null)
+        e.ModifyResult.Name = attr.Name; //表名
 };
-fsql.Aop.ConfigEntityProperty += (s, e) => {
-  var attr = e.Property.GetCustomAttributes(typeof(MyColumnAttribute), false).FirstOrDefault() as MyColumnAttribute;
-  if (attr != null)
-    e.ModifyResult.Name = attr.Name; //字段名
+fsql.Aop.ConfigEntityProperty += (s, e) => 
+{
+    var attr = e.Property.GetCustomAttributes(typeof(MyColumnAttribute), false).FirstOrDefault() as MyColumnAttribute;
+    if (attr != null)
+        e.ModifyResult.Name = attr.Name; //字段名
 };
 
 [MyTable("xxx")]
-class YourEntity {
-  [MyColumn("id")]
-  public int pkid { get; set; }
+class YourEntity
+{
+    [MyColumn("id")]
+    public int pkid { get; set; }
 }
 
-class MyTableAttribute : Attribute {
-  public string Name { get; }
-  public MyTableAttribute(string name)
-  {
-    this.Name = name;
-  }
+class MyTableAttribute : Attribute
+{
+    public string Name { get; }
+    public MyTableAttribute(string name)
+    {
+      this.Name = name;
+    }
 }
-class MyColumnAttribute : Attribute {
-  public string Name { get; }
-  public MyColumnAttribute(string name)
-  {
-    this.Name = name;
-  }
+class MyColumnAttribute : Attribute 
+{
+    public string Name { get; }
+    public MyColumnAttribute(string name)
+    {
+      this.Name = name;
+    }
 }
 ```
 
@@ -122,14 +149,15 @@ fsql.Aop.AuditDataReader += (_, e) =>
 
 ## 表达式拦截
 
-FreeSql 支持的表达式非常丰富，对各大数据库的兼容度也做得很好。
+FreeSql 内部表达式支持非常丰富，对各大数据库的兼容度也做得很好。
 
 > 有关表达式支持的程度，可参阅：[表达式函数](expression-function.md)
 
 即便如此丰富，也仍然无法满足用户需求，FreeSql 对外开放了自定义表达式解析接口：
 
 ```csharp
-fsql.Aop.ParseExpression += (s, e) => {
+fsql.Aop.ParseExpression += (s, e) =>
+{
     if (e.Expression.NodeType == Call && e.Expression.Name == "get_Item")
         e.Result = "1111";
 };

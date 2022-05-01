@@ -1,7 +1,8 @@
 
 # WithSql
 
-## WithSql自定义SQL
+# WithSql 自定义SQL
+
 定义实体类
 ```csharp
     public class TestClass
@@ -20,7 +21,6 @@
         Boy,
         Girl
     }
-
     public class TestClssDto
     {
         public string ID { get; set; }
@@ -41,21 +41,21 @@
 
 ```csharp
 DataTable dt1 = _fsql.Select<object>()
-	.WithSql("select * from TestClass ")
-	.ToDataTable("ID,Age");
+    .WithSql("select * from TestClass ")
+    .ToDataTable("ID,Age");
 ```
 
 ```sql
 SELECT ID,Age 
-	FROM(select * from TestClass  ) a
+    FROM(select * from TestClass  ) a
 ```
 
 ### 2.返回DataTable
 
 ```csharp
 DataTable dt2 = _fsql.Select<object>()
-	.WithSql("select * from TestClass ")
-	.ToDataTable("*");
+    .WithSql("select * from TestClass ")
+    .ToDataTable("*");
 ```
 ```sql
 SELECT * 
@@ -67,25 +67,25 @@ FROM ( select * from TestClass  ) a
 ```csharp
 List<(string,string)> list1 = _fsql
     .Select<object>()
-	.WithSql("select * from TestClass ")
-	.ToList<(string, string)>("ID,Age");
+    .WithSql("select * from TestClass ")
+    .ToList<(string, string)>("ID,Age");
 ```
 
 ```sql
 SELECT ID, Age
-	FROM(select * from TestClass  ) a
+    FROM(select * from TestClass  ) a
 ```
 
 ### 4.返回`List<object>`
 
 ```csharp
 var list2 = _fsql.Select<object>()
-	.WithSql("select * from TestClass ")
-	.ToList<object>("*");
+    .WithSql("select * from TestClass ")
+    .ToList<object>("*");
 ```
 ```sql
 SELECT *
-	FROM(select * from TestClass  ) a
+    FROM(select * from TestClass  ) a
 ```
 
 ### 5.返回`List<object>` 且能支持分页
@@ -93,16 +93,16 @@ SELECT *
 ```csharp
   var list3 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
-	.WhereIf(true, "1=1")
-	.Page(1, 10).OrderBy("ID DESC")
-	.ToList<object>("ID,Age");
+    .WhereIf(true, "1=1")
+    .Page(1, 10).OrderBy("ID DESC")
+    .ToList<object>("ID,Age");
 ```
 ```sql
 SELECT ID, Age
-	FROM(select * from TestClass  ) a
-	WHERE(1 = 1)
-	ORDER BY ID DESC
-	limit 0,10
+    FROM(select * from TestClass  ) a
+    WHERE(1 = 1)
+    ORDER BY ID DESC
+    limit 0,10
 ```
 
 ### 6.返回`List<TestClassDto>`且能支持分页
@@ -110,18 +110,18 @@ SELECT ID, Age
 ```csharp
 var list4 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
-	.WhereIf(true, "1=1")
-	.Page(1, 10)
-	.OrderBy("ID DESC")
-	.ToList<TestClssDto>("ID,Age,BIRTH_DAY as Birthday");
+    .WhereIf(true, "1=1")
+    .Page(1, 10)
+    .OrderBy("ID DESC")
+    .ToList<TestClssDto>("ID,Age,BIRTH_DAY as Birthday");
 ```
 
 ```sql
-SELECT ID, Age,BIRTH_DAY as Birthday
-	FROM(select * from TestClass  ) a
-	WHERE(1 = 1)
-	ORDER BY ID DESC
-	limit 0,10
+SELECT ID,Age,BIRTH_DAY as Birthday
+    FROM(select * from TestClass  ) a
+    WHERE(1 = 1)
+    ORDER BY ID DESC
+    limit 0,10
 ```
 
 
@@ -188,13 +188,12 @@ fsql.Ado.CommandFluent($"{sql1} UNION ALL {sql2}")
     .ExecuteDataTable();
 ```
 
-
-
 ## 分页问题
+
 Union All 之后 如果直接 分页会有一个问题。请看具体示例
 
+多次 WithSql + Page 存在问题：每个WithSql内都有一个Page分页
 
-### 多次WithSql+Page存在问题：每个WithSql内都有一个Page分页
 ```csharp
 var sql1 = fsql.Select<Topic>()
     .Where(a => a.Title.Contains("xxx"))
@@ -208,18 +207,18 @@ fsql.Select<Topic>().WithSql(sql1).WithSql(sql2).Page(1, 20).ToList();
 
 ```sql
  SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM `tb_topic` a 
-    WHERE ((a.`Title`) LIKE '%xxx%') ) a 
-limit 0,20) ftb
- 
-UNION ALL
- 
-SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM `tb_topic` a 
-    WHERE ((a.`Title`) LIKE '%yyy%') ) a 
-limit 0,20) ftb
+    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
+        FROM `tb_topic` a 
+        WHERE ((a.`Title`) LIKE '%xxx%') ) a 
+    limit 0,20) ftb
+    
+    UNION ALL
+    
+    SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
+    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
+        FROM `tb_topic` a 
+        WHERE ((a.`Title`) LIKE '%yyy%') ) a 
+    limit 0,20) ftb
 
 ```
 
@@ -227,39 +226,42 @@ limit 0,20) ftb
 
 WithSql 可以和 AsTable 实现分表的功能。
 
-分表跨表查询的时候，分页是要向每个子表（即每个WithSql中的SQL分页）都生效。
+分表跨表查询的时候，分页是要向每个子表（即每个 WithSql 中的 SQL 分页）都生效。
 
 ## 解决方案
 
-### 多次withsql，如需分页，需要按下面的二步操作
+多次 withsql ，如需分页，需要按下面的二步操作
+
 - 第一步：通过witsql，将二个sql组成一个sql。
 
 ```csharp
  var sql = fsql.Select<Topic>()
-	.WithSql("SELECT * FROM tb_topic where id > 11")
-	.WithSql("SELECT * FROM tb_topic where id < 10")
-	.ToSql("*")
+    .WithSql("SELECT * FROM tb_topic where id > 11")
+    .WithSql("SELECT * FROM tb_topic where id < 10")
+    .ToSql("*")
 ```
 
-如上生成的UOION ALL的sql
+如上生成的 UOION ALL 的 sql
 
 ```sql
- SELECT  * from (SELECT * 
-         FROM ( SELECT * FROM tb_topic where id > 11 ) a) ftb
+SELECT  * from (SELECT * 
+    FROM ( SELECT * FROM tb_topic where id > 11 ) a) ftb
 
-         UNION ALL
+    UNION ALL
 
-         SELECT  * from (SELECT * 
-         FROM ( SELECT * FROM tb_topic where id < 10 ) a) ftb
+    SELECT  * from (SELECT * 
+    FROM ( SELECT * FROM tb_topic where id < 10 ) a) ftb
 ```
 
-- 第二步：之后 调用Page则是通过Union ALL后的结果上分页
+- 第二步：之后 调用 Page 则是通过 Union ALL 后的结果上分页
+
 ```csharp
  var sql2 = g.mysql.Select<Topic>()
-	 .WithSql(sql)
-	 .Page(2, 10)
-	 .ToSql();
+     .WithSql(sql)
+     .Page(2, 10)
+     .ToSql();
 ```
+
 ```sql
 SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
 FROM ( SELECT  * from (SELECT *

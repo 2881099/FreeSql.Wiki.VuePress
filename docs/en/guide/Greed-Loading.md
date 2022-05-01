@@ -58,7 +58,20 @@ Select<Tag>().IncludeMany(a => a.TestManys.Select(b => new TestMany { Title = b.
 When the main data already exists in the memory, how to load the sub-data? So we added the List\<T\> extension method, the example is as follows:
 
 ```csharp
-new List<Song>(new[] { song1, song2, song3 }).IncludeMany(fsql, a => a.Tags);
+new List<Song>(new[] { song1, song2, song3 })
+    .IncludeMany(fsql, a => a.Tags);
+```
+
+```c#
+new List<Song>(new[] { song1, song2, song3 })
+    .IncludeMany(
+        orm: fsql, 
+        property: "Tags", 
+        where: "ParentId=Code", 
+        take: 5, 
+        select: "id,name"
+    );
+//v3.2.x
 ```
 
 ## Comparison of the Two Ways of IncludeMany

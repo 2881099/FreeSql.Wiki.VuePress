@@ -57,7 +57,20 @@ Select<Tag>().IncludeMany(a => a.TestManys.Select(b => new TestMany { Title = b.
 当主数据已存在内存中，子数据怎么加载？所以我们增加了 List\<T\> 扩展方法，示例如下：
 
 ```csharp
-new List<Song>(new[] { song1, song2, song3 }).IncludeMany(fsql, a => a.Tags);
+new List<Song>(new[] { song1, song2, song3 })
+    .IncludeMany(fsql, a => a.Tags);
+```
+
+```c#
+new List<Song>(new[] { song1, song2, song3 })
+    .IncludeMany(
+        orm: fsql, 
+        property: "Tags", 
+        where: "ParentId=Code", 
+        take: 5, 
+        select: "id,name"
+    );
+//v3.2.x
 ```
 
 ## 5、IncludeMany 两种方式对比

@@ -24,7 +24,7 @@
 
 参考 BaseEntity.cs 源码（约100行），copy 到项目中使用，然后添加 nuget 引用包：
 
-> dotnet add package FreeSql.Repository
+> dotnet add package FreeSql.DbContext
 
 > dotnet add package FreeSql.Provider.Sqlite
 

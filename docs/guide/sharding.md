@@ -1,7 +1,8 @@
 # 分表分库
+
 ## 理论知识
 
-分表 - 从表面意思上看呢，就是把一张表分成N多个小表，每一个小表都是完正的一张表。分表后数据都是存放在分表里，总表只是一个外壳，存取数据发生在一个一个的分表里面。分表后单表的并发能力提高了，磁盘I/O性能也提高了。并发能力为什么提高了呢，因为查寻一次所花的时间变短了，如果出现高并发的话，总表可以根据不同 的查询，将并发压力分到不同的小表里面。
+分表 - 从表面意思上看呢，就是把一张表分成N多个小表，每一个小表都是完整的一张表。分表后数据都是存放在分表里，总表只是一个外壳，存取数据发生在一个一个的分表里面。分表后单表的并发能力提高了，磁盘I/O性能也提高了。并发能力为什么提高了呢，因为查寻一次所花的时间变短了，如果出现高并发的话，总表可以根据不同 的查询，将并发压力分到不同的小表里面。
 
 分库 - 把原本存储于一个库的数据分块存储到多个库上，把原本存储于一个表的数据分块存储到多个表上。数据库中的数据量不一定是可控的，在未进行分表分库的情况下，随着时间和业务的发展，库中的表会越来越多，表中的数据量也会越来越大，相应地，数据操作，增删改查的开销也会越来越大；另外，一台服务器的资源（CPU、磁盘、内存、IO等）是有限的，最终数据库所能承载的数据量、数据处理能力都将遭遇瓶颈。
 
@@ -52,121 +53,82 @@ using (TransactionScope ts = new TransactionScope())
 }
 ```
 
-分布式数据库 TCC/SAGA 方案请移步：https://github.com/2881099/FreeSql.Cloud
+## 分库 IdleBus
 
-> v3.2.500 自动分表方案：https://github.com/dotnetcore/FreeSql/discussions/1066
+IFreeSql 对应一个数据库，分库是不是要定义N个 IFreeSql？分库的租户场景，那不要定义10000个？
 
----
+IdleBus 空闲对象管理容器，有效组织对象重复利用，自动创建、销毁，解决【实例】过多且长时间占用的问题。有时候想做一个单例对象重复使用提升性能，但是定义多了，有的又可能一直空闲着占用资源。专门解决：又想重复利用，又想少占资源的场景。https://github.com/2881099/IdleBus
 
-## 【分库】利用 IdleBus 重写 IFreeSql
+> dotnet add package IdleBus
 
-在 asp.net core 利用 IdleBus 重写 IFreeSql 支持多库操作
+```csharp
+static IdleBus<IFreeSql> ib = new IdleBus<IFreeSql>(TimeSpan.FromMinutes(10));
 
-```xml
-<ItemGroup>
-  <PackageReference Include="FreeSql" Version="3.2.500" />
-  <PackageReference Include="IdleBus" Version="1.5.2" />
-</ItemGroup>
+ib.Register("db1", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1").Build());
+ib.Register("db2", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str2").Build());
+ib.Register("db3", () => new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "str3").Build());
+//...注册很多个
+
+ib.Get("db1").Select<T>().Limit(10).ToList();
 ```
+IdleBus 也是【单例】设计！主要的两个方法，注册，获取。使用 IdleBus 需要弱化 IFreeSql 的存在，每次使用 ib.Get 获取。
 
-1、定义和注入
-
-```c#
-var fsql = new MultiFreeSql();
-fsql.Register("db1", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1").Build());
-fsql.Register("db2", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str2").Build());
-fsql.Register("db3", () => new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "str3").Build());
-
-services.AddSingleton<IFreeSql>(fsql);
-```
-
-2、如何使用
-
-> 额外增加 Register/Change 两个方法，其他跟 IFreeSql 用法几乎一样
-
-```c#
-var db1_list = fsql.Select<T>().ToList();
-
-//切换 db2 数据库，一旦切换之后 fsql 操作都是针对 db2
-fsql.Change("db2");
-var db2_list = fsql.Select<T>().ToList();
-
-//这样也行
-var db2_list = fsql.Change("db2").Select<T>().ToList();
-```
-
-> 如果需要分布多事务 TCC/Saga 请移步到：https://github.com/2881099/FreeSql.Cloud
-
-3、MultiFreeSql.cs 代码定义
-
-```c#
-using FreeSql;
-using FreeSql.Internal;
-using FreeSql.Internal.CommonProvider;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-
-namespace net50_webapi_idlebus
+```csharp
+public static class IdleBusExtesions
 {
-    public class MultiFreeSql : MultiFreeSql<string> { }
-
-    public partial class MultiFreeSql<TDBKey> : BaseDbProvider, IFreeSql
+    static AsyncLocal<string> asyncLocalTenantId = new AsyncLocal<string>();
+    public static IdleBus<IFreeSql> ChangeTenant(this IdleBus<IFreeSql> ib, string tenantId)
     {
-        internal TDBKey _dbkeyMaster;
-        internal AsyncLocal<TDBKey> _dbkeyCurrent = new AsyncLocal<TDBKey>();
-        BaseDbProvider _ormMaster => _ib.Get(_dbkeyMaster) as BaseDbProvider;
-        BaseDbProvider _ormCurrent => _ib.Get(object.Equals(_dbkeyCurrent.Value, default(TDBKey)) ? _dbkeyMaster : _dbkeyCurrent.Value) as BaseDbProvider;
-        internal IdleBus<TDBKey, IFreeSql> _ib;
+        asyncLocalTenantId.Value = tenantId;
+        return ib;
+    }
+    public static IFreeSql Get(this IdleBus<IFreeSql> ib) => ib.Get(asyncLocalTenantId.Value ?? "db1");
+    public static IBaseRepository<T> GetRepository<T>(this IdleBus<IFreeSql> ib) where T : class => ib.Get().GetRepository<T>();
 
-        public MultiFreeSql()
-        {
-            _ib = new IdleBus<TDBKey, IFreeSql>();
-            _ib.Notice += (_, __) => { };
-        }
+    //-------------------------------------------------------
 
-        public override IAdo Ado => _ormCurrent.Ado;
-        public override IAop Aop => _ormCurrent.Aop;
-        public override ICodeFirst CodeFirst => _ormCurrent.CodeFirst;
-        public override IDbFirst DbFirst => _ormCurrent.DbFirst;
-        public override GlobalFilter GlobalFilter => _ormCurrent.GlobalFilter;
-        public override void Dispose() => _ib.Dispose();
+    static void test()
+    {
+        IdleBus<IFreeSql> ib = null; //单例注入
 
-        public override CommonExpression InternalCommonExpression => _ormCurrent.InternalCommonExpression;
-        public override CommonUtils InternalCommonUtils => _ormCurrent.InternalCommonUtils;
+        var fsql = ib.Get(); //获取当前租户对应的 IFreeSql
 
-        public override ISelect<T1> CreateSelectProvider<T1>(object dywhere) => _ormCurrent.CreateSelectProvider<T1>(dywhere);
-        public override IDelete<T1> CreateDeleteProvider<T1>(object dywhere) => _ormCurrent.CreateDeleteProvider<T1>(dywhere);
-        public override IUpdate<T1> CreateUpdateProvider<T1>(object dywhere) => _ormCurrent.CreateUpdateProvider<T1>(dywhere);
-        public override IInsert<T1> CreateInsertProvider<T1>() => _ormCurrent.CreateInsertProvider<T1>();
-        public override IInsertOrUpdate<T1> CreateInsertOrUpdateProvider<T1>() => _ormCurrent.CreateInsertOrUpdateProvider<T1>();
+        var fsql00102 = ib.ChangeTenant("00102").Get(); //切换租户，后面的操作都是针对 00102
+
+        var songRepository = ib.GetRepository<Song>();
+        var detailRepository = ib.GetRepository<Detail>();
     }
 
-    public static class MultiFreeSqlExtensions
+    //-------------------------------------------------------
+    
+    public static IServiceCollection AddIdleBusRepository(this IServiceCollection services, IdleBus<IFreeSql> ib, params Assembly[] assemblies)
     {
-        public static IFreeSql Change<TDBKey>(this IFreeSql fsql, TDBKey dbkey)
-        {
-            var multiFsql = fsql as MultiFreeSql<TDBKey>;
-            if (multiFsql == null) throw new Exception("fsql 类型不是 MultiFreeSql<TDBKey>");
-            multiFsql._dbkeyCurrent.Value = dbkey;
-            return multiFsql;
-        }
+        services.AddSingleton(ib);
+        services.AddScoped(typeof(IBaseRepository<>), typeof(YourDefaultRepository<>));
+        services.AddScoped(typeof(BaseRepository<>), typeof(YourDefaultRepository<>));
+        services.AddScoped(typeof(IBaseRepository<,>), typeof(YourDefaultRepository<,>));
+        services.AddScoped(typeof(BaseRepository<,>), typeof(YourDefaultRepository<,>));
 
-        public static IFreeSql Register<TDBKey>(this IFreeSql fsql, TDBKey dbkey, Func<IFreeSql> create)
-        {
-            var multiFsql = fsql as MultiFreeSql<TDBKey>;
-            if (multiFsql == null) throw new Exception("fsql 类型不是 MultiFreeSql<TDBKey>");
-            if (multiFsql._ib.TryRegister(dbkey, create))
-                if (multiFsql._ib.GetKeys().Length == 1)
-                    multiFsql._dbkeyMaster = dbkey;
-            return multiFsql;
-        }
+        if (assemblies?.Any() == true)
+            foreach (var asse in assemblies) //批量注册
+                foreach (var repo in asse.GetTypes().Where(a => a.IsAbstract == false && typeof(IBaseRepository).IsAssignableFrom(a)))
+                    services.AddScoped(repo);
+        return services;
     }
+}
+
+class YourDefaultRepository<T> : BaseRepository<T> where T : class
+{
+    public YourDefaultRepository(IdleBus<IFreeSql> ib) : base(ib.Get(), null, null) { }
+}
+class YourDefaultRepository<T, TKey> : BaseRepository<T, TKey> where T : class
+{
+    public YourDefaultRepository(IdleBus<IFreeSql> ib) : base(ib.Get(), null, null) { }
 }
 ```
 
 分库总结：
 
+- 跨库 可以使用 ib.Get() 获取 IFreeSql 进行 CRUD；
 - 跨库 事务不好处理，注意了；
 - 跨库 查询不好处理，注意了；

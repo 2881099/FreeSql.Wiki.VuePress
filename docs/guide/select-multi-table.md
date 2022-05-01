@@ -74,13 +74,15 @@ fsql.Select<Topic, Category, CategoryType>()
 //WHERE c. `Id` > 0
 ```
 
+> 经验：[一对多，分表只取最后一条记录](https://github.com/dotnetcore/FreeSql/issues/430)
+
 ## 3、WithSql
 
 ```csharp
 fsql.Select<Topic, Category, CategoryType>()
   .WithSql(
-      "select * from Topic where id=?id1",
-      "select * from Category where id=?id2",
+      "select * from Topic where id=@id1",
+      "select * from Category where id=@id2",
       null, //不设置 CategoryType 对应的 SQL
       new { id1 = 10, id2 = 11, id3 = 13 }
   )
@@ -88,19 +90,21 @@ fsql.Select<Topic, Category, CategoryType>()
   .LeftJoin((a,b,c) => b.ParentId == c.Id)
   .ToList();
 //SELECT ...
-//FROM ( select * from Topic where id=?id1 ) a
-//LEFT JOIN ( select * from Category where id=?id2 ) b ON a.`CategoryId` = b.`Id`
+//FROM ( select * from Topic where id=@id1 ) a
+//LEFT JOIN ( select * from Category where id=@id2 ) b ON a.`CategoryId` = b.`Id`
 //LEFT JOIN `CategoryType` c ON b.`ParentId` = c.`Id`
 ```
+
+> 提示：ISelect.ToSql 可与 WithSql 配合使用
 
 ## 4、SQL联表
 ```csharp
 fsql.Select<Topic>()
-  .LeftJoin("Category b on b.Id = a.CategoryId and b.Name = ?bname", new { bname = "xxx" })
+  .LeftJoin("Category b on b.Id = a.CategoryId and b.Name = @bname", new { bname = "xxx" })
   .ToList();
 //SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
 //FROM `Topic` a
-//LEFT JOIN Category b on b.Id = a.CategoryId and b.Name = ?bname
+//LEFT JOIN Category b on b.Id = a.CategoryId and b.Name = @bname
 ```
 
 延伸问题：SQL联表 b 表的字段如何在 ToList 中指定？
@@ -153,7 +157,7 @@ fsql.Select<Topic>().ToList(a => new {
 //FROM `Topic` a
 ```
 
-> 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
+> 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
 
 ## 8、子表First/Count/Sum/Max/Min/Avg
 ```csharp
@@ -168,11 +172,11 @@ fsql.Select<Category>().ToList(a => new  {
 });
 ```
 
-## 9、AsSelect
+## 9、集合属性
 
 ```csharp
 fsql.Select<Category>()
-  .Where(a => a.Topics.AsSelect().Any(b => b.Title.Contains("xx")))
+  .Where(a => a.Topics.Any(b => b.Title.Contains("xx"))) //v3.2.600 以下使用 a.Topics.AsSelect()
   .ToList();
 ```
 

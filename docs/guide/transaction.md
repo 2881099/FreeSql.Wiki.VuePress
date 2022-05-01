@@ -1,12 +1,15 @@
-# 事务
+本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：https://github.com/2881099/FreeSql.Cloud
+
+## 0、[ASP.NET Core配置DI使用UnitOfWorkManager，此方法更简单](DI-UnitOfWorkManager事务)
 
 ## 1、UnitOfWork 事务
 
 ```csharp
-using (var uow = fsql.CreateUnitOfWork()) {
+using (var uow = fsql.CreateUnitOfWork())
+{
   var songRepo = fsql.GetRepository<Song>();
-  var userRepo = fsql.GetRepository<User>() 
-  songRepo.UnitOfWork = uow;
+  var userRepo = fsql.GetRepository<User>();
+  songRepo.UnitOfWork = uow; //手工绑定工作单元
   userRepo.UnitOfWork = uow;
 
   songRepo.Insert(new Song());
@@ -102,57 +105,70 @@ SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ## 6、示范代码
 
 ```csharp
-fsql.Transaction(() => //全局线程事务
+//使用 全局线程事务
+fsql.Transaction(() =>
 {
-  fsql.Insert(new Products()).ExecuteAffrows();
-  fsql.Insert(new Products()).ExecuteAffrows();
+    fsql.Insert(new Products()).ExecuteAffrows();
+    fsql.Insert(new Products()).ExecuteAffrows();
 });
 
-using (var uow = fsql.CreateUnitOfWork()) //使用 UnitOfWork 事务
+
+//使用 UnitOfWork 事务
+using (var uow = fsql.CreateUnitOfWork())
 {
-  fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-  fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows();
-  fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows();
+    var repo = uow.GetRepository<Products>();
+    repo.Insert(new Products());
 
-  var repo1 = uow.GetRepository<Products>();
-  repo1.Insert(new Products());
-}
-
-using (var ctx = fsql.CreateDbContext()) //使用 DbContext 事务
-{
-  ctx.Add(new Products());
-  ctx.Add(new Products());
-
-  fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-  fsql.Insert(new Products()).WithTransaction(ctx.UnitOfWork.GetOrBeginTransaction()).ExecuteAffrows(); //正常
-}
-
-using (var uowManager = new UnitOfWorkManager(fsql)) //使用 UnitOfWorkManager 管理类事务
-{
-  using (var uow = uowManager.Begin())
-  {
+    uow.Orm.Insert(new Products()).ExecuteAffrows(); //正常
     fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-    fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows();
-    fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows();
+    fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
 
-    using (var uow2 = uowManager.Begin()) //与 uow 同一个事务
+    uow.Commit();
+}
+
+
+//使用 DbContext 事务
+using (var ctx = fsql.CreateDbContext())
+{
+    ctx.Add(new Products());
+
+    ctx.Orm.Insert(new Products()).ExecuteAffrows(); //正常
+    fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
+    fsql.Insert(new Products()).WithTransaction(ctx.UnitOfWork.GetOrBeginTransaction()).ExecuteAffrows(); //正常
+
+    ctx.SaveChanges();
+}
+
+
+//使用 UnitOfWorkManager 管理类事务
+using (var uowManager = new UnitOfWorkManager(fsql))
+{
+    using (var uow = uowManager.Begin())
     {
-      var repo1 = fsql.GetRepository<Products>();
-      repo1.UnitOfWork = uow2;
-      repo1.Insert(new Products());
+        uow.Orm.Insert(new Products()).ExecuteAffrows(); //正常
+        fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
+        fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
 
-      uow2.Commit();//事务还未提交
+        using (var uow2 = uowManager.Begin()) //与 uow 同一个事务
+        {
+            var repo1 = fsql.GetRepository<Products>();
+            repo1.UnitOfWork = uow2;
+            repo1.Insert(new Products());
+
+            uow2.Commit(); //事务还未提交
+        }
+
+        uow.Commit(); //事务提交
     }
-
-    uow.Commit();//事务提交
-  }
 }
 ```
 
-- IFreeSql curd 方法若不是使用同线程事务，需要指定 WithTransaction 传入事务；
+- IFreeSql Curd 方法若不是使用同线程事务，需要指定 WithTransaction 传入事务；
+- IUnitOfWork Orm 与工作单元事务一致；
 - FreeSql.IBaseRepository curd 方法需要指定 UnitOfWork 传递工作单元事务；
 - FreeSql.DbContext 自带事务；
 - UnitOfWorkManager 适合做跨方法事务；
 
-- [扩展阅读：IFreeSql 事务另类玩法，理解上面各种事务场景之后再看会更佳](https://github.com/dotnetcore/FreeSql/issues/322)
-- [扩展阅读 2：对以上各种事务的理解及演变](https://www.cnblogs.com/kellynic/p/13551855.html)
+[扩展阅读 1：IFreeSql 事务另类玩法，理解上面各种事务场景之后再看会更佳](https://github.com/dotnetcore/FreeSql/issues/322)
+
+[扩展阅读 2：对以上各种事务的理解及演变](https://www.cnblogs.com/kellynic/p/13551855.html)

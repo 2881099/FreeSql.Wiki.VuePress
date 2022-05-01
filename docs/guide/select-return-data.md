@@ -1,13 +1,13 @@
 # 返回数据✨
 
-FreeSql 采用 ExpressionTree 优化读取速读，如果懂技术的你一定知道 .NETCore 技术下除了原生代码，最快就是 Emit 和 ExpressionTree。项目在初期使用的反射+缓存，虽然 .NETCore 优化了反射性能，但经过与Dapper性能测试对比之后，发现仍然有一定差距，改成 ExpresstionTree 后才与 Dapper 性能相当。FreeSql 支持的类型较多，实现 ExpressionTree 的复杂度较大，有兴趣的朋友可以翻阅源代码。
+FreeSql 采用 ExpressionTree 优化读取速度，如果懂技术的你一定知道 .NET Core 技术下除了原生代码，最快就是 Emit 和 ExpressionTree。项目在初期使用的反射 + 缓存，虽然 .NET Core 优化了反射性能，但经过与 Dapper 性能测试对比之后，发现仍然有一定差距，改成 ExpresstionTree 后才与 Dapper 性能相当。FreeSql 支持的类型较多，实现 ExpressionTree 的复杂度较大，有兴趣的朋友可以翻阅源代码。
 
 ## 1、返回单条记录
 ```csharp
 Topic t1 = fsql.Select<Topic>().ToOne();
 ```
 
-> FreeSql约定，ToOne/First 永远返回 null 或 有数据的实体对象，ToList 永远返回非 null 的 List\<实体类型\>
+> FreeSql 约定，ToOne/First 永远返回 null 或 有数据的实体对象，ToList 永远返回非 null 的 List\<实体类型\>
 
 ## 2、返回 List
 ```csharp
@@ -20,7 +20,7 @@ List<Category> t2 = fsql.Select<Category>.ToTreeList();
 List<Category> t3 = fsql.Select<Category>.Where(a => a.Name = "家电").AsTreeCte().ToTreeList();
 //v1.6.0 AsTreeCte() 递归CTE查询 家电 下的所有子分类
 ```
-查询数据加工为树型，注意：实体需要配置父子导航属性
+> 查询数据加工为树型，注意：实体需要配置父子导航属性
 
 ## 4、返回 List + 导航属性的数据
 ```csharp
@@ -64,14 +64,18 @@ List<匿名类> t10 = fsql.Select<Topic>().ToList(a => new {
 
 > 常量机制早期留给了原生SQL，如果真的需要返回该字符串："'xxx'"
 
-### 6、ToSql
+## 6、忽略字段返回
+
+参考实现：https://github.com/dotnetcore/FreeSql/issues/528
+
+## 7、ToSql
 
 每个 ToList 都可以使用 ToSql 返回 SQL String，有两个选项：
 
 - FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；
 - FieldAliasOptions.AsProperty 使用属性名作为字段别名，合适使用二次构造 SQL 再次执行；
 
-### 7、执行SQL
+## 8、执行SQL
 ```csharp
 class xxx {
     public int Id { get; set; }
@@ -86,19 +90,19 @@ List<dynamic> t13 = fsql.Ado.Query<dynamic>("select * from song");
 
 > 注意：Ado.Query 的实体特性是无效的，比如 [Column(Name = "xxx")] 无效
 
-## 8、WithSql
+## 9、WithSql
 ```csharp
 fsql.Select<Topic>()
-  .WithSql("select * from Topic where clicks > ?val", new { val = 10 })
+  .WithSql("select * from Topic where clicks > @val", new { val = 10 })
   .Page(1, 10)
   .ToList()
 //SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (select * from Topic where clicks > ?val) a 
+//FROM (select * from Topic where clicks > @val) a 
 ```
 
 > WithSql 使用多次为 UNION ALL 查询
 
-## 9、ToChunk
+## 10、ToChunk
 
 执行查询，分块返回数据，可减少内存开销。比如读取10万条数据，每次返回100条处理。
 ```csharp
@@ -111,36 +115,36 @@ fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done => {
 //这里示范，最终 testlist1 与 testlist2 返回的数据相同。
 ```
 
-## 10、Dto 映射查询
+## 11、Dto 映射查询
 
 ```csharp
 fsql.Select<Song>().ToList<Dto>();
-//默认的映射查询，Dto 与 Song 属性名相同的被查询
+//情况1：Dto 与 Song 属性名相同的字段被查询，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new DTO { xxx = a.ext }) 
-//情况1：附加所有映射，再额外映射 ext，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto { xxx = a.ext }) 
+//情况2：Dto 与 Song 属性名相同的字段被查询，纠正映射 ext，返回 List<Dto>
 
 fsql.Select<Song>().ToList(a => new Song { id = a.id }) 
-//情况2：只查询 id，返回 List<Song>
+//情况3：Lambda 与 Song 类型一样，只查询指定字段 id，返回 List<Song>
 
 fsql.Select<Song>().ToList(a => new { id = a.id }) 
-//情况3：只查询 id，返回 List<匿名对象>
+//情况4：Lambda 匿名类型，只查询指定字段 id，返回 List<匿名对象>
 ```
 
 > 请仔细处理区别，请仔细处理区别，请仔细处理区别
 
 ```csharp
-fsql.Select<Song>().ToList(a => new DTO(a.id))
-//情况4：只查询 id，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto(a.id))
+//情况5：只查询 id，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new DTO(a.id) { xxx = a.ext })
-//情况5：查询 id, ext，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto(a.id) { xxx = a.ext })
+//情况6：查询 id, ext，返回 List<Dto>
 
 fsql.Select<Song>().ToList(a => new Song(a.id))
-//情况6：查询 id，返回 List<Song>
+//情况7：查询 id，返回 List<Song>
 
 fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
-//情况7：查询 id, ext，返回 List<Song>
+//情况8：查询 id, ext，返回 List<Song>
 ```
 
 > GroupBy 所有方法不使用 DTO 映射规则
@@ -155,7 +159,7 @@ A, B, C 都有 id，Dto { id, a1, a2, b1, b2 }，A.id 被映射。也可以指�
 
 > 友情提醒：在 dto 可以直接映射一个导航属性
 
-## 11、API
+## 12、API
 
 | 方法          | 返回值      | 参数                                                     | 描述                                                                                                                |
 | ------------- | ----------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |

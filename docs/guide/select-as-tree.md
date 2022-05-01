@@ -35,7 +35,7 @@ fsql.Select<Area>().Where(a => a.Parent.Parent.Parent.Name == "中国").First();
 
 定义 Childs 属性，在表达式中可以这样（子查询）：
 ```csharp
-fsql.Select<Area>().Where(a => a.Childs.AsSelect().Any(c => c.Name == "北京")).First();
+fsql.Select<Area>().Where(a => a.Childs.Any(c => c.Name == "北京")).First();
 ```
 
 定义 Childs 属性，还可以使用【级联保存】、【贪婪加载】等等操作。
@@ -114,7 +114,7 @@ fsql.Select<Area>()
 | (可选) pathSeparator | 设置 pathSelector 的连接符，默认：->                              |
 | (可选) level         | 设置递归层级                                                      |
 
-> 通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓
+> 通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、翰高
 
 姿势一：AsTreeCte() + ToTreeList
 
