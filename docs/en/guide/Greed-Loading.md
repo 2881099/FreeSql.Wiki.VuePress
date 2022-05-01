@@ -64,14 +64,14 @@ new List<Song>(new[] { song1, song2, song3 })
 
 ```c#
 new List<Song>(new[] { song1, song2, song3 })
-    .IncludeMany(
+    .IncludeByPropertyName(
         orm: fsql, 
         property: "Tags", 
         where: "ParentId=Code", 
         take: 5, 
         select: "id,name"
     );
-//v3.2.x
+//v3.2.605+
 ```
 
 ## Comparison of the Two Ways of IncludeMany
