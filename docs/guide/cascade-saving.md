@@ -33,7 +33,9 @@ DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归�
 
 1、OneToOne 级联保存
 
-> v3.2.606+ 支持，并且支持[级联删除功能](https://github.com/dotnetcore/FreeSql/wiki/%e5%88%a0%e9%99%a4#ibaserepository-%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4)
+> v3.2.606+ 支持，并且支持[级联删除功能](delete.md#ibaserepository-级联删除)
+
+```csharp
 
 2、OneToMany 追加或更新子表，不删除子表已存在的数据
 

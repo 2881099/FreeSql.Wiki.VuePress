@@ -33,7 +33,7 @@ DbContext/Repository EnableCascadeSave enables recursive tracing of the OneToOne
 
 1. OneToOne cascade save
 
-> v3.2.606 + support, and support [cascade deletion function](https://github.com/dotnetcore/FreeSql/wiki/%e5%88%a0%e9%99%a4#ibaserepository-%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4)
+> v3.2.606 + support, and support [cascade deletion function](Delete-Data.md#cascade-deletion-of-ibaserepository)
 
 2. OneToMany appends or updates the sub table without deleting the existing data of the sub table
 
