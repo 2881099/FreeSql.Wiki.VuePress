@@ -14,11 +14,17 @@ FreeSql.Repository 作为扩展，实现了通用仓储层功能。与其他规�
 ```bash
  dotnet add package FreeSql.Repository
 ```
+
+环境2、.NET Framework
+```bash
+Install-Package FreeSql.DbContext
+```
+
 ## 定义
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=|DataDirectory|\document.db;Pooling=true;Max Pool Size=10")
+    .UseConnectionString(FreeSql.DataType.Sqlite, connectionString)
     .UseAutoSyncStructure(true) //自动迁移实体的结构到数据库
     .Build(); //请务必定义成 Singleton 单例模式
 
@@ -31,15 +37,16 @@ public class Song {
 
 ## 使用方法
 
-1、IFreeSql 的扩展方法；
+方法1、IFreeSql 的扩展方法；
 
 ```csharp
 var curd = fsql.GetRepository<Song>();
 ```
 
-> 注意：Repository对象多线程不安全
+> 注意：Repository对象多线程不安全,因此不应在多个线程上同时对其执行工作。
+- 不支持从不同的线程同时使用同一仓储实例
 
-2、继承实现；
+方法2、继承实现；
 
 ```csharp
 public class SongRepository : BaseRepository<Song, int> {
@@ -49,7 +56,7 @@ public class SongRepository : BaseRepository<Song, int> {
 }
 ```
 
-3、依赖注入；
+方法3、依赖注入；
 
 ```csharp
 public void ConfigureServices(IServiceCollection services) {
@@ -70,7 +77,7 @@ public SongsController(IBaseRepository<Song> repos1) {
 
 > 依赖注入的方式可实现全局【过滤与验证】的设定，方便租户功能的设计；
 
-更多内容可参阅：[《过滤器》](filters.md)
+更多资料：[《过滤器、全局过滤器》](filters.md)
 
 ## 状态管理
 
@@ -133,7 +140,7 @@ var logRepository = fsql.GetGuidRepository<Log>(null, oldname => $"{oldname}_{Da
 
 SqlServer 提供的 output inserted 特性，在表使用了自增或数据库定义了默认值的时候，使用它可以快速将 insert 的数据返回。PostgreSQL 也有相应的功能，如此方便但不是每个数据库都支持。
 
-当采用了不支持该特性的数据库（Sqlite/MySql/Oracle/达梦/MsAccess），并且实体使用了自增属性，仓储批量插入将变为逐条执行，可以考虑以下改进：
+当采用了不支持该特性的数据库（Sqlite/MySql/Oracle/达梦/南大通用/MsAccess），并且实体使用了自增属性，仓储批量插入将变为逐条执行，可以考虑以下改进：
 
 * 使用 uuid 作为主键（即 Guid）；
 * 避免使用数据库的默认值功能；
@@ -153,26 +160,27 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | DataFilter       | IDataFilter\<TEntity\> | 仓储过滤器，本对象内生效                       |
 | Select           | ISelect\<TEntity\>     | 准备查询数据                                   |
 
-| 方法              | 返回值  | 参数                   | 说明                                                     |
-| ----------------- | ------- | ---------------------- | -------------------------------------------------------- |
-| AsType            | void    | Type                   | 改变仓储正在操作的实体类型                               |
-| Get               | TEntity | TKey                   | 根据主键，查询数据                                       |
-| Find              | TEntity | TKey                   | 根据主键，查询数据                                       |
-| Delete            | int     | TKey                   | 根据主键删除数据                                         |
-| Delete            | int     | Lambda                 | 根据 lambda 条件删除数据                                 |
-| Delete            | int     | TEntity                | 删除数据                                                 |
-| Delete            | int     | IEnumerable\<TEntity\> | 批量删除数据                                             |
-| Insert            | -       | TEntity                | 插入数据，若实体有自增列，插入后的自增值会填充到实体中   |
-| Insert            | -       | IEnumerable\<TEntity\> | 批量插入数据                                             |
-| Update            | -       | TEntity                | 更新数据                                                 |
-| Update            | -       | IEnumerable\<TEntity\> | 批量更新数据                                             |
-| InsertOrUpdate    | -       | TEntity                | 插入或更新数据                                           |
-| FlushState        | -       | 无                     | 清除状态管理数据                                         |
-| Attach            | -       | TEntity                | 附加实体到状态管理，可用于不查询就更新或删除             |
-| Attach            | -       | IEnumerable\<TEntity\> | 批量附加实体到状态管理                                   |
-| AttachOnlyPrimary | -       | TEntity                | 只附加实体的主键数据到状态管理                           |
-| SaveMany          | -       | TEntity, string        | 保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比） |
-| BeginEdit         | -       | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
-| EndEdit           | int     | 无                     | 完成编辑数据，进行保存动作                               |
+| 方法 | 返回值 | 参数 | 说明 |
+| -- | -- | -- | -- |
+| AsType | void | Type | 改变仓储正在操作的实体类型 |
+| Get | TEntity | TKey | 根据主键，查询数据 |
+| Find | TEntity | TKey | 根据主键，查询数据 |
+| Delete | int | TKey | 根据主键删除数据 |
+| Delete | int | Lambda | 根据 lambda 条件删除数据 |
+| Delete | int | TEntity | 删除数据 |
+| Delete | int | IEnumerable\<TEntity\> | 批量删除数据 |
+| DeleteCascadeByDatabase | List\<object\> | Lambda | 根据导航属性递归数据库删除数据 |
+| Insert | - | TEntity | 插入数据，若实体有自增列，插入后的自增值会填充到实体中 |
+| Insert | - | IEnumerable\<TEntity\> | 批量插入数据 |
+| Update | - | TEntity | 更新数据 |
+| Update | - | IEnumerable\<TEntity\> | 批量更新数据 |
+| InsertOrUpdate | - | TEntity | 插入或更新数据 |
+| FlushState | - | 无 | 清除状态管理数据 |
+| Attach | - | TEntity | 附加实体到状态管理，可用于不查询就更新或删除 |
+| Attach | - | IEnumerable\<TEntity\> | 批量附加实体到状态管理 |
+| AttachOnlyPrimary | - | TEntity | 只附加实体的主键数据到状态管理 |
+| [SaveMany](%E8%81%94%E7%BA%A7%E4%BF%9D%E5%AD%98#savemany) | - | TEntity, string | 保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比） |
+| [BeginEdit](%E6%B7%BB%E5%8A%A0%E6%88%96%E4%BF%AE%E6%94%B9#3beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91) | - | List\<TEntity\> | 准备编辑一个 List 实体 |
+| EndEdit | int | 无 | 完成编辑数据，进行保存动作 |
 
 > 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。

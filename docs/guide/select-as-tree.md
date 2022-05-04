@@ -43,7 +43,7 @@ fsql.Select<Area>().Where(a => a.Childs.Any(c => c.Name == "北京")).First();
 ```csharp
 fsql.Delete<Area>().Where("1=1").ExecuteAffrows();
 var repo = fsql.GetRepository<Area>();
-repo.DbContextOptions.EnableAddOrUpdateNavigateList = true;
+repo.DbContextOptions.EnableCascadeSave = true;
 repo.DbContextOptions.NoneParameter = true;
 repo.Insert(new Area
 {

@@ -37,7 +37,7 @@ fsql.Select<Area>().Where(a => a.Parent.Parent.Parent.Name == "中国").First();
 Define the Childs attribute, in the expression (subquery):
 
 ```csharp
-fsql.Select<Area>().Where(a => a.Childs.AsSelect().Any(c => c.Name == "北京")).First();
+fsql.Select<Area>().Where(a => a.Childs.Any(c => c.Name == "北京")).First();
 ```
 
 To define the Childs property, you can also use [Cascade Saving](Cascade-Saving), [Greed Loading](Greed-Loading) and so on.
@@ -45,7 +45,7 @@ To define the Childs property, you can also use [Cascade Saving](Cascade-Saving)
 ```csharp
 fsql.Delete<Area>().Where("1=1").ExecuteAffrows();
 var repo = fsql.GetRepository<Area>();
-repo.DbContextOptions.EnableAddOrUpdateNavigateList = true;
+repo.DbContextOptions.EnableCascadeSave = true;
 repo.DbContextOptions.NoneParameter = true;
 repo.Insert(new Area
 {
@@ -116,7 +116,7 @@ If you do not design an infinite level classification table with data redundancy
 | (Optional) pathSeparator | Set the connector of `pathSelector`, default: `->`                                                          |
 | (Optional) level         | Set recursion level                                                                                         |
 
-> Databases that have passed the test: MySql8.0, SqlServer, PostgreSQL, Oracle, Sqlite, Firebird, 达梦， 人大金仓 and 翰高.
+> Databases that have passed the test: MySql8.0, SqlServer, PostgreSQL, Oracle, Sqlite, Firebird, 达梦, 人大金仓, 神舟通用, 南大通用, 翰高, MSAccess And ClickHouse.
 
 Practice 1: AsTreeCte() + ToTreeList
 

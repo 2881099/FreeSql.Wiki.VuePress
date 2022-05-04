@@ -173,13 +173,14 @@ Please view the documentation of [Cascade Saving](Cascade-Saving).
 | Get                                                     | TEntity | TKey                   | Query data by the primary key                                                                                              |
 | Find                                                    | TEntity | TKey                   | Query data by the primary key                                                                                              |
 | Delete                                                  | int     | TKey                   | Delete data by the primary key                                                                                             |
-| Delete                                                  | int     | Lambda                 | Delete data by lambda conditions                                                                                           |
-| Delete                                                  | int     | TEntity                | Query entity                                                                                                               |
-| Delete                                                  | int     | IEnumerable\<TEntity\> | Delete data in bulk                                                                                                        |
-| Insert                                                  | -       | TEntity                | Insert data, if the entity has an auto-increment column, the auto-increment after insertion will be filled into the entity |
-| Insert                                                  | -       | IEnumerable\<TEntity\> | Insert data in bulk                                                                                                        |
-| Update                                                  | -       | TEntity                | Update entity                                                                                                              |
-| Update                                                  | -       | IEnumerable\<TEntity\> | Update data in bulk                                                                                                        |
+| Delete | int | Lambda | Delete data by lambda conditions |
+| Delete | int | TEntity | Query entity |
+| Delete | int | IEnumerable\<TEntity\> | Delete data in bulk |
+| DeleteCascadeByDatabase | List\<object\> | Lambda | Recursively delete data from the database according to navigation attributes |
+| Insert | - | TEntity | Insert data, if the entity has an auto-increment column, the auto-increment after insertion will be filled into the entity |
+| Insert | - | IEnumerable\<TEntity\> | Insert data in bulk |
+| Update | - | TEntity | Update entity |
+| Update | - | IEnumerable\<TEntity\> | Update data in bulk |
 | InsertOrUpdate                                          | -       | TEntity                | Insert ot update data in bulk                                                                                              |
 | FlushState                                              | -       | -                      | Clear status information                                                                                                   |
 | Attach                                                  | -       | TEntity                | Attach entities to state management, which can be used to update or delete without querying                                |

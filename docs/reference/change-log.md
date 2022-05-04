@@ -4,9 +4,13 @@
 
 ## v3.2-last
 
-- 增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481
+- **增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481**
 - 增加 UseSlaveWeight 读权重设置；#1046
-- 增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066
+- **增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066**
+- 增加 [FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持Sqlite加密；
+- 增加 IList\<T\> IncludeByPropertyName 扩展方法，支持字符串参数；
+- 增加 DbSet/Repository DeleteCascadeByDatabase 级联删除(基于数据库)；
+- 调整 DbSet/Repository EnableAddOrUpdateNavigateList 支持 OneToOne 级联保存、级联删除(基于对象)；
 - 修复 Delete.Where in 查询为空时，异步操作仍然执行删除；#1068 **【受影响版本 v3.2.302】**
 - 修复 InsertOrUpdateDict 异常；#1067 **【受影响版本 v3.2.301、v3.2.300、v3.2.200】**
 - 修复 InsertDict 部分新功能遗留问题(特别是 Oracle)；**【受影响版本 v3.2.301、v3.2.300、v3.2.200】**
@@ -18,6 +22,7 @@
 - 修复 OR 表达式处理情况；#1047
 - 修复 ClickHouse 设置 NoneParameter 会报错问题；
 - 修复 Clickhouse 连接池使用问题；#646 #968 #969 #943
+- 修复 pgsql IList -> JArray 映射；#1092
 - 修复 pgsql DbFirst IsPrimary bug；
 - 修复 JsonMap 与导航属性的联表查询报错的 bug；#996
 - 修复 子查询 WhereIf 可能失败的 bug；
@@ -25,16 +30,20 @@
 - 修复 UseConnectionFactory 参数化问题；
 - 修复 参数值为原始 DbParameter 时转换类型报错；
 - 修复 UseGenerateCommandParameterWithLambda 子查询 IN bug；#900
+- 修复 InsertValueSql 在仓储插入后不返回最新值；
 - 完善 SqlServer BulkCopy 插入 DateTime 最小值问题；
+- **优化 导航集合属性访问，可省略 AsSelect；** 
 - 优化 DbContext/Repository Update 实体有 ServerTime 既使无状态变化也必然更新的逻辑；
-- 新增[FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持Sqlite加密
+- 优化 DbContext/Repository 插入非主键自增回填；
+- 优化 ToList\<Dto\> jsonb 映射；
+- 优化 dywhere IN 查询按 500 元素分割；#1091
 
 ## v3.0.100
 
-- 增加 南大通用 Gbase 国产数据库支持；
-- 增加 ClickHouse 数据库语法支持；
+- **增加 南大通用 Gbase 国产数据库支持；**
+- **增加 ClickHouse 数据库语法支持；**
 - 增加 DbContext/Repository 比较变化方法 CompareState；
-- 增加 DynamicFilter Custom 自定义解析；
+- **增加 DynamicFilter Custom 自定义解析；**
 - 增加 ToDataTableByPropertyName 动态查询功能；
 - 优化 兼容排序 OrderBy(a => new {}) 语法；
 - 优化 pgsql jsonb 映射，支持 List，mysql limit in 子查询；
@@ -63,9 +72,11 @@
 - Add string.Concat 返回 string.Empty
 
 ## v2.5.200
-- 修复 Repository/DbContext 批量修改可能无效的 bug；[#709](https://github.com/dotnetcore/FreeSql/issues/709)
-- 修复  fix ExecuteMySqlBulkCopyAsync .net core 3.1 Method not found [#783](https://github.com/dotnetcore/FreeSql/issues/783) 需升级 v2.5.201
-- 
+
+- 修复 Repository/DbContext 批量修改可能无效的 bug；#709
+- fix sqlite AddMinutes seconds -> minutes #774
+- fix ExecuteMySqlBulkCopyAsync .net core 3.1 Method not found  #783
+
 ## v2.5.100
 
 - 增加 ISelect.Page(BasePagingInfo pagingInfo) 方法重载；
@@ -89,7 +100,7 @@
 
 ## v2.3.100
 
-- 增加 FreeSql.Provider.Custom 自定义适配访问任何数据库；
+- **增加 FreeSql.Provider.Custom 自定义适配访问任何数据库；**
 - 增加 Column 特性 RewriteSql/RereadSql；
 - 增加 ISelect.OrderByRandom() 随机排序适配；
 - 增加 SqlExt.DistinctCount 扩展方法；#674 #533
@@ -121,7 +132,7 @@
 
 - 修复 Ado.Net 扩展方法的多表查询 bug；#592
 - 优化 ToSql 别名大小写问题；#467
-- 优化 IUnitOfWork/DbContext/Repository .Orm.Ado 和 CRUD 都与自身事务保持一致；
+- **优化 IUnitOfWork/DbContext/Repository .Orm.Ado 和 CRUD 都与自身事务保持一致；**
 - 完善 IDelete WhereIf(bool, sql) 方法；
 
 ## v2.0.102

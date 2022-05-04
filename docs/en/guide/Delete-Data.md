@@ -94,6 +94,89 @@ The benefits of using this method for complex deletion:
 - Preview data before deleting to prevent mistaken deletion operations;
 - Support complex deletion operations, for example: Use `Limit(10)` on `ISelect` to delete the first 10 records that meet the conditions;
 
+## Cascade deletion of IBaseRepository
+
+1、Cascade deletion based on \[object\]
+
+```c#
+var repo = fsql.GetRepository<Group>();
+repo.DbContextOptions.EnableCascadeSave = true; //Key settings
+repo.Insert(new UserGroup
+{
+    GroupName = "group01",
+    Users = new List<User>
+    {
+        new User { Username = "admin01", Password = "pwd01", UserExt = new UserExt { Remark = "user remark01" } },
+        new User { Username = "admin02", Password = "pwd02", UserExt = new UserExt { Remark = "user remark02" } },
+        new User { Username = "admin03", Password = "pwd03", UserExt = new UserExt { Remark = "user remark03" } },
+    }
+}); //Cascade addition test data
+//INSERT INTO "usergroup"("groupname") VALUES('group01') RETURNING "id"
+//INSERT INTO "user"("username", "password", "groupid") VALUES('admin01', 'pwd01', 1), ('admin02', 'pwd02', 1), ('admin03', 'pwd03', 1) RETURNING "id" as "Id", "username" as "Username", "password" as "Password", "groupid" as "GroupId"
+//INSERT INTO "userext"("userid", "remark") VALUES(3, 'user remark01'), (4, 'user remark02'), (5, 'user remark03')
+
+var groups = repo.Select
+    .IncludeMany(a => a.Users, 
+        then => then.Include(b => b.UserExt))
+    .ToList();
+repo.Delete(groups); //Cascade deletion, recursively traversing the navigation properties of group OneToOne/OneToMany/ManyToMany
+//DELETE FROM "userext" WHERE ("userid" IN (3,4,5))
+//DELETE FROM "user" WHERE ("id" IN (3,4,5))
+//DELETE FROM "usergroup" WHERE ("id" = 1)
+```
+
+2. Cascade deletion based on \[database\]
+
+> According to the set navigation properties, recursively delete the corresponding data of OneToOne/OneToMany/ManyToMany, and return the deleted data. This feature does not rely on database foreign keys
+
+```c#
+var repo = fsql.GetRepository<Group>();
+var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
+//SELECT a."id", a."username", a."password", a."groupid" FROM "user" a WHERE (a."groupid" = 1)
+//SELECT a."userid", a."remark" FROM "userext" a WHERE (a."userid" IN (3,4,5))
+//DELETE FROM "userext" WHERE ("userid" IN (3,4,5))
+//DELETE FROM "user" WHERE ("id" IN (3,4,5))
+//DELETE FROM "usergroup" WHERE ("id" = 1)
+
+//ret   Count = 7	System.Collections.Generic.List<object>
+//  [0]	{UserExt}	object {UserExt}
+//  [1]	{UserExt}	object {UserExt}
+//  [2]	{UserExt}	object {UserExt}
+//  [3]	{User}	    object {User}
+//  [4]	{User}	    object {User}
+//  [5]	{User}  	object {User}
+//  [6]	{UserGroup}	object {UserGroup}
+
+public class Group
+{
+    [Column(IsIdentity = true)]
+    public int Id { get; set; }
+    public string GroupName { get; set; }
+
+    [Navigate(nameof(User.GroupId))]
+    public List<User> Users { get; set; }
+}
+public class User
+{
+    [Column(IsIdentity = true)]
+    public int Id { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
+    public int GroupId { get; set; }
+
+    [Navigate(nameof(Id))]
+    public UserExt UserExt { get; set; }
+}
+public class UserExt
+{
+    [Column(IsPrimary = true)]
+    public int UserId { get; set; }
+    public string Remark { get; set; }
+
+    [Navigate(nameof(UserId))]
+    public User User { get; set; }
+}
+```
 
 ## Reference
 
