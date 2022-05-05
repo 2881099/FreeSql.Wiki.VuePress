@@ -37,6 +37,7 @@
 - 优化 DbContext/Repository 插入非主键自增回填；
 - 优化 ToList\<Dto\> jsonb 映射；
 - 优化 dywhere IN 查询按 500 元素分割；#1091
+- 优化 IIF 表达式解析；
 
 ## v3.0.100
 
@@ -688,7 +689,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.15 (.Net Framework 4.0)
 
 - 增加 .Net Framework 4.0 的支持，出于环境考虑 .Net Framework 4.0 不支持异步方法；
-- 增加 ```IFreeSql.Insert<T>(IEnumerable<T1> source)``` 方法；
+- 增加 IFreeSql.Insert\<T\>(IEnumerable<T1> source) 方法；
 
 ## v0.10.14
 
@@ -723,7 +724,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.8
 
 - 增加 List\<T1\> 扩展方法 IncludeMany，实现从已知的内存 List 数据，进行和 ISelect.IncludeMany 相同功能的贪婪加载；
-> 示例：new List\<Song\>(new[] { song1, song2, song3 }).IncludeMany(g.sqlite, a => a.Tags);
+> 示例：new List\<Song\>(new[] { song1, song2, song3 }).IncludeMany(fsql, a => a.Tags);
 
 
 - 修复 FreeSql.DbContext/FreeSql.Repository 当主键为 Guid? 可空类型时，发生参数错误；
@@ -1084,7 +1085,7 @@ class Topic {
 ## v0.5.11
 
 - 修复 复杂的表达式解析 OR 的括号 bug；
-- 增加 linq to sql 的查询语法，以及单元测试；
+- 增加 linq to sql 的查询语法，以及单元测试，[wiki](LinqToSql)；
 - 补充 IFreeSql 增加与实现 IDisposable 接口（依然要保持单例的使用习惯）；
 - 增加 CurdBefore、CurdAfter AOP 事件，可监控执行增删查改；
 - 增加 SyncStructureBefore、SyncStructureAfter AOP 事件，可监控CodeFirst迁移；

@@ -1,32 +1,37 @@
 # 级联保存
 
+实践发现，N对1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。
+
 ## SaveMany 手工保存
 
 完整保存，对比表已存在的数据，计算出添加、修改、删除执行。
 
+递归保存导航属性不安全，不可控，并非技术问题，而是出于安全考虑，提供了手工完整保存的方式。
+
 ```csharp
-class Cagetory
+var repo = fsql.GetRepository<Type>();
+var type = new Type
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-
-    public Guid ParentId { get; set; }
-    [Navigate(nameof(ParentId))]
-    public List<Cagetory> Childs { get; set; }
-}
-
-//item = ...;
-var repo = fsql.GetRepository<Cagetory>();
-repo.Insert(item);
-repo.SaveMany(item, "Childs");
+    name = "c#",
+    Topics = new List<Topic>(new[]
+    {
+        new Topic { ... }
+    })
+};
+repo.Insert(type);
+repo.SaveMany(type, "Topics"); //手工完整保存 Topics
 ```
 
-- 支持 OneToMany、ManyToMany 导航属性
-- 只保存 Childs，不向下递归追朔
-- 当 Childs 为 Empty 时，删除 item 存在的 Childs 所有表数据，确认？
-- 优点：机制简单，好把控，安全
-- 缺点：不智能
+- SaveMany 仅支持 OneToMany、ManyToMany 导航属性
+- 只保存 Topics，不向下递归追朔
+- 当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据，确认？
+- ManyToMany 机制为，完整对比保存中间表，外部表只追加不更新
 
+如：
+
+- 本表 Song
+- 外部表 Tag
+- 中间表 SongTag
 ## EnableCascadeSave 仓储级联保存
 
 DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归追朔其 OneToOne、OneToMany、ManyToMany 导航属性也一并保存，本文档说明实现的机制防止误用。
@@ -35,19 +40,16 @@ DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归�
 
 > v3.2.606+ 支持，并且支持[级联删除功能](delete.md#ibaserepository-级联删除)
 
-```csharp
-
 2、OneToMany 追加或更新子表，不删除子表已存在的数据
 
 ```csharp
-var repo = fsql.GetRepository<Cagetory>();
 repo.DbContextOptions.EnableCascadeSave = true; //需要手工开启
-repo.Insert(item);
+repo.Insert(type);
 ```
 
-- 不删除 Childs 子表已存在的数据，确认？
-- 当 Childs 属性为 Empty 时，不做任何操作，确认？
-- 保存 Childs 的时候，还会保存 Childs\[0-..\] 的下级集合属性，向下18层，确认？
+- 不删除 Topics 子表已存在的数据，确认？
+- 当 Topics 属性为 Empty 时，不做任何操作，确认？
+- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下18层，确认？
 
 > 向下18层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。
 
@@ -69,7 +71,15 @@ repo.Insert(item);
 
 ```csharp
 
-[Fact]
+class Cagetory
+{
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+
+    public Guid ParentId { get; set; }
+    [Navigate(nameof(ParentId))]
+    public List<Cagetory> Childs { get; set; }
+}
 public void TestOneToManyParent()
 {
     var repo = fsql.GetRepository<Cagetory>();

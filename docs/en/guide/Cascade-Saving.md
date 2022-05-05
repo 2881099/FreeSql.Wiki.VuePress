@@ -1,57 +1,60 @@
 # Cascade Saving
 
-## SaveMany Savemany save manually
+## Savemany save manually
 
 Save completely, compare the existing data in the table, and calculate the execution of addition, modification and deletion.
 
+Recursive saving of navigation attributes is unsafe and uncontrollable. It is not a technical problem, but for security reasons. It provides a way to save navigation attributes manually and completely.
+
 ```csharp
-class Cagetory
+var repo = fsql.GetRepository<Type>();
+var type = new Type
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-
-    public Guid ParentId { get; set; }
-    [Navigate(nameof(ParentId))]
-    public List<Cagetory> Childs { get; set; }
-}
-
-//item = ...;
-var repo = fsql.GetRepository<Cagetory>();
-repo.Insert(item);
-repo.SaveMany(item, "Childs");
+    name = "c#",
+    Topics = new List<Topic>(new[]
+    {
+        new Topic { ... }
+    })
+};
+repo.Insert(type);
+repo.SaveMany(type, "Topics"); ////Manually and completely save topics
 ```
 
--[OneToMany] and [ManyToMany] navigation attributes are supported
--Save only children, not recursive tracing down
--When children is empty, delete all children table data existing in item, and confirm?
--Advantages: simple mechanism, good control and safety
--Disadvantages: not intelligent
+-SaveMany only supports onetomany and manytomany navigation properties
+-Save only topics, not downward recursive tracing
+-When topics is empty, delete all table data of topics existing in type, and confirm?
+-The manytomany mechanism is to completely compare and save the intermediate table, and only append the external table without updating
 
-## EnableCascadeSave DbContext/Repository
+For example:
 
-DbContext/Repository EnableCascadeSave enables recursive tracing of the OneToOne, OneToMany, and ManyToMany navigation properties of objects when they are saved. This document describes the mechanism to prevent misuse.
+-This table song
+-External table tag
+-Intermediate table Songtag
 
-1. OneToOne cascade save
+## EnableCascadeSave warehouse cascade save
+
+Dbcontext / repository EnableCascadeSave can realize recursive tracing and save the OneToOne/OneToMany/ManyToMany navigation attributes when saving objects. This document describes the mechanism to prevent misuse.
+
+1. Onetoone cascade save
 
 > v3.2.606 + support, and support [cascade deletion function](Delete-Data.md#cascade-deletion-of-ibaserepository)
 
-2. OneToMany appends or updates the sub table without deleting the existing data of the sub table
+2. Onetomany appends or updates the sub table without deleting the existing data of the sub table
 
-```c#
-var repo = fsql. GetRepository<Cagetory>();
+```csharp
 repo. DbContextOptions. EnableCascadeSave = true; // Manual opening required
-repo. Insert(item);
+repo. Insert(type);
 ```
 
--Do not delete the existing data of children sub table. Are you sure?
--When the children attribute is empty, do not do anything. Confirm?
--When you save children, you will also save the child set attributes of children \ [0 -.. \]. Go down to 18 layers and confirm?
+-Do not delete the existing data in the topics sub table. Are you sure?
+-When the topics attribute is empty, do not do anything. Confirm?
+-When you save topics, you will also save the subordinate collection properties of topics \ [0 -.. \]. Go down to 18 layers and confirm?
 
 >For example, in the [type] table, there is set attribute [article] below and set attribute [comment] below [article].
 
 >When saving the [type] table object, it will retrieve the set attribute [article], and then if the [article] is saved, it will continue to retrieve the set attribute [comment]. Do insertorupdate operation together.
 
-3. ManyToMany completely compares and saves the intermediate table and appends the external table
+3. Manytomany completely compares and saves the intermediate table and appends the external table
 
 Compare and save the intermediate table completely, compare the existing data of the [many to many] intermediate table, and calculate the execution of addition, modification and deletion.
 
@@ -65,9 +68,16 @@ Append external tables, only append without updating.
 
 Test 1: append and save OneToMany
 
-```csharp
+```c#
+class Cagetory
+{
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 
-[Fact]
+    public Guid ParentId { get; set; }
+    [Navigate(nameof(ParentId))]
+    public List<Cagetory> Childs { get; set; }
+}
 public void TestOneToManyParent()
 {
     var repo = fsql.GetRepository<Cagetory>();
@@ -127,7 +137,7 @@ public void TestOneToManyParent()
 
 Test 2: Full save ManyToMany
 
-```csharp
+```c#
 class Song
 {
     public Guid Id { get; set; }
