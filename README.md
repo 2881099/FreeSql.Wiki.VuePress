@@ -4,29 +4,31 @@
 
 ## install
 ```bash
-npm(yarn) install
+npm install -g pnpm@next-7
+```
+```bash
+pnpm install
 ```
 ## run
 ```bash
-npm run docs:dev
+pnpm docs:dev
 ```
 ## build 
 
 ```bash
-npm run docs:build
+pnpm docs:build
 ```
 
 ## upgrade package
 ```bash
-npm i vuepress
-npm i @vuepress/plugin-docsearch
-npm i @vuepress/plugin-pwa-popup
-npm i vuepress-vite
+pnpm i -D vuepress
 ```
 
 ## vuepress-next
-- https://vuepress.github.io/zh/guide/
+- [https://vuepress.github.io/zh/guide/](https://vuepress.github.io/zh/guide/)
 
+## vuepress-theme-hope
+- [https://vuepress-theme-hope.github.io/v2/](https://vuepress-theme-hope.github.io/v2/)
 
 
 ## 源码

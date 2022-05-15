@@ -10,9 +10,11 @@
 
 ## FreeSql 
 
-``FreeSql``是功能强大的 .NET ORM，支持 .NetFramework 4.0+、.NetCore 2.1+、Xamarin 等支持 NetStandard 所有运行平台。
+`FreeSql`是功能强大的 `.NET ORM`，支持 `.NetFramework 4.0+`、`.NetCore 2.1+`、`Xamarin`等支持 NetStandard 所有运行平台。
 
-- QQ群：4336577(已满)、8578575(在线)、52508226(在线)
+支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/翰高/华为GaussDB/MsAccess` 等数据库。
+
+- QQ群：4336577(已满)、8578575(已满)、`52508226(在线)`
 
 - 欢迎微信关注 **dotNET搬砖队**，分享 .NET Core + FreeSql 相关技术栈
 

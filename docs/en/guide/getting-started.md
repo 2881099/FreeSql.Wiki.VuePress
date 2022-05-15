@@ -29,15 +29,22 @@ public class Blog {
 ## Packages
 
 FreeSql.Provider.XXX ([Optional Providers](Install))
+
+:::: code-group
+::: code-group-item .NET CLI
 ```bash
 dotnet add packages FreeSql
 dotnet add packages FreeSql.Provider.Sqlite
 ```
-or
-```
+:::
+::: code-group-item Package Manager
+```bash
 Install-Package FreeSql
 Install-Package FreeSql.Provider.Sqlite
 ```
+:::
+::::
+
 
 ## Declaring
 

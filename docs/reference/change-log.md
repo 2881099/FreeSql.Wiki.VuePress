@@ -689,7 +689,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.15 (.Net Framework 4.0)
 
 - 增加 .Net Framework 4.0 的支持，出于环境考虑 .Net Framework 4.0 不支持异步方法；
-- 增加 IFreeSql.Insert\<T\>(IEnumerable<T1> source) 方法；
+- 增加 IFreeSql.Insert\<T\>(IEnumerable\<T1\> source) 方法；
 
 ## v0.10.14
 

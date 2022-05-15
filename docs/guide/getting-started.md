@@ -1,11 +1,5 @@
 # 入门
 
-`FreeSql`是功能强大的 `.NET ORM`，支持 `.NetFramework 4.0+`、`.NetCore 2.1+`、`Xamarin`等支持 NetStandard 所有运行平台。
-
-支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/翰高/华为GaussDB/MsAccess` 数据库。
-
-QQ群：4336577(已满)、8578575(已满)、`52508226(在线)`
-
 ## 模型
 
 `FreeSql` 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
@@ -29,15 +23,20 @@ public class Blog {
 
 ## 安装包
 FreeSql.Provider.xxx([可选的驱动](install.md))
+:::: code-group
+::: code-group-item .NET CLI
 ```bash
 dotnet add packages FreeSql
 dotnet add packages FreeSql.Provider.Sqlite
 ```
-or
-```
+:::
+::: code-group-item Package Manager
+```bash
 Install-Package FreeSql
 Install-Package FreeSql.Provider.Sqlite
 ```
+:::
+::::
 ## 声明
 ```csharp
 IFreeSql fsql = new FreeSql.FreeSqlBuilder()
