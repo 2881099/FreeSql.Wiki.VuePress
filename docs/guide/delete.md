@@ -20,17 +20,18 @@ class Topic {
 ```
 
 ## 动态条件
+
 ```csharp
 fsql.Delete<Topic>(object dywhere)
 ```
 
 `dywhere` 支持：
 
-* 主键值
-* `new[] { 主键值1, 主键值2 }`
-* Topic 对象
-* `new[] { Topic对象1, Topic对象2 }`
-* `new { id = 1 }`
+- 主键值
+- `new[] { 主键值1, 主键值2 }`
+- Topic 对象
+- `new[] { Topic对象1, Topic对象2 }`
+- `new { id = 1 }`
 
 ```csharp
 var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ToSql();
@@ -84,6 +85,7 @@ fsql.DeleteDict(dic).AsTable("table1").ExecuteAffrows();
 ```csharp
 fsql.Select<T1>().Where(a => a.Options.xxx == 1).ToDelete().ExecuteAffrows();
 ```
+
 注意：此方法不是将数据查询到内存循环删除，上面的代码产生如下 SQL 执行：
 
 ```sql
@@ -119,7 +121,7 @@ repo.Insert(new UserGroup
 //INSERT INTO "userext"("userid", "remark") VALUES(3, '用户备注01'), (4, '用户备注02'), (5, '用户备注03')
 
 var groups = repo.Select
-    .IncludeMany(a => a.Users, 
+    .IncludeMany(a => a.Users,
         then => then.Include(b => b.UserExt))
     .ToList();
 repo.Delete(groups); //级联删除，递归向下遍历 group OneToOne/OneToMany/ManyToMany 导航属性
@@ -183,15 +185,14 @@ public class UserExt
 
 ## API
 
-| 方法 | 返回值 | 参数 | 描述 |
-| - | - | - | - |
-| Where | \<this\> | Lambda | 表达式条件，仅支持实体基础成员（不包含导航对象） |
-| Where | \<this\> | string, parms | 原生sql语法条件，Where("id = @id", new { id = 1 }) |
-| Where | \<this\> | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件 |
-| CommandTimeout | \<this\> | int | 命令超时设置(秒) |
-| WithTransaction | \<this\> | DbTransaction | 设置事务对象 |
-| WithConnection | \<this\> | DbConnection | 设置连接对象 |
-| ToSql | string | | 返回即将执行的SQL语句 |
-| ExecuteAffrows  | long       |                         | 执行SQL语句，返回影响的行数                        |
-| ExecuteDeleted  | List\<T1\> |                         | 执行SQL语句，返回被删除的记录                      |
-
+| 方法            | 返回值     | 参数                    | 描述                                                 |
+| --------------- | ---------- | ----------------------- | ---------------------------------------------------- |
+| Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）     |
+| Where           | \<this\>   | string, parms           | 原生 sql 语法条件，Where("id = @id", new { id = 1 }) |
+| Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                     |
+| CommandTimeout  | \<this\>   | int                     | 命令超时设置(秒)                                     |
+| WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                         |
+| WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
+| ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
+| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
+| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |

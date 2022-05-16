@@ -18,23 +18,26 @@ class Topic {
 ```
 
 ## 动态条件
+
 ```csharp
 fsql.Update<Topic>(object dywhere)
 ```
+
 `dywhere` 支持：
 
-* 主键值
-* `new[] { 主键值1, 主键值2 }`
-* Topic 对象
-* `new[] { Topic对象1, Topic对象2 }`
-* `new { id = 1 }`
+- 主键值
+- `new[] { 主键值1, 主键值2 }`
+- Topic 对象
+- `new[] { Topic对象1, Topic对象2 }`
+- `new { id = 1 }`
 
 ## 1、更新指定列
+
 ```csharp
 fsql.Update<Topic>(1)
   .Set(a => a.CreateTime, DateTime.Now)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `CreateTime` = '2018-12-08 00:04:59' 
+//UPDATE `Topic` SET `CreateTime` = '2018-12-08 00:04:59'
 //WHERE (`Id` = 1)
 ```
 
@@ -45,7 +48,7 @@ fsql.Update<Topic>(1)
   .Set(a => a.Clicks + 1)
   .Set(a => a.Time == DateTime.Now)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now() 
+//UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now()
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>(1)
@@ -55,7 +58,7 @@ fsql.Update<Topic>(1)
     Time = DateTime.Now
   })
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now() 
+//UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now()
 //WHERE (`Id` = 1)
 ```
 
@@ -71,15 +74,16 @@ fsql.Update<Topic>()
   .Set(a => a.Time, DateTime.Now)
   .Where(a => a.Id == 1)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Title` = @p_0, `Time` = @p_1 
+//UPDATE `Topic` SET `Title` = @p_0, `Time` = @p_1
 //WHERE (Id = 1)
 ```
 
 ## 3、更新实体
 
-方法1：(推荐)
+方法 1：(推荐)
 
 > 只更新变化的属性，依赖 `FreeSql.Repository`
+
 ```csharp
 var repo = fsql.GetRepository<Topic>();
 var item = repo.Where(a => a.Id == 1).First();  //此时快照 item
@@ -90,6 +94,7 @@ repo.Update(item); //对比快照时的变化
 ```
 
 > 是不是觉得先查询再更新，啰嗦？
+
 ```csharp
 var repo = fsql.GetRepository<Topic>();
 var item = new Topic { Id = 1 };
@@ -100,7 +105,7 @@ repo.Update(item); //对比快照时的变化
 //WHERE (`Id` = 1)
 ```
 
-方法2：(原始)
+方法 2：(原始)
 
 ```csharp
 //v1.5.0 忽略更新 null 值的属性
@@ -114,21 +119,21 @@ var item = new Topic { Id = 1, Title = "newtitle" };
 fsql.Update<Topic>()
   .SetSource(item)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Clicks` = @p_0, `Title` = @p_1, `CreateTime` = @p_2 
+//UPDATE `Topic` SET `Clicks` = @p_0, `Title` = @p_1, `CreateTime` = @p_2
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>()
   .SetSource(item)
   .UpdateColumns(a => new { a.Title, a.CreateTime })
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Title` = @p_0, `CreateTime` = @p_1 
+//UPDATE `Topic` SET `Title` = @p_0, `CreateTime` = @p_1
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>()
   .SetSource(item)
   .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Title` = @p_0 
+//UPDATE `Topic` SET `Title` = @p_0
 //WHERE (`Id` = 1)
 
 var items = new List<Topic>();
@@ -137,29 +142,29 @@ for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newtitl
 fsql.Update<Topic>()
   .SetSource(items)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Clicks` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END, 
-//`Title` = CASE `Id` WHEN 1 THEN @p_10 WHEN 2 THEN @p_11 WHEN 3 THEN @p_12 WHEN 4 THEN @p_13 WHEN 5 THEN @p_14 WHEN 6 THEN @p_15 WHEN 7 THEN @p_16 WHEN 8 THEN @p_17 WHEN 9 THEN @p_18 WHEN 10 THEN @p_19 END, 
-//`CreateTime` = CASE `Id` WHEN 1 THEN @p_20 WHEN 2 THEN @p_21 WHEN 3 THEN @p_22 WHEN 4 THEN @p_23 WHEN 5 THEN @p_24 WHEN 6 THEN @p_25 WHEN 7 THEN @p_26 WHEN 8 THEN @p_27 WHEN 9 THEN @p_28 WHEN 10 THEN @p_29 END 
+//UPDATE `Topic` SET `Clicks` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END,
+//`Title` = CASE `Id` WHEN 1 THEN @p_10 WHEN 2 THEN @p_11 WHEN 3 THEN @p_12 WHEN 4 THEN @p_13 WHEN 5 THEN @p_14 WHEN 6 THEN @p_15 WHEN 7 THEN @p_16 WHEN 8 THEN @p_17 WHEN 9 THEN @p_18 WHEN 10 THEN @p_19 END,
+//`CreateTime` = CASE `Id` WHEN 1 THEN @p_20 WHEN 2 THEN @p_21 WHEN 3 THEN @p_22 WHEN 4 THEN @p_23 WHEN 5 THEN @p_24 WHEN 6 THEN @p_25 WHEN 7 THEN @p_26 WHEN 8 THEN @p_27 WHEN 9 THEN @p_28 WHEN 10 THEN @p_29 END
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 
 fsql.Update<Topic>()
   .SetSource(items)
   .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
   .ExecuteAffrows();
-//UPDATE `Topic` SET `Title` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END 
+//UPDATE `Topic` SET `Title` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 
 fsql.Update<Topic>()
   .SetSource(items)
   .Set(a => a.CreateTime, DateTime.Now)
   .ExecuteAffrows();
-//UPDATE `Topic` SET `CreateTime` = @p_0 
+//UPDATE `Topic` SET `CreateTime` = @p_0
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 ```
 
 > 指定 `Set` 列更新后，`SetSource` 将失效
 
-## 4、自定义SQL
+## 4、自定义 SQL
 
 ```csharp
 fsql.Update<Topic>()
@@ -240,6 +245,7 @@ fsql.Select<T1>().Where(a => a.Options.xxx == 1)
   .Set(a => a.Title, "111")
   .ExecuteAffrows();
 ```
+
 注意：此方法不是将数据查询到内存再更新，上面的代码产生如下 SQL 执行：
 
 ```sql
@@ -253,20 +259,20 @@ UPDATE `T1` SET Title = '111' WHERE id in (select a.id from T1 a left join Optio
 
 # API
 
-| 方法 | 返回值 | 参数 | 描述 |
-| - | - | - | - |
-| SetSource | \<this\> | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体 |
-| IgnoreColumns | \<this\> | Lambda | 忽略的列 |
-| Set | \<this\> | Lambda, value | 设置列的新值，`Set(a => a.Name, "newvalue")` |
-| Set | \<this\> | Lambda | 设置列的的新值为基础上增加，`Set(a => a.Clicks + 1)`，相当于 clicks=clicks+1 |
-| SetDto | \<this\> | object | 根据 DTO 更新的方法 |
-| SetRaw | \<this\> | string, parms | 设置值，自定义 SQL 语法，`SetRaw("title = @title", new { title = "newtitle" })` |
-| Where | \<this\> | Lambda | 表达式条件，仅支持实体基础成员（不包含导航对象） |
-| Where | \<this\> | string, parms | 原生sql语法条件，`Where("id = @id", new { id = 1 })` |
-| Where | \<this\> | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件 |
-| CommandTimeout | \<this\> | int | 命令超时设置(秒) |
-| WithTransaction | \<this\> | DbTransaction | 设置事务对象 |
-| WithConnection | \<this\> | DbConnection | 设置连接对象 |
-| ToSql | string | | 返回即将执行的 SQL 语句 |
-| ExecuteAffrows | long | | 执行 SQL 语句，返回影响的行数 |
-| ExecuteUpdated | List\<T1\> | | 执行 SQL 语句，返回更新后的记录 |
+| 方法            | 返回值     | 参数                    | 描述                                                                            |
+| --------------- | ---------- | ----------------------- | ------------------------------------------------------------------------------- |
+| SetSource       | \<this\>   | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体                                                        |
+| IgnoreColumns   | \<this\>   | Lambda                  | 忽略的列                                                                        |
+| Set             | \<this\>   | Lambda, value           | 设置列的新值，`Set(a => a.Name, "newvalue")`                                    |
+| Set             | \<this\>   | Lambda                  | 设置列的的新值为基础上增加，`Set(a => a.Clicks + 1)`，相当于 clicks=clicks+1    |
+| SetDto          | \<this\>   | object                  | 根据 DTO 更新的方法                                                             |
+| SetRaw          | \<this\>   | string, parms           | 设置值，自定义 SQL 语法，`SetRaw("title = @title", new { title = "newtitle" })` |
+| Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                                |
+| Where           | \<this\>   | string, parms           | 原生 sql 语法条件，`Where("id = @id", new { id = 1 })`                          |
+| Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                                                |
+| CommandTimeout  | \<this\>   | int                     | 命令超时设置(秒)                                                                |
+| WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                                                    |
+| WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                                                    |
+| ToSql           | string     |                         | 返回即将执行的 SQL 语句                                                         |
+| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                                                   |
+| ExecuteUpdated  | List\<T1\> |                         | 执行 SQL 语句，返回更新后的记录                                                 |

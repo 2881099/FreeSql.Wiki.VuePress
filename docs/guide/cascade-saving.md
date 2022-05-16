@@ -1,6 +1,6 @@
 # 级联保存
 
-实践发现，N对1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。
+实践发现，N 对 1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。
 
 ## SaveMany 手工保存
 
@@ -32,6 +32,7 @@ repo.SaveMany(type, "Topics"); //手工完整保存 Topics
 - 本表 Song
 - 外部表 Tag
 - 中间表 SongTag
+
 ## EnableCascadeSave 仓储级联保存
 
 DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归追朔其 OneToOne、OneToMany、ManyToMany 导航属性也一并保存，本文档说明实现的机制防止误用。
@@ -49,9 +50,9 @@ repo.Insert(type);
 
 - 不删除 Topics 子表已存在的数据，确认？
 - 当 Topics 属性为 Empty 时，不做任何操作，确认？
-- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下18层，确认？
+- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下 18 层，确认？
 
-> 向下18层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。
+> 向下 18 层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。
 
 > 保存【类型】表对象的时候，他会向下检索出集合属性【文章】，然后如果【文章】被保存的时候，再继续向下检索出集合属性【评论】。一起做 InsertOrUpdate 操作。
 
@@ -67,7 +68,7 @@ repo.Insert(type);
 
 ---
 
-测试1：追加保存 OneToMany
+测试 1：追加保存 OneToMany
 
 ```csharp
 
@@ -115,9 +116,9 @@ public void TestOneToManyParent()
     cts[1].Name = "分类22";
     cts[1].Childs.Clear();
     repo.Update(cts);
-    //UPDATE "Cagetory" SET "Name" = CASE "Id" 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN '分类11' 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN '分类22' END 
+    //UPDATE "Cagetory" SET "Name" = CASE "Id"
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN '分类11'
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN '分类22' END
     //WHERE ("Id" IN ('5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f','5d90afcb-ed57-f6f4-0082-cb6c5b531b3e'))
     //Childs.Clear 后没有执行删除子集合操作，说明没有做完整的对比
     cts[0].Name = "分类111";
@@ -127,9 +128,9 @@ public void TestOneToManyParent()
     cts[1].Childs.Clear();
     cts[1].Childs.Add(new Cagetory { Name = "分类2_22" });
     repo.Update(cts);
-    //UPDATE "Cagetory" SET "Name" = CASE "Id" 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN '分类111' 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN '分类222' END 
+    //UPDATE "Cagetory" SET "Name" = CASE "Id"
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN '分类111'
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN '分类222' END
     //WHERE ("Id" IN ('5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f','5d90afcb-ed57-f6f4-0082-cb6c5b531b3e'))
     //INSERT INTO "Cagetory"("Id", "Name", "ParentId") VALUES('5d90afe8-ed57-f6f4-0082-cb725df546ea', '分类1_33', '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f'), ('5d90afe8-ed57-f6f4-0082-cb7338a6214c', '分类2_22', '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e')
 }
@@ -137,7 +138,7 @@ public void TestOneToManyParent()
 
 ---
 
-测试2：完整保存 ManyToMany
+测试 2：完整保存 ManyToMany
 
 ```csharp
 class Song
@@ -205,20 +206,20 @@ public void TestManyToMany()
     ss[1].Tags.Clear();
     ss[1].Tags.Add(tags[3]);
     repo.Update(ss);
-    //UPDATE "Song" SET "Name" = CASE "Id" 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN '爱你一万年.mp5' 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN '李白.mp5' END 
+    //UPDATE "Song" SET "Name" = CASE "Id"
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN '爱你一万年.mp5'
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN '李白.mp5' END
     //WHERE ("Id" IN ('5d90fdb3-6a6b-2c58-00c8-37974177440d','5d90fdb3-6a6b-2c58-00c8-37987f29b197'))
 
-    //SELECT a."SongId", a."TagId" 
-    //FROM "SongTag" a 
+    //SELECT a."SongId", a."TagId"
+    //FROM "SongTag" a
     //WHERE (a."SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d')
 
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d' AND "TagId" = '5d90fdbd-6a6b-2c58-00c8-379a0432a09c')
     //INSERT INTO "Tag"("Id", "TagName") VALUES('5d90febd-6a6b-2c58-00c8-379c21acfc72', '摇滚')
 
-    //SELECT a."SongId", a."TagId" 
-    //FROM "SongTag" a 
+    //SELECT a."SongId", a."TagId"
+    //FROM "SongTag" a
     //WHERE (a."SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197')
 
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197' AND "TagId" = '5d90fdb7-6a6b-2c58-00c8-37991ead4f05' OR "SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197' AND "TagId" = '5d90fdcc-6a6b-2c58-00c8-379b5af59d25')
@@ -232,9 +233,9 @@ public void TestManyToMany()
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d')
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197')
 
-    //UPDATE "Song" SET "Name" = CASE "Id" 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN '爱你一万年.mp4' 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN '李白.mp4' END 
+    //UPDATE "Song" SET "Name" = CASE "Id"
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN '爱你一万年.mp4'
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN '李白.mp4' END
     //WHERE ("Id" IN ('5d90fdb3-6a6b-2c58-00c8-37974177440d','5d90fdb3-6a6b-2c58-00c8-37987f29b197'))
 }
 ```

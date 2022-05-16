@@ -1,4 +1,5 @@
 # 过滤器
+
 FreeSql 基础层实现了 Select/Update/Delete 可设置的全局过滤器功能。
 
 ```csharp
@@ -27,7 +28,7 @@ fsql.Select<TestAddEnum>().DisableGlobalFilter().ToList(); //禁用所有
 
 fsql.Update/Delete 方法效果同上。
 
-# 仓储过滤器
+## 仓储过滤器
 
 > 注意：仓储过滤器属于早期功能，如果 fsql.GlobalFilter 够用的话，可以跳过以下内容。
 
@@ -65,22 +66,22 @@ using (repo1.DataFilter.Disable("test")) {
 
 ## 过滤与验证
 
-假设我们有User(用户)、Topic(主题)两个实体，在领域类中定义了两个仓储：
+假设我们有 User(用户)、Topic(主题)两个实体，在领域类中定义了两个仓储：
 
 ```csharp
 var userRepository = fsql.GetGuidRepository<User>();
 var topicRepository = fsql.GetGuidRepository<Topic>();
 ```
 
-在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在v0.0.7版本进行了改进，增加了 filter lambda 表达式参数。
+在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本进行了改进，增加了 filter lambda 表达式参数。
 
 ```csharp
 var userRepository = fsql.GetGuidRepository<User>(a => a.Id == 1);
 var topicRepository = fsql.GetGuidRepository<Topic>(a => a.UserId == 1);
 ```
 
-* 在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；
-* 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
+- 在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；
+- 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
 
 ## 全局过滤器
 
@@ -88,7 +89,7 @@ var topicRepository = fsql.GetGuidRepository<Topic>(a => a.UserId == 1);
 
 ```csharp
 public void ConfigureServices(IServiceCollection services) {
-    
+
     services.AddSingleton<IFreeSql>(Fsql);
     services.AddFreeRepository(filter => filter
         .Apply<ISoftDelete>("SoftDelete", a => a.IsDeleted == false)
@@ -124,35 +125,44 @@ public SongsController(IBaseRepository<Song> repo1, IBaseRepository<xxxx> repos2
 第一次请求：
 
 repo1.Select.ToSql()
-```
+
+```sql
 "SELECT a."Id", a."Title"  FROM "Song" a WHERE (a."Title" = strftime('%Y-%m-%d %H:%M.%f',datetime(current_timestamp,'localtime')) || 21)"
 ```
+
 repos2.Select.ToSql()
-```
+
+```sql
 "SELECT a."Id"  FROM "xxxx" a"
 ```
+
 第二次请求：
 
 repo1.Select.ToSql()
-```
+
+```sql
 "SELECT a."Id", a."Title"  FROM "Song" a  WHERE (a."Title" = strftime('%Y-%m-%d %H:%M.%f',datetime(current_timestamp,'localtime')) || 4)"
 ```
+
 repos2.Select.ToSql()
-```
+
+```sql
 "SELECT a."Id"  FROM "xxxx" a"
 ```
+
 //禁用过滤器
 repo1.DataFilter.Disable("test")
 
 repo1.Select.ToSql()
-```
+
+```sql
  "SELECT a."Id", a."Title"  FROM "Song" a"
 ```
 
 1、注入的变量值在使用时有了动态变化，每次获取时都是新的（Thread.CurrentThread.ManagedThreadId）；
 
-2、设定的全局过滤，若某实体不存在表达式函数中的字段时，不会生效（如上xxxx不存在Title）；
+2、设定的全局过滤，若某实体不存在表达式函数中的字段时，不会生效（如上 xxxx 不存在 Title）；
 
 3、使用 DataFilter.Disable("test") 可临时关闭过滤器的效果，使用 DataFilter.Enable("test") 可重新开启；
 
-4、仓储对象创建时，从全局过滤器copy进来，然后自己管理自己。修改后不影响其他或全局设置。
+4、仓储对象创建时，从全局过滤器 copy 进来，然后自己管理自己。修改后不影响其他或全局设置。

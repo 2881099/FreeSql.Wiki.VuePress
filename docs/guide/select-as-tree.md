@@ -1,12 +1,12 @@
-# 树型查询✨
+# 树型查询 ✨
 
 无限级分类（父子）是一种比较常用的表设计，每种设计方式突出优势的同时也带来缺陷，如：
 
-- 方法1：表设计中只有 parent_id 字段，困扰：查询麻烦（本文可解决）；
-- 方法2：表设计中冗余子级id便于查询，困扰：添加/更新/删除的时候需要重新计算；
-- 方法3：表设计中存储左右值编码，困扰：同上；
+- 方法 1：表设计中只有 parent_id 字段，困扰：查询麻烦（本文可解决）；
+- 方法 2：表设计中冗余子级 id 便于查询，困扰：添加/更新/删除的时候需要重新计算；
+- 方法 3：表设计中存储左右值编码，困扰：同上；
 
-方法1设计最简单，本文解决它的递归查询问题，让使用透明化。
+方法 1 设计最简单，本文解决它的递归查询问题，让使用透明化。
 
 ## 父子导航属性
 
@@ -29,11 +29,13 @@ public class Area
 ```
 
 定义 Parent 属性，在表达式中可以这样：
+
 ```csharp
 fsql.Select<Area>().Where(a => a.Parent.Parent.Parent.Name == "中国").First();
 ```
 
 定义 Childs 属性，在表达式中可以这样（子查询）：
+
 ```csharp
 fsql.Select<Area>().Where(a => a.Childs.Any(c => c.Name == "北京")).First();
 ```
@@ -134,22 +136,23 @@ Assert.Equal("110101", t2[0].Childs[0].Childs[1].Code);
 // WITH "as_tree_cte"
 // as
 // (
-// SELECT 0 as cte_level, a."Code", a."Name", a."ParentCode" 
-// FROM "Area" a 
+// SELECT 0 as cte_level, a."Code", a."Name", a."ParentCode"
+// FROM "Area" a
 // WHERE (a."Name" = '中国')
 
 // union all
 
-// SELECT wct1.cte_level + 1 as cte_level, wct2."Code", wct2."Name", wct2."ParentCode" 
-// FROM "as_tree_cte" wct1 
+// SELECT wct1.cte_level + 1 as cte_level, wct2."Code", wct2."Name", wct2."ParentCode"
+// FROM "as_tree_cte" wct1
 // INNER JOIN "Area" wct2 ON wct2."ParentCode" = wct1."Code"
 // )
-// SELECT a."Code", a."Name", a."ParentCode" 
-// FROM "as_tree_cte" a 
+// SELECT a."Code", a."Name", a."ParentCode"
+// FROM "as_tree_cte" a
 // ORDER BY a."Code"
 ```
 
 姿势二：AsTreeCte() + ToList
+
 ```csharp
 var t3 = fsql.Select<Area>()
   .Where(a => a.Name == "中国")
@@ -173,10 +176,10 @@ var t4 = fsql.Select<Area>()
   .Where(a => a.Name == "中国")
   .AsTreeCte(a => a.Name + "[" + a.Code + "]")
   .OrderBy(a => a.Code)
-  .ToList(a => new { 
-    item = a, 
-    level = Convert.ToInt32("a.cte_level"), 
-    path = "a.cte_path" 
+  .ToList(a => new {
+    item = a,
+    level = Convert.ToInt32("a.cte_level"),
+    path = "a.cte_path"
   });
 Assert.Equal(4, t4.Count);
 Assert.Equal("100000", t4[0].item.Code);
@@ -190,18 +193,18 @@ Assert.Equal("中国[100000] -> 北京[110000] -> 东城区[110101]", t4[3].path
 // WITH "as_tree_cte"
 // as
 // (
-// SELECT 0 as cte_level, a."Name" || '[' || a."Code" || ']' as cte_path, a."Code", a."Name", a."ParentCode" 
-// FROM "Area" a 
+// SELECT 0 as cte_level, a."Name" || '[' || a."Code" || ']' as cte_path, a."Code", a."Name", a."ParentCode"
+// FROM "Area" a
 // WHERE (a."Name" = '中国')
 
 // union all
 
-// SELECT wct1.cte_level + 1 as cte_level, wct1.cte_path || ' -> ' || wct2."Name" || '[' || wct2."Code" || ']' as cte_path, wct2."Code", wct2."Name", wct2."ParentCode" 
-// FROM "as_tree_cte" wct1 
+// SELECT wct1.cte_level + 1 as cte_level, wct1.cte_path || ' -> ' || wct2."Name" || '[' || wct2."Code" || ']' as cte_path, wct2."Code", wct2."Name", wct2."ParentCode"
+// FROM "as_tree_cte" wct1
 // INNER JOIN "Area" wct2 ON wct2."ParentCode" = wct1."Code"
 // )
-// SELECT a."Code" as1, a."Name" as2, a."ParentCode" as5, a.cte_level as6, a.cte_path as7 
-// FROM "as_tree_cte" a 
+// SELECT a."Code" as1, a."Name" as2, a."ParentCode" as5, a.cte_level as6, a.cte_path as7
+// FROM "as_tree_cte" a
 // ORDER BY a."Code"
 ```
 

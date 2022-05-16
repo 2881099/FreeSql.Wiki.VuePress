@@ -3,7 +3,7 @@
 UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务；
 
 ```csharp
-var connstr = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" + 
+var connstr = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" +
   "Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10";
 
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
@@ -15,7 +15,8 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 ## 如何使用
 
 ```csharp
-using (var uow = fsql.CreateUnitOfWork()) {
+using (var uow = fsql.CreateUnitOfWork()) 
+{
   var songRepo = fsql.GetRepository<Song>();
   songRepo.UnitOfWork = uow;
   var userRepo = fsql.GetRepository<User>();
@@ -105,16 +106,18 @@ public class ChangeInfo {
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```
 
-| 变化类型 | 说明           |
-| -------- | -------------- |
-| Insert   | 实体对象被插入 |
-| Update   | 实体对象被更新 |
-| Delete   | 实体对象被删除 |
-| SqlRaw   | 执行了SQL语句  |
+| 变化类型 | 说明            |
+| -------- | --------------- |
+| Insert   | 实体对象被插入  |
+| Update   | 实体对象被更新  |
+| Delete   | 实体对象被删除  |
+| SqlRaw   | 执行了 SQL 语句 |
 
 SqlRaw 目前有两处地方比较特殊：
+
 - 多对多联级更新导航属性的时候，对中间表的全部删除操作；
 - 通用仓储类 BaseRepository 有一个 Delete 方法，参数为表达式，而并非实体；
+
 ```csharp
 int Delete(Expression<Func<TEntity, bool>> predicate);
 ```

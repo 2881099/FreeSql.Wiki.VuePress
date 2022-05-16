@@ -1,4 +1,9 @@
-# code-first
+---
+title : CodeFirst
+tag:
+  - CodeFirst
+  - 备注
+---
 
 `FreeSql` 支持 `CodeFirst` 迁移结构至数据库，这应该是(`O/RM`)必须标配的一个功能。
 
@@ -14,12 +19,11 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .Build(); //请务必定义成 Singleton 单例模式
 ```
 
-
 ## 迁移结构
 
-| 创建数据库 | Sqlite | Sql Server | MySql | PostgreSQL | Oracle |
-| ---------- | ------ | ---------- | ----- | ---------- | ------ |
-|   | √ | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L153) | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L129)| X[参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L233) | X |
+| 创建数据库 | Sqlite | Sql Server                                                                                                                         | MySql                                                                                                                              | PostgreSQL                                                                                                                        | Oracle |
+| ---------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------ |
+|            | √      | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L153) | X [参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L129) | X[参考](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L233) | X      |
 
 | 实体＆表对比 | 添加 | 改名 | 删除 |
 | ------------ | ---- | ---- | ---- |
@@ -35,7 +39,7 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 > 原因：某些迁移对比操作是：创建临时表、导入旧表数据、删除旧表。
 
-### FreeSql提供两种CodeFirst移迁方法，自动和手动。
+### FreeSql 提供两种 CodeFirst 移迁方法，自动和手动。
 
 **注意**：谨慎、谨慎、谨慎在生产环境中使用该功能。
 
@@ -55,9 +59,8 @@ fsql.CodeFirst.IsAutoSyncDataStructure = true;
 
 > 虽然【自动同步实体结构】功能开发非常好用，但是有个坏处，就是数据库后面会很乱，没用的字段可能一大堆，应尽量控制实体或属性命名的修改。
 
-
-- 注意：只有当CURD到此表时，才会自动生成表结构。如需系统运行时迁移表结构，请使用**SyncStructure**方法
-- `FreeSql`不会帮你生成数据库，需要你手动创建数据库。**如果你使用`Mysql`、`Sql Server`，需要自动创建数据库.请参考此代码，自行copy，[FreeSqlExtension.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs)**
+- 注意：只有当 CURD 到此表时，才会自动生成表结构。如需系统运行时迁移表结构，请使用**SyncStructure**方法
+- `FreeSql`不会帮你生成数据库，需要你手动创建数据库。**如果你使用`Mysql`、`Sql Server`,`PostgreSQL`，需要自动创建数据库.请参考此代码，自行 copy，[FreeSqlExtension.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs)**
 
 ### 禁用迁移
 
@@ -83,7 +86,7 @@ FreeSql CodeFirst 支持将 c# 代码内的注释，迁移至数据库的备注�
 
 ### 手工同步实体结构
 
-提供接口方法实现对比实体，与数据库中的变化部分，返回SQL语句。
+提供接口方法实现对比实体，与数据库中的变化部分，返回 SQL 语句。
 
 ```csharp
 var t1 = mysql.CodeFirst.GetComparisonDDLStatements<Topic>();
@@ -97,13 +100,14 @@ class Topic {
     public ushort fusho { get; set; }
 }
 ```
+
 ```sql
-CREATE TABLE IF NOT EXISTS `cccddd`.`Topic` ( 
-    `Id` INT(11) NOT NULL AUTO_INCREMENT, 
-    `Clicks` INT(11) NOT NULL, 
-    `Title` VARCHAR(255), 
-    `CreateTime` DATETIME NOT NULL, 
-    `fusho` SMALLINT(5) UNSIGNED NOT NULL, 
+CREATE TABLE IF NOT EXISTS `cccddd`.`Topic` (
+    `Id` INT(11) NOT NULL AUTO_INCREMENT,
+    `Clicks` INT(11) NOT NULL,
+    `Title` VARCHAR(255),
+    `CreateTime` DATETIME NOT NULL,
+    `fusho` SMALLINT(5) UNSIGNED NOT NULL,
     PRIMARY KEY (`Id`)
 ) Engine=InnoDB CHARACTER SET utf8;
 ```
@@ -116,10 +120,11 @@ var t2 = fsql.CodeFirst.SyncStructure<Topic>();
 ```
 
 #### 批量生成表结构
-- void  SyncStructure(params Type[]) 重载方法支持数组,同步实体类型集合到数据库
-- IEntity类，是实体类所在程序集的一个类即可。
 
-方法1：扫描 IEntity类所在程序集，反射得到类上有特性标签为TableAttribute 的所有类，该方法需在实体类上指定了 [Table(Name = "xxx")]特性标签
+- void SyncStructure(params Type[]) 重载方法支持数组,同步实体类型集合到数据库
+- IEntity 类，是实体类所在程序集的一个类即可。
+
+方法 1：扫描 IEntity 类所在程序集，反射得到类上有特性标签为 TableAttribute 的所有类，该方法需在实体类上指定了 [Table(Name = "xxx")]特性标签
 
 ```c#
 public static Type[] GetTypesByTableAttribute()
@@ -134,12 +139,14 @@ public static Type[] GetTypesByTableAttribute()
     return tableAssembies.ToArray();
 }
 ```
+
 调用
+
 ```csharp
 fsql.CodeFirst.SyncStructure(GetTypesByTableAttribute());
 ```
 
-方法2：通过命名空间得到所有要创建的实体类.根据需要调整entitiesFullName下的命名空间值。比如我们创建一个Entities文件夹，用于存放实体类。该方法通过筛选 IEntity类所在程序集所有的实体类。他们的命名空间都是LinCms.Entities开头，内部通过StartsWith判断。
+方法 2：通过命名空间得到所有要创建的实体类.根据需要调整 entitiesFullName 下的命名空间值。比如我们创建一个 Entities 文件夹，用于存放实体类。该方法通过筛选 IEntity 类所在程序集所有的实体类。他们的命名空间都是 LinCms.Entities 开头，内部通过 StartsWith 判断。
 
 ```c#
 public static Type[] GetTypesByNameSpace()
@@ -158,6 +165,7 @@ public static Type[] GetTypesByNameSpace()
     return tableAssembies.ToArray();
 }
 ```
+
 或通过调用同步所有表结构
 
 ```csharp
@@ -166,7 +174,8 @@ fsql.CodeFirst.SyncStructure(GetTypesByNameSpace());
 
 ## 实体特性
 
-指定实体的表名，指定 Name 后，实体类名变化不影响数据库对应的表。FreeSql尽量支持了对多数据库或schema支持，不防试试指定表名为：其他数据库.表名，不同数据库的指定方式有差异，这一点以后深入解答。
+指定实体的表名，指定 Name 后，实体类名变化不影响数据库对应的表。FreeSql 尽量支持了对多数据库或 schema 支持，不防试试指定表名为：其他数据库.表名，不同数据库的指定方式有差异，这一点以后深入解答。
+
 ```csharp
 [Table(Name = "db2.tb_topic111")]
 class Topic {
@@ -174,37 +183,44 @@ class Topic {
 }
 ```
 
-无指定实体的表名，修改为实体类名。指定数据库旧的表名，修改实体命名时，同时设置此参数为修改之前的值，CodeFirst才可以正确修改数据库表；否则将视为【创建新表】。
+无指定实体的表名，修改为实体类名。指定数据库旧的表名，修改实体命名时，同时设置此参数为修改之前的值，CodeFirst 才可以正确修改数据库表；否则将视为【创建新表】。
+
 ```csharp
 [Table(OldName = "Topic")]
 class Topic2 {
   //...
 }
 ```
+
 ```sql
 ALTER TABLE `cccddd`.`Topic` RENAME TO `cccddd`.`Topic2`;
 ```
 
 修改字段类型，把 Title 类型改为 varchar(128)。
+
 ```csharp
 [Column(DbType = "varchar(128)")]
 public string Title { get; set; }
 ```
+
 ```sql
 ALTER TABLE `cccddd`.`Topic2` MODIFY `Title` VARCHAR(128);
 ```
 
 指定属性的字段名，这样指定后，修改实体的属性名不影响数据库对应的列。
+
 ```csharp
 [Column(Name = "titl2")]
 public string Title { get; set; }
 ```
 
-无指定属性的字段名，修改为属性名，指定数据库旧的列名，修改实体属性命名时，同时设置此参数为修改之前的值，CodeFirst才可以正确修改数据库字段；否则将视为【新增字段】。
+无指定属性的字段名，修改为属性名，指定数据库旧的列名，修改实体属性命名时，同时设置此参数为修改之前的值，CodeFirst 才可以正确修改数据库字段；否则将视为【新增字段】。
+
 ```csharp
 [Column(OldName = "Title2")]
 public string Title { get; set; }
 ```
+
 ```sql
 ALTER TABLE `cccddd`.`Topic2` CHANGE COLUMN `Title2` `Title` VARCHAR(255);
 ```

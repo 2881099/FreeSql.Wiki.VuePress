@@ -1,4 +1,4 @@
-# 你不知道的功能✨
+# 你不知道的功能 ✨
 
 ## 1、备注 -> 迁移到数据库
 
@@ -40,13 +40,14 @@ repo.InsertOrUpdate(实体);
 ---
 
 ## 4、WithSql
+
 ```csharp
 fsql.Select<Topic>()
   .WithSql("select * from Topic where clicks > ?val", new { val = 10 })
   .Page(1, 10)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (select * from Topic where clicks > ?val) a 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM (select * from Topic where clicks > ?val) a
 ```
 
 > WithSql 使用多次为 UNION ALL 查询
@@ -79,7 +80,7 @@ fsql.Select<t1>()
 
 映射查询支持单表/多表，在查询数据之前映射（不是先查询所有字段再到内存映射）
 
-规则：查找属性名，会循环内部对象 _tables（多表会增长），以 主表优先查，直到查到相同的字段。
+规则：查找属性名，会循环内部对象 \_tables（多表会增长），以 主表优先查，直到查到相同的字段。
 
 如：
 
@@ -89,13 +90,13 @@ A, B, C 都有 id，Dto { id, a1, a2, b1, b2 }，A.id 被映射。也可以指�
 fsql.Select<Song>().ToList<Dto>();
 //默认的映射查询，Dto 与 Song 属性名相同的被查询
 
-fsql.Select<Song>().ToList(a => new DTO { xxx = a.ext }) 
+fsql.Select<Song>().ToList(a => new DTO { xxx = a.ext })
 //情况1：附加所有映射，再额外映射 ext，返回 List<DTO>
 
-fsql.Select<Song>().ToList(a => new Song { id = a.id }) 
+fsql.Select<Song>().ToList(a => new Song { id = a.id })
 //情况2：只查询 id，返回 List<Song>
 
-fsql.Select<Song>().ToList(a => new { id = a.id }) 
+fsql.Select<Song>().ToList(a => new { id = a.id })
 //情况3：只查询 id，返回 List<匿名对象>
 ```
 
@@ -161,7 +162,7 @@ fsql.Select<Tag>().IncludeMany(a => a.Goods).ToList();
 fsql.Select<Goods>().IncludeMany(a => a.Comment.Where(b => b.TagId == a.Id));
 ```
 
-只查询每项子集合的前几条数据，避免像EfCore加载所有数据导致IO性能低下（比如某商品下有2000条评论）：
+只查询每项子集合的前几条数据，避免像 EfCore 加载所有数据导致 IO 性能低下（比如某商品下有 2000 条评论）：
 
 ```csharp
 fsql.Select<Goods>().IncludeMany(a => a.Comment.Take(10));
@@ -194,7 +195,7 @@ fsql.Select<Tag>().IncludeMany(a => a.Goods.Select(b => new Goods { Id = b.Id, T
 
 ## 9、WhereCascade
 
-多表查询时，像isdeleted每个表都给条件，挺麻烦的。WhereCascade使用后生成sql时，所有表都附上这个条件。
+多表查询时，像 isdeleted 每个表都给条件，挺麻烦的。WhereCascade 使用后生成 sql 时，所有表都附上这个条件。
 
 如：
 
@@ -210,7 +211,7 @@ fsql.Select<t1>()
 ```sql
 SELECT ...
 FROM t1
-LEFT JOIN t2 on ... AND (t2.IsDeleted = 0) 
+LEFT JOIN t2 on ... AND (t2.IsDeleted = 0)
 WHERE t1.IsDeleted = 0
 ```
 
@@ -266,9 +267,9 @@ DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 }
 ");
 fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
-//SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6 
-//FROM ""D_District"" a 
-//LEFT JOIN ""D_District"" a__Parent ON a__Parent.""Code"" = a.""ParentCode"" 
+//SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6
+//FROM ""D_District"" a
+//LEFT JOIN ""D_District"" a__Parent ON a__Parent.""Code"" = a.""ParentCode""
 //WHERE (not((a.""Code"") LIKE '%val1%') AND not((a.""Name"") LIKE 'val2%') OR a__Parent.""Code"" = 'val11' AND (a__Parent.""Name"") LIKE '%val22%')
 ```
 
@@ -281,6 +282,7 @@ fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
 ```csharp
 fsql.Select<T1>().Where(a => a.Options.xxx == 1).ToDelete().ExecuteAffrows();
 ```
+
 注意：此方法不是将数据查询到内存循环删除，上面的代码产生如下 SQL 执行：
 
 ```sql
@@ -290,7 +292,7 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 复杂删除使用该方案的好处：
 
 - 删除前可预览测试数据，防止错误删除操作；
-- 支持更加复杂的删除操作（IDelete 默认只支持简单的操作），甚至在 ISelect 上使用 Limit(10) 将只删除附合条件的前 10条记录；
+- 支持更加复杂的删除操作（IDelete 默认只支持简单的操作），甚至在 ISelect 上使用 Limit(10) 将只删除附合条件的前 10 条记录；
 
 > ISelect.ToUpdate 操作类似
 
@@ -309,6 +311,7 @@ fsql.SetDbContextOptions(opt => opt.EnableAddOrUpdateNavigateList = false);
 ```
 
 局部关闭：
+
 ```csharp
 var repo = fsql.GetRepository<T>();
 repo.DbContextOptions.EnableAddOrUpdateNavigateList = false;
@@ -335,6 +338,7 @@ SaveMany【一对多】的机制是完整对比保存。
 SaveMany【多对多】的机制规则与联级保存的一样，如下：
 
 我们对中间表的保存是完整对比操作，对外部实体的操作只作新增（注意不会更新）
+
 - 属性集合为空时，删除他们的所有关联数据（中间表）
 - 属性集合不为空时，与数据库存在的关联数据（中间表）完全对比，计算出应该删除和添加的记录
 
@@ -359,7 +363,7 @@ public static class DbFunc {
 
 var sql1 = fsql.Select<SysModule>()
   .ToSql(a => a.CreateTime.FormatDateTime("yyyy-MM-dd"));
-//SELECT date_format(a."CreateTime", 'yyyy-MM-dd') as1 
+//SELECT date_format(a."CreateTime", 'yyyy-MM-dd') as1
 //FROM "SysModule" a
 ```
 
@@ -448,7 +452,7 @@ fsql.Aop.CurdAfter += (s, e) => {
 
 ```csharp
 fsql.Aop.AuditValue += (s, e) => {
-    if (e.Column.CsType == typeof(long) 
+    if (e.Column.CsType == typeof(long)
         && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null
         && e.Value?.ToString() == 0)
         e.Value = new Snowflake().GetId();
@@ -461,7 +465,7 @@ class Order {
 }
 ```
 
-当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花id值。
+当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花 id 值。
 
 说明：SnowflakeAttribute 是使用者您来定义，new Snowflake().GetId() 也是由使用者您来实现
 

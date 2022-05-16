@@ -7,7 +7,7 @@
 - **增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481**
 - 增加 UseSlaveWeight 读权重设置；#1046
 - **增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066**
-- 增加 [FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持Sqlite加密；
+- 增加 [FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持 Sqlite 加密；
 - 增加 IList\<T\> IncludeByPropertyName 扩展方法，支持字符串参数；
 - 增加 DbSet/Repository DeleteCascadeByDatabase 级联删除(基于数据库)；
 - 调整 DbSet/Repository EnableAddOrUpdateNavigateList 支持 OneToOne 级联保存、级联删除(基于对象)；
@@ -32,7 +32,7 @@
 - 修复 UseGenerateCommandParameterWithLambda 子查询 IN bug；#900
 - 修复 InsertValueSql 在仓储插入后不返回最新值；
 - 完善 SqlServer BulkCopy 插入 DateTime 最小值问题；
-- **优化 导航集合属性访问，可省略 AsSelect；** 
+- **优化 导航集合属性访问，可省略 AsSelect；**
 - 优化 DbContext/Repository Update 实体有 ServerTime 既使无状态变化也必然更新的逻辑；
 - 优化 DbContext/Repository 插入非主键自增回填；
 - 优化 ToList\<Dto\> jsonb 映射；
@@ -51,15 +51,15 @@
 - 优化 InsertOrUpdate<> 使用 InsertOrUpdate<list<>>时，提示友好异常。
 - 修复 BulkCopy 与线程事务未传播的 bug；#962
 - 修复 AsTreeCte + RereadSql 不能同时使用的 bug；#964
-- 修复 FreeSql.Generator 工具生成model失败  [#882](https://github.com/dotnetcore/FreeSql/issues/882) 
+- 修复 FreeSql.Generator 工具生成 model 失败 [#882](https://github.com/dotnetcore/FreeSql/issues/882)
 
 ## v2.6.100
 
-- 修复 fix sqlite AddMinutes seconds->minutes [#774](https://github.com/dotnetcore/FreeSql/issues/774) 
-- 修复 Update操作的时候CanUpdate=false 未生效 [#803](https://github.com/dotnetcore/FreeSql/issues/803) 
-- 优化 将Freesql的dynamicfilterinfo标记为[serialable] [#802](https://github.com/dotnetcore/FreeSql/issues/802) 
-- 修复 Sqlite where.And(x => x.PublishTime.Year == 2021); 查询问题 [#804](https://github.com/dotnetcore/FreeSql/issues/802) 
-- 增加 支持符号调试 [#679](https://github.com/dotnetcore/FreeSql/issues/679) 
+- 修复 fix sqlite AddMinutes seconds->minutes [#774](https://github.com/dotnetcore/FreeSql/issues/774)
+- 修复 Update 操作的时候 CanUpdate=false 未生效 [#803](https://github.com/dotnetcore/FreeSql/issues/803)
+- 优化 将 Freesql 的 dynamicfilterinfo 标记为[serialable] [#802](https://github.com/dotnetcore/FreeSql/issues/802)
+- 修复 Sqlite where.And(x => x.PublishTime.Year == 2021); 查询问题 [#804](https://github.com/dotnetcore/FreeSql/issues/802)
+- 增加 支持符号调试 [#679](https://github.com/dotnetcore/FreeSql/issues/679)
 - 增加 IUnitOfWork.States 自定义状态管理，便于扩展；
 
 ## v2.5.300
@@ -67,8 +67,8 @@
 - 修复 ISelect.AsTable 后 .ToUpdate/ToDelete 无效的 bug；#815
 - 修复 MERGE INTO 别名与 SQL 关键字冲突的 bug；#816
 - 修复 Oracle IncludeMany IN 元素超过 500 数目的问题；#843
-- fix IgnoreColumns CanUpdate false not work #803 
-- fix sqlite where datetime year,month 查不出来数据,Ticks 精度到毫秒，处理Millisecond无值的情况 #804
+- fix IgnoreColumns CanUpdate false not work #803
+- fix sqlite where datetime year,month 查不出来数据,Ticks 精度到毫秒，处理 Millisecond 无值的情况 #804
 - Add Serializable #802
 - Add string.Concat 返回 string.Empty
 
@@ -76,7 +76,7 @@
 
 - 修复 Repository/DbContext 批量修改可能无效的 bug；#709
 - fix sqlite AddMinutes seconds -> minutes #774
-- fix ExecuteMySqlBulkCopyAsync .net core 3.1 Method not found  #783
+- fix ExecuteMySqlBulkCopyAsync .net core 3.1 Method not found #783
 
 ## v2.5.100
 
@@ -173,7 +173,6 @@
 - 修复 SqlServer RowNumber 分页有可能产生顺序不对的 bug；
 - 修复 .net5 单文本部署读取注释报错；
 
-
 ## v1.10.1
 
 - 增加 ISelect.InsertInto 将查询转换为 INSERT INTO t1 SELECT ... FROM t2 执行插入；#469
@@ -191,12 +190,11 @@
 - 补充 异步方法 ToListAsync(a => {}) 对 IncludeMany 的支持；
 - 修复 AsTreeCte 开启自动迁移时，错误的创建了 as_tree_cte 表；#476
 - 修复 内部 decimal 默认值在 core 3.1+ 报错的问题；
-- 修复 decimal? 可空数字设置 Column Scale 无效的问题(decimal正常)；
+- 修复 decimal? 可空数字设置 Column Scale 无效的问题(decimal 正常)；
 - 修复 DbContext/UnitOfWork EntityChangeReport 参数 BeforeObject 值无效的 bug；
 - 修复 lambda 表达式解析变量转换时的 bug；#490
 - 修复 Firebird Embedded 版本系统表 isidentity_type 兼容问题；
 - 修复 Firebird Embedded 2.5 不支持 boolean 的 bug；
-
 
 ## v1.9.0
 
@@ -260,7 +258,7 @@
 - 修复 参数化 Column DbType 设置特殊值时的类型判断；
 - 修正 UnitOfWorkManager Requierd 命名为 Required；
 - 优化 pgsql DbFirst 序列的识别，以及 pgsql10 的自增识别；
-- 优化 IsNullable = false 插入的数据值为 null 则以默认值插入（防止DB报错） #384；
+- 优化 IsNullable = false 插入的数据值为 null 则以默认值插入（防止 DB 报错） #384；
 - **优化 GroupBy ToList lambda 中可以直接使用 a.Key；**
 - 优化 NoneParameter Oracle 文本超长的问题；
 - 优化 lambda 使用 a == null ? 1 : 0 支持类似这样直接判断实体的情况；
@@ -279,15 +277,15 @@
 - 增加 ColumnAttribute Precision/Scale 设置；
 - 增加 "x1".First/FirstOrDefault 表达式函数解析；
 - 调整 ColumnAttribute IsNullable 对 int/long 等值类型也可生效；#384
-- 修复 $"{a.Code}_{a.Id}" lambda 解析当 {} 多于3个时的 bug（.net 内部机制很坑）；
-> - 3个 {} 时，Arguments[1..3] 解析出来是分开的
-> - 4个 {} 时，Arguments[1] 只能解析这个出来，然后 [1] 里面是 NewArray []
+- 修复 $"{a.Code}\_{a.Id}" lambda 解析当 {} 多于 3 个时的 bug（.net 内部机制很坑）；
+  > - 3 个 {} 时，Arguments[1..3] 解析出来是分开的
+  > - 4 个 {} 时，Arguments[1] 只能解析这个出来，然后 [1] 里面是 NewArray []
 - 补充 fsql.InsertOrUpdate UpdateColumns 数据存在时只更新指定的字段 #394 #330 #115 #17；
 
 ## v1.7.0
 
 - **增加 实体属性 char 类型的映射 #381 #235**；
-- 增加 $"{a.Code}_{a.Id}" lambda 解析；
+- 增加 $"{a.Code}\_{a.Id}" lambda 解析；
 - 增加 IInsert/IUpdate BatchProgress 方法处理批量插入/更新时的进度；
 - 增加 ISelect ToChunk 停止读取的逻辑控制 #360；
 - 增加 FreeSql.Provider.PostgreSQL NetTopologySuite 类型映射，保留 LegacyPostgis 映射 #369；
@@ -297,7 +295,7 @@
 - 修复 WhereDynamicFilter 在 System.Text.Json 下的问题 #371；
 - 修复 pgsql dbfirst 未处理数组类型生成的问题；
 - 修复 dm7 dbfirst SQL 中存在特殊字符的问题；
-- 修复 批量插入的时候报错System.DivideByZeroException #365；
+- 修复 批量插入的时候报错 System.DivideByZeroException #365；
 - 修复 CodeFirst + AsTable + 自动迁移，导致索引名重复的问题 #366；
 - 修复 GroupBy(..).Count() 开启参数化无效的 bug #390； UseGenerateCommandParameterWithLambda
 - **补充 fsql.InsertOrUpdate IfExistsDoNothing 数据存在时不做任何事(不更新)**；
@@ -305,13 +303,13 @@
 - 补充 EFCore StringLengthAttribute/DatabaseGeneratedAttribute 特性的支持；
 - 补充 FreeSql.Extensions.Linq ThenBy/ThenByDescending 扩展方法 #380；
 - 优化 FreeSql.Generator 生成实体类的时候处理数据库默认值；
-- **调整 FreeSql.Provider.SqlServer 引用Microsoft.Data.SqlClient #391**；
+- **调整 FreeSql.Provider.SqlServer 引用 Microsoft.Data.SqlClient #391**；
 
 ## v1.6.0
 
 - **增加 人大金仓 OdbcKingbaseES 实现；#325**
 - **增加 神舟通用 ShenTong 实现；**
-- **增加 WhereDynamicFilter 操作符 Range/DateRange/Any/NotAny，实现范围/日期范围/In查询；**
+- **增加 WhereDynamicFilter 操作符 Range/DateRange/Any/NotAny，实现范围/日期范围/In 查询；**
 - **增加 ISelect.AsTreeCte() 递归查询树表（向下或向上）；**
 - 增加 IUnitOfWork Orm 属性直接访问 IFreeSql CRUD 事务与工作单元一致；
 - **增加 SqlExt 常用开窗函数的自定义表达式解析；**
@@ -369,7 +367,7 @@
 - 优化 主键 Guid 自动赋值的优先级，低于 Aop.AuditValue 事件（实现自定义 Guid 值）；
 - 优化 WhereDynamic 传入 string 的时候自动转为主键的类型值；
 - 修复 ISelect.From 内部 WhereIf 二次表达式解析 bug；
-po
+  po
 - **增加 GroupBy ToDictionary 返回字段的查询方法，TKey 为 GroupBy 选择的对象；**
 - 调整 GroupBy 所有方法不使用 DTO 映射规则；
 - 调整 IUpdate.SetDto 也支持 IgnoreColumns 的逻辑；
@@ -377,7 +375,7 @@ po
 
 ## v1.3.5
 
-- 修复 IncludeMany 第3层无法加载的问题，IncludeMany(a => a.Parent.Parent.Childs)；
+- 修复 IncludeMany 第 3 层无法加载的问题，IncludeMany(a => a.Parent.Parent.Childs)；
 - 修复 PostgreSQL CodeFirst/DbFirst 系统表的版本兼容问题；
 - 增加 EfCoreFluentApi HasData 设定 CodeFirst 种子数据；
 - 增加 DbContextOptions.NoneParameter 设置是否使用参数化执行 Insert/Update；
@@ -389,7 +387,7 @@ po
 - **调整 Oracle StringLength/MaxLength -1 时候映射为 nclob；**
 - 调整 IInsert/IUpdate NoneParameter 方法，增加参数 isNotCommandParameter 可设置是否使用参数化；
 - 调整 FreeSqlBuilder，准备移除 UseEntityPropertyNameConvert/UseSyncStructureToLower/UseSyncStructureToUpper 方法；[#260](https://github.com/2881099/FreeSql/issues/260)；
-- 移除 In多列表达式函数解析 [#243](https://github.com/2881099/FreeSql/issues/243)；
+- 移除 In 多列表达式函数解析 [#243](https://github.com/2881099/FreeSql/issues/243)；
 - 优化 IncludeMany 扩展方法对 T1 不自动迁移；
 - 优化 BulkCopy 对可空类型的属性处理； [#227](https://github.com/2881099/FreeSql/issues/227)
 - 优化 IAdo.Query 方法，当传入带主键特性的实体时，防止主键列为 null 时导致整行记录也为 null；
@@ -457,11 +455,11 @@ po
 - **增加 FreeSql.Provider.MySqlConnector 扩展方法 ExecuteMySqlBulkCopy；**
 - 修复 DbFirst mysql/pgsql/sqlserver 获取主键失败的 bug； 0.10.7 发布后的 bug #182
 - **解决 表名名称包含点，无法进行 CRUD 的问题，由于测试的复杂性，此类情况仅支持 MySql/Sqlite CodeFirst 自动迁移；**
-> 注意：尽量不要使用带点的表名，只有 MySql/Sqlite 对此类表名支持 CodeFirst。但是它不影响 CRUD 功能，使用 [Table(Name = "\`sys.config\`")] 解决
+  > 注意：尽量不要使用带点的表名，只有 MySql/Sqlite 对此类表名支持 CodeFirst。但是它不影响 CRUD 功能，使用 [Table(Name = "\`sys.config\`")] 解决
 - 增加 FreeSql.All 全家桶包，懒人专用；
 - 修复 GroupBy 类型转换错误；#186
 - 修复 .ToList(a => new DTO(a.id)) 报 未将对象引用设置到对象的实例 问题； #187
-- 修复 update语句，二元运算解析出错； #184
+- 修复 update 语句，二元运算解析出错； #184
 - 修复 xamarin ios 真机无法使用 Sqlite 的问题； #183
 - **支持 Sqlite :memory: 模式； #191**
 - 优化 IdleTimeout 默认值为 20 秒； #194
@@ -473,7 +471,7 @@ po
 - 调整 最大连接池为 +5（属于内部设置）；
 - 增加 EfCoreFluentApi 扩展包，接近 efcore fluentApi 的使用习惯；
 - 增加 ColumnAttribute 属性 InsertValueSql，插入数据的时候指定用 sql 值；
-- **增加 ISelect`1.WithSql("select * from user ...") 功能；**
+- **增加 ISelect`1.WithSql("select \* from user ...") 功能；**
 - 完善 PgSql OnConflictDoUpdate 功能增加 DO NOTHING 操作；#174
 - 修复 IAdo.Query\<object\> 字段名重复的 bug；#162
 
@@ -488,7 +486,7 @@ po
 - 完善 Select`2-10 多表查询对象，增加 First(select)/ToOne(select)/First\<Dto\> 方法；
 - 修复 LazyLoading 在 Net4 环境下的问题；
 - 增加 FreeSql.Generator -Filter 设置选项，可阻止存储过程+视图的生成；
-- 增加 FreeSql.Generator 在目标目录产生 __razor.cshtml.txt 文件，以便自定义修改模板生成；
+- 增加 FreeSql.Generator 在目标目录产生 \_\_razor.cshtml.txt 文件，以便自定义修改模板生成；
 - **增加 IInsert/IUpdate BatchOptions 方法指定批量插入的设置；**
 - 增加 IInsert.ToDataTable 方法，为 BulkCopy 操作提供数据，该方法处理了(表名、字段名、类型）映射和忽略列；
 - **增加 IInsert.ExecuteSqlBulkCopy 扩展方法执行 SqlBulkCopy 批量插入，在 FreeSql.Provider.SqlServer 可用；**
@@ -562,7 +560,7 @@ po
 ## v0.12.6
 
 - 优化 ReadAnonymous 映射类型不一致的容错；
-- 修复 Oracle/Sqlite IInsert.ExecuteInserted 方法，返回了被 clear 过后的 _source，其实本来也没意义；
+- 修复 Oracle/Sqlite IInsert.ExecuteInserted 方法，返回了被 clear 过后的 \_source，其实本来也没意义；
 - 修复 DbContext SaveMany 对比删除的 bug；
 
 ## v0.12.5
@@ -575,7 +573,7 @@ po
 ## v0.12.3
 
 - 增加 ICodeFirst.IsGenerateCommandParameterWithLambda 选项，开启表达式解析的命令参数化；
-> FreeSqlBuilder 上使用 UseGenerateCommandParameterWithLambda(true) 开启
+  > FreeSqlBuilder 上使用 UseGenerateCommandParameterWithLambda(true) 开启
 - 优化 ExpressionCallContext 可设置、附加参数化对象；
 - 修复 IncludeMany(a => a.x1.x2.Childs) 当 x1, x2 为 null 的报 null 错误；
 
@@ -589,12 +587,14 @@ po
 
 - **增加 ExpressionCallAttribute 特性，实现表达式函数自定义解析；**
 - 优化 Contains 表达式解析为 where in 自动拆分，防止大于 1000 的 SQL 错误，如下：
+
 ```csharp
 var arr = Enumerable.Range(1, 1333).ToArray();
 var sql = fsql.Select<T>().Where(a => arr.Contains(a.Int)).ToList();
 //原来：where id in (1..1333)
 //现在：where id in (1..500) or id in (501..1000) or id in (1001..1333)
 ```
+
 - 修复 IsNulable 特性不生效的 bug；
 
 ## v0.11.22
@@ -606,7 +606,7 @@ var sql = fsql.Select<T>().Where(a => arr.Contains(a.Int)).ToList();
 
 - 修复 SqlServer DbFirst、CodeFirst 查询实体表的列信息错误，当设置了表/列多个扩展属性时发生；
 - 修复 SqlServer2005 CodeFirst 迁移时，不支持 SET (LOCK_ESCALATION TABLE) 的错误（已做适配）；
-- 修复 SqlServer2005 批量插入SQL语法错误，不支持 Values(),()（已做适配）；
+- 修复 SqlServer2005 批量插入 SQL 语法错误，不支持 Values(),()（已做适配）；
 - 完善 SqlServer2005 环境跑通了所有单元测试；
 - 修复 ReadAnonymous 读取数据设置只读属性的错误；#132
 
@@ -614,9 +614,9 @@ var sql = fsql.Select<T>().Where(a => arr.Contains(a.Int)).ToList();
 
 - 增加 IncludeMany 贪婪加载的时候可指定子表的字段，避免查询子表所有字段；
 - 调整 ToList(a => new 实体类 { id = 1, title = a.xx.Title})，如果 dto 类型为实体类，则规则为只查询 id, title 字段；
-> 这个规则与 v0.11.6 有差异，它是先映射 Dto 所有属性，再映射 id、title，区别：一个是 dto 类型，一个是查询的实体类型
+  > 这个规则与 v0.11.6 有差异，它是先映射 Dto 所有属性，再映射 id、title，区别：一个是 dto 类型，一个是查询的实体类型
 - 修复 Where(a => bool && id > 0) bool 未解析正确的 bug；
-> （之前大多数类似的表达都能解析，这次是一个特殊情况）
+  > （之前大多数类似的表达都能解析，这次是一个特殊情况）
 
 ## v0.11.19
 
@@ -633,10 +633,12 @@ var sql = fsql.Select<T>().Where(a => arr.Contains(a.Int)).ToList();
 
 - 增加 AsTable 和 Repository 分表时的自动迁移分表功能；
 - 增加 ICodeFirst.SyncStructure(Type entityType, string tableName) 指定表名来迁移实体；
+
 ```csharp
 fsql.CodeFirst.SyncStructure(typeof(Log), "Log_1"); //迁移到 Log_1 表
 fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ```
+
 - 增加 PostgreSQL 特有功能 On Conflict Do Update 功能；
 - 完善 所有参数化 object parms 可使用 IDictionary 类型传入；
 
@@ -652,14 +654,14 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 - 增加 SqlServer ISelect.WithLock 扩展方法，实现 with(nolock) 查询；
 - 增加 SqlServer IFreeSql.SetGlobalSelectWithLock 扩展方法，实现全局设置 with(nolock) 查询；
 - 修复 MySql CodeFirst DateTime 同步结构条件判断的 bug，导致每次都执行 alter；
-> 高版本支持 datetime(3) 精度的、或者不指定 DbType="datetime" 就没事
+  > 高版本支持 datetime(3) 精度的、或者不指定 DbType="datetime" 就没事
 - 移除 Aop.ToList；
 - 移除 Aop.Where；
 
 ## v0.11.6
 
 - 调整 ToList(a => new Dto { id = 1, title = a.xx.Title})，之前只映射 id、title，现在是先映射 Dto 所有属性，再映射 id、title；
-> 提醒：如果之前使用此方法映射 Dto 的指定属性，请改为匿名类映射，避免查询了不需要的字段影响性能。
+  > 提醒：如果之前使用此方法映射 Dto 的指定属性，请改为匿名类映射，避免查询了不需要的字段影响性能。
 
 ## v0.11.5
 
@@ -680,7 +682,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 - 增加 IFreeSql.GlobalFilter 全局过滤器；
 - 移除 TableAttribute.SelectFilter 功能；
 - 修复 MySql/SqlServer CodeFirst 同步结构 bug；
-> 当表已存在后增加自增列时，产生的脚本不应该包含默认认设置
+  > 当表已存在后增加自增列时，产生的脚本不应该包含默认认设置
 
 ## v0.11.1
 
@@ -705,7 +707,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.12
 
 - 增加 FreeSql.DbContext 实体对象的变化事件；
-> 可参阅 [DbConetxt](/db-context)
+  > 可参阅 [DbConetxt](/db-context)
 - 补充 Aop.CurdBefore 事件参数 Table 实体类型的元数据；
 
 ## v0.10.11
@@ -724,11 +726,11 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.8
 
 - 增加 List\<T1\> 扩展方法 IncludeMany，实现从已知的内存 List 数据，进行和 ISelect.IncludeMany 相同功能的贪婪加载；
-> 示例：new List\<Song\>(new[] { song1, song2, song3 }).IncludeMany(fsql, a => a.Tags);
 
+  > 示例：new List\<Song\>(new[] { song1, song2, song3 }).IncludeMany(fsql, a => a.Tags);
 
 - 修复 FreeSql.DbContext/FreeSql.Repository 当主键为 Guid? 可空类型时，发生参数错误；
-> System.ArgumentException:“Expression of type 'System.Guid' cannot be used for assignment to type 'System.Nullable`1[System.Guid]'”
+  > System.ArgumentException:“Expression of type 'System.Guid' cannot be used for assignment to type 'System.Nullable`1[System.Guid]'”
 
 ## v0.10.7
 
@@ -738,11 +740,11 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 
 ## v0.10.6
 
-- 优化 DbContext/Repository ManyToMany联级保存功能，当是新增数据时不查询中间表记录对比差异（直接插入）；
+- 优化 DbContext/Repository ManyToMany 联级保存功能，当是新增数据时不查询中间表记录对比差异（直接插入）；
 
 ## v0.10.5
 
-- 增加 DbContext/Repository ManyToMany联级保存功能（之前已支持OneToMany）；
+- 增加 DbContext/Repository ManyToMany 联级保存功能（之前已支持 OneToMany）；
 
 ## v0.10.4
 
@@ -775,7 +777,8 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.9.16
 
 - 增加 BaseRepository.AttachOnlyPrimary 方法，只附加实体的主键值；
-> 在更新前使用可实现不查询数据库再更新、也可以实现更新时不更新值为 null 的字段
+  > 在更新前使用可实现不查询数据库再更新、也可以实现更新时不更新值为 null 的字段
+
 ```csharp
 class T {
     public int id { get; set; }
@@ -785,11 +788,13 @@ class T {
 var item = new T { id = 1, name = "xx" };
 fsql.GetRepository<T>().AttachOnlyPrimary(item).Update(item); //只更新 name
 ```
+
 - 修复 Lambda 表达式中 DateTime.Now.ToString("yyyyMMdd") 不能直接执行的 bug；
 
 ## v0.9.15
 
-- 增加 FreeSql.Extensions.JsonMap 扩展包，实现快速将对象映射为json字符串的方法；
+- 增加 FreeSql.Extensions.JsonMap 扩展包，实现快速将对象映射为 json 字符串的方法；
+
 ```csharp
 fsql.UseJsonMap(); //开启功能
 
@@ -806,11 +811,13 @@ public class S_SysConfig<T> {
     public T Config { get; set; }
 }
 ```
+
 - 优化 表达式解析未实现的错误提醒，如 $""；
 
 ## v0.9.12
 
 - 增加 MaxLength 特性的解析，实体字符串长度设置；
+
 ```csharp
 class Topic {
     [MaxLength(128)]
@@ -826,7 +833,7 @@ class Topic {
 
 - 移除 FreeSql.Repository 扩展方法 FromRepository；
 - 调整 ISelect.AsTable 规则，每一次使用将增加 UNION ALL 查询；
-- 优化 AsTable UseSyncStructureToLower/ToUpper 设置，兼容 AsTable((t,o) => "(select * from tb)")；
+- 优化 AsTable UseSyncStructureToLower/ToUpper 设置，兼容 AsTable((t,o) => "(select \* from tb)")；
 
 ## v0.9.9
 
@@ -836,12 +843,12 @@ class Topic {
 
 - 增加 AsTable 多次，可查询分表后的多个子表记录，以 UNION ALL 形式执行；
 - 完善 ExpressionTree DateTime/DateTimeOffset 数据转换测试；
-- 优化 ISelect`1.Include之后ToList参数includeNestedMembers默认为true；
-- 修复 属性无set自动忽略的bug；
+- 优化 ISelect`1.Include 之后 ToList 参数 includeNestedMembers 默认为 true；
+- 修复 属性无 set 自动忽略的 bug；
 
 ## v0.9.7
 
-- 修复 批量更新 bug，当某行某字段值为null，其他行的该字段也更新成了null；【重大 bug】
+- 修复 批量更新 bug，当某行某字段值为 null，其他行的该字段也更新成了 null；【重大 bug】
 
 ## v0.9.6
 
@@ -858,7 +865,7 @@ class Topic {
 
 ## v0.9.3
 
-- 修复 导航属性配置和Aop冲突的 bug；
+- 修复 导航属性配置和 Aop 冲突的 bug；
 
 ## v0.9.2
 
@@ -866,7 +873,7 @@ class Topic {
 
 ## v0.9.1
 
-- 增加 ```ISelect.First<Dto>()``` 方法；
+- 增加 `ISelect.First<Dto>()` 方法；
 - 修复 MapType 表达式解析时的层级 bug，可能出现 ExpressionTree 类型错误；
 
 ## v0.8.11
@@ -886,13 +893,13 @@ class Topic {
 ## v0.8.7
 
 - 修复 导航关系多属性时的错序 bug；
-- 修复 延时属性的类，没有设置Namespace时的 bug；
+- 修复 延时属性的类，没有设置 Namespace 时的 bug；
 
 ## v0.8.6
 
 - 补充 使用 IsIgnore 忽略后，表达式再使用时的友好错误提示；
 - 优化 DbContext/Repository 局部调整；
-- 修复 DbContext.Save 只查询不更新的bug；
+- 修复 DbContext.Save 只查询不更新的 bug；
 
 ## v0.8.5
 
@@ -907,7 +914,7 @@ class Topic {
 ## v0.8.3
 
 - 增加 FreeSql.Provider.Oracle 下的 OraclePrimaryKeyName 特性，手工设置主键名防止默认名过长问题；
-- 修复 查询重复数据时使用 IncludeMany 出现字典重复添加的 bug；(如一对多使用LeftJoin查询，主实体查询出了重复的数据)
+- 修复 查询重复数据时使用 IncludeMany 出现字典重复添加的 bug；(如一对多使用 LeftJoin 查询，主实体查询出了重复的数据)
 - 补充 ISelect`T1...T10 LeftJoin/InnerJoin/RightJoin 多参数方法；
 
 ## v0.8.2
@@ -920,7 +927,7 @@ class Topic {
 ## v0.8.1
 
 - 优化 表达式中不能使用 c# 函数的问题，
-> 如：where(a => HttpContext.Session.GetString("UserID") == a.UserId)
+  > 如：where(a => HttpContext.Session.GetString("UserID") == a.UserId)
 - 优化 IUpdate.Set 表达式传入匿名类更新多个字段；
 - 优化 IInsert.InsertIdentity 可插入自增属性；
 - 修复 Oracle CodeFirst 使用 OldName 迁移自增字段时，未删除旧的触发器和序列的 bug；
@@ -933,7 +940,7 @@ class Topic {
 ## v0.7.15
 
 - 优化 ExpressionTree 类型转换的友好错误提示；
-- 修复 SqlServer IUpdate.ExecuteUpdated 拼接SQL bug；
+- 修复 SqlServer IUpdate.ExecuteUpdated 拼接 SQL bug；
 
 ## v0.7.13
 
@@ -944,7 +951,7 @@ class Topic {
 ## v0.7.12
 
 - 修复 .From 多表查询别名的匹配 bug；
-- 修复 SqlServer 未处理字符串前面加N 的 bug；
+- 修复 SqlServer 未处理字符串前面加 N 的 bug；
 - 增加 子查询判断，如果使用了相同 ISelect 会死循环；
 - 增加 连接字符串错误时的友好提示；
 
@@ -952,7 +959,7 @@ class Topic {
 
 - 补充 Navigate(ManyToMany = typeof(中间表)) 多对多自定义配置；
 - 修复 LambadaExpressionExtensions 扩展方法 And/Or 当存在二级 lambada 时替换错误的 bug；
-> 如：where.Add(a => a.Tags.Any(b => ...))，b 替换错误
+  > 如：where.Add(a => a.Tags.Any(b => ...))，b 替换错误
 
 ## v0.7.8
 
@@ -980,7 +987,7 @@ class Topic {
 
 ## v0.7.1
 
-- 修复 ```.From<T2>.GroupBy``` Item2 以上元组参数未查找到的 bug #63；
+- 修复 `.From<T2>.GroupBy` Item2 以上元组参数未查找到的 bug #63；
 - 合并 FreeSql.DbContext 项目至 FreeSql；
 
 ## v0.6.13
@@ -996,7 +1003,7 @@ class Topic {
 
 ## v0.6.11
 
-- 增加 CodeFirst 根据代码注释，迁移到数据库备注（需要实体类所在项目开启xml生成功能）；
+- 增加 CodeFirst 根据代码注释，迁移到数据库备注（需要实体类所在项目开启 xml 生成功能）；
 
 ## v0.6.10
 
@@ -1005,7 +1012,7 @@ class Topic {
 
 ## v0.6.9
 
-- 修复 批量插入/更新大量数据时，未使用NoneParameter，会导致部分未执行的bug；
+- 修复 批量插入/更新大量数据时，未使用 NoneParameter，会导致部分未执行的 bug；
 
 ## v0.6.8
 
@@ -1015,7 +1022,7 @@ class Topic {
 
 ## v0.6.6
 
-- 适配 FreeSql.Provider.MySqlConnector，和它对应的266个单元测试；
+- 适配 FreeSql.Provider.MySqlConnector，和它对应的 266 个单元测试；
 
 ## v0.6.5
 
@@ -1031,7 +1038,7 @@ class Topic {
 ## v0.6.3
 
 - 补充 当初始化 ConnectionString 参数为空时，给出友好错误提示；
-- 修复 IUpdate.IngoreColumns/UpdateColumns 若实体指定别名后，可能无效的bug；
+- 修复 IUpdate.IngoreColumns/UpdateColumns 若实体指定别名后，可能无效的 bug；
 
 ## v0.6.2
 
@@ -1063,7 +1070,7 @@ class Topic {
 ## v0.5.21
 
 - 修复 IncludeMany ManyToMany，若中间表未使用 延时加载 属性功能时，出现的 bug；
-- 增加 IncludeMany Take(5) 功能，实现每个子集合只取5条记录；
+- 增加 IncludeMany Take(5) 功能，实现每个子集合只取 5 条记录；
 
 ## v0.5.19
 
@@ -1078,9 +1085,9 @@ class Topic {
 
 ## v0.5.12
 
-- 优化 连接预热策略：min pool size 不设置或 <= 0，则默认预热 5个；也可以设置 1；
+- 优化 连接预热策略：min pool size 不设置或 <= 0，则默认预热 5 个；也可以设置 1；
 - 取消 MySql CodeFirst 对表字符集的设置；
-- 增加```ToList<Dto>()``` 方法，作用与 ToList(a => new Dto()) 相同；
+- 增加`ToList<Dto>()` 方法，作用与 ToList(a => new Dto()) 相同；
 
 ## v0.5.11
 
@@ -1088,7 +1095,7 @@ class Topic {
 - 增加 linq to sql 的查询语法，以及单元测试，[wiki](LinqToSql)；
 - 补充 IFreeSql 增加与实现 IDisposable 接口（依然要保持单例的使用习惯）；
 - 增加 CurdBefore、CurdAfter AOP 事件，可监控执行增删查改；
-- 增加 SyncStructureBefore、SyncStructureAfter AOP 事件，可监控CodeFirst迁移；
+- 增加 SyncStructureBefore、SyncStructureAfter AOP 事件，可监控 CodeFirst 迁移；
 
 ## v0.5.7
 
@@ -1101,7 +1108,7 @@ class Topic {
 - 增加 Column.MapType 类型映射，可将 enum 映射为 int/string 等；
 - 增加 Column.Unique 唯一键，多个属性指定相同的标识，代表联合键，[#42](https://github.com/2881099/FreeSql/issues/42)；
 - 增加 Expression string.Concat，[#39](https://github.com/2881099/FreeSql/issues/39)；
-- 补充 Expression IEnumerable```<T>```.Contains 的支持，之前只能数组或IList```<T>```；
+- 补充 Expression IEnumerable`<T>`.Contains 的支持，之前只能数组或 IList`<T>`；
 - 补充 IDbFirst GetTablesByDatabase 返回 uk/fk/index 名称，以便迁移；
 - 补充 MapType/Unique 单元测试；
 - 优化 PostgreSQL jsonb 类型使用习惯；
@@ -1128,7 +1135,7 @@ class Topic {
 
 ## v0.5.1(五一版)
 
-- 增加 ISelect/IInsert/IUpdate/IDelete.AsType 实现弱类型curd，如：Select\<object\>().AsType(实体类型)；
+- 增加 ISelect/IInsert/IUpdate/IDelete.AsType 实现弱类型 curd，如：Select\<object\>().AsType(实体类型)；
 - 补充 ISelect.From\<T2\>；
 - 补充 ExpressionTree 单元测试；
 - 优化 ToList(a => new Dto())，会按优先级查询 Join 实体属性；
@@ -1146,7 +1153,7 @@ class Topic {
 ## v0.4.15
 
 - 优化内部 QuoteSqlName 方法；当参数值是 (xxx)，则直接返回原形。如：xxx => [xxx]，(max(1)) => (max(1))；
-> 可实现功能，如：orm.Select\<xxx\>().AsTable((a,b) => "select * from xxx").Page(1, 20).ToSql()
+  > 可实现功能，如：orm.Select\<xxx\>().AsTable((a,b) => "select \* from xxx").Page(1, 20).ToSql()
 - 增加 Oracle IDbFirst 接口实现；
 - 补充 开放 IUpdate UpdateColumns 方法功能，实现更新实体时，只更新指定的列（与 IgnoreColumns 对应）；
 
@@ -1168,7 +1175,7 @@ class Topic {
 
 ## v0.4.10
 
-- 优化 连接池对象预热效率，开启每10个线程进行预热，预热时间超过3秒则放弃；
+- 优化 连接池对象预热效率，开启每 10 个线程进行预热，预热时间超过 3 秒则放弃；
 - 修复 MySql 枚举表达式 == 解析成数字的 bug；
 - 补充 IAdo 相关方法，实现 FreeSql.Connection.Extensions 扩展包，像 Dapper 的使用习惯；
 
@@ -1222,9 +1229,9 @@ class Topic {
 
 - 优化 导航属性 ManyToOne 名称查找规则；
 - 增加 IFreeSql.Aop 属性，未来所有拦截方法都在这里，第一期支持如下：
-  * 监控 ToList 返回的的数据，用于拦截重新装饰；
-  * 监视 Where，包括 select/update/delete，返回值 true 时可使上层不被执行；
-  * 可自定义解析表达式；
+  - 监控 ToList 返回的的数据，用于拦截重新装饰；
+  - 监视 Where，包括 select/update/delete，返回值 true 时可使上层不被执行；
+  - 可自定义解析表达式；
 - 增加 ISelect.TractToList，用于单次跟踪或审核实体；
 - 优化 FreeSql.DbContext SaveChanges；
 
@@ -1237,7 +1244,7 @@ class Topic {
 
 - 修复 ToList 选择指定对象时，应附加所有字段查询返回；
 - 修复 Lazy 延时类与实体关系冲突 bug；
-- 修复 附加对象读取时，记录为空应该返回null，而不是返回非null（字段默认值）对象；
+- 修复 附加对象读取时，记录为空应该返回 null，而不是返回非 null（字段默认值）对象；
 
 ## v0.3.19
 
@@ -1248,7 +1255,7 @@ class Topic {
 
 ## v0.3.18
 
-- 增加 IInsert 对数组传入的支持，之前是 ```IEnumerable<T>```；
+- 增加 IInsert 对数组传入的支持，之前是 `IEnumerable<T>`；
 - 增加 ORM 性能测试项目 Examples/orm_vs；
 
 ## v0.3.17
@@ -1257,7 +1264,7 @@ class Topic {
 - 修复 ILIst.Contains Expression [#16](https://github.com/2881099/FreeSql/issues/16)；
 - 整理 延时加载/导航属性查询的对象关系，仍然不依赖外键；
 - 完成 OneToOne/ManyToOne、ManyToMany/OneToMany 导航属性的查询 [#15](https://github.com/2881099/FreeSql/issues/15)；
-- 增加 IEnumerable```<TEntity>``` 扩展方法 AsSelect，转成 ```ISelect<T>```，以便使用 FreeSql 的查询功能；
+- 增加 IEnumerable`<TEntity>` 扩展方法 AsSelect，转成 `ISelect<T>`，以便使用 FreeSql 的查询功能；
 - 增加 int.Parse Guid.Parse 系列转换、Guid.NewGuid、new Random.NextDouble 等表达式函数解析；
 
 ## v0.3.16
@@ -1266,10 +1273,11 @@ class Topic {
 - 修复 IDbFirst.GetTablesByDatabase 默认数据库 bool 判断 bug；
 - 增加 FreeSql.Repository 之 IUnitOfWork 实现；
 - 增加 FreeSql.Repository 继承实现的仓储注入；
+
 ```csharp
 builder.RegisterFreeRepository(
-    filter => filter.Apply<Song>("test", a => a.Title == DateTime.Now.ToString() + 
-        Thread.CurrentThread.ManagedThreadId), 
+    filter => filter.Apply<Song>("test", a => a.Title == DateTime.Now.ToString() +
+        Thread.CurrentThread.ManagedThreadId),
     this.GetType().Assembly
 );
 ```
@@ -1279,7 +1287,7 @@ builder.RegisterFreeRepository(
 - 增加 ISelect.ToDataTable 系列方法；
 - 增加 无参数化命令执行，可配置全局 ICodeFirst.IsNoneCommandParameter、或临时 IInsert/IUpdate.NoneParameter() 便于调试；
 - 关闭 自动同步结构功能，避免线上环境误操作；
-- 优化 IInsert 批量插入容易导致 values 过多、或参数化过多的问题，5个数据库均已优化；
+- 优化 IInsert 批量插入容易导致 values 过多、或参数化过多的问题，5 个数据库均已优化；
 
 ## v0.3.14
 
@@ -1289,6 +1297,7 @@ builder.RegisterFreeRepository(
 
 - 修改 FreeSql.Repository Autofac 注入方式，真正的实现全局过滤功能；
 - 增加 FreeSql.Repository DataFilter 属性；
+
 ```csharp
 repos.DataFilter.Disable("test") 临时禁用，不影响全部；
 repos.DataFilter.DisableAll()
@@ -1296,6 +1305,7 @@ repos.DataFilter.Enable("test")
 repos.DataFilter.EnableAll()
 repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 ```
+
 - 增加 using DataFilter.Disable、Enable 使用完成后恢复可用状态；
 
 ## v0.3.12
@@ -1314,7 +1324,7 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 
 ## v0.1.13
 
-- 修改 连接池内部 Ping Timeout 值暂定 5秒；
+- 修改 连接池内部 Ping Timeout 值暂定 5 秒；
 - 优化 初始化时若数据库超时，则放弃预热；
 - FreeSql.Repository 下增加 ISelect.FromRepository 扩展方法，实现快速合并多个仓储查询；
 - 增加 FreeSql.Repository Autofac 泛型注入，支持实现全局过滤；
@@ -1349,7 +1359,7 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 ## v0.1.7
 
 - FreeSql.Repository 增加 filter 参数，实现数据过滤 + 验证；
-    如：var postRepos = fsql.GetGuidRepository```<Post>```(a => a.TopicId == 1); postRepos CURD 方法都会以 lambda 条件作为查询或验证，Update/Insert验证错误时会抛出异常。
+  如：var postRepos = fsql.GetGuidRepository`<Post>`(a => a.TopicId == 1); postRepos CURD 方法都会以 lambda 条件作为查询或验证，Update/Insert 验证错误时会抛出异常。
 - ISelect 增加 First/FirstAsync；
 
 ## v0.1.6
@@ -1384,7 +1394,7 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 ## v0.1.0
 
 - 增加 FreeSql.Repository 扩展库，实现实体类的默认仓储；
-- 增加主键命名约定：在没有设置主键的情况下，Id 或 \<type name\>Id 或 \<type name\>_Id 或 自增列 会成为主键；
+- 增加主键命名约定：在没有设置主键的情况下，Id 或 \<type name\>Id 或 \<type name\>\_Id 或 自增列 会成为主键；
 - 实体特性 Column 增加 IsIgnore 忽略达到不映射的目的；
 - 增加 repository_01 示例项目，演示 FreeSql.Repository；
 - 增加 website FreeSql 官方项目源码；
@@ -1392,7 +1402,7 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 ## v0.0.14
 
 - ICodeFirst.ConfigEntity 可更新实体配置已缓存的数据；
-- 防止同连接字符串被IFreeSql使用多次，发生连接池溢出bug（ado.net连接池原理，减少解释成本）；
+- 防止同连接字符串被 IFreeSql 使用多次，发生连接池溢出 bug（ado.net 连接池原理，减少解释成本）；
 - 增加 efcore_to_freesql 示例项目，实现与 EFCore 实体共存；
 
 ## v0.0.13
@@ -1403,12 +1413,12 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 
 ## v0.0.12
 
-- lazy延时属性父子关系的1v多类型判断修正，解决 int? != int 的 bug；
-- ThreadLocal修改使用方式；
+- lazy 延时属性父子关系的 1v 多类型判断修正，解决 int? != int 的 bug；
+- ThreadLocal 修改使用方式；
 - 使用 virtual 后实体序列化问题 [#5](https://github.com/2881099/FreeSql/issues/5)，私有化属性；
-- 由于FreeSql采用二次封装连接池，尽量避免使用问题，真实的max pool size值等于传入值+1；
+- 由于 FreeSql 采用二次封装连接池，尽量避免使用问题，真实的 max pool size 值等于传入值+1；
 
 ## v0.0.11
 
-- 修复IAdo.Query直接查询sql的bug；
+- 修复 IAdo.Query 直接查询 sql 的 bug；
 - 重新检查通过所有单元测试；

@@ -1,10 +1,10 @@
-# 贪婪加载✨
+# 贪婪加载 ✨
 
 ## 1、导航属性 ManyToOne
 
 ManyToOne 导航属性通过 ToList(includeNestedMembers: false) 加载，参数说明：
 
-false: 返回 2级 Join 的导航数据（默认）；
+false: 返回 2 级 Join 的导航数据（默认）；
 
 true: 返回所有层级深度 Join 的导航数据（未使用的导航数据不会返回）；
 
@@ -26,7 +26,7 @@ Select<Tag>().IncludeMany(a => a.Songs).ToList();
 IncludeMany 有第二个参数，可以进行二次查询前的修饰工作。
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.Songs, 
+Select<Tag>().IncludeMany(a => a.Songs,
     then => then.Where(song => song.User == "admin")).ToList();
 ```
 
@@ -40,7 +40,7 @@ Select<Tag>().IncludeMany(a => a.Songs,
 Select<Tag>().IncludeMany(a => a.TestManys.Where(b => b.TagId == a.Id));
 ```
 
-只查询每项子集合的前几条数据，避免像EfCore加载所有数据导致IO性能低下（比如某商品下有2000条评论）。
+只查询每项子集合的前几条数据，避免像 EfCore 加载所有数据导致 IO 性能低下（比如某商品下有 2000 条评论）。
 
 ```csharp
 Select<Tag>().IncludeMany(a => a.TestManys.Take(10));
@@ -64,10 +64,10 @@ new List<Song>(new[] { song1, song2, song3 })
 ```c#
 new List<Song>(new[] { song1, song2, song3 })
     .IncludeByPropertyName(
-        orm: fsql, 
-        property: "Tags", 
-        where: "ParentId=Code", 
-        take: 5, 
+        orm: fsql,
+        property: "Tags",
+        where: "ParentId=Code",
+        take: 5,
         select: "id,name"
     );
 //v3.2.605+
@@ -86,14 +86,14 @@ var list111 = fsql.Select<SysModule>()
 ```
 
 ```sql
-SELECT a."Id" as1 
-FROM "SysModule" a 
+SELECT a."Id" as1
+FROM "SysModule" a
 limit 0,10
 
-SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status", 
-a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime" 
-FROM "SysModulePermission" a 
-LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId" 
+SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status",
+a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime"
+FROM "SysModulePermission" a
+LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId"
 WHERE ((a."SysModuleId") in ('menu1','menu2'))
 ```
 
@@ -109,18 +109,18 @@ var list222 = fsql.Select<SysModule>()
 ```
 
 ```sql
-SELECT a."Id", a."ParentId", a."Name", a."Icon", a."UrlAddress", a."IsShow", a."Sort", a."Description", a."CreateTime" 
-FROM "SysModule" a 
+SELECT a."Id", a."ParentId", a."Name", a."Icon", a."UrlAddress", a."IsShow", a."Sort", a."Description", a."CreateTime"
+FROM "SysModule" a
 limit 0,10
 
-SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status", 
-a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime" 
-FROM "SysModulePermission" a 
-LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId" 
+SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status",
+a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime"
+FROM "SysModulePermission" a
+LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId"
 WHERE ((a."SysModuleId") in ('menu1','menu2'))
 ```
 
-案例：查询 Vod 表，分类1、分类2、分类3 各10条数据
+案例：查询 Vod 表，分类 1、分类 2、分类 3 各 10 条数据
 
 ```csharp
 class Vod {

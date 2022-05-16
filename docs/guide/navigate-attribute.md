@@ -1,4 +1,4 @@
-# 导航属性✨
+# 导航属性 ✨
 
 导航属性是 FreeSql 的特色功能之一，可通过约定配置、或自定义配置对象间的关系。
 
@@ -61,10 +61,10 @@ var tbref = g.sqlite.CodeFirst
 
 GetTableRef(string propertyName, bool isThrow);
 
-
 # 约定命名（无须指明 Navigate）
 
 ### OneToOne 一对一
+
 ```csharp
 class User {
     public int Id { get; set; } //Id、UserId、User_id
@@ -82,6 +82,7 @@ class UserExt {
 [《OneToOne 一对一，怎么添加数据？》](https://github.com/2881099/FreeSql/issues/45)
 
 ### ManyToOne 多对一
+
 ```csharp
 class Group {
     public int Id { get; set; } //Id、GroupId、Group_id
@@ -100,6 +101,7 @@ class User {
 ```
 
 ### OneToMany 一对多
+
 ```csharp
 class Group {
     public int Id { get; set; } //Id、GroupId、Group_id
@@ -123,6 +125,7 @@ class User {
 [《OneToMany 一对多，怎么添加数据？》](https://github.com/2881099/FreeSql/issues/46)
 
 ### Parent 父子
+
 ```csharp
 class Group {
     public int Id { get; set; } //Id、GroupId、Group_id
@@ -136,7 +139,8 @@ class Group {
 
 父子关系，与一对多其实差不多，添加数据参数上面的连接；
 
-### ManyToMany 多对多 
+### ManyToMany 多对多
+
 ```csharp
 class Song {
     [Column(IsIdentity = true)]
@@ -165,4 +169,4 @@ class Tag {
 }
 ```
 
-Song、Tag、Song_tag，这三个实体使用了 OneToMany、ManyToOne、Parent、ManyToMany 4种关系。
+Song、Tag、Song_tag，这三个实体使用了 OneToMany、ManyToOne、Parent、ManyToMany 4 种关系。

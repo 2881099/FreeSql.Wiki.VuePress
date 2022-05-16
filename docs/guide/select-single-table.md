@@ -17,37 +17,39 @@ class Topic {
 ```
 
 ## 单表
+
 ```csharp
 fsql.Select<Topic>()
   .Where(a => a.Id == 10)
   .ToList();
-///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM `Topic` a 
+///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM `Topic` a
 //WHERE (a.`Id` = 10)
 
 fsql.Select<Topic>()
   .Where(a => a.Id == 10 && a.Id > 10 || a.Clicks > 100)
   .ToList();
-///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM `Topic` a 
+///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM `Topic` a
 //WHERE (a.`Id` = 10 AND a.`Id` > 10 OR a.`Clicks` > 100)
 
 fsql.Select<Topic>()
   .Where(a => new []{1,2,3}.Contains(a.Id))
   .ToList();
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM `Topic` a 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM `Topic` a
 //WHERE (a.`Id` in (1,2,3))
 ```
 
-## WithSql
+## [WithSql](WithSql.md)
+
 ```csharp
 fsql.Select<Topic>()
   .WithSql("select * from Topic where clicks > ?val", new { val = 10 })
   .Page(1, 10)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (select * from Topic where clicks > ?val) a 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM (select * from Topic where clicks > ?val) a
 ```
 
-> WithSql 使用多次为 UNION ALL 查询
+>关于[WithSql](WithSql.md)的详情文档， 使用多次为 UNION ALL 查询

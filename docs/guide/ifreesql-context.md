@@ -15,11 +15,7 @@
 update roles set is_deleted=1 where where tenant_id=1
 ```
 
-
-
 所以往往将 IFreesql 和 Context 并存，在使用时，根据场景使用这两种方式操作数据库。
-
-
 
 ### 使用方法
 
@@ -32,17 +28,11 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .Build(); //请务必定义成 Singleton 单例模式
 ```
 
-
-
 而 Freesql 也支持了类似 EFCore 的 Context 模式。通过引入 `FreeSql.DbContext` 库，可以使用特性、Fluent api 等配置实体映射、导航属性等，生成类似于 EFCore 的 Context 类型，然后通过依赖注入实例化使用。
 
 通过定义 Context ，我们可以根据 EFCore 的使用习惯，快速掌握 Freesql 的使用，甚至可以直接将 EFCore Context 转为 Freesql Context，因为 Freesql Context 支持了 95% 的 EFCore Fluent api 。
 
-
-
 下面说说如何利用 Freesql 更加方便地迁移数据库以及定义 Context。
-
-
 
 安装 Freesql 工具：
 
@@ -50,15 +40,11 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 dotnet tool install -g FreeSql.Generator
 ```
 
-
-
 接着还原数据库表为实体：
 
 ```shell
 FreeSql.Generator  -NameOptions 1,1,0,1 -NameSpace AuthCenter.Database.Entities -DB "MySql,data source=123.123.123.123;port=3306;user id=root;password=root;initial catalog=datab;charset=utf8;sslmode=none;max pool size=2" -FileName "{name}.cs"
 ```
-
-
 
 还原的实体示例：
 
@@ -78,13 +64,9 @@ FreeSql.Generator  -NameOptions 1,1,0,1 -NameSpace AuthCenter.Database.Entities 
 }
 ```
 
-
-
 在 Freesql 中，实体特性优先于 Fluent api，同时 Freesql 也兼容 EFCore 的实体特性。
 
 由于 `FreeSql.Generator` 工具很方便，我们不需要另外使用 Fluent api 去定义复杂的逻辑结构。
-
-
 
 接着定义 Context：
 
@@ -104,11 +86,11 @@ namespace My.Context
         {
             iFreesql = freeSql;
         }
-        
+
         public virtual DbSet<Roles> Roles { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            // iFreesql.xxxx 
+            // iFreesql.xxxx
             // 使用 iFreesql 调用 Fluent api
             builder.UseFreeSql(iFreesql);
         }
@@ -123,8 +105,6 @@ namespace My.Context
 
 > 通过这种方法，IFreesql 和 Context 中的实体及其实体特性、Fluent api 等都保持一致。
 
-
-
 接着，在依赖注入中，将 IFreesql 和 Context 都注入。
 
 ```csharp
@@ -138,8 +118,6 @@ namespace My.Context
         }
 ```
 
-
-
 我们在类型中通过依赖注入获取到这两种服务：
 
 ```csharp
@@ -152,7 +130,5 @@ namespace My.Context
             _context = context;
         }
 ```
-
-
 
 然后就可以快乐地使用 Freesql 了。

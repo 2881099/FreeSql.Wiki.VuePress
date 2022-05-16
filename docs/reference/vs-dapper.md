@@ -1,6 +1,6 @@
 # 与 Dapper 比较
 
-众所周知 Dapper 是 .NET 下最轻最快的 ORM，它是喜欢写 SQL 码农的福音，相对于 SqlHelper 它更加方便，据统计 10个 .NETer 有 9个 用过 Dapper。
+众所周知 Dapper 是 .NET 下最轻最快的 ORM，它是喜欢写 SQL 码农的福音，相对于 SqlHelper 它更加方便，据统计 10 个 .NETer 有 9 个 用过 Dapper。
 
 这篇文章为准备使用 FreeSql 的朋友解惑，对比 Dapper 有何优势，为什么要使用 FreeSql？希望本文内容对大家有所帮助。
 
@@ -141,24 +141,24 @@ FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET
 - 📃 支持 读写分离、分表分库、过滤器、乐观锁、悲观锁；
 - 🌳 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/翰高/Access 等数据库；
 
-
 #### 基础
 
-- [《学习FreeSql之一：添加数据》](../guide/insert.md)
-- [《学习FreeSql之二：删除数据》](../guide/delete.md)
-- [《学习FreeSql之三：修改数据》](../guide/update.md)
-- [《学习FreeSql之四：查询数据》](../guide/select.md)
-- [《仓储层Repository》](../guide/repository.md)
+- [《学习 FreeSql 之一：添加数据》](../guide/insert.md)
+- [《学习 FreeSql 之二：删除数据》](../guide/delete.md)
+- [《学习 FreeSql 之三：修改数据》](../guide/update.md)
+- [《学习 FreeSql 之四：查询数据》](../guide/select.md)
+- [《仓储层 Repository》](../guide/repository.md)
 
 #### 进阶
 
-* [《CodeFirst模式开发介绍》](../guide/code-first.md)
-    * [《CodeFirst模式之一：实体特性》](../guide/entity-attribute.md)
-    * [《CodeFirst模式之二：FluentApi》](../guide/fluent-api.md)
-    * [《CodeFirst模式之三：自定义特性》](../guide/custom-attribute.md)
-    * [《CodeFirst模式之四：类型映射》](../guide/type-mapping.md)
-    * [《CodeFirst模式之五：迁移结构》](../guide/code-first.md#迁移结构)
-- [《DbFirst模式开发介绍》](../guide/db-first.md)
+- [《CodeFirst 模式开发介绍》](../guide/code-first.md)
+  - [《CodeFirst 模式之一：实体特性》](../guide/entity-attribute.md)
+  - [《CodeFirst 模式之二：FluentApi》](../guide/fluent-api.md)
+  - [《CodeFirst 模式之三：自定义特性》](../guide/custom-attribute.md)
+  - [《CodeFirst 模式之四：类型映射》](../guide/type-mapping.md)
+  - [《CodeFirst 模式之五：迁移结构》](../guide/code-first.md#迁移结构)
+
+* [《DbFirst 模式开发介绍》](../guide/db-first.md)
 
 #### 高级
 

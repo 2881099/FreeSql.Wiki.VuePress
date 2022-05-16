@@ -26,7 +26,7 @@ public enum ToStringMapEnum { 中国人, abc, 香港 }
 
 应该不需要解释了吧？
 
-BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - * / 等操作；
+BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - \* / 等操作；
 
 v0.9.15 版本还可以将值对象映射成 typeof(string)，安装扩展包：
 

@@ -1,10 +1,10 @@
 # 延时加载
 
-FreeSql 支持导航属性延时加载，即当我们需要用到的时候才进行加载（读取），支持1对1、多对1、1对多、多对多关系的导航属性。
+FreeSql 支持导航属性延时加载，即当我们需要用到的时候才进行加载（读取），支持 1 对 1、多对 1、1 对多、多对多关系的导航属性。
 
-当我们希望浏览某条订单信息的时候，才显示其对应的订单详细记录时，我们希望使用延迟加载来实现，这样不仅加快的了 读取的效率，同时也避免加载不需要的数据。延迟加载通常用于foreach循环读取数据时。
+当我们希望浏览某条订单信息的时候，才显示其对应的订单详细记录时，我们希望使用延迟加载来实现，这样不仅加快的了 读取的效率，同时也避免加载不需要的数据。延迟加载通常用于 foreach 循环读取数据时。
 
-那么我们在定义Model的时候，需要在属性前面添加virtual关键字。如下
+那么我们在定义 Model 的时候，需要在属性前面添加 virtual 关键字。如下
 
 ```csharp
 public class Order {
@@ -43,18 +43,19 @@ var order1 = orderDetail1.FirstOrDefault(); //访问导航属性，此时不查�
 ```
 
 控制台输出内容：
+
 ```sql
-SELECT a.`OrderID`, a.`OrderTitle`, a.`CustomerName`, a.`TransactionDate` 
-FROM `Order` a 
-WHERE (a.`OrderID` = 1) 
+SELECT a.`OrderID`, a.`OrderTitle`, a.`CustomerName`, a.`TransactionDate`
+FROM `Order` a
+WHERE (a.`OrderID` = 1)
 limit 0,1
 
-SELECT a.`DetailId`, a.`OrderId` 
-FROM `OrderDetail` a 
+SELECT a.`DetailId`, a.`OrderId`
+FROM `OrderDetail` a
 WHERE (a.`OrderId` = 1)
 ```
 
-FreeSql延时加载支持1对1、多对1、1对多、多对多关系的导航属性，前三者大小同异，以下我们单独介绍多对多关系。
+FreeSql 延时加载支持 1 对 1、多对 1、1 对多、多对多关系的导航属性，前三者大小同异，以下我们单独介绍多对多关系。
 
 ## 多对多延时加载
 
@@ -98,16 +99,17 @@ var songs2 = Songs.First().Tags; //第二次访问，不查
 ```
 
 控制台输出内容：
+
 ```sql
-SELECT a.`Id`, a.`Create_time`, a.`Is_deleted`, a.`Title`, a.`Url` 
-FROM `Song` a 
+SELECT a.`Id`, a.`Create_time`, a.`Is_deleted`, a.`Title`, a.`Url`
+FROM `Song` a
 limit 0,10
 
-SELECT a.`Id`, a.`Parent_id`, a.`Ddd`, a.`Name` 
-FROM `Tag` a 
-WHERE (exists(SELECT 1 
-FROM `Song_tag` b 
-WHERE (b.`Song_id` = 2 AND b.`Tag_id` = a.`Id`) 
+SELECT a.`Id`, a.`Parent_id`, a.`Ddd`, a.`Name`
+FROM `Tag` a
+WHERE (exists(SELECT 1
+FROM `Song_tag` b
+WHERE (b.`Song_id` = 2 AND b.`Tag_id` = a.`Id`)
 limit 0,1))
 ```
 
@@ -115,6 +117,6 @@ limit 0,1))
 
 优点：只在需要的时候加载数据，不需要预先计划，避免了各种复杂的外连接、索引、视图操作带来的低效率问题。
 
-缺陷：多次与DB交互，性能降低。
+缺陷：多次与 DB 交互，性能降低。
 
 如果要在循环中使用数据，请使用贪婪加载，否则使用懒加载。

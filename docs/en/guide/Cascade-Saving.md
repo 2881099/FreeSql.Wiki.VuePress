@@ -50,9 +50,9 @@ repo. Insert(type);
 -When the topics attribute is empty, do not do anything. Confirm?
 -When you save topics, you will also save the subordinate collection properties of topics \ [0 -.. \]. Go down to 18 layers and confirm?
 
->For example, in the [type] table, there is set attribute [article] below and set attribute [comment] below [article].
+> For example, in the [type] table, there is set attribute [article] below and set attribute [comment] below [article].
 
->When saving the [type] table object, it will retrieve the set attribute [article], and then if the [article] is saved, it will continue to retrieve the set attribute [comment]. Do insertorupdate operation together.
+> When saving the [type] table object, it will retrieve the set attribute [article], and then if the [article] is saved, it will continue to retrieve the set attribute [comment]. Do insertorupdate operation together.
 
 3. Manytomany completely compares and saves the intermediate table and appends the external table
 
@@ -113,9 +113,9 @@ public void TestOneToManyParent()
     cts[1].Name = "class22";
     cts[1].Childs.Clear();
     repo.Update(cts);
-    //UPDATE "Cagetory" SET "Name" = CASE "Id" 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN 'class11' 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN 'class22' END 
+    //UPDATE "Cagetory" SET "Name" = CASE "Id"
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN 'class11'
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN 'class22' END
     //WHERE ("Id" IN ('5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f','5d90afcb-ed57-f6f4-0082-cb6c5b531b3e'))
     //Childs.Clear After that, the operation of deleting subsets was not performed, indicating that no complete comparison was made
     cts[0].Name = "class111";
@@ -125,9 +125,9 @@ public void TestOneToManyParent()
     cts[1].Childs.Clear();
     cts[1].Childs.Add(new Cagetory { Name = "class2_22" });
     repo.Update(cts);
-    //UPDATE "Cagetory" SET "Name" = CASE "Id" 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN 'class111' 
-    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN 'class222' END 
+    //UPDATE "Cagetory" SET "Name" = CASE "Id"
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f' THEN 'class111'
+    //WHEN '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e' THEN 'class222' END
     //WHERE ("Id" IN ('5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f','5d90afcb-ed57-f6f4-0082-cb6c5b531b3e'))
     //INSERT INTO "Cagetory"("Id", "Name", "ParentId") VALUES('5d90afe8-ed57-f6f4-0082-cb725df546ea', 'class1_33', '5d90afcb-ed57-f6f4-0082-cb6b78eaaf9f'), ('5d90afe8-ed57-f6f4-0082-cb7338a6214c', 'class2_22', '5d90afcb-ed57-f6f4-0082-cb6c5b531b3e')
 }
@@ -203,20 +203,20 @@ public void TestManyToMany()
     ss[1].Tags.Clear();
     ss[1].Tags.Add(tags[3]);
     repo.Update(ss);
-    //UPDATE "Song" SET "Name" = CASE "Id" 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN 'love you forever.mp5' 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN 'Li Bai.mp5' END 
+    //UPDATE "Song" SET "Name" = CASE "Id"
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN 'love you forever.mp5'
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN 'Li Bai.mp5' END
     //WHERE ("Id" IN ('5d90fdb3-6a6b-2c58-00c8-37974177440d','5d90fdb3-6a6b-2c58-00c8-37987f29b197'))
 
-    //SELECT a."SongId", a."TagId" 
-    //FROM "SongTag" a 
+    //SELECT a."SongId", a."TagId"
+    //FROM "SongTag" a
     //WHERE (a."SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d')
 
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d' AND "TagId" = '5d90fdbd-6a6b-2c58-00c8-379a0432a09c')
     //INSERT INTO "Tag"("Id", "TagName") VALUES('5d90febd-6a6b-2c58-00c8-379c21acfc72', 'Rock music')
 
-    //SELECT a."SongId", a."TagId" 
-    //FROM "SongTag" a 
+    //SELECT a."SongId", a."TagId"
+    //FROM "SongTag" a
     //WHERE (a."SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197')
 
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197' AND "TagId" = '5d90fdb7-6a6b-2c58-00c8-37991ead4f05' OR "SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197' AND "TagId" = '5d90fdcc-6a6b-2c58-00c8-379b5af59d25')
@@ -230,9 +230,9 @@ public void TestManyToMany()
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37974177440d')
     //DELETE FROM "SongTag" WHERE ("SongId" = '5d90fdb3-6a6b-2c58-00c8-37987f29b197')
 
-    //UPDATE "Song" SET "Name" = CASE "Id" 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN 'love you forever.mp4' 
-    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN 'Li Bai.mp4' END 
+    //UPDATE "Song" SET "Name" = CASE "Id"
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37974177440d' THEN 'love you forever.mp4'
+    //WHEN '5d90fdb3-6a6b-2c58-00c8-37987f29b197' THEN 'Li Bai.mp4' END
     //WHERE ("Id" IN ('5d90fdb3-6a6b-2c58-00c8-37974177440d','5d90fdb3-6a6b-2c58-00c8-37987f29b197'))
 }
 ```

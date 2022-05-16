@@ -1,9 +1,10 @@
 # 多租户
+
 ### 什么是多租户
 
 维基百科：“软件多租户是指一种软件架构，在这种软件架构中，软件的一个实例运行在服务器上并且为多个租户服务”。一个租户是一组共享该软件实例特定权限的用户。有了多租户架构，软件应用被设计成为每个租户提供一个 专用的实例包括该实例的数据的共享，还可以共享配置，用户管理，租户自己的功能和非功能属性。多租户和多实例架构相比，多租户分离了代表不同的租户操作的多个实例。
 
-多租户用于创建Saas（Software as-a service）应用（云处理）。
+多租户用于创建 Saas（Software as-a service）应用（云处理）。
 
 ### 方案一：按租户字段区分
 
@@ -15,14 +16,14 @@ var topicRepos = fsql.GetGuidRepository<Topic>(t => t.TerantId == 1);
 
 使用 topicRepos 对象进行 CURD 方法：
 
-* 在查询/修改/删除时附加此条件，从而达到不会修改 TerantId != 1 的数据；
-* 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
+- 在查询/修改/删除时附加此条件，从而达到不会修改 TerantId != 1 的数据；
+- 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
 
 利用这个功能，我们可以很方便的实现数据分区，达到租户的目的。
 
 ### WhereCascade
 
-多表查询时，像isdeleted每个表都给条件，挺麻烦的。WhereCascade使用后生成sql时，所有表都附上这个条件。多表租户条件也可以这样解决。
+多表查询时，像 isdeleted 每个表都给条件，挺麻烦的。WhereCascade 使用后生成 sql 时，所有表都附上这个条件。多表租户条件也可以这样解决。
 
 如：
 
@@ -38,7 +39,7 @@ fsql.Select<t1>()
 ```sql
 SELECT ...
 FROM t1
-LEFT JOIN t2 on ... AND (t2.IsDeleted = 0) 
+LEFT JOIN t2 on ... AND (t2.IsDeleted = 0)
 WHERE t1.IsDeleted = 0
 ```
 
@@ -47,7 +48,7 @@ WHERE t1.IsDeleted = 0
 可应用范围：
 
 - 子查询，一对多、多对多、自定义的子查询；
-- Join 查询，导航属性、自定义的Join查询；
+- Join 查询，导航属性、自定义的 Join 查询；
 - Include/IncludeMany 的子集合查询；
 
 > 暂时不支持【延时属性】的广播；
@@ -84,11 +85,11 @@ fsql.Select<Topic>()
     .ToList();
 ```
 
-上述代码的使用，将两个设置好的租户仓储合并起来查询，查询租户1下的 topic + topictype 数据，执行的 SQL语句：
+上述代码的使用，将两个设置好的租户仓储合并起来查询，查询租户 1 下的 topic + topictype 数据，执行的 SQL 语句：
 
 ```sql
 SELECT ...
-FROM "Topic_1" a 
+FROM "Topic_1" a
 LEFT JOIN "TopicType_1" b ON a."TypeId" = b."Id"
 ```
 

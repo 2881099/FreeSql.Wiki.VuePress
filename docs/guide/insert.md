@@ -3,7 +3,7 @@
 `FreeSql` 提供单条和批量插入数据的方法，在特定的数据库执行还可以返回插入后的记录。
 
 ```csharp
-var connectionString = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" + 
+var connectionString = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" +
     "Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10";
 
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
@@ -27,34 +27,37 @@ for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newtitl
 
 ```csharp
 var t1 = fsql.Insert(items.First()).ExecuteAffrows();
-//INSERT INTO `Topic`(`Clicks`, `Title`, `CreateTime`) 
+//INSERT INTO `Topic`(`Clicks`, `Title`, `CreateTime`)
 //VALUES(?Clicks0, ?Title0, ?CreateTime0)
 ```
 
 如果表有自增列，插入数据后应该要返回 id。
 
-方法1：(原始)
+方法 1：(原始)
+
 ```csharp
 long id = fsql.Insert(blog).ExecuteIdentity();
 blog.Id = id;
 ```
 
-方法2：(依赖 FreeSql.Repository)
+方法 2：(依赖 FreeSql.Repository)
+
 ```csharp
 var repo = fsql.GetRepository<Blog>();
 repo.Insert(blog);
 ```
+
 > 内部会将插入后的自增值填充给 blog.Id
 
 ## 2、批量插入
 
 ```csharp
 var t2 = fsql.Insert(items).ExecuteAffrows();
-//INSERT INTO `Topic`(`Clicks`, `Title`, `CreateTime`) 
-//VALUES(?Clicks0, ?Title0, ?CreateTime0), (?Clicks1, ?Title1, ?CreateTime1), 
-//(?Clicks2, ?Title2, ?CreateTime2), (?Clicks3, ?Title3, ?CreateTime3), 
-//(?Clicks4, ?Title4, ?CreateTime4), (?Clicks5, ?Title5, ?CreateTime5), 
-//(?Clicks6, ?Title6, ?CreateTime6), (?Clicks7, ?Title7, ?CreateTime7), 
+//INSERT INTO `Topic`(`Clicks`, `Title`, `CreateTime`)
+//VALUES(?Clicks0, ?Title0, ?CreateTime0), (?Clicks1, ?Title1, ?CreateTime1),
+//(?Clicks2, ?Title2, ?CreateTime2), (?Clicks3, ?Title3, ?CreateTime3),
+//(?Clicks4, ?Title4, ?CreateTime4), (?Clicks5, ?Title5, ?CreateTime5),
+//(?Clicks6, ?Title6, ?CreateTime6), (?Clicks7, ?Title7, ?CreateTime7),
 //(?Clicks8, ?Title8, ?CreateTime8), (?Clicks9, ?Title9, ?CreateTime9)
 ```
 
@@ -73,7 +76,7 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 | Sqlite     | 5000 | 999    |
 
 > 数量：为每批分割的大小，如批量插入 10000 条数据，在 mysql 执行时会分割为两批。<br />
-> 参数量：为每批分割的参数量大小，如批量插入 10000 条数据，每行需要使用 5 个参数化，在  mysql 执行时会分割为每批 3000 / 5。
+> 参数量：为每批分割的参数量大小，如批量插入 10000 条数据，每行需要使用 5 个参数化，在 mysql 执行时会分割为每批 3000 / 5。
 
 分割执行后，当外部未提供事务时，内部自开事务，实现插入完整性。也可以通过 BatchOptions 设置合适的值。
 
@@ -83,7 +86,7 @@ FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批
 
 Bulk Copy 操作以扩展方法的形式实现，针对 SqlServer/PostgreSQL/MySql 数据库，可用的包：FreeSql.Provider.SqlServer/FreeSql.Provider.PostgreSQL/FreeSql.Provider.MySqlConnector。
 
-### 批量插入测试参考(52个字段)
+### 批量插入测试参考(52 个字段)
 
 |                                      | 18W     | 1W     | 5K     | 2K    | 1K    | 500 | 100 | 50  |
 | ------------------------------------ | ------- | ------ | ------ | ----- | ----- | --- | --- | --- |
@@ -94,9 +97,9 @@ Bulk Copy 操作以扩展方法的形式实现，针对 SqlServer/PostgreSQL/MyS
 | PostgreSQL 10 ExecuteAffrows         | 46,756  | 3,294  | 2,269  | 1,019 | 374   | 209 | 51  | 37  |
 | PostgreSQL 10 ExecutePgCopy          | 10,090  | 583    | 337    | 136   | 88    | 61  | 30  | 25  |
 
-> 18W 解释：插入18万行记录，表格中的数字是执行时间（单位ms）
+> 18W 解释：插入 18 万行记录，表格中的数字是执行时间（单位 ms）
 
-### 批量插入测试参考(10个字段)
+### 批量插入测试参考(10 个字段)
 
 |                                      | 18W    | 1W    | 5K    | 2K  | 1K  | 500 | 100 | 50  |
 | ------------------------------------ | ------ | ----- | ----- | --- | --- | --- | --- | --- |
@@ -113,15 +116,15 @@ Bulk Copy 操作以扩展方法的形式实现，针对 SqlServer/PostgreSQL/MyS
 
 ```csharp
 var t3 = fsql.Insert(items).InsertColumns(a => a.Title).ExecuteAffrows();
-//INSERT INTO `Topic`(`Title`) 
-//VALUES(?Title0), (?Title1), (?Title2), (?Title3), (?Title4), 
+//INSERT INTO `Topic`(`Title`)
+//VALUES(?Title0), (?Title1), (?Title2), (?Title3), (?Title4),
 //(?Title5), (?Title6), (?Title7), (?Title8), (?Title9)
 
 var t4 = fsql.Insert(items).InsertColumns(a =>new { a.Title, a.Clicks }).ExecuteAffrows();
-//INSERT INTO `Topic`(`Clicks`, `Title`) 
-//VALUES(?Clicks0, ?Title0), (?Clicks1, ?Title1), (?Clicks2, ?Title2), 
-//(?Clicks3, ?Title3), (?Clicks4, ?Title4), (?Clicks5, ?Title5), 
-//(?Clicks6, ?Title6), (?Clicks7, ?Title7), (?Clicks8, ?Title8), 
+//INSERT INTO `Topic`(`Clicks`, `Title`)
+//VALUES(?Clicks0, ?Title0), (?Clicks1, ?Title1), (?Clicks2, ?Title2),
+//(?Clicks3, ?Title3), (?Clicks4, ?Title4), (?Clicks5, ?Title5),
+//(?Clicks6, ?Title6), (?Clicks7, ?Title7), (?Clicks8, ?Title8),
 //(?Clicks9, ?Title9)
 ```
 
@@ -129,15 +132,15 @@ var t4 = fsql.Insert(items).InsertColumns(a =>new { a.Title, a.Clicks }).Execute
 
 ```csharp
 var t5 = fsql.Insert(items).IgnoreColumns(a => a.CreateTime).ExecuteAffrows();
-//INSERT INTO `Topic`(`Clicks`, `Title`) 
-//VALUES(?Clicks0, ?Title0), (?Clicks1, ?Title1), (?Clicks2, ?Title2), 
-//(?Clicks3, ?Title3), (?Clicks4, ?Title4), (?Clicks5, ?Title5), 
-//(?Clicks6, ?Title6), (?Clicks7, ?Title7), (?Clicks8, ?Title8), 
+//INSERT INTO `Topic`(`Clicks`, `Title`)
+//VALUES(?Clicks0, ?Title0), (?Clicks1, ?Title1), (?Clicks2, ?Title2),
+//(?Clicks3, ?Title3), (?Clicks4, ?Title4), (?Clicks5, ?Title5),
+//(?Clicks6, ?Title6), (?Clicks7, ?Title7), (?Clicks8, ?Title8),
 //(?Clicks9, ?Title9)
 
 var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).ExecuteAffrows();
-///INSERT INTO `Topic`(`Clicks`) 
-//VALUES(?Clicks0), (?Clicks1), (?Clicks2), (?Clicks3), (?Clicks4), 
+///INSERT INTO `Topic`(`Clicks`)
+//VALUES(?Clicks0), (?Clicks1), (?Clicks2), (?Clicks3), (?Clicks4),
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
@@ -162,6 +165,7 @@ dic.Add("name", "xxxx");
 
 fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
 ```
+
 ## 8、导入表数据
 
 ```csharp
@@ -175,8 +179,8 @@ int affrows = fsql.Select<Topic>()
 
 ```sql
 INSERT INTO `Topic2`(`Title`, `Clicks`, `CreateTime`)
-SELECT a.`Title`, 0, '0001-01-01 00:00:00' 
-FROM `Topic` a 
+SELECT a.`Title`, 0, '0001-01-01 00:00:00'
+FROM `Topic` a
 limit 10
 ```
 
@@ -186,8 +190,8 @@ limit 10
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
-///INSERT IGNORE INTO `Topic`(`Clicks`) 
-//VALUES(?Clicks0), (?Clicks1), (?Clicks2), (?Clicks3), (?Clicks4), 
+///INSERT IGNORE INTO `Topic`(`Clicks`)
+//VALUES(?Clicks0), (?Clicks1), (?Clicks2), (?Clicks3), (?Clicks4),
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
@@ -195,10 +199,11 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
-///INSERT IGNORE INTO `Topic`(`Clicks`) 
-//VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4), 
+///INSERT IGNORE INTO `Topic`(`Clicks`)
+//VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4),
 //(@Clicks5), (@Clicks6), (@Clicks7), (@Clicks8), (@Clicks9)
 ```
+
 ## API
 
 | 方法                 | 返回值                     | 参数                    | 描述                                                  |
@@ -210,11 +215,11 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 | CommandTimeout       | \<this\>                   | int                     | 命令超时设置(秒)                                      |
 | WithTransaction      | \<this\>                   | DbTransaction           | 设置事务对象                                          |
 | WithConnection       | \<this\>                   | DbConnection            | 设置连接对象                                          |
-| ToSql                | string                     |                         | 返回即将执行的SQL语句                                 |
+| ToSql                | string                     |                         | 返回即将执行的 SQL 语句                               |
 | OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能，On Duplicate Key Update             |
 | OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能，On Conflict Do Update          |
-| ExecuteAffrows       | long                       |                         | 执行SQL语句，返回影响的行数                           |
-| ExecuteIdentity      | long                       |                         | 执行SQL语句，返回自增值                               |
-| ExecuteInserted      | List\<T1\>                 |                         | 执行SQL语句，返回插入后的记录                         |
+| ExecuteAffrows       | long                       |                         | 执行 SQL 语句，返回影响的行数                         |
+| ExecuteIdentity      | long                       |                         | 执行 SQL 语句，返回自增值                             |
+| ExecuteInserted      | List\<T1\>                 |                         | 执行 SQL 语句，返回插入后的记录                       |
 | ExecuteSqlBulkCopy   | void                       |                         | SqlServer 特有的功能，执行 SqlBulkCopy 批量插入的封装 |
 | ExecutePgCopy        | void                       |                         | PostgreSQL 特有的功能，执行 Copy 批量导入数据         |

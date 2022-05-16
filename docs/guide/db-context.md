@@ -1,6 +1,8 @@
 ---
 ---
+
 # DbContext
+
 FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终通过 SaveChanges 方法提交事务。
 
 ## 特性
@@ -16,7 +18,8 @@ FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终
 
 ## 如何使用
 
-0、通用方法，为啥是0？？？
+0、通用方法，为啥是 0？？？
+
 ```csharp
 using (var ctx = fsql.CreateDbContext()) {
   //var db1 = ctx.Set<Song>();
@@ -42,7 +45,7 @@ public class SongContext : DbContext {
     builder.UseFreeSql(GlobalVar.fsql);
     //这里直接指定一个静态的 IFreeSql 对象即可，切勿重新 Build()
   }
-  
+
   //每个 DbContext 只触发一次
   protected override void OnModelCreating(ICodeFirst codefirst)
   {
@@ -261,16 +264,18 @@ public class ChangeInfo {
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```
 
-| 变化类型 | 说明           |
-| -------- | -------------- |
-| Insert   | 实体对象被插入 |
-| Update   | 实体对象被更新 |
-| Delete   | 实体对象被删除 |
-| SqlRaw   | 执行了SQL语句  |
+| 变化类型 | 说明            |
+| -------- | --------------- |
+| Insert   | 实体对象被插入  |
+| Update   | 实体对象被更新  |
+| Delete   | 实体对象被删除  |
+| SqlRaw   | 执行了 SQL 语句 |
 
 SqlRaw 目前有两处地方比较特殊：
+
 - 多对多联级更新导航属性的时候，对中间表的全部删除操作；
 - 通用仓储类 BaseRepository 有一个 Delete 方法，参数为表达式，而并非实体；
+
 ```csharp
 int Delete(Expression<Func<TEntity, bool>> predicate);
 ```

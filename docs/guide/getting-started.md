@@ -20,35 +20,42 @@ public class Blog {
 }
 ```
 
-
 ## 安装包
+
 FreeSql.Provider.xxx([可选的驱动](install.md))
 :::: code-group
 ::: code-group-item .NET CLI
+
 ```bash
 dotnet add packages FreeSql
 dotnet add packages FreeSql.Provider.Sqlite
 ```
+
 :::
 ::: code-group-item Package Manager
+
 ```bash
 Install-Package FreeSql
 Install-Package FreeSql.Provider.Sqlite
 ```
+
 :::
 ::::
+
 ## 声明
+
 ```csharp
 IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
     .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
     .Build(); //请务必定义成 Singleton 单例模式
-    
+
     //注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
 ```
 
 - .NET Core 单例
-Startup.cs
+  Startup.cs
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -59,8 +66,10 @@ public void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IFreeSql>(fsql);
 }
 ```
-- [.NET Core注入多个FreeSql实例](https://github.com/dotnetcore/FreeSql/issues/44)
+
+- [.NET Core 注入多个 FreeSql 实例](https://github.com/dotnetcore/FreeSql/issues/44)
 - .NET Framework 单例
+
 ```csharp
 public class DB
 {
@@ -140,19 +149,19 @@ fsql.Delete<Blog>()
 
 # FreeSqlBuilder
 
-| 方法                                  | 返回值        | 说明                                                                                          |
-| ------------------------------------- | ------------- | --------------------------------------------------------------------------------------------- |
-| UseConnectionString                   | this          | 设置连接串                                                                                    |
-| UseSlave                              | this          | 设置从数据库，支持多个                                                                        |
-| UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                            |
-| UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                  |
-| UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()        |
-| UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                    |
-| UseLazyLoading                        | this          | 开启延时加载功能                                                                              |
-| UseMonitorCommand                     | this          | 监视全局 SQL 执行前后                                                                         |
-| UseNameConvert                        | this          | 自动转换名称 Entity -\> Db                                                                    |
-| UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认true) |
-| Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                          |
+| 方法                                  | 返回值        | 说明                                                                                           |
+| ------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| UseConnectionString                   | this          | 设置连接串                                                                                     |
+| UseSlave                              | this          | 设置从数据库，支持多个                                                                         |
+| UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                             |
+| UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                   |
+| UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()         |
+| UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                     |
+| UseLazyLoading                        | this          | 开启延时加载功能                                                                               |
+| UseMonitorCommand                     | this          | 监视全局 SQL 执行前后                                                                          |
+| UseNameConvert                        | this          | 自动转换名称 Entity -\> Db                                                                     |
+| UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认 true) |
+| Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                           |
 
 # ConnectionStrings
 
@@ -175,4 +184,3 @@ fsql.Delete<Blog>()
 | DataType.OdbcDameng (达梦)         | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789                                                                    |
 | DataType.OdbcKingbaseES (人大金仓) | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST                                                                                      |
 | DataType.Odbc                      | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1                              |
-

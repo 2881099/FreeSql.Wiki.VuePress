@@ -1,16 +1,17 @@
 # 新增和修改
+
 ## 1、IFreeSql.InsertOrUpdate
 
 IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用数据库特性：(v1.5.0+)
 
-| Database | Features | | Database | Features |
-| -- | -- | -- | -- | -- |
-| MySql | on duplicate key update | | 达梦 | merge into |
-| PostgreSQL | on conflict do update | | 人大金仓 | on conflict do update |
-| SqlServer | merge into | | 神通 | merge into |
-| Oracle | merge into | | 南大通用 | merge into |
-| Sqlite | replace into | | MsAccess | 不支持 |
-| Firebird | merge into | | | |
+| Database   | Features                |     | Database | Features              |
+| ---------- | ----------------------- | --- | -------- | --------------------- |
+| MySql      | on duplicate key update |     | 达梦     | merge into            |
+| PostgreSQL | on conflict do update   |     | 人大金仓 | on conflict do update |
+| SqlServer  | merge into              |     | 神通     | merge into            |
+| Oracle     | merge into              |     | 南大通用 | merge into            |
+| Sqlite     | replace into            |     | MsAccess | 不支持                |
+| Firebird   | merge into              |     |          |                       |
 
 ```csharp
 fsql.InsertOrUpdate<T>()
@@ -97,7 +98,7 @@ class BeginEdit01
 INSERT INTO "BeginEdit01"("Id", "Name") VALUES('5f26bf07-6ac3-cbe8-00da-7dd74818c3a6', '分类2_3')
 
 
-UPDATE "BeginEdit01" SET "Name" = '123123' 
+UPDATE "BeginEdit01" SET "Name" = '123123'
 WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd01be76e26')
 
 
@@ -128,20 +129,20 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = VALUES(`time`)
 ```
 
 OnDuplicateKeyUpdate() 之后可以调用的方法：
 
-| 方法名 | 描述 |
-| -- | -- |
-| IgnoreColumns | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
-| UpdateColumns | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
-| Set | 手工指定更新的列，与 IUpdate.Set 功能一样 |
-| SetRaw | 作为 Set 方法的补充，可传入 SQL 字符串 |
-| ToSql | 返回即将执行的 SQL 语句 |
-| ExecuteAffrows | 执行，返回影响的行数 |
+| 方法名         | 描述                                            |
+| -------------- | ----------------------------------------------- |
+| IgnoreColumns  | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
+| UpdateColumns  | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
+| Set            | 手工指定更新的列，与 IUpdate.Set 功能一样       |
+| SetRaw         | 作为 Set 方法的补充，可传入 SQL 字符串          |
+| ToSql          | 返回即将执行的 SQL 语句                         |
+| ExecuteAffrows | 执行，返回影响的行数                            |
 
 IInsert 与 OnDuplicateKeyUpdate 都有 IgnoreColumns、UpdateColumns 方法。
 
@@ -154,7 +155,7 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = '2000-01-01 00:00:00.000'
 ```
 
@@ -191,10 +192,9 @@ fsql.Insert(items)
     .OnConflictDoUpdate().ToSql();
 //INSERT INTO ""testonconflictdoupdateinfo""(""id"", ""title"") VALUES(200, 'title-200'), (201, 'title-201'), (202, 'title-202')
 //ON CONFLICT(""id"") DO UPDATE SET
-//""title"" = EXCLUDED.""title"", 
-//""time"" = CASE EXCLUDED.""id"" 
-//WHEN 200 THEN '2000-01-01 00:00:00.000000' 
-//WHEN 201 THEN '2000-01-01 00:00:00.000000' 
+//""title"" = EXCLUDED.""title"",
+//""time"" = CASE EXCLUDED.""id""
+//WHEN 200 THEN '2000-01-01 00:00:00.000000'
+//WHEN 201 THEN '2000-01-01 00:00:00.000000'
 //WHEN 202 THEN '2000-01-01 00:00:00.000000' END::timestamp
 ```
-

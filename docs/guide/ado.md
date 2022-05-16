@@ -16,7 +16,7 @@ var result = fsql.Ado.Query<T1, T2>("select * from t1; select * from t2");
 List<T1> list1 = result.Item1;
 List<T2> list2 = result.Item2;
 
-// like 查询 
+// like 查询
 string searchText = "abc";
 List<T> users = _fsql.Ado.Query<T>("select * from t1 where name like @name", new { name = "%" + searchText + "%" });
 ```
@@ -30,7 +30,7 @@ Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典�
 
 关于参数前缀：
 
-- odbc 是 ? 并且没有标识，所以freesql禁用了 odbc 参数化
+- odbc 是 ? 并且没有标识，所以 freesql 禁用了 odbc 参数化
 - oracle 是 :
 - mysql.data 是 ?
 - mysqlconnector 是 @
@@ -38,7 +38,8 @@ Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典�
 
 IN 参数化查询：
 
-> 当前仅支持Array和IList类型绑定
+> 当前仅支持 Array 和 IList 类型绑定
+
 ```c#
 var ids = new int[] { 1,2,3 };
 List<T> list = fsql.Ado.Query<T>("select * from t1 where id in @ids", new { ids = ids });

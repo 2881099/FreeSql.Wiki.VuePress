@@ -1,9 +1,9 @@
-
 # WithSql
 
-# WithSql 自定义SQL
+## WithSql 自定义 SQL
 
 定义实体类
+
 ```csharp
     public class TestClass
     {
@@ -32,12 +32,13 @@
 ```
 
 不同的查询方式。
+
 - 返回`DataTable`
 - 返回`List<Tuplue>` 即`List<(string,string)>`元组
 - 返回`List<object>` 且能支持分页
 - 返回`List<TestClassDto>`且能支持分页
 
-### 1.返回DataTable
+### 1.返回 DataTable
 
 ```csharp
 DataTable dt1 = _fsql.Select<object>()
@@ -46,19 +47,20 @@ DataTable dt1 = _fsql.Select<object>()
 ```
 
 ```sql
-SELECT ID,Age 
+SELECT ID,Age
     FROM(select * from TestClass  ) a
 ```
 
-### 2.返回DataTable
+### 2.返回 DataTable
 
 ```csharp
 DataTable dt2 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
     .ToDataTable("*");
 ```
+
 ```sql
-SELECT * 
+SELECT *
 FROM ( select * from TestClass  ) a
 ```
 
@@ -83,6 +85,7 @@ var list2 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
     .ToList<object>("*");
 ```
+
 ```sql
 SELECT *
     FROM(select * from TestClass  ) a
@@ -97,6 +100,7 @@ SELECT *
     .Page(1, 10).OrderBy("ID DESC")
     .ToList<object>("ID,Age");
 ```
+
 ```sql
 SELECT ID, Age
     FROM(select * from TestClass  ) a
@@ -124,8 +128,7 @@ SELECT ID,Age,BIRTH_DAY as Birthday
     limit 0,10
 ```
 
-
-## 通过 WithSql+ ToSQL实现 Union ALL 查询方法
+## 通过 WithSql+ ToSQL 实现 Union ALL 查询方法
 
 ### 1、二次 ISelect 查询：WithSql 使用多次，等于 UNION ALL 查询
 
@@ -146,16 +149,16 @@ fsql.Select<Topic>()
 ```
 
 ```sql
-SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM `tb_topic` a 
+SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+    FROM `tb_topic` a
     WHERE ((a.`Title`) LIKE '%xxx%') ) a) ftb
- 
+
 UNION ALL
- 
-SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM `tb_topic` a 
+
+SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+    FROM `tb_topic` a
     WHERE ((a.`Title`) LIKE '%yyy%') ) a) ftb
 ```
 
@@ -169,9 +172,9 @@ var sql = fsql.Select<User>()
 ```
 
 ```sql
-select * from (SELECT a."Id" as1 FROM "table_1" a) ftb 
+select * from (SELECT a."Id" as1 FROM "table_1" a) ftb
 UNION ALL
-select * from (SELECT a."Id" as1 FROM "table_2" a) ftb 
+select * from (SELECT a."Id" as1 FROM "table_2" a) ftb
 ```
 
 ### 3、利用 ToSql 拼接新的 SQL，使用 IAdo 执行
@@ -192,7 +195,7 @@ fsql.Ado.CommandFluent($"{sql1} UNION ALL {sql2}")
 
 Union All 之后 如果直接 分页会有一个问题。请看具体示例
 
-多次 WithSql + Page 存在问题：每个WithSql内都有一个Page分页
+多次 WithSql + Page 存在问题：每个 WithSql 内都有一个 Page 分页
 
 ```csharp
 var sql1 = fsql.Select<Topic>()
@@ -206,33 +209,33 @@ fsql.Select<Topic>().WithSql(sql1).WithSql(sql2).Page(1, 20).ToList();
 ```
 
 ```sql
- SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-        FROM `tb_topic` a 
-        WHERE ((a.`Title`) LIKE '%xxx%') ) a 
+ SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+        FROM `tb_topic` a
+        WHERE ((a.`Title`) LIKE '%xxx%') ) a
     limit 0,20) ftb
-    
+
     UNION ALL
-    
-    SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-        FROM `tb_topic` a 
-        WHERE ((a.`Title`) LIKE '%yyy%') ) a 
+
+    SELECT  * from (SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+    FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
+        FROM `tb_topic` a
+        WHERE ((a.`Title`) LIKE '%yyy%') ) a
     limit 0,20) ftb
 
 ```
 
-多个sql union all使用withsql，直接Page分页，会导致每个子表都生效，子表都生成分页。
+多个 sql union all 使用 withsql，直接 Page 分页，会导致每个子表都生效，子表都生成分页。
 
 WithSql 可以和 AsTable 实现分表的功能。
 
 分表跨表查询的时候，分页是要向每个子表（即每个 WithSql 中的 SQL 分页）都生效。
 
-## 解决方案
+### 解决方案
 
 多次 withsql ，如需分页，需要按下面的二步操作
 
-- 第一步：通过witsql，将二个sql组成一个sql。
+- 第一步：通过 witsql，将二个 sql 组成一个 sql。
 
 ```csharp
  var sql = fsql.Select<Topic>()
@@ -244,12 +247,12 @@ WithSql 可以和 AsTable 实现分表的功能。
 如上生成的 UOION ALL 的 sql
 
 ```sql
-SELECT  * from (SELECT * 
+SELECT  * from (SELECT *
     FROM ( SELECT * FROM tb_topic where id > 11 ) a) ftb
 
     UNION ALL
 
-    SELECT  * from (SELECT * 
+    SELECT  * from (SELECT *
     FROM ( SELECT * FROM tb_topic where id < 10 ) a) ftb
 ```
 
@@ -270,6 +273,6 @@ FROM ( SELECT  * from (SELECT *
     UNION ALL
 
     SELECT  * from (SELECT *
-    FROM ( SELECT * FROM tb_topic where id < 10 ) a) ftb ) a 
+    FROM ( SELECT * FROM tb_topic where id < 10 ) a) ftb ) a
 limit 10,10
 ```

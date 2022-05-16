@@ -18,7 +18,7 @@ pnpm install
 pnpm dev:vite
 ```
 
-## build 
+## build
 
 ```bash
 pnpm build:vite

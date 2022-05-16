@@ -1,7 +1,7 @@
 # AOP✨
 
 FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。
-  
+
 ## 审计 CRUD
 
 如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
@@ -9,9 +9,9 @@ FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强�
 FreeSql 支持简单的类似功能：
 
 ```csharp
-fsql.Aop.CurdAfter += (s, e) => 
+fsql.Aop.CurdAfter += (s, e) =>
 {
-    if (e.ElapsedMilliseconds > 200) 
+    if (e.ElapsedMilliseconds > 200)
     {
         //记录日志
         //发送短信给负责人
@@ -28,10 +28,10 @@ fsql.Aop.CurdAfter += (s, e) =>
 实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。
 
 ```csharp
-fsql.Aop.AuditValue += (s, e) => 
+fsql.Aop.AuditValue += (s, e) =>
 {
-    if (e.Column.CsType == typeof(long) && 
-        e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null && 
+    if (e.Column.CsType == typeof(long) &&
+        e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null &&
         e.Value?.ToString() == "0")
         e.Value = new Snowflake().GetId();
 };
@@ -42,7 +42,8 @@ class Order {
     //...
 }
 ```
-> 当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花id值。
+
+> 当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花 id 值。
 
 > 说明：SnowflakeAttribute 是使用者您来定义，new Snowflake().GetId() 也是由使用者您来实现
 
@@ -57,6 +58,7 @@ fsql.Aop.CommandBefore、fsql.Aop.CommandAfterHandler 这两个事件触发所�
 建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。
 
 > 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
+
 ```csharp
 fsql1.Aop.CommandAfter += new EventHandler<CommandAfterEventArgs>((s, e) =>
 {
@@ -67,6 +69,7 @@ fsql1.Aop.CommandAfter += new EventHandler<CommandAfterEventArgs>((s, e) =>
    }
 });
 ```
+
 ## 审计迁移脚本
 
 FreeSql 自带迁移功能，那么迁移的 SQL 语句长啥样，你可能会好奇。
@@ -98,13 +101,13 @@ FreeSql 提供 AOP 自定义特性功能，实现与多个 orm 共同拥有一�
 > v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column
 
 ```csharp
-fsql.Aop.ConfigEntity += (s, e) => 
+fsql.Aop.ConfigEntity += (s, e) =>
 {
     var attr = e.EntityType.GetCustomAttributes(typeof(MyTableAttribute), false).FirstOrDefault() as MyTableAttribute;
     if (attr != null)
         e.ModifyResult.Name = attr.Name; //表名
 };
-fsql.Aop.ConfigEntityProperty += (s, e) => 
+fsql.Aop.ConfigEntityProperty += (s, e) =>
 {
     var attr = e.Property.GetCustomAttributes(typeof(MyColumnAttribute), false).FirstOrDefault() as MyColumnAttribute;
     if (attr != null)
@@ -126,7 +129,7 @@ class MyTableAttribute : Attribute
       this.Name = name;
     }
 }
-class MyColumnAttribute : Attribute 
+class MyColumnAttribute : Attribute
 {
     public string Name { get; }
     public MyColumnAttribute(string name)
@@ -141,7 +144,7 @@ class MyColumnAttribute : Attribute
 ```csharp
 fsql.Aop.AuditDataReader += (_, e) =>
 {
-    if (e.DataReader.GetFieldType(e.Index) == typeof(string) && 
+    if (e.DataReader.GetFieldType(e.Index) == typeof(string) &&
       e.Value == DBNull.Value)
         e.Value = "";
 };
@@ -165,9 +168,10 @@ fsql.Aop.ParseExpression += (s, e) =>
 
 这个解析有点复杂，当 `e.Expression` 很复杂的时候，我们还提供了 `e.FreeParse` 方法，使用它相当于调用 `FreeSql` 内置表达式解析引擎，辅助您进行解析。
 
+## 修改 decimal 默认特性
 
-## 修改decimal默认特性
-因为默认decimal只支持decimal(10,2)，范围太小，我们可以全局修改decimal类型的支持范围，比如支持decimal(18,6)
+因为默认 decimal 只支持 decimal(10,2)，范围太小，我们可以全局修改 decimal 类型的支持范围，比如支持 decimal(18,6)
+
 ```csharp
 fsql1.Aop.ConfigEntityProperty += (s, e) =>
 {
@@ -178,4 +182,3 @@ fsql1.Aop.ConfigEntityProperty += (s, e) =>
     }
 };
 ```
-

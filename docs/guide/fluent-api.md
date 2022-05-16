@@ -4,7 +4,7 @@ FreeSql 提供使用 Fluent Api， 在外部配置实体的数据库特性，Flu
 
 ```csharp
 fsql.CodeFirst
-    .ConfigEntity<TestFluenttb1>(a => 
+    .ConfigEntity<TestFluenttb1>(a =>
     {
         a.Name("xxdkdkdk1");
         a.Property(b => b.Id).Name("Id22").IsIdentity(true);

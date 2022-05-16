@@ -1,7 +1,8 @@
 # 事务
+
 本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：https://github.com/2881099/FreeSql.Cloud
 
-## 0、[ASP.NET Core配置DI使用UnitOfWorkManager，此方法更简单](DI-UnitOfWorkManager事务)
+## 0、[ASP.NET Core 配置 DI 使用 UnitOfWorkManager，此方法更简单](DI-UnitOfWorkManager事务)
 
 ## 1、UnitOfWork 事务
 
@@ -33,7 +34,7 @@ using (var uow = fsql.CreateUnitOfWork())
 using (var ctx = fsql.CreateDbContext()) {
   var song = ctx.Set<Song>();
   var user = ctx.Set<User>();
-  
+
   song.Add(new Song());
   user.Update(...);
 
@@ -45,7 +46,7 @@ using (var ctx = fsql.CreateDbContext()) {
 
 同线程事务，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步），比较适合 WinForm/WPF UI 主线程使用事务的场景。
 
-用户购买了价值100元的商品：扣余额、扣库存。
+用户购买了价值 100 元的商品：扣余额、扣库存。
 
 ```csharp
 fsql.Transaction(() =>  {
@@ -55,7 +56,7 @@ fsql.Transaction(() =>  {
     .Set(a => a.Wealth - 100)
     .Where(a => a.Wealth >= 100).ExecuteAffrows();
     //判断别让用户余额扣成负数
-    
+
   if (affrows < 1)
     throw new Exception("用户余额不足");
     //抛出异常，回滚事务，事务退出
@@ -64,7 +65,7 @@ fsql.Transaction(() =>  {
     .Set(a => a.Stock - 1)
     .Where(a => a.Stock >= 1).ExecuteAffrows();
     //判断别让用库存扣成负数
-    
+
   if (affrows < 1)
     throw new Exception("商品库存不足");
     //抛出异常，回滚事务，事务退出
@@ -75,7 +76,7 @@ fsql.Transaction(() =>  {
 
 - 事务对象在线程挂载，每个线程只可开启一个事务连接，嵌套使用的是同一个事务；
 
-- 事务体内代码不可以切换线程，因此不可使用任何异步方法，包括FreeSql提供的数据库异步方法（可以使用任何 Curd 同步方法）；
+- 事务体内代码不可以切换线程，因此不可使用任何异步方法，包括 FreeSql 提供的数据库异步方法（可以使用任何 Curd 同步方法）；
 
 ## 4、外部事务
 
