@@ -85,7 +85,7 @@ export const zhSidebarConfig = sidebar({
     "/reference/": [{
         text: "参考",
         prefix: "/reference/",
-        link: "/reference/",
+        link: "/reference/api.md",
         icon: "plugin",
         children: [{
             text: '参考',

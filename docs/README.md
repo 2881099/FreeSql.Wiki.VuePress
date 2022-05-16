@@ -25,6 +25,7 @@ features:
   link: /guide/db-first
 - title: 类型映射
   details: ⛳ 支持 深入的类型映射，比如 PgSql 的数组类型等；
+  link: /guide/type-mapping
 - title: 导航属性
   details: 🏁 支持 导航属性一对多、多对多贪婪加载，以及延时加载；
   link: /guide/navigate-attribute

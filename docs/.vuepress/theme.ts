@@ -10,7 +10,6 @@ export default hopeTheme({
     docsBranch: "main",
     docsDir: 'docs',
     iconPrefix: "iconfont icon-",
-    headerDepth: 3,
     locales: {
         "/": {
             navbar: zhNavbarConfig,

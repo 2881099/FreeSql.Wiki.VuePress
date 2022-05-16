@@ -1,4 +1,4 @@
-import { defineUserConfig } from "vuepress";
+import { defineUserConfig } from "@vuepress/cli";
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 export default defineUserConfig({
@@ -35,26 +35,13 @@ export default defineUserConfig({
                 href: `/favicon-32x32.png`,
             },
         ],
-        ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }],
-        ['meta', { name: 'application-name', content: 'VuePress' }],
-        ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
-        [
-            'meta',
-            { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-        ],
-        [
-            'link',
-            { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
-        ],
-        ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         // ...其他标签
     ],
     theme,
     plugins: [
-        docsearchPlugin({
-            apiKey: "d33b85d622e4b61625bf17443031804c",
+        docsearchPlugin({   
+            appId: "8QM97XX5VE",
+            apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
             indexName: "freesql",
             locales: {
                 "/zh/": {

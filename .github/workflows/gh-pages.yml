@@ -38,7 +38,7 @@ jobs:
       - name: Build Docs
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm run docs:build
+        run: pnpm run build:vite
 
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4

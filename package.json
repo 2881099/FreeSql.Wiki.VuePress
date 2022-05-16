@@ -4,15 +4,30 @@
     "description": "A project of vuepress-theme-hope",
     "license": "MIT",
     "scripts": {
-        "docs:build": "vuepress build docs",
-        "docs:clean-dev": "vuepress dev docs --clean-cache",
-        "docs:dev": "vuepress dev docs"
+        "build:vite": "vuepress-vite build docs",
+        "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
+        "build:webpack": "vuepress-webpack build docs",
+        "build:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack build docs",
+        "dev:vite": "vuepress-vite dev docs",
+        "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
+        "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
+        "dev:webpack": "vuepress-webpack dev docs",
+        "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
+        "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
+        "lint": "prettier --check --write .",
+        "lint:check": "prettier --check .",
+        "lint-md": "markdownlint **/*.md --ignore node_modules --fix",
+        "test": "echo \"Warning: no test specified\" && exit 0"
+    },
+    "dependencies": {
+        "@vuepress/cli": "2.0.0-beta.43",
+        "@vuepress/client": "2.0.0-beta.43",
+        "@vuepress/plugin-docsearch": "2.0.0-beta.43",
+        "vue": "3.2.33",
+        "vuepress-theme-hope": "2.0.0-beta.53",
+        "vuepress-vite": "2.0.0-beta.43",
+        "vuepress-webpack": "2.0.0-beta.43"
     },
     "devDependencies": {
-        "@vuepress/client": "^2.0.0-beta.45",
-        "@vuepress/plugin-docsearch": "^2.0.0-beta.45",
-        "vue": "^3.2.33",
-        "vuepress": "^2.0.0-beta.45",
-        "vuepress-theme-hope": "^2.0.0-beta.58"
     }
 }
