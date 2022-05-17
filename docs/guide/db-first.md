@@ -8,14 +8,14 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .Build(); //请务必定义成 Singleton 单例模式
 ```
 
-### 获取所有数据库
+## 获取所有数据库
 
 ```csharp
 var t1 = fsql.DbFirst.GetDatabases();
 //返回字符串数组, ["cccddd", "test"]
 ```
 
-### 获取指定数据库的表信息
+## 获取指定数据库的表信息
 
 ```csharp
 var t2 = fsql.DbFirst.GetTablesByDatabase(fsql.DbFirst.GetDatabases()[0]);

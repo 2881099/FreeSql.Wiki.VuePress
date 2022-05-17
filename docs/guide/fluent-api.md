@@ -1,6 +1,11 @@
 # 流式接口
 
-FreeSql 提供使用 Fluent Api， 在外部配置实体的数据库特性，Fluent Api 的方法命名与特性名保持一致，如下：
+## 支持 Fluent API
+
+FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置实体的数据库特性。`Fluent Api` 的方法命名与特性名保持一致，共三种使用方法，选择**一种即可**：
+
+> fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：[《实体特性说明》](entity-attribute.md)
+## ConfigEntity
 
 ```csharp
 fsql.CodeFirst
@@ -30,13 +35,9 @@ class TestFluenttb2 {
 }
 ```
 
-> fsql 是一个 IFreeSql 对象
-
-> 这段配置尽量只执行一次，避免性能损耗
-
-参考：[《实体特性说明》](entity-attribute.md)
-
 > FreeSql.DbContext v1.4.0+ 实现了 EfCore FluentApi 99% 相似的语法
+
+## Entity
 
 ```csharp
 fsql.CodeFirst.Entity<Song>(eb => {
@@ -103,6 +104,54 @@ public class Song {
     public int Field1 { get; set; }
     public long RowVersion { get; set; }
 }
+```
+
+## IEntityTypeConfiguration
+
+以继承接口`IEntityTypeConfiguration`形式配置实体的。
+
+- .NET Framework4.0 不支持
+
+### 实体配置类
+
+```csharp
+public class SongConfiguration : IEntityTypeConfiguration<Song>
+{
+    public void Configure(EfCoreTableFluent<Song> eb)
+    {
+        eb.ToTable("tb_song1");
+        eb.Ignore(a => a.Field1);
+        eb.Property(a => a.Title).HasColumnType("varchar(50)").IsRequired();
+        eb.Property(a => a.Url).HasMaxLength(100);
+
+        eb.Property(a => a.RowVersion).IsRowVersion();
+        eb.Property(a => a.CreateTime).HasDefaultValueSql("current_timestamp");
+
+        eb.HasKey(a => a.Id);
+        eb.HasIndex(a => a.Title).IsUnique().HasName("idx_tb_song1111");
+
+        //一对多、多对一
+        eb.HasOne(a => a.Type).HasForeignKey(a => a.TypeId).WithMany(a => a.Songs);
+
+        //多对多
+        eb.HasMany(a => a.Tags).WithMany(a => a.Songs, typeof(Song_tag));
+    }
+}
+
+```
+
+### 二种使用方式
+
+1.单个配置
+
+```csharp
+fsql.CodeFirst.ApplyConfiguration(new SongConfiguration());
+```
+
+2.批量配置
+
+```csharp
+fsql.CodeFirst.ApplyConfigurationsFromAssembly(typeof(SongConfiguration).Assembly);
 ```
 
 ## 优先级

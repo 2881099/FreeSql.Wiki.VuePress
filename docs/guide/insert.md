@@ -80,7 +80,7 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 
 分割执行后，当外部未提供事务时，内部自开事务，实现插入完整性。也可以通过 BatchOptions 设置合适的值。
 
-FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批量插入建议关闭参数化功能，使用 .NonoParameter() 进行执行。
+FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批量插入建议关闭参数化功能，使用 .NoneParameter() 进行执行。
 
 ## 3、ExecuteSqlBulkCopy、ExecutePgCopy、ExecuteMySqlBulkCopy
 
@@ -184,7 +184,7 @@ FROM `Topic` a
 limit 10
 ```
 
-注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性` [Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c# `默认值。
+注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性`[Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c#`默认值。
 
 ## 9、MySql 特有功能 Insert Ignore Into
 

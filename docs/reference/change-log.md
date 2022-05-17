@@ -2,6 +2,15 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.640
+
+- 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100)
+- 修复 AsTable ManyToMany IncludeMany 无效的问题；[#1103](https://github.com/dotnetcore/FreeSql/issues/1103)
+- 修复 Oracle AsTable 分表嵌套 SQL 拼错错误；[#1098](https://github.com/dotnetcore/FreeSql/issues/1098)
+- 修复 Oracle AsTable 自动分表时间段条件无效的问题；[#1099](https://github.com/dotnetcore/FreeSql/issues/1099)
+- 优化 子查询 sum/min/max/avg 默认加 isnull 防止为 NULL 情况；
+- 优化 EnableCascadeSave 级联保存执行逻辑，提升性能；
+
 ## v3.2-last
 
 - **增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481**

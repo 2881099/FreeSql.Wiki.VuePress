@@ -76,7 +76,7 @@ When inserting large quantities of data, the internal logic is divided and execu
 
 After the execution of the split, when the external transaction is not provided, the internal transaction is opened to achieve insertion integrity. You can also set appropriate values through `BatchOptions`.
 
-FreeSql adapts to the use of parameterization and non-parameterization of each data type. It is recommended to turn off the parameterization function for batch insertion and use `.NonoParameter()` to execute it.
+FreeSql adapts to the use of parameterization and non-parameterization of each data type. It is recommended to turn off the parameterization function for batch insertion and use `.NoneParameter()` to execute it.
 
 ## 3. ExecuteSqlBulkCopy, ExecutePgCopy, ExecuteMySqlBulkCopy and ExecuteOracleBulkCopy
 

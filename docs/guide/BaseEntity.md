@@ -10,7 +10,7 @@
 
 本文介绍 BaseEntity 一种极简约的 CRUD 操作方法。
 
-# 功能特点
+## 功能特点
 
 - 自动迁移实体结构（CodeFirst），到数据库；
 
@@ -20,7 +20,7 @@
 
 - 实现单表、多表查询的软删除逻辑；
 
-# 声明
+## 声明
 
 参考 BaseEntity.cs 源码（约 100 行），copy 到项目中使用，然后添加 nuget 引用包：
 
@@ -73,7 +73,7 @@ public class User2 : BaseEntity<User2, Guid, int> {
 }
 ```
 
-# CRUD 使用
+## CRUD 使用
 
 ```csharp
 //添加
@@ -106,4 +106,4 @@ var items = UserGroup.Where(a => a.Id > 10).ToList();
 
 > 有关更多查询方法，可参阅 [查询](select.md)
 
-示范项目：https://github.com/2881099/FreeSql/tree/master/Examples/base_entity
+示范项目：[https://github.com/2881099/FreeSql/tree/master/Examples/base_entity](https://github.com/2881099/FreeSql/tree/master/Examples/base_entity)
