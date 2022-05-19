@@ -17,13 +17,13 @@
 - GitHub [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
 - Gitee [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
 
-## 相关文档指南
+## 相关博客指南
 
 - [FreeSql 接入 CAP 的实践](https://www.cnblogs.com/igeekfan/p/cap_freesql_flush.html)
 - [FreeSql.Generator 命令行代码生成器是如何实现的](https://www.cnblogs.com/igeekfan/p/freesql-generator.html)
 - [AOP +FreeSql 跨方法异步事务](https://www.cnblogs.com/igeekfan/p/aop-freesql-autofac.html)
 
-### 以下可从[GitHub Issues Docs](https://github.com/dotnetcore/FreeSql/issues?q=label%3Adocs)找到
+## 以下可从[GitHub Issues Docs](https://github.com/dotnetcore/FreeSql/issues?q=label%3Adocs)找到
 
 - [CentOS8 ARM 下连接 SQL Server 2008 R2（Hypervisor）](https://github.com/dotnetcore/FreeSql/issues/601)
 - [.net5 网站使用 Sqlserver 数据库部署在 docker 容器内运行报主库链接失败](https://github.com/dotnetcore/FreeSql/issues/650)
