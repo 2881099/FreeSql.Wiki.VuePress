@@ -71,6 +71,13 @@ List<ANONYMOUS_TYPE> t10 = fsql.Select<Topic>().ToList(a => new {
     min = fsql.Select<T2>().Min(b => b.Id),
     name = fsql.Select<2>().First(b => b.name)
 });
+
+//Return the records of the subquery v3.2.650+
+List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
+    a.Id,
+    list1 = fsql.Select<T2>().ToList(),
+    list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
+});
 ```
 
 > In the early constant mechanism, we left it to raw SQL. If you really need to return the string, you can write: "'xxx'"
@@ -176,19 +183,19 @@ Suppose A, B, and C all have id. When the queried Dto structure is: `Dto {id, a1
 
 ## API
 
-| Method        | Return      | Parameter                                                | Description                                                                                                                                                                                                                           |
-| ------------- | ----------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ToSql         | string      |                                                          | Return the SQL statement to be executed                                                                                                                                                                                               |
-| ToList        | List\<T1\>  |                                                          | Execute a SQL query and return the records of all the fields of the T1 entity. If there are navigation properties, they will be queried and returned together. If the record does not exist, a list with Count of 0 will be returned. |
-| ToList\<Dto\> | List\<Dto\> | Lambda                                                   | Execute SQL query, return the record of the specified field or Dto mapping, if the record does not exist, return the list with Count as 0.                                                                                            |
-| ToList\<T\>   | List\<T\>   | string field                                             | Execute SQL query, return the record of the field specified by field, and receive it as a tuple or basic type (int, string, long). If the record does not exist, return a list with Count of 0.                                       |
-| ToOne         | T1          |                                                          | Execute SQL query and return the first record of all fields of the T1 entity, or null if the record does not exist.                                                                                                                   |
-| ToChunk       | \<空\>      | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | Execute SQL query and return data in blocks, which can reduce memory overhead. For example, if 100,000 pieces of data are read, 100 pieces of data are returned for processing each time.                                             |
-| Any           | bool        |                                                          | Execute SQL query to determine whether there is a record                                                                                                                                                                              |
-| Sum           | T           | Lambda                                                   | Specify a column to sum.                                                                                                                                                                                                              |
-| Min           | T           | Lambda                                                   | Specify a column to find the minimum.                                                                                                                                                                                                 |
-| Max           | T           | Lambda                                                   | Specify a column to find the maximum.                                                                                                                                                                                                 |
-| Avg           | T           | Lambda                                                   | Specify a column to average.                                                                                                                                                                                                          |
+| Method | Return | Parameter | Description |
+| ------------- | - | - | - |
+| ToSql | string | | Return the SQL statement to be executed |
+| ToList | List\<T1\> | | Execute a SQL query and return the records of all the fields of the T1 entity. If there are navigation properties, they will be queried and returned together. If the record does not exist, a list with Count of 0 will be returned. |
+| ToList\<Dto\> | List\<Dto\> | Lambda | Execute SQL query, return the record of the specified field or Dto mapping, if the record does not exist, return the list with Count as 0. |
+| ToList\<T\> | List\<T\> | string field | Execute SQL query, return the record of the field specified by field, and receive it as a tuple or basic type (int, string, long). If the record does not exist, return a list with Count of 0. |
+| ToOne | T1 | | Execute SQL query and return the first record of all fields of the T1 entity, or null if the record does not exist. |
+| ToChunk | \<空\> | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | Execute SQL query and return data in blocks, which can reduce memory overhead. For example, if 100,000 pieces of data are read, 100 pieces of data are returned for processing each time. |
+| Any | bool | | Execute SQL query to determine whether there is a record |
+| Sum | T | Lambda | Specify a column to sum. |
+| Min | T | Lambda | Specify a column to find the minimum. |
+| Max | T | Lambda | Specify a column to find the maximum. |
+| Avg | T | Lambda | Specify a column to average. |
 
 ## Reference
 
