@@ -1,7 +1,5 @@
 # 表达式函数
 
-这是 `FreeSql` 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、`IN`查询、数组（`PostgreSQL`的数组）、字典（PostgreSQL HStore)等等。
-
 这是 ``FreeSql`` 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、``IN``查询、数组（``PostgreSQL``的数组）、字典（PostgreSQL HStore)等等。
 
 ## 动态Lambda表达式
@@ -60,45 +58,45 @@ var t2 = fsql.Select<T>()
 //a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
 ```
 
+> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a.Id && b.Item2 == a.ct1))
+
 > 实现代码：[https://github.com/2881099/FreeSql/issues/243](https://github.com/2881099/FreeSql/issues/243)
 
 ## In子表
 
 ```csharp
-var list2 = fsql.Select<T>()
-  .Where(a => fsql.Select<T>()
-      .ToList(b => b.Id)
-      .Contains(a.Id))
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
   .ToList();
-// SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-// FROM `tb_topic` a 
-// WHERE (((cast(a.`Id` as char)) in (SELECT b.`Title` 
-//   FROM `tb_topic` b)))
+//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
+//FROM `Topic` a
+//WHERE (((a.`Id`) in (SELECT b.`Id`
+//    FROM `Topic` b)))
 ```
 
 ## Exists子表
 
 ```csharp
-var list2 = fsql.Select<T>()
-  .Where(a => fsql.Select<T>()
-    .Any(b => b.Id == a.Id))
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
   .ToList();
-// SELECT a.`Id`, a.`TypeGuid`, a.`Title`, a.`CreateTime` 
-// FROM `xxx` a 
-// WHERE (exists(SELECT 1 
-// FROM `xxx` b 
-// WHERE (b.`Id` = a.`Id`)))
+//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
+//FROM `Topic` a
+//WHERE (exists(SELECT 1
+//    FROM `Topic` b
+//    WHERE (b.`Id` = a.`Id`)
+//    limit 0,1))
 ```
 
 ## 查找今天创建的数据
 
 ```csharp
-var t3 = fsql.Select<T>()
+fsql.Select<T>()
   .Where(a => a.CreateTime.Date == DateTime.Today)
   .ToList();
 //这行代码说明 FreeSql 表达式解析强大，不是所有 ORM 都支持
 
-var t4 = fsql.Select<T>()
+fsql.Select<T>()
   .Where(a => a.CreateTime.Between(DateTime.Today, DateTime.Today.AddDays(1)))
   .ToList();
 //正常用法应该是这样
@@ -109,7 +107,7 @@ var t4 = fsql.Select<T>()
 ## 日期格式化
 
 ```csharp
-var t4 = fsql.Select<T>()
+fsql.Select<T>()
   .First(a => a.CreateTime.ToString("HH:mm:ss");
 // SELECT date_format(a.`CreateTime`, '%H:%i:%s') as1 
 // FROM `xxx` a 
@@ -134,6 +132,76 @@ fsql.Select<T1, T2>()
 ```
 
 > v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
+
+## 子表Exists
+
+```c#
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
+  .ToList();
+//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
+//FROM `Topic` a
+//WHERE (exists(SELECT 1
+//    FROM `Topic` b
+//    WHERE (b.`Id` = a.`Id`)
+//    limit 0,1))
+```
+
+> 提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分
+
+## 子表In
+
+```c#
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
+  .ToList();
+//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
+//FROM `Topic` a
+//WHERE (((a.`Id`) in (SELECT b.`Id`
+//    FROM `Topic` b)))
+```
+
+## 子表Join
+> v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
+
+```c#
+fsql.Select<Topic>().ToList(a => new {
+  id = a.Id,
+  concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
+});
+//SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',') 
+//    FROM `StringJoin01` b) 
+//FROM `Topic` a
+```
+
+> 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
+
+## 子表First/Count/Sum/Max/Min/Avg
+
+```csharp
+fsql.Select<Category>().ToList(a => new  {
+  all = a,
+  first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
+  count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
+  sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
+  max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
+  min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
+  avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
+});
+```
+
+## 子表ToList
+
+> v3.2.650+ 以下最多执行3次 SQL
+
+```csharp
+fsql.Select<Topic>().ToList(a => new
+{
+  all = a,
+  list1 = fsql.Select<T2>().ToList(),
+  list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
+});
+```
 
 ## 自定义解析
 

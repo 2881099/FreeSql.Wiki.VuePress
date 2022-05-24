@@ -2,23 +2,35 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
-## v3.2.640
+## v3.2.651
 
+- **增加 DTO 映射非导航属性的子表查询 ToList，可直接返回集合；**
+- 增加 Array.Any(x => x.id == a.Id && ..) 表达式树解析；[#243](https://github.com/dotnetcore/FreeSql/issues/243)
 - 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100)
-- 修复 AsTable ManyToMany IncludeMany 无效的问题；[#1103](https://github.com/dotnetcore/FreeSql/issues/1103)
+- 增加 [#1108](https://github.com/dotnetcore/FreeSql/issues/1108) Exception 国际化；
+- 增加 DynamicFilterCustom 参数 object sender；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113)
+- 增加 Fluent API 以继承接口的形式配置实体；[#937](https://github.com/dotnetcore/FreeSql/issues/937)
 - 修复 Oracle AsTable 分表嵌套 SQL 拼错错误；[#1098](https://github.com/dotnetcore/FreeSql/issues/1098)
-- 修复 Oracle AsTable 自动分表时间段条件无效的问题；[#1099](https://github.com/dotnetcore/FreeSql/issues/1099)
+- 修复 AsTable ManyToMany IncludeMany 无效的问题；[#1103](https://github.com/dotnetcore/FreeSql/issues/1103)
+- 修复 AsTable 分表 ToAggregate 无法得到汇总；[#1115](https://github.com/dotnetcore/FreeSql/issues/1115)
+- 修复 Repository.DataFilter 对 GlobalFilter 控制无效的 bug；[#1028](https://github.com/dotnetcore/FreeSql/issues/1028) [#846](https://github.com/dotnetcore/FreeSql/issues/846)
+- 修复 IN 查询区分 varchar/nvarchar；
+- 修复 Oracle clob 参数化类型设置问题；[#1116](https://github.com/dotnetcore/FreeSql/issues/1116)
+- 修复 MySql 子查询 Enum MapType(int) 表达式判断解析 bug；[#1118](https://github.com/dotnetcore/FreeSql/issues/1118)
+- 优化 AsTable 自动分表 Where Equal 判断；[#1104](https://github.com/dotnetcore/FreeSql/issues/1104)
 - 优化 子查询 sum/min/max/avg 默认加 isnull 防止为 NULL 情况；
 - 优化 EnableCascadeSave 级联保存执行逻辑，提升性能；
+- 优化 RawJoin 支持 FULL JOIN 等自定义联表映射；
+- 优化 IncludeMany 三级导航对象自动 \_included；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113)
 
-## v3.2-last
+## v3.2.100 - v3.2.640
 
 - **增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481**
 - 增加 UseSlaveWeight 读权重设置；#1046
 - **增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066**
 - 增加 [FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持 Sqlite 加密；
 - 增加 IList\<T\> IncludeByPropertyName 扩展方法，支持字符串参数；
-- 增加 DbSet/Repository DeleteCascadeByDatabase 级联删除(基于数据库)；
+- **增加 DbSet/Repository DeleteCascadeByDatabase 级联删除(基于数据库)**；
 - 调整 DbSet/Repository EnableAddOrUpdateNavigateList 支持 OneToOne 级联保存、级联删除(基于对象)；
 - 修复 Delete.Where in 查询为空时，异步操作仍然执行删除；#1068 **【受影响版本 v3.2.302】**
 - 修复 InsertOrUpdateDict 异常；#1067 **【受影响版本 v3.2.301、v3.2.300、v3.2.200】**
