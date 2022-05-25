@@ -4,14 +4,15 @@ export const zhNavbarConfig = navbar([
     {
         text: '指南',
         link: '/guide/',
-        icon: "guide",
+        icon: "creative",
     },
     {
         text: '参考',
         icon: "plugin",
         children: [
             {
-                text: '参考',
+                text: '参考', 
+                icon: "view",
                 children: [
                     '/reference/api.md',
                     '/reference/change-log.md',
@@ -21,6 +22,7 @@ export const zhNavbarConfig = navbar([
             },
             {
                 text: '学习与交流',
+                icon: "comment",
                 children: [
                     '/reference/faq.md',
                     '/reference/donation.md',
@@ -56,5 +58,10 @@ export const zhNavbarConfig = navbar([
 
             }
         ]
+    },
+    {
+        text: '服务支持',
+        icon: "launch",
+        link: "/reference/service-support.md"
     },
 ]);

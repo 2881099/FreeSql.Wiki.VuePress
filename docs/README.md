@@ -7,10 +7,13 @@ actions:
   - text: 心动不如行动 💡
     link: /guide/
     type: primary
+  - text: 服务支持 💻
+    link: /reference/service-support
+    type: default
 features:
   - title: 开发者优先
     details: 💡以开发者为中心的设计理念，想你所想，亦享你所享。‘
-    link: /guide
+    link: /guide/
   - title: 多场景实现
     details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, Xamarin
     link: /guide/code-first

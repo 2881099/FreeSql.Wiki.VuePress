@@ -3,43 +3,54 @@ import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 export default defineUserConfig({
     locales: {
-        '/': {
-            lang: 'zh-CN',
-            title: 'FreeSql 官方文档',
-            description: 'FreeSql Documents',
+        "/": {
+            lang: "zh-CN",
+            title: "FreeSql 官方文档",
+            description: "FreeSql Documents",
         },
-        '/en/': {
-            lang: 'en-US',
-            title: 'FreeSql Documents',
-            description: 'FreeSql Documents'
-        }
+        "/en/": {
+            lang: "en-US",
+            title: "FreeSql Documents",
+            description: "FreeSql Documents",
+        },
     },
     base: "/",
 
     head: [
         [
-            'link',
+            "link",
             {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '16x16',
-                href: `/favicon-16x16.png`,
+                rel: "icon",
+                type: "image/png",
+                sizes: "16x16",
+                href: `/assets/icon/favicon-16x16.png`,
             },
         ],
         [
-            'link',
+            "link",
             {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '32x32',
-                href: `/favicon-32x32.png`,
+                rel: "icon",
+                type: "image/png",
+                sizes: "32x32",
+                href: `/assets/icon/favicon-32x32.png`,
             },
         ],
+        ['meta', { name: 'application-name', content: 'FreeSql' }],
+        ['meta', { name: 'apple-mobile-web-app-title', content: 'FreeSql' }],
+        [
+            'meta',
+            { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+        ],
+        [
+            'link',
+            { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
+        ],
+        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }],
         // ...其他标签
     ],
     theme,
     plugins: [
-        docsearchPlugin({   
+        docsearchPlugin({
             appId: "8QM97XX5VE",
             apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
             indexName: "freesql",
@@ -86,6 +97,6 @@ export default defineUserConfig({
                     },
                 },
             },
-        })
-    ]
+        }),
+    ],
 });

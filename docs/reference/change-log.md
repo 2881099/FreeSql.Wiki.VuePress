@@ -2,6 +2,8 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+> preview 预览版 添加 nuget 源：[https://www.myget.org/F/ncc/api/v3/index.json](https://www.myget.org/F/ncc/api/v3/index.json)
+
 ## v3.2.651
 
 - **增加 DTO 映射非导航属性的子表查询 ToList，可直接返回集合；**

@@ -8,7 +8,7 @@ export default hopeTheme({
     repo: 'dotnetcore/FreeSql',
     docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
     docsBranch: "main",
-    docsDir: 'docs',
+    docsDir: 'docs', 
     iconPrefix: "iconfont icon-",
     locales: {
         "/": {
@@ -42,6 +42,11 @@ export default hopeTheme({
             contributors: true,
         },
         pwa: true,
+        feed: {
+            atom: true,
+            json: true,
+            rss: true,
+        },
         mdEnhance: {
             enableAll: true,
             presentation: {
