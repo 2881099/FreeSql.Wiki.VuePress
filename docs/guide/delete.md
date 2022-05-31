@@ -103,7 +103,7 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 > 比如 Include/IncludeMany 查询的对象，可以使用此方法级联删除它们。
 
-```c#
+```csharp
 var repo = fsql.GetRepository<Group>();
 repo.DbContextOptions.EnableCascadeSave = true; //关键设置
 repo.Insert(new UserGroup
@@ -134,7 +134,7 @@ repo.Delete(groups); //级联删除，递归向下遍历 group OneToOne/OneToMan
 
 > 根据设置的导航属性，递归删除 OneToOne/OneToMany/ManyToMany 对应数据，并返回已删除的数据。此功能不依赖数据库外键
 
-```c#
+```csharp
 var repo = fsql.GetRepository<Group>();
 var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //SELECT a."id", a."username", a."password", a."groupid" FROM "user" a WHERE (a."groupid" = 1)

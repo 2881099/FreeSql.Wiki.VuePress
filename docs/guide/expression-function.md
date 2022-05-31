@@ -135,7 +135,7 @@ fsql.Select<T1, T2>()
 
 ## 子表Exists
 
-```c#
+```csharp
 fsql.Select<Topic>()
   .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
   .ToList();
@@ -151,7 +151,7 @@ fsql.Select<Topic>()
 
 ## 子表In
 
-```c#
+```csharp
 fsql.Select<Topic>()
   .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
   .ToList();
@@ -164,7 +164,7 @@ fsql.Select<Topic>()
 ## 子表Join
 > v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
 
-```c#
+```csharp
 fsql.Select<Topic>().ToList(a => new {
   id = a.Id,
   concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))

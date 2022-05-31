@@ -67,7 +67,7 @@ var list = fsql.Select<Topic>()
 
 ## Multi-table Grouping
 
-```c#
+```csharp
 var list = fsql.Select<Topic, Category, Area>()
     .GroupBy((a, b, c) => new { a.Title, c.Name })
     .Having(g => g.Count() < 300 || g.Avg(g.Value.Item1.Clicks) < 100)
@@ -80,7 +80,7 @@ var list = fsql.Select<Topic, Category, Area>()
 
 ## Aggregate
 
-```c#
+```csharp
 var list = fsql.Select<Topic>()
     .Aggregate(a => Convert.ToInt32("count(distinct title)"), out var count)
     .ToList();

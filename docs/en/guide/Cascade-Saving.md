@@ -68,7 +68,7 @@ Append external tables, only append without updating.
 
 Test 1: append and save OneToMany
 
-```c#
+```csharp
 class Cagetory
 {
     public Guid Id { get; set; }
@@ -137,7 +137,7 @@ public void TestOneToManyParent()
 
 Test 2: Full save ManyToMany
 
-```c#
+```csharp
 class Song
 {
     public Guid Id { get; set; }

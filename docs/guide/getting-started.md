@@ -84,7 +84,7 @@ public class DB
 
 `IFreeSql` 是 `ORM` 最顶级对象，所有操作都是使用它的方法或者属性：
 
-```c#
+```csharp
 
 fsql.Select<T>(); //查询
 fsql.Insert<T>(); //插入

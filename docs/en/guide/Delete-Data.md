@@ -98,7 +98,7 @@ The benefits of using this method for complex deletion:
 
 1、Cascade deletion based on \[object\]
 
-```c#
+```csharp
 var repo = fsql.GetRepository<Group>();
 repo.DbContextOptions.EnableCascadeSave = true; //Key settings
 repo.Insert(new UserGroup
@@ -129,7 +129,7 @@ repo.Delete(groups); //Cascade deletion, recursively traversing the navigation p
 
 > According to the set navigation properties, recursively delete the corresponding data of OneToOne/OneToMany/ManyToMany, and return the deleted data. This feature does not rely on database foreign keys
 
-```c#
+```csharp
 var repo = fsql.GetRepository<Group>();
 var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //SELECT a."id", a."username", a."password", a."groupid" FROM "user" a WHERE (a."groupid" = 1)

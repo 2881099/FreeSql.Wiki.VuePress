@@ -2,6 +2,29 @@
 
 v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column
 
+## 名称
+
+```csharp
+[Table(Name = "tb_topic")]
+class Topic { }
+```
+
+架构：\[Table(Name = "dbo.tb_topic")\]
+
+注意：带点的表名，使用 \[Table(Name = "\`sys.config\`")\] 解决
+
+> 指定表名的几种方法，优先级从小到大：
+
+- 1、实体类名
+- 2、Aop fsql.Aop.ConfigEntity += (_, e) => e.ModifyResult.Name = "public.tabname"
+- 3、FluentApi fsql.CodeFirst.ConfigEntity(a => a.Name("public.tabname"))
+- 4、[Table(Name = "public.tabname")]
+- 5、AsTable fsql.Select\<T\>().AsTable((_, old) => "public.tabname").ToList()
+
+改名：须指定旧的表名：\[Table(OldName = "Topic")\]
+
+> 属性名称：\[Column(Name = "xxx")\]
+
 ## 主键(Primary Key)
 
 ```csharp
@@ -65,9 +88,13 @@ class Topic {
 
 > string 指定长度 [Column(DbType = "varchar(128)")] 或者 [MaxLength(128)] 或者 [Column(StringLength = 128)]，当长度 -1 时产生的映射如下：
 
-| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | MsAccess | 达梦 | 金仓 | 神通 |
-| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | ---- | ---- | ---- |
-| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | longtext | text | text | text |
+## Text类型 [Column(StringLength =-1)]
+
+当长度 -1 时产生的映射如下：
+
+| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | MsAccess | 达梦 | 金仓 | 神通 | 南通 |
+| - | - | - | - | - | - | - | - | - | - |- |
+| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | longtext | text | text | text | text | 
 
 > 注意：Oracle nclob 需要 v1.3.2+ 版本才支持，否则将映射 nvarchar2(4000)
 
@@ -225,30 +252,24 @@ fsql.Insert(new Type()).ExecuteAffrows();
 //INSERT INTO `type`(`Name`) VALUES('xxx')
 ```
 
-## 名称
+## 自定义重写(RewriteSql)、重读(RereadSql)
 
-FreeSql 默认使用实体的类名，或属性名与数据库映射，也可以指定映射的名称；
-
-指定实体的表名，指定 Name 后，实体类名变化不影响数据库对应的表。FreeSql尽量支持了对多数据库或schema支持，不防试试指定表名为：其他数据库.表名，不同数据库的指定方式有差异，这一点以后深入解答。
+写入时重写 SQL、读取时重写 SQL，适合 geography 类型的读写场景。
 
 ```csharp
-[Table(Name = "db2.tb_topic111")]
-class Topic {
-  //...
-}
+[Column(
+    DbType = "geography", 
+    RewriteSql = "geography::STGeomFromText({0}, 4236)", 
+    RereadSql = "{0}.STAsText()"
+)]
+public string geo { get; set; }
+
+//插入：INSERT INTO [ts_geocrud01]([id], [geo]) VALUES(@id_0, geography::STGeomFromText(@geo_0, 4236))
+
+//查询：SELECT TOP 1 a.[id], a.[geo].STAsText() 
+//FROM [ts_geocrud01] a 
+//WHERE (a.[id] = 'c7227d5e-0bcf-4b71-8f0f-d69a552fe84e')
 ```
-
-> 注意：尽量不要使用带点的表名，只有 MySql/Sqlite 对此类表名支持 CodeFirst。但是它不影响 CRUD 功能，使用 [Table(Name = "\`sys.config\`")] 解决
-
-指定实体的表名，修改为实体类名。指定数据库旧的表名，修改实体命名时，同时设置此参数为修改之前的值，CodeFirst才可以正确修改数据库表；否则将视为【创建新表】。
-```csharp
-[Table(OldName = "Topic")]
-class Topic2 {
-  //...
-}
-```
-
-> 实体的属性也有相同的功能，[Column(Name = "xxx")]
 
 ## 禁用迁移
 

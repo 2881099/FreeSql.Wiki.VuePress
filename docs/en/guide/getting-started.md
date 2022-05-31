@@ -94,7 +94,7 @@ Then when using it, use `fsql` directly through ```IFreeSql fsql = DB.Sqlite;```
 
 IFreeSql is the top-level object of ORM, and all operations use its methods or properties:
 
-```c#
+```csharp
 
 fsql.Select<T>(); //Query
 fsql.Insert<T>(); //Insert

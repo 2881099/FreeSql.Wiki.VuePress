@@ -164,7 +164,7 @@ FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
 
 ### 2、跨分表查询：AsTable 相同实体多次操作，等于 Union ALL 查询
 
-```c#
+```csharp
 var sql = fsql.Select<User>()
     .AsTable((type, oldname) => "table_1")a
     .AsTable((type, oldname) => "table_2")
@@ -179,7 +179,7 @@ select * from (SELECT a."Id" as1 FROM "table_2" a) ftb
 
 ### 3、利用 ToSql 拼接新的 SQL，使用 IAdo 执行
 
-```c#
+```csharp
 var sql1 = fsql.Select<Topic>()
     .Where(a => a.Id > 100 && a.Id < 200)
     .ToSql(a => new { a.Id, a.Title }, FieldAliasOptions.AsProperty);

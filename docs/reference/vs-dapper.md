@@ -79,7 +79,7 @@ Install-Package FreeSql.Provider.SqlServer
 
 第二步：建立实体类
 
-```c#
+```csharp
 class TestConnectionExt {
     public Guid id { get; set; }
     public string title { get; set; }
@@ -89,7 +89,7 @@ class TestConnectionExt {
 
 第三步：开始 CRUD
 
-```c#
+```csharp
 using (var conn = new SqlConnection(connectString)) {
     var list = conn.Select<TestConnectionExt>().Where(a => a.id == item.id).ToList();
 }
@@ -115,7 +115,7 @@ using (var conn = new SqlConnection(connectString)) {
 
 添加或更新：
 
-```c#
+```csharp
 using (var conn = new SqlConnection(connectString)) {
     var affrows = conn.InsertOrUpdate<TestConnectionExt>()
         .SetSource(item)

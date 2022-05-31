@@ -161,7 +161,7 @@ FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
 
 ### Cross Sub-Table Query: Wse AsTable for the Same Entity Multiple Times to Convert to UNION ALL Query
 
-```c#
+```csharp
 var sql = fsql.Select<User>()
     .AsTable((type, oldname) => "table_1")
     .AsTable((type, oldname) => "table_2")
@@ -176,7 +176,7 @@ select * from (SELECT a."Id" as1 FROM "table_2" a) ftb
 
 ### Use ToSql to Splice New SQL Statements, And Use IAdo to Execute
 
-```c#
+```csharp
 var sql1 = fsql.Select<Topic>()
     .Where(a => a.Id > 100 && a.Id < 200)
     .ToSql(a => new { a.Id, a.Title }, FieldAliasOptions.AsProperty);

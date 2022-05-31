@@ -4,7 +4,7 @@ Ado 是 IFreeSql 下重要的对象之一，它包括所有对 SQL 操作的封�
 
 ## 查询 SQL 返回实体
 
-```c#
+```csharp
 //返回多条记录
 List<T> list = fsql.Ado.Query<T>("select * from t1");
 
@@ -40,14 +40,14 @@ IN 参数化查询：
 
 > 当前仅支持 Array 和 IList 类型绑定
 
-```c#
+```csharp
 var ids = new int[] { 1,2,3 };
 List<T> list = fsql.Ado.Query<T>("select * from t1 where id in @ids", new { ids = ids });
 ```
 
 ## 检测连接
 
-```c#
+```csharp
 bool isok = fsql.Ado.ExecuteConnectTest();
 ```
 
@@ -55,7 +55,7 @@ bool isok = fsql.Ado.ExecuteConnectTest();
 
 fsql.Ado 重载方法太多的情况下，建议使用 CommandFluent，例如存储过程：
 
-```c#
+```csharp
 DbParameter p2 = null;
 fsql.Ado.CommandFluent("dbo.GetICMaxNum")
     .CommandType(CommandType.StoredProcedure)

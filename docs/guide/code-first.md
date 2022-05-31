@@ -126,7 +126,7 @@ var t2 = fsql.CodeFirst.SyncStructure<Topic>();
 
 方法 1：扫描 IEntity 类所在程序集，反射得到类上有特性标签为 TableAttribute 的所有类，该方法需在实体类上指定了 [Table(Name = "xxx")]特性标签
 
-```c#
+```csharp
 public static Type[] GetTypesByTableAttribute()
 {
     List<Type> tableAssembies = new List<Type>();
@@ -148,7 +148,7 @@ fsql.CodeFirst.SyncStructure(GetTypesByTableAttribute());
 
 方法 2：通过命名空间得到所有要创建的实体类.根据需要调整 entitiesFullName 下的命名空间值。比如我们创建一个 Entities 文件夹，用于存放实体类。该方法通过筛选 IEntity 类所在程序集所有的实体类。他们的命名空间都是 LinCms.Entities 开头，内部通过 StartsWith 判断。
 
-```c#
+```csharp
 public static Type[] GetTypesByNameSpace()
 {
     List<Type> tableAssembies = new List<Type>();

@@ -39,48 +39,77 @@ repo.InsertOrUpdate(实体);
 
 ---
 
-## 4、WithSql
+# 4、弱类型 CURD
+
+```csharp
+fsql.Insert<object>().AsType(实体类型)
+  .AppendData(data)
+  .ExecuteAffrows();
+
+fsql.Update<object>().AsType(实体类型)
+  .SetSource(data)
+  .ExecuteAffrows();
+
+fsql.Select<object>().AsType(实体类型)
+  .Where(a => (a as BaseEntity).Id == 1)
+  .ExecuteAffrows();
+
+//或者仓储
+var repo = fsql.GetRepository<object>();
+repo.AsType(实体类型);
+
+repo.Insert(..);
+repo.Update(..);
+repo.Delete(..);
+```
+
+---
+## 5、WithSql
 
 ```csharp
 fsql.Select<Topic>()
-  .WithSql("select * from Topic where clicks > ?val", new { val = 10 })
+  .WithSql("select * from Topic where clicks > @val", new { val = 10 })
   .Page(1, 10)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
-//FROM (select * from Topic where clicks > ?val) a
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
+//FROM (select * from Topic where clicks > @val) a 
 ```
 
 > WithSql 使用多次为 UNION ALL 查询
 
 ---
 
-## 5、你不知道的，指定字段返回
+## 6、你不知道的，指定字段返回
 
 ```csharp
 fsql.Select<t1>()
-.ToList(a => new {
-        a.Id,
-        a.Title,
-        cstitle = "substr(a.title, 0, 2)", //将 substr(a.title, 0, 2) 作为查询字段
-        csnow = Convert.ToDateTime("now()"), //将 now() 作为查询字段
-        //奇思妙想：怎么查询开窗函数的结果
+  .ToList(a => new {
+    a.Id,
+    a.Title,
+    cstitle = "substr(a.title, 0, 2)", //将 substr(a.title, 0, 2) 作为查询字段
+    csnow = Convert.ToDateTime("now()"), //将 now() 作为查询字段
+    //奇思妙想：怎么查询开窗函数的结果
 
-        count = fsql.Select<T2>().Count(),
-        max = fsql.Select<T2>().Max(b => b.Id),
-        min = fsql.Select<T2>().Min(b => b.Id),
-        name = fsql.Select<T2>().First(b => b.name)
+    count = fsql.Select<T2>().Count(),
+    max = fsql.Select<T2>().Max(b => b.Id),
+    min = fsql.Select<T2>().Min(b => b.Id),
+    name = fsql.Select<T2>().First(b => b.name),
 
-        //可以直接映射一个导航属性
-    });
+    //导航属性
+    t1Type = a.Type,
+
+    //子查询
+    childs = fsql.Select<T2>().Where(b => b.t1_id == a.id).ToList()
+  });
 ```
 
 ---
 
-## 6、Dto 映射查询
+## 7、Dto 映射查询
 
 映射查询支持单表/多表，在查询数据之前映射（不是先查询所有字段再到内存映射）
 
-规则：查找属性名，会循环内部对象 \_tables（多表会增长），以 主表优先查，直到查到相同的字段。
+规则：查找属性名，会循环内部对象 _tables（多表会增长），以 主表优先查，直到查到相同的字段。
 
 如：
 
@@ -88,39 +117,39 @@ A, B, C 都有 id，Dto { id, a1, a2, b1, b2 }，A.id 被映射。也可以指�
 
 ```csharp
 fsql.Select<Song>().ToList<Dto>();
-//默认的映射查询，Dto 与 Song 属性名相同的被查询
+//情况1：Dto 与 Song 属性名相同的字段被查询，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new DTO { xxx = a.ext })
-//情况1：附加所有映射，再额外映射 ext，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto { xxx = a.ext }) 
+//情况2：Dto 与 Song 属性名相同的字段被查询，纠正映射 ext，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new Song { id = a.id })
-//情况2：只查询 id，返回 List<Song>
+fsql.Select<Song>().ToList(a => new Song { id = a.id }) 
+//情况3：Lambda 与 Song 类型一样，只查询指定字段 id，返回 List<Song>
 
-fsql.Select<Song>().ToList(a => new { id = a.id })
-//情况3：只查询 id，返回 List<匿名对象>
+fsql.Select<Song>().ToList(a => new { id = a.id }) 
+//情况4：Lambda 匿名类型，只查询指定字段 id，返回 List<匿名对象>
 ```
 
 > 请仔细处理区别，请仔细处理区别，请仔细处理区别
 
 ```csharp
-fsql.Select<Song>().ToList(a => new DTO(a.id))
-//情况4：只查询 id，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto(a.id))
+//情况5：只查询 id，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new DTO(a.id) { xxx = a.ext })
-//情况5：查询 id, ext，返回 List<DTO>
+fsql.Select<Song>().ToList(a => new Dto(a.id) { xxx = a.ext })
+//情况6：查询 id, ext，返回 List<Dto>
 
 fsql.Select<Song>().ToList(a => new Song(a.id))
-//情况6：查询 id，返回 List<Song>
+//情况7：查询 id，返回 List<Song>
 
 fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
-//情况7：查询 id, ext，返回 List<Song>
+//情况8：查询 id, ext，返回 List<Song>
 ```
 
 > GroupBy 所有方法不使用 DTO 映射规则
 
 ---
 
-## 7、父子关系表
+## 8、父子关系表
 
 ```csharp
 List<Category> t2 = fsql.Select<Category>.ToTreeList();
@@ -148,7 +177,7 @@ Assert.Equal("中国[100000] -> 北京[110000] -> 北京市[110100]", t4[2].path
 Assert.Equal("中国[100000] -> 北京[110000] -> 东城区[110101]", t4[3].path);
 ```
 
-## 8、级联加载
+## 9、级联加载
 
 有设置导航属性关系的（支持一对多、多对多）：
 
@@ -193,7 +222,7 @@ fsql.Select<Tag>().IncludeMany(a => a.Goods.Select(b => new Goods { Id = b.Id, T
 
 ---
 
-## 9、WhereCascade
+## 10、WhereCascade
 
 多表查询时，像 isdeleted 每个表都给条件，挺麻烦的。WhereCascade 使用后生成 sql 时，所有表都附上这个条件。
 
@@ -219,7 +248,7 @@ WHERE t1.IsDeleted = 0
 
 ---
 
-## 10、WhereDynamicFilter
+## 11、WhereDynamicFilter
 
 ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互），支持的操作符：
 
@@ -230,6 +259,7 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 - Range：范围查询
 - DateRange：日期范围，有特殊处理 value\[1\] + 1
 - Any/NotAny：是否符合 value 中任何一项（直白的说是 SQL IN）
+- Custom：自定义解析
 
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
@@ -238,34 +268,15 @@ DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
   ""Filters"" :
   [
     {
-      ""Field"" : ""Code"",
-      ""Operator"" : ""NotContains"",
-      ""Value"" : ""val1"",
-      ""Filters"" :
-      [
-        {
-          ""Field"" : ""Name"",
-          ""Operator"" : ""NotStartsWith"",
-          ""Value"" : ""val2"",
-        }
-      ]
+      ""Field"" : ""Code"", ""Operator"" : ""NotContains"", ""Value"" : ""val1"", 
+      ""Filters"" : [{ ""Field"" : ""Name"", ""Operator"" : ""NotStartsWith"", ""Value"" : ""val2"" }]
     },
     {
-      ""Field"" : ""Parent.Code"",
-      ""Operator"" : ""Eq"",
-      ""Value"" : ""val11"",
-      ""Filters"" :
-      [
-        {
-          ""Field"" : ""Parent.Name"",
-          ""Operator"" : ""Contains"",
-          ""Value"" : ""val22"",
-        }
-      ]
+      ""Field"" : ""Parent.Code"", ""Operator"" : ""Equals"", ""Value"" : ""val11"",
+      ""Filters"" : [{ ""Field"" : ""Parent.Name"", ""Operator"" : ""Contains"", ""Value"" : ""val22"" }]
     }
   ]
-}
-");
+}");
 fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
 //SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6
 //FROM ""D_District"" a
@@ -275,7 +286,7 @@ fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
 
 ---
 
-## 11、ISelect.ToDelete、ISelect.ToUpdate
+## 12、ISelect.ToDelete、ISelect.ToUpdate
 
 默认 IDelete 不支持导航对象，多表关联等。ISelect.ToDelete 可将查询转为删除对象，以便支持导航对象或其他查询功能删除数据，如下：
 
@@ -298,7 +309,7 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 ---
 
-## 12、保存多对多数据 SaveMany
+## 13、保存多对多数据 SaveMany
 
 之前：
 
@@ -307,14 +318,14 @@ FreeSql.DbContext 和 仓储实现，已经实现了联级保存功能，联级�
 全局关闭：
 
 ```csharp
-fsql.SetDbContextOptions(opt => opt.EnableAddOrUpdateNavigateList = false);
+fsql.SetDbContextOptions(opt => opt.EnableCascadeSave = false);
 ```
 
 局部关闭：
 
 ```csharp
 var repo = fsql.GetRepository<T>();
-repo.DbContextOptions.EnableAddOrUpdateNavigateList = false;
+repo.DbContextOptions.EnableCascadeSave = false;
 ```
 
 ### 本功能：
@@ -344,7 +355,7 @@ SaveMany【多对多】的机制规则与联级保存的一样，如下：
 
 ---
 
-## 13、自定义表达式函数
+## 14、自定义表达式函数
 
 ```csharp
 [ExpressionCall]
@@ -383,7 +394,7 @@ var sql1 = fsql.Select<SysModule>()
 
 ---
 
-# 14、自定义实体特性、与其他 ORM 共用特性
+# 15、自定义实体特性、与其他 ORM 共用特性
 
 本功能可实现与其他 ORM 使用一套 Attribute，避免维护两份实体特性的烦恼：
 
@@ -425,7 +436,7 @@ class MyColumnAttribute : Attribute {
 
 ---
 
-# 15、审计 CURD
+# 19、审计 CURD
 
 如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
 
@@ -446,32 +457,32 @@ fsql.Aop.CurdAfter += (s, e) => {
 
 ---
 
-# 16、审计属性值
+# 17、审计属性值
 
 实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。
 
 ```csharp
 fsql.Aop.AuditValue += (s, e) => {
-    if (e.Column.CsType == typeof(long)
-        && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null
-        && e.Value?.ToString() == 0)
-        e.Value = new Snowflake().GetId();
+  if (e.Column.CsType == typeof(long) && 
+    e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null && 
+    e.Value?.ToString() == "0")
+    e.Value = new Snowflake().GetId();
 };
 
 class Order {
-    [Snowflake]
-    public long Id { get; set; }
-    //...
+  [Snowflake]
+  public long Id { get; set; }
+  //...
 }
 ```
 
-当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花 id 值。
+当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花id值。
 
 说明：SnowflakeAttribute 是使用者您来定义，new Snowflake().GetId() 也是由使用者您来实现
 
 如果命名规范，可以在 aop 里判断，if (e.Property.Name == "createtime") e.Value = DateTime.Now;
 
-## 17、Ado.Net 扩展方法
+# 18、Ado.Net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
 
@@ -480,19 +491,19 @@ using FreeSql;
 
 using (var conn = new SqlConnection(...))
 {
-    IFreeSql fsql = conn.GetIFreeSql();
-    fsql.CodeFirst.IsNoneCommandParameter = true;
-    fsql.CodeFirst.IsSyncStructureToUpper = true;
-    fsql.Aop.CommandBefore += (_, e) => Trace.WriteLine(e.Command.CommandText);
-    //以上整个程序只需要设置一次
+  IFreeSql fsql = conn.GetIFreeSql();
+  fsql.CodeFirst.IsNoneCommandParameter = true;
+  fsql.CodeFirst.IsSyncStructureToUpper = true;
+  fsql.Aop.CommandBefore += (_, e) => Trace.WriteLine(e.Command.CommandText);
+  //以上整个程序只需要设置一次
 
-    conn.Select<T>().Where(...).ToList();
+  conn.Select<T>().Where(...).ToList();
 
-    conn.Insert(new T {}).ExecuteAffrows();
-    conn.Update().SetSource(new T {}).ExecuteAffrows();
-    conn.InsertOrUpdate().SetSource(new T {}).ExecuteAffrows();
+  conn.Insert(new T {}).ExecuteAffrows();
+  conn.Update().SetSource(new T {}).ExecuteAffrows();
+  conn.InsertOrUpdate().SetSource(new T {}).ExecuteAffrows();
 
-    conn.Delete<T>().Where(...).ExecuteAffrows();
+  conn.Delete<T>().Where(...).ExecuteAffrows();
 }
 ```
 

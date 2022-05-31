@@ -99,6 +99,9 @@ public class S_SysConfig {
 | MygisMultiLineString | multilinestring |
 | MygisMultiPolygon    | multipolygon    |
 
+## Mysql注意事项
+如果``int、byte``类型，指定了 ``DbType="tinyint(1)"``,请注意，``tinyint(1)``在ado.net中默认将此值映射为``bool``类型，可在链接串中指定``TreatTinyAsBoolean=false``,使映射 ``tinyint(1) ``为 ``SByte`` 而非 ``bool``。
+
 ## PostgreSQL 特别类型映射
 
 | csharp                                                              | PostgreSQL                       |

@@ -62,7 +62,7 @@ new List<Song>(new[] { song1, song2, song3 })
     .IncludeMany(fsql, a => a.Tags);
 ```
 
-```c#
+```csharp
 new List<Song>(new[] { song1, song2, song3 })
     .IncludeByPropertyName(
         orm: fsql, 

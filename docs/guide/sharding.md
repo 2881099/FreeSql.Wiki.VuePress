@@ -10,7 +10,7 @@
 
 FreeSql 原生用法、FreeSql.Repository 仓储用法 都提供了 AsTable 方法对分表进行 CRUD 操作，例如：
 
-```c#
+```csharp
 var repo = fsql.GetRepository<Log>();
 repo.AsTable(oldname => $"{oldname}_201903"); //对 Log_201903 表 CRUD
 
