@@ -4,6 +4,16 @@
 
 > preview 预览版 添加 nuget 源：[https://www.myget.org/F/ncc/api/v3/index.json](https://www.myget.org/F/ncc/api/v3/index.json)
 
+## v3.2.660
+
+- 增加 UseMappingPriority 指定映射优先级；[#387](https://github.com/dotnetcore/FreeSql/issues/387) [#69](https://github.com/dotnetcore/FreeSql/issues/69) [#99](https://github.com/dotnetcore/FreeSql/issues/99)
+- 增加 AuditValueEventArgs Object 参数；[#1128](https://github.com/dotnetcore/FreeSql/issues/1128)
+- 修复 pgsql varchar(120) CodeFirst 迁移不修改长度；
+- 修复 ISelect.InsertInto 未执行自动迁移；
+- 优化 连接池不可用、定时检查；
+- 优化 Limit + Sum/Avg/Max/Min 为嵌套查询；
+- 优化 GroupBy Page 未排序的查询；[#1126](https://github.com/dotnetcore/FreeSql/issues/1126)
+
 ## v3.2.651
 
 - **增加 DTO 映射非导航属性的子表查询 ToList，可直接返回集合；**

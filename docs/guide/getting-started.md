@@ -158,7 +158,8 @@ fsql.Delete<Blog>()
 | UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()         |
 | UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                     |
 | UseLazyLoading                        | this          | 开启延时加载功能                                                                               |
-| UseMonitorCommand                     | this          | 监视全局 SQL 执行前后                                                                          |
+| UseMonitorCommand | this | 监视全局 SQL 执行前后 |
+| UseMappingPriority | this | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
 | UseNameConvert                        | this          | 自动转换名称 Entity -\> Db                                                                     |
 | UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认 true) |
 | Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                           |
@@ -175,12 +176,14 @@ fsql.Delete<Blog>()
 | DataType.Firebird                  | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456                                                                                                                           |
 | DataType.MsAccess                  | Provider=Microsoft.Jet.OleDb.4.0;Data Source=d:/accdb/2003.mdb                                                                                                                                  |
 | DataType.Dameng(达梦)              | server=127.0.0.1;port=5236;user id=2user;password=123456789;database=2user;poolsize=5                                                                                                           |
-| DataType.ShenTong(神通)            | HOST=192.168.164.10;PORT=2003;DATABASE=OSRDB;USERNAME=SYSDBA;PASSWORD=szoscar55;MAXPOOLSIZE=2                                                                                                   |
-| DataType.KingbaseES(人大金仓)      | Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST;MAXPOOLSIZE=2                                                                                                                 |
+| DataType.ShenTong(神通) | HOST=192.168.164.10;PORT=2003;DATABASE=OSRDB;USERNAME=SYSDBA;PASSWORD=szoscar55;MAXPOOLSIZE=2 |
+| DataType.KingbaseES(人大金仓) V008R003 | Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST;MAXPOOLSIZE=2 |
+| DataType.Gbase(南大通用) | Driver={GBase ODBC DRIVER (64-Bit)};Host=192.168.164.134;Service=9088;Server=gbase01;Database=testdb;Protocol=onsoctcp;Uid=gbasedbt;Pwd=GBase123;Db_locale=zh_CN.utf8;Client_locale=zh_CN.utf8 |
 | DataType.OdbcMySql                 | Driver={MySQL ODBC 8.0 Unicode Driver}; Server=127.0.0.1;Persist Security Info=False; Trusted_Connection=Yes;UID=root;PWD=root; DATABASE=cccddd_odbc;Charset=utf8; SslMode=none;Min Pool Size=1 |
 | DataType.OdbcSqlServer             | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min Pool Size=1                              |
-| DataType.OdbcOracle                | Driver={Oracle in XE};Server=//127.0.0.1:1521/XE; Persist Security Info=False; Trusted_Connection=Yes;UID=odbc1;PWD=123456; Min Pool Size=1                                                     |
-| DataType.OdbcPostgreSQL            | Driver={PostgreSQL Unicode(x64)};Server=192.168.164.10; Port=5432;UID=postgres;PWD=123456; Database=tedb_odbc;Pooling=true;Min Pool Size=1                                                      |
-| DataType.OdbcDameng (达梦)         | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789                                                                    |
-| DataType.OdbcKingbaseES (人大金仓) | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST                                                                                      |
-| DataType.Odbc                      | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1                              |
+| DataType.OdbcOracle | Driver={Oracle in XE};Server=//127.0.0.1:1521/XE; Persist Security Info=False; Trusted_Connection=Yes;UID=odbc1;PWD=123456; Min Pool Size=1 |
+| DataType.OdbcPostgreSQL | Driver={PostgreSQL Unicode(x64)};Server=192.168.164.10; Port=5432;UID=postgres;PWD=123456; Database=tedb_odbc;Pooling=true;Min Pool Size=1 |
+| DataType.OdbcDameng (达梦) | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789 |
+| DataType.OdbcKingbaseES (人大金仓) V008R003 | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST |
+| DataType.Odbc | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1 |
+| [DataType.Custom](https://github.com/2881099/FreeSql/tree/master/Providers/FreeSql.Provider.Custom) | 自定义连接串，访问任何数据库 |

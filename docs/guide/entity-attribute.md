@@ -21,6 +21,8 @@ class Topic { }
 - 4、[Table(Name = "public.tabname")]
 - 5、AsTable fsql.Select\<T\>().AsTable((_, old) => "public.tabname").ToList()
 
+> v3.2.660 可通过 UseMappingPriority 调整优先级
+
 改名：须指定旧的表名：\[Table(OldName = "Topic")\]
 
 > 属性名称：\[Column(Name = "xxx")\]

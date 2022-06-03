@@ -9,6 +9,7 @@ export default hopeTheme({
     docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
     docsBranch: "main",
     docsDir: 'docs', 
+    // pure: true, 
     iconPrefix: "iconfont icon-",
     locales: {
         "/": {
