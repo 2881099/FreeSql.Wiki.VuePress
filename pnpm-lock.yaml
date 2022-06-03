@@ -4,6 +4,7 @@ specifiers:
   '@vuepress/cli': 2.0.0-beta.43
   '@vuepress/client': 2.0.0-beta.43
   '@vuepress/plugin-docsearch': 2.0.0-beta.43
+  '@vuepress/plugin-google-analytics': 2.0.0-beta.43
   vue: 3.2.33
   vuepress-theme-hope: 2.0.0-beta.53
   vuepress-vite: 2.0.0-beta.43
@@ -13,6 +14,7 @@ dependencies:
   '@vuepress/cli': 2.0.0-beta.43
   '@vuepress/client': 2.0.0-beta.43
   '@vuepress/plugin-docsearch': 2.0.0-beta.43
+  '@vuepress/plugin-google-analytics': 2.0.0-beta.43
   vue: 3.2.33
   vuepress-theme-hope: 2.0.0-beta.53
   vuepress-vite: 2.0.0-beta.43_2ec4c2c85c0ba60ac22cf57d314e490b
@@ -1957,6 +1959,16 @@ packages:
     dependencies:
       '@vuepress/core': 2.0.0-beta.43
       execa: 5.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@vuepress/plugin-google-analytics/2.0.0-beta.43:
+    resolution: {integrity: sha512-8IX0FXLNVnNc426w4ojZO7Oi7w54FLM0Abu3ytBjQltf2XWVhCUPe1UNQz6Ks4TmGp5uNESlo+S1+HZri49Kfw==}
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.43
+      '@vuepress/core': 2.0.0-beta.43
+      '@vuepress/utils': 2.0.0-beta.43
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -3980,7 +3992,7 @@ packages:
     dev: false
 
   /extend-shallow/2.0.1:
-    resolution: {integrity: sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=}
+    resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extendable: 0.1.1
@@ -4545,7 +4557,7 @@ packages:
     dev: false
 
   /is-extendable/0.1.1:
-    resolution: {integrity: sha1-YrEQ4omkcUGOPsNqYX1HLjAd/Ik=}
+    resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
     engines: {node: '>=0.10.0'}
     dev: false
 

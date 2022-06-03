@@ -1,6 +1,9 @@
 import { defineUserConfig } from "@vuepress/cli";
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+const base = (process.env.BASE as "/" | `/${string}/`) || "/";
+
 export default defineUserConfig({
     locales: {
         "/": {
@@ -14,8 +17,7 @@ export default defineUserConfig({
             description: "FreeSql Documents",
         },
     },
-    base: "/",
-
+    base: base,
     head: [
         [
             "link",
@@ -98,5 +100,8 @@ export default defineUserConfig({
                 },
             },
         }),
+        googleAnalyticsPlugin({
+            id: 'G-DBKD2VY1WB'
+        })
     ],
 });
