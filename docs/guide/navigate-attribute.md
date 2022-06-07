@@ -2,7 +2,7 @@
 
 导航属性是 FreeSql 的特色功能之一，可通过约定配置、或自定义配置对象间的关系。
 
-导航属性有 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent 五种配置关系。
+导航属性有 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMany](https://www.cnblogs.com/FreeSql/p/16351417.html) 六种配置关系。
 
 有了导航属性，多表查询会非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
 
@@ -54,7 +54,7 @@ fsql.CodeFirst.ConfigEntity<实体类>(a => a
 如何检测一个导航属性是否配置生效：
 
 ```csharp
-var tbref = g.sqlite.CodeFirst
+var tbref = fsql.CodeFirst
     .GetTableByEntity(typeof(T))
     .GetTableRef("Children", true);
 ```

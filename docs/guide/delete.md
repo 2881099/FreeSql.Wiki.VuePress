@@ -20,18 +20,17 @@ class Topic {
 ```
 
 ## 动态条件
-
 ```csharp
 fsql.Delete<Topic>(object dywhere)
 ```
 
 `dywhere` 支持：
 
-- 主键值
-- `new[] { 主键值1, 主键值2 }`
-- Topic 对象
-- `new[] { Topic对象1, Topic对象2 }`
-- `new { id = 1 }`
+* 主键值
+* `new[] { 主键值1, 主键值2 }`
+* Topic 对象
+* `new[] { Topic对象1, Topic对象2 }`
+* `new { id = 1 }`
 
 ```csharp
 var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ToSql();

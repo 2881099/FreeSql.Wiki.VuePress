@@ -58,7 +58,7 @@ export const enSidebarConfig = sidebar([
                 text: 'CodeFirst',
                 collapsable: true,
                 children: [
-                    '/en/guide/type-mapping.md',
+                    '/en/guide/Entity-Relationship.md',
                 ]
             }
         ],

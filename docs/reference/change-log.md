@@ -4,12 +4,13 @@
 
 > preview 预览版 添加 nuget 源：[https://www.myget.org/F/ncc/api/v3/index.json](https://www.myget.org/F/ncc/api/v3/index.json)
 
-## v3.2.660
+## v3.2.661
 
 - 增加 UseMappingPriority 指定映射优先级；[#387](https://github.com/dotnetcore/FreeSql/issues/387) [#69](https://github.com/dotnetcore/FreeSql/issues/69) [#99](https://github.com/dotnetcore/FreeSql/issues/99)
 - 增加 AuditValueEventArgs Object 参数；[#1128](https://github.com/dotnetcore/FreeSql/issues/1128)
 - 修复 pgsql varchar(120) CodeFirst 迁移不修改长度；
 - 修复 ISelect.InsertInto 未执行自动迁移；
+- 修复 UseCommandParameterWithLambda IN 参数化判断 的逻辑 bug；[#1137](https://github.com/dotnetcore/FreeSql/issues/1137)
 - 优化 连接池不可用、定时检查；
 - 优化 Limit + Sum/Avg/Max/Min 为嵌套查询；
 - 优化 GroupBy Page 未排序的查询；[#1126](https://github.com/dotnetcore/FreeSql/issues/1126)
@@ -17,11 +18,11 @@
 ## v3.2.651
 
 - **增加 DTO 映射非导航属性的子表查询 ToList，可直接返回集合；**
-- 增加 Array.Any(x => x.id == a.Id && ..) 表达式树解析；[#243](https://github.com/dotnetcore/FreeSql/issues/243)
-- 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100)
+- 增加 Array.Any(x => x.id == a.Id && ..) 表达式树解析；[#243](https://github.com/dotnetcore/FreeSql/issues/243)  
+- 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100) 
 - 增加 [#1108](https://github.com/dotnetcore/FreeSql/issues/1108) Exception 国际化；
-- 增加 DynamicFilterCustom 参数 object sender；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113)
-- 增加 Fluent API 以继承接口的形式配置实体；[#937](https://github.com/dotnetcore/FreeSql/issues/937)
+- 增加 DynamicFilterCustom 参数 object sender；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113) 
+- 增加 Fluent API 以继承接口的形式配置实体；[#937](https://github.com/dotnetcore/FreeSql/issues/937) 
 - 修复 Oracle AsTable 分表嵌套 SQL 拼错错误；[#1098](https://github.com/dotnetcore/FreeSql/issues/1098)
 - 修复 AsTable ManyToMany IncludeMany 无效的问题；[#1103](https://github.com/dotnetcore/FreeSql/issues/1103)
 - 修复 AsTable 分表 ToAggregate 无法得到汇总；[#1115](https://github.com/dotnetcore/FreeSql/issues/1115)

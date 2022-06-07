@@ -1,8 +1,8 @@
-# Entity Relationship
+[中文](%e5%ae%9e%e4%bd%93%e5%85%b3%e7%b3%bb) | **English**
 
 Navigation properties are one of FreeSql's characteristic functions, which can be configured by agreement or customized configuration of the relationship between objects.
 
-Navigation properties have five configuration relationships: OneToMany, ManyToOne, ManyToMany, OneToOne, and Parent.
+Navigation properties have six configuration relationships: OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, And [PgArrayToMany](https://www.cnblogs.com/FreeSql/p/16351417.html).
 
 With navigation properties, multi-table query is very convenient. Directly using navigation objects in lambda expressions can get the IDE's BUFF blessing.
 
@@ -184,4 +184,3 @@ Song, Tag, Song_tag, these three entities use the four relationships: OneToMany,
 - [《CodeFirst Mode, Part 3: Custom Attributes》](Custom-Attributes)
 - [《CodeFirst Mode, Part 4: Type Mapping》](Type-Mapping)
 - [《Import Entity Configuration from Database》](Import-Entity-Configuration-from-Database)
-
