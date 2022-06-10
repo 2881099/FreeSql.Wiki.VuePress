@@ -72,7 +72,24 @@ fsql.Ado.CommandFluent("dbo.GetICMaxNum")
 
 Console.WriteLine(p2.Value);
 ```
+Oracle 存储过程获取DataTable：
 
+```csharp
+OracleParameter p2 = null;
+var dt = fsql.Ado.CommandFluent("getTableInfo")
+     .CommandType(CommandType.StoredProcedure)
+     .CommandTimeout(60)
+     .WithParameter("out_var", null, p =>
+     {
+         p2 = p as OracleParameter;
+
+         p2.OracleDbType = OracleDbType.RefCursor;
+         p2.Direction = ParameterDirection.Output;
+
+     })
+     .ExecuteDataTable();
+Console.WriteLine(dt.Rows.Count);
+```
 ## Ado.net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
