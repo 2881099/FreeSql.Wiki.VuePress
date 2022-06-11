@@ -2,6 +2,7 @@ import { defineUserConfig } from "@vuepress/cli";
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+
 const base = (process.env.BASE as "/" | `/${string}/`) || "/";
 
 export default defineUserConfig({
@@ -48,6 +49,13 @@ export default defineUserConfig({
             { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
         ],
         ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }],
+        [
+            'script', {
+                type: 'text/javascript',
+                crossorigin: 'anonymous',
+                src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7223766210897652'
+            }
+        ]
         // ...其他标签
     ],
     theme,

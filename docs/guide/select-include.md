@@ -73,12 +73,25 @@ new List<Song>(new[] { song1, song2, song3 })
 //v3.2.605+
 ```
 
-## 5、IncludeMany 两种方式对比
+## 5、子查询 ToList
+
+> v3.2.650+ 以下最多执行3次 SQL
+
+```csharp
+fsql.Select<Song>().ToList(a => new
+{
+    all = a,
+    list1 = fsql.Select<Tag>().ToList(),
+    list2 = fsql.Select<SongTag>().Where(b => b.SongId == a.Id).ToList()
+});
+```
+
+## 6、IncludeMany 两种方式对比
 
 方式一（IncludeMany 扩展方法）：
 
 ```csharp
-var list111 = fsql.Select<SysModule>()
+var list = fsql.Select<SysModule>()
     .Page(1, 10)
     .ToList(a => new { Id = a.Id }) //查询数据 id
     .Select(a => new SysModule { Id = a.Id }).ToList() //内存操作
@@ -86,14 +99,14 @@ var list111 = fsql.Select<SysModule>()
 ```
 
 ```sql
-SELECT a."Id" as1
-FROM "SysModule" a
+SELECT a."Id" as1 
+FROM "SysModule" a 
 limit 0,10
 
-SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status",
-a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime"
-FROM "SysModulePermission" a
-LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId"
+SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status", 
+a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime" 
+FROM "SysModulePermission" a 
+LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId" 
 WHERE ((a."SysModuleId") in ('menu1','menu2'))
 ```
 
@@ -102,7 +115,7 @@ WHERE ((a."SysModuleId") in ('menu1','menu2'))
 方式二（直接 IncludeMany + ToList）：
 
 ```csharp
-var list222 = fsql.Select<SysModule>()
+var list = fsql.Select<SysModule>()
     .IncludeMany(m => m.Permissions, then => then.Include(a => a.Button))
     .Page(1, 10)
     .ToList();
