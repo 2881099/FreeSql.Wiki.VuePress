@@ -39,6 +39,7 @@ export default defineUserConfig({
             },
         ],
         ['meta', { name: 'application-name', content: 'FreeSql' }],
+        ['meta', { name: 'keywords', content: 'FreeSql,.NET,ORM' }],
         ['meta', { name: 'apple-mobile-web-app-title', content: 'FreeSql' }],
         [
             'meta',
