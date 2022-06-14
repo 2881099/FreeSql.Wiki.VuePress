@@ -1,4 +1,4 @@
-[中文](%e5%ae%9e%e4%bd%93%e5%85%b3%e7%b3%bb) | **English**
+# Entity-Relationship
 
 Navigation properties are one of FreeSql's characteristic functions, which can be configured by agreement or customized configuration of the relationship between objects.
 
@@ -11,6 +11,8 @@ With navigation properties, multi-table query is very convenient. Directly using
 - If there is an association relationship, just use the navigation object directly, and the `On` condition will be automatically attached;
 
 [《What problems can navigation properties solve?》](https://www.cnblogs.com/kellynic/p/13575053.html)
+
+> Warm up note: to load navigation attributes, you need to solve the problem of dead cycle reference. When the reference relationship is very complex, it may lead to the failure of using navigation attributes for the first time. The second time is enough. The solution is to preheat all entity classes when the program starts, and while execute fsql.Select\<object\>().Astype (entity type);
 
 ## Custom Navigation Relationship
 
