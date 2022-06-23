@@ -6,6 +6,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 const base = (process.env.BASE as "/" | `/${string}/`) || "/";
 
 export default defineUserConfig({
+    port: 8083,
     locales: {
         "/": {
             lang: "zh-CN",

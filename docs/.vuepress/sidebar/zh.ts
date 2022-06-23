@@ -122,4 +122,17 @@ export const zhSidebarConfig = sidebar({
             link: "/reference/service-support.md",
         },
     ],
+    "/extra/": [
+        {
+            text: "扩展指南",
+            prefix: "/extra/",
+            link: "/extra/",
+            icon: "any",  
+            collapsable: true,
+            children: [
+                "/extra/README.md",
+                "/extra/idlebus-freesql.md",
+            ],
+        },
+    ]
 });

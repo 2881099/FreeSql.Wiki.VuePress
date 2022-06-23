@@ -32,6 +32,11 @@ export const zhNavbarConfig = navbar([
         ]
     },
     {
+        text: '扩展',
+        link: '/extra/',
+        icon: "any",
+    },
+    {
         text: 'API',
         icon: "api",
         children: [
