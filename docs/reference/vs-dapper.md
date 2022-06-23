@@ -20,16 +20,24 @@ Dapper + SQL 是大家一般所用的方式，性能对比主要体现在两个�
 - Dapper 采用 Emit 构造委托并缓存，性能接近原生代码；
 - FreeSql 采用 ExpressionTree 构造委托并缓存，为了映射类型更加易用使用了一点装箱操作，性能比 Dapper 略低；
 
-| Method         | size |       Mean |     Error |    StdDev |     Median | Rank |
-| -------------- | ---- | ---------: | --------: | --------: | ---------: | ---: |
-| FreeSqlSelect  | 1    |   512.1 us |  25.99 us |  75.82 us |   519.6 us |    3 |
-| SqlSugarSelect | 1    |   438.6 us |  27.87 us |  81.75 us |   428.1 us |    2 |
-| EfCoreSelect   | 1    |   594.3 us |  36.51 us | 107.08 us |   593.9 us |    4 |
-| DapperSelete   | 1    |   287.5 us |  22.10 us |  63.77 us |   281.7 us |    1 |
-| FreeSqlSelect  | 500  | 1,022.0 us |  72.17 us | 212.79 us |   957.0 us |    6 |
-| SqlSugarSelect | 500  | 1,338.1 us |  90.51 us | 261.15 us | 1,311.5 us |    7 |
-| EfCoreSelect   | 500  | 1,390.0 us | 101.53 us | 296.18 us | 1,319.8 us |    7 |
-| DapperSelete   | 500  |   919.0 us |  48.37 us | 139.55 us |   891.0 us |    5 |
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19044
+Intel Core i7-8700K CPU 3.70GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET Core SDK=6.0.100
+  [Host]     : .NET Core 5.0.11 (CoreCLR 5.0.1121.47308, CoreFX 5.0.1121.47308), X64 RyuJIT DEBUG
+  Job-LEQVAV : .NET Core 5.0.11 (CoreCLR 5.0.1121.47308, CoreFX 5.0.1121.47308), X64 RyuJIT DEBUG
+
+BuildConfiguration=Debug  InvocationCount=1  UnrollFactor=1
+
+|         Method | size |       Mean |    Error |    StdDev |     Median | Rank |
+|--------------- |----- |-----------:|---------:|----------:|-----------:|-----:|
+|  FreeSqlSelect |    1 |   271.6 us | 14.03 us |  41.16 us |   272.6 us |    2 |
+| SqlSugarSelect |    1 |   323.5 us | 15.75 us |  45.18 us |   314.9 us |    3 |
+|   EfCoreSelect |    1 |   392.8 us | 17.61 us |  49.39 us |   376.2 us |    4 |
+|   DapperSelete |    1 |   215.9 us | 11.88 us |  33.52 us |   213.8 us |    1 |
+|  FreeSqlSelect |  500 |   811.8 us | 18.86 us |  55.02 us |   798.5 us |    5 |
+| SqlSugarSelect |  500 | 1,148.6 us | 53.94 us | 157.34 us | 1,116.3 us |    7 |
+|   EfCoreSelect |  500 | 1,310.2 us | 89.90 us | 262.25 us | 1,219.3 us |    8 |
+|   DapperSelete |  500 |   942.1 us | 18.46 us |  42.05 us |   931.1 us |    6 |
 
 > 如上测试 Top1、Top500 单表查询水平结果
 
