@@ -20,6 +20,7 @@ Dapper + SQL 是大家一般所用的方式，性能对比主要体现在两个�
 - Dapper 采用 Emit 构造委托并缓存，性能接近原生代码；
 - FreeSql 采用 ExpressionTree 构造委托并缓存，为了映射类型更加易用使用了一点装箱操作，性能比 Dapper 略低；
 
+```shell
 BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19044
 Intel Core i7-8700K CPU 3.70GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
 .NET Core SDK=6.0.100
@@ -27,6 +28,7 @@ Intel Core i7-8700K CPU 3.70GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical 
   Job-LEQVAV : .NET Core 5.0.11 (CoreCLR 5.0.1121.47308, CoreFX 5.0.1121.47308), X64 RyuJIT DEBUG
 
 BuildConfiguration=Debug  InvocationCount=1  UnrollFactor=1
+```
 
 |         Method | size |       Mean |    Error |    StdDev |     Median | Rank |
 |--------------- |----- |-----------:|---------:|----------:|-----------:|-----:|
