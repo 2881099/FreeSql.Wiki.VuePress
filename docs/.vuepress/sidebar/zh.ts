@@ -51,7 +51,12 @@ export const zhSidebarConfig = sidebar({
                 {
                     text: "数据库提供程序",
                     collapsable: true,
-                    children: ["/guide/freesql-provider-sqlitecore.md"],
+                    children: [
+                        "/guide/freesql-provider-sqlitecore.md",
+                        // "/guide/freesql-provider-mysqlconnector.md",
+                        // "/guide/freesql-provider-oracle.md",
+                        // "/guide/freesql-provider-postgresql.md",
+                    ],
                 },
                 {
                     text: "DbContext",
@@ -132,6 +137,12 @@ export const zhSidebarConfig = sidebar({
             children: [
                 "/extra/README.md",
                 "/extra/idlebus-freesql.md",
+                "/extra/iselect-depcopy.md",
+                "/extra/freesql-docker.md",
+                "/extra/freesql-auditlog.md",
+                "/extra/issues-mysql5_5.md",
+                "/extra/issues-in-valuetype.md",
+                "/extra/issues-expression-groupbysum.md",
             ],
         },
     ]
