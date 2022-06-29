@@ -61,6 +61,17 @@ repo.AsType(实体类型);
 repo.Insert(..);
 repo.Update(..);
 repo.Delete(..);
+repo.InsertOrUpdate(..);
+
+//或者字典
+var dic = new Dictionary<string, object>();
+dic.Add("id", 1);
+dic.Add("name", "xxxx");
+
+fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
+fsql.UpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
+fsql.DeleteDict(dic).AsTable("table1").ExecuteAffrows();
+fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
 ```
 
 ---
