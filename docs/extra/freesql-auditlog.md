@@ -80,13 +80,18 @@ uow.OnEntityChange = report => {
 参数 report 是一个 List 集合，集合元素的类型定义如下：
 
 ```csharp
-public class ChangeInfo {
-  public object Object { get; set; }
-  public EntityChangeType Type { get; set; }
-  /// <summary>
-  /// Type = Update 的时候，获取更新之前的对象
-  /// </summary>
-  public object BeforeObject { get; set; }
+public class ChangeInfo
+{
+    public object Object { get; set; }
+    public EntityChangeType Type { get; set; }
+    /// <summary>
+    /// Type = Update 的时候，获取更新之前的对象
+    /// </summary>
+    public object BeforeObject { get; set; }
+    /// <summary>
+    /// 实体类型
+    /// </summary>
+    public Type EntityType { get; set; }
 }
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```
@@ -108,3 +113,11 @@ int Delete(Expression<Func<TEntity, bool>> predicate);
 ```
 
 DbContext.SaveChanges，或者 Repository 对实体的 Insert/Update/Delete，或者 UnitOfWork.Commit 操作都会最多触发一次该事件。
+
+- 可根据 EntityType 获取具体的表名，数据库信息
+
+```cs
+//获取实体类核心配置
+TableInfo  tableInfo=fsql.CodeFrist.GetTableByEntity(Type entityType);
+DbInfoResult  dbinfoResult=fsql.CodeFrist.GetDbInfo(Type entityType);
+```

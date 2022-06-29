@@ -16,7 +16,7 @@ dotnet add package FreeSql.Provider.MySqlConnector
 public void ConfigureServices(IServiceCollection services)
 {
   IConfigurationSection Mysql = Configuration.GetSection("Mysql");
-        Fsql = new FreeSqlBuilder()
+  var fsql = new FreeSqlBuilder()
             .UseConnectionString(DataType.MySql, Mysql.Value)
             .UseAutoSyncStructure(true)
             .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
