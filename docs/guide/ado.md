@@ -64,6 +64,7 @@ fsql.Ado.CommandFluent("dbo.GetICMaxNum")
     .WithParameter("TableName", "tb1")
     .WithParameter("FInterID", null, p =>
     {
+        //(p as OracleParameter).OracleType = ...;
         p2 = p; //Output 参数
         p.DbType = DbType.Int32;
         p.Direction = ParameterDirection.Output;
