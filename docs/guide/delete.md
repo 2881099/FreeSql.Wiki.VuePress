@@ -40,7 +40,7 @@ var t2 = fsql.Delete<Topic>(new Topic { Id = 1, Title = "test" }).ToSql();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 
 var t3 = fsql.Delete<Topic>(new[] { new Topic { Id = 1, Title = "test" }, new Topic { Id = 2, Title = "test" } }).ToSql();
-//DELETE FROM `Topic` WHERE (`Id` = 1 OR `Id` = 2)
+//DELETE FROM `Topic` WHERE (`Id` in (1, 2))
 
 var t4 = fsql.Delete<Topic>(new { id = 1 }).ToSql();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
