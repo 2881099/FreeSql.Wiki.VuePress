@@ -4,7 +4,21 @@
 
 > preview 预览版 添加 nuget 源：https://www.myget.org/F/ncc/api/v3/index.json
 
-## v3.2.663
+## v3.2.665
+
+- 增加 IsVersion string 字符串乐观锁；[#1178](https://github.com/dotnetcore/FreeSql/issues/1178)
+- 增加 IUpdate.SetSource ignoreVersion 参数可实现忽略乐观锁；[#1161](https://github.com/dotnetcore/FreeSql/issues/1161)
+- 增加 IInsertOrUpdate.SetSource(items, tempPrimarys) 指定临时主键参数；[#1160](https://github.com/dotnetcore/FreeSql/issues/1160)
+- 增加 DbContext/Repository 审计日志 ChangeInfo 增加属性 EntityType；
+- 修复 SqlServer WithLock 子查询不生效的 bug；[#1159](https://github.com/dotnetcore/FreeSql/issues/1159)
+- 修复 AsTreeCte + AsTable 无效的 bug；[#1176](https://github.com/dotnetcore/FreeSql/issues/1176)
+- 修复 UseGenerateCommandParameterWithLambda(true) 问题；[#1173](https://github.com/dotnetcore/FreeSql/issues/1173) [#900](https://github.com/dotnetcore/FreeSql/issues/900)
+- 修复 SetSource 临时主键重载方法 + Column 设置 Name 后无效的 bug；
+- 修复 Dto 映射查询 Negate 表达式解析 bug；
+- 修复 pgsql OldName + XML 注释迁移代码顺序问题；
+- 优化 string Contains 模糊查找 % 的情况；
+
+## v3.2.664
 
 - **修复 UseGenerateCommandParameterWithLambda 子查询并发 bug；[#1155](https://github.com/dotnetcore/FreeSql/issues/1155) （重要）**
 - 修复 pgsql Dto 映射使用常量 false 转换失败；
