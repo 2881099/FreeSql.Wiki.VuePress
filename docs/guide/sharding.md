@@ -6,7 +6,7 @@
 
 分库 - 把原本存储于一个库的数据分块存储到多个库上，把原本存储于一个表的数据分块存储到多个表上。数据库中的数据量不一定是可控的，在未进行分表分库的情况下，随着时间和业务的发展，库中的表会越来越多，表中的数据量也会越来越大，相应地，数据操作，增删改查的开销也会越来越大；另外，一台服务器的资源（CPU、磁盘、内存、IO 等）是有限的，最终数据库所能承载的数据量、数据处理能力都将遭遇瓶颈。
 
-## 分表 AsTable
+## 手工分表 AsTable
 
 FreeSql 原生用法、FreeSql.Repository 仓储用法 都提供了 AsTable 方法对分表进行 CRUD 操作，例如：
 
@@ -52,6 +52,36 @@ using (TransactionScope ts = new TransactionScope())
     ts.Complete();
 }
 ```
+
+## 自动分表 AsTable (beta)
+
+【自动分表】不同于 CURD.AsTable 方法，目前第一期完成按【时间】自动分表（不支持分库）。
+
+欢迎积极参与测试、反馈，请优先使用源代码进行测试，方便反馈定位问题，谢谢。
+
+```c#
+[Table(Name = "as_table_log_{yyyyMM}", AsTable = "createtime=2022-1-1(1 month)")]
+class AsTableLog
+{
+    public Guid id { get; set; }
+    public string msg { get; set; }
+    public DateTime createtime { get; set; }
+}
+```
+
+> 从 2022-1-1 开始，每月创建一个分表，按 createtime 字段分表
+
+| 示范 | 说明 |
+| -- | -- | 
+| AsTable = "createtime=2022-1-1(1 year)" | 一年一个分表 |
+| AsTable = "createtime=2022-1-1(2 year)" | 两年一个分表 |
+| AsTable = "createtime=2022-1-1(1 month)" | 一月一个分表 |
+| AsTable = "createtime=2022-1-1(3 month)" | 三月一个分表 |
+| AsTable = "createtime=2022-1-1(1 day)" | 一天一个分表 |
+| AsTable = "createtime=2022-1-1(7 day)" | 七天一个分表 |
+| AsTable = "createtime=2022-1-1(12 hour)" | 12小时一个分表 |
+
+详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
 ## 分库 IdleBus
 
