@@ -73,7 +73,8 @@ fsql.Ado.CommandFluent("dbo.GetICMaxNum")
 
 Console.WriteLine(p2.Value);
 ```
-Oracle 存储过程获取DataTable：
+
+Oracle 存储过程获取 DataTable：
 
 ```csharp
 OracleParameter p2 = null;
