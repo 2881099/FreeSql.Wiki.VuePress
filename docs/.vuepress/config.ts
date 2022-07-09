@@ -57,8 +57,13 @@ export default defineUserConfig({
                 crossorigin: 'anonymous',
                 src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7223766210897652'
             }
+        ],
+        [
+            'script', {
+                type: 'text/javascript',
+                src: '/js/base.js'
+            }
         ]
-        // ...其他标签
     ],
     theme,
     plugins: [

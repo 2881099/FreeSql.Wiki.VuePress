@@ -55,3 +55,10 @@ footer: MIT Licensed | Copyright © 2018-present nicye
 ## 🗄 License (许可证)
 
 [MIT](https://github.com/dotnetcore/FreeSql/blob/master/LICENSE)
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7223766210897652"
+     data-ad-slot="3532742594"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
