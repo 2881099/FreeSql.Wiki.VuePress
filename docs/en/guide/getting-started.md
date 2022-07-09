@@ -196,7 +196,7 @@ fsql.Delete<Blog>()
 | DataType.OdbcDameng (达梦) | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789 |
 | DataType.OdbcKingbaseES (人大金仓) V008R003 | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST |
 | DataType.Odbc | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1 |
-| [DataType.Custom](https://github.com/2881099/FreeSql/tree/master/Providers/FreeSql.Provider.Custom) | Custom connection string, access any database |
+| [DataType.Custom](https://github.com/dotnetcore/FreeSql/tree/master/Providers/FreeSql.Provider.Custom) | Custom connection string, access any database |
 
 ## Reference
 

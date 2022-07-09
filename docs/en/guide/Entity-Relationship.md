@@ -86,7 +86,7 @@ class UserExt {
 }
 ```
 
-[《How to add data in one-to-one mode?》](https://github.com/2881099/FreeSql/issues/45)
+[《How to add data in one-to-one mode?》](https://github.com/dotnetcore/FreeSql/issues/45)
 
 ### Many-to-One
 
@@ -129,7 +129,7 @@ class User {
 }
 ```
 
-[《How to add data in one-to-many mode?》](https://github.com/2881099/FreeSql/issues/46)
+[《How to add data in one-to-many mode?》](https://github.com/dotnetcore/FreeSql/issues/46)
 
 ### Parent and Children
 ```csharp
@@ -145,7 +145,7 @@ class Group {
 
 The parent-children relationship is similar to One-to-Many mode. You can also refer to this link:
 
-[《How to add data in one-to-many mode?》](https://github.com/2881099/FreeSql/issues/46)
+[《How to add data in one-to-many mode?》](https://github.com/dotnetcore/FreeSql/issues/46)
 
 ### Many-to-Many
 

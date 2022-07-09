@@ -60,7 +60,7 @@ var t2 = fsql.Select<T>()
 
 > v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a.Id && b.Item2 == a.ct1))
 
-> 实现代码：[https://github.com/2881099/FreeSql/issues/243](https://github.com/2881099/FreeSql/issues/243)
+> 实现代码：[https://github.com/dotnetcore/FreeSql/issues/243](https://github.com/dotnetcore/FreeSql/issues/243)
 
 ## In子表
 

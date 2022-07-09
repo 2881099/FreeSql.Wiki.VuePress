@@ -457,10 +457,10 @@
 - 调整 移除对 System.ValueType 的依赖，减少版本冲突问题；（目前 FreeSql.dll 无任何依赖）
 - **调整 Oracle StringLength/MaxLength -1 时候映射为 nclob；**
 - 调整 IInsert/IUpdate NoneParameter 方法，增加参数 isNotCommandParameter 可设置是否使用参数化；
-- 调整 FreeSqlBuilder，准备移除 UseEntityPropertyNameConvert/UseSyncStructureToLower/UseSyncStructureToUpper 方法；[#260](https://github.com/2881099/FreeSql/issues/260)；
-- 移除 In 多列表达式函数解析 [#243](https://github.com/2881099/FreeSql/issues/243)；
+- 调整 FreeSqlBuilder，准备移除 UseEntityPropertyNameConvert/UseSyncStructureToLower/UseSyncStructureToUpper 方法；[#260](https://github.com/dotnetcore/FreeSql/issues/260)；
+- 移除 In 多列表达式函数解析 [#243](https://github.com/dotnetcore/FreeSql/issues/243)；
 - 优化 IncludeMany 扩展方法对 T1 不自动迁移；
-- 优化 BulkCopy 对可空类型的属性处理； [#227](https://github.com/2881099/FreeSql/issues/227)
+- 优化 BulkCopy 对可空类型的属性处理； [#227](https://github.com/dotnetcore/FreeSql/issues/227)
 - 优化 IAdo.Query 方法，当传入带主键特性的实体时，防止主键列为 null 时导致整行记录也为 null；
 - 优化 TableInfo 元数据对 interface 实现类 IsVirtual 重写的判断（增加 IsFinal == false）；
 - 优化 Navigate 属性未设置 set 时的友好错误提示；
@@ -471,20 +471,20 @@
 - **增加 CodeFirst 实体类注释 -> 表备注，之前只能属性注释 -> 字段备注；**
 - 增加 FreeSql.Generator Sqlite 数据库生成实体类；
 - **增加 Sqlite DbFirst 实现；**
-- 增加 Oracle clob/nclob 大文本类型读写支持；[#259](https://github.com/2881099/FreeSql/issues/259)；
+- 增加 Oracle clob/nclob 大文本类型读写支持；[#259](https://github.com/dotnetcore/FreeSql/issues/259)；
 - **增加 ISelect.ToTreeList 扩展方法查询数据，加工为树型 List；(注意：实体需要配置父子导航属性)**
 - 增加 ISelect`1 ToDictionary 方法查询返回字典；
 - 增加 Pgsql JToken/JObject/JArray 索引访问的表达式解析；
 - 增加 object.Equals 表达式解析；
 - 增加 ISelect`1 AsQueryable 方法，实现将 ISelect 转换为 IQueryable 类型；
-- 增加 ISelect.RawJoin 方法以便实现 Outer Apply 查询；[#200](https://github.com/2881099/FreeSql/issues/200)；
+- 增加 ISelect.RawJoin 方法以便实现 Outer Apply 查询；[#200](https://github.com/dotnetcore/FreeSql/issues/200)；
 - 增加 IAdo.ConnectionString 属性返回 UseConnectionString 传入的值；
-- 完善 表达式拼接方法，从 T1-T5；[#256](https://github.com/2881099/FreeSql/issues/256)；
-- 修复 因兼容 [#184](https://github.com/2881099/FreeSql/issues/184) 导致 MySql Enum 表达式解析为 int 的 bug；
+- 完善 表达式拼接方法，从 T1-T5；[#256](https://github.com/dotnetcore/FreeSql/issues/256)；
+- 修复 因兼容 [#184](https://github.com/dotnetcore/FreeSql/issues/184) 导致 MySql Enum 表达式解析为 int 的 bug；
 - 修复 FreeSql.Provider.MySqlConnector Enum 自定义元素值，导致值计算错误的 bug；
 - 修复 SqlServer charindex 表达式函数参数位置的错误；
 - 修复 MySql locate 表达式函数参数位置的错误；
-- 修复 UseGenerateCommandParameterWithLambda(true) 时子语句的参数没整合到主语句；[#231](https://github.com/2881099/FreeSql/issues/231)；
+- 修复 UseGenerateCommandParameterWithLambda(true) 时子语句的参数没整合到主语句；[#231](https://github.com/dotnetcore/FreeSql/issues/231)；
 - 修复 本地区域化后 ToSql 产生的错误，比如数字可能生成 SQL 为：100,000；
 - 修复 StringLength/MaxLength 对 Oracle varchar2 类型无效的 bug；
 - 修复 CodeFirst IsNullable 迁移脚本重复 NOT NULL 语法错误；
@@ -504,13 +504,13 @@
 
 ## v1.2.0
 
-- 修复 ToList(a => new Dto {}) 这种情况按字段名匹配问题，应该按属性名；[#208](https://github.com/2881099/FreeSql/issues/208)
-- 增加 nuget 包强签名发布；[#201](https://github.com/2881099/FreeSql/issues/201)
+- 修复 ToList(a => new Dto {}) 这种情况按字段名匹配问题，应该按属性名；[#208](https://github.com/dotnetcore/FreeSql/issues/208)
+- 增加 nuget 包强签名发布；[#201](https://github.com/dotnetcore/FreeSql/issues/201)
 - 完善 IUpdate.SetSource 组合主键的数据更新单元测试；
 - 修复 Oracle 导航属性 表别名过长的问题；
-- 修复 DbSet.Where 表达式解析报错的问题；[#216](https://github.com/2881099/FreeSql/issues/216)
-- 修复 DbContext/Repository Update 不更新 DbUpdateValue 的问题；[#219](https://github.com/2881099/FreeSql/issues/219)
-- 增加 IUpdate.SetDto 根据 dto 更新的方法；[#218](https://github.com/2881099/FreeSql/issues/218)
+- 修复 DbSet.Where 表达式解析报错的问题；[#216](https://github.com/dotnetcore/FreeSql/issues/216)
+- 修复 DbContext/Repository Update 不更新 DbUpdateValue 的问题；[#219](https://github.com/dotnetcore/FreeSql/issues/219)
+- 增加 IUpdate.SetDto 根据 dto 更新的方法；[#218](https://github.com/dotnetcore/FreeSql/issues/218)
 - 修复 EfFluentApi 一个参数类型问题；
 
 ## v1.1.0
@@ -602,7 +602,7 @@
 
 ## v0.12.12
 
-- 修复 DbContext TrackList 对匿名对象处理的 bug；[#150](https://github.com/2881099/FreeSql/issues/150)
+- 修复 DbContext TrackList 对匿名对象处理的 bug；[#150](https://github.com/dotnetcore/FreeSql/issues/150)
 
 ## v0.12.11
 
@@ -784,7 +784,7 @@ fsql.CodeFirst.SyncStructure(typeof(Log), "Log_2"); //迁移到 Log_2 表
 ## v0.10.11
 
 - 优化 枚举属性的默认值容错，枚举下标不存在 0 的时候，mysql 迁移结构默认值报错；
-- 优化 ORACLE Command 绑定变量 BindByName = true；[#107](https://github.com/2881099/FreeSql/issues/107)
+- 优化 ORACLE Command 绑定变量 BindByName = true；[#107](https://github.com/dotnetcore/FreeSql/issues/107)
 
 ## v0.10.10
 
@@ -1079,7 +1079,7 @@ class Topic {
 ## v0.6.10
 
 - 增加 TableAttribute 特性属性 DisableSyncStructure，当实体对应的是视图时，可使用本功能禁用迁移；
-- 增加 FreeSqlBuilder UseEntityPropertyNameConvert() 全局转换实体属性名方法 [#60](https://github.com/2881099/FreeSql/pull/60)；
+- 增加 FreeSqlBuilder UseEntityPropertyNameConvert() 全局转换实体属性名方法 [#60](https://github.com/dotnetcore/FreeSql/pull/60)；
 
 ## v0.6.9
 
@@ -1177,8 +1177,8 @@ class Topic {
 ## v0.5.5
 
 - 增加 Column.MapType 类型映射，可将 enum 映射为 int/string 等；
-- 增加 Column.Unique 唯一键，多个属性指定相同的标识，代表联合键，[#42](https://github.com/2881099/FreeSql/issues/42)；
-- 增加 Expression string.Concat，[#39](https://github.com/2881099/FreeSql/issues/39)；
+- 增加 Column.Unique 唯一键，多个属性指定相同的标识，代表联合键，[#42](https://github.com/dotnetcore/FreeSql/issues/42)；
+- 增加 Expression string.Concat，[#39](https://github.com/dotnetcore/FreeSql/issues/39)；
 - 补充 Expression IEnumerable`<T>`.Contains 的支持，之前只能数组或 IList`<T>`；
 - 补充 IDbFirst GetTablesByDatabase 返回 uk/fk/index 名称，以便迁移；
 - 补充 MapType/Unique 单元测试；
@@ -1189,8 +1189,8 @@ class Topic {
 - 修复 Expression OrElse 两侧括号丢失的 bug；
 - 修复 Expression DateTime 类型 CompareTo 在 MySql/SqlServer 下的 bug；
 - 修复 ISelect.ToList(true) 无效的 bug；
-- 增加 IAop.ConfigEntity 配置实体特性，可实现使用其他 ORM 的实体特性，[#36](https://github.com/2881099/FreeSql/issues/36)；
-- 优化 ISelect.GroupBy 查询，增加 .Value 实现聚合源字段查询，ToList(a => a.Sum(a.Value.Score))，[#38](https://github.com/2881099/FreeSql/issues/38)；
+- 增加 IAop.ConfigEntity 配置实体特性，可实现使用其他 ORM 的实体特性，[#36](https://github.com/dotnetcore/FreeSql/issues/36)；
+- 优化 ISelect.GroupBy 查询，增加 .Value 实现聚合源字段查询，ToList(a => a.Sum(a.Value.Score))，[#38](https://github.com/dotnetcore/FreeSql/issues/38)；
 
 ## v0.5.3
 
@@ -1253,7 +1253,7 @@ class Topic {
 ## v0.4.9
 
 - 修复 pgsql Enum 类型 formatSql bug；
-- 补充 表达式解析 Equals 为 = [#28](https://github.com/2881099/FreeSql/issues/28) [#29](https://github.com/2881099/FreeSql/issues/29)；
+- 补充 表达式解析 Equals 为 = [#28](https://github.com/dotnetcore/FreeSql/issues/28) [#29](https://github.com/dotnetcore/FreeSql/issues/29)；
 
 ## v0.4.5(清明版本)
 
@@ -1265,7 +1265,7 @@ class Topic {
 
 ## v0.4.1
 
-- 抽离 FreeSql.DbContext 项目独立至 https://github.com/2881099/FreeSql.DbContext，实现面向对象ORM；
+- 抽离 FreeSql.DbContext 项目独立至 <https://github.com/dotnetcore/FreeSql.DbContext，实现面向对象ORM>；
 - 补充 CodeFirst Fluent 之 IsVersion 乐观锁配置；
 
 ## v0.3.27
@@ -1278,7 +1278,7 @@ class Topic {
 
 ## v0.3.26
 
-- 修复 SqlServer CodeFirst 迁移联合主键的 bug [#23](https://github.com/2881099/FreeSql/issues/23)；
+- 修复 SqlServer CodeFirst 迁移联合主键的 bug [#23](https://github.com/dotnetcore/FreeSql/issues/23)；
 
 ## v0.3.25
 
@@ -1331,10 +1331,10 @@ class Topic {
 
 ## v0.3.17
 
-- 修复 SqlServer DbFirst 数据库名传入带小数点的 bug [#18](https://github.com/2881099/FreeSql/issues/18)；
-- 修复 ILIst.Contains Expression [#16](https://github.com/2881099/FreeSql/issues/16)；
+- 修复 SqlServer DbFirst 数据库名传入带小数点的 bug [#18](https://github.com/dotnetcore/FreeSql/issues/18)；
+- 修复 ILIst.Contains Expression [#16](https://github.com/dotnetcore/FreeSql/issues/16)；
 - 整理 延时加载/导航属性查询的对象关系，仍然不依赖外键；
-- 完成 OneToOne/ManyToOne、ManyToMany/OneToMany 导航属性的查询 [#15](https://github.com/2881099/FreeSql/issues/15)；
+- 完成 OneToOne/ManyToOne、ManyToMany/OneToMany 导航属性的查询 [#15](https://github.com/dotnetcore/FreeSql/issues/15)；
 - 增加 IEnumerable`<TEntity>` 扩展方法 AsSelect，转成 `ISelect<T>`，以便使用 FreeSql 的查询功能；
 - 增加 int.Parse Guid.Parse 系列转换、Guid.NewGuid、new Random.NextDouble 等表达式函数解析；
 
@@ -1460,7 +1460,7 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 
 ## v0.1.1
 
-- 增加选项 IsQuoteSqlName 控制是否使用 [] 或 "" 或 `` 包含数据库名称 [#6](https://github.com/2881099/FreeSql/issues/6)；
+- 增加选项 IsQuoteSqlName 控制是否使用 [] 或 "" 或 `` 包含数据库名称 [#6](https://github.com/dotnetcore/FreeSql/issues/6)；
 
 ## v0.1.0
 
@@ -1479,14 +1479,14 @@ repos.DataFilter.Apply("name", a => a.Id > 1) 附加新的过滤器
 ## v0.0.13
 
 - 修复和丰富 ICodeFirst.ConfigEntity 方法；
-- 增加 FreeSql.Extensions.EFCoreModelBuilder 扩展库，实现与 EFCore 实体共存 [#4](https://github.com/2881099/FreeSql/issues/4)；
+- 增加 FreeSql.Extensions.EFCoreModelBuilder 扩展库，实现与 EFCore 实体共存 [#4](https://github.com/dotnetcore/FreeSql/issues/4)；
 - 增加 restful 示例项目；
 
 ## v0.0.12
 
 - lazy 延时属性父子关系的 1v 多类型判断修正，解决 int? != int 的 bug；
 - ThreadLocal 修改使用方式；
-- 使用 virtual 后实体序列化问题 [#5](https://github.com/2881099/FreeSql/issues/5)，私有化属性；
+- 使用 virtual 后实体序列化问题 [#5](https://github.com/dotnetcore/FreeSql/issues/5)，私有化属性；
 - 由于 FreeSql 采用二次封装连接池，尽量避免使用问题，真实的 max pool size 值等于传入值+1；
 
 ## v0.0.11

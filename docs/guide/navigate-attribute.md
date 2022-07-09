@@ -81,7 +81,7 @@ class UserExt {
 }
 ```
 
-[《OneToOne 一对一，怎么添加数据？》](https://github.com/2881099/FreeSql/issues/45)
+[《OneToOne 一对一，怎么添加数据？》](https://github.com/dotnetcore/FreeSql/issues/45)
 
 ### ManyToOne 多对一
 
@@ -124,7 +124,7 @@ class User {
 }
 ```
 
-[《OneToMany 一对多，怎么添加数据？》](https://github.com/2881099/FreeSql/issues/46)
+[《OneToMany 一对多，怎么添加数据？》](https://github.com/dotnetcore/FreeSql/issues/46)
 
 ### Parent 父子
 

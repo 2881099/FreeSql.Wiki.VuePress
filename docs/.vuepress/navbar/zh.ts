@@ -53,7 +53,7 @@ export const zhNavbarConfig = navbar([
                     },
                     {
                         text: '提Issues',
-                        link: 'https://github.com/2881099/FreeSql/issues/new'
+                        link: 'https://github.com/dotnetcore/FreeSql/issues/new'
                     },
                     {
                         text: 'NuGet',

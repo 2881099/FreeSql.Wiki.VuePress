@@ -325,7 +325,7 @@ public IEnumerable<SysUser> Get3()
 }
 ```
 
-> 如果需要分布多事务 TCC/Saga 请移步到：[https://github.com/2881099/FreeSql.Cloud](https://github.com/2881099/FreeSql.Cloud)
+> 如果需要分布多事务 TCC/Saga 请移步到：[https://github.com/dotnetcore/FreeSql.Cloud](https://github.com/dotnetcore/FreeSql.Cloud)
 
 ## 三、静态类管理多数据库？
 

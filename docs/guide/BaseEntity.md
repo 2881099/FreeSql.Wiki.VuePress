@@ -106,4 +106,4 @@ var items = UserGroup.Where(a => a.Id > 10).ToList();
 
 > 有关更多查询方法，可参阅 [查询](select.md)
 
-示范项目：[https://github.com/2881099/FreeSql/tree/master/Examples/base_entity](https://github.com/2881099/FreeSql/tree/master/Examples/base_entity)
+示范项目：[https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity](https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity)

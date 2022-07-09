@@ -15,7 +15,7 @@ QQ Groups：4336577(full)、8578575(full)、**52508226(available)**
 ## Features
 
 - 🛠 Support CodeFirst data migration.
-- 💻 Support DbFirst import entity class from database, or use [Generation Tool](https://github.com/2881099/FreeSql/wiki/DbFirst).
+- 💻 Support DbFirst import entity class from database, or use [Generation Tool](https://github.com/dotnetcore/FreeSql/wiki/DbFirst).
 - ⛳ Support advanced type mapping, such as PostgreSQL array type, etc.
 - 🌲 Support expression functions, and customizable analysis.
 - 🏁 Support one-to-many and many-to-many navigation properties, include and lazy loading.
