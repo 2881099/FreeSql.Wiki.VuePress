@@ -14,7 +14,7 @@
 
 > 预热说明：导航属性加载，因为要解决死循环引用问题，当引用关系很复杂的时候，有可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select\<object\>().AsType(实体类);
 
-OneToMany/ManyToMany 集合导航属性支持的类型：ICollection、List、ObservableCollection
+OneToMany/ManyToMany 集合导航属性支持的类型：ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
 
 # 自定义导航关系
 
