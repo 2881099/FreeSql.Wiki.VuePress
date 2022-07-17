@@ -20,6 +20,8 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 
 ## 特别介绍 WhereDynamicFilter
 
+[《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》](https://www.cnblogs.com/FreeSql/p/16485310.html)
+
 ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互），支持的操作符：
 
 - Contains/StartsWith/EndsWith/NotContains/NotStartsWith/NotEndsWith：包含/不包含，like '%xx%'，或者 like 'xx%'，或者 like '%xx'
