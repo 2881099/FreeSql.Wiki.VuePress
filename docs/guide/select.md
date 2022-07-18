@@ -32,6 +32,8 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 - DateRange：日期范围，有特殊处理 value\[1\] + 1
 - Any/NotAny：是否符合 value 中任何一项（直白的说是 SQL IN）
 
+![image](https://user-images.githubusercontent.com/16286519/179434456-0f8361d7-05fe-42a1-af74-74be76146f9b.png)
+
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 {
