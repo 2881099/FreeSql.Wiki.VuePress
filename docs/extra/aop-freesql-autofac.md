@@ -6,7 +6,45 @@
 - Autofac.Extras.DynamicProxy
 - Castle.Core.AsyncInterceptor(异步方法AOP拦截)
 
-## 源码
+## FreeSql基础服务
+
+### 安装FreeSql包
+
+```bash
+dotnet add package FreeSql
+dotnet add package FreeSql.DbContext
+dotnet add package FreeSql.Provider.MySqlConnector
+```
+
+手动创建一个MySql/MariaDB数据库,名为`ovov_freesql_repository`
+
+### appsetting.json
+
+```json
+{
+  "Default": "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=ovov_freesql_repository;Charset=utf8;SslMode=none;Max pool size=10"
+}
+```
+
+### 配置FreeSql服务
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+  IConfigurationSection Default  = Configuration.GetSection("Default");
+  var fsql = new FreeSqlBuilder()
+            .UseConnectionString(DataType.MySql, Default.Value)
+            .UseAutoSyncStructure(true)
+            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
+            .UseMonitorCommand(cmd => Trace.WriteLine(cmd.CommandText))
+            .Build();
+    services.AddSingleton<IFreeSql>(fsql);
+    services.AddScoped<UnitOfWorkManager>();
+    services.AddFreeRepository(null, typeof(Startup).Assembly);
+}
+```
+
+## Autofac+AOP实现异步事务
 
 - [OvOv.FreeSql.AutoFac.DynamicProxy](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy)
 
@@ -44,7 +82,7 @@ public class TransactionalAttribute : Attribute
 }
 ```
 
-## Autofac
+## Autofac集成
 
 Program.CS  替换默认的DI CreateHostBuilder方法
 
@@ -88,25 +126,6 @@ public class AutofacModule : Autofac.Module
             .EnableClassInterceptors();
             
 }
-```
-
-- 当然我们也能使用autofac批量注入以Service后缀的接口。该方法在lin-cms-dotnetcore项目中有使用[https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs)
-
-```csharp
-    List<Type> interceptorServiceTypes = new List<Type>()
-    {
-        typeof(UnitOfWorkInterceptor)
-    };  
-    //service所在dll
-    Assembly servicesDllFile = Assembly.Load("LinCms.Application");
-    
-    builder.RegisterAssemblyTypes(servicesDllFile)
-            .Where(a => a.Name.EndsWith("Service"))
-            .AsImplementedInterfaces()
-            .InstancePerLifetimeScope()
-            .PropertiesAutowired()// 属性注入
-            .InterceptedBy(interceptorServiceTypes.ToArray())
-            .EnableInterfaceInterceptors();
 ```
 
 ## AOP
@@ -315,116 +334,104 @@ public class AutofacModule : Autofac.Module
     }
 ```
 
+- [BlogService.cs#L65](https://github.com/luoyunchong/dotnetcore-examples/blob/4f4c908dc40e4c0b96ad92ad5437d071a43162cb/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy/Services/BlogService.cs#L65)
+
+当传入的参数，title为abc时，会出现异常，`throw new Exception("test exception");`,前面插入的数据并没有成功，会自动回滚。
+
 ## IUnitOfWorkManager 开启事务
 
 当业务需要单独开启事务时，我们可以直接在Service层使用UnitOfWorkManager创建UnitOfWork，首先注入自定义Service，也可通过AutoFac注入。
 
-- 默认的DI
+- [IUnitOfWorkManager](../guide/unitofwork-manager.md)主动在方法开启事务，请参考此文档
+
+## Autofac批量注册
+
+- Autofac支持批量注入以Service后缀的接口。该方法在lin-cms-dotnetcore项目中有使用[https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs)
 
 ```csharp
- services.AddScoped<TransBlogService>();
-```
-
-- TransBlogService.cs
-
-```csharp
-private readonly IBaseRepository<Blog, int> _blogRepository;
-private readonly IBaseRepository<Tag, int> _tagRepository;
-private readonly UnitOfWorkManager _unitOfWorkManager;
-
-public TransBlogService(IBaseRepository<Blog, int> blogRepository, IBaseRepository<Tag, int> tagRepository,UnitOfWorkManager unitOfWorkManager)
+public class ServiceModule : Autofac.Module
 {
-    _blogRepository = blogRepository ;
-    _tagRepository = tagRepository ;
-    _unitOfWorkManager = unitOfWorkManager;
-}
-
-public async Task CreateBlogUnitOfWorkAsync(Blog blog,List<Tag>tagList)
-{
-    using (IUnitOfWork unitOfWork = _unitOfWorkManager.Begin())
+    protected override void Load(ContainerBuilder builder)
     {
-        try
+        builder.RegisterType<UnitOfWorkInterceptor>();
+        builder.RegisterType<UnitOfWorkAsyncInterceptor>();
+
+        List<Type> interceptorServiceTypes = new List<Type>()
         {
-            await _blogRepository.InsertAsync(blog);
-            tagList.ForEach(r =>
-            {
-                r.PostId = blog.Id;
-            });
-            await _tagRepository.InsertAsync(tagList);
-            unitOfWork.Commit();
-        }
-        catch (Exception e)
-        {     
-            //实际 可以不Rollback。因为IUnitOfWork内部Dispose，会把没有Commit的事务Rollback回来，但能提前Rollback
+            typeof(UnitOfWorkInterceptor)
+        };  
+        //service所在dll，LinCms.Application为程序集名称，也可以通过typeof(程序集中的某个类即可).Assembly获取
+        Assembly servicesDllFile = Assembly.Load("LinCms.Application");
         
-            unitOfWork.Rollback();
-            //记录日志、或继续throw;出来
-        }
-    }
+        builder.RegisterAssemblyTypes(servicesDllFile)
+                .Where(a => a.Name.EndsWith("Service") && !a.IsAbstract && !a.IsInterface && a.IsPublic)
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope()
+                .PropertiesAutowired()// 属性注入
+                .InterceptedBy(interceptorServiceTypes.ToArray())
+                .EnableInterfaceInterceptors(); 
+     }
 }
+```
 
-public async Task UpdateBlogAsync(int id)
+当我们使用Autofac批量注册服务后，可以直接使用Service层的接口，不需要再使用注入。
+
+```csharp
+public interface IBlogService
 {
-    using (IUnitOfWork unitOfWork = _unitOfWorkManager.Begin())
+  Task CreateBlogTransactionalAsync(CreateBlogDto createBlogDto);
+}
+
+public class BlogService:IBlogService
+{
+    private readonly IBlogRepository _blogRepository;
+    private readonly ITagRepository _tagRepository;
+    private readonly IMapper _mapper;
+
+    public BlogService(IBlogRepository blogRepository, ITagRepository tagRepository, IMapper mapper)
     {
-        try
+        _blogRepository = blogRepository ?? throw new ArgumentNullException(nameof(blogRepository));
+        _tagRepository = tagRepository ?? throw new ArgumentNullException(nameof(tagRepository));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    }
+    [Transactional]
+    public virtual async Task CreateBlogTransactionalAsync(CreateBlogDto createBlogDto)
+    {
+        Blog blog = _mapper.Map<Blog>(createBlogDto);
+        blog.CreateTime = DateTime.Now;
+        await _blogRepository.InsertAsync(blog);
+
+        List<Tag> tags = new List<Tag>();
+        createBlogDto.Tags.ForEach(r =>
         {
-            Blog blog = _blogRepository.Select.Where(r => r.Id == id).First();
-            blog.IsDeleted = true;
-            await _blogRepository.UpdateAsync(blog);
-            unitOfWork.Commit();
-        }
-        catch (Exception e)
+            tags.Add(new Tag { TagName = r });
+        });
+        if (createBlogDto.Title == "abc")
         {
-           //记录日志、或继续throw;出来
-            unitOfWork.Rollback();
+            throw new Exception("test exception CreateBlogTransactionalAsync");
         }
+        await _tagRepository.InsertAsync(tags);
     }
 }
 ```
 
-| IUnitOfWork 成员 | 说明 |
-| -- | -- |
-| IFreeSql Orm |  该对象 Select/Delete/Insert/Update/InsertOrUpdate 与工作单元事务保持一致，可省略传递 WithTransaction |
-| DbTransaction GetOrBeginTransaction() | 开启事务，或者返回已开启的事务 |
-| void Commit() | 提交事务 |
-| void Rollback()| 回滚事务 |
-|  DbContext.EntityChangeReport EntityChangeReport |工作单元内的实体变化跟踪 |
-
-## 完整的代码
-
-- [Blog.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Blog.cs)
-- [Tag.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Tag.cs)
-- [TransBlogService.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy/Services/TransBlogService.cs)
-
-以上使用的是泛型仓储，那我们如果是重写一个仓储 如何保持和``UnitOfWorkManager``同一个事务呢。
-继承现有的``DefaultRepository<,>``仓储，实现自定义的仓储``BlogRepository.cs``,
+- 使用
 
 ```csharp
-    public class BlogRepository : DefaultRepository<Blog, int>, IBlogRepository
+[Route("api/[controller]")]
+[ApiController]
+public class BlogController : ControllerBase
+{
+    private readonly IBlogService _blogService;
+    public BlogController(IBlogService blogService)
     {
-        public BlogRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm)
-        {
-        }
-
-        public List<Blog> GetBlogs()
-        {
-            return Select.Page(1, 10).ToList();
-        }
+        _blogService=blogService;
     }
-```
 
-其中接口。``IBlogRepository.cs``
-
-```csharp
-    public interface IBlogRepository : IBaseRepository<Blog, int>
+    [HttpPost("CreateBlogTransactionalAsync")]
+    public async Task CreateBlogTransactionalAsync([FromBody] CreateBlogDto createBlogDto)
     {
-        List<Blog> GetBlogs();
+        await _blogService.CreateBlogTransactionalAsync(createBlogDto);
     }
-```
-
-在 startup.cs注入此服务
-
-```csharp
-    services.AddScoped<IBlogRepository, BlogRepository>();
+}
 ```

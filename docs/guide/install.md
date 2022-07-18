@@ -8,6 +8,13 @@ FreeSql 是一个 .NET Standard 2.0 库，仅支持 .NET Framework 4.0 或 .NET 
 
 ```bash
 dotnet add package FreeSql
+dotnet add package FreeSql.Provider.Sqlite
+```
+
+需要访问什么数据库，就安装对应的Provider.XX类库，也可直接安装FreeSql.All
+
+```bash
+dotnet add package FreeSql.All
 ```
 
 ## Packages
