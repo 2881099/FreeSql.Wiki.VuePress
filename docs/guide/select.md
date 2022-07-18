@@ -32,8 +32,6 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 - DateRange：日期范围，有特殊处理 value\[1\] + 1
 - Any/NotAny：是否符合 value 中任何一项（直白的说是 SQL IN）
 
-![image](https://user-images.githubusercontent.com/16286519/179434456-0f8361d7-05fe-42a1-af74-74be76146f9b.png)
-
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 {
@@ -41,38 +39,20 @@ DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
   ""Filters"" :
   [
     {
-      ""Field"" : ""Code"",
-      ""Operator"" : ""NotContains"",
-      ""Value"" : ""val1"",
-      ""Filters"" :
-      [
-        {
-          ""Field"" : ""Name"",
-          ""Operator"" : ""NotStartsWith"",
-          ""Value"" : ""val2"",
-        }
-      ]
+      ""Field"" : ""Code"", ""Operator"" : ""NotContains"", ""Value"" : ""val1"", 
+      ""Filters"" : [{ ""Field"" : ""Name"", ""Operator"" : ""NotStartsWith"", ""Value"" : ""val2"" }]
     },
     {
-      ""Field"" : ""Parent.Code"",
-      ""Operator"" : ""Equals"",
-      ""Value"" : ""val11"",
-      ""Filters"" :
-      [
-        {
-          ""Field"" : ""Parent.Name"",
-          ""Operator"" : ""Contains"",
-          ""Value"" : ""val22"",
-        }
-      ]
+      ""Field"" : ""Parent.Code"", ""Operator"" : ""Equals"", ""Value"" : ""val11"",
+      ""Filters"" : [{ ""Field"" : ""Parent.Name"", ""Operator"" : ""Contains"", ""Value"" : ""val22"" }]
     }
   ]
-}
-");
+}");
 fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
-//SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6
-//FROM ""D_District"" a
-//LEFT JOIN ""D_District"" a__Parent ON a__Parent.""Code"" = a.""ParentCode""
+
+//SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6 
+//FROM ""D_District"" a 
+//LEFT JOIN ""D_District"" a__Parent ON a__Parent.""Code"" = a.""ParentCode"" 
 //WHERE (not((a.""Code"") LIKE '%val1%') AND not((a.""Name"") LIKE 'val2%') OR a__Parent.""Code"" = 'val11' AND (a__Parent.""Name"") LIKE '%val22%')
 ```
 
@@ -122,9 +102,9 @@ fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
 | LeftJoin            | \<this\>        | Lambda                             | 左联查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
 | InnerJoin           | \<this\>        | Lambda                             | 联接查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
 | RightJoin           | \<this\>        | Lambda                             | 右联查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
-| LeftJoin            | \<this\>        | string, parms                      | 左联查询，使用原生 sql 语法，LeftJoin("type b on b.id = a.id and b.clicks > ?clicks", new { clicks = 1 })                                                              |
-| InnerJoin           | \<this\>        | string, parms                      | 联接查询，使用原生 sql 语法，InnerJoin("type b on b.id = a.id and b.clicks > ?clicks", new { clicks = 1 })                                                             |
-| RightJoin           | \<this\>        | string, parms                      | 右联查询，使用原生 sql 语法，RightJoin("type b on b.id = a.id and b.clicks > ?clicks", new { clicks = 1 })                                                             |
+| LeftJoin            | \<this\>        | string, parms                      | 左联查询，使用原生 sql 语法，LeftJoin("type b on b.id = a.id and b.clicks > @clicks", new { clicks = 1 })                                                              |
+| InnerJoin           | \<this\>        | string, parms                      | 联接查询，使用原生 sql 语法，InnerJoin("type b on b.id = a.id and b.clicks > @clicks", new { clicks = 1 })                                                             |
+| RightJoin           | \<this\>        | string, parms                      | 右联查询，使用原生 sql 语法，RightJoin("type b on b.id = a.id and b.clicks > @clicks", new { clicks = 1 })                                                             |
 | From                | \<this\>        | Lambda                             | 多表查询，3 个表以上使用非常方便，目前设计最大支持 10 个表                                                                                                             |
 | 【其他】            |
 | As                  | \<this\>        | string alias = "a"                 | 指定别名                                                                                                                                                               |
