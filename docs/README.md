@@ -8,7 +8,7 @@ actions:
     link: /guide/
     type: primary
   - text: 服务支持 💻
-    link: /reference/service-support
+    link: /reference/service-support.md
     type: default
 features:
   - title: 开发者优先

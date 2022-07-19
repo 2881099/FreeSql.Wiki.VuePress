@@ -2,7 +2,10 @@
 
 本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：[https://github.com/2881099/FreeSql.Cloud](https://github.com/2881099/FreeSql.Cloud)
 
-## 0、[ASP.NET Core 配置 DI 使用 UnitOfWorkManager，此方法更简单](unitofwork-manager.md)
+## 0、UnitOfWorkManager跨方法异步
+
+- [AOP+FreeSql 基于特性标签实现跨方法异步事务](../extra/aop-freesql-autofac.md)
+- [ASP.NET Core 配置 DI 使用 UnitOfWorkManager，此方法很简单](unitofwork-manager.md)
 
 ## 1、UnitOfWork 事务
 
