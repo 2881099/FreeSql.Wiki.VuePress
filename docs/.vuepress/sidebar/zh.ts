@@ -147,5 +147,14 @@ export const zhSidebarConfig = sidebar({
                 "/extra/issues-expression-groupbysum.md",
             ],
         },
+        {
+            text: "博客",
+            prefix: "/extra/",
+            icon: "any",
+            collapsable: true,
+            children: [
+                "/extra/aop-freesql-autofac.md",
+            ],
+        },
     ]
 });

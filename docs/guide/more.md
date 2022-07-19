@@ -39,7 +39,7 @@ repo.InsertOrUpdate(实体);
 
 ---
 
-# 4、弱类型 CURD
+## 4、弱类型 CURD
 
 ```csharp
 fsql.Insert<object>().AsType(实体类型)
@@ -75,6 +75,7 @@ fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows
 ```
 
 ---
+
 ## 5、WithSql
 
 ```csharp
@@ -86,7 +87,7 @@ fsql.Select<Topic>()
 //FROM (select * from Topic where clicks > @val) a 
 ```
 
-> WithSql 使用多次为 UNION ALL 查询
+- [WithSql](withsql.md)使用多次为 UNION ALL 查询
 
 ---
 
@@ -339,7 +340,7 @@ var repo = fsql.GetRepository<T>();
 repo.DbContextOptions.EnableCascadeSave = false;
 ```
 
-### 本功能：
+### 导航属性
 
 保存实体的指定【一对多】、【多对多】导航属性，SaveMany 方法实现在 BaseRepository、DbContext。
 
@@ -405,7 +406,7 @@ var sql1 = fsql.Select<SysModule>()
 
 ---
 
-# 15、自定义实体特性、与其他 ORM 共用特性
+## 15、自定义实体特性、与其他 ORM 共用特性
 
 本功能可实现与其他 ORM 使用一套 Attribute，避免维护两份实体特性的烦恼：
 
@@ -447,7 +448,7 @@ class MyColumnAttribute : Attribute {
 
 ---
 
-# 19、审计 CURD
+## 16 CURD
 
 如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
 
@@ -455,10 +456,10 @@ FreeSql 支持简单的类似功能：
 
 ```csharp
 fsql.Aop.CurdAfter += (s, e) => {
-	if (e.ElapsedMilliseconds > 200) {
-		//记录日志
-		//发送短信给负责人
-	}
+ if (e.ElapsedMilliseconds > 200) {
+  //记录日志
+  //发送短信给负责人
+ }
 };
 ```
 
@@ -468,7 +469,7 @@ fsql.Aop.CurdAfter += (s, e) => {
 
 ---
 
-# 17、审计属性值
+## 17、审计属性值
 
 实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。
 
@@ -493,7 +494,7 @@ class Order {
 
 如果命名规范，可以在 aop 里判断，if (e.Property.Name == "createtime") e.Value = DateTime.Now;
 
-# 18、Ado.Net 扩展方法
+## 18、Ado.Net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
 

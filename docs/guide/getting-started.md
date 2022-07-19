@@ -67,7 +67,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-- [.NET Core 注入多个 FreeSql 实例](https://github.com/dotnetcore/FreeSql/issues/44)
+- [.NET Core 注入多个 FreeSql 实例](../extra/idlebus-freesql.md)
 - .NET Framework 单例
 
 ```csharp
