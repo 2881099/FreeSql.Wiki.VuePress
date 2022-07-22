@@ -69,7 +69,15 @@ class AsTableLog
 }
 ```
 
-> 从 2022-1-1 开始，每月创建一个分表，按 createtime 字段分表
+> 从 2022-1-1 开始至当前时间，每月创建一个分表，按 createtime 字段分表
+
+> 若最大日期大于当前时间，可手工扩容分表：
+
+```c#
+fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
+    .AsTableImpl
+    .GetTableNameByColumnValue(DateTime.Parse("2023-7-1"), autoExpand: true);
+```
 
 | 示范 | 说明 |
 | -- | -- | 
