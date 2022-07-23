@@ -14,6 +14,8 @@ With navigation properties, multi-table query is very convenient. Directly using
 
 > Warm up note: to load navigation attributes, you need to solve the problem of dead cycle reference. When the reference relationship is very complex, it may lead to the failure of using navigation attributes for the first time. The second time is enough. The solution is to preheat all entity classes when the program starts, and while execute fsql.Select\<object\>().Astype (entity type);
 
+OneToMany/ManyToMany supported by collection navigation properties: ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
+
 ## Custom Navigation Relationship
 
 ```csharp

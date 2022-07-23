@@ -31,6 +31,7 @@ class CategoryType {
 ```
 
 ## 1、导航属性联表
+
 ```csharp
 fsql.Select<Topic>()
   .LeftJoin(a => a.Category.Id == a.CategoryId)
@@ -46,6 +47,7 @@ fsql.Select<Topic>()
 > 提示：正确配置 【导航关系】后，不需要手工调用 LeftJoin
 
 ## 2、复杂联表
+
 ```csharp
 fsql.Select<Topic, Category, CategoryType>()
   .LeftJoin((a,b,c) => a.CategoryId == b.Id)
@@ -98,6 +100,7 @@ fsql.Select<Topic, Category, CategoryType>()
 > 提示：ISelect.ToSql 可与 WithSql 配合使用
 
 ## 4、SQL联表
+
 ```csharp
 fsql.Select<Topic>()
   .LeftJoin("Category b on b.Id = a.CategoryId and b.Name = @bname", new { bname = "xxx" })
@@ -117,6 +120,7 @@ fsql.Select<Topic>()
 ```
 
 ## 5、子表Exists
+
 ```csharp
 fsql.Select<Topic>()
   .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
@@ -160,6 +164,7 @@ fsql.Select<Topic>().ToList(a => new {
 > 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
 
 ## 8、子表First/Count/Sum/Max/Min/Avg
+
 ```csharp
 fsql.Select<Category>().ToList(a => new  {
   all = a,
@@ -172,7 +177,20 @@ fsql.Select<Category>().ToList(a => new  {
 });
 ```
 
-## 9、集合属性
+## 9、子表ToList
+
+> v3.2.650+ 以下最多执行3次 SQL
+
+```csharp
+fsql.Select<Topic>().ToList(a => new
+{
+  all = a,
+  list1 = fsql.Select<T2>().ToList(),
+  list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
+});
+```
+
+## 10、集合属性
 
 ```csharp
 fsql.Select<Category>()
@@ -190,7 +208,7 @@ fsql.Select<Category>()
 
 将集合属性快速转换为 ISelect 进行子查询操作。
 
-## 10、WhereCascade
+## 11、WhereCascade
 
 多表查询时，像isdeleted每个表都给条件，挺麻烦的。WhereCascade使用后生成sql时，所有表都附上这个条件。
 
@@ -218,7 +236,7 @@ WHERE t1.IsDeleted = 0
 
 - 子查询，一对多、多对多、自定义的子查询；
 - Join 查询，导航属性、自定义的Join查询；
-- Include/IncludeMany 的子集合查询；
+- Include/[IncludeMany](../guide/select-include.md) 的子集合查询；
 
 > 暂时不支持【延时属性】的广播；
 

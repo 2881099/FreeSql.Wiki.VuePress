@@ -1,5 +1,7 @@
 # Cascade Saving
 
+It is found that n to 1 is not suitable for cascade preservation. Save the type information when saving the topic? Personally, I think the bottom-up saving function is too uncontrollable. FreeSQL does not support bottom-up saving at present. Therefore, we will only talk about OneToOne/OneToMany/ManyToMany cascade save. As for manytoone cascade storage, manual processing is used, which is more safe and controllable.
+
 ## Savemany save manually
 
 Save completely, compare the existing data in the table, and calculate the execution of addition, modification and deletion.
@@ -37,7 +39,7 @@ Dbcontext / repository EnableCascadeSave can realize recursive tracing and save 
 
 1. Onetoone cascade save
 
-> v3.2.606 + support, and support [cascade deletion function](Delete-Data.md#cascade-deletion-of-ibaserepository)
+> v3. 2.606 + support, and support [cascade deletion function](https://github.com/dotnetcore/FreeSql/wiki/%e5%88%a0%e9%99%a4#ibaserepository-%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4)
 
 2. Onetomany appends or updates the sub table without deleting the existing data of the sub table
 

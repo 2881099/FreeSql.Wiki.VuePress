@@ -18,7 +18,7 @@ dotnet add package FreeSql.Provider.MySqlConnector
 
 手动创建一个MySql/MariaDB数据库,名为`ovov_freesql_repository`
 
-### appsetting.json
+### appsettings.json
 
 ```json
 {
@@ -346,7 +346,7 @@ public class AutofacModule : Autofac.Module
 
 ## Autofac批量注册
 
-- Autofac支持批量注入以Service后缀的接口。该方法在lin-cms-dotnetcore项目中有使用[https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs)
+- Autofac支持批量注入以Service后缀的接口。该方法在lin-cms-dotnetcore项目中有使用[LinCms.Web/Startup/Configuration/ServiceModule.cs](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Startup/Configuration/ServiceModule.cs)
 
 ```csharp
 public class ServiceModule : Autofac.Module

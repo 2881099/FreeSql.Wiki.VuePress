@@ -48,7 +48,7 @@ List<(int, string)> t7 = fsql.Select<Topic>().ToList<(int, string)>("id, title")
 //返回导航属性
 List<匿名类> t8 = fsql.Select<Topic>().ToList(a => new {
     a.Id, a.Title,
-    a.Type //可以直接返回导航属性 Type
+    a.Type //导航属性
 });
 
 //返回SQL字段
@@ -67,7 +67,7 @@ List<匿名类> t10 = fsql.Select<Topic>().ToList(a => new {
     name = fsql.Select<2>().First(b => b.name)
 });
 
-//返回子查询集合 v3.2.650+
+//返回子查询集合 v3.2.650+ 以下最多执行3次 SQL
 List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
     a.Id,
     list1 = fsql.Select<T2>().ToList(),

@@ -45,11 +45,11 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<Topic>()
-  .WithSql("select * from Topic where clicks > ?val", new { val = 10 })
+  .WithSql("select * from Topic where clicks > @val", new { val = 10 })
   .Page(1, 10)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
-//FROM (select * from Topic where clicks > ?val) a
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
+//FROM (select * from Topic where clicks > @val) a 
 ```
 
 >关于[WithSql](WithSql.md)的详情文档， 使用多次为 UNION ALL 查询
