@@ -159,6 +159,12 @@ fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
 
 > GroupBy 所有方法不使用 DTO 映射规则
 
+DTO 查询只映射默认字段（普通属性），映射对象请使用：
+
+> 导航对象：ToList(a => new Dto { Catalog = a.Catalog })
+
+> 多表对象：ToList((a, b) => new Dto { Catalog = b })
+
 ---
 
 ## 8、父子关系表
