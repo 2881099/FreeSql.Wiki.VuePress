@@ -173,7 +173,11 @@ fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
 
 A, B, C 都有 id，Dto { id, a1, a2, b1, b2 }，A.id 被映射。也可以指定 id = C.id 映射。
 
-> 友情提醒：在 dto 可以直接映射一个导航属性
+DTO 查询只映射默认字段（普通属性），映射对象请使用：
+
+> 导航对象：ToList(a => new Dto { Catalog = a.Catalog })
+
+> 多表对象：ToList((a, b) => new Dto { Catalog = b })
 
 ## 12、API
 
