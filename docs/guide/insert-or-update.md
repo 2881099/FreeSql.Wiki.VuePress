@@ -83,7 +83,7 @@ public void BeginEdit()
     cts[0].Name = "123123";
     cts.RemoveAt(1);
 
-    Assert.Equal(3, repo.EndEdit());
+    Assert.Equal(3, repo.EndEdit()); //重载方法新旧对比 repo.EndEdit(newlist)
 }
 class BeginEdit01
 {
