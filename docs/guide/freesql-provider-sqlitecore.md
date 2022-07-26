@@ -5,7 +5,7 @@ FreeSql.Provider.SqliteCore是`FreeSql`基于微软提供的最新的[`Microsoft
 
 ## 支持的版本
 
-- .NETStandard2.0+
+- .NETStandard2.0（支持.NET Framework4.6.1+）
 - net6.0
 - SQLite（3.7 及以上版本）
 
@@ -123,7 +123,7 @@ dotnet run
 
 提示如下内容，但使用密码时又能正常访问数据。
 
-```
+```txt
 SqliteException: SQLite Error 26: 'file is not a database'.
 ```
 
@@ -229,3 +229,25 @@ SQLitePCL.Batteries_V2.Init();
 ```
 
 即在上方定义`FreeSql`单例时，在`new Lazy`内，调用一次即可。
+
+## .NET Framework 支持
+
+- .NETStandard2.0（支持.NET Framework4.6.1+）
+
+有二种方法支持.NET Framework(选择其中一个即可)
+
+### 1.复制.NET Core中的dll
+
+创建一个.NET Core的console项目，然后安装nuget包 `SQLitePCLRaw.bundle_e_sqlcipher`，编译后生成的`bin\Debug\net5.0\runtimes\win-x64\native\e_sqlcipher.dll`
+复制到 .net framework 4.8的项目中`bin/Debug/e_sqlcipher.dll`中
+
+### 2.转换项目 **（建议）**
+
+先安装好相关的包,然后右键`packages.config`,选择将`packages.config 迁移到PackageReference中`,弹出的框勾选所有包，确定即可。
+
+```bash
+Install-Package SQLitePCLRaw.bundle_e_sqlcipher
+Install-Package FreeSql.Provider.SqliteCore
+```
+
+![./images/dotnetframwork-sqlitecore.png](./images/dotnetframwork-sqlitecore.png)
