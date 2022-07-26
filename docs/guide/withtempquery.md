@@ -2,11 +2,13 @@
 
 ## WithTempQuery
 
-> 版本要求：v3.2.666+
+意见往集：<https://github.com/dotnetcore/FreeSql/discussions/1192>
 
-场景1：查询分组第一条记录
+需求版本：v3.2.666-preview (最新)
 
-```csharp
+## 场景1：查询分组第一条记录
+
+```cs
 fsql.Select<User1>()
     .Where(a => a.Id < 1000)
     .WithTempQuery(a => new
@@ -30,13 +32,137 @@ FROM (
 WHERE (a.[rownum] = 1)
 ```
 
-场景2：分组查询嵌套
+## 场景2：嵌套查询 + Join
 
-待补充..
+WithTempQuery + From\<T2\> 或 FromQuery(ISelect\<T2\>) 可实现无限联表
 
-场景3：嵌套查询 + Join
+```cs
+fsql.Select<User1>()
+    .Where(a => a.Id < 1000)
+    .WithTempQuery(a => new
+    {
+        item = a,
+        rownum = SqlExt.RowNumber().Over().PartitionBy(a.Nickname).OrderBy(a.Id).ToValue()
+    })
+    .Where(a => a.rownum == 1)
+    //.From<UserExt>() //普通联表
+    .FromQuery(fsql.Select<UserExt>().Where(b => b.Id > 0)) //子查询联表
+    //.FromQuery(fsql.Select<UserExt, UserGroup, xxx>() //子多表查询联表
+    //    .WithTempQuery((a,b,c) => new { ... }))
+    .InnerJoin((a, b) => a.item.Id == b.UserId)
+    .ToList((a, b) => new
+    {
+        user = a.item,
+        rownum = a.rownum,
+        userext = b
+    });
+```
 
-待补充..
+```sql
+SELECT ... 
+FROM ( 
+    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
+    FROM [User1] a ) a 
+INNER JOIN ( 
+    SELECT a.[UserId], a.[Remark] 
+    FROM [TwoTablePartitionBy_UserExt] a 
+    WHERE (a.[UserId] > 0) ) b ON a.[Id] = b.[UserId] 
+WHERE (a.[rownum] = 1)
+```
+
+## 场景3：分组查询嵌套
+
+```cs
+fsql.Select<User1>()
+    .WithTempQuery(a => new
+    {
+        user = a,
+        rownum = SqlExt.RowNumber().Over().PartitionBy(a.Nickname).OrderBy(a.Id).ToValue()
+    })
+    .Where(a => a.rownum == 1)
+    .FromQuery(fsql.Select<UserExt>().Where(b => b.UserId > 0)
+        .GroupBy(b => new { b.UserId, b.Remark })
+        .WithTempQuery(b => new { b.Key, sum1 = b.Sum(b.Value.UserId) }))
+    .InnerJoin((a, b) => a.user.Id == b.Key.UserId)
+    .Where((a, b) => a.user.Nickname == "name03" || a.user.Nickname == "name02")
+    .ToList((a, b) => new
+    {
+        user = a.user,
+        rownum = a.rownum,
+        groupby = b
+    });
+```
+
+```sql
+SELECT ... 
+FROM ( 
+    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
+    FROM [User] a ) a 
+INNER JOIN ( 
+    SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [rownum] 
+    FROM [UserExt] a 
+    WHERE (a.[UserId] > 0) 
+    GROUP BY a.[UserId], a.[Remark] ) b ON a.[Id] = b.[UserId] 
+WHERE (a.[rownum] = 1) AND ((a.[Nickname] = N'name03' OR a.[Nickname] = N'name02'))
+```
+
+---
+
+## 子表Exists
+
+```cs
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
+  .ToList();
+//SELECT a.[Id], a.[Title], a.[Clicks], a.[CreateTime], a.[CategoryId]
+//FROM [Topic] a
+//WHERE (exists(SELECT 1
+//    FROM [Topic] b
+//    WHERE (b.[Id] = a.[Id])
+//    limit 0,1))
+```
+
+> 提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分
+
+## 子表In
+
+```cs
+fsql.Select<Topic>()
+  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
+  .ToList();
+//SELECT a.[Id], a.[Title], a.[Clicks], a.[CreateTime], a.[CategoryId]
+//FROM [Topic] a
+//WHERE (((a.[Id]) in (SELECT b.[Id]
+//    FROM [Topic] b)))
+```
+
+## 子表Join
+
+v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
+
+```cs
+fsql.Select<Topic>().ToList(a => new {
+  id = a.Id,
+  concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
+});
+//SELECT a.[Id], (SELECT group_concat(b.[Id] separator ',') 
+//    FROM [StringJoin01] b) 
+//FROM [Topic] a
+```
+
+## 子表First/Count/Sum/Max/Min/Avg
+
+```csharp
+fsql.Select<Category>().ToList(a => new  {
+  all = a,
+  first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
+  count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
+  sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
+  max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
+  min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
+  avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
+});
+```
 
 ## ToSql + WithSql
 
