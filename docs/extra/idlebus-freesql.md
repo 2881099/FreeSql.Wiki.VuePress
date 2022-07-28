@@ -99,5 +99,3 @@ fsql.Change(DbEnum.db3).Select<T>();
 ## 参考
 
 [多个 IFreeSql 实例，如何注入使用？ · Issue #44 · dotnetcore/FreeSql (github.com)](https://github.com/dotnetcore/FreeSql/issues/44)
-
-> 与此文章有点区别，增加了一些配置项和静态方法的理解，把`Change` 下放到`MultiFreeSqlExtensions`扩展中，从而保持简单，静态方法和DI保持一致的写法
