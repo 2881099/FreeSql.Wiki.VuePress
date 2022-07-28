@@ -41,374 +41,59 @@ public class ValuesController : ControllerBase
 }
 ```
 
-## 二、利用 IdleBus 重写 IFreeSql
+## 二、使用 FreeSql.Clound
 
-在 [asp.net](http://asp.net) core 利用 IdleBus 重写 IFreeSql 支持多库操作，支持多库动态配置
+为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
-```xml
-<ItemGroup>
-    <PackageReference Include="FreeSql" Version="3.2.664" />
-    <PackageReference Include="IdleBus" Version="1.5.2" />
-    <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.664" />
-</ItemGroup>
+开源地址：https://github.com/2881099/FreeSql.Cloud
+
+> dotnet add package FreeSql.Cloud
+
+or
+
+> Install-Package FreeSql.Cloud
+
+```c#
+public enum DbEnum { db1, db2, db3 }
+
+var fsql = new FreeSqlCloud<DbEnum>("myapp"); //提示：泛型可以传入 string
+fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
+
+fsql.Register(DbEnum.db1, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db1.db")
+    .Build());
+
+fsql.Register(DbEnum.db2, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db2.db")
+    .Build());
+
+fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db3.db")
+    .Build());
 ```
 
-### 1、MultiFreeSql.cs 代码定义
+> FreeSqlCloud 必须定义成单例模式
 
-```csharp
-using System;
-using System.Threading;
-using FreeSql.Internal;
-using FreeSql.Internal.CommonProvider;
+> new FreeSqlCloud\<DbEnum\>() 多连接管理
 
-namespace FreeSql
-{
-    public class MultiFreeSql : MultiFreeSql<string>
-    {
-        public MultiFreeSql(TimeSpan timeSpan) : base(timeSpan)
-        {
-        }
+> new FreeSqlCloud\<DbEnum\>("myapp") 开启 TCC/SAGA 事务生效
 
-        public MultiFreeSql(IdleBus<string, IFreeSql> idleBus) : base(idleBus)
-        {
-        }
-    }
-    public class MultiFreeSql<TDBKey> : BaseDbProvider, IFreeSql
-    {
-        internal TDBKey _dbkeyMaster;
-        internal AsyncLocal<TDBKey> _dbkeyCurrent = new AsyncLocal<TDBKey>();
-        BaseDbProvider _ormMaster => _ib.Get(_dbkeyMaster) as BaseDbProvider;
-        BaseDbProvider _ormCurrent => _ib.Get(Equals(_dbkeyCurrent.Value, default(TDBKey)) ? _dbkeyMaster : _dbkeyCurrent.Value) as BaseDbProvider;
-        internal IdleBus<TDBKey, IFreeSql> _ib;
+FreeSqlCloud 的访问方式和 IFreeSql 一样：
 
-        public MultiFreeSql(TimeSpan timeSpan)
-        {
-            _ib = new IdleBus<TDBKey, IFreeSql>(timeSpan);
-            _ib.Notice += (_, __) => { };
-        }
+```c#
+fsql.Select<T>();
+fsql.Insert<T>();
+fsql.Update<T>();
+fsql.Delete<T>();
 
-        public MultiFreeSql(IdleBus<TDBKey, IFreeSql> idleBus)
-        {
-            _ib = idleBus;
-        }
-
-        public override IAdo Ado => _ormCurrent.Ado;
-        public override IAop Aop => _ormCurrent.Aop;
-        public override ICodeFirst CodeFirst => _ormCurrent.CodeFirst;
-        public override IDbFirst DbFirst => _ormCurrent.DbFirst;
-        public override GlobalFilter GlobalFilter => _ormCurrent.GlobalFilter;
-        public override void Dispose() => _ib.Dispose();
-
-        public override CommonExpression InternalCommonExpression => _ormCurrent.InternalCommonExpression;
-        public override CommonUtils InternalCommonUtils => _ormCurrent.InternalCommonUtils;
-
-        public override ISelect<T1> CreateSelectProvider<T1>(object dywhere) => _ormCurrent.CreateSelectProvider<T1>(dywhere);
-        public override IDelete<T1> CreateDeleteProvider<T1>(object dywhere) => _ormCurrent.CreateDeleteProvider<T1>(dywhere);
-        public override IUpdate<T1> CreateUpdateProvider<T1>(object dywhere) => _ormCurrent.CreateUpdateProvider<T1>(dywhere);
-        public override IInsert<T1> CreateInsertProvider<T1>() => _ormCurrent.CreateInsertProvider<T1>();
-        public override IInsertOrUpdate<T1> CreateInsertOrUpdateProvider<T1>() => _ormCurrent.CreateInsertOrUpdateProvider<T1>();
-    }
-}
-
+//...
 ```
 
-所以 MultiFreeSql 支持外部定义IdleBus,用于配置 Idlebus的Notice事件
+切换数据库：
 
-```csharp
- //可传递IdleBus
-    IdleBus idlebus  = new IdleBus<string, IFreeSql>(TimeSpan.FromHours(2));
-    idlebus.Notice += (_, __) => { };
-    IFreeSql fsql = new MultiFreeSql(idlebus);
-```
-
-### 2、MultiFreeSqlExtensions
-
-```csharp
-using System;
-
-namespace FreeSql
-{
-    public static class MultiFreeSqlExtensions
-    {
-        public static IFreeSql ChangeDatabaseByKey<TDBKey>(this IFreeSql fsql, TDBKey dbkey)
-        {
-            var multiFsql = fsql as MultiFreeSql<TDBKey>;
-            if (multiFsql == null) throw new Exception("fsql 类型不是 MultiFreeSql<TDBKey>");
-            multiFsql._dbkeyCurrent.Value = dbkey;
-            return multiFsql;
-        }
-
-        public static IDisposable Change<TDBKey>(this IFreeSql fsql, TDBKey dbkey)
-        {
-            var multiFsql = fsql as MultiFreeSql<TDBKey>;
-            if (multiFsql == null) throw new Exception("fsql 类型不是 MultiFreeSql<TDBKey>");
-            var olddbkey = multiFsql._dbkeyCurrent.Value;
-            multiFsql.ChangeDatabaseByKey(dbkey);
-            return new DBChangeDisposable(() => multiFsql.ChangeDatabaseByKey(olddbkey));
-        }
-
-        public static IFreeSql Register<TDBKey>(this IFreeSql fsql, TDBKey dbkey, Func<IFreeSql> create)
-        {
-            var multiFsql = fsql as MultiFreeSql<TDBKey>;
-            if (multiFsql == null) throw new Exception("fsql 类型不是 MultiFreeSql<TDBKey>");
-            if (multiFsql._ib.TryRegister(dbkey, create))
-                if (multiFsql._ib.GetKeys().Length == 1)
-                    multiFsql._dbkeyMaster = dbkey;
-            return multiFsql;
-        }
-    }
-
-    class DBChangeDisposable : IDisposable
-    {
-        Action _cancel;
-        public DBChangeDisposable(Action cancel) => _cancel = cancel;
-        public void Dispose() => _cancel?.Invoke();
-    }
-}
-```
-
-### 3、定义和注入,其中MultiFreeSql.cs
-
-```csharp
-public static IServiceCollection AddMultiFreeSql(this IServiceCollection services)
-{
-    var fsql = new MultiFreeSql(TimeSpan.FromHours(2));
-
-    fsql.Register("db1", () => 
-    new FreeSqlBuilder()
-        .UseAutoSyncStructure(true)
-        .UseConnectionString(DataType.Sqlite, "Data Source=|DataDirectory|\\SampleApp1.db;")
-        .Build()
-    );
-    fsql.Register("db2", () => 
-    new FreeSqlBuilder()
-        .UseAutoSyncStructure(true)
-        .UseConnectionString(DataType.Sqlite, "Data Source=|DataDirectory|\\SampleApp2.db;")
-        .Build()
-    );
-
-    services.AddSingleton<IFreeSql>(fsql);
-}
-```
-
-### 4、如何使用
-
-> 额外增加 Register/Change 两个扩展方法，其他跟 IFreeSql 用法几乎一样
-
-```csharp
-//查db1
-var db1_list = fsql.Select<T>().ToList();
-
-//切换 db2 数据库，一旦切换之后 fsql 操作都是针对 db2
-fsql.Change("db2");
-var db2_list = fsql.Select<T>().ToList();
-
-using (fsql.Change("db1"))
-{
-    //查询 db1
-    var b3 = _fsql.Select<T>().ToList();
-    //插入到 db1
-    fsql.Insert(new T{ UserName = "db1" }).ExecuteAffrows();
-}
-//还是查db2
-var db2 = fsql.Select<T>().ToList();
-```
-
-示例
-
-- 定义SysUser
-
-```csharp
-public class SysUser
-{
-    [Column(IsPrimary = true, IsIdentity = true)]
-    public int Id { get; set; }
-    public string UserName { get; set; }
-}
-```
-
-- 创建HomeController
-
-```csharp
-private readonly IFreeSql _fsql;
-public HomeController( IFreeSql fsql)
-{
-    _fsql = fsql;
-}
-```
-
-获取db1,db2的数据库信息，插入db1,db2数据
-
-```csharp
-/// <summary>
-/// 获取db1,db2，插入db1,db2
-/// </summary>
-/// <returns></returns>
-[HttpGet("get1")]
-public IEnumerable<SysUser> Get1()
-{
-    //查询 db1
-    var b0 = _fsql.Select<SysUser>().ToList();
-
-    var b1 = _fsql.Change("db2");
-    //查询 db2
-    var b2 = _fsql.Select<SysUser>().ToList();
-    //插入到 db2
-    var c0 = _fsql.Insert(new SysUser { UserName = "db2" }).ExecuteAffrows();
-    using (_fsql.Change("db1"))
-    {
-        //查询 db1
-        var b3 = _fsql.Select<SysUser>().ToList();
-        //插入到 db1
-        _fsql.Insert(new SysUser { UserName = "db1" }).ExecuteAffrows();
-    }
-
-    //查询 db2
-    var db2 = _fsql.Select<SysUser>().ToList();
-    _fsql.Change("db2");
-    return db2;
-}
-```
-
-- 默认从第一个数据库中获取
-
-```csharp
-[HttpGet("getdb1")]
-public IEnumerable<SysUser> GetDB1()
-{
-    //查询 db1
-    var b0 = _fsql.Select<SysUser>().ToList();
-    return b0;
-}
-```
-
-- 注册第3个数据库
-
-```csharp
-[HttpGet("register")]
-public void Register()
-{
-    _fsql.Register("db3", () =>
-    {
-        return new FreeSqlBuilder().UseAutoSyncStructure(true)
-        .UseMonitorCommand(
-        cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
-        )
-        .UseConnectionString(DataType.Sqlite, "Data Source=|DataDirectory|\\SampleApp3.db;")
-        .Build();
-    });
-}
-```
-
-- 根据dbname change，但只对本次请求有效
-
-```csharp
-[HttpGet("change")]
-public int Change(string dbname)
-{
-  //仅对本次请求有效
-  _fsql.Change(dbname);
-  return 1;
-}
-```
-
-- 获取DB3，在未注册前，会报错
-
-```csharp
-[HttpGet("getdb3")]
-public IEnumerable<SysUser> Get3()
-{
-    _fsql.Change("db3");
-    //查询 db1
-    var b0 = _fsql.Select<SysUser>().ToList();
-    return b0;
-}
-```
-
-> 如果需要分布多事务 TCC/Saga 请移步到：[https://github.com/2881099/FreeSql.Cloud](https://github.com/2881099/FreeSql.Cloud)
-
-## 三、静态类管理多数据库？
-
-基于第二种方法 MultiFreeSql 增加静态类如下：
-
-```csharp
-using System;
-
-namespace FreeSql
-{
-  public class StaticDB : StaticDB<string> { }
-  
-  public abstract class StaticDB<DBKey>
-  {
-      protected static Lazy<IFreeSql> multiFreeSql = new Lazy<IFreeSql>(() => new MultiFreeSql(TimeSpan.FromHours(2))
-      );
-      public static IFreeSql Instance => multiFreeSql.Value;
-  }
-}
-```
-
-- 根据静态类
-
-```csharp
-#region 1.静态类的注册方式
-IFreeSql db = StaticDB.Instance;
-
-db.Register("db1", () =>
-{
-    return new FreeSqlBuilder()
-        .UseAutoSyncStructure(true)
-        .UseMonitorCommand(
-        cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
-        )
-        .UseConnectionString(DataType.Sqlite, "Data Source=|DataDirectory|\\SampleApp1.db;")
-        .Build();
-});
-db.Register("db2", () =>
-{
-    return new FreeSqlBuilder()
-        .UseAutoSyncStructure(true)
-        .UseMonitorCommand(
-        cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
-        )
-        .UseConnectionString(DataType.Sqlite, "Data Source=|DataDirectory|\\SampleApp2.db;")
-        .Build();
-});
-#endregion
-```
-
-- 创建StaticDBController，可以直接使用静态方法，不使用DI，但使用方式和注入方式相同
-
-```csharp
-   private readonly IFreeSql _fsql = StaticDB.Instance;
-
-    /// <summary>
-    /// 获取db1,db2，插入db1,db2
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet("get1")]
-    public IEnumerable<SysUser> Get1()
-    {
-        //查询 db1
-        var b0 = _fsql.Select<SysUser>().ToList();
-
-        var b1 = _fsql.Change("db2");
-        //查询 db2
-        var b2 = _fsql.Select<SysUser>().ToList();
-        //插入到 db2
-        var c0 = _fsql.Insert(new SysUser { UserName = "db2" }).ExecuteAffrows();
-        using (_fsql.Change("db1"))
-        {
-            //查询 db1
-            var b3 = _fsql.Select<SysUser>().ToList();
-            //插入到 db1
-            _fsql.Insert(new SysUser { UserName = "db1" }).ExecuteAffrows();
-        }
-
-        //查询 db2
-        var db2 = _fsql.Select<SysUser>().ToList();
-        _fsql.Change("db2");
-        return db2;
-    }
+```c#
+fsql.Change(DbEnum.db3).Select<T>();
+//以后所有 fsql.Select/Insert/Update/Delete 操作是 db3
 ```
 
 ## 参考
