@@ -91,83 +91,62 @@ fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
-## 分库 IdleBus
+## 【分库】使用 FreeSql.Clound
 
-IFreeSql 对应一个数据库，分库是不是要定义 N 个 IFreeSql？分库的租户场景，那不要定义 10000 个？
+为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
-IdleBus 空闲对象管理容器，有效组织对象重复利用，自动创建、销毁，解决【实例】过多且长时间占用的问题。有时候想做一个单例对象重复使用提升性能，但是定义多了，有的又可能一直空闲着占用资源。专门解决：又想重复利用，又想少占资源的场景。https://github.com/2881099/IdleBus
+开源地址：https://github.com/2881099/FreeSql.Cloud
 
-> dotnet add package IdleBus
+> dotnet add package FreeSql.Cloud
 
-```csharp
-static IdleBus<IFreeSql> ib = new IdleBus<IFreeSql>(TimeSpan.FromMinutes(10));
+or
 
-ib.Register("db1", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1").Build());
-ib.Register("db2", () => new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str2").Build());
-ib.Register("db3", () => new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "str3").Build());
-//...注册很多个
+> Install-Package FreeSql.Cloud
 
-ib.Get("db1").Select<T>().Limit(10).ToList();
+```c#
+public enum DbEnum { db1, db2, db3 }
+
+var fsql = new FreeSqlCloud<DbEnum>("myapp"); //提示：泛型可以传入 string
+fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
+
+fsql.Register(DbEnum.db1, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db1.db")
+    .Build());
+
+fsql.Register(DbEnum.db2, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db2.db")
+    .Build());
+
+fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=db3.db")
+    .Build());
 ```
 
-IdleBus 也是【单例】设计！主要的两个方法，注册，获取。使用 IdleBus 需要弱化 IFreeSql 的存在，每次使用 ib.Get 获取。
+> FreeSqlCloud 必须定义成单例模式
 
-```csharp
-public static class IdleBusExtesions
-{
-    static AsyncLocal<string> asyncLocalTenantId = new AsyncLocal<string>();
-    public static IdleBus<IFreeSql> ChangeTenant(this IdleBus<IFreeSql> ib, string tenantId)
-    {
-        asyncLocalTenantId.Value = tenantId;
-        return ib;
-    }
-    public static IFreeSql Get(this IdleBus<IFreeSql> ib) => ib.Get(asyncLocalTenantId.Value ?? "db1");
-    public static IBaseRepository<T> GetRepository<T>(this IdleBus<IFreeSql> ib) where T : class => ib.Get().GetRepository<T>();
+> new FreeSqlCloud\<DbEnum\>() 多连接管理
 
-    //-------------------------------------------------------
+> new FreeSqlCloud\<DbEnum\>("myapp") 开启 TCC/SAGA 事务生效
 
-    static void test()
-    {
-        IdleBus<IFreeSql> ib = null; //单例注入
+FreeSqlCloud 的访问方式和 IFreeSql 一样：
 
-        var fsql = ib.Get(); //获取当前租户对应的 IFreeSql
+```c#
+fsql.Select<T>();
+fsql.Insert<T>();
+fsql.Update<T>();
+fsql.Delete<T>();
 
-        var fsql00102 = ib.ChangeTenant("00102").Get(); //切换租户，后面的操作都是针对 00102
+//...
+```
 
-        var songRepository = ib.GetRepository<Song>();
-        var detailRepository = ib.GetRepository<Detail>();
-    }
+切换数据库：
 
-    //-------------------------------------------------------
-
-    public static IServiceCollection AddIdleBusRepository(this IServiceCollection services, IdleBus<IFreeSql> ib, params Assembly[] assemblies)
-    {
-        services.AddSingleton(ib);
-        services.AddScoped(typeof(IBaseRepository<>), typeof(YourDefaultRepository<>));
-        services.AddScoped(typeof(BaseRepository<>), typeof(YourDefaultRepository<>));
-        services.AddScoped(typeof(IBaseRepository<,>), typeof(YourDefaultRepository<,>));
-        services.AddScoped(typeof(BaseRepository<,>), typeof(YourDefaultRepository<,>));
-
-        if (assemblies?.Any() == true)
-            foreach (var asse in assemblies) //批量注册
-                foreach (var repo in asse.GetTypes().Where(a => a.IsAbstract == false && typeof(IBaseRepository).IsAssignableFrom(a)))
-                    services.AddScoped(repo);
-        return services;
-    }
-}
-
-class YourDefaultRepository<T> : BaseRepository<T> where T : class
-{
-    public YourDefaultRepository(IdleBus<IFreeSql> ib) : base(ib.Get(), null, null) { }
-}
-class YourDefaultRepository<T, TKey> : BaseRepository<T, TKey> where T : class
-{
-    public YourDefaultRepository(IdleBus<IFreeSql> ib) : base(ib.Get(), null, null) { }
-}
+```c#
+fsql.Change(DbEnum.db3).Select<T>();
+//以后所有 fsql.Select/Insert/Update/Delete 操作是 db3
 ```
 
 分库总结：
 
-- 跨库 可以使用 ib.Get() 获取 IFreeSql 进行 CRUD；
 - 跨库 事务不好处理，注意了；
 - 跨库 查询不好处理，注意了；
