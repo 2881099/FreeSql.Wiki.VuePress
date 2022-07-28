@@ -53,7 +53,7 @@ or
 
 > Install-Package FreeSql.Cloud
 
-```c#
+```csharp
 public enum DbEnum { db1, db2, db3 }
 
 var fsql = new FreeSqlCloud<DbEnum>("myapp"); //提示：泛型可以传入 string
@@ -80,7 +80,7 @@ fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
 
 FreeSqlCloud 的访问方式和 IFreeSql 一样：
 
-```c#
+```csharp
 fsql.Select<T>();
 fsql.Insert<T>();
 fsql.Update<T>();
@@ -91,16 +91,12 @@ fsql.Delete<T>();
 
 切换数据库：
 
-```c#
+```csharp
 fsql.Change(DbEnum.db3).Select<T>();
 //以后所有 fsql.Select/Insert/Update/Delete 操作是 db3
 ```
 
 ## 参考
-
-[SampleApp/HomeController.cs at master · luoyunchong/SampleApp (github.com)](https://github.com/luoyunchong/SampleApp/blob/master/SampleApi/Controllers/HomeController.cs)
-
-[SampleApp/MultiFreeSql.cs at master · luoyunchong/SampleApp (github.com)](https://github.com/luoyunchong/SampleApp/blob/master/SampleCore/MultiFreeSql.cs)
 
 [多个 IFreeSql 实例，如何注入使用？ · Issue #44 · dotnetcore/FreeSql (github.com)](https://github.com/dotnetcore/FreeSql/issues/44)
 
