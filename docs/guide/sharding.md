@@ -91,7 +91,7 @@ fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
-## 【分库】使用 FreeSql.Clound
+## 【分库】使用 FreeSql.Cloud
 
 为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
