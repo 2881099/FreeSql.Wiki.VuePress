@@ -46,6 +46,7 @@ export const zhSidebarConfig = sidebar({
                         "/guide/repository.md",
                         "/guide/unit-of-work.md",
                         "/guide/cascade-saving.md",
+                        "/guide/cascade-delete.md",
                         "/guide/unitofwork-manager.md",
                     ],
                 },
