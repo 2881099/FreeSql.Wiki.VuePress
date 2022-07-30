@@ -29,7 +29,7 @@
 - [x] 支持导航属性查询，和延时加载；
 - [x] 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；
 - [x] 支持读写分离、分表分库，租户设计；
-- [x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/神通/人大金仓/翰高/华为 GaussDB/MsAccess；
+- [x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/达梦/南大通用GBase/神通/人大金仓/翰高/华为 GaussDB/MsAccess；
 
 ## 学习指南
 
