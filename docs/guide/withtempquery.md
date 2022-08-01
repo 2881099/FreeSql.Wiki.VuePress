@@ -106,6 +106,20 @@ INNER JOIN (
 WHERE (a.[rownum] = 1) AND ((a.[Nickname] = N'name03' OR a.[Nickname] = N'name02'))
 ```
 
+#### 场景4：内存数据嵌套
+
+```c#
+var list = new List<User1>();
+list.Add(new User1 { Id = Guid.NewGuid() });
+list.Add(new User1 { Id = Guid.NewGuid() });
+list.Add(new User1 { Id = Guid.NewGuid() });
+
+var listSql2 = fsql.Select<UserGroup>()
+    .FromQuery(fsql.Select<User1>().WithMemory(list))
+    .InnerJoin((a, b) => a.Id == b.GroupId)
+    .ToSql();
+```
+
 ---
 
 ## 子表Exists
