@@ -120,6 +120,18 @@ var listSql2 = fsql.Select<UserGroup>()
     .ToSql();
 ```
 
+```sql
+SELECT ...
+FROM [UserGroup] a
+INNER JOIN (
+    SELECT ...
+    UNION ALL
+    SELECT ...
+    UNION ALL
+    SELECT ...
+) b ON a.[Id] = b.[GroupId]
+```
+
 ---
 
 ## 子表Exists
