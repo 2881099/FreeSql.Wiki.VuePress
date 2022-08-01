@@ -2,8 +2,6 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
-> preview 预览版 添加 nuget 源：https://www.myget.org/F/ncc/api/v3/index.json
-
 ## v3.2.665
 
 - 增加 IsVersion string 字符串乐观锁；[#1178](https://github.com/dotnetcore/FreeSql/issues/1178)
