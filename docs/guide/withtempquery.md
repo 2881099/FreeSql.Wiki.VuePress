@@ -108,6 +108,8 @@ WHERE (a.[rownum] = 1) AND ((a.[Nickname] = N'name03' OR a.[Nickname] = N'name02
 
 ## 场景4：内存数据嵌套
 
+假设跨数据库服务器，或者数据表被缓存过，WithMemory 便可以实现数据表与内存关联查询。
+
 ```c#
 var list = new List<User1>();
 list.Add(new User1 { Id = Guid.NewGuid() });
