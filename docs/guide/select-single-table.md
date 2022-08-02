@@ -58,6 +58,8 @@ fsql.Select<Topic>()
 
 > v3.2.666 WithMemory 使用内存数据进行查询
 
+> 假设跨数据库服务器，或者数据表被缓存过，WithMemory 便可以实现数据表与内存关联查询。
+
 ```c#
 var list = new List<Topic>();
 list.Add(new Topic { ... });
