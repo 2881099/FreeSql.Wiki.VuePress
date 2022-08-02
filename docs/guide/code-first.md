@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `cccddd`.`Topic` (
 提供接口方法实现同步结构
 
 ```csharp
-var t2 = fsql.CodeFirst.SyncStructure<Topic>();
+fsql.CodeFirst.SyncStructure<Topic>();
 //同步实体类型到数据库
 ```
 
