@@ -20,13 +20,13 @@ class Topic {
 }
 
 var items = new List<Topic>();
-for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newtitle{a}", Clicks = a * 100 });
+for (var a = 0; a < 10; a++) items.Add(new Topic { Title = $"newtitle{a}", Clicks = a * 100 });
 ```
 
 ## 1、单条插入
 
 ```csharp
-var t1 = fsql.Insert(items.First()).ExecuteAffrows();
+var t1 = fsql.Insert(items[0]).ExecuteAffrows();
 //INSERT INTO `Topic`(`Clicks`, `Title`, `CreateTime`)
 //VALUES(?Clicks0, ?Title0, ?CreateTime0)
 ```
@@ -36,18 +36,18 @@ var t1 = fsql.Insert(items.First()).ExecuteAffrows();
 方法 1：(原始)
 
 ```csharp
-long id = fsql.Insert(blog).ExecuteIdentity();
-blog.Id = id;
+long id = fsql.Insert(items[0]).ExecuteIdentity();
+items[0].Id = id;
 ```
 
 方法 2：(依赖 FreeSql.Repository)
 
 ```csharp
-var repo = fsql.GetRepository<Blog>();
-repo.Insert(blog);
+var repo = fsql.GetRepository<Topic>();
+repo.Insert(items[0]);
 ```
 
-> 内部会将插入后的自增值填充给 blog.Id
+> 内部会将插入后的自增值填充给 items[0].Id (支持批量插入回填)
 
 ## 2、批量插入
 
