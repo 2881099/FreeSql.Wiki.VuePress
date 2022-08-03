@@ -53,6 +53,8 @@ using (TransactionScope ts = new TransactionScope())
 }
 ```
 
+分布式数据库 TCC/SAGA 方案请移步：https://github.com/2881099/FreeSql.Cloud
+
 ## 自动分表 AsTable (beta)
 
 【自动分表】不同于 CURD.AsTable 方法，目前第一期完成按【时间】自动分表（不支持分库）。
@@ -90,6 +92,41 @@ fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
 | AsTable = "createtime=2022-1-1(12 hour)" | 12小时一个分表 |
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
+
+## 【分库】常规技巧
+
+1、Sqlite 跨库
+
+```c#
+.UseConnectionString(DataType.Sqlite, @"data source=document.db;attachs=db2.db,db3.db")
+
+[Table(Name = "db2.Comment")]
+class Comment { ... }
+
+[Table(Name = "dbd.Comment")]
+class Topic { .. }
+```
+
+SQLite 跨库操作是 FreeSql 独有的功能，连接串 attachs 参数值逗号分割。
+
+2、SqlServer 跨库
+
+```c#
+//相同数据库实例，跨库访问
+[Table(Name = "db2.dbo.tablename")]
+class Comment { ... }
+```
+
+不同数据库实例，可使用 SQLServer linkserver 技术，具体请百度了解。
+
+3、其他
+
+几乎每种数据库都支持 dbo.table 的方式访问：
+
+- MySql -> dbname.tabname
+- PostgreSQL/SqlServer -> dbname.schema.tbname
+
+可将其设置到 `[Table(Name = ...)]` 特性，或者使用 `.AsTable` 方法设置本次生效。
 
 ## 【分库】使用 FreeSql.Cloud
 
