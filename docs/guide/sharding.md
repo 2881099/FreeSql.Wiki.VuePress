@@ -103,7 +103,7 @@ fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
 [Table(Name = "db2.Comment")]
 class Comment { ... }
 
-[Table(Name = "dbd.Comment")]
+[Table(Name = "db3.Comment")]
 class Topic { .. }
 ```
 
