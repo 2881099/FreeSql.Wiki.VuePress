@@ -78,7 +78,7 @@ FreeSql 支持调用 SQL/存储过程，同时也为 IDbConnection/IDbTransactio
 第一步：以数据库 SqlServer 访问为例，只需要安装已经划分好的小包：
 
 ```bash
-dotnet add packages FreeSql.Provider.SqlServer
+dotnet add package FreeSql.Provider.SqlServer
 ```
 
 or

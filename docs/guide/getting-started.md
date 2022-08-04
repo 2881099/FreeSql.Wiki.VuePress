@@ -27,8 +27,8 @@ FreeSql.Provider.xxx([可选的驱动](install.md))
 ::: code-group-item .NET CLI
 
 ```bash
-dotnet add packages FreeSql
-dotnet add packages FreeSql.Provider.Sqlite
+dotnet add package FreeSql
+dotnet add package FreeSql.Provider.Sqlite
 ```
 
 :::
@@ -44,14 +44,7 @@ Install-Package FreeSql.Provider.Sqlite
 
 ## 声明
 
-```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-    .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
-    .Build(); //请务必定义成 Singleton 单例模式
-
-    //注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
-```
+> 注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
 
 - .NET Core 单例模式
 :::: code-group

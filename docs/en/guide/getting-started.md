@@ -12,7 +12,7 @@ FreeSql uses a model to perform data access. The model is represented by an enti
 
 The entity model can be generated from an existing database, and FreeSql provides the `IDbFirst` interface to [generate the entity model](DbFirst-Mode).
 
-Or you can create the model manually, and then create or modify the database based on the model. FreeSql provides an API for the `ICodeFirst` synchronization structure (it can even be synchronized automatically during the development phase). 
+Or you can create the model manually, and then create or modify the database based on the model. FreeSql provides an API for the `ICodeFirst` synchronization structure (it can even be synchronized automatically during the development phase).
 
 ```csharp
 using FreeSql.DataAnnotations;
@@ -32,50 +32,64 @@ FreeSql.Provider.XXX ([Optional Providers](Install))
 
 :::: code-group
 ::: code-group-item .NET CLI
+
 ```bash
-dotnet add packages FreeSql
-dotnet add packages FreeSql.Provider.Sqlite
+dotnet add package FreeSql
+dotnet add package FreeSql.Provider.Sqlite
 ```
+
 :::
 ::: code-group-item Package Manager
+
 ```bash
 Install-Package FreeSql
 Install-Package FreeSql.Provider.Sqlite
 ```
+
 :::
 ::::
 
-
 ## Declaring
 
-```csharp
-IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-     //Automatically synchronize the entity structure to the database.
-     //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
-    .UseAutoSyncStructure(true) 
-     //Be sure to define as singleton mode
-    .Build(); 
-    
-//Note: IFreeSql should be declared as a singleton in the project, not created every time it is used.
-```
+> Note: IFreeSql should be declared as a singleton in the project, not created every time it is used.
 
 - .NET Core Singleton
-Startup.cs
+:::: code-group
+::: code-group-item .NET Core 5
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-    //Automatically synchronize the entity structure to the database.
-    //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
-    .UseAutoSyncStructure(true)
-    .Build();
+      .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+      .UseAutoSyncStructure(true)      
+      //Automatically synchronize the entity structure to the database.
+      //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
+      .Build();
     services.AddSingleton<IFreeSql>(fsql);
 }
 ```
+
+:::
+::: code-group-item .NET 6
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+    .UseAutoSyncStructure(true) 
+    //Automatically synchronize the entity structure to the database.
+    //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
+    .Build(); 
+builder.Services.AddSingleton<IFreeSql>(fsql);
+```
+
+:::
+::::
+
 - [.NET Core injects multiple FreeSql instances](https://github.com/dotnetcore/FreeSql/issues/44)
 - .NET Framework Singleton
+
 ```csharp
 public class DB
 {
