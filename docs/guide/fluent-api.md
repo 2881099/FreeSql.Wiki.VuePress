@@ -5,6 +5,7 @@
 FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置实体的数据库特性。`Fluent Api` 的方法命名与特性名保持一致，共三种使用方法，选择**一种即可**：
 
 > fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：[《实体特性说明》](entity-attribute.md)
+
 ## ConfigEntity
 
 ```csharp

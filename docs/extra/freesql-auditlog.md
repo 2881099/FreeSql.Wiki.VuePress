@@ -4,7 +4,7 @@
 
 IFreeSql 更新/删除，都可以不传实体进行操作，所以这个 old_values, new_values 实现起来比较麻烦（可能需要查询一次？性能？）。另外还有批量操作。
 
-## 1、fsql.Aop.CrudAfter 事件是 CRUD 之后触发，提供以下参数
+## 1、fsql.Aop.CurdAfter 事件是 CRUD 之后触发，提供以下参数
 
 ```csharp
 /// <summary>

@@ -53,8 +53,9 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     //注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
 ```
 
-- .NET Core 单例
-  Startup.cs
+- .NET Core 单例模式
+:::: code-group
+::: code-group-item .NET Core 5的Startup.cs
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -67,6 +68,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+:::
+::: code-group-item .NET 6的Program.cs
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+    .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+    .Build();
+builder.Services.AddSingleton<IFreeSql>(fsql);
+```
+
+:::
+::::
+  
 - [.NET Core 注入多个 FreeSql 实例](../extra/idlebus-freesql.md)
 - .NET Framework 单例
 
@@ -147,7 +163,7 @@ fsql.Delete<Blog>()
     .ExecuteAffrows();
 ```
 
-# FreeSqlBuilder
+## FreeSqlBuilder
 
 | 方法                                  | 返回值        | 说明                                                                                           |
 | ------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
@@ -164,7 +180,7 @@ fsql.Delete<Blog>()
 | UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认 true) |
 | Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                           |
 
-# ConnectionStrings
+## ConnectionStrings
 
 | DataType                           | ConnectionString                                                                                                                                                                                |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

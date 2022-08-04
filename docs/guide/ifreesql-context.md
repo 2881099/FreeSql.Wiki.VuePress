@@ -1,6 +1,6 @@
 # IFreesql 和 Context
 
-### 两者并存
+## 两者并存
 
 在 Freesql 中，支持 IFreesql 和 Context 两种形式，这两种形式的使用方法差异也有些大，其中 Context 跟 EFCore 的 Context 使用方式基本一致，使用简单、依赖注入方便。
 
@@ -17,7 +17,7 @@ update roles set is_deleted=1 where where tenant_id=1
 
 所以往往将 IFreesql 和 Context 并存，在使用时，根据场景使用这两种方式操作数据库。
 
-### 使用方法
+## 使用方法
 
 在 Freesql 中，IFreesql 的创建需要定义为单例模式，示例如下：
 
