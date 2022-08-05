@@ -30,7 +30,7 @@ var list = fsql.Select<Topic>()
 
 提示：数据量大一般不建议查 Count/CountAsync，而应该采用流式分页（上一页、下一页、不返回总数量）
 
-```c#
+```csharp
 var select = fsql.Select<Topic>()
     .Where(a => a.Id > 10);
 var total = await select.CountAsync();

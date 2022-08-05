@@ -61,7 +61,7 @@ using (TransactionScope ts = new TransactionScope())
 
 欢迎积极参与测试、反馈，请优先使用源代码进行测试，方便反馈定位问题，谢谢。
 
-```c#
+```csharp
 [Table(Name = "as_table_log_{yyyyMM}", AsTable = "createtime=2022-1-1(1 month)")]
 class AsTableLog
 {
@@ -75,7 +75,7 @@ class AsTableLog
 
 > 若最大日期大于当前时间，可手工扩容分表：
 
-```c#
+```csharp
 fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
     .AsTableImpl
     .GetTableNameByColumnValue(DateTime.Parse("2023-7-1"), autoExpand: true);
@@ -97,7 +97,7 @@ fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
 
 1、Sqlite 跨库
 
-```c#
+```csharp
 .UseConnectionString(DataType.Sqlite, @"data source=document.db;attachs=db2.db,db3.db")
 
 [Table(Name = "db2.Comment")]
@@ -111,7 +111,7 @@ SQLite 跨库操作是 FreeSql 独有的功能，连接串 attachs 参数值逗�
 
 2、SqlServer 跨库
 
-```c#
+```csharp
 //相同数据库实例，跨库访问
 [Table(Name = "db2.dbo.tablename")]
 class Comment { ... }
@@ -140,7 +140,7 @@ or
 
 > Install-Package FreeSql.Cloud
 
-```c#
+```csharp
 public enum DbEnum { db1, db2, db3 }
 
 var fsql = new FreeSqlCloud<DbEnum>("myapp"); //提示：泛型可以传入 string
@@ -167,7 +167,7 @@ fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
 
 FreeSqlCloud 的访问方式和 IFreeSql 一样：
 
-```c#
+```csharp
 fsql.Select<T>();
 fsql.Insert<T>();
 fsql.Update<T>();
@@ -178,7 +178,7 @@ fsql.Delete<T>();
 
 切换数据库：
 
-```c#
+```csharp
 fsql.Change(DbEnum.db3).Select<T>();
 //以后所有 fsql.Select/Insert/Update/Delete 操作是 db3
 ```

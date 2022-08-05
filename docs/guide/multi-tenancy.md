@@ -16,7 +16,7 @@ ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=�
 
 AsyncLocal 是 ThreadLocal 的升级版，异步也能获取到对应的 Value。
 
-```c#
+```csharp
 public class TerantManager
 {
     // 注意一定是 static 静态化
@@ -32,13 +32,13 @@ public class TerantManager
 
 2、FreeSql 全局过滤器，让任何查询，都附带租户条件；
 
-```c#
+```csharp
 fsql.GlobalFilter.ApplyIf<ITerant>("TerantFilter", () => TerantManager.Current > 0, a => a.TerantId == TerantManager.Current);
 ```
 
 3、FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
 
-```c#
+```csharp
 fsql.Aop.AuditValue += (_, e) =>
 {
     if (e.Property.PropertyType == typeof(int) && e.Property.Name == "TerantId")
@@ -50,7 +50,7 @@ fsql.Aop.AuditValue += (_, e) =>
 
 4、AspnetCore Startup.cs Configure 中间件处理租户逻辑；
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app)
 {
     app.Use(async (context, next) =>
