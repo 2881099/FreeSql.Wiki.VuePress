@@ -14,7 +14,7 @@ ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=�
 
 我们知道跨异步方法可能造成线程ID变化，ThreadLocal 将不能满足我们使用。
 
-AsyncLocal 是 ThreadLocal 的升级版，将异步跨方法也能获取到对应的 Value。
+AsyncLocal 是 ThreadLocal 的升级版，异步也能获取到对应的 Value。
 
 ```c#
 public class TerantManager
