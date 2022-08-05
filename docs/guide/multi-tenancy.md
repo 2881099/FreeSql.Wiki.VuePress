@@ -132,7 +132,7 @@ or
 
 > Install-Package FreeSql.Cloud
 
-```c#
+```csharp
 FreeSqlCloud<string> fsql = new FreeSqlCloud<string>();
 
 public void ConfigureServices(IServiceCollection services)
@@ -183,7 +183,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 2、直接使用 IFreeSql 访问租户数据库
 
-```c#
+```csharp
 public class HomeController : ControllerBase
 {
 
