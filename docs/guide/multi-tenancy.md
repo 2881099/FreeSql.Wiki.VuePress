@@ -8,7 +8,7 @@
 
 ### 方案一：按租户字段区分
 
-1、AsyncLocal\<string\>
+1、AsyncLocal\<int\>
 
 ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=值，跨方法时只需要知道线程ID，就能取得对应的 Value。
 
@@ -116,35 +116,82 @@ var reposTopic = orm.GetGuidRepository<Topic>(null, oldname => $"{oldname}{tenan
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Topic_1 表。
 
-> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)
+> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
 
 ### 方案三：按租户分库
 
-与方案二相同，只是表存储的位置不同，请查看 [《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
+场景1：同数据库实例（未跨服务器），租户间使用不同的数据库名或Schema区分，使用方法与方案二相同。
 
-### 多表查询
+场景2：跨服务器分库
 
-分表下的租户也支持多表查询，得益于 FreeSql 提供的优良基础。这部份仍然在 FreeSql.Repository 扩展库中实现的。
+1、FreeSql.Cloud 为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
-```csharp
-var tenantId = 1;
-//联表查询也支持
-fsql.Select<Topic>()
-    .AsTable((type, oldname) => $"{oldname}{tenantId}")
-    .LeftJoin<TopicType>((a, b) => a.TypeId == b.Id)
-    .ToList();
+> dotnet add package FreeSql.Cloud
+
+or
+
+> Install-Package FreeSql.Cloud
+
+```c#
+FreeSqlCloud<string> fsql = new FreeSqlCloud<string>();
+
+public void ConfigureServices(IServiceCollection services)
+{
+    fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
+    fsql.Register("main", () =>
+    {
+        var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "data source=...").Build();
+        //db.Aop.CommandAfter += ...
+        return db;
+    });
+
+    services.AddSingleton<IFreeSql>(fsql);
+    services.AddControllers();
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.Use(async (context, next) =>
+    {
+        try
+        {
+            // 假设 YourGetTerantFunction 返回租户信息和连接串
+            (string terant, string connectionString) = YourGetTerantFunction();
+
+            // 只会首次注册，如果已经注册过则不生效
+            fsql.Register(terant, () =>
+            {
+                var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, connectionString).Build();
+                //db.Aop.CommandAfter += ...
+                return db;
+            });
+
+            // 切换租户
+            fsql.Change(terant);
+            await next();
+        }
+        finally
+        {
+            // 切换回 main 库
+            fsql.Change("main");
+        }
+    });
+    app.UseRouting();
+    app.UseEndpoints(a => a.MapControllers());
+}
 ```
 
-上述代码的使用，将两个设置好的租户仓储合并起来查询，查询租户 1 下的 topic + topictype 数据，执行的 SQL 语句：
+2、直接使用 IFreeSql 访问租户数据库
 
-```sql
-SELECT ...
-FROM "Topic_1" a
-LEFT JOIN "TopicType_1" b ON a."TypeId" = b."Id"
+```c#
+public class HomeController : ControllerBase
+{
+
+    [HttpGet]
+    public object Get([FromServices] IFreeSql fsql)
+    {
+        // 使用 fsql 操作当前租户对应的数据库
+        return "";
+    }
+}
 ```
-
-### 实现全局控制租户
-
-FreeSql.Repository Autofac 注入方式实现了全局【过滤与验证】的设定，方便租户功能的设计；
-
-具体可参考：[《过滤器》](filters.md)
