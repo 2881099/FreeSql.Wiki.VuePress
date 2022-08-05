@@ -8,18 +8,68 @@
 
 ### 方案一：按租户字段区分
 
-FreeSql.Repository 实现了 filter（过滤与验证）功能，如：
+1. AsyncLocal\<string\>
 
-```csharp
-var topicRepos = fsql.GetGuidRepository<Topic>(t => t.TerantId == 1);
+ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=值，跨方法时只需要知道线程ID，就能取得对应的 Value。
+
+我们知道跨异步方法可能造成线程ID变化，ThreadLocal 将不能满足我们使用。
+
+AsyncLocal 是 ThreadLocal 的升级版，将异步跨方法也能获取到对应的 Value。
+
+```c#
+public class TerantManager
+{
+    // 注意一定是 static 静态化
+    static AsyncLocal<int> _asyncLocal = new AsyncLocal<int>();
+
+    public static int Current
+    {
+        get => _asyncLocal.Value;
+        set => _asyncLocal.Value = value;    
+    }
+}
 ```
 
-使用 topicRepos 对象进行 CURD 方法：
+2. FreeSql 全局过滤器，让任何查询，都附带租户条件；
 
-- 在查询/修改/删除时附加此条件，从而达到不会修改 TerantId != 1 的数据；
-- 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
+```c#
+fsql.GlobalFilter.ApplyIf<ITerant>("TerantFilter", () => TerantManager.Current > 0, a => a.TerantId == TerantManager.Current);
+```
 
-利用这个功能，我们可以很方便的实现数据分区，达到租户的目的。
+3. FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
+
+```c#
+fsql.Aop.AuditValue += (_, e) =>
+{
+    if (e.Property.PropertyType == typeof(int) && e.Property.Name == "TerantId")
+    {
+        e.Value = TerantManager.Current
+    }
+};
+```
+
+4. AspnetCore Startup.cs Configure 中间件处理租户逻辑；
+
+```c#
+public void Configure(IApplicationBuilder app)
+{
+    app.Use(async (context, next) =>
+    {
+        try
+        {
+            TerantManager.Current = YourGetTerantIdFunction();
+            await next();
+        }
+        finally
+        {
+            // 清除租户状态
+            TerantManager.Current = 0;
+        }
+    });
+    app.UseRouting();
+    app.UseEndpoints(a => a.MapControllers());
+}
+```
 
 ### WhereCascade
 
