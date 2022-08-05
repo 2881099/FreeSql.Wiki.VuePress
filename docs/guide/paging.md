@@ -26,15 +26,15 @@ var list = fsql.Select<Topic>()
     .Tolist();
 ```
 
-> 注意： 上述例子是对单表进行的查询。如果您正在对多表进行查询，必须要在 Count 之前先进行排序，防止出现不可理解的分页情况。当然，即使是单表，为了防止让分页的次序明确，也建议先排序。
+> Count(out var total) 是同步方法，原因是 out 不支持异步，如果介意可以单独执行如下：
 
-```csharp
-var list = fsql.Select<Topic>()
-    .Where(a => a.Id > 10)
-    .OrderBy(a => a.MsgTime)
-    .Count(out var total) //总记录数量
-    .Page(1, 20)
-    .Tolist();
+提示：数据量大一般不建议查 Count/CountAsync，而应该采用流式分页（上一页、下一页、不返回总数量）
+
+```c#
+var select = fsql.Select<Topic>()
+    .Where(a => a.Id > 10);
+var total = await select.CountAsync();
+var list = await select.Page(1, 20).ToListAsync();
 ```
 
 ## 优化
