@@ -57,6 +57,7 @@ public void Configure(IApplicationBuilder app)
     {
         try
         {
+            // 使用者通过 aspnetcore 中间件，解析 token 获得 租户ID
             TerantManager.Current = YourGetTerantIdFunction();
             await next();
         }
@@ -155,7 +156,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         try
         {
-            // 假设 YourGetTerantFunction 返回租户信息和连接串
+            // 使用者通过 aspnetcore 中间件，解析 token，查询  main 库得到租户信息。
             (string terant, string connectionString) = YourGetTerantFunction();
 
             // 只会首次注册，如果已经注册过则不生效
