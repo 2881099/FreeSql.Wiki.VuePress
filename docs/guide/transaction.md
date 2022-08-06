@@ -86,13 +86,66 @@ fsql.Transaction(() =>  {
 在与其他开源项目一起使用时，事务由外部开启，使用 WithTransaction 将事务对象传入执行。
 
 ```csharp
-await fsql.Update<xxx>()
-  .WithTransaction(指定事务)
-  .Set(a => a.Clicks + 1)
-  .ExecuteAffrowsAsync();
+    await fsql.Update<xxx>()
+    .WithTransaction(指定事务)
+    .Set(a => a.Clicks + 1)
+    .ExecuteAffrowsAsync();
 ```
 
 ISelect、IInsert、IUpdate、IDelete，都支持 WithTransaction 方法。
+
+### 获取DbTransaction
+
+- 异步方法
+
+```csharp
+    using Object<DbConnection> conn = await _freeSql.Ado.MasterPool.GetAsync();
+    await using DbTransaction transaction = await conn.Value.BeginTransactionAsync();
+```
+
+- 同步方法(using新语法)
+
+```csharp
+    using Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get();
+    using DbTransaction transaction = conn.Value.BeginTransaction();
+```
+
+- 同步方法(using旧语法)
+
+```csharp
+    using(Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get())
+    {
+        using(DbTransaction transaction = conn.Value.BeginTransaction())
+        {
+            ...
+        }
+    }
+```
+
+### 示例
+
+```csharp
+public async Task CreateAsync(CreateGroupDto inputDto)
+{
+    using Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get();
+    using DbTransaction transaction = conn.Value.BeginTransaction();
+    try
+    {
+        await fsql.Update<xxx>()
+        .WithTransaction(transaction)
+        .Set(a => a.Clicks + 1)
+        .ExecuteAffrowsAsync();
+
+        transaction.Commit();
+    }
+    catch (Exception ex)
+    {
+        transaction.Rollback();
+        //记录日志，抛出异常（使用全局异常）或者返回自定义数据 
+        throw;
+    } 
+}
+```
 
 ## 5、更新排他锁
 
