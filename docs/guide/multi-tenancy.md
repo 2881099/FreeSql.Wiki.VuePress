@@ -16,7 +16,7 @@ ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=�
 
 AsyncLocal 是 ThreadLocal 的升级版，解决跨异步方法也能获取到对应的 Value。
 
-```c#
+```csharp
 public class TerantManager
 {
     // 注意一定是 static 静态化
@@ -34,7 +34,7 @@ public class TerantManager
 
 以下代码若当前没有设置租户值，则过滤器不生效，什么意思？
 
-```c#
+```csharp
 // 全局过滤器只需要在 IFreeSql 初始化处执行一次
 // ITerant 可以是自定义接口，也可以是任何一个包含 TerantId 属性的实体类型，FreeSql 不需要为每个实体类型都设置过滤器（一次即可）
 fsql.GlobalFilter.ApplyIf<ITerant>(
@@ -52,7 +52,7 @@ fsql.Select<T>().ToList(); // SELECT .. FROM T WHERE TerantId = 1
 
 第3步：FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
 
-```c#
+```csharp
 fsql.Aop.AuditValue += (_, e) =>
 {
     if (TerantManager.Current > 0 && e.Property.PropertyType == typeof(int) && e.Property.Name == "TerantId")
@@ -64,7 +64,7 @@ fsql.Aop.AuditValue += (_, e) =>
 
 第4步：AspnetCore Startup.cs Configure 中间件处理租户逻辑；
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app)
 {
     app.Use(async (context, next) =>
@@ -129,7 +129,7 @@ WHERE t1.IsDeleted = 0
 - 创建表 fsql.CodeFirst.SyncStructure(typeof(Goods), "Goods_1")
 - 操作表 CURD
 
-```c#
+```csharp
 var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TerantManager.Current}");
 ```
 
@@ -152,7 +152,7 @@ or
 
 > Install-Package FreeSql.Cloud
 
-```c#
+```csharp
 FreeSqlCloud<string> fsql = new FreeSqlCloud<string>();
 
 public void ConfigureServices(IServiceCollection services)
@@ -203,7 +203,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 第2步：直接使用 IFreeSql 访问租户数据库
 
-```c#
+```csharp
 public class HomeController : ControllerBase
 {
 
