@@ -17,7 +17,7 @@ ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=�
 AsyncLocal 是 ThreadLocal 的升级版，解决跨异步方法也能获取到对应的 Value。
 
 ```csharp
-public class TerantManager
+public class TenantManager
 {
     // 注意一定是 static 静态化
     static AsyncLocal<int> _asyncLocal = new AsyncLocal<int>();
@@ -36,18 +36,18 @@ public class TerantManager
 
 ```csharp
 // 全局过滤器只需要在 IFreeSql 初始化处执行一次
-// ITerant 可以是自定义接口，也可以是任何一个包含 TerantId 属性的实体类型，FreeSql 不需要为每个实体类型都设置过滤器（一次即可）
-fsql.GlobalFilter.ApplyIf<ITerant>(
-    "TerantFilter", // 过滤器名称
-    () => TerantManager.Current > 0, // 过滤器生效判断
-    a => a.TerantId == TerantManager.Current // 过滤器条件
+// ITenant 可以是自定义接口，也可以是任何一个包含 TenantId 属性的实体类型，FreeSql 不需要为每个实体类型都设置过滤器（一次即可）
+fsql.GlobalFilter.ApplyIf<ITenant>(
+    "TenantFilter", // 过滤器名称
+    () => TenantManager.Current > 0, // 过滤器生效判断
+    a => a.TenantId == TenantManager.Current // 过滤器条件
 );
 
-TerantManager.Current = 0;
+TenantManager.Current = 0;
 fsql.Select<T>().ToList(); // SELECT .. FROM T
 
-TerantManager.Current = 1;
-fsql.Select<T>().ToList(); // SELECT .. FROM T WHERE TerantId = 1
+TenantManager.Current = 1;
+fsql.Select<T>().ToList(); // SELECT .. FROM T WHERE TenantId = 1
 ```
 
 第3步：FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
@@ -55,9 +55,9 @@ fsql.Select<T>().ToList(); // SELECT .. FROM T WHERE TerantId = 1
 ```csharp
 fsql.Aop.AuditValue += (_, e) =>
 {
-    if (TerantManager.Current > 0 && e.Property.PropertyType == typeof(int) && e.Property.Name == "TerantId")
+    if (TenantManager.Current > 0 && e.Property.PropertyType == typeof(int) && e.Property.Name == "TenantId")
     {
-        e.Value = TerantManager.Current
+        e.Value = TenantManager.Current
     }
 };
 ```
@@ -72,13 +72,13 @@ public void Configure(IApplicationBuilder app)
         try
         {
             // 使用者通过 aspnetcore 中间件，解析 token 获得 租户ID
-            TerantManager.Current = YourGetTerantIdFunction();
+            TenantManager.Current = YourGetTenantIdFunction();
             await next();
         }
         finally
         {
             // 清除租户状态
-            TerantManager.Current = 0;
+            TenantManager.Current = 0;
         }
     });
     app.UseRouting();
@@ -130,7 +130,7 @@ WHERE t1.IsDeleted = 0
 - 操作表 CURD
 
 ```csharp
-var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TerantManager.Current}");
+var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantManager.Current}");
 ```
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。
@@ -176,10 +176,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         try
         {
             // 使用者通过 aspnetcore 中间件，解析 token，查询  main 库得到租户信息。
-            (string terant, string connectionString) = YourGetTerantFunction();
+            (string tenant, string connectionString) = YourGetTenantFunction();
 
             // 只会首次注册，如果已经注册过则不生效
-            fsql.Register(terant, () =>
+            fsql.Register(tenant, () =>
             {
                 var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, connectionString).Build();
                 //db.Aop.CommandAfter += ...
@@ -187,7 +187,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             });
 
             // 切换租户
-            fsql.Change(terant);
+            fsql.Change(tenant);
             await next();
         }
         finally
