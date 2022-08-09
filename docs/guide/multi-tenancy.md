@@ -8,16 +8,16 @@
 
 ### 方案一：按租户字段区分
 
-1、AsyncLocal\<int\>
+第1步：了解 AsyncLocal\<int\>
 
 ThreadLocal 可以理解为字典 Dictionary\<int, string\> Key=线程ID Value=值，跨方法时只需要知道线程ID，就能取得对应的 Value。
 
 我们知道跨异步方法可能造成线程ID变化，ThreadLocal 将不能满足我们使用。
 
-AsyncLocal 是 ThreadLocal 的升级版，异步也能获取到对应的 Value。
+AsyncLocal 是 ThreadLocal 的升级版，解决跨异步方法也能获取到对应的 Value。
 
 ```csharp
-public class TerantManager
+public class TenantManager
 {
     // 注意一定是 static 静态化
     static AsyncLocal<int> _asyncLocal = new AsyncLocal<int>();
@@ -30,25 +30,39 @@ public class TerantManager
 }
 ```
 
-2、FreeSql 全局过滤器，让任何查询，都附带租户条件；
+第2步：FreeSql 全局过滤器，让任何查询/更新/删除，都附带租户条件；
+
+以下代码若当前没有设置租户值，则过滤器不生效，什么意思？
 
 ```csharp
-fsql.GlobalFilter.ApplyIf<ITerant>("TerantFilter", () => TerantManager.Current > 0, a => a.TerantId == TerantManager.Current);
+// 全局过滤器只需要在 IFreeSql 初始化处执行一次
+// ITenant 可以是自定义接口，也可以是任何一个包含 TenantId 属性的实体类型，FreeSql 不需要为每个实体类型都设置过滤器（一次即可）
+fsql.GlobalFilter.ApplyIf<ITenant>(
+    "TenantFilter", // 过滤器名称
+    () => TenantManager.Current > 0, // 过滤器生效判断
+    a => a.TenantId == TenantManager.Current // 过滤器条件
+);
+
+TenantManager.Current = 0;
+fsql.Select<T>().ToList(); // SELECT .. FROM T
+
+TenantManager.Current = 1;
+fsql.Select<T>().ToList(); // SELECT .. FROM T WHERE TenantId = 1
 ```
 
-3、FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
+第3步：FreeSql Aop.AuditValue 对象审计事件，实现统一拦截插入、更新实体对象；
 
 ```csharp
 fsql.Aop.AuditValue += (_, e) =>
 {
-    if (e.Property.PropertyType == typeof(int) && e.Property.Name == "TerantId")
+    if (TenantManager.Current > 0 && e.Property.PropertyType == typeof(int) && e.Property.Name == "TenantId")
     {
-        e.Value = TerantManager.Current
+        e.Value = TenantManager.Current
     }
 };
 ```
 
-4、AspnetCore Startup.cs Configure 中间件处理租户逻辑；
+第4步：AspnetCore Startup.cs Configure 中间件处理租户逻辑；
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -57,13 +71,14 @@ public void Configure(IApplicationBuilder app)
     {
         try
         {
-            TerantManager.Current = YourGetTerantIdFunction();
+            // 使用者通过 aspnetcore 中间件，解析 token 获得 租户ID
+            TenantManager.Current = YourGetTenantIdFunction();
             await next();
         }
         finally
         {
             // 清除租户状态
-            TerantManager.Current = 0;
+            TenantManager.Current = 0;
         }
     });
     app.UseRouting();
@@ -107,24 +122,29 @@ WHERE t1.IsDeleted = 0
 
 ### 方案二：按租户分表
 
-FreeSql.Repository 实现了 分表功能，如：
+此方案要求每个租户对应不同的数据表，如 Goods_1、Goods_2、Goods_3 分别对应 租户1、租户2、租户3 的商品表。
+
+这其实就是一般的分表方案，FreeSql 提供了分表场景的几个 API：
+
+- 创建表 fsql.CodeFirst.SyncStructure(typeof(Goods), "Goods_1")
+- 操作表 CURD
 
 ```csharp
-var tenantId = 1;
-var reposTopic = orm.GetGuidRepository<Topic>(null, oldname => $"{oldname}{tenantId}");
+var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantManager.Current}");
 ```
 
-上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Topic_1 表。
+上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。
 
 > 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
 
 ### 方案三：按租户分库
 
-场景1：同数据库实例（未跨服务器），租户间使用不同的数据库名或Schema区分，使用方法与方案二相同。
+- 场景1：同数据库实例（未跨服务器），租户间使用不同的数据库名或Schema区分，使用方法与方案二相同；
+- 场景2：跨服务器分库，本段讲解该场景；
 
-场景2：跨服务器分库
+第1步：FreeSql.Cloud 为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
-1、FreeSql.Cloud 为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
+原本使用 FreeSqlBuilder 创建 IFreeSql，需要使用 FreeSqlCloud 代替，因为 FreeSqlCloud 也实现了 IFreeSql 接口。
 
 > dotnet add package FreeSql.Cloud
 
@@ -140,7 +160,7 @@ public void ConfigureServices(IServiceCollection services)
     fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
     fsql.Register("main", () =>
     {
-        var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "data source=...").Build();
+        var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "data source=main.db").Build();
         //db.Aop.CommandAfter += ...
         return db;
     });
@@ -155,11 +175,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         try
         {
-            // 假设 YourGetTerantFunction 返回租户信息和连接串
-            (string terant, string connectionString) = YourGetTerantFunction();
+            // 使用者通过 aspnetcore 中间件，解析 token，查询  main 库得到租户信息。
+            (string tenant, string connectionString) = YourGetTenantFunction();
 
             // 只会首次注册，如果已经注册过则不生效
-            fsql.Register(terant, () =>
+            fsql.Register(tenant, () =>
             {
                 var db = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, connectionString).Build();
                 //db.Aop.CommandAfter += ...
@@ -167,7 +187,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             });
 
             // 切换租户
-            fsql.Change(terant);
+            fsql.Change(tenant);
             await next();
         }
         finally
@@ -181,7 +201,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-2、直接使用 IFreeSql 访问租户数据库
+第2步：直接使用 IFreeSql 访问租户数据库
 
 ```csharp
 public class HomeController : ControllerBase
