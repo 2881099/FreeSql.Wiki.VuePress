@@ -5,9 +5,10 @@ FreeSql.Provider.SqliteCore是`FreeSql`基于微软提供的最新的[`Microsoft
 
 ## 支持的版本
 
-- .NETStandard2.0（支持.NET Framework4.6.1+）
+- .NET Standard 2.0（支持.NET Framework4.6.1+/支持.NET Core 2.0+）
 - net6.0
 - SQLite（3.7 及以上版本）
+- Linux ARM/X86/MAUI Android/MAUI iOS等
 
 安装`FreeSql.Provider.SqliteCore`包。
 
