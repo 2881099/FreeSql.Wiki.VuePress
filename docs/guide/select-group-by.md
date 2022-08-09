@@ -15,7 +15,7 @@ class Topic
 }
 ```
 
-## 分组聚合
+## GroupBy分组聚合
 
 ```csharp
 var list = fsql.Select<Topic>()
@@ -78,11 +78,23 @@ var list = fsql.Select<Topic, Category, Area>()
 
 ## Aggregate
 
+- distinct
+
 ```csharp
 var list = fsql.Select<Topic>()
     .Aggregate(a => Convert.ToInt32("count(distinct title)"), out var count)
     .ToList();
 ```
+
+- SqlExt.DistinctCount
+
+```csharp
+fsql.Select<Topic>()
+    .Aggregate(a => SqlExt.DistinctCount(a.Key.Title), out var count);
+```
+
+> SELECT count(distinct a."title") as1 FROM "Topic" a
+
 ## API
 
 | 方法 | 返回值 | 参数 | 描述 |
