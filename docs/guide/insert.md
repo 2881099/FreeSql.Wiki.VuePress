@@ -186,7 +186,7 @@ limit 10
 
 注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性`[Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c#`默认值。
 
-## 9、MySql 特有功能 Insert Ignore Into
+## 9、MySql 特有功能 `Insert Ignore Into`
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
