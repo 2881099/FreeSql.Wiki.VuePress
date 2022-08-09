@@ -197,12 +197,59 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 
 ## 10、MySql 特有功能 `On Duplicate Key Update`
 
+FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。
+
+这个功能也可以实现插入或更新数据，并且支持批量操作。
+
 ```csharp
-fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
-///INSERT IGNORE INTO `Topic`(`Clicks`)
-//VALUES(@Clicks0), (@Clicks1), (@Clicks2), (@Clicks3), (@Clicks4),
-//(@Clicks5), (@Clicks6), (@Clicks7), (@Clicks8), (@Clicks9)
+class TestOnDuplicateKeyUpdateInfo {
+    [Column(IsIdentity = true)]
+    public int id { get; set; }
+    public string title { get; set; }
+    public DateTime time { get; set; }
+}
+
+var item = new TestOnDuplicateKeyUpdateInfo { id = 100, title = "title-100", time = DateTime.Parse("2000-01-01") };
+fsql.Insert(item)
+    .NoneParameter()
+    .OnDuplicateKeyUpdate().ToSql();
+//INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
+//ON DUPLICATE KEY UPDATE
+//`title` = VALUES(`title`), 
+//`time` = VALUES(`time`)
 ```
+
+OnDuplicateKeyUpdate() 之后可以调用的方法：
+
+| 方法名 | 描述 |
+| -- | -- |
+| IgnoreColumns | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
+| UpdateColumns | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
+| Set | 手工指定更新的列，与 IUpdate.Set 功能一样 |
+| SetRaw | 作为 Set 方法的补充，可传入 SQL 字符串 |
+| ToSql | 返回即将执行的 SQL 语句 |
+| ExecuteAffrows | 执行，返回影响的行数 |
+
+IInsert 与 OnDuplicateKeyUpdate 都有 IgnoreColumns、UpdateColumns 方法。
+
+当插入实体/集合实体的时候，忽略了 time 列，代码如下：
+
+```csharp
+fsql.Insert(item)
+    .IgnoreColumns(a => a.time)
+    .NoneParameter()
+    .OnDuplicateKeyUpdate().ToSql();
+//INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`) VALUES(200, 'title-200')
+//ON DUPLICATE KEY UPDATE
+//`title` = VALUES(`title`), 
+//`time` = '2000-01-01 00:00:00.000'
+```
+
+我们发现，UPDATE time 部分变成了常量，而不是 VALUES(\`time\`)，机制如下：
+
+当 insert 部分中存在的列，在 update 中将以 VALUES(\`字段\`) 的形式设置；
+
+当 insert 部分中不存在的列，在 update 中将为常量形式设置，当操作实体数组的时候，此常量为 case when ... end 执行（与 IUpdate 一样）；
 
 ## API
 
