@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroText: 🦄 FreeSql
-tagline: 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+ 以及 Xamarin。
+tagline: 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+ 以及 Xamarin✨
 actions:
   - text: 心动不如行动 💡
     link: /guide/
@@ -12,7 +12,7 @@ actions:
     type: default
 features:
   - title: 开发者优先
-    details: 💡以开发者为中心的设计理念，想你所想，亦享你所享。‘
+    details: 💡以开发者为中心的设计理念，想你所想，亦享你所享。
     link: /guide/
   - title: 多场景实现
     details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, Xamarin
