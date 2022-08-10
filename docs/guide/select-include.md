@@ -30,7 +30,7 @@ Select<Tag>().IncludeMany(a => a.Songs,
     then => then.Where(song => song.User == "admin")).ToList();
 ```
 
-其实在 then 那里，还可以继续进行向下 Include/IncludeMany。只要你喜欢，向下 100 层都没问题。
+其实在 then 那里，还可以继续进行向下 Include/IncludeMany。只要你喜欢，向下 100 层也没问题。
 
 ## 3、变异
 
