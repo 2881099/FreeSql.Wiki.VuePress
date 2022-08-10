@@ -42,7 +42,7 @@ dotnet add package SQLitePCLRaw.bundle_e_sqlcipher
 
 2. 连接串直接指定Password=xxx即可
 
-创建一个类`g.cs`,可直接通过`g.sqlite`访问到`IFreeSql`对象
+创建一个类`DB.cs`,可直接通过`DB.sqlite`访问到`IFreeSql`对象
 
 ```cs
 public class DB
