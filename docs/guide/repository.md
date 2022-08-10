@@ -106,6 +106,17 @@ repo.Update(item); //对比快照时的变化
 //WHERE (`Id` = 1)
 ```
 
+repo.CompareState(item) 可获取 item 的状态变化信息
+
+```csharp
+/// <summary>
+/// 比较实体，计算出值发生变化的属性，以及属性变化的前后值
+/// </summary>
+/// <param name="newdata">最新的实体对象，它将与附加实体的状态对比</param>
+/// <returns>key: 属性名, value: [旧值, 新值]</returns>
+Dictionary<string, object[]> CompareState(TEntity newdata);
+```
+
 ## 过滤与验证
 
 假设我们有 User(用户)、Topic(主题)两个实体，在领域类中定义了两个仓储：
