@@ -8,6 +8,16 @@ title:  MySqlConnector
 
 并且支持BulkCopy，**推荐使用**
 
+如果你使用 `FreeSql.Provider.MySql` 发生了以下错误，请替换到 FreeSql.Provider.MySqlConnector：
+
+- The given key '0' was not present in the dictionary.
+- The given key '25653' was not present in the dictionary.
+- The given key '26995' was not present in the dictionary.
+- The given key '28261 was not present in the dictionary.
+- The given key '65535' was not present in the dictionary.
+- The type initializer for 'MySql.Data.MySqlClient.Replication.ReplicationManager' threw an exception.
+- Parameter '@xxx' must be defined.
+
 ## ExecuteMySqlBulkCopy
 
 - 主键无值
