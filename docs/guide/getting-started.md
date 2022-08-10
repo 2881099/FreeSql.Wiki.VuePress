@@ -63,6 +63,16 @@ public void ConfigureServices(IServiceCollection services)
     };
     services.AddSingleton<IFreeSql>(implementationFreeSql);
 }
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
+    using(IServiceScope serviceScope = app.ApplicationServices.CreateScope())
+    {
+        var fsql = serviceScope.ServiceProvider.GetRequiredService<IFreeSql>();
+        fsql.CodeFirst.SyncStructure(typeof(Topic));//Topic 为要同步的实体类
+    }
+}
 ```
 
 :::
@@ -79,6 +89,16 @@ Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
     return fsql;
 };
 builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
+
+
+WebApplication app = builder.Build();
+
+//在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
+using(IServiceScope serviceScope = app.Services.CreateScope())
+{
+    var fsql = serviceScope.ServiceProvider.GetRequiredService<IFreeSql>();
+    fsql.CodeFirst.SyncStructure(typeof(Topic));//Topic 为要同步的实体类
+}
 ```
 
 :::
