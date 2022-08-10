@@ -14,29 +14,17 @@ FreeSql.Provider.SqliteCore是`FreeSql`基于微软提供的最新的[`Microsoft
 
 ```console
 dotnet add package FreeSql.Provider.SqliteCore
+dotnet add package SQLitePCLRaw.bundle_e_sqlite3
 ```
 
-## 不支持加密
-
-0.安装包。
-
-```console
-dotnet add package SQLitePCLRaw.bundle_e_sqlite3 
-dotnet add package FreeSql.Provider.SqliteCore
-```
-
-直接正常使用其他包一样使用FreeSql即可。`SQLitePCLRaw.bundle_e_sqlite3`包不支持加密，但此种方式是官方实现的`SQlite`版本,二选一就行
+`SQLitePCLRaw.bundle_e_sqlite3` 不支持加密，但此方式是官方实现的`SQlite`版本，以下二选一：
 
 捆绑 | 描述
 ---|---
 SQLitePCLRaw.bundle_e_sqlite3| 在所有平台上提供一致版本的 `SQLite`。 包括 FTS4、FTS5、JSON1 和 R* 树扩展。 建议使用
 SQLitePCLRaw.bundle_e_sqlcipher | 提供 `SQLCipher` 的非官方开放源代码内部版本，**支持加密**。
 
-# FreeSql.Provider.SqliteCore如何加密
-
-那我们不安装 `SQLitePCLRaw.bundle_e_sqlite3`包，换`SQLitePCLRaw.bundle_e_sqlcipher`
-
-## 只有**sqlcipher**才支持加密
+## 只有 **SQLitePCLRaw.bundle_e_sqlcipher** 才支持加密
 
 0.选择一个目录，创建一个控制台项目`OvOv.FreeSqlMicrosoftSqliteCore`
 
@@ -48,8 +36,8 @@ cd OvOv.FreeSqlMicrosoftSqliteCore
 1.安装包
 
 ```bash
-dotnet add package SQLitePCLRaw.bundle_e_sqlcipher
 dotnet add package FreeSql.Provider.SqliteCore
+dotnet add package SQLitePCLRaw.bundle_e_sqlcipher
 ```
 
 2. 连接串直接指定Password=xxx即可
@@ -57,7 +45,7 @@ dotnet add package FreeSql.Provider.SqliteCore
 创建一个类`g.cs`,可直接通过`g.sqlite`访问到`IFreeSql`对象
 
 ```cs
-public class g
+public class DB
 {
     static Lazy<IFreeSql> sqliteLazy = new Lazy<IFreeSql>(() =>
     {
@@ -65,9 +53,7 @@ public class g
                 .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=local.db;Password=123qwe")
                 .UseAutoSyncStructure(true)
                 .UseLazyLoading(true)
-                .UseMonitorCommand(
-                    cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
-                    )
+                .UseMonitorCommand(cmd => Trace.WriteLine(cmd.CommandText))
                 .Build();
         return fsql;
     }
@@ -84,17 +70,15 @@ Test();
 
 static void Test()
 {
-    IInsert<Topic> insert = g.sqlite.Insert<Topic>();
+    IInsert<Topic> insert = DB.sqlite.Insert<Topic>();
     var items = new List<Topic>();
     for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newTitle{a}", Clicks = a * 100 });
 
     var affrows = insert.AppendData(items).ExecuteAffrows();
     Console.WriteLine("affrows：" + affrows);
-    var list = g.sqlite.Select<Topic>().ToList();
+    var list = DB.sqlite.Select<Topic>().ToList();
     Console.WriteLine("count：" + list.Count);
 }
-
-
 
 [Table(Name = "tb_topic_insert")]
 class Topic
@@ -146,7 +130,7 @@ AppDomain.CurrentDomain.SetData("DataDirectory", dataSubDirectory);
 即
 
 ```cs
-public class g
+public class DB
 {
     static Lazy<IFreeSql> sqliteLazy = new Lazy<IFreeSql>(() =>
     {
@@ -161,9 +145,7 @@ public class g
                 .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=|DataDirectory|local.db;Password=123qwe")
                 .UseAutoSyncStructure(true)
                 .UseLazyLoading(true)
-                .UseMonitorCommand(
-                    cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
-                    )
+                .UseMonitorCommand(cmd => Trace.WriteLine(cmd.CommandText))
                 .Build();
 
         return fsql;
