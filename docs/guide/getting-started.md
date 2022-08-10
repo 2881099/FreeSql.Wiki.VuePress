@@ -53,11 +53,15 @@ Install-Package FreeSql.Provider.Sqlite
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-      .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-      .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
-      .Build();
-    services.AddSingleton<IFreeSql>(fsql);
+    Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+    {
+        IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+            .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+            .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+            .Build();
+        return fsql;
+    };
+    services.AddSingleton<IFreeSql>(implementationFreeSql);
 }
 ```
 
@@ -66,11 +70,15 @@ public void ConfigureServices(IServiceCollection services)
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
-IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-    .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
-    .Build();
-builder.Services.AddSingleton<IFreeSql>(fsql);
+Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+{
+    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+        .Build();
+    return fsql;
+};
+builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
 ```
 
 :::

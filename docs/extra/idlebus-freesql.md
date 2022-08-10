@@ -18,10 +18,18 @@ class SqlServerFlag {}
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    var fsql1 = new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1")
-        .Build<MySqlFlag>();
-    var fsql2 = new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1")
-        .Build<SqlServerFlag>();
+    Func<IServiceProvider, IFreeSql<MySqlFlag>> fsql1 = r =>
+    {
+        var fsql1 = new FreeSqlBuilder().UseConnectionString(DataType.MySql, "str1")
+            .Build<MySqlFlag>();
+        return fsql1;
+    };
+    Func<IServiceProvider, IFreeSql<SqlServerFlag>> fsql2 = r =>
+    {
+        var fsql2 = new FreeSqlBuilder().UseConnectionString(DataType.SqlServer, "str1")
+            .Build<SqlServerFlag>();
+        return fsql2;
+    };
 
     services.AddSingleton<IFreeSql<MySqlFlag>>(fsql1);
     services.AddSingleton<IFreeSql<SqlServerFlag>>(fsql2);

@@ -60,13 +60,17 @@ Install-Package FreeSql.Provider.Sqlite
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-      .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-      .UseAutoSyncStructure(true)      
-      //Automatically synchronize the entity structure to the database.
-      //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
-      .Build();
-    services.AddSingleton<IFreeSql>(fsql);
+    Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+    {
+        IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseAutoSyncStructure(true)      
+        //Automatically synchronize the entity structure to the database.
+        //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
+        .Build();
+        return fsql;
+    };
+    services.AddSingleton<IFreeSql>(implementationFreeSql);
 }
 ```
 
@@ -75,13 +79,17 @@ public void ConfigureServices(IServiceCollection services)
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
-IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
-    .UseAutoSyncStructure(true) 
-    //Automatically synchronize the entity structure to the database.
-    //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
-    .Build(); 
-builder.Services.AddSingleton<IFreeSql>(fsql);
+Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+{
+    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseAutoSyncStructure(true) 
+        //Automatically synchronize the entity structure to the database.
+        //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
+        .Build();
+    return fsql;
+}; 
+builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
 ```
 
 :::
