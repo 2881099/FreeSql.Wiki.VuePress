@@ -32,6 +32,28 @@ FROM (
 WHERE (a.[rownum] = 1)
 ```
 
+如果数据库不支持开窗函数，可以使用分组嵌套查询解决：
+
+```csharp
+fsql.Select<User1>()
+    .Where(a => a.Id < 1000)
+    .GroupBy(a => a.Nickname)
+    .WithTempQuery(g => new { min = g.Min(g.Value.Id) })
+    .From<User1>()
+    .InnerJoin((a, b) => a.min == b.Id)
+    .ToList((a, b) => b);
+```
+
+```sql
+SELECT b.[Id], b.[Nickname] 
+FROM ( 
+    SELECT min(a.[Id]) [min] 
+    FROM [User1] a 
+    WHERE a.[Id] < 1000 
+    GROUP BY a.[Nickname] ) a 
+INNER JOIN [User1] b ON a.[min] = b.[Id]
+```
+
 ## 场景2：嵌套查询 + Join
 
 WithTempQuery + From\<T2\> 或 FromQuery(ISelect\<T2\>) 可实现无限联表
