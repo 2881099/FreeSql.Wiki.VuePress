@@ -4,7 +4,7 @@ title:  MySqlConnector
 
 <!-- # FreeSql.Provider.MySqlConnector -->
 
-`FreeSql.Provider.MySqlConnector`是`FreeSql`基于社区提供的最新的[`MySqlConnector`](https://github.com/mysql-net/MySqlConnector)驱动的实现，兼容性、性能都比`FreeSql.Provider.MySql`好，且支持多种数据库,如：`MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL`
+`FreeSql.Provider.MySqlConnector`是`FreeSql`基于社区提供的最新的[`MySqlConnector`](https://github.com/mysql-net/MySqlConnector)驱动的实现，兼容性、性能都比`FreeSql.Provider.MySql`好，且支持多种数据库，如：`MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase`
 
 并且支持BulkCopy，**推荐使用**
 
