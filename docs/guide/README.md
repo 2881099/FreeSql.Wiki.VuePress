@@ -13,7 +13,7 @@
 
 支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/达梦/南大通用GBase/神通/人大金仓/翰高/华为GaussDB/MsAccess` 等数据库，以及自定义适配其它数据库。
 
-- QQ 群：4336577(已满)、8578575(已满)、`52508226(在线)`
+- QQ 群：4336577(已满)、8578575(已满)、52508226(已满)、反馈问题请前往 https://github.com/dotnetcore/FreeSql/issues
 
 - 欢迎微信关注 **dotNET 搬砖队**，分享 .NET Core + FreeSql 相关技术栈
 
