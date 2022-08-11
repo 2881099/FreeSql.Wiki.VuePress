@@ -60,7 +60,7 @@ var t2 = fsql.Select<T>()
 
 > v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a.Id && b.Item2 == a.ct1))
 
-> 实现代码：[https://github.com/dotnetcore/FreeSql/issues/243](https://github.com/dotnetcore/FreeSql/issues/243)
+> 实现代码：[In多列查询，表达式自定义实现](../extra/issues-in-valuetype.md)
 
 ## In子表
 
@@ -87,6 +87,8 @@ fsql.Select<Topic>()
 //    WHERE (b.`Id` = a.`Id`)
 //    limit 0,1))
 ```
+
+> 提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分
 
 ## 查找今天创建的数据
 
@@ -133,35 +135,8 @@ fsql.Select<T1, T2>()
 
 > v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
 
-## 子表Exists
-
-```csharp
-fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
-  .ToList();
-//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
-//FROM `Topic` a
-//WHERE (exists(SELECT 1
-//    FROM `Topic` b
-//    WHERE (b.`Id` = a.`Id`)
-//    limit 0,1))
-```
-
-> 提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分
-
-## 子表In
-
-```csharp
-fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
-  .ToList();
-//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
-//FROM `Topic` a
-//WHERE (((a.`Id`) in (SELECT b.`Id`
-//    FROM `Topic` b)))
-```
-
 ## 子表Join
+
 > v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
 
 ```csharp
@@ -235,7 +210,6 @@ var sql1 = fsql.Select<SysModule>()
 | DbParameter                | DbParameter                  | that 被参数化的对象（有可能为 null) |
 | UserParameters             | List\<DbParameter\>          | 可附加参数化对象                    |
 | Result                     | string                       | 返回表达式函数表示的 SQL 字符串     |
-
 
 > 当扩展方法返回值为 string 时，其返回值也可以当作 context.Value.Result 功能
 
@@ -426,22 +400,22 @@ public static class DbFunc {
 | TimeSpan.MinValue | -922337203685477580 | -922337203685477580 | - | numtodsinterval(-233720368.5477580,'second') |
 | TimeSpan.Compare(a, b) | a - b | a - b | - | extract(day from (a-b)) |
 | TimeSpan.Equals(a, b) | a = b | a = b | - | a = b |
-| TimeSpan.FromDays(a) | a * 1000000 * 60 * 60 * 24 | a * 1000000 * 60 * 60 * 24 | - | numtodsinterval(a*86400,'second') |
-| TimeSpan.FromHours(a) | a * 1000000 * 60 * 60 | a * 1000000 * 60 * 60 | - | numtodsinterval(a*3600,'second') |
+| TimeSpan.FromDays(a) | a *1000000* 60 *60* 24 | a *1000000* 60 *60* 24 | - | numtodsinterval(a*86400,'second') |
+| TimeSpan.FromHours(a) | a *1000000* 60 * 60 | a * 1000000 *60* 60 | - | numtodsinterval(a*3600,'second') |
 | TimeSpan.FromMilliseconds(a) | a * 1000 | a * 1000 | - | numtodsinterval(a/1000,'second') |
-| TimeSpan.FromMinutes(a) | a * 1000000 * 60 | a * 1000000 * 60 | - | numtodsinterval(a*60,'second') |
+| TimeSpan.FromMinutes(a) | a *1000000* 60 | a *1000000* 60 | - | numtodsinterval(a*60,'second') |
 | TimeSpan.FromSeconds(a) | a * 1000000 | a * 1000000 | - | numtodsinterval(a,'second') |
 | TimeSpan.FromTicks(a) | a / 10 | a / 10 | - | numtodsinterval(a/10000000,'second') |
 | a.Add(b) | a + b | a + b | - | a + b |
 | a.Subtract(b) | a - b | a - b | - | a - b |
 | a.CompareTo(b) | a - b | a - b | - | extract(day from (a-b)) |
-| a.Days | a div (1000000 * 60 * 60 * 24) | a div (1000000 * 60 * 60 * 24) | - | extract(day from a) |
-| a.Hours | a div (1000000 * 60 * 60) mod 24 | a div (1000000 * 60 * 60) mod 24 | - | extract(hour from a) |
+| a.Days | a div (1000000 *60* 60 * 24) | a div (1000000 * 60 *60* 24) | - | extract(day from a) |
+| a.Hours | a div (1000000 *60* 60) mod 24 | a div (1000000 *60* 60) mod 24 | - | extract(hour from a) |
 | a.Milliseconds | a div 1000 mod 1000 | a div 1000 mod 1000 | - | cast(substr(extract(second from a)-floor(extract(second from a)),2,3) as number) |
 | a.Seconds | a div 1000000 mod 60 | a div 1000000 mod 60 | - | extract(second from a) |
 | a.Ticks | a * 10 | a * 10 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a))*10000000 |
-| a.TotalDays | a / (1000000 * 60 * 60 * 24) | a / (1000000 * 60 * 60 * 24) | - | extract(day from a) |
-| a.TotalHours | a / (1000000 * 60 * 60) | a / (1000000 * 60 * 60) | - | (extract(day from a)*24+extract(hour from a)) |
+| a.TotalDays | a / (1000000 *60* 60 * 24) | a / (1000000 * 60 *60* 24) | - | extract(day from a) |
+| a.TotalHours | a / (1000000 *60* 60) | a / (1000000 *60* 60) | - | (extract(day from a)*24+extract(hour from a)) |
 | a.TotalMilliseconds | a / 1000 | a / 1000 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a))*1000 |
 | a.TotalMinutes | a / (1000000 * 60) | a / (1000000 * 60) | - | | (extract(day from a)*1440+extract(hour from a)*60+extract(minute from a)) |
 | a.TotalSeconds | a / 1000000 | a / 1000000 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a)) |
@@ -494,4 +468,3 @@ public static class DbFunc {
 | Guid.Parse(a) | substr(cast(a as char),1,36) | cast(a as uniqueidentifier) | a::uuid | substr(to_char(a),1,36) | substr(cast(a as character),1,36) |
 | Guid.NewGuid() | - | newid() | - | - | - |
 | new Random().NextDouble() | rand() | rand() | random() | dbms_random.value | random() |
-
