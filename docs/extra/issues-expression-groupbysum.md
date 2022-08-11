@@ -55,7 +55,7 @@ public static class MyExt
     public static string SumCase<TValue>([RawValue] TValue[] values, TValue column)
     {
         var ctx = expContext.Value;
-        ctx.Result = ctx._commonExp._common.StringConcat(
+        ctx.Result = ctx.Utility.CommonUtils.StringConcat(
             values.Select((val, idx) => 
                 new [] {
                     ctx._commonExp._common.IsNull($"SUM(case when {ctx.ParsedContent["column"]} = {ctx.FormatSql(val)} then 1 else 0 end)", 0),
