@@ -2,22 +2,22 @@
 
 FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表达式函数支持得非常到位。
 
-- 分页查询
-- 单表查询
-- 多表查询
-- 嵌套查询
-- 分组聚合查询
-- 返回数据
-- LinqToSql
-- 仓储层 Repository
-- 过滤器
-- 延时加载
-- 贪婪加载
-- 表达式函数
-- 读写分离
-- 性能
-- 分表分库
-- 多租户
+- [分页查询](paging.md)
+- [单表查询](select-single-table.md)
+- [多表查询](select-multi-table.md)
+- [嵌套查询](withtempquery.md)
+- [分组聚合查询](select-group-by.md)
+- [返回数据](select-return-data.md)
+- [LinqToSql](linq-to-sql.md)
+- [仓储层 Repository](repository.md)
+- [过滤器](filters.md)
+- [延时加载](select-lazy-loading.md)
+- [贪婪加载](select-include.md)
+- [表达式函数](expression-function.md)
+- [读写分离](read-write-splitting.md)
+- [性能](performance.md)
+- [分表分库](sharding.md)
+- [多租户](multi-tenancy.md)
 
 ## 特别介绍 WhereDynamicFilter
 

@@ -41,7 +41,7 @@ fsql.Select<Topic>()
 //WHERE (a.`Id` in (1,2,3))
 ```
 
-## [WithSql](WithSql.md)
+## [WithSql](withsql.md)
 
 ```csharp
 fsql.Select<Topic>()
@@ -52,7 +52,7 @@ fsql.Select<Topic>()
 //FROM (select * from Topic where clicks > @val) a 
 ```
 
-> 关于[WithSql](WithSql.md)的详情文档， 使用多次为 UNION ALL 查询
+> 关于[WithSql](withsql.md)的详情文档， 使用多次为 UNION ALL 查询
 
 > v3.2.666 [WithTempQuery + FromQuery 嵌套查询](%e5%b5%8c%e5%a5%97%e6%9f%a5%e8%af%a2)
 

@@ -51,6 +51,11 @@ export const zhSidebarConfig = sidebar({
                     ],
                 },
                 {
+                    text: "DbContext",
+                    collapsable: true,
+                    children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
+                },
+                {
                     text: "数据库提供程序",
                     collapsable: true,
                     children: [
@@ -63,9 +68,12 @@ export const zhSidebarConfig = sidebar({
                     ],
                 },
                 {
-                    text: "DbContext",
+                    text: "扩展",
                     collapsable: true,
-                    children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
+                    children: [
+                        "/guide/freesql-extensions-baseentity.md",
+                        "/guide/freesql-extensions-jsonmap.md"
+                    ],
                 },
                 {
                     text: "CodeFirst",

@@ -106,7 +106,7 @@ fsql.Change(DbEnum.db3).Select<T>();
 
 自动定向数据库配置：
 
-```c#
+```csharp
 //对 fsql.CRUD 方法名 + 实体类型 进行拦截，自动定向到对应的数据库，达到自动 Change 切换数据库目的
 fsql.EntitySteering = (_, e) =>
 {

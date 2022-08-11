@@ -1,8 +1,9 @@
 ---
 title : Code First
 tag:
-  - CodeFirst
+  - Code First
   - 备注
+  - 迁移
 ---
 
 `FreeSql` 支持 `CodeFirst` 迁移结构至数据库，这应该是(`O/RM`)必须标配的一个功能。

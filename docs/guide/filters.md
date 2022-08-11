@@ -1,5 +1,7 @@
 # 过滤器
 
+## 全局过滤器（建议）
+
 FreeSql 基础层实现了 Select/Update/Delete 可设置的全局过滤器功能。
 
 ```csharp
@@ -83,9 +85,8 @@ var topicRepository = fsql.GetGuidRepository<Topic>(a => a.UserId == 1);
 - 在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；
 - 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
 
-## 全局过滤器
 
-全局过滤器，可帮助实现“软删除”、“租户”等设计，目前使用 AspNetCore 注入的方式实现的全局过滤器。
+仓储过滤器，可帮助实现“软删除”、“租户”等设计，目前使用 AspNetCore 注入的方式实现的仓储过滤器。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services) {

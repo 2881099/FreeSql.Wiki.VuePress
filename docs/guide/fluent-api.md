@@ -1,4 +1,11 @@
-# 流式接口
+---
+title: 流式接口
+tag:
+  - Fluent API
+  - ConfigEntity
+  - Entity
+  - IEntityTypeConfiguration
+---
 
 ## 支持 Fluent API
 

@@ -18,7 +18,7 @@ FreeSql.Repository 作为扩展，实现了通用仓储层功能。与其他规�
 环境 2、.NET Framework
 
 ```bash
-Install-Package FreeSql.DbContext
+Install-Package FreeSql.Repository
 ```
 
 ## 定义

@@ -119,6 +119,8 @@ public class DB
 }
 ```
 
+然后直接通过 ```IFreeSql  fsql = DB.Sqlite;```  即可得到fsql实例。
+
 `IFreeSql` 是 `ORM` 最顶级对象，所有操作都是使用它的方法或者属性：
 
 ```csharp
