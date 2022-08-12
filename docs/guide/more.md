@@ -428,7 +428,7 @@ var sql1 = fsql.Select<SysModule>()
 | UserParameters             | List\<DbParameter\>          | 可附加参数化对象                    |
 | Result                     | string                       | 返回表达式函数表示的 SQL 字符串     |
 
-> 当扩展方法返回值为 string 时，其返回值也可以当作 context.Value.Result 功能
+> 当扩展方法返回值为 string 时，其返回值也可以当作 context.Value.Result 设置
 
 > 当不想解析指定参数时，使用特性 \[RawValue\] 标记
 
