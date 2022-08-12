@@ -353,7 +353,7 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 之前：
 
-FreeSql.DbContext 和 仓储实现，已经实现了联级保存功能，联级保存功能可实现保存对象的时候，将其【OneToMany】、【ManyToMany】导航属性集合也一并保存。
+FreeSql.DbContext 和 仓储实现，已经实现了联级保存功能，可实现保存对象的时候，将其【OneToMany】、【ManyToMany】导航属性集合也一并保存。
 
 全局关闭：
 
