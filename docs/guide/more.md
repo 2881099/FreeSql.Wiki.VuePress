@@ -250,7 +250,7 @@ class Dto {
 var dto = new [] { 1,2,3 }.Select(a => new Dto { TypeId = a }).ToList();
 dto.IncludeMany(d => d.GoodsList.Take(10).Where(gd => gd.TypeId == d.TypeId));
 
-//执行后，dto 每个元素.Vods 将只有 10条记录
+//执行后，dto 每个元素.GoodsList 将只有 10条记录
 ```
 
 查询子集合表的部分字段，避免子集合字段过多的问题：
