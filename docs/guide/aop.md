@@ -2,7 +2,7 @@
 
 FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。
 
-## 审计 CRUD
+## 审计 CRUD(如何监视 SQL？)
 
 如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
 
@@ -11,6 +11,8 @@ FreeSql 支持简单的类似功能：
 ```csharp
 fsql.Aop.CurdAfter += (s, e) =>
 {
+    Console.WriteLine($"ManagedThreadId:{Thread.CurrentThread.ManagedThreadId};"+
+    $" FullName:{e.EntityType.FullName} ElapsedMilliseconds:{e.ElapsedMilliseconds}ms, {e.Sql}");
     if (e.ElapsedMilliseconds > 200)
     {
         //记录日志
@@ -88,7 +90,35 @@ FreeSql 自带迁移功能，那么迁移的 SQL 语句长啥样，你可能会�
 
 fsql.Aop.SyncStructureBefore、fsql.Aop.SyncStructureAfter 这两个事件将排上用场。
 
-## 自定义实体特性
+## ConfigEntityProperty
+
+### MySql Enum 映射
+
+默认情况 c# 枚举会映射为 MySql Enum 类型，如果想映射为 int 在 FreeSqlBuilder Build 之后执行以下 Aop 统一处理：
+
+```csharp
+fsql.Aop.ConfigEntityProperty += (s, e) => {
+  if (e.Property.PropertyType.IsEnum)
+    e.ModifyResult.MapType = typeof(int);
+};
+```
+
+### 修改 decimal 默认特性
+
+因为默认 decimal 只支持 decimal(10,2)，范围太小，我们可以全局修改 decimal 类型的支持范围，比如支持 decimal(18,6)
+
+```csharp
+fsql1.Aop.ConfigEntityProperty += (s, e) =>
+{
+    if (e.Property.PropertyType == typeof(decimal)|| e.Property.PropertyType == typeof(decimal?))
+    {
+       e.ModifyResult.Precision = 18;
+       e.ModifyResult.Scale = 6;
+    }
+};
+```
+
+### 自定义实体特性
 
 比如项目内已经使用了其它 orm，如 efcore，这样意味着实体中可能存在 [Key]，但它与 FreeSql [Column(IsPrimary = true] 不同。
 
@@ -168,17 +198,3 @@ fsql.Aop.ParseExpression += (s, e) =>
 
 这个解析有点复杂，当 `e.Expression` 很复杂的时候，我们还提供了 `e.FreeParse` 方法，使用它相当于调用 `FreeSql` 内置表达式解析引擎，辅助您进行解析。
 
-## 修改 decimal 默认特性
-
-因为默认 decimal 只支持 decimal(10,2)，范围太小，我们可以全局修改 decimal 类型的支持范围，比如支持 decimal(18,6)
-
-```csharp
-fsql1.Aop.ConfigEntityProperty += (s, e) =>
-{
-    if (e.Property.PropertyType == typeof(decimal)|| e.Property.PropertyType == typeof(decimal?))
-    {
-       e.ModifyResult.Precision = 18;
-       e.ModifyResult.Scale = 6;
-    }
-};
-```

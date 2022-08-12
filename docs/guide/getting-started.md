@@ -56,14 +56,14 @@ public void ConfigureServices(IServiceCollection services)
     Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
     {
         IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-            .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+            .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
+            .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句
             .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
             .Build();
         return fsql;
     };
     services.AddSingleton<IFreeSql>(implementationFreeSql);
 }
-
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
@@ -83,16 +83,15 @@ var builder = WebApplication.CreateBuilder(args);
 Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
 {
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
+        .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句
         .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
         .Build();
     return fsql;
 };
 builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
 
-
 WebApplication app = builder.Build();
-
 //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
 using(IServiceScope serviceScope = app.Services.CreateScope())
 {
@@ -111,10 +110,10 @@ using(IServiceScope serviceScope = app.Services.CreateScope())
 public class DB
 {
    static Lazy<IFreeSql>sqliteLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder()
-         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+         .UseMonitorCommand(cmd => Trace.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句,Trace在输入选项卡中查看
+         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
          .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
          .Build());
-
     public static IFreeSql Sqlite => sqliteLazy.Value;
 }
 ```

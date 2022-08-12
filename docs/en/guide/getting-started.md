@@ -64,6 +64,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
         .UseAutoSyncStructure(true)      
         //Automatically synchronize the entity structure to the database.
         //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
@@ -83,6 +84,7 @@ Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
 {
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
         .UseAutoSyncStructure(true) 
         //Automatically synchronize the entity structure to the database.
         //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
@@ -103,6 +105,7 @@ public class DB
 {
    static Lazy<IFreeSql>sqliteLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
+        .UseMonitorCommand(cmd => Trace.WriteLine($"Sql：{cmd.CommandText}"))
         //Automatically synchronize the entity structure to the database.
         //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
         .UseAutoSyncStructure(true)
