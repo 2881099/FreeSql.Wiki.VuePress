@@ -304,24 +304,22 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 {
-  ""Logic"" : ""Or"",
-  ""Filters"" :
-  [
-    {
-      ""Field"" : ""Code"", ""Operator"" : ""NotContains"", ""Value"" : ""val1"", 
-      ""Filters"" : [{ ""Field"" : ""Name"", ""Operator"" : ""NotStartsWith"", ""Value"" : ""val2"" }]
-    },
-    {
-      ""Field"" : ""Parent.Code"", ""Operator"" : ""Equals"", ""Value"" : ""val11"",
-      ""Filters"" : [{ ""Field"" : ""Parent.Name"", ""Operator"" : ""Contains"", ""Value"" : ""val22"" }]
-    }
-  ]
+    ""Logic"": ""And"",
+    ""Filters"":
+    [
+        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 1 },
+        {
+            ""Logic"": ""Or"",
+            ""Filters"":
+            [
+                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 2 },
+                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 3 }
+            ]
+        }
+    ]
 }");
-fsql.Select<VM_District_Parent>().WhereDynamicFilter(dyfilter).ToList();
-//SELECT a.""Code"", a.""Name"", a.""ParentCode"", a__Parent.""Code"" as4, a__Parent.""Name"" as5, a__Parent.""ParentCode"" as6
-//FROM ""D_District"" a
-//LEFT JOIN ""D_District"" a__Parent ON a__Parent.""Code"" = a.""ParentCode""
-//WHERE (not((a.""Code"") LIKE '%val1%') AND not((a.""Name"") LIKE 'val2%') OR a__Parent.""Code"" = 'val11' AND (a__Parent.""Name"") LIKE '%val22%')
+fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
+//WHERE id = 1 AND (id = 2 OR id = 3)
 ```
 
 ---
