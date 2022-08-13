@@ -15,7 +15,7 @@ Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList(true);
 //这样写，不需要再标记 Join，解析表达式时自动处理成 LeftJoin
 ```
 
-## 2、导航属性 OneToMany/ManyToMany
+## 2、导航属性 OneToMany/ManyToMany/PgArrayToMany
 
 IncludeMany 贪婪加载集合的导航属性，其实是分两次查询，在 ToList 后进行了数据重装。
 
