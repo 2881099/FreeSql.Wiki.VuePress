@@ -118,7 +118,9 @@ public class DB
 }
 ```
 
-然后直接通过 ```IFreeSql  fsql = DB.Sqlite;```  即可得到fsql实例。
+> 注意：`class DB\<T\>` 泛型类不适合定义 static 单例
+
+然后直接通过 `IFreeSql  fsql = DB.Sqlite;`  即可得到 fsql 实例。
 
 `IFreeSql` 是 `ORM` 最顶级对象，所有操作都是使用它的方法或者属性：
 
