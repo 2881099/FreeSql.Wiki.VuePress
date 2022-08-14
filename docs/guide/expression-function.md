@@ -217,7 +217,7 @@ var sql1 = fsql.Select<SysModule>()
 
 ## 参数化
 
-在之前 Where(lambda) 解析出来的是纯文本，做了防止注入功能，对数据库执行计划要求高的，现在可以开启 lambda 参数化功能。
+Where(lambda) 解析出来的默认是纯文本（已防止SQL注入），对数据库执行计划要求特别高，可以开启 lambda 参数化功能。
 
 ```csharp
 var fsql = new FreeSqlBuilder() //请务必定义成 Singleton 单例模式
