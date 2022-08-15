@@ -97,6 +97,7 @@ export const zhSidebarConfig = sidebar({
                 "/guide/sharding.md",
                 "/guide/multi-tenancy.md",
                 "/guide/performance.md",
+                "/guide/dynamic.md",
                 "/guide/more.md",
             ],
         },

@@ -178,7 +178,7 @@ fsql.Delete<T>();
 
 切换数据库：
 
-```c#
+```csharp
 fsql.Change(DbEnum.db3).Select<T>();
 //同一线程，或异步await 后续 fsql.Select/Insert/Update/Delete 操作是 db3
 

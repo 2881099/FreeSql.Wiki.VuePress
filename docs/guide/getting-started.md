@@ -23,16 +23,16 @@ public class Blog {
 ## 安装包
 
 FreeSql.Provider.xxx([可选的驱动](install.md))
-:::: code-group
-::: code-group-item .NET CLI
+::: code-tabs
+
+@tab:active .NET CLI
 
 ```bash
 dotnet add package FreeSql
 dotnet add package FreeSql.Provider.Sqlite
 ```
 
-:::
-::: code-group-item Package Manager
+@tab Package Manager
 
 ```bash
 Install-Package FreeSql
@@ -40,20 +40,21 @@ Install-Package FreeSql.Provider.Sqlite
 ```
 
 :::
-::::
 
 ## 声明
 
 > 注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。
 
 - .NET Core 单例模式
-:::: code-group
-::: code-group-item .NET Core 5的Startup.cs
+
+::: code-tabs
+
+@tab .NET Core 5的Startup.cs
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+    Func<IServiceProvider, IFreeSql> fsql = r =>
     {
         IFreeSql fsql = new FreeSql.FreeSqlBuilder()
             .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
@@ -62,7 +63,7 @@ public void ConfigureServices(IServiceCollection services)
             .Build();
         return fsql;
     };
-    services.AddSingleton<IFreeSql>(implementationFreeSql);
+    services.AddSingleton<IFreeSql>(fsql);
 }
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
@@ -75,12 +76,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-:::
-::: code-group-item .NET 6的Program.cs
+@tab:active .NET 6的Program.cs
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
-Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
+Func<IServiceProvider, IFreeSql> fsql = r =>
 {
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
@@ -89,7 +89,7 @@ Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
         .Build();
     return fsql;
 };
-builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
+builder.Services.AddSingleton<IFreeSql>(fsql);
 
 WebApplication app = builder.Build();
 //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
@@ -101,7 +101,6 @@ using(IServiceScope serviceScope = app.Services.CreateScope())
 ```
 
 :::
-::::
   
 - [.NET Core 注入多个 FreeSql 实例](../extra/idlebus-freesql.md)
 - .NET Framework 单例
@@ -118,7 +117,7 @@ public class DB
 }
 ```
 
-> 注意：`class DB\<T\>` 泛型类不适合定义 static 单例
+> 注意：`class DB<T>` 泛型类不适合定义 static 单例
 
 然后直接通过 `IFreeSql  fsql = DB.Sqlite;`  即可得到 fsql 实例。
 

@@ -1,6 +1,10 @@
-# 仓储
+---
+title : 仓储
+tag:
+  - Repository
+---
 
-FreeSql.Repository 作为扩展，实现了通用仓储层功能。与其他规范标准一样，仓储层也有相应的规范定义。FreeSql.Repository 参考 abp vnext 接口，定义和实现基础的仓储层（CURD），应该算比较通用的方法吧。
+`FreeSql.Repository` 作为扩展，实现了通用仓储层功能。与其他规范标准一样，仓储层也有相应的规范定义。FreeSql.Repository 参考 abp vnext 接口，定义和实现基础的仓储层（CURD），应该算比较通用的方法吧。
 
 ## 特性
 
@@ -11,15 +15,21 @@ FreeSql.Repository 作为扩展，实现了通用仓储层功能。与其他规�
 
 ## 安装
 
+::: code-tabs
+
+@tab:active .NET CLI
+
 ```bash
  dotnet add package FreeSql.Repository
 ```
 
-环境 2、.NET Framework
+@tab .NET Framework
 
 ```bash
 Install-Package FreeSql.Repository
 ```
+
+:::
 
 ## 定义
 
