@@ -173,6 +173,7 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | Orm              | IFreeSql               | 正在使用的 Orm                                 |
 | DbContextOptions | DbContextOptions       | 正在使用的 DbContext 设置，修改设置不影响其他  |
 | DataFilter       | IDataFilter\<TEntity\> | 仓储过滤器，本对象内生效                       |
+| UpdateDiy           | IUpdate\<TEntity\>     | 准备更新数据，与仓储同事务                    |
 | Select           | ISelect\<TEntity\>     | 准备查询数据                                   |
 
 | 方法                                                                                                       | 返回值         | 参数                   | 说明                                                     |
