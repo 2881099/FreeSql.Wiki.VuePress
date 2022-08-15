@@ -29,7 +29,8 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .UseAutoSyncStructure(true) //自动迁移实体的结构到数据库
     .Build(); //请务必定义成 Singleton 单例模式
 
-public class Song {
+public class Song
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Title { get; set; }
@@ -51,7 +52,8 @@ var curd = fsql.GetRepository<Song>();
 方法 2、继承实现；
 
 ```csharp
-public class SongRepository : BaseRepository<Song, int> {
+public class SongRepository : BaseRepository<Song, int>
+{
     public SongRepository(IFreeSql fsql) : base(fsql, null, null) {}
 
     //在这里增加 CURD 以外的方法
@@ -61,19 +63,15 @@ public class SongRepository : BaseRepository<Song, int> {
 方法 3、依赖注入；
 
 ```csharp
-public void ConfigureServices(IServiceCollection services) {
-
-    services.AddSingleton<IFreeSql>(Fsql);
-    services.AddFreeRepository(filter => filter
-        .Apply<ISoftDelete>("SoftDelete", a => a.IsDeleted == false)
-        .Apply<ITenant>("Tenant", a => a.TenantId == 1)
-        ,
-        this.GetType().Assembly
-    );
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IFreeSql>(fsql);
+    services.AddFreeRepository(null, this.GetType().Assembly);
 }
 
 //在控制器使用
-public SongsController(IBaseRepository<Song> repos1) {
+public SongsController(IBaseRepository<Song> songRepository)
+{
 }
 ```
 
