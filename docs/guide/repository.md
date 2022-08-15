@@ -184,7 +184,7 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | Delete                                                                                                     | int            | Lambda                 | 根据 lambda 条件删除数据                                 |
 | Delete                                                                                                     | int            | TEntity                | 删除数据                                                 |
 | Delete                                                                                                     | int            | IEnumerable\<TEntity\> | 批量删除数据                                             |
-| DeleteCascadeByDatabase                                                                                    | List\<object\> | Lambda                 | 根据导航属性递归数据库删除数据                           |
+| [DeleteCascadeByDatabase](https://freesql.net/guide/cascade-delete.html)                                                                                    | List\<object\> | Lambda                 | 根据导航属性递归数据库删除数据                           |
 | Insert                                                                                                     | -              | TEntity                | 插入数据，若实体有自增列，插入后的自增值会填充到实体中   |
 | Insert                                                                                                     | -              | IEnumerable\<TEntity\> | 批量插入数据                                             |
 | Update                                                                                                     | -              | TEntity                | 更新数据                                                 |
@@ -194,8 +194,8 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | Attach                                                                                                     | -              | TEntity                | 附加实体到状态管理，可用于不查询就更新或删除             |
 | Attach                                                                                                     | -              | IEnumerable\<TEntity\> | 批量附加实体到状态管理                                   |
 | AttachOnlyPrimary                                                                                          | -              | TEntity                | 只附加实体的主键数据到状态管理                           |
-| [SaveMany](%E8%81%94%E7%BA%A7%E4%BF%9D%E5%AD%98#savemany)                                                  | -              | TEntity, string        | 保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比） |
-| [BeginEdit](%E6%B7%BB%E5%8A%A0%E6%88%96%E4%BF%AE%E6%94%B9#3beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91) | -              | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
+| [SaveMany](cascade-saving.html)                                                  | -              | TEntity, string        | 保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比） |
+| [BeginEdit](insert-or-update.html#_4%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91) | -              | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
 | EndEdit                                                                                                    | int            | 无                     | 完成编辑数据，进行保存动作                               |
 
 > 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。
