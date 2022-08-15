@@ -178,9 +178,12 @@ fsql.Delete<T>();
 
 切换数据库：
 
-```csharp
+```c#
 fsql.Change(DbEnum.db3).Select<T>();
-//以后所有 fsql.Select/Insert/Update/Delete 操作是 db3
+//同一线程，或异步await 后续 fsql.Select/Insert/Update/Delete 操作是 db3
+
+fsql.Use(DbEnum.db3).Select<T>();
+//单次有效
 ```
 
 自动定向数据库配置：
