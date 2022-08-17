@@ -49,6 +49,8 @@ repo.Insert(items[0]);
 
 > 内部会将插入后的自增值填充给 items[0].Id (支持批量插入回填)
 
+> DbFirst 模式序列：[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]
+
 ## 2、批量插入
 
 ```csharp
