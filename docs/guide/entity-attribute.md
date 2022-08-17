@@ -56,6 +56,7 @@ class Topic {
 约定：
 
 * 当没有指明主键时，标记自增的成员将成为主键；
+* DbFirst 模式序列：[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]
 
 ## 唯一键(Unique Key)、索引（Index）
 
