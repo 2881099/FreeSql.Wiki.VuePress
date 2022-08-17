@@ -6,13 +6,20 @@
 
 - ``And``、``Or``扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
 
-示例
+- 单表
 
 ```csharp
 Expression<Func<T, bool>> where = null;
 where = where.And(b => b.num > 0);
 where = where.Or(b => b.num > 0);
-fsql.Select<T>().Where(where);
+fsql.Select<T>().Where(where)
+```
+- 多表
+
+```csharp
+Expression<Func<HzyTuple<T1, T2, T3, T4, T5, T6>, bool>> where = null;
+where = where.Or(a => a.t6.Id > 0);
+fsql.Select<T1, T2, T3, T4, T5, T6>().Where(where)
 ```
 
 ## In查询
