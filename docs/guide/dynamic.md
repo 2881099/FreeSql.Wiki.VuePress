@@ -50,7 +50,19 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对�
 fsql.Select<Region>().Where("a.id > 0") //提示：存在SQL注入安全问题
 ```
 
-2、ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互），支持的操作符：
+2、动态 Lambda 表达式
+
+- ``And``、``Or``扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
+
+```csharp
+Expression<Func<Region, bool>> where = null;
+where = where.And(b => b.Id > 10);
+where = where.Or(b => b.Id == 1);
+fsql.Select<Region>().Where(where).ToList();
+//WHERE id > 10 OR id = 1
+```
+
+3、ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互），支持的操作符：
 
 - Contains/StartsWith/EndsWith/NotContains/NotStartsWith/NotEndsWith：包含/不包含，like '%xx%'，或者 like 'xx%'，或者 like '%xx'
 - Equal/NotEqual：等于/不等于
