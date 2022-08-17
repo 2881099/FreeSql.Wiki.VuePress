@@ -520,6 +520,8 @@ class Order {
 
 如果命名规范，可以在 aop 里判断，if (e.Property.Name == "createtime") e.Value = DateTime.Now;
 
+v3.2.666 可设置 e.ObjectAuditBreak 审计方式：false 基于属性（默认）、true 基于对象
+
 ## 18、Ado.Net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
