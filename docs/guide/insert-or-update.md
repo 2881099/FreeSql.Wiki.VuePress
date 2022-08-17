@@ -18,6 +18,18 @@ fsql.InsertOrUpdate<T>()
   .SetSource(items) //需要操作的数据
   //.IfExistsDoNothing() //如果数据存在，啥事也不干（相当于只有不存在数据时才插入）
   .ExecuteAffrows();
+
+//或者..
+var sql = fsql.Select<T2, T3>()
+  .ToSql((a, b) => new
+  {
+    id = a.id + 1,
+    name = "xxx"
+  }, FieldAliasOptions.AsProperty);
+
+fsql.InsertOrUpdate<T>()
+  .SetSource(sql)
+  .ExecuteAffrows();
 ```
 
 当实体类有自增属性时，批量 InsertOrUpdate 最多可被拆成两次执行，内部计算出未设置自增值、和有设置自增值的数据，分别执行 insert into 和 上面讲到的 merge into 两种命令（采用事务执行）。
