@@ -78,7 +78,7 @@ var list = fsql.Select<Topic, Category, Area>()
 
 ## Aggregate
 
-- distinct
+- Distinct
 
 ```csharp
 var list = fsql.Select<Topic>()
