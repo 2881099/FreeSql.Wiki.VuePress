@@ -8,9 +8,12 @@ FreeSql 基础层实现了 Select/Update/Delete 可设置的全局过滤器功�
 public static AsyncLocal<Guid> TenantId { get; set; } = new AsyncLocal<Guid>();
 
 fsql.GlobalFilter
-    .Apply<TestAddEnum>("test1", a => a.Id == TenantId.Value)
-    .Apply<AuthorTest>("test2", a => a.Id == 111)
-    .Apply<AuthorTest>("test3", a => a.Name == "11")
+    .Apply<ITenant>("test1", a => a.TenantId == TenantId.Value)
+    .Apply<AuthorTest>("test2", a => a.Name == "11")
+    
+    .ApplyOnly<AuthorTest>("test3", a => a.Name == "11")
+    //指定类型精准设置
+
     .ApplyIf<TestAddEnum>("test4", () => TenantId.Value != Guid.Empty, a => a.Id == TenantId.Value);
     //1.9.0 ApplyIf 委托的返回值(第二个参数) true 才生效
 ```
