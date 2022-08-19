@@ -4,8 +4,7 @@
 
 ## 0、UnitOfWorkManager跨方法异步
 
-- [AOP+FreeSql 基于特性标签实现跨方法异步事务](../extra/aop-freesql-autofac.md)
-- [ASP.NET Core 配置 DI 使用 UnitOfWorkManager，此方法很简单](unitofwork-manager.md)
+- [AOP + FreeSql 基于特性标签实现跨方法异步事务](unitofwork-manager.md)
 
 ## 1、UnitOfWork 事务
 
@@ -28,8 +27,6 @@ using (var uow = fsql.CreateUnitOfWork())
   uow.Commit();
 }
 ```
-
-参考：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](https://github.com/dotnetcore/FreeSql/issues/289)
 
 ## 2、DbContext 事务
 
