@@ -131,29 +131,29 @@ public class SongService
 继承现有的`DefaultRepository<,>`仓储，实现自定义的仓储`SongRepository.cs`,
 
 ```csharp
-    public class SongRepository : DefaultRepository<Song, int>, ISongRepository
+public class SongRepository : DefaultRepository<Song, int>, ISongRepository
+{
+    public SongRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm)
     {
-        public SongRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm)
-        {
-        }
-        public List<Song> GetSongs()
-        {
-            return Select.Page(1, 10).ToList();
-        }
     }
+    public List<Song> GetSongs()
+    {
+        return Select.Page(1, 10).ToList();
+    }
+}
 ```
 
 其中接口。`ISongRepository.cs`
 
 ```csharp
-    public interface ISongRepository : IBaseRepository<Song, int>
-    {
-        List<Song> GetSongs();
-    }
+public interface ISongRepository : IBaseRepository<Song, int>
+{
+    List<Song> GetSongs();
+}
 ```
 
 在 startup.cs 注入此服务
 
 ```csharp
-    services.AddScoped<ISongRepository, SongRepository>();
+services.AddScoped<ISongRepository, SongRepository>();
 ```
