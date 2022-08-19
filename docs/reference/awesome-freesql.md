@@ -7,7 +7,7 @@
 
 ## 官方文档
 
-- [http://freesql.net](http://freesql.net)
+- [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
 - [API 参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
 - [API 参考](https://docs.dotnet-china.com/FreeSql/index.html)

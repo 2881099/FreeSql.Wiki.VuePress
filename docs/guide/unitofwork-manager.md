@@ -84,9 +84,9 @@ public class SongService
 {
     readonly IBaseRepository<Song> _repoSong;
     readonly IBaseRepository<Detail> _repoDetail;
-    readonly SongRepository _repoSong2;
+    readonly ISongRepository _repoSong2;
 
-    public SongService(IBaseRepository<Song> repoSong, IBaseRepository<Detail> repoDetail, SongRepository repoSong2)
+    public SongService(IBaseRepository<Song> repoSong, IBaseRepository<Detail> repoDetail, ISongRepository repoSong2)
     {
         _repoSong = repoSong;
         _repoDetail = repoDetail;
@@ -115,3 +115,36 @@ public class SongService
 也有可能是延用上一次的事务
 
 也有可能是新开事务，具体要看传播模式
+
+## 重写仓储实现
+
+以上使用的是泛型仓储，那我们如果是重写一个仓储 如何保持和`UnitOfWorkManager`同一个事务呢。
+继承现有的`DefaultRepository<,>`仓储，实现自定义的仓储`SongRepository.cs`,
+
+```csharp
+    public class SongRepository : DefaultRepository<Song, int>, ISongRepository
+    {
+        public SongRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm)
+        {
+        }
+        public List<Song> GetSongs()
+        {
+            return Select.Page(1, 10).ToList();
+        }
+    }
+```
+
+其中接口。`ISongRepository.cs`
+
+```csharp
+    public interface ISongRepository : IBaseRepository<Song, int>
+    {
+        List<Song> GetSongs();
+    }
+```
+
+在 startup.cs 注入此服务
+
+```csharp
+    services.AddScoped<ISongRepository, SongRepository>();
+```

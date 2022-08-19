@@ -76,7 +76,7 @@
 - **增加 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 针对字典的 CUD 方法；#481**
 - 增加 UseSlaveWeight 读权重设置；#1046
 - **增加 [Table(AsTable = xx)] 自动分表特性，待完善；#1066**
-- 增加 [FreeSql.Provider.SqliteCore](http://freesql.net/guide/freesql-provider-sqlitecore.html) 支持 Sqlite 加密；
+- 增加 [FreeSql.Provider.SqliteCore](https://freesql.net/guide/freesql-provider-sqlitecore.html) 支持 Sqlite 加密；
 - 增加 IList\<T\> IncludeByPropertyName 扩展方法，支持字符串参数；
 - **增加 DbSet/Repository DeleteCascadeByDatabase 级联删除(基于数据库)**；
 - 调整 DbSet/Repository EnableAddOrUpdateNavigateList 支持 OneToOne 级联保存、级联删除(基于对象)；

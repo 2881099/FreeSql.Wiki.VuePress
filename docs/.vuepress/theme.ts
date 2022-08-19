@@ -3,7 +3,7 @@ import { enNavbarConfig, zhNavbarConfig } from "./navbar";
 import { zhSidebarConfig, enSidebarConfig } from "./sidebar";
 
 export default hopeTheme({
-    hostname: "http://freesql.net",
+    hostname: "https://freesql.net",
     logo: '/logo.png',
     repo: 'dotnetcore/FreeSql',
     docsRepo: 'https://github.com/2881099/FreeSql.Wiki.VuePress',
