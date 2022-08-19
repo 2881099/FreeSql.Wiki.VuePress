@@ -15,6 +15,8 @@
 
 ## 第一步：引入动态代理库
 
+> 肉夹馍：https://github.com/inversionhourglass/Rougamo
+
 > dotnet add package Rougamo.Fody
 
 ```csharp
@@ -36,14 +38,21 @@ public class TransactionalAttribute : Rougamo.MoAttribute
     }
     public override void OnExit(MethodContext context)
     {
-        try
+        if (typeof(Task).IsAssignableFrom(context.RealReturnType))
+            ((Task)context.ReturnValue).ContinueWith(t => _OnExit());
+        else _OnExit();
+
+        void _OnExit()
         {
-            if (context.Exception == null) _uow.Commit();
-            else _uow.Rollback();
-        }
-        finally
-        {
-            _uow.Dispose();
+            try
+            {
+                if (context.Exception == null) _uow.Commit();
+                else _uow.Rollback();
+            }
+            finally
+            {
+                _uow.Dispose();
+            }
         }
     }
 }
