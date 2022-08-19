@@ -43,13 +43,7 @@ fsql.Aop.ConfigEntityProperty += (s, e) => {
 
 ---
 
-### 4、TransactionalAttribute + UnitOfWorkManager 事务传播
-
-[https://github.com/dotnetcore/FreeSql/issues/289](https://github.com/dotnetcore/FreeSql/issues/289)
-
----
-
-### 5、怎么执行 SQL 返回实体列表？
+### 4、怎么执行 SQL 返回实体列表？
 
 ```csharp
 //直接查询
@@ -61,13 +55,13 @@ fsql.Select<T>().WithSql(sql).Page(1, 10).ToList();
 
 ---
 
-### 6、错误：【主库】状态不可用，等待后台检查程序恢复方可使用。xxx
+### 5、错误：【主库】状态不可用，等待后台检查程序恢复方可使用。xxx
 
 一般是数据库连接失败，才会出现，请检查程序与数据库之间的网络。具体按 xxx 给出的提示进行排查。
 
 ---
 
-### 7、错误：【主库】对象池已释放，无法访问。
+### 6、错误：【主库】对象池已释放，无法访问。
 
 原因一：手工调用了 fsql.Dispose，之后仍然使用它
 
@@ -101,7 +95,7 @@ Console.CancelKeyPress += (s1, e1) =>
 
 ---
 
-### 8、错误：ObjectPool.Get 获取超时（10 秒）。
+### 7、错误：ObjectPool.Get 获取超时（10 秒）。
 
 原因一：UnitOfWork 使用未释放，请保证程序内使用 UnitOfWork 的地方会执行 Dispose
 
@@ -122,7 +116,7 @@ GetAsync await 为异步方法获取连接的排队数量
 
 ---
 
-### 9、多平台代码参考,使用自定义 SqliteProvider,例如 Sqlite 用 Microsoft.Data.Sqlite 或者反射 Mono.Data.Sqlite.
+### 8、多平台代码参考,使用自定义 SqliteProvider,例如 Sqlite 用 Microsoft.Data.Sqlite 或者反射 Mono.Data.Sqlite.
 
 [arm/树莓派](https://github.com/densen2014/FreeSqlDemos/tree/master/ARM_ConsoleApp)
 
@@ -179,7 +173,7 @@ if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.And
 
 ---
 
-### 10、 2.6.100 升级到 3.0.100 后无法连接 sqlserver 提示证书无效, 提示证书链是由不受信任的颁发机构颁发的.
+### 9、 2.6.100 升级到 3.0.100 后无法连接 sqlserver 提示证书无效, 提示证书链是由不受信任的颁发机构颁发的.
 
 请尝试:
 
