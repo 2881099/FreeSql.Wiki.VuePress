@@ -95,6 +95,16 @@ fsql.Select<Topic>()
 
 > SELECT count(distinct a."title") as1 FROM "Topic" a
 
+- ToAggregate + SqlExt.DistinctCount
+
+```csharp
+var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
+    {
+        TitleCount=SqlExt.DistinctCount(a.Key.Title),
+        ClicksCount= SqlExt.DistinctCount(a.Key.Clicks),
+    }
+);
+```
 ## API
 
 | 方法 | 返回值 | 参数 | 描述 |
