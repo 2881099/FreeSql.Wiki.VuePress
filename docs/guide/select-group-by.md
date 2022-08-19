@@ -78,15 +78,20 @@ var list = fsql.Select<Topic, Category, Area>()
 
 ## Aggregate
 
-- Distinct
+### Distinct
 
 ```csharp
 var list = fsql.Select<Topic>()
     .Aggregate(a => Convert.ToInt32("count(distinct title)"), out var count)
     .ToList();
 ```
+> SELECT count(distinct title) as1 
+FROM "Topic" a
 
-- SqlExt.DistinctCount
+> SELECT a."Id", a."Clicks", a."Title", a."CreateTime" 
+FROM "Topic" a
+
+### SqlExt.DistinctCount
 
 ```csharp
 fsql.Select<Topic>()
@@ -95,7 +100,7 @@ fsql.Select<Topic>()
 
 > SELECT count(distinct a."title") as1 FROM "Topic" a
 
-- ToAggregate + SqlExt.DistinctCount
+### ToAggregate + SqlExt.DistinctCount
 
 ```csharp
 var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
@@ -105,6 +110,10 @@ var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
     }
 );
 ```
+
+> SELECT count(distinct a."Title") as1, count(distinct a."Clicks") as2 
+FROM "Topic" a
+
 ## API
 
 | 方法 | 返回值 | 参数 | 描述 |
