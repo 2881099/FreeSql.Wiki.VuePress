@@ -1,42 +1,8 @@
 # UnitOfWorkManager 事务
 
-## **aspnetcore** 下 FreeSql 的仓储事务
+本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。
 
-### 引入包
-
-```bash
-dotnet add package FreeSql
-dotnet add package FreeSql.DbContext
-dotnet add package FreeSql.Provider.MySqlConnector
-```
-
-### 配置 Startup.cs 注入
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-  IConfigurationSection Mysql = Configuration.GetSection("Mysql");
-  var fsql = new FreeSqlBuilder()
-            .UseConnectionString(DataType.MySql, Mysql.Value)
-            .UseAutoSyncStructure(true)
-            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
-            .UseMonitorCommand(cmd => Trace.WriteLine(cmd.CommandText))
-            .Build();
-    services.AddSingleton<IFreeSql>(fsql);
-    services.AddScoped<UnitOfWorkManager>();
-    services.AddFreeRepository(null, typeof(Startup).Assembly);
-    //新增自己的服务，这里只有实现
-    services.AddScoped<TransBlogService>();
-}
-```
-
-- appsettings.json
-
-```json
-{
-  "Mysql": "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=ovov_freesql_repository;Charset=utf8;SslMode=none;Max pool size=10"
-}
-```
+> UnitOfWorkManager 只可以管理 Repository 仓储对象的事务，直接 fsql.Insert\<T>() 是不行的！！但是可以用 repository.Orm.Insert\<T\>！！repository.Orm 是特殊实现的 IFreeSql，与 当前事务保持一致。
 
 支持六种传播方式(propagation)，意味着跨方法的事务非常方便，并且支持同步异步：
 
@@ -47,115 +13,105 @@ public void ConfigureServices(IServiceCollection services)
 - Never：以非事务方式执行操作，如果当前事务存在则抛出异常。
 - Nested：以嵌套事务方式执行。
 
-| UnitOfWorkManager 成员                         | 说明                   |
-| ---------------------------------------------- | ---------------------- |
-| IUnitOfWork Current                            | 返回当前的工作单元     |
-| void Binding(repository)                       | 将仓储的事务交给它管理 |
-| IUnitOfWork Begin(propagation, isolationLevel) | 创建工作单元           |
+## 第一步：引入动态代理库
 
-### TransBlogService.cs
+> dotnet add package Rougamo.Fody
 
 ```csharp
-private readonly IBaseRepository<Blog, int> _blogRepository;
-private readonly IBaseRepository<Tag, int> _tagRepository;
-private readonly UnitOfWorkManager _unitOfWorkManager;
-
-public TransBlogService(IBaseRepository<Blog, int> blogRepository, IBaseRepository<Tag, int> tagRepository,UnitOfWorkManager unitOfWorkManager)
+[AttributeUsage(AttributeTargets.Method)]
+public class TransactionalAttribute : Rougamo.MoAttribute
 {
-    _blogRepository = blogRepository ;
-    _tagRepository = tagRepository ;
-    _unitOfWorkManager = unitOfWorkManager;
-}
+    public Propagation Propagation { get; set; } = Propagation.Required;
+    public IsolationLevel IsolationLevel { get => m_IsolationLevel.Value; set => m_IsolationLevel = value; }
+    IsolationLevel? m_IsolationLevel;
 
-public async Task CreateBlogUnitOfWorkAsync(Blog blog,List<Tag>tagList)
-{
-    using (IUnitOfWork unitOfWork = _unitOfWorkManager.Begin())
+    static AsyncLocal<IServiceProvider> m_ServiceProvider = new AsyncLocal<IServiceProvider>();
+    public static void SetServiceProvider(IServiceProvider serviceProvider) => m_ServiceProvider.Value = serviceProvider;
+
+    IUnitOfWork _uow;
+    public override void OnEntry(MethodContext context)
+    {
+        var uowManager = m_ServiceProvider.Value.GetService(typeof(UnitOfWorkManager)) as UnitOfWorkManager;
+        _uow = uowManager.Begin(this.Propagation, this.m_IsolationLevel);
+    }
+    public override void OnExit(MethodContext context)
     {
         try
         {
-            await _blogRepository.InsertAsync(blog);
-            tagList.ForEach(r =>
-            {
-                r.PostId = blog.Id;
-            });
-            await _tagRepository.InsertAsync(tagList);
-            unitOfWork.Commit();
+            if (context.Exception == null) _uow.Commit();
+            else _uow.Rollback();
         }
-        catch (Exception e)
+        finally
         {
-            //实际 可以不Rollback。因为IUnitOfWork内部Dispose，会把没有Commit的事务Rollback回来，但能提前Rollback
-
-            unitOfWork.Rollback();
-            //记录日志、或继续throw;出来
+            _uow.Dispose();
         }
     }
 }
+```
 
-public async Task UpdateBlogAsync(int id)
+| UnitOfWorkManager 成员 | 说明 |
+| -- | -- |
+| IUnitOfWork Current | 返回当前的工作单元 |
+| void Binding(repository) | 将仓储的事务交给它管理 |
+| IUnitOfWork Begin(propagation, isolationLevel) | 创建工作单元 |
+
+## 第二步：配置 Startup.cs 注入、中间件
+
+```csharp
+//Startup.cs
+public void ConfigureServices(IServiceCollection services)
 {
-    using (IUnitOfWork unitOfWork = _unitOfWorkManager.Begin())
+    services.AddSingleton<IFreeSql>(fsql);
+    services.AddScoped<UnitOfWorkManager>();
+    services.AddFreeRepository(null, typeof(Startup).Assembly);
+   //批量注入 Service
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.Use(async (context, next) =>
     {
-        try
-        {
-            Blog blog = _blogRepository.Select.Where(r => r.Id == id).First();
-            blog.IsDeleted = true;
-            await _blogRepository.UpdateAsync(blog);
-            unitOfWork.Commit();
-        }
-        catch (Exception e)
-        {
-           //记录日志、或继续throw;出来
-            unitOfWork.Rollback();
-        }
+        TransactionalAttribute.SetServiceProvider(context.RequestServices);
+        await next();
+    });
+}
+```
+
+## 第三步：在 Controller 或者 Service 或者 Repository 中使用事务特性
+
+```csharp
+public class SongService
+{
+    readonly IBaseRepository<Song> _repoSong;
+    readonly IBaseRepository<Detail> _repoDetail;
+    readonly SongRepository _repoSong2;
+
+    public SongService(IBaseRepository<Song> repoSong, IBaseRepository<Detail> repoDetail, SongRepository repoSong2)
+    {
+        _repoSong = repoSong;
+        _repoDetail = repoDetail;
+        _repoSong2 = repoSong2;
+    }
+
+    [Transactional]
+    public virtual void Test1()
+    {
+        //这里 _repoSong、_repoDetail、_repoSong2 所有操作都是一个工作单元
+        this.Test2();
+    }
+
+    [Transactional(Propagation = Propagation.Nested)]
+    public virtual void Test2() //嵌套事务，新的（不使用 Test1 的事务）
+    {
+        //这里 _repoSong、_repoDetail、_repoSong2 所有操作都是一个工作单元
     }
 }
 ```
 
-| IUnitOfWork 成员                                | 说明                                                                                                 |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| IFreeSql Orm                                    | 该对象 Select/Delete/Insert/Update/InsertOrUpdate 与工作单元事务保持一致，可省略传递 WithTransaction |
-| DbTransaction GetOrBeginTransaction()           | 开启事务，或者返回已开启的事务                                                                       |
-| void Commit()                                   | 提交事务                                                                                             |
-| void Rollback()                                 | 回滚事务                                                                                             |
-| DbContext.EntityChangeReport EntityChangeReport | 工作单元内的实体变化跟踪                                                                             |
-| Dictionary\<string, object\> States             | 用户自定义的状态数据，便于扩展                                                                       |
+是不是进方法就开事务呢？
 
-### 完整代码
+不一定是真实事务，有可能是虚的，就是一个假的 unitofwork（不带事务）
 
-- [Blog.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Blog.cs)
-- [Tag.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Tag.cs)
-- [TransBlogService.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy/Services/TransBlogService.cs)
+也有可能是延用上一次的事务
 
-### 重写仓储实现
-
-以上使用的是泛型仓储，那我们如果是重写一个仓储 如何保持和`UnitOfWorkManager`同一个事务呢。
-继承现有的`DefaultRepository<,>`仓储，实现自定义的仓储`BlogRepository.cs`,
-
-```csharp
-    public class BlogRepository : DefaultRepository<Blog, int>, IBlogRepository
-    {
-        public BlogRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm)
-        {
-        }
-
-        public List<Blog> GetBlogs()
-        {
-            return Select.Page(1, 10).ToList();
-        }
-    }
-```
-
-其中接口。`IBlogRepository.cs`
-
-```csharp
-    public interface IBlogRepository : IBaseRepository<Blog, int>
-    {
-        List<Blog> GetBlogs();
-    }
-```
-
-在 startup.cs 注入此服务
-
-```csharp
-    services.AddScoped<IBlogRepository, BlogRepository>();
-```
+也有可能是新开事务，具体要看传播模式
