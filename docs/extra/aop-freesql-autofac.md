@@ -1,4 +1,4 @@
-# AOP+FreeSql 跨方法异步事务
+# Castle AOP + FreeSql 跨方法异步事务
 
 使用Autofac基于特性标签，实现跨方法的异步事务处理
 
