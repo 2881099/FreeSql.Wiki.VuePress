@@ -29,7 +29,7 @@ using (var uow = fsql.CreateUnitOfWork())
 }
 ```
 
-参考：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager.html)
+参考：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager.md)
 
 ## 接口定义
 
