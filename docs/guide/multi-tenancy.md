@@ -216,7 +216,7 @@ public class HomeController : ControllerBase
 }
 ```
 
-- 临时访问其他数据库表，使用 FreeSqlCloud 对象 Use("db3").Select<T>().ToList();
+- 临时访问其他数据库表，使用 FreeSqlCloud 对象 Use("db3").Select<T>().ToList()
 - 主库基础表，应该使用 FreeSqlCloud 对象 EntitySteering 设置固定永久定向到 main，而不需要使用 .Use 手工切换
 
 ```csharp
