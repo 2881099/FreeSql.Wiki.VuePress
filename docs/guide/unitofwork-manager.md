@@ -157,3 +157,143 @@ public interface ISongRepository : IBaseRepository<Song, int>
 ```csharp
 services.AddScoped<ISongRepository, SongRepository>();
 ```
+
+---
+
+### FreeSql.Cloud 如何使用 UnitOfWorkManager？
+
+以 DbEnum 为例定义 FreeSqlCloud 对象如下：
+
+```csharp
+public enum DbEnum { db1, db2, db3 }
+public static FreeSqlCloud<DbEnum> Cloud = new ...
+```
+
+最终呈现的 AOP 事务代码如下：
+
+```csharp
+class UserRepository : RepositoryCloud<User>, IBaseRepository<User>
+{
+    public UserRepository(UnitOfWorkManagerCloud uowm) : base(DbEnum.db3, uowm) { }
+}
+
+class UserService : IUserService
+{
+    readonly IBaseRepository<User> m_repo1;
+    readonly BaseRepository<User> m_repo2;
+    readonly UserRepository m_repo3;
+    public UserService(IBaseRepository<User> repo1, BaseRepository<User> repo2, UserRepository repo3)
+    {
+        m_repo1 = repo1; //db1
+        m_repo2 = repo2; //db1
+        m_repo3 = repo3; //db3
+    }
+
+    [Transactional(DbEnum.db1)]
+    [Transactional(DbEnum.db3)]
+    public void Test01()
+    {
+        Console.WriteLine("xxx"); //debugger
+    }
+}
+```
+
+约定好 IBaseRepository\<T\> 默认是 db1 的仓储实现，注入如下：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton(DB.Cloud); //注入 FreeSqlCloud<DbEnum>
+    services.AddSingleton(provider => DB.Cloud.Use(DbEnum.db1)); //注入 IFreeSql
+    services.AddScoped<UnitOfWorkManagerCloud>();
+
+    services.AddScoped(typeof(IBaseRepository<>), typeof(RepositoryCloud<>)); //default: db1
+    foreach (var repositoryType in typeof(User).Assembly.GetTypes().Where(a => a.IsAbstract == false && typeof(IBaseRepository).IsAssignableFrom(a)))
+        services.AddScoped(repositoryType);
+}
+```
+
+UnitOfWorkManagerCloud、RepositoryCloud、TransactionalAttribute 是我们需要实现的部分：
+
+```csharp
+class UnitOfWorkManagerCloud
+{
+    readonly Dictionary<DbEnum, UnitOfWorkManager> m_managers = new Dictionary<DbEnum, UnitOfWorkManager>();
+    readonly FreeSqlCloud<DbEnum> m_cloud;
+    public UnitOfWorkManagerCloud(FreeSqlCloud<DbEnum> cloud)
+    {
+        m_cloud = cloud;
+    }
+    
+    public UnitOfWorkManager GetUnitOfWorkManager(DbEnum db)
+    {
+        if (m_managers.TryGetValue(db, out var uowm) == false)
+            m_managers.Add(db, uowm = new UnitOfWorkManager(m_cloud.Use(db)));
+        return uowm;
+    }
+
+    public void Dispose()
+    {
+        foreach(var uowm in m_managers.Values) uowm.Dispose();
+        m_managers.Clear();
+    }
+
+    public IUnitOfWork Begin(DbEnum db, Propagation propagation = Propagation.Required, IsolationLevel? isolationLevel = null)
+    {
+        return GetUnitOfWorkManager(db).Begin(propagation, isolationLevel);
+    }
+}
+
+class RepositoryCloud<T> : DefaultRepository<T, int> where T : class
+{
+    public RepositoryCloud(UnitOfWorkManagerCloud uomw) : this(DbEnum.db1, uomw) { } //DI
+    public RepositoryCloud(DbEnum db, UnitOfWorkManagerCloud uomw) : this(uomw.GetUnitOfWorkManager(db)) { }
+    RepositoryCloud(UnitOfWorkManager uomw) : base(uomw.Orm, uomw)
+    {
+        uomw.Binding(this);
+    }
+}
+
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+public class TransactionalAttribute : Rougamo.MoAttribute
+{
+    public Propagation Propagation { get; set; } = Propagation.Required;
+    public IsolationLevel IsolationLevel { get => m_IsolationLevel.Value; set => m_IsolationLevel = value; }
+    IsolationLevel? m_IsolationLevel;
+    readonly DbEnum m_db;
+
+    public TransactionalAttribute(DbEnum db)
+    {
+        m_db = db;
+    }
+
+    static AsyncLocal<IServiceProvider> m_ServiceProvider = new AsyncLocal<IServiceProvider>();
+    public static void SetServiceProvider(IServiceProvider serviceProvider) => m_ServiceProvider.Value = serviceProvider;
+
+    IUnitOfWork _uow;
+    public override void OnEntry(MethodContext context)
+    {
+        var uowManager = m_ServiceProvider.Value.GetService<UnitOfWorkManagerCloud>();
+        _uow = uowManager.Begin(m_db, this.Propagation, this.m_IsolationLevel);
+    }
+    public override void OnExit(MethodContext context)
+    {
+        if (typeof(Task).IsAssignableFrom(context.RealReturnType))
+            ((Task)context.ReturnValue).ContinueWith(t => _OnExit());
+        else _OnExit();
+
+        void _OnExit()
+        {
+            try
+            {
+                if (context.Exception == null) _uow.Commit();
+                else _uow.Rollback();
+            }
+            finally
+            {
+                _uow.Dispose();
+            }
+        }
+    }
+}
+```
