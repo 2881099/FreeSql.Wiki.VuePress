@@ -79,6 +79,14 @@ public class TransactionalAttribute : Attribute
     /// 事务隔离级别
     /// </summary>
     public IsolationLevel? IsolationLevel { get; set; }
+
+    public TransactionalAttribute(){}
+
+    public TransactionalAttribute(Propagation propagation, IsolationLevel isolationLevel)
+    {
+        Propagation = propagation;
+        IsolationLevel = isolationLevel;
+    }
 }
 ```
 
@@ -102,7 +110,6 @@ public void ConfigureContainer(ContainerBuilder builder)
 > .NET6 这样注册
 
 ```csharp
-// Add services to the container.
 builder.Host
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
@@ -160,8 +167,6 @@ public class AutofacModule : Autofac.Module
 
         private bool TryBegin(IInvocation invocation)
         {
-            //_unitOfWork = _unitOfWorkManager.Begin(Propagation.Requierd);
-            //return true;
             var method = invocation.MethodInvocationTarget ?? invocation.Method;
             var attribute = method.GetCustomAttributes(typeof(TransactionalAttribute), false).FirstOrDefault();
             if (attribute is TransactionalAttribute transaction)
@@ -181,17 +186,13 @@ public class AutofacModule : Autofac.Module
         {
             if (TryBegin(invocation))
             {
-                int? hashCode = _unitOfWork.GetHashCode();
                 try
                 {
                     invocation.Proceed();
-                    _logger.LogInformation($"----- 拦截同步执行的方法-事务 {hashCode} 提交前----- ");
                     _unitOfWork.Commit();
-                    _logger.LogInformation($"----- 拦截同步执行的方法-事务 {hashCode} 提交成功----- ");
                 }
                 catch
                 {
-                    _logger.LogError($"----- 拦截同步执行的方法-事务 {hashCode} 提交失败----- ");
                     _unitOfWork.Rollback();
                     throw;
                 }
@@ -224,35 +225,23 @@ public class AutofacModule : Autofac.Module
 
         private async Task InternalInterceptAsynchronous(IInvocation invocation)
         {
-            string methodName =
-                $"{invocation.MethodInvocationTarget.DeclaringType?.FullName}.{invocation.Method.Name}()";
-            int? hashCode = _unitOfWork.GetHashCode();
-
-            using (_logger.BeginScope("_unitOfWork:{hashCode}", hashCode))
+            try
             {
-                _logger.LogInformation($"----- async Task 开始事务{hashCode} {methodName}----- ");
-
-                try
+                invocation.Proceed();
+                if (invocation.ReturnValue != null)
                 {
-                    invocation.Proceed();
-                   //处理Task返回一个null值的情况会导致空指针
-                    if (invocation.ReturnValue != null)
-                    {
-                        await (Task)invocation.ReturnValue;
-                    }
-                    _unitOfWork.Commit();
-                    _logger.LogInformation($"----- async Task 事务 {hashCode} Commit----- ");
+                    await (Task)invocation.ReturnValue;
                 }
-                catch (System.Exception)
-                {
-                    _unitOfWork.Rollback();
-                    _logger.LogError($"----- async Task 事务 {hashCode} Rollback----- ");
-                    throw;
-                }
-                finally
-                {
-                    _unitOfWork.Dispose();
-                }
+                _unitOfWork.Commit();
+            }
+            catch (System.Exception)
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+            finally
+            {
+                _unitOfWork.Dispose();
             }
         }
 
@@ -272,21 +261,15 @@ public class AutofacModule : Autofac.Module
             TResult result;
             if (TryBegin(invocation))
             {
-                string methodName = $"{invocation.MethodInvocationTarget.DeclaringType?.FullName}.{invocation.Method.Name}()";
-                int hashCode = _unitOfWork.GetHashCode();
-                _logger.LogInformation($"----- async Task<TResult> 开始事务{hashCode} {methodName}----- ");
-
                 try
                 {
                     invocation.Proceed();
                     result = await (Task<TResult>)invocation.ReturnValue;
                     _unitOfWork.Commit();
-                    _logger.LogInformation($"----- async Task<TResult> Commit事务{hashCode}----- ");
                 }
                 catch (System.Exception)
                 {
                     _unitOfWork.Rollback();
-                    _logger.LogError($"----- async Task<TResult> Rollback事务{hashCode}----- ");
                     throw;
                 }
                 finally
@@ -337,12 +320,6 @@ public class AutofacModule : Autofac.Module
 - [BlogService.cs#L65](https://github.com/luoyunchong/dotnetcore-examples/blob/4f4c908dc40e4c0b96ad92ad5437d071a43162cb/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy/Services/BlogService.cs#L65)
 
 当传入的参数，title为abc时，会出现异常，`throw new Exception("test exception");`,前面插入的数据并没有成功，会自动回滚。
-
-## IUnitOfWorkManager 开启事务
-
-当业务需要单独开启事务时，我们可以直接在Service层使用UnitOfWorkManager创建UnitOfWork，首先注入自定义Service，也可通过AutoFac注入。
-
-- [IUnitOfWorkManager](../guide/unitofwork-manager.md)主动在方法开启事务，请参考此文档
 
 ## Autofac批量注册
 
