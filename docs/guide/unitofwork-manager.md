@@ -33,7 +33,7 @@ public class TransactionalAttribute : Rougamo.MoAttribute
     IUnitOfWork _uow;
     public override void OnEntry(MethodContext context)
     {
-        var uowManager = m_ServiceProvider.Value.GetService(typeof(UnitOfWorkManager)) as UnitOfWorkManager;
+        var uowManager = m_ServiceProvider.Value.GetService<UnitOfWorkManager>();
         _uow = uowManager.Begin(this.Propagation, this.m_IsolationLevel);
     }
     public override void OnExit(MethodContext context)
