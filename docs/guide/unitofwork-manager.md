@@ -203,8 +203,8 @@ class UserService : IUserService
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddSingleton(DB.Cloud); //注入 FreeSqlCloud<DbEnum>
-    services.AddSingleton(provider => DB.Cloud.Use(DbEnum.db1)); //注入 IFreeSql
+    services.AddSingleton(Cloud); //注入 FreeSqlCloud<DbEnum>
+    services.AddSingleton(provider => Cloud.Use(DbEnum.db1)); //注入 IFreeSql
     services.AddScoped<UnitOfWorkManagerCloud>();
 
     services.AddScoped(typeof(IBaseRepository<>), typeof(RepositoryCloud<>)); //default: db1
