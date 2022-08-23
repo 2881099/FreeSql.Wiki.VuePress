@@ -54,7 +54,7 @@ fsql.Select<Topic>()
 
 > 关于[WithSql](withsql.md)的详情文档， 使用多次为 UNION ALL 查询
 
-> v3.2.666 [WithTempQuery + FromQuery 嵌套查询](%e5%b5%8c%e5%a5%97%e6%9f%a5%e8%af%a2)
+> v3.2.666 [WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
 
 > v3.2.666 WithMemory 使用内存数据进行查询
 
