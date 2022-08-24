@@ -162,6 +162,10 @@ services.AddScoped<ISongRepository, SongRepository>();
 
 ## FreeSql.Cloud 如何使用 UnitOfWorkManager？
 
+注意：如果是[多租户分库场景](multi-tenancy.md#%E6%96%B9%E6%A1%88%E4%B8%89-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%88%86%E5%BA%93)，请直接使用上面的方案，多租户同一请求大部分都只操作一个数据库，只需要提前将 FreeSqlCloud 对象 Change 切换好。
+
+---
+
 以 DbEnum 为例定义 FreeSqlCloud 对象如下：
 
 ```csharp
