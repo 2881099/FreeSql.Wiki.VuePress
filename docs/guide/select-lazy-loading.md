@@ -24,7 +24,7 @@ public class OrderDetail {
 }
 ```
 
-> 延时加载功能默认被关闭的，使用此功能请时，请在声明处开启；
+> 延时加载功能默认被关闭的，使用此功能之前，请在声明处开启；
 
 > 延时加载功能，依赖 FreeSql.Extensions.LazyLoading 包，请前往 nuget 下载；
 
