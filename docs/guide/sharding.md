@@ -142,8 +142,13 @@ or
 
 ```csharp
 public enum DbEnum { db1, db2 }
+public class FreeSqlCloud : FreeSqlCloud<DbEnum> //DbEnum 换成 string 就是多租户管理
+{
+    public FreeSqlCloud() : base(null) { }
+    public FreeSqlCloud(string distributeKey) : base(distributeKey) { }
+}
 
-var fsql = new FreeSqlCloud<DbEnum>();
+var fsql = new FreeSqlCloud();
 fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
 
 fsql.Register(DbEnum.db1, () => new FreeSqlBuilder().UseConnectionString(DataType.Sqlite, @"Data Source=db1.db").Build());
@@ -155,9 +160,9 @@ services.AddSingleton(fsql);
 
 > FreeSqlCloud 必须定义成单例模式
 
-> new FreeSqlCloud\<DbEnum\>() 多连接管理，DbEnum 换成 string 就是多租户管理
+> new FreeSqlCloud() 多连接管理
 
-> new FreeSqlCloud\<DbEnum\>("myapp") 开启 TCC/SAGA 事务生效
+> new FreeSqlCloud("myapp") 开启 TCC/SAGA 事务生效
 
 FreeSqlCloud 的访问方式和 IFreeSql 一样：
 
