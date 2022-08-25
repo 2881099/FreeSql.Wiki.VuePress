@@ -169,8 +169,14 @@ services.AddScoped<ISongRepository, SongRepository>();
 以 DbEnum 为例定义 FreeSqlCloud 对象如下：
 
 ```csharp
-public enum DbEnum { db1, db2, db3 }
-public static FreeSqlCloud<DbEnum> Cloud = new ...
+public enum DbEnum { db1, db2 }
+public class FreeSqlCloud : FreeSqlCloud<DbEnum> //DbEnum 换成 string 就是多租户管理
+{
+    public FreeSqlCloud() : base(null) { }
+    public FreeSqlCloud(string distributeKey) : base(distributeKey) { }
+}
+
+public static FreeSqlCloud Cloud = new ...
 ```
 
 最终呈现的 AOP 事务代码如下：
@@ -207,7 +213,7 @@ class UserService : IUserService
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddSingleton(Cloud); //注入 FreeSqlCloud<DbEnum>
+    services.AddSingleton(Cloud); //注入 FreeSqlCloud
     services.AddSingleton(provider => Cloud.Use(DbEnum.db1)); //注入 IFreeSql
     services.AddScoped<UnitOfWorkManagerCloud>();
 
@@ -222,14 +228,14 @@ UnitOfWorkManagerCloud、RepositoryCloud、TransactionalAttribute 是我们需�
 ```csharp
 class UnitOfWorkManagerCloud
 {
-    readonly Dictionary<DbEnum, UnitOfWorkManager> m_managers = new Dictionary<DbEnum, UnitOfWorkManager>();
-    readonly FreeSqlCloud<DbEnum> m_cloud;
-    public UnitOfWorkManagerCloud(FreeSqlCloud<DbEnum> cloud)
+    readonly Dictionary<string, UnitOfWorkManager> m_managers = new Dictionary<string, UnitOfWorkManager>();
+    readonly FreeSqlCloud m_cloud;
+    public UnitOfWorkManagerCloud(FreeSqlCloud cloud)
     {
         m_cloud = cloud;
     }
     
-    public UnitOfWorkManager GetUnitOfWorkManager(DbEnum db)
+    public UnitOfWorkManager GetUnitOfWorkManager(string db)
     {
         if (m_managers.TryGetValue(db, out var uowm) == false)
             m_managers.Add(db, uowm = new UnitOfWorkManager(m_cloud.Use(db)));
@@ -242,7 +248,7 @@ class UnitOfWorkManagerCloud
         m_managers.Clear();
     }
 
-    public IUnitOfWork Begin(DbEnum db, Propagation propagation = Propagation.Required, IsolationLevel? isolationLevel = null)
+    public IUnitOfWork Begin(string db, Propagation propagation = Propagation.Required, IsolationLevel? isolationLevel = null)
     {
         return GetUnitOfWorkManager(db).Begin(propagation, isolationLevel);
     }
@@ -251,7 +257,7 @@ class UnitOfWorkManagerCloud
 class RepositoryCloud<T> : DefaultRepository<T, int> where T : class
 {
     public RepositoryCloud(UnitOfWorkManagerCloud uomw) : this(DbEnum.db1, uomw) { } //DI
-    public RepositoryCloud(DbEnum db, UnitOfWorkManagerCloud uomw) : this(uomw.GetUnitOfWorkManager(db)) { }
+    public RepositoryCloud(DbEnum db, UnitOfWorkManagerCloud uomw) : this(uomw.GetUnitOfWorkManager(db.ToString())) { }
     RepositoryCloud(UnitOfWorkManager uomw) : base(uomw.Orm, uomw)
     {
         uomw.Binding(this);
