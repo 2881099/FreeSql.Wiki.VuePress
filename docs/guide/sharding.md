@@ -141,27 +141,21 @@ or
 > Install-Package FreeSql.Cloud
 
 ```csharp
-public enum DbEnum { db1, db2, db3 }
+public enum DbEnum { db1, db2 }
 
-var fsql = new FreeSqlCloud<DbEnum>("myapp"); //提示：泛型可以传入 string
+var fsql = new FreeSqlCloud<DbEnum>();
 fsql.DistributeTrace = log => Console.WriteLine(log.Split('\n')[0].Trim());
 
-fsql.Register(DbEnum.db1, () => new FreeSqlBuilder()
-    .UseConnectionString(DataType.Sqlite, @"Data Source=db1.db")
-    .Build());
+fsql.Register(DbEnum.db1, () => new FreeSqlBuilder().UseConnectionString(DataType.Sqlite, @"Data Source=db1.db").Build());
+fsql.Register(DbEnum.db2, () => new FreeSqlBuilder().UseConnectionString(DataType.Sqlite, @"Data Source=db2.db").Build());
 
-fsql.Register(DbEnum.db2, () => new FreeSqlBuilder()
-    .UseConnectionString(DataType.Sqlite, @"Data Source=db2.db")
-    .Build());
-
-fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
-    .UseConnectionString(DataType.Sqlite, @"Data Source=db3.db")
-    .Build());
+services.AddSingleton<IFreeSql>(fsql);
+services.AddSingleton(fsql);
 ```
 
 > FreeSqlCloud 必须定义成单例模式
 
-> new FreeSqlCloud\<DbEnum\>() 多连接管理
+> new FreeSqlCloud\<DbEnum\>() 多连接管理，DbEnum 换成 string 就是多租户管理
 
 > new FreeSqlCloud\<DbEnum\>("myapp") 开启 TCC/SAGA 事务生效
 
@@ -176,42 +170,46 @@ fsql.Delete<T>();
 //...
 ```
 
-切换数据库：
+1、切换数据库（多线程安全）：
 
 ```csharp
-fsql.Change(DbEnum.db3).Select<T>();
-//同一线程，或异步await 后续 fsql.Select/Insert/Update/Delete 操作是 db3
+fsql.Change(DbEnum.db2).Select<T>();
+//同一线程，或异步await 后续 fsql.Select/Insert/Update/Delete 操作是 db2
 
-fsql.Use(DbEnum.db3).Select<T>();
+fsql.Use(DbEnum.db2).Select<T>();
 //单次有效
 ```
 
-自动定向数据库配置：
+2、自动定向数据库配置：
 
 ```csharp
-//对 fsql.CRUD 方法名 + 实体类型 进行拦截，自动定向到对应的数据库，达到自动 Change 切换数据库目的
 fsql.EntitySteering = (_, e) =>
 {
-    switch (e.MethodName)
-    {
-        case "Select":
-            if (e.EntityType == typeof(T))
-            {
-                //查询 T 自动定向 db3
-                e.DBKey = DbEnum.db3;
-            }
-            else if (e.DBKey == DbEnum.db1)
-            {
-                //此处像不像读写分离？
-                var dbkeyIndex = new Random().Next(0, e.AvailableDBKeys.Length);
-                e.DBKey = e.AvailableDBKeys[dbkeyIndex]; //重新定向到其他 db
-            }
-            break;
-        case "Insert":
-        case "Update":
-        case "Delete":
-        case "InsertOrUpdate":
-            break;
-    }
+    if (e.EntityType == typeof(User)) e.DBKey = DbEnum.db2;
+    //查询 User 自动定向 db2
 };
 ```
+
+3、静态仓储对象
+
+FreeSql.Repository/UnitOfWorkManager 对象创建时固定了 IFreeSql，因此无法跟随 FreeSqlCloud 切换数据库。
+
+> 注意：是同一个对象实例创建之后，无法跟随切换，创建新对象实例不受影响。
+
+租户分库场景 Repository/UnitOfWorkManager 创建之前，先调用 fsql.Change 切换好数据库。
+
+[《FreeSql.Cloud 如何使用 UnitOfWorkManager 实现 AOP 事务？》](unitofwork-manager.md#freesql-cloud-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-unitofworkmanager)
+
+4、动态创建对象（不推荐）
+
+但是。。。仍然有一种特殊需求，Repository 在创建之后，仍然能跟随 fsql.Change 切换数据库。
+
+```c#
+var repo = fsql.GetCloudRepository<User>();
+fsql.Change(DbEnum.db2);
+Console.WriteLine(repo.Orm.Ado.ConnectionString); //repo -> db2
+fsql.Change(DbEnum.db1);
+Console.WriteLine(repo.Orm.Ado.ConnectionString); //repo -> db1
+```
+
+这种机制太不可控，所以只做了简单的扩展方法创建，并不推荐 Ioc 注入。
