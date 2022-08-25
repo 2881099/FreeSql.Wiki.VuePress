@@ -204,7 +204,7 @@ FreeSql.Repository/UnitOfWorkManager 对象创建时固定了 IFreeSql，因此�
 
 但是。。。仍然有一种特殊需求，Repository 在创建之后，仍然能跟随 fsql.Change 切换数据库。
 
-```c#
+```csharp
 var repo = fsql.GetCloudRepository<User>();
 fsql.Change(DbEnum.db2);
 Console.WriteLine(repo.Orm.Ado.ConnectionString); //repo -> db2
