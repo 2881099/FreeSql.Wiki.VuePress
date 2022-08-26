@@ -9,7 +9,8 @@ GroupBy + WithTempQuery(嵌套查询) + FromQuery + UnionAll 组合使用，会�
 ```csharp
 var sql = fsql.Select<User>().Where(a => a.Id == 1)
     .UnionAll(
-        fsql.Select<User>().Where(a => a.Id == 2)
+        fsql.Select<User>().Where(a => a.Id == 2),
+        fsql.Select<User>().Where(a => a.Id == 3)
     )
     .Where(a => a.Id == 1 || a.Id == 2)
     .ToSql();
@@ -23,7 +24,11 @@ FROM ( SELECT a."Id", a."GroupId", a."Username"
     UNION ALL 
     SELECT a."Id", a."GroupId", a."Username" 
     FROM "User" a 
-    WHERE (a."Id" = 2) ) a 
+    WHERE (a."Id" = 2) 
+    UNION ALL 
+    SELECT a."Id", a."GroupId", a."Username" 
+    FROM "User" a 
+    WHERE (a."Id" = 3) ) a 
 WHERE ((a."Id" = 1 OR a."Id" = 2))
 ```
 
