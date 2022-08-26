@@ -104,6 +104,10 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 | InnerJoin           | \<this\>        | string, parms                      | 联接查询，使用原生 sql 语法，InnerJoin("type b on b.id = a.id and b.clicks > @clicks", new { clicks = 1 })                                                             |
 | RightJoin           | \<this\>        | string, parms                      | 右联查询，使用原生 sql 语法，RightJoin("type b on b.id = a.id and b.clicks > @clicks", new { clicks = 1 })                                                             |
 | From                | \<this\>        | Lambda                             | 多表查询，3 个表以上使用非常方便，目前设计最大支持 10 个表                                                                                                             |
+| FromQuery | ISelect\<T1, T2\> | ISelect\<T2\> | 单表连成双表查询 |
+| WithTempQuery | ISelect\<T1\> | Lambda | 将单表或多表查询嵌套成单表查询 |
+| WithMemory | ISelect\<T1\> | List\<T1\> | 使用内存数据查询 |
+| UnionAll | ISelect\<T1\> | ISelect\<T1\>[] | 联合查询 |
 | 【其他】            |
 | As                  | \<this\>        | string alias = "a"                 | 指定别名                                                                                                                                                               |
 | Master              | \<this\>        |                                    | 指定从主库查询（默认查询从库）                                                                                                                                         |
