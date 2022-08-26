@@ -166,7 +166,7 @@ FROM ( SELECT a.`Id`, a.`Clicks`, a.`TypeGuid`, a.`Title`, a.`CreateTime`
 
 ```csharp
 var sql = fsql.Select<User>()
-    .AsTable((type, oldname) => "table_1")a
+    .AsTable((type, oldname) => "table_1")
     .AsTable((type, oldname) => "table_2")
     .ToSql(a => a.Id);
 ```
