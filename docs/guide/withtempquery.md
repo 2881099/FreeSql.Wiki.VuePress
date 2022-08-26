@@ -6,6 +6,8 @@
 
 需求版本：v3.2.666-preview (最新)
 
+GroupBy + WithTempQuery(嵌套查询) + FromQuery + UnionAll 组合使用，会让查询功能更加强大、灵活。
+
 ## 场景1：查询分组第一条记录
 
 ```cs
