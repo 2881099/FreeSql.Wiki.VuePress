@@ -30,6 +30,7 @@ export const zhSidebarConfig = sidebar({
                         "/guide/select-single-table.md",
                         "/guide/select-multi-table.md",
                         "/guide/withtempquery.md",
+                        "/guide/unionall.md",
                         "/guide/select-group-by.md",
                         "/guide/select-return-data.md",
                         "/guide/select-lazy-loading.md",
