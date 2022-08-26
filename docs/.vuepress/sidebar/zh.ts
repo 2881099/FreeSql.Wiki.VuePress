@@ -64,7 +64,7 @@ export const zhSidebarConfig = sidebar({
                         "/guide/freesql-provider-odbc.md",
                         "/guide/freesql-provider-custom.md",
                         "/guide/freesql-provider-mysqlconnector.md",
-                        // "/guide/freesql-provider-oracle.md",
+                        "/guide/freesql-provider-oracle.md",
                         // "/guide/freesql-provider-postgresql.md",
                     ],
                 },
