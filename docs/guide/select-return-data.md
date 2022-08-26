@@ -88,6 +88,8 @@ List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
 - FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；
 - FieldAliasOptions.AsProperty 使用属性名作为字段别名，合适使用二次构造 SQL 再次执行；
 
+> v3.2.666 开启参数化查询功能后，使用 WithParameters 共享参数化，避免多个查询对象产生相同的参数名称，例如：[UnionAll 联合查询](%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2)
+
 ## 8、执行 SQL
 
 ```csharp
@@ -117,7 +119,7 @@ fsql.Select<Topic>()
 
 > WithSql 使用多次为 UNION ALL 查询
 
-> v3.2.666 [WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
+> v3.2.666 [UnionAll 联合查询](unionall.md)、[WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
 
 > v3.2.666 WithMemory 使用内存数据进行查询
 
