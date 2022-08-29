@@ -146,7 +146,7 @@ C:\WINDOWS\system32>FreeSql.Generator --help
 
 ## 安装 Winform 生成器（已停止更新）
 
-源码地址：[FreeSql.Tools](https://github.com/dotnetcore/FreeSql.Tools)
+源码地址：[FreeSql.Tools](https://github.com/2881099/FreeSql.Tools)
 
 > 作者：[mypeng1985](https://github.com/mypeng1985) 开发了两个版本
 
