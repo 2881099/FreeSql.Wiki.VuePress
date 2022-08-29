@@ -142,7 +142,7 @@ C:\WINDOWS\system32>FreeSql.Generator --help
 - -NameSpace 指定了命名空间 LinCms.Core.Entities
 - -DB 就是数据库的相关配置
 - mysql 本地地址 127.0.0.1 3306 端口 用户名 root 密码 123456 数据库 lin-cms
-- -Match book 这样就能只生成 book，支持正则表达式，如 -Math lin*user 就会生成以 lin_user 开头的表。如 dbo\.TB*.+，会生成以 TB 开头的表。即只生成匹配的表
+- -Match book 这样就能只生成 book，支持正则表达式，如 -Match lin*user 就会生成以 lin_user 开头的表。如 dbo\.TB*.+，会生成以 TB 开头的表。即只生成匹配的表
 
 ## 安装 Winform 生成器（已停止更新）
 
