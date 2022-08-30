@@ -151,7 +151,7 @@ export const zhSidebarConfig = sidebar({
             ],
         },
         {
-            text: "服务支持",
+            text: "捐赠",
             collapsable: true,
             icon: "launch",
             link: "/reference/service-support.md",
