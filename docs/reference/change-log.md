@@ -2,6 +2,38 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.666
+
+- **增加 WithTempQuery + FromQuery 嵌套查询功能；** #1192
+- **增加 FreeSql.Provider.OracleOledb 解决 US7ASCII 中文乱码问题；**
+- **增加 UnionALL 联合查询；** #1106 #1104 #668 #478 #432 #213 #138
+- 增加 WithMemory 基于内存查询，对标 WithSql；
+- 增加 AuditValue ObjectAuditBreak 实现对象只触发一次审计事件；
+- 增加 IncludeByPropertyName 重载 then 参数；#1214
+- 增加 IInsertOrUpdate.SetSource(sql) 重载方法；
+- 增加 DynamicFilterCustom 增加支持 Expression 返回值；
+- 修复 UseGenerateCommandParameterWithLambda(true) 与 GroupBy 查询不生效 bug；
+- 修复 ToList 子查询开启参数化重复参数的 bug；#1205
+- **修复 string[] JsonMap bug；** #653
+- 修复 ManyToMany 不会触发 AsTable 的 bug；
+- 修复 Clickhouse Insert AsTable 表名处理 bug；
+- 修复 ClickHouse 单条记录插入\t \n /失败的 bug；
+- 修复 子查询使用基类 + AsType 可能产生的 bug；#1215
+- 修复 SqlServer2005/2008 Skip 问题（未设置 Take 时）；
+- 修复 MySql/SqlServer DbFirst 获取字段位置的问题；
+- 修复 DbContext/Repository Primary decimal 状态管理 key 精度处理 bug；
+- 修复 DbContext/Repository 无构造函数的实体对象不跟踪问题；
+- 修复 ToSql AsProperty 大小别名问题；
+- 优化 IncludeByPropertyName + AsType；
+- 优化 字典crud TableInfo 合并规则；#1180
+- 优化 IUpdate.Set 字符串累加本身为 NULL 的情况；#1209
+- 优化 WhereDynamicFilter DateRange 情况；
+- 优化 Oracle IN :ids 值传入 IList 时报错；
+- 优化 Dameng 单独适配 netcore3.1；#1094
+- **优化 PrevReheatConnectionPool 预热；**
+- 优化 全局过滤器禁用时子查询传播问题；#1208
+- **优化 子查询别名为 a 的情况；#1201**
+
 ## v3.2.665
 
 - 增加 IsVersion string 字符串乐观锁；[#1178](https://github.com/dotnetcore/FreeSql/issues/1178)
