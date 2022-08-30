@@ -49,7 +49,7 @@ class Order {
 
 > 说明：SnowflakeAttribute 是使用者您来定义，new Snowflake().GetId() 也是由使用者您来实现
 
-如果命名规范，可以在 aop 里判断，if (e.Property.Name == "createtime") e.Value = DateTime.Now;
+如果命名规范，可以在 aop 里判断，`if (e.Property.Name == "createtime") e.Value = DateTime.Now;`
 
 > v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件
 
@@ -171,7 +171,7 @@ class MyColumnAttribute : Attribute
 }
 ```
 
-## Ado.net 读取拦截
+## Ado .net 读取拦截
 
 ```csharp
 fsql.Aop.AuditDataReader += (_, e) =>
