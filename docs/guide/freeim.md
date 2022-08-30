@@ -80,15 +80,3 @@ ajax('/prev-connect-imserver', function(data) {
     };
 })
 ```
-
-## 💕 Donation (捐赠)
-
-> 感谢你的打赏
-
-- [Alipay](https://www.cnblogs.com/FreeSql/gallery/image/338860.html)
-
-- [WeChat](https://www.cnblogs.com/FreeSql/gallery/image/338859.html)
-
-## 🗄 License (许可证)
-
-[MIT](LICENSE)
