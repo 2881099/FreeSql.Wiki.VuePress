@@ -73,7 +73,8 @@ export const zhSidebarConfig = sidebar({
                     collapsable: true,
                     children: [
                         "/guide/freesql-extensions-baseentity.md",
-                        "/guide/freesql-extensions-jsonmap.md"
+                        "/guide/freesql-extensions-jsonmap.md",
+                        "/guide/freesqladminlte.md",
                     ],
                 },
                 {
