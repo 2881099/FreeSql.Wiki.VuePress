@@ -110,10 +110,10 @@ export const zhSidebarConfig = sidebar({
                     text: "其他作品",
                     collapsable: true,
                     children: [
-                        "/guide/otherworks.md",
                         "/guide/freeredis.md",
                         "/guide/freescheduler.md",
                         "/guide/freeim.md",
+                        "/guide/otherworks.md",
                     ],
                 },
             ],
