@@ -35,13 +35,13 @@ export const zhSidebarConfig = sidebar({
                         "/guide/select-return-data.md",
                         "/guide/select-lazy-loading.md",
                         "/guide/select-include.md",
+                        "/guide/select-as-tree.md",
                         "/guide/linq-to-sql.md",
                         "/guide/withsql.md",
-                        "/guide/select-as-tree.md",
                     ],
                 },
                 {
-                    text: "仓储层",
+                    text: "Repository",
                     collapsable: true,
                     children: [
                         "/guide/repository.md",
@@ -57,7 +57,7 @@ export const zhSidebarConfig = sidebar({
                     children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
                 },
                 {
-                    text: "数据库提供程序",
+                    text: "特别提供程序",
                     collapsable: true,
                     children: [
                         "/guide/freesql-provider-sqlitecore.md",
@@ -94,12 +94,28 @@ export const zhSidebarConfig = sidebar({
                 "/guide/filters.md",
                 "/guide/ado.md",
                 "/guide/aop.md",
-                "/guide/read-write-splitting.md",
-                "/guide/sharding.md",
-                "/guide/multi-tenancy.md",
-                "/guide/performance.md",
-                "/guide/dynamic.md",
+                {
+                    text: "高级",
+                    collapsable: true,
+                    children: [
+                        "/guide/read-write-splitting.md",
+                        "/guide/sharding.md",
+                        "/guide/multi-tenancy.md",
+                        "/guide/performance.md",
+                        "/guide/dynamic.md",
+                    ],
+                },
                 "/guide/more.md",
+                {
+                    text: "其他作品",
+                    collapsable: true,
+                    children: [
+                        "/guide/otherworks.md",
+                        "/guide/freeredis.md",
+                        "/guide/freescheduler.md",
+                        "/guide/freeim.md",
+                    ],
+                },
             ],
         },
     ],
