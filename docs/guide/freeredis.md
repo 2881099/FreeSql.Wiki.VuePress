@@ -177,15 +177,3 @@ foreach (var keys in cli.Scan("*", 10, null))
     Console.WriteLine(string.Join(", ", keys));
 }
 ```
-
-## 💕 Donation (捐赠)
-
-> 感谢你的打赏
-
-- [Alipay](https://www.cnblogs.com/FreeSql/gallery/image/338860.html)
-
-- [WeChat](https://www.cnblogs.com/FreeSql/gallery/image/338859.html)
-
-## 🗄 License (许可证)
-
-[MIT](LICENSE)
