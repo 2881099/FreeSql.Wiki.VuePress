@@ -2,6 +2,8 @@ FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临
 
 开源地址：[https://github.com/2881099/FreeScheduler](https://github.com/2881099/FreeScheduler)
 
+扩展资料：[《.NET 定时任务 -- FreeScheduler 支持 cron、持久化、可变定时设置》](https://www.cnblogs.com/FreeSql/p/16623030.html)
+
 ## Quick start
 
 > dotnet add package FreeScheduler
