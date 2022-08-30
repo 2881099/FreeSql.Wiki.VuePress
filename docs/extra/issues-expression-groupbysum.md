@@ -1,4 +1,4 @@
-# 技巧：自定义解析表达式树，实现动态聚合列 sum(case when ...)
+# 动态聚合列 sum(case when ...)
 
 ```sql
 SELECT
