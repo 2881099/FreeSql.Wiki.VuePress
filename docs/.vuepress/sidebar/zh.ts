@@ -113,7 +113,10 @@ export const zhSidebarConfig = sidebar({
                         "/guide/freeredis.md",
                         "/guide/freescheduler.md",
                         "/guide/freeim.md",
-                        "/guide/otherworks.md",
+                        {
+                            text: "More..",
+                            link: "/guide/otherworks.md",
+                        },
                     ],
                 },
             ],
