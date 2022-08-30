@@ -94,8 +94,9 @@ export const zhSidebarConfig = sidebar({
                 "/guide/filters.md",
                 "/guide/ado.md",
                 "/guide/aop.md",
+                "/guide/more.md",
                 {
-                    text: "高级",
+                    text: "高级功能",
                     collapsable: true,
                     children: [
                         "/guide/read-write-splitting.md",
@@ -105,7 +106,6 @@ export const zhSidebarConfig = sidebar({
                         "/guide/dynamic.md",
                     ],
                 },
-                "/guide/more.md",
                 {
                     text: "其他作品",
                     collapsable: true,
