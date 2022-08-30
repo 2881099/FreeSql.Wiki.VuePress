@@ -65,7 +65,7 @@ export const zhNavbarConfig = navbar([
         ]
     },
     {
-        text: '服务支持',
+        text: '捐赠',
         icon: "launch",
         link: "/reference/service-support.md"
     },
