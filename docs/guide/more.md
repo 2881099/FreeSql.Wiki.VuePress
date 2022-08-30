@@ -522,7 +522,7 @@ class Order {
 
 > v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件
 
-## 18、Ado.Net 扩展方法
+## 18、Ado .Net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
 
