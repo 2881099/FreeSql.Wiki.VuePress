@@ -56,7 +56,7 @@ var t2 = fsql.Select<T>()
 //a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
 ```
 
-> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a.Id && b.Item2 == a.ct1))
+> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))
 
 > 实现代码：[In多列查询，表达式自定义实现](../extra/issues-in-valuetype.md)
 
