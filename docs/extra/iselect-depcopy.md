@@ -1,4 +1,4 @@
-# 技巧：ISelect 如何拷贝(copy)复用，克隆(clone)
+# ISelect 拷贝(copy)克隆(clone)
 
 当一个 ISelect 构造到一定复杂程序之后，比如：
 
