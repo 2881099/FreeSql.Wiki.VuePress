@@ -21,41 +21,35 @@
 
 - [FreeSql 接入 CAP 的实践](https://www.cnblogs.com/igeekfan/p/cap_freesql_flush.html)
 - [FreeSql.Generator 命令行代码生成器是如何实现的](https://www.cnblogs.com/igeekfan/p/freesql-generator.html)
-- [AOP +FreeSql 跨方法异步事务](https://www.cnblogs.com/igeekfan/p/aop-freesql-autofac.html)
 
 ## 以下可从[GitHub Issues Docs](https://github.com/dotnetcore/FreeSql/issues?q=label%3Adocs)找到
 
 - [CentOS8 ARM 下连接 SQL Server 2008 R2（Hypervisor）](https://github.com/dotnetcore/FreeSql/issues/601)
-- [.net5 网站使用 Sqlserver 数据库部署在 docker 容器内运行报主库链接失败](https://github.com/dotnetcore/FreeSql/issues/650)
-- [技巧：自定义解析表达式树，实现动态聚合列 sum(case when )](https://github.com/dotnetcore/FreeSql/issues/652)
-- [技巧：ISelect 如何拷贝(copy)复用，克隆(clone) ](https://github.com/dotnetcore/FreeSql/issues/644)
-- [FreeSql 如何实现审计跟踪表](https://github.com/dotnetcore/FreeSql/issues/473)
 - [一对多关系，分表只取关联的第一条记录，如何获取](https://github.com/dotnetcore/FreeSql/issues/430)
 
 ## 基于 FreeSql 的开源项目
 
-### [zhontai.net Admin 后台管理系统](https://github.com/zhontai/Admin.Core)
+|项目|说明|
+|:--:|:--|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=zhontai&repo=Admin.Core)](https://github.com/zhontai/Admin.Core)|`Admin`后端，前后端分离的权限管理系统。支持多租户、动态Api、任务调度、滑块拼图验证、国内外主流数据库自由切换和动态高级查询。基于.Net跨平台开发的WebApi。集成统一认证授权、数据验证、缓存、Ip限流、全Api鉴权、集成测试、性能分析、接口文档等。|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&repo=lin-cms-dotnetcore)](https://github.com/luoyunchong/lin-cms-dotnetcore)|😃A simple and practical CMS implemented by .NET 6 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=alonsoalon&repo=TenantSite.Server)](https://github.com/alonsoalon/TenantSite.Server)|SaaS 企业应用管理系统，定位于企业应用的SaaS服务框架，企业云端应用的基础开发框架（当然也可以部署于本地），系统被设计用于多租户，采用前端后端完全分离技术方案。 抽离企业应用软件研发公共部分，让研发人员有条件聚焦在业务研发，实现了用于权限管理的基础数据维护，权限赋权，缓存，上传等常规功能。|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=hejiyong&repo=fscms)](https://github.com/hejiyong/fscms)|fscms 文档类的cms，通过wiki动态生成文档，包括后端完整权限管理和前端文档页，采用freesql orm，layer。|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=densen2014&repo=FreeSqlDemos)](https://github.com/densen2014/FreeSqlDemos)|FreeSql 的各种工程 demo, console,xamarin app,ios,android,wpf,blazor,nf461|
+|[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=yc-l&repo=yc.boilerplate)](https://github.com/yc-l/yc.boilerplate)|YC.Boilerplate 是一套快速开发框架，采用当下流行的前后端分离开发模式，前端 采用VUE 2.0、后端采用Net 5.0；框架实现了多租户、动态webApi、多种ORM、IOC、数据库表和业务代码生成等等一系列模块，并开发了用户管理、角色权限、组织机构、数据字典、审计日志等常规功能。|
 
-`Admin`后端，前后端分离的权限管理系统，集成统一认证授权、多租户、缓存、`Ip`限流、全`Api`鉴权。支持国内外主流数据库自由切换和动态高级查询，基于`.Net`跨平台开发的 WebApi
+<style>
+table th:first-of-type {
+   min-width:400px;
+}
+</style>
 
-### [A simple and practical CMS implemented by .NET Core](https://github.com/luoyunchong/lin-cms-dotnetcore)
+<!-- 无法正常预览 -->
+<!-- |[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=jasonyush&repo=EasyCMS)](https://github.com/jasonyush/EasyCMS)|EasyCms 企业建站，事业单位使用的 CMS 管理系统| -->
 
-本项目是 [Lin CMS](https://github.com/luoyunchong/lin-cms-vue) 后端的 `.NET5` 实现，通过`Vue.js`实现的前后端分离`CMS`平台，目前实现简约的权限管理系统、基础字典项管理、随笔专栏，评论点赞，消息通知，标签等仿掘金模块。
+### [EasyCMS](https://github.com/aprilyush/EasyCMS)
 
-### [iusaas.com SaaS 企业应用管理系统](https://github.com/alonsoalon/TenantSite.Server)
-
-企业应用管理系统，定位于企业应用的 SaaS 服务框架，企业云端应用的基础开发框架（当然也可以部署于本地），系统被设计用于多租户，采用前端后端完全分离技术方案。 抽离企业应用软件研发公共部分，让研发人员有条件
-聚焦在业务研发，实现了用于权限管理的基础数据维护，权限赋权，缓存，上传等常规功能。
-
-### [EasyCms 企业建站，事业单位使用的 CMS 管理系统](https://github.com/jasonyush/EasyCMS)
-
-EasyCms 后台权限管理系统 基于`Asp.net Core`的后台快速开发框架，可用于快速开发 企业后台管理系统，WebApi 接口，微信公众号和小程序后台，企业站。
-
-### [fscms 内容管理系统](https://github.com/hejiyong/fscms)
-
-内容管理系统，动态同步 md 文件生成文档。
-
-### [FreeSql 的各种工程 demo, console,xamarin app,ios,android,wpf,blazor,nf461 ...](https://github.com/densen2014/FreeSqlDemos)
+EasyCms后台权限管理系统 基于`Asp.net Core`的后台快速开发框架，可用于快速开发 企业后台管理系统，WebApi接口，微信公众号和小程序后台，企业站。
 
 ### [基于.Net Core 3.1 或 .Net 5 框架简单 2 层架构，实现基于权限角色的页面级权限后台框架](https://gitee.com/sundayisblue/BoYuanCore/)
 
@@ -68,10 +62,3 @@ EasyCms 后台权限管理系统 基于`Asp.net Core`的后台快速开发框架
 基于`.Net 5`平台的快速开发框架。
 目前系统包含功能有登录，用户管理，应用菜单管理，权限管理，字典管理，退出登录，也方便扩展多租户使用。
 通过这些基础功能的实现，分享自己对系统框架设计的理解，对`ddd`设计的理解，希望对大家学习使用`.net core`有帮助，少踩一些坑，当然也会存在不足之处，还望指出。
-
-### [YC.Boilerplate](https://github.com/linbin524/yc.boilerplate)
-
-是一套快速开发框架，采用当下流行的前后端分离开发模式，前端 采用`VUE`、后端采用`Net 5.0`
-框架实现了 多租户、动态`webApi`、多种`ORM`、`IOC`、数据库表和业务代码生成等等一系列模块，并开发了用户管理、角色权限、组织机构、 数据字典、审计日志等常规功能。
-
-框架的宗旨:构建一套松耦合、灵活组合、功能齐全、开发便捷、减少开发工作量的样板化开发框架。
