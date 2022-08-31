@@ -155,7 +155,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WhereIf             | \<this\>        | bool, string, parms                | 原生 sql 语法条件，WhereIf(true, "id = ?id", new { id = 1 })                                                                                                           |
 | WhereCascade        | \<this\>        | Lambda                             | 实现多表查询时，向每个表中附加条件                                                                                                                                     |
 | 【分组】            |
-| GroupBy             | \<this\>        | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)                                                                                                                                   | GroupBy(a => new{a.Name,a.Time}) |
+| GroupBy             | \<this\>        | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)、GroupBy(a => new{a.Name,a.Time}) |
 | GroupBy             | \<this\>        | string, parms                      | 按原生 sql 语法分组，GroupBy("concat(name, ?cc)", new { cc = 1 })                                                                                                      |
 | Having              | \<this\>        | string, parms                      | 按原生 sql 语法聚合条件过滤，Having("count(name) = ?cc", new { cc = 1 })                                                                                               |
 | Distinct            | \<this\>        |                                    | .Distinct().ToList(x => x.GroupName) 是对指定字段                                                                                                                      |
@@ -244,4 +244,10 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
-| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |
+| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |\
+
+<style>
+table th:first-of-type {
+   width:200px;
+}
+</style>

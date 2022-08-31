@@ -1,32 +1,5 @@
 # Awesome FreeSql
 
-## FreeSql 官方博客
-
-- [https://www.cnblogs.com/kellynic/](https://www.cnblogs.com/kellynic/)
-- [https://www.cnblogs.com/freesql/](https://www.cnblogs.com/freesql/)
-
-## 官方文档
-
-- [https://freesql.net](https://freesql.net)
-- [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API 参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
-- [API 参考](https://docs.dotnet-china.com/FreeSql/index.html)
-
-## 源码
-
-- GitHub [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
-- Gitee [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)
-
-## 相关博客指南
-
-- [FreeSql 接入 CAP 的实践](https://www.cnblogs.com/igeekfan/p/cap_freesql_flush.html)
-- [FreeSql.Generator 命令行代码生成器是如何实现的](https://www.cnblogs.com/igeekfan/p/freesql-generator.html)
-
-## 以下可从[GitHub Issues Docs](https://github.com/dotnetcore/FreeSql/issues?q=label%3Adocs)找到
-
-- [CentOS8 ARM 下连接 SQL Server 2008 R2（Hypervisor）](https://github.com/dotnetcore/FreeSql/issues/601)
-- [一对多关系，分表只取关联的第一条记录，如何获取](https://github.com/dotnetcore/FreeSql/issues/430)
-
 ## 基于 FreeSql 的开源项目
 
 |项目|说明|
@@ -62,3 +35,20 @@ EasyCms后台权限管理系统 基于`Asp.net Core`的后台快速开发框架�
 基于`.Net 5`平台的快速开发框架。
 目前系统包含功能有登录，用户管理，应用菜单管理，权限管理，字典管理，退出登录，也方便扩展多租户使用。
 通过这些基础功能的实现，分享自己对系统框架设计的理解，对`ddd`设计的理解，希望对大家学习使用`.net core`有帮助，少踩一些坑，当然也会存在不足之处，还望指出。
+
+## FreeSql 官方博客
+
+- [https://www.cnblogs.com/kellynic/](https://www.cnblogs.com/kellynic/)
+- [https://www.cnblogs.com/freesql/](https://www.cnblogs.com/freesql/)
+
+## 官方文档
+
+- [https://freesql.net](https://freesql.net)
+- [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
+- [API 参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
+- [API 参考](https://docs.dotnet-china.com/FreeSql/index.html)
+
+## 源码
+
+- GitHub [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
+- Gitee [https://gitee.com/FreeSql/FreeSql-ORM](https://gitee.com/FreeSql/FreeSql-ORM)

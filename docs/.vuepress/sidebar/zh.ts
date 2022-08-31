@@ -170,6 +170,7 @@ export const zhSidebarConfig = sidebar({
             collapsable: true,
             children: [
                 "/extra/README.md",
+                "/extra/freesql-cap.md",
                 "/extra/idlebus-freesql.md",
                 "/extra/iselect-depcopy.md",
                 "/extra/freesql-auditlog.md",
