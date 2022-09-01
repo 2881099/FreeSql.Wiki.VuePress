@@ -18,6 +18,7 @@ class Topic {
 
 ## 每页 20 条数据，查询第 1 页
 
+
 ```csharp
 var list = fsql.Select<Topic>()
     .Where(a => a.Id > 10)
@@ -36,6 +37,21 @@ var select = fsql.Select<Topic>()
 var total = await select.CountAsync();
 var list = await select.Page(1, 20).ToListAsync();
 ```
+
+`BasePagingInfo`是提供的分页类,`PageNumber`,`PageSize`,`Count`，如下内容，`.Page(page)`后，`page.Count`就有统计值了
+
+```csharp
+public class TopicGetListInput: BasePagingInfo
+{
+    public string Name { get; set; }
+}
+var list = await fsql.Select<Topic>()
+    .WhereIf(!string.IsNullOrEmpty(page.Name),r => r.Name.Contains(page.Name))
+    .OrderByDescending(c => c.CreateTime)
+    .Page(page)
+    .ToListAsync();
+```
+
 
 ## 优化
 
@@ -59,3 +75,5 @@ SqlServer 2012+ 版本，使用最新的 fetch next rows 分页；
 | Limit       | \<this\>   | int limit                   | 查询多少条数据                                                                                                        |
 | Take        | \<this\>   | int limit                   | 查询多少条数据                                                                                                        |
 | Page        | \<this\>   | int pageIndex, int pageSize | 分页                                                                                                                  |
+| Page        | \<this\>   | BasePagingInfo(int PageNumber,int PageSize,long Count ) | 分页,并且求Count和                                                                                                                  |
+
