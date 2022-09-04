@@ -1,7 +1,7 @@
 ---
-title : Code First
+title : CodeFirst
 tag:
-  - Code First
+  - CodeFirst
   - 备注
   - 迁移
 ---
