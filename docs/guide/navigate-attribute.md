@@ -70,15 +70,15 @@ GetTableRef(string propertyName, bool isThrow);
 ### OneToOne 一对一
 
 ```csharp
-class User {
-    public int Id { get; set; } //Id、UserId、User_id
-
-    public UserExt UserExt { get; set; }
+class User
+{
+    public int Id { get; set; }
+    public UserExt Ext { get; set; }
 }
 
-class UserExt {
-    public int id { get; set; } //Id、UserId、User_id、UserExtId、UserExt_id
-
+class UserExt
+{
+    public int id { get; set; }
     public User User { get; set; }
 }
 ```
@@ -88,13 +88,14 @@ class UserExt {
 ### ManyToOne 多对一
 
 ```csharp
-class Group {
+class Group
+{
     public int Id { get; set; } //Id、GroupId、Group_id
 }
 
-class User {
+class User
+{
     public int Id { get; set; } //Id、UserId、User_id
-
 
     public int AGroupId { get; set; }
     public Group AGroup { get; set; }
@@ -107,16 +108,17 @@ class User {
 ### OneToMany 一对多
 
 ```csharp
-class Group {
+class Group
+{
     public int Id { get; set; } //Id、GroupId、Group_id
 
     public ICollection<User> AUsers { get; set; }
     public ICollection<User> BUsers { get; set; }
 }
 
-class User {
+class User
+{
     public int Id { get; set; } //Id、UserId、User_id
-
 
     public int AGroupId { get; set; }
     public Group AGroup { get; set; }
@@ -131,7 +133,8 @@ class User {
 ### Parent 父子
 
 ```csharp
-class Group {
+class Group
+{
     public int Id { get; set; } //Id、GroupId、Group_id
 
     public int ParentId { get; set; } //ParentId、Parent_id
@@ -146,21 +149,24 @@ class Group {
 ### ManyToMany 多对多
 
 ```csharp
-class Song {
+class Song
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Title { get; set; }
 
     public virtual ICollection<Tag> Tags { get; set; }
 }
-class Song_tag {
+class Song_tag
+{
     public int Song_id { get; set; }
     public virtual Song Song { get; set; }
 
     public int Tag_id { get; set; }
     public virtual Tag Tag { get; set; }
 }
-class Tag {
+class Tag
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Name { get; set; }
