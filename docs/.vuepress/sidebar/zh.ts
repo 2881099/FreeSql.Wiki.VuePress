@@ -57,7 +57,7 @@ export const zhSidebarConfig = sidebar({
                     children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
                 },
                 {
-                    text: "CodeFirst",
+                    text: "Code First ✨",
                     collapsable: true,
                     children: [
                         "/guide/code-first.md",
