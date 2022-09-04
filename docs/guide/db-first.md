@@ -1,4 +1,4 @@
-# DB First
+# DbFirst
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
