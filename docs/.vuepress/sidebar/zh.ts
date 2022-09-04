@@ -57,27 +57,6 @@ export const zhSidebarConfig = sidebar({
                     children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
                 },
                 {
-                    text: "特别提供程序",
-                    collapsable: true,
-                    children: [
-                        "/guide/freesql-provider-sqlitecore.md",
-                        "/guide/freesql-provider-odbc.md",
-                        "/guide/freesql-provider-custom.md",
-                        "/guide/freesql-provider-mysqlconnector.md",
-                        "/guide/freesql-provider-oracle.md",
-                        // "/guide/freesql-provider-postgresql.md",
-                    ],
-                },
-                {
-                    text: "扩展",
-                    collapsable: true,
-                    children: [
-                        "/guide/freesql-extensions-baseentity.md",
-                        "/guide/freesql-extensions-jsonmap.md",
-                        "/guide/freesqladminlte.md",
-                    ],
-                },
-                {
                     text: "CodeFirst",
                     collapsable: true,
                     children: [
@@ -105,6 +84,27 @@ export const zhSidebarConfig = sidebar({
                         "/guide/multi-tenancy.md",
                         "/guide/performance.md",
                         "/guide/dynamic.md",
+                    ],
+                },
+                {
+                    text: "特别提供程序",
+                    collapsable: true,
+                    children: [
+                        "/guide/freesql-provider-sqlitecore.md",
+                        "/guide/freesql-provider-odbc.md",
+                        "/guide/freesql-provider-custom.md",
+                        "/guide/freesql-provider-mysqlconnector.md",
+                        "/guide/freesql-provider-oracle.md",
+                        // "/guide/freesql-provider-postgresql.md",
+                    ],
+                },
+                {
+                    text: "扩展",
+                    collapsable: true,
+                    children: [
+                        "/guide/freesql-extensions-baseentity.md",
+                        "/guide/freesql-extensions-jsonmap.md",
+                        "/guide/freesqladminlte.md",
                     ],
                 },
                 {
