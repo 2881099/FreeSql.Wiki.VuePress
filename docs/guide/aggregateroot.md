@@ -30,7 +30,7 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 - OneToMany
 - ManyToMany(中间表)
 
-示例1：在聚合根内递归向下的所有 OneToOne/OneToMany 导航属性
+示例1：在聚合根内递归所有 OneToOne/OneToMany 导航属性
 
 - OneToOne: Order <-> OrderExt
 - OneToMany: Order <== OrderDetail
@@ -76,7 +76,7 @@ class OrderDetailExt
 }
 ```
 
-示例2：在聚合根内递归向下的所有 ManyToMany 导航属性对应的中间表
+示例2：在聚合根内递归所有 ManyToMany 导航属性对应的中间表
 
 - ManyToMany: Order <=> Tag
 - 聚合根 Order 会根据 Tags 生成 OrderTag 中间表数据，进行管理
