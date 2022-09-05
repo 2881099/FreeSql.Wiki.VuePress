@@ -318,9 +318,11 @@ repository.ChangeBoundary("solution_1");
 ```
 
 - Break 递归时，终止当前导航属性
-- BreakThen 递归时，终止下控
+- BreakThen 递归时，终止下探
 
-AggregateRootBoundary 可设置 ManyToOne/ManyToMany/PgArrayToMany 非边界之内的导航属性，但是仅对查询有效，`增删改` 时依然会忽略它们。
+AggregateRootBoundary 可以设置边界之内的导航属性，缩小边界范围。
+
+也可设置 ManyToOne/ManyToMany/PgArrayToMany 非边界之内的导航属性，但是仅对查询有效，`增删改` 时依然会忽略它们。
 
 ## 总结
 
