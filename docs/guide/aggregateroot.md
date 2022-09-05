@@ -31,8 +31,6 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 - OneToOne: OrderDetail <-> OrderDetailExt
 - 聚合根 Order 的管辖范围：Extdata、Details、Details[?].Extdata
 
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
-
 ```csharp
 class Order
 {
@@ -77,8 +75,6 @@ class OrderDetailExt
 - ManyToMany: Order <=> Tag
 - 聚合根 Order 会根据 Tags 生成 OrderTag 中间表数据，进行管理
 - 聚合根 Order 不会管理 Tag 实体类，以及 Tag 向下延申的导航属性（外部表不属于管辖范围）
-
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 ```csharp
 class Order
@@ -130,8 +126,6 @@ var order = new Order
 repository.Insert(order); //级联插入
 ```
 
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
-
 - 插入 Order 表记录；
 - 插入 OrderExt 表记录；
 - 插入 OrderDetail 表记录；
@@ -164,7 +158,7 @@ var list = fsql.Select<Order>()
 
 扩展查询边界：
 
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
+> 提示：\[AggregateRootBoundary("name", Break = true)\] 设置边界范围，请往后面看。。
 
 ```csharp
 class OrderRepository : AggregateRootRepository<Order>
@@ -196,8 +190,6 @@ class OrderRepository : AggregateRootRepository<Order>
 repository.Delete(order);
 ```
 
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
-
 - 删除 OrderExt 表对应的记录；
 - 删除 OrderDetailExt 表对应的记录；
 - 删除 OrderDetail 表对应的记录；
@@ -222,8 +214,6 @@ order.Details[0].Extdata.Field5 = "field5_01_01";
 order.Field2 = "field2_02";
 repository.Update(order);
 ```
-
-> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 - 添加 OrderTag 表记录；（不会管理 Tag 表记录）
 - 删除 OrderDetail 表记录；
