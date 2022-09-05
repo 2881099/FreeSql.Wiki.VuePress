@@ -2,6 +2,8 @@
 
 ## 基于 FreeSql 的开源项目
 
+<div class="freesql_open">
+
 |项目|说明|
 |:--:|:--|
 |[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=zhontai&repo=Admin.Core)](https://github.com/zhontai/Admin.Core)|`Admin`后端，前后端分离的权限管理系统。支持多租户、动态Api、任务调度、滑块拼图验证、国内外主流数据库自由切换和动态高级查询。基于.Net跨平台开发的WebApi。集成统一认证授权、数据验证、缓存、Ip限流、全Api鉴权、集成测试、性能分析、接口文档等。|
@@ -11,8 +13,10 @@
 |[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=densen2014&repo=FreeSqlDemos)](https://github.com/densen2014/FreeSqlDemos)|FreeSql 的各种工程 demo, console,xamarin app,ios,android,wpf,blazor,nf461|
 |[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=yc-l&repo=yc.boilerplate)](https://github.com/yc-l/yc.boilerplate)|YC.Boilerplate 是一套快速开发框架，采用当下流行的前后端分离开发模式，前端 采用VUE 2.0、后端采用Net 5.0；框架实现了多租户、动态webApi、多种ORM、IOC、数据库表和业务代码生成等等一系列模块，并开发了用户管理、角色权限、组织机构、数据字典、审计日志等常规功能。|
 
+</div>
+
 <style>
-table th:first-of-type {
+.freesql_open table th:first-of-type {
    min-width:400px;
 }
 </style>

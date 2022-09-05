@@ -246,8 +246,3 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
 | ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |\
 
-<style>
-table th:first-of-type {
-   width:200px;
-}
-</style>

@@ -1,9 +1,7 @@
 # 聚合根（实验室）
 
 <style>
-table th:first-of-type {
-   min-width:130px;
-}
+
 </style>
 
 FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表的通用仓储对象，支持了级联保存、级联删除功能，（但是）使用时需要人工自己判断何时开启、何时使用。
