@@ -312,7 +312,7 @@ repository.ChangeBoundary("solution_1");
 
 AggregateRootBoundary 可以设置边界之内的导航属性，缩小边界范围。
 
-也可设置 ManyToOne/ManyToMany/PgArrayToMany 非边界之内的导航属性，但是仅对查询有效，`增删改` 时依然会忽略它们。
+也可以设置非边界之内的导航属性 ManyToOne/ManyToMany/PgArrayToMany，仅查询有效，`增删改` 时依然会忽略它们。
 
 ## 总结
 
