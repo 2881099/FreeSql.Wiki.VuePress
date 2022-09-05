@@ -1,27 +1,37 @@
 # 聚合根（实验室）
 
-FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表的通用仓储对象，支持了级联保存、级联删除功能，使用时需要人工自己判断何时开启、何时使用。
+FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表的通用仓储对象，支持了级联保存、级联删除功能，（但是）使用时需要人工自己判断何时开启、何时使用。
 
-**AggregateRootRepository** 是 IBaseRepository\<T\> 一种新的尝试实现，它将自动处理 OneToOne/OneToMany 导航属性，以及 ManyToMany 中间表的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany 它们）。
+**AggregateRootRepository** 是 IBaseRepository\<T\> 一种新的尝试实现，它将自动处理 OneToOne/OneToMany 导航属性，以及 ManyToMany(中间表) 的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany 它们）。
 
 ```csharp
 var repository = fsql.GetAggregateRootRepository<Order>();
 ```
 
-功能未发布，意见征集、讨论区：[https://github.com/dotnetcore/FreeSql/discussions/1235](https://github.com/dotnetcore/FreeSql/discussions/1235)
+意见征集、讨论区：[https://github.com/dotnetcore/FreeSql/discussions/1235](https://github.com/dotnetcore/FreeSql/discussions/1235)
 
 ## 设定边界
 
 将一个主要的实体类认定为聚合根，设定好安全的管辖范围（边界），CRUD 时会把边界之内的所有内容看作一个整体。
 
-1、ManyToOne 不属于边界范围之内，向下递归时会忽略；
+`增删改` 边界之外，向下递归时会忽略：
+- ManyToOne
+- ManyToMany(外部表) 
+- PgArrayToMany
 
-2、在聚合根内递归向下的所有 OneToOne/OneToMany 导航属性，如下：
+`增删改` 边界之内，向下递归时会级联操作：
+- OneToOne
+- OneToMany
+- ManyToMany(中间表)
+
+示例1：在聚合根内递归向下的所有 OneToOne/OneToMany 导航属性
 
 - OneToOne: Order <-> OrderExt
 - OneToMany: Order <== OrderDetail
 - OneToOne: OrderDetail <-> OrderDetailExt
 - 聚合根 Order 的管辖范围：Extdata、Details、Details[?].Extdata
+
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 ```csharp
 class Order
@@ -30,8 +40,8 @@ class Order
     public int Id { get; set; }
     public string Field2 { get; set; }
 
-    [Navigate(nameof(Id))]
     public OrderExt Extdata { get; set; }
+
     [Navigate(nameof(OrderDetail.OrderId))]
     public List<OrderDetail> Details { get; set; }
 }
@@ -41,7 +51,6 @@ class OrderExt
     public int OrderId { get; set; }
     public string Field3 { get; set; }
 
-    [Navigate(nameof(OrderId))]
     public Order Order { get; set; }
 }
 class OrderDetail
@@ -51,7 +60,6 @@ class OrderDetail
     public int OrderId { get; set; }
     public string Field4 { get; set; }
 
-    [Navigate(nameof(Id))]
     public OrderDetailExt Extdata { get; set; }
 }
 class OrderDetailExt
@@ -60,16 +68,17 @@ class OrderDetailExt
     public int OrderDetailId { get; set; }
     public string Field5 { get; set; }
 
-    [Navigate(nameof(OrderDetailId))]
     public OrderDetail OrderDetail { get; set; }
 }
 ```
 
-3、在聚合根内递归向下的所有 ManyToMany 导航属性，对应的中间表，如下：
+示例2：在聚合根内递归向下的所有 ManyToMany 导航属性，对应的中间表
 
 - ManyToMany: Order <=> Tag
 - 聚合根 Order 会根据 Tags 生成 OrderTag 中间表数据，进行管理
 - 聚合根 Order 不会管理 Tag 实体类，以及 Tag 向下延申的导航属性（外部表不属于管辖范围）
+
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 ```csharp
 class Order
@@ -121,6 +130,8 @@ var order = new Order
 repository.Insert(order); //级联插入
 ```
 
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
+
 - 插入 Order 表记录；
 - 插入 OrderExt 表记录；
 - 插入 OrderDetail 表记录；
@@ -153,13 +164,15 @@ var list = fsql.Select<Order>()
 
 扩展查询边界：
 
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
+
 ```csharp
 class OrderRepository : AggregateRootRepository<Order>
 {
     public OrderRepository(IFreeSql fsql, UnitOfWorkManager uowManager) : base(uowManager?.Orm ?? fsql)
     {
-        Console.WriteLine(AggregateRootUtils.GetAutoIncludeQueryStaicCode(fsql, typeof(Order))); //debugger
-        //聚合根内关系较复杂时，控制台输出一块 Include/IncludeMany 字符串，方便二次开发
+        Console.WriteLine(AggregateRootUtils.GetAutoIncludeQueryStaicCode(null, fsql, typeof(Order)));
+        //控制台输出一块 Include/IncludeMany 字符串，内容与下方 SelectDiy 代码块相同
     }
 
     public override ISelect<IFreeSql> Select => this.SelectDiy
@@ -182,6 +195,8 @@ class OrderRepository : AggregateRootRepository<Order>
 ```csharp
 repository.Delete(order);
 ```
+
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 - 删除 OrderExt 表对应的记录；
 - 删除 OrderDetailExt 表对应的记录；
@@ -207,6 +222,8 @@ order.Details[0].Extdata.Field5 = "field5_01_01";
 order.Field2 = "field2_02";
 repository.Update(order);
 ```
+
+> 提示：\[AggregateRootBoundary("name01", Break = true)\] 可以设置导航属性的边界范围，请往后面看。。
 
 - 添加 OrderTag 表记录；（不会管理 Tag 表记录）
 - 删除 OrderDetail 表记录；
@@ -285,28 +302,40 @@ InsertOrUpdate 执行逻辑依托聚合根对象的 `主键` 和 `状态管理`�
 - 无值，则 `抛出异常`；
 - 有值，逻辑同上；
 
-## 使用建议
+## 扩展边界
 
-1、**分开定义**，按业务需求分开定义聚合根、及相关实体类。
+```csharp
+class Order
+{
+    // ..
+    [AggregateRootBoundary("solution_1", Break = false, BreakThen = true)]
+    [AggregateRootBoundary("solution_2", Break = true)]
+    [Navigate(nameof(OrderDetail.OrderId))]
+    public List<OrderDetail> Details { get; set; }
+}
 
-传统单体项目表很多，共同使用用一套导航属性，很难划分清除谁才是聚合根（例如 A-B-C-A 这种导航关系）。
+repository.ChangeBoundary("solution_1");
+```
 
-应以业务为单位，为每个业务单独设计实体类，单一职责，隔离开发，这样才能更清淅的定义出聚合根实体。
+- Break 递归时，终止当前导航属性
+- BreakThen 递归时，终止下控
 
-如果觉得配置 \[Navigate\] 繁琐，可以使用 FreeSql 提供的默认约定命名方法，间化定义。
+AggregateRootBoundary 可设置 ManyToOne/ManyToMany/PgArrayToMany 非边界之内的导航属性，但是仅对查询有效，`增删改` 时依然会忽略它们。
 
-2、**理解边界**，理解本文提出的边界规则。
+## 总结
+
+1、**理解边界**，理解本文提出的边界规则。
 
 - ManyToOne 导航属性，是 `边界之外`；
 - ManyToMany 导航属性，`中间表`（OrderTag） 是边界之内，`外部表`（Tag） 是 `边界之外`；
 - OneToOne 导航属性，是边界之内；
 - OneToMany 导航属性，是边界之内；
 
-AggregateRootRepository 只对边界之内的数据进行递归 CRUD 操作，把聚合根看本一个整体。
+AggregateRootRepository 只对边界之内的数据进行递归 CRUD 操作，把聚合根看成一个整体。
 
 特殊情况可以继承后重写 Select 属性扩大、或缩小查询内容：
 
 - Insert/Delete/Update `扩大` 后的查询内容，不会对 `扩大` 后的数据进行增删改；
 - Update `缩小` 后的查询内容，由于导航属性值为 NULL，不会删除未查询的内容；
 
-3、**善用事务**，使用事务解决一致操作问题。
+2、**善用事务**，使用事务解决一致操作问题。
