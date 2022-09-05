@@ -6,6 +6,8 @@
 
 FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表的通用仓储对象，支持了级联保存、级联删除功能，（但是）使用时需要人工自己判断何时开启、何时使用。
 
+本文看上去像 EF，实则有区别，主要区别在级联边界的规则设定，例如我们允许 OneToMany 从下层向上递归级联，但是仅限查询，不能增删改。研究目的希望从机制上杜绝痛点，让操作变得更可控。
+
 **AggregateRootRepository 是 IBaseRepository\<T\> 一种新的尝试实现**，它将自动处理 OneToOne/OneToMany 导航属性，以及 ManyToMany(中间表) 的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany 它们）。
 
 ```csharp
