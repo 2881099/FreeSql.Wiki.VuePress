@@ -20,12 +20,12 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 
 将一个主要的实体类认定为聚合根，设定好安全的管辖范围（边界），CRUD 时会把边界之内的所有内容看作一个整体。
 
-`增删改` 边界之外的导航属性，向下递归时会忽略：
+`增删改` 边界之外的导航属性，递归时会忽略：
 - ManyToOne
 - ManyToMany(外部表) 
 - PgArrayToMany
 
-`增删改` 边界之内的导航属性，向下递归时会级联操作：
+`增删改` 边界之内的导航属性，递归时会级联操作：
 - OneToOne
 - OneToMany
 - ManyToMany(中间表)
