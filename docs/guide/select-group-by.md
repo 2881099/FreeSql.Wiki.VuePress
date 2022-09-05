@@ -105,7 +105,7 @@ fsql.Select<Topic>()
 ```csharp
 var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
     {
-        TitleCount=SqlExt.DistinctCount(a.Key.Title),
+        TitleCount = SqlExt.DistinctCount(a.Key.Title),
         ClicksCount= SqlExt.DistinctCount(a.Key.Clicks),
     }
 );
