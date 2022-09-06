@@ -10,6 +10,8 @@ FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表
 
 **AggregateRootRepository 是 IBaseRepository\<T\> 一种新的尝试实现**，它将自动处理 OneToOne/OneToMany 导航属性，以及 ManyToMany(中间表) 的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany 它们）。
 
+> dotnet add package FreeSql.Extensions.AggregateRoot
+
 ```csharp
 var repository = fsql.GetAggregateRootRepository<Order>();
 ```
