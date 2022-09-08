@@ -4,7 +4,9 @@
 
 默认提供 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库的适配，支持 CodeFirst/DbFirst 以及完整的 FreeSql 功能。
 
-国产数据库大多数都是兼容这四种数据库，以 MySql 数据库为例：
+国产数据库大多数都兼容这四种数据库，所以它们也可以用来访问国产数据库。
+
+访问 MySql 数据库为例：
 
 ```csharp
 var fsql = new FreeSqlBuilder()
