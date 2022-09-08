@@ -18,7 +18,7 @@ FreeSql.Provider.Custom 不依赖具体 ado.net/odbc/oledb dll 驱动，使用�
 var fsql = new FreeSqlBuilder()
     .UseConnectionFactory(DataType.CustomMySql, () => 
         new MySqlConnection("Data Source=..."))
-    .UseAutoSyncStructure(true)
+    .UseNoneParameter(true)
     .UseMonitorCommand(Console.WriteLine(cmd.CommandText))
     .Build();
 fsql.SetDbProviderFactory(MySqlConnectorFactory.Instance);
