@@ -8,7 +8,7 @@ FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表
 
 本文看上去像 EF，实则有区别，主要区别在级联边界的规则设定，例如我们允许 OneToMany 从下层向上递归级联，但是仅限查询，不能增删改。研究目的希望从机制上杜绝痛点，让操作变得更可控。
 
-**AggregateRootRepository 是 IBaseRepository\<T\> 一种新的尝试实现**，它将自动处理 OneToOne/OneToMany 导航属性，以及 ManyToMany(中间表) 的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany 它们）。
+**AggregateRootRepository 是 IBaseRepository\<T\> 一种新的尝试实现**，根据聚合根特点，实现可控的级联添加、级联更新、级联删除、级联查询（查询时自动 Include/IncludeMany）操作。
 
 ```csharp
 var repository = fsql.GetAggregateRootRepository<Order>();
@@ -22,12 +22,12 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 
 将一个主要的实体类认定为聚合根，设定好安全的管辖范围（边界），CRUD 时会把边界之内的所有内容看作一个整体。
 
-`增删改` 边界之外的导航属性，递归时会忽略：
+边界之外的导航属性，`增删改` 递归时会忽略：
 - ManyToOne
 - ManyToMany(外部表) 
 - PgArrayToMany
 
-`增删改` 边界之内的导航属性，递归时会级联操作：
+边界之内的导航属性，`增删改` 递归时会级联操作：
 - OneToOne
 - OneToMany
 - ManyToMany(中间表)
