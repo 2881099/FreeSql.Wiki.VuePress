@@ -62,8 +62,8 @@ export const zhSidebarConfig = sidebar({
                     collapsable: true,
                     children: [
                         "/guide/freesql-provider-custom.md",
-                        "/guide/freesql-provider-sqlitecore.md",
                         "/guide/freesql-provider-mysqlconnector.md",
+                        "/guide/freesql-provider-sqlitecore.md",
                         "/guide/freesql-provider-oracle.md",
                         // "/guide/freesql-provider-postgresql.md",
                         "/guide/freesql-provider-odbc.md",
