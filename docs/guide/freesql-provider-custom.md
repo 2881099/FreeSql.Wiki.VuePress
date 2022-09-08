@@ -12,21 +12,28 @@
 
 FreeSql.Provider.Custom 不依赖具体 ado.net/odbc/oledb dll 驱动，使用者在外部自行引用 dll 驱动。
 
-访问 `虚谷` 数据库为例：
+访问 MySql 数据库为例：
 
 ```csharp
 var fsql = new FreeSqlBuilder()
     .UseConnectionFactory(DataType.CustomMySql, () => 
-        new XGConnection("Data Source=..."))
+        new MySqlConnection("Data Source=..."))
     .UseAutoSyncStructure(true)
     .UseMonitorCommand(Console.WriteLine(cmd.CommandText))
     .Build();
-fsql.SetDbProviderFactory(new XGClientFactory());
+fsql.SetDbProviderFactory(new MySqlClientFactory());
 ```
+
+若某国产数据库兼容 MySql SQL，先引用对方提供的 DLL，然后：
+
+- 将上面 new MySqlConnection 替换成 new XxxConnection
+- 将上面 new MySqlClientFactory 替换成 new XxxClientFactory
+
+提示：对方 DLL 一般都会提供这两个现实类
 
 # 自定义适配
 
-通用实现为了让用户自己适配更多的数据库，比如连接 mssql 2000、db2 等数据库，牺牲了一些功能：
+为了让用户自己适配更多的数据库，比如连接 mssql 2000、db2 等数据库，牺牲了一些功能：
 
 - 不支持 CodeFirst 自动迁移
 - 不支持 DbFirst 接口方法的实现
