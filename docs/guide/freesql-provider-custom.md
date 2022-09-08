@@ -21,7 +21,7 @@ fsql.SetDbProviderFactory(new MySqlClientFactory());
 - 将上面 new MySqlConnection 替换成 new XxxConnection
 - 将上面 new MySqlClientFactory 替换成 new XxxClientFactory
 
-提示：对方 DLL 一定会提供这两个现实
+提示：对方 DLL 一般都会提供这两个现实类
 
 # 自定义适配
 
