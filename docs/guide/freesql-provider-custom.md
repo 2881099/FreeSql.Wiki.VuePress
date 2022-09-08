@@ -21,13 +21,13 @@ var fsql = new FreeSqlBuilder()
     .UseAutoSyncStructure(true)
     .UseMonitorCommand(Console.WriteLine(cmd.CommandText))
     .Build();
-fsql.SetDbProviderFactory(new MySqlClientFactory());
+fsql.SetDbProviderFactory(MySqlConnectorFactory.Instance);
 ```
 
 若某国产数据库兼容 MySql SQL，先引用对方提供的 DLL，然后：
 
 - 将上面 new MySqlConnection 替换成 new XxxConnection
-- 将上面 new MySqlClientFactory 替换成 new XxxClientFactory
+- 将上面 MySqlConnectorFactory.Instance 替换成对应的 DbProviderFactory
 
 提示：对方 DLL 一般都会提供这两个现实类
 
