@@ -1,6 +1,6 @@
 # 国产数据库
 
-不依赖任何具体 ado.net/odbc/oledb 驱动，使用者在外部设置具体引用哪个 dll。
+FreeSql.Provider.Custom 不依赖任何具体 ado.net/odbc/oledb 驱动，使用者在外部设置具体引用哪个 dll。
 
 默认提供 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库的适配，支持 CodeFirst/DbFirst 以及完整的 FreeSql 功能。
 
