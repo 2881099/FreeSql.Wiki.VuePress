@@ -4,7 +4,7 @@
 
 GroupBy + WithTempQuery(嵌套查询) + FromQuery + UnionAll 组合使用，会让查询功能更加强大、灵活。
 
-1、单表 UNION ALL
+## 单表 UNION ALL
 
 ```csharp
 var sql = fsql.Select<User>().Where(a => a.Id == 1)
@@ -32,7 +32,7 @@ FROM ( SELECT a."Id", a."GroupId", a."Username"
 WHERE ((a."Id" = 1 OR a."Id" = 2))
 ```
 
-2、多表 UNION ALL
+## 多表 UNION ALL
 
 ```csharp
 var sql = fsql.Select<User, Group>()
@@ -80,7 +80,7 @@ WHERE ((a."Id" = 1 OR a."Id" = 2))
     })
 ```
 
-3、WithParameters 参数化共享
+## WithParameters 参数化共享
 
 开启参数化查询功能后，使用 WithParameters 共享参数化，避免产生相同的参数名称：
 
