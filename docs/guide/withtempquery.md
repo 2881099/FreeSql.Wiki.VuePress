@@ -158,6 +158,41 @@ INNER JOIN (
 ) b ON a.[Id] = b.[GroupId]
 ```
 
+## WithParameters 参数化共享
+
+开启参数化查询功能后，使用 WithParameters 共享参数化，避免产生相同的参数名称：
+
+```csharp
+var dbpars = new List<DbParameter>();
+
+var id1 = 1;
+var id2 = 2;
+var sql = fsql.Select<User1>()
+    .WithParameters(dbpars)
+    .Where(a => a.Id == id1)
+
+    .FromQuery(
+        fsql.Select<User1>()
+            .WithParameters(dbpars)
+            .Where(a => a.Id == id2)
+    )
+    .InnerJoin((a,b) => a.Id == b.Id)
+    .ToSql();
+```
+
+```sql
+SELECT a."Id", a."GroupId", a."Username" 
+FROM (
+    SELECT a."Id", a."GroupId", a."Username" 
+    FROM "User1" a 
+    WHERE (a."Id" = @exp_0) 
+) a
+INNER JOIN ( 
+    SELECT a."Id", a."GroupId", a."Username" 
+    FROM "User1" a 
+    WHERE (a."Id" = @exp_1) ) b ON b."Id" = a."Id"
+```
+
 ---
 
 ## 子表Exists
