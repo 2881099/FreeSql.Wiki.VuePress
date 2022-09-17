@@ -81,16 +81,7 @@ List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
 
 参考实现：[https://github.com/dotnetcore/FreeSql/issues/528](https://github.com/dotnetcore/FreeSql/issues/528)
 
-## 7、ToSql
-
-每个 ToList 都可以使用 ToSql 返回 SQL String，有两个选项：
-
-- FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；
-- FieldAliasOptions.AsProperty 使用属性名作为字段别名，合适使用二次构造 SQL 再次执行；
-
-> v3.2.666 开启参数化查询功能后，使用 WithParameters 共享参数化，避免多个查询对象产生相同的参数名称，例如：[UnionAll 联合查询](%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2)
-
-## 8、Dto 映射返回
+## 7、Dto 映射返回
 
 ```csharp
 fsql.Select<Song>().ToList<Dto>();
@@ -138,7 +129,7 @@ DTO 查询只映射默认字段（普通属性），映射对象请使用：
 
 > 多表对象：ToList((a, b) => new Dto { Catalog = b })
 
-## 9、ToChunk 分段返回
+## 8、ToChunk 分段返回
 
 执行查询，分块返回数据，可减少内存开销。比如读取 10 万条数据，每次返回 100 条处理。
 
@@ -151,6 +142,15 @@ fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done => {
 });
 //这里示范，最终 testlist1 与 testlist2 返回的数据相同。
 ```
+
+## 9、ToSql
+
+每个 ToList 都可以使用 ToSql 返回 SQL String，有两个选项：
+
+- FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；
+- FieldAliasOptions.AsProperty 使用属性名作为字段别名，合适使用二次构造 SQL 再次执行；
+
+> v3.2.666 开启参数化查询功能后，使用 WithParameters 共享参数化，避免多个查询对象产生相同的参数名称，例如：[UnionAll 联合查询](%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2)
 
 ## 10、执行 SQL
 
