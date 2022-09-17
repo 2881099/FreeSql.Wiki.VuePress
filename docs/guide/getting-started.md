@@ -80,7 +80,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
-Func<IServiceProvider, IFreeSql> fsql = r =>
+Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
 {
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
@@ -89,7 +89,7 @@ Func<IServiceProvider, IFreeSql> fsql = r =>
         .Build();
     return fsql;
 };
-builder.Services.AddSingleton<IFreeSql>(fsql);
+builder.Services.AddSingleton<IFreeSql>(fsqlFactory);
 
 WebApplication app = builder.Build();
 //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
