@@ -180,3 +180,7 @@ class Tag
 ```
 
 Song、Tag、Song_tag，这三个实体使用了 OneToMany、ManyToOne、Parent、ManyToMany 4 种关系。
+
+# 其他参考
+
+- [freesql如何建立非主键导航属性 OneToOne/ManyToOne](https://github.com/dotnetcore/FreeSql/issues/604)
