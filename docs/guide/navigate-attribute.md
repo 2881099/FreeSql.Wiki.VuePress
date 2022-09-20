@@ -53,6 +53,10 @@ fsql.CodeFirst.ConfigEntity<实体类>(a => a
 
 2、Navigate 设置的字符串是 类属性名，不是表 字段名！！！
 
+> 扩展：
+
+- [如何建立非主键导航属性 OneToOne/ManyToOne](https://github.com/dotnetcore/FreeSql/issues/604)
+
 # 检测导航属性
 
 如何检测一个导航属性是否配置生效：
@@ -180,7 +184,3 @@ class Tag
 ```
 
 Song、Tag、Song_tag，这三个实体使用了 OneToMany、ManyToOne、Parent、ManyToMany 4 种关系。
-
-# 其他参考
-
-- [freesql如何建立非主键导航属性 OneToOne/ManyToOne](https://github.com/dotnetcore/FreeSql/issues/604)
