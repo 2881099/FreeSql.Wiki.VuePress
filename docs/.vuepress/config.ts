@@ -27,7 +27,7 @@ export default defineUserConfig({
                 rel: "icon",
                 type: "image/png",
                 sizes: "16x16",
-                href: `/assets/icon/favicon-16x16.png`,
+                href: `/favicon-16x16.png`,
             },
         ],
         [
@@ -36,7 +36,7 @@ export default defineUserConfig({
                 rel: "icon",
                 type: "image/png",
                 sizes: "32x32",
-                href: `/assets/icon/favicon-32x32.png`,
+                href: `/favicon-32x32.png`,
             },
         ],
         ['meta', { name: 'application-name', content: 'FreeSql' }],
