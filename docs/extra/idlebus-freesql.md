@@ -49,7 +49,7 @@ public class ValuesController : ControllerBase
 }
 ```
 
-## 二、使用 FreeSql.Clound
+## 二、使用 FreeSql.Cloud
 
 为 FreeSql 提供跨数据库访问，分布式事务TCC、SAGA解决方案，支持 .NET Core 2.1+, .NET Framework 4.0+.
 
