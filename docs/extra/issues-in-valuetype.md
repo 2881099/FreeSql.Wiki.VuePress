@@ -11,9 +11,23 @@ lst.Add((Guid.NewGuid(), DateTime.Now));
 var t2 = fsql.Select<T>()
   .Where(a => lst.Contains(a.Id, a.ct1))
   .ToList();
-//SELECT .. FROM ..
-//WHERE (a."Id" = '685ee1f6-bdf6-4719-a291-c709b8a1378f' AND a."ct1" = '2019-12-07 23:55:27' OR 
-//a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
+```
+
+Oracle 产生如下SQL：
+
+```sql
+SELECT .. FROM ..
+WHERE (a."Id", a."ct1") in (
+('685ee1f6-bdf6-4719-a291-c709b8a1378f','2019-12-07 23:55:27'), 
+('5ecd838a-06a0-4c81-be43-1e77633b7404', '2019-12-07 23:55:27'))
+```
+
+非 ORACLE 产生如下 SQL：
+
+```sql
+SELECT .. FROM ..
+WHERE (a."Id" = '685ee1f6-bdf6-4719-a291-c709b8a1378f' AND a."ct1" = '2019-12-07 23:55:27' OR 
+a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
 ```
 
 代码实现：
