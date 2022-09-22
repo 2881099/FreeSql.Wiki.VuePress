@@ -58,8 +58,7 @@ var t2 = fsql.Select<T>()
 
 > v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))
 
-> WHERE (id, code) in ((1,'code1'), (2,'code2))
-> 实现代码：[In多列查询，表达式自定义实现](../extra/issues-in-valuetype.md)
+> WHERE (id, code) in ((1,'code1'), (2,'code2')) 实现代码：[In多列查询，表达式自定义实现](../extra/issues-in-valuetype.md)
 
 ## In子表
 
