@@ -2,6 +2,27 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.680
+
+- **优化 WithTempQuery 多对象选择同别名问题；** #1192
+- 修复 WithTempQuery + Column + GroupBy + Key 指定列名的问题；
+- 修复 GlobalFilter.ApplyIf + Repository.DataFilter.DisableAll 可能不生效的问题；
+- 修复 UpdateDict 不支持 SET NULL 的更新；#1257
+- 修复 ClickHuse DBFrist ExistsTable；
+- 增加 ClickHouse LimitBy/Sample 查询方法；
+- **增加 所有[国产数据库](https://freesql.net/guide/freesql-provider-custom.html)支持 CustomMySql、CustomPostgreSQL、CustomOracle、CustomSqlServer 自定义适配；**
+- 优化 DbSet/Repository 防止 Aop.AuditValue 触发两次；
+- 优化 表达式树解析为 NULL 的提示；
+- 优化 UseMappingPriority 与实体元数据逻辑；#1247
+- 优化 ServerTime 与 IUpdate.Set 指定更新的重复问题；#1251
+
+## v3.2.669
+
+- 修复 WithTempQuery + RereadSql 无别名的问题；
+- 修复 WithTempQuery + FromQuery + 子查询的 bug；
+- 修复 WithTempQuery + Column(Name 别名问题；
+- 优化 CheckAvailable retry 重试一次；
+
 ## v3.2.666
 
 - **增加 WithTempQuery + FromQuery 嵌套查询功能；** #1192
