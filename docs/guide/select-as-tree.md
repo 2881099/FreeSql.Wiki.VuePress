@@ -84,6 +84,8 @@ Assert.Equal("110101", t1[0].Childs[0].Childs[1].Code);
 
 ## 2、AsTreeCte 递归删除
 
+MySql连接字符串需要增加 `Allow User Variables=True`，否则会有`MySqlException Parameter '@cte ids' must be defined`
+
 很常见的无限级分类表功能，删除树节点时，把子节点也处理一下。
 
 ```csharp
