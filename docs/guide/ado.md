@@ -16,9 +16,16 @@ var result = fsql.Ado.Query<T1, T2>("select * from t1; select * from t2");
 List<T1> list1 = result.Item1;
 List<T2> list2 = result.Item2;
 
-// like 查询
+//like 查询
 string searchText = "abc";
 List<T> users = _fsql.Ado.Query<T>("select * from t1 where name like @name", new { name = "%" + searchText + "%" });
+
+//SELECT now(), utc_timestamp()
+var result = fsql.Ado.QuerySingle(() => new
+{
+    DateTime.Now,
+    DateTime.UtcNow
+});
 ```
 
 ## 参数化
