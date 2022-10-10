@@ -196,10 +196,10 @@ UseCommandMonitor(cmd => cmd.ConmandTimeout = 9999, null) 这样设置
 
 
 **单个设置**
-FreeSqlHelper.Fsql.Insert(list).CommandTimeout(500).xxxxxx
-FreeSqlHelper.Fsql.Update<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
-FreeSqlHelper.Fsql.Select<Entities.SysAdmin>().CommandTimeout(300).xxxxxx
-FreeSqlHelper.Fsql.Delete<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
+- FreeSqlHelper.Fsql.Insert(list).CommandTimeout(500).xxxxxx
+- FreeSqlHelper.Fsql.Update<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
+- FreeSqlHelper.Fsql.Select<Entities.SysAdmin>().CommandTimeout(300).xxxxxx
+- FreeSqlHelper.Fsql.Delete<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
 
 
 ---
