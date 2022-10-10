@@ -24,8 +24,18 @@ var list = fsql.Select<Topic>()
     .Having(a => a.Count() < 300 || a.Avg(a.Key.mod4) < 100)
     .OrderBy(a => a.Key.tt2)
     .OrderByDescending(a => a.Count())
-    .ToList(a => new { a.Key, cou1 = a.Count(), arg1 = a.Avg(a.Value.Clicks) });
-//SELECT substr(a.`Title`, 1, 2) as1, count(1) as2, avg(a.`Id`) as3 
+    .ToList(a => new 
+    {
+        a.Key, 
+        cou1 = a.Count(), 
+        arg1 = a.Avg(a.Value.Clicks), 
+        arg2 = a.Sum(a.Value.Clicks > 100 ? 1 : 0)
+    });
+//SELECT 
+//substr(a.`Title`, 1, 2) as1, 
+//count(1) as2, 
+//avg(a.`Clicks`) as3, 
+//sum(case when a.`Clicks` > 100 then 1 else 0 end) as4 
 //FROM `Topic` a 
 //GROUP BY substr(a.`Title`, 1, 2), (a.`Id` % 4) 
 //HAVING (count(1) > 0 AND avg((a.`Id` % 4)) > 0 AND max((a.`Id` % 4)) > 0) AND (count(1) < 300 OR avg((a.`Id` % 4)) < 100)
