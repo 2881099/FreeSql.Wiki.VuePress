@@ -335,7 +335,7 @@ AggregateRootRepository 只对边界之内的数据进行递归 CRUD 操作，�
 
 特殊情况可以继承后重写 Select 属性扩大、或缩小查询内容：
 
-- Insert/Delete/Update `扩大` 后的查询内容，不会对 `扩大` 后的数据进行增删改；
+- Insert/Delete/Update 不会对 `扩大` 边界之外的数据进行增删改；
 - Update `缩小` 后的查询内容，由于导航属性值为 NULL，不会删除未查询的内容；
 
 2、**善用事务**，使用事务解决一致操作问题。
