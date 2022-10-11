@@ -1,4 +1,4 @@
-# UnitOfWorkManager 事务 ✨
+# UowManager 事务 ✨
 
 本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。
 
