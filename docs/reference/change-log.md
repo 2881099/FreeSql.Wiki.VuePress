@@ -2,6 +2,13 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.681
+
+- **修复 3.2.666-3.2.680 子查询的特殊 bug；**
+- 增加 fsql.Ado.QuerySingle(() => new {}) 扩展方法实现无表查询 SELECT now(), utc_timestamp()
+- 优化 min pool size 与 max pool size 连接串设置；
+- 优化 导航属性未配置关系先 Where 后 InnerJoin 的问题；
+
 ## v3.2.680
 
 - **优化 WithTempQuery 多对象选择同别名问题；** #1192
