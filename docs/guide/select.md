@@ -4,12 +4,12 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 
 | | | |
 | --- | --- | --- |
-| [分页查询](paging.md) | [仓储层 Repository](repository.md) | [读写分离](read-write-splitting.md) |
-| [单表查询](select-single-table.md) | [过滤器](filters.md) | [LinqToSql](linq-to-sql.md) |
-| [多表查询](select-multi-table.md) | [延时加载](select-lazy-loading.md) | [性能](performance.md) |
-| [嵌套查询](withtempquery.md) | [贪婪加载](select-include.md) | [分表分库](sharding.md) |
-| [分组聚合查询](select-group-by.md)  | [表达式函数](expression-function.md) | [多租户](multi-tenancy.md) |
-| [返回数据](select-return-data.md) |  |  |
+| [《分页查询》](paging.md) | [《仓储层 Repository》](repository.md) | [《读写分离》](read-write-splitting.md) |
+| [《单表查询》](select-single-table.md) | [《过滤器》](filters.md) | [《LinqToSql》](linq-to-sql.md) |
+| [《多表查询》](select-multi-table.md) | [《延时加载》](select-lazy-loading.md) | [《性能》](performance.md) |
+| [《嵌套查询》](withtempquery.md) | [《贪婪加载》](select-include.md) | [《分表分库》](sharding.md) |
+| [《分组聚合查询》](select-group-by.md)  | [《表达式函数》](expression-function.md) | [《多租户》](multi-tenancy.md) |
+| [《返回数据》](select-return-data.md) |  |  |
 
 ## SqlServer WithLock、WithIndex
 
