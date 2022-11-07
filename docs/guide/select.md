@@ -50,6 +50,20 @@ var list = Select<Region, T2>()
 //INNER JOIN [T2] b With(index=idx_02) ON a.[x] = b.[xx]
 ```
 
+全局设置 NoLock：
+
+```csharp
+//所有实体类生效
+fsql.SetGlobalSelectWithLock(SqlServerLock.NoLock, null);
+
+//【指定】实体类生效
+fsql.SetGlobalSelectWithLock(SqlServerLock.NoLock, new Dictionary<Type, bool>
+{
+    [typeof(Region)] = true,
+    [typeof(T2)] = true
+});
+```
+
 ## 特别介绍 WhereDynamicFilter
 
 [《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》](https://www.cnblogs.com/FreeSql/p/16485310.html)
