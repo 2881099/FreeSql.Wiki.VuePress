@@ -11,7 +11,7 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 | [《分组聚合查询》](select-group-by.md)  | [《表达式函数》](expression-function.md) | [《多租户》](multi-tenancy.md) |
 | [《返回数据》](select-return-data.md) |  |  |
 
-## SqlServer WithLock、WithIndex
+## SqlServer WithLock/WithIndex
 
 ```csharp
 var list = fsql.Select<Region>()
