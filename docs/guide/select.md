@@ -19,6 +19,45 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 - [分表分库](sharding.md)
 - [多租户](multi-tenancy.md)
 
+## SqlServer WithLock、WithIndex
+
+```csharp
+var list = fsql.Select<Region>()
+    .WithLock()
+    .Limit(1).ToList();
+//SELECT TOP 1 ... FROM [Region] a With(NoLock)
+
+var list = fsql.Select<Region>()
+    .WithLock(SqlServerLock.NoLock | SqlServerLock.NoWait)
+    .Limit(1).ToList();
+//SELECT TOP 1 ... FROM [Region] a With(NoLock, NoWait)
+
+var list = fsql.Select<Region>()
+    .WithLock()
+    .WithIndex("idx_01")
+    .Limit(1).ToList();
+//SELECT TOP 1 ... FROM [Region] a With(index=idx_01, NoLock)
+```
+
+多表：
+
+```csharp
+var list = Select<Region, T2>()
+    .InnerJoin((a, b) => a.x == b.xx)
+    .WithLock(SqlServerLock.NoLock, new Dictionary<Type, bool>
+    {
+        [typeof(T2)] = false
+    })
+    .WithIndex("idx_01", new Dictionary<Type, string>
+    {
+        [typeof(T2)] = "idx_02"
+    })
+    .Limit(1).ToList();
+//SELECT TOP 1 ..
+//FROM [Region] a With(index=idx_01, NoLock) 
+//INNER JOIN [T2] b With(index=idx_02) ON a.[x] = b.[xx]
+```
+
 ## 特别介绍 WhereDynamicFilter
 
 [《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》](https://www.cnblogs.com/FreeSql/p/16485310.html)
