@@ -18,6 +18,7 @@
 - 修复 SqlServer WithSql + WithLock bug；
 - 扩展 UseMessagePackMap 示例；
 - 优化 UpdateDict 支持 .IsVersion 乐观锁设置；
+- 优化 表达式树解析 w => (w as TBase).Id；
 - 优化 导航属性集合 .Exists 效果与 .Any 相同；
 - 完善 SqlServer WithLock + WithIndex 扩展方法；
 
