@@ -5,6 +5,7 @@
 ## v3.2.683（即将发布）
 
 - **修复 Repository/DbContext 同一实例执行报错后续无法再 CRUD；**
+- **修复 UnitOfWorkManager + Repository.SaveMany 事务切换问题；**
 - 修复 导航属性 PgArrayToMany 数组字段为空时的 bug；
 - 修复 导航属性 PgArrayToMany DTO 异步查询报错的 bug（同步方法正常）；
 - 修复 SqlExt count/avg 开窗函数参数；#1321
