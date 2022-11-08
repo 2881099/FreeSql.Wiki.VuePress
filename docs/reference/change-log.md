@@ -2,6 +2,22 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.683（即将发布）
+
+- **修复 Repository/DbContext 同一实例执行报错后续无法再 CRUD；**
+- 修复 导航属性 PgArrayToMany 数组字段为空时的 bug；
+- 修复 导航属性 PgArrayToMany DTO 异步查询报错的 bug（同步方法正常）；
+- 修复 SqlExt count/avg 开窗函数参数；#1321
+- 修复 Sqlite TimeSpan 类型映射错误；
+- 修复 Sqlite Attachs 多库索引 {tablename} 问题；
+- 修复 EndEdit 未触发 OnEntityChange；
+- 修复 fsql.InsertOrUpdate CanInsert=false,CanUpdate=true (mysql/pgsql）不生效的 bug；
+- 修复 聚合根仓储（实验） InsertOrUpdate 重复插入的 bug；
+- 修复 聚合根仓储（实验） Update 未更新自增状态管理的 bug；
+- 扩展 UseMessagePackMap 示例；
+- 优化 UpdateDict 支持 .IsVersion 乐观锁设置；
+- 完善 SqlServer WithLock + WithIndex 扩展方法；
+
 ## v3.2.682
 
 - 优化 人大金仓 KingbaseES 兼容 V8R3/V8R6；#931 #325
