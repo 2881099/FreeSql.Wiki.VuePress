@@ -15,6 +15,7 @@
 - 修复 fsql.InsertOrUpdate CanInsert=false,CanUpdate=true (mysql/pgsql）不生效的 bug；
 - 修复 聚合根仓储（实验） InsertOrUpdate 重复插入的 bug；
 - 修复 聚合根仓储（实验） Update 未更新自增状态管理的 bug；
+- 修复 SqlServer WithSql + WithLock bug；
 - 扩展 UseMessagePackMap 示例；
 - 优化 UpdateDict 支持 .IsVersion 乐观锁设置；
 - 完善 SqlServer WithLock + WithIndex 扩展方法；
