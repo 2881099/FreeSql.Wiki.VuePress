@@ -16,6 +16,8 @@
 - 修复 聚合根仓储（实验） InsertOrUpdate 重复插入的 bug；
 - 修复 聚合根仓储（实验） Update 未更新自增状态管理的 bug；
 - 修复 SqlServer WithSql + WithLock bug；
+- 修复 Odbc 自定义 N'' 无效；#1332
+- 修复 DbContext DbSet 属性初始并发时未触发 OnModelCreating；#1333
 - 扩展 UseMessagePackMap 示例；
 - 优化 UpdateDict 支持 .IsVersion 乐观锁设置；
 - 优化 表达式树解析 w => (w as TBase).Id；
