@@ -16,6 +16,7 @@
 - 修复 聚合根仓储（实验） InsertOrUpdate 重复插入的 bug；
 - 修复 聚合根仓储（实验） Update 未更新自增状态管理的 bug；
 - 修复 SqlServer WithSql + WithLock bug；
+- 修复 ClickHouse Ado 参数化无效的问题；#1340
 - 修复 Odbc 自定义 N'' 无效；#1332
 - 修复 DbContext DbSet 属性初始并发时未触发 OnModelCreating；#1333
 - 修复 Utils.ReplaceSqlConstString bug；
@@ -25,6 +26,7 @@
 - 优化 表达式树解析 w => (w as TBase).Id；
 - 优化 导航属性集合 .Exists 效果与 .Any 相同；
 - 优化 MySql CodeFirst 判断表是否存在的查询语句性能；
+- 优化 SqlServer2005 TOP 1 查询；
 - 完善 SqlServer WithLock + WithIndex 扩展方法；
 
 ## v3.2.682
