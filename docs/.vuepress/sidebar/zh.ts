@@ -7,10 +7,11 @@ export const zhSidebarConfig = sidebar({
             prefix: "/guide/",
             link: "/guide/",
             icon: "creative",
+            collapsible: true,
             children: [
                 {
                     text: "基础文档",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/README.md",
                         "/guide/getting-started.md",
@@ -23,7 +24,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "查询",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/select.md",
                         "/guide/paging.md",
@@ -42,7 +43,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "Repository",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/repository.md",
                         "/guide/unit-of-work.md",
@@ -54,12 +55,12 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "DbContext",
-                    collapsable: true,
+                    collapsible: true,
                     children: ["/guide/db-context.md", "/guide/ifreesql-context.md"],
                 },
                 {
                     text: "特别提供程序",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/freesql-provider-custom.md",
                         "/guide/freesql-provider-mysqlconnector.md",
@@ -71,7 +72,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "扩展",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/freesql-extensions-baseentity.md",
                         "/guide/freesql-extensions-jsonmap.md",
@@ -80,7 +81,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "CodeFirst ✨",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/code-first.md",
                         "/guide/entity-attribute.md",
@@ -99,7 +100,7 @@ export const zhSidebarConfig = sidebar({
                 "/guide/more.md",
                 {
                     text: "高级功能",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/read-write-splitting.md",
                         "/guide/sharding.md",
@@ -110,7 +111,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "其他作品",
-                    collapsable: true,
+                    collapsible: true,
                     children: [
                         "/guide/freeredis.md",
                         "/guide/freescheduler.md",
@@ -127,14 +128,14 @@ export const zhSidebarConfig = sidebar({
     "/reference/": [
         {
             text: "参考", 
-            collapsable: true,
+            collapsible: true,
             prefix: "/reference/",
             link: "/reference/api.md",
             icon: "plugin",
             children: [
                 {
                     text: "参考",
-                    collapsable: true,
+                    collapsible: true,
                     icon: "view",
                     children: [
                         "/reference/api.md",
@@ -145,7 +146,7 @@ export const zhSidebarConfig = sidebar({
                 },
                 {
                     text: "学习与交流",
-                    collapsable: true,
+                    collapsible: true,
                     icon: "comment",
                     children: [
                         "/reference/faq.md",
@@ -157,7 +158,7 @@ export const zhSidebarConfig = sidebar({
         },
         {
             text: "捐赠",
-            collapsable: true,
+            collapsible: true,
             icon: "launch",
             link: "/reference/service-support.md",
         },
@@ -168,7 +169,7 @@ export const zhSidebarConfig = sidebar({
             prefix: "/extra/",
             link: "/extra/",
             icon: "any",  
-            collapsable: true,
+            collapsible: true,
             children: [
                 "/extra/README.md",
                 "/extra/freesql-cap.md",
@@ -184,7 +185,7 @@ export const zhSidebarConfig = sidebar({
             text: "博客",
             prefix: "/extra/",
             icon: "any",
-            collapsable: true,
+            collapsible: true,
             children: [
                 "/extra/aop-freesql-autofac.md",
             ],

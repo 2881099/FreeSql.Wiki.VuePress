@@ -66,6 +66,7 @@ export default defineUserConfig({
         ]
     ],
     theme,
+    shouldPrefetch: false,
     plugins: [
         docsearchPlugin({
             appId: "8QM97XX5VE",

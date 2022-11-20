@@ -9,7 +9,7 @@ export const enSidebarConfig = sidebar([
         children: [
             {
                 text: 'Basics',
-                collapsable: true,
+                collapsible: true,
                 children: [
                     '/en/guide/README.md',
                     '/en/guide/Getting-Started.md',
@@ -21,7 +21,7 @@ export const enSidebarConfig = sidebar([
                 ]
             },
             {
-                text: 'Query', collapsable: true,
+                text: 'Query', collapsible: true,
                 children: [
                     '/en/guide/Query-Data.md',
                     '/en/guide/Pagination.md',
@@ -38,7 +38,7 @@ export const enSidebarConfig = sidebar([
             },
             {
                 text: 'Repository',
-                collapsable: true,
+                collapsible: true,
                 children: [
                     '/en/guide/Repository-Layer.md',
                     '/en/guide/Cascade-Saving.md',
@@ -48,7 +48,7 @@ export const enSidebarConfig = sidebar([
             },
             {
                 text: 'DbContext',
-                collapsable: true,
+                collapsible: true,
                 children: [
                     '/guide/db-context.md',
                     '/guide/ifreesql-context.md',
@@ -56,7 +56,7 @@ export const enSidebarConfig = sidebar([
             },
             {
                 text: 'CodeFirst',
-                collapsable: true,
+                collapsible: true,
                 children: [
                     '/en/guide/Entity-Relationship.md',
                 ]

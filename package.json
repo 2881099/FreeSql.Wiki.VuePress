@@ -20,13 +20,13 @@
         "test": "echo \"Warning: no test specified\" && exit 0"
     },
     "dependencies": {
-        "@vuepress/cli": "2.0.0-beta.49",
-        "@vuepress/client": "2.0.0-beta.49",
-        "@vuepress/plugin-docsearch": "2.0.0-beta.49",
-        "@vuepress/plugin-google-analytics": "2.0.0-beta.49",
+        "@vuepress/cli": "2.0.0-beta.53",
+        "@vuepress/client": "2.0.0-beta.53",
+        "@vuepress/plugin-docsearch": "2.0.0-beta.53",
+        "@vuepress/plugin-google-analytics": "2.0.0-beta.53",
         "vue": "^3.2.37",
-        "vuepress-theme-hope": "2.0.0-beta.91",
-        "vuepress-vite": "2.0.0-beta.49",
-        "vuepress-webpack": "2.0.0-beta.49"
+        "vuepress-theme-hope": "2.0.0-beta.124",
+        "vuepress-vite": "2.0.0-beta.53",
+        "vuepress-webpack": "2.0.0-beta.53"
     }
 }

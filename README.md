@@ -27,7 +27,13 @@ pnpm build:vite
 ## upgrade package
 
 ```bash
-pnpm i vuepress-theme-hope@2.0.0-beta.91
+pnpm up vuepress-theme-hope@2.0.0-beta.124
+pnpm up @vuepress/cli@2.0.0-beta.53
+pnpm up @vuepress/client@2.0.0-beta.53
+pnpm up @vuepress/plugin-docsearch@2.0.0-beta.53
+pnpm up @vuepress/plugin-google-analytics@2.0.0-beta.53
+pnpm up vuepress-vite@2.0.0-beta.53
+pnpm up vuepress-webpack@2.0.0-beta.53
 ```
 
 ## vuepress-next
