@@ -2,7 +2,7 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
-## v3.2.683（即将发布）
+## v3.2.683
 
 - **修复 Repository/DbContext 同一实例执行报错后续无法再 CRUD；**
 - **修复 UnitOfWorkManager + Repository.SaveMany 事务切换问题；**
