@@ -32,16 +32,18 @@ var result = fsql.Ado.QuerySingle(() => new
 
 Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典：
 
-- new { id = 1, name = "xx" }
-- new Dictionary\<string, object\> { ["id"] = 1, ["name"] = "xx" }
+```csharp
+ new { id = 1, name = "xx" }
+ new Dictionary\<string, object\> { ["id"] = 1, ["name"] = "xx" }
+```
 
-关于参数前缀：
+关于**参数前缀**：
 
-- odbc 是 ? 并且没有标识，所以 freesql 禁用了 odbc 参数化
-- oracle 是 :
-- mysql.data 是 ?
-- mysqlconnector 是 @
-- 其他基本都是 @
+- odbc 是 **?** 并且没有标识，所以 freesql 禁用了 odbc 参数化
+- oracle 是 **:**
+- mysql.data 是 **?**
+- mysqlconnector 是 **@**
+- 其他基本都是 **@**
 
 IN 参数化查询：
 
@@ -99,6 +101,7 @@ var dt = fsql.Ado.CommandFluent("getTableInfo")
      .ExecuteDataTable();
 Console.WriteLine(dt.Rows.Count);
 ```
+
 ## Ado.net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
