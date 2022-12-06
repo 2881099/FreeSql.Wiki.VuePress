@@ -257,6 +257,20 @@ UPDATE `T1` SET Title = '111' WHERE id in (select a.id from T1 a left join Optio
 - 更新前可预览测试数据，防止错误更新操作；
 - 支持复杂的更新操作，例如：`ISelect` 上使用 `Limit(10)` 更新附合条件的前 10 条记录；
 
+## 11、BulkCopy 批量更新
+
+FreeSql.Provider.SqlServer、FreeSql.Provider.MySqlConnector、FreeSql.Provider.PostgreSQL 
+
+分别实现了扩展方法 ExecuteSqlBulkCopy、ExecuteMySqlBulkCopy、ExecutePgCopy 实现批量更新（v3.2.685）
+
+原理：使用 BulkCopy 将数据插入到临时表，再使用 UPDATE FROM JOIN 联表更新。
+
+提示：当更新的字段数量超过 3000 时，收益较大。
+
+```csharp
+fsql.Update<T1>().SetSource(list).ExecuteSqlBulkCopy();
+```
+
 # API
 
 | 方法            | 返回值     | 参数                    | 描述                                                                            |
