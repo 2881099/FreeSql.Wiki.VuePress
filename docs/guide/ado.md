@@ -34,7 +34,7 @@ Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典�
 
 ```csharp
  new { id = 1, name = "xx" }
- new Dictionary\<string, object\> { ["id"] = 1, ["name"] = "xx" }
+ new Dictionary<string, object> { ["id"] = 1, ["name"] = "xx" }
 ```
 
 关于**参数前缀**：
