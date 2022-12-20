@@ -2,6 +2,24 @@
 
 大约每三个月一次版本号，暂时以修复 bug 为主
 
+## v3.2.685
+
+- **增加 IUpdate\<T\> BulkCopy 批量更新扩展方法；（暂时支持 SqlServer/MySql/PostgreSQL）**
+- 修复 ClickHouse CodeFirst 表结构同步问题；
+- 修复 ISelectGrouping ToSql AsProperty 别名无效问题；
+- 优化 UnitOfWork 与 ForUpdate 事务开启逻辑；
+- 优化 MySqlConnector MySqlDataTime 读取；
+- 优化 linq.dynamic Expression Invoke 解析；#1378
+
+## v3.2.684
+
+- **修复 Firebird CodeFirst.SyncStructure 自增主键错误；(受影响版本 3.2.666-3.2.683)**
+- 修复 Firebird \[Index("{tablename}_Name" 分表索引名未处理的 bug；#1346
+- 修复 InsertDict DBNull.Value 值无法插入的问题；#1336
+- 修复 fsql.InsertOrUpdate SetSource(sql) 无效的 bug；
+- 优化 string[].Any(..) 表达式树解析；ReplaceParameterVisitor
+- 优化 ISelect\<T1, T2\> 对象 .LeftJoin\<T2\> 表别名；#1348
+
 ## v3.2.683
 
 - **修复 Repository/DbContext 同一实例执行报错后续无法再 CRUD；**
