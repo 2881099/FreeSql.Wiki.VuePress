@@ -192,6 +192,7 @@ fsql.Delete<Blog>()
 | ------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
 | UseConnectionString                   | this          | 设置连接串                                                                                     |
 | UseSlave                              | this          | 设置从数据库，支持多个                                                                         |
+| UseSlaveWeight | this | 设置从数据库权重 |
 | UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                             |
 | UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                   |
 | UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()         |
