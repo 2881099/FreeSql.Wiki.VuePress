@@ -197,9 +197,10 @@ fsql.Delete<Blog>()
 | UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()         |
 | UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                     |
 | UseLazyLoading                        | this          | 开启延时加载功能                                                                               |
-| UseMonitorCommand | this | 监视全局 SQL 执行前后 |
-| UseMappingPriority | this | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
+| UseMonitorCommand                     | this          | 监视全局 SQL 执行前后 |
+| UseMappingPriority                    | this          | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
 | UseNameConvert                        | this          | 自动转换名称 Entity -\> Db                                                                     |
+| UseQuoteSqlName                       | this          | SQL名称是否使用 \[\] `` "" |
 | UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认 true) |
 | Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                           |
 
