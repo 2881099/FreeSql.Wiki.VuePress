@@ -64,14 +64,19 @@ fsql.Aop.CommandBefore、fsql.Aop.CommandAfterHandler 这两个事件触发所�
 > 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
 
 ```csharp
-fsql1.Aop.CommandAfter += new EventHandler<CommandAfterEventArgs>((s, e) =>
+fsql.Aop.CommandBefore += (s, e) => 
 {
-   if (e.Exception != null)
-   {
-     //做一些日志记录的操作。以下为示例。
-     Trace.WriteLine($"Message:{e.Exception.Message }\r\nStackTrace:{e.Exception.StackTrace}\r\nCommandText:{e.Command.CommandText}");
-   }
-});
+    //e.Command.CommandText = null; 可拦截命令
+};
+
+fsql.Aop.CommandAfter += (s, e) =>
+{
+    if (e.Exception != null)
+    {
+        //做一些日志记录的操作。以下为示例。
+        Trace.WriteLine($"Message:{e.Exception.Message }\r\nStackTrace:{e.Exception.StackTrace}\r\nCommandText:{e.Command.CommandText}");
+    }
+};
 ```
 
 ## 审计迁移脚本
