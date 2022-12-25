@@ -7,7 +7,7 @@
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
   .UseConnectionString(FreeSql.DataType.MySql, "...")
-  .UseMonitorCommand(cmd => Console.WriteLine($"线程：{cmd.CommandText}\r\n"))
+  .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}\r\n"))
   .UseNoneCommandParameter(true)
   .Build();
 ```
@@ -18,7 +18,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 fsql.Aop.CurdAfter += (s, e) =>
 {
   if (e.ElapsedMilliseconds > 200)
-    Console.WriteLine($"线程：{e.Sql}\r\n");
+    Console.WriteLine($"Sql：{e.Sql}\r\n");
 };
 ```
 
