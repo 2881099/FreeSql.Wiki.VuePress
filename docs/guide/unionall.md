@@ -1,6 +1,6 @@
 # 联合查询
 
-在之前都是推荐使用 ToSql + WithSql 完成联合查询操作，v3.2.666 最增功能直接使用 UnionAll 方法。
+在之前都是推荐使用 ToSql + WithSql 完成联合查询操作，v3.2.666 新增功能直接使用 UnionAll 方法。
 
 GroupBy + WithTempQuery(嵌套查询) + FromQuery + UnionAll 组合使用，会让查询功能更加强大、灵活。
 
