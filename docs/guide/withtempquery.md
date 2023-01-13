@@ -159,6 +159,64 @@ INNER JOIN (
 ) b ON a.[Id] = b.[GroupId]
 ```
 
+## 场景5：自动分表后分页 分组聚合
+
+自动分表后，如果有分页的需求 或者分组聚合的需求可以参考以下代码
+
+```csharp
+var result = fsql.Select<Statistics>()
+    .Where(v => v.createtime.BetweenEnd(startTime.Value, endTime.Value))   //时间字段定位表
+    .WithTempQuery(a => new { item = a })
+    .GroupBy(a => a.item.applyShareId)
+    .Count(out var total)
+    .Page(dto.page, dto.limit)
+    .ToSql(r => new {
+            sharingCenterId = a.Key,
+            gpsMileage = a.Sum(a.Value.item.gpsMileage),
+            stonnage = a.Sum(a.Value.item.stonnage),
+    });
+```
+
+```sql
+SELECT
+	a.`applyShareId` as1,
+	sum( a.`gpsMileage` ) as3,
+	sum( a.`stonnage` ) as5,
+FROM
+	(
+	SELECT
+		* 
+	FROM
+		(
+		SELECT
+			a.`applyShareId` 
+			a.`gpsMileage`,
+			a.`stonnage` 
+		FROM
+			`vehicleWorkloadtj_2023` a 
+		WHERE
+		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' ) 
+		AND ( a.`dateLudan` >= '2022-01-01 00:00:00' AND a.`dateLudan` < '2023-01-14 00:00:00' )) ftb 
+		UNION ALL
+	SELECT
+		* 
+	FROM
+		(
+		SELECT
+		  a.`applyShareId` 
+			a.`gpsMileage`,
+			a.`stonnage`
+		FROM
+			`vehicleWorkloadtj_2022` a 
+		WHERE
+		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' ) 
+		AND ( a.`dateLudan` >= '2022-01-01 00:00:00' AND a.`dateLudan` < '2023-01-14 00:00:00' )) ftb 
+	) a 
+	GROUP BY
+	a.`applyShareId` 
+	LIMIT 0,30
+```
+
 ## WithParameters 参数化共享
 
 开启参数化查询功能后，使用 WithParameters 共享参数化，避免产生相同的参数名称：
