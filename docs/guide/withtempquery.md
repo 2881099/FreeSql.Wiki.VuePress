@@ -165,54 +165,37 @@ INNER JOIN (
 
 ```csharp
 var result = fsql.Select<Statistics>()
-    .Where(v => v.createtime.BetweenEnd(startTime.Value, endTime.Value))   //时间字段定位表
+    .Where(a => a.createtime.BetweenEnd(startTime, endTime))  //时间字段定位表
     .WithTempQuery(a => new { item = a })
-    .GroupBy(a => a.item.applyShareId)
+    .GroupBy(a => a.item.shareId)
     .Count(out var total)
     .Page(dto.page, dto.limit)
-    .ToSql(r => new {
-            sharingCenterId = a.Key,
-            gpsMileage = a.Sum(a.Value.item.gpsMileage),
-            stonnage = a.Sum(a.Value.item.stonnage),
+    .ToSql(g => new {
+        Sid = a.Key,
+        Sum1 = g.Sum(g.Value.item.field1),
+        Sum2 = g.Sum(g.Value.item.field2),
     });
 ```
 
 ```sql
-SELECT
-	a.`applyShareId` as1,
-	sum( a.`gpsMileage` ) as3,
-	sum( a.`stonnage` ) as5,
-FROM
-	(
-	SELECT
-		* 
-	FROM
-		(
-		SELECT
-			a.`applyShareId` 
-			a.`gpsMileage`,
-			a.`stonnage` 
-		FROM
-			`Statistics_2023` a 
-		WHERE
-		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' )) ftb 
-		UNION ALL
-	SELECT
-		* 
-	FROM
-		(
-		SELECT
-		  a.`applyShareId` 
-			a.`gpsMileage`,
-			a.`stonnage`
-		FROM
-			`Statistics_2022` a 
-		WHERE
-		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' )) ftb 
-	) a 
-	GROUP BY
-	a.`applyShareId` 
-	LIMIT 0,30
+SELECT a.`shareId` as1, sum( a.`field1` ) as3, sum( a.`field2` ) as5 
+FROM ( 
+    SELECT ... 
+    FROM ( 
+        SELECT ... 
+        FROM `Statistics_2023` a 
+        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00') 
+    ) ftb 
+    UNION ALL
+    SELECT ... 
+    FROM ( 
+        SELECT ... 
+        FROM `Statistics_2022` a 
+        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00') 
+    ) ftb 
+) a 
+GROUP BY a.`shareId` 
+LIMIT 0,30
 ```
 
 ## WithParameters 参数化共享
