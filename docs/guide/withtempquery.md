@@ -193,10 +193,9 @@ FROM
 			a.`gpsMileage`,
 			a.`stonnage` 
 		FROM
-			`vehicleWorkloadtj_2023` a 
+			`Statistics_2023` a 
 		WHERE
-		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' ) 
-		AND ( a.`dateLudan` >= '2022-01-01 00:00:00' AND a.`dateLudan` < '2023-01-14 00:00:00' )) ftb 
+		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' )) ftb 
 		UNION ALL
 	SELECT
 		* 
@@ -207,10 +206,9 @@ FROM
 			a.`gpsMileage`,
 			a.`stonnage`
 		FROM
-			`vehicleWorkloadtj_2022` a 
+			`Statistics_2022` a 
 		WHERE
-		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' ) 
-		AND ( a.`dateLudan` >= '2022-01-01 00:00:00' AND a.`dateLudan` < '2023-01-14 00:00:00' )) ftb 
+		( a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00' )) ftb 
 	) a 
 	GROUP BY
 	a.`applyShareId` 
