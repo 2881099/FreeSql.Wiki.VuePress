@@ -86,7 +86,8 @@ fsql.Select<User1>()
 SELECT ... 
 FROM ( 
     SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
-    FROM [User1] a ) a 
+    FROM [User1] a 
+    WHERE a.[Id] < 1000 ) a 
 INNER JOIN ( 
     SELECT a.[UserId], a.[Remark] 
     FROM [TwoTablePartitionBy_UserExt] a 
