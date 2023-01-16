@@ -5,7 +5,7 @@
 ## v3.2.686
 
 - 增加 FreeSqlBuilder UseQuoteSqlName 设置不使用 [] `` "" 限定符号；
-- 增加 Aop.CommandBefore 设置 .CommandText = null 可拦截本次执行；
+- 增加 Aop.CommandBefore 设置 .CommandText = null 可拦截某次执行；
 - 增加 IAdo.ExecuteNonQuery 重载方法（虚谷数据库）；
 - **修复 UseSlaveWeight 异步下可能无效的问题；#1382**
 - 修复 HzyTuple 嵌套解析问题；#1390
