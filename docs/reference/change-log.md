@@ -1,6 +1,21 @@
 # 更新日志
 
-大约每三个月一次版本号，暂时以修复 bug 为主
+大约每月一次版本号，暂时以修复 bug 为主
+
+## v3.2.686
+
+- 增加 FreeSqlBuilder UseQuoteSqlName 设置不使用 [] `` "" 限定符号；
+- 增加 Aop.CommandBefore 设置 .CommandText = null 可拦截本次执行；
+- 增加 IAdo.ExecuteNonQuery 重载方法（虚谷数据库）；
+- **修复 UseSlaveWeight 异步下可能无效的问题；#1382**
+- 修复 HzyTuple 嵌套解析问题；#1390
+- 修复 AsType 表达式解析问题；#1389
+- 修复 pgsql OnConflictDoUpdate 临时主键问题；#1393
+- 修复 ClickHouse 联表查询 GLOBAL left join、Ado.Query * 问题；#1383
+- 优化 ClickHouse like 为 positionCaseInsensitive #1386
+- 优化 JsonMap 对基础类型的无效判断；#1385
+- 优化 IUpdate 批量 case when 同值的 SQL 生成；#1393
+- 优化 IAdo.ConnectionString 使用 UseConnectionFactory 时值为 NULL 的问题；
 
 ## v3.2.685
 
