@@ -75,8 +75,8 @@ var fsql = new FreeSqlBuilder()
 
 class model
 {
-		public int ogc_fid { get; set; }
-		public PostgisPoint geometry { get; set; }
+    public int ogc_fid { get; set; }
+    public PostgisPoint geometry { get; set; }
 }
 ```
 
