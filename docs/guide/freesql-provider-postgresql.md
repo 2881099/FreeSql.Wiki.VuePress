@@ -25,6 +25,8 @@ fsql.Select<model>().Where(a => a.tagIds.Contains(100)).ToList();
 fsql.Select<model>().Where(a => a.dict.ContainsKey("key1")).ToList();
 ```
 
+参考资料：[《PostgreSQL Array 数组类型与 FreeSql 打出一套【组合拳】》](https://www.cnblogs.com/FreeSql/p/16351417.html)
+
 ## JSONB
 
 PostgreSQL JSON 类型的查询性能不输 mongodb，适合做动态结构的数据存储场景。
@@ -56,7 +58,7 @@ fsql.Select<model>().Where(a => a.jsonb2["key1"].ContainsKey("key2")).ToList();
 
 更多 lambda 表达式树函数，可以看下[《表达式函数》](https://freesql.net/guide/expression-function.html)文档，支持自定义解析。
 
-参数资料：[《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》](https://github.com/dotnetcore/FreeSql/discussions/1071)
+参考资料：[《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》](https://github.com/dotnetcore/FreeSql/discussions/1071)
 
 ## 空间地理类型
 
