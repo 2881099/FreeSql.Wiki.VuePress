@@ -43,7 +43,19 @@ class model
 
 // 支持索引查询
 fsql.Select<model>().Where(a => a.jsonb1.ContainsKey("key1")).ToList();
+//SQL: WHERE coalesce(a.jsonb1, '{}') ? 'key1'
+
 fsql.Select<model>().Where(a => a.jsonb2["key1"].ContainsKey("key2")).ToList();
+//SQL: WHERE coalesce(a.jsonb2->key1, '{}') ? 'key2'
+
+fsql.Select<model>().Where(a => a.jsonb2.Contains(JToken.Parse("{key1:'xxx'}")).ToList();
+//SQL: WHERE coalesce(a.jsonb2, '{}') @> '{"key1":'xxx'}'::jsonb
+
+fsql.Select<model>().Where(a => a.jsonb2["key1"]["key2"].ToString() == "xxx").ToList();
+//SQL: WHERE (a.jsonb2->key1->key2)::text = 'xxx'
+
+fsql.Select<model>().Where(a => int.Parse(a.jsonb2["key1"]["key2"].ToString()) > 100).ToList();
+//SQL: WHERE (a.jsonb2->key1->key2)::text::int4 > 100
 ```
 
 | lambda 表达式树函数 | PostgreSQL | 功能说明 |
@@ -54,7 +66,7 @@ fsql.Select<model>().Where(a => a.jsonb2["key1"].ContainsKey("key2")).ToList();
 | a.ContainsKey(b) | coalesce(a, '{}') ? b | json中是否包含键b |
 | a.Concat(b) | coalesce(a, '{}') || b::jsonb | 连接两个json |
 | JObject.Parse(a) | a::jsonb | 转化字符串为json类型 |
-| a["x"] | a->x | json成员访问 |
+| a["x"]["y"] | a->x->y | json成员访问 |
 
 更多 lambda 表达式树函数，可以看下[《表达式函数》](https://freesql.net/guide/expression-function.html)文档，支持自定义解析。
 
