@@ -5,7 +5,7 @@
 > 比如 Include/IncludeMany 查询的对象，可以使用此方法级联删除它们。
 
 ```cs
-var repo = fsql.GetRepository<Group>();
+var repo = fsql.GetRepository<UserGroup>();
 repo.DbContextOptions.EnableCascadeSave = true; //关键设置
 repo.Insert(new UserGroup
 {
@@ -36,7 +36,7 @@ repo.Delete(groups); //级联删除，递归向下遍历 group OneToOne/OneToMan
 > 根据设置的导航属性，递归删除 OneToOne/OneToMany/ManyToMany 对应数据，并返回已删除的数据。此功能不依赖数据库外键
 
 ```cs
-var repo = fsql.GetRepository<Group>();
+var repo = fsql.GetRepository<UserGroup>();
 var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //SELECT a."id", a."username", a."password", a."groupid" FROM "user" a WHERE (a."groupid" = 1)
 //SELECT a."userid", a."remark" FROM "userext" a WHERE (a."userid" IN (3,4,5))
@@ -53,7 +53,7 @@ var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //  [5] {User}   object {User}
 //  [6] {UserGroup} object {UserGroup}
 
-public class Group
+public class UserGroup
 {
     [Column(IsIdentity = true)]
     public int Id { get; set; }
