@@ -164,6 +164,8 @@ fsql.Update<Topic>()
 
 > 指定 `Set` 列更新后，`SetSource` 将失效
 
+> SetSource 默认依赖实体 IsPrimary 特性，临时主键可使用 SetSource(items, a => a.Code)
+
 ## 4、自定义 SQL
 
 ```csharp
