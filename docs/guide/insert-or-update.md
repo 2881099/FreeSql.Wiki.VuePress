@@ -18,6 +18,7 @@ fsql.InsertOrUpdate<T>()
   .SetSource(items) //需要操作的数据
   //.IfExistsDoNothing() //如果数据存在，啥事也不干（相当于只有不存在数据时才插入）
   .ExecuteAffrows();
+//默认依赖实体 IsPrimary 特性，临时主键可使用 SetSource(items, a => a.Code)
 
 //或者..
 var sql = fsql.Select<T2, T3>()
