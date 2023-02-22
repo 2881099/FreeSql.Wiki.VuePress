@@ -216,6 +216,7 @@ fsql.Delete<Blog>()
 | DataType.Sqlite                    | Data Source=\|DataDirectory\|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1                                                                                                       |
 | DataType.ClickHouse               | DataCompress=False;BufferSize=32768;SocketTimeout=10000;CheckCompressedHash=False;Encrypt=False;Compressor=lz4;Host=192.168.0.121;Port=8125;Database=PersonnelLocation;Username=root;Password=123     |
 | DataType.Firebird                  | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456                                                                                                                           |
+| DataType.QuestDb | host=localhost;port=8812;username=admin;password=quest;database=qdb;ServerCompatibilityMode=NoTypeLoading; |
 | DataType.MsAccess                  | Provider=Microsoft.Jet.OleDb.4.0;Data Source=d:/accdb/2003.mdb                                                                                                                                 |
 | DataType.MsAccess(accdb)                  | Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:/accdb/2003.accdb;                                                                                                                                 |
 | DataType.MsAccess(加密)                  | Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:/accdb/2003.accdb;Jet OLEDB:Database Password=12341234                                                                                         |
