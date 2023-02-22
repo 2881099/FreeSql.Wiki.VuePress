@@ -26,11 +26,11 @@ Install-Package FreeSql.Provider.QuestDb
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-            .UseConnectionString(FreeSql.DataType.QuestDb,
-                @"host=localhost;port=8812;username=admin;password=quest;database=qdb;ServerCompatibilityMode=NoTypeLoading;")  //连接字符串
-            .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}")) 
-            .UseQuestDbRestAPI("localhost:9000", "username", "password")  //RestAPI，建议开启
-            .Build();
+    .UseConnectionString(FreeSql.DataType.QuestDb,
+       @"host=localhost;port=8812;username=admin;password=quest;database=qdb;ServerCompatibilityMode=NoTypeLoading;")  //连接字符串
+    .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}")) 
+    .UseQuestDbRestAPI("localhost:9000", "username", "password")  //RestAPI，建议开启
+    .Build();
 ```
 
 ## 特有功能
@@ -41,7 +41,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 [SAMPLE BY keyword | QuestDB](https://questdb.io/docs/reference/sql/sample-by/)
 
-```c#
+```csharp
 fsql.Select<Table>()
     .SampleBy(1, SampleUnits.d)
     .WithTempQuery(q => new { q.Id, q.Activos, count = SqlExt.Count(q.Id).ToValue() })
@@ -51,7 +51,7 @@ fsql.Select<Table>()
 
 > 生成SQL
 
-~~~SQL
+```sql
 SELECT
   *
 FROM
@@ -65,7 +65,7 @@ FROM
   ) a
 WHERE
   (a."Id" <> '1')
-~~~
+```
 
 #### GroupBy
 
@@ -73,17 +73,17 @@ WHERE
 
 [官网说明：SQL extensions | QuestDB](https://questdb.io/docs/concept/sql-extensions/#group-by-is-optional)
 
-~~~C#
+```csharp
 //这里通过WithTempQuery实现
 fsql.Select<Table>()
     .WithTempQuery(q => new { q.Id, q.xxx, count = SqlExt.Count(q.Id).ToValue() })
     .Where(q => q.Id != "1" && q.count > 1)
     .ToSql();
-~~~
+```
 
 > 生成SQL
 
-~~~SQL
+```sql
 SELECT
   *
 FROM
@@ -100,7 +100,7 @@ WHERE
     a."Id" <> '1'
     AND a."count" > 1
   )
-~~~
+```
 
 #### Latest On
 
@@ -116,11 +116,11 @@ fsql.Select<Table>()
 
 > 生成SQL
 
-~~~SQL
+```sql
 SELECT  a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx"
 FROM "Table" a
 LATEST ON a.xxxx  PARTITION BY a.xxxx 
-~~~
+```
 
 #### BulkCopy
 
@@ -135,7 +135,7 @@ fsql.Insert(list).ExecuteBulkCopyAsync();
 
 > QuestDb支持自动分表
 
-~~~C#
+```csharp
 [Index("Id_Index", nameof(Id), false)]
 class Table
 {
@@ -150,7 +150,7 @@ class Table
     public DateTime? CreateTime { get; set; }
     public bool? IsCompra { get; set; }
 }
-~~~
+```
 
 ## 常见问题
 
@@ -162,11 +162,11 @@ class Table
 
 > 解决方案，启用RestAPI后 Insert/Update就会默认使用HTTP方式
 
-~~~C#
+```csharp
 //在FreeSqlBuilder增加UseQuestDbRestAPI()
 new FreeSql.FreeSqlBuilder()
-.UseQuestDbRestAPI("localhost:9000", "username", "password") 
-~~~
+    .UseQuestDbRestAPI("localhost:9000", "username", "password") 
+```
 
 #### RestAPI设置账号密码
 
