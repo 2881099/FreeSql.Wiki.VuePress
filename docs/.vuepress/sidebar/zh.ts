@@ -68,6 +68,7 @@ export const zhSidebarConfig = sidebar({
                         "/guide/freesql-provider-sqlitecore.md",
                         "/guide/freesql-provider-oracle.md",
                         "/guide/freesql-provider-odbc.md",
+                        "/guide/freesql-provider-questdb.md",
                     ],
                 },
                 {
