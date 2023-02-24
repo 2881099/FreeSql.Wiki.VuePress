@@ -213,35 +213,39 @@ public class AutofacModule : Autofac.Module
         /// <param name="invocation"></param>
         public void InterceptAsynchronous(IInvocation invocation)
         {
-            if (TryBegin(invocation))
-            {
-                invocation.ReturnValue = InternalInterceptAsynchronous(invocation);
-            }
-            else
-            {
-                invocation.Proceed();
-            }
+             invocation.ReturnValue = InternalInterceptAsynchronous(invocation);
         }
 
         private async Task InternalInterceptAsynchronous(IInvocation invocation)
         {
-            try
+            if (TryBegin(invocation))
+            {
+                try
+                {
+                    invocation.Proceed();
+                    if (invocation.ReturnValue != null)
+                    {
+                        await (Task)invocation.ReturnValue;
+                    }
+                    _unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    _unitOfWork.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    _unitOfWork.Dispose();
+                }
+            }
+            else
             {
                 invocation.Proceed();
                 if (invocation.ReturnValue != null)
                 {
                     await (Task)invocation.ReturnValue;
                 }
-                _unitOfWork.Commit();
-            }
-            catch (System.Exception)
-            {
-                _unitOfWork.Rollback();
-                throw;
-            }
-            finally
-            {
-                _unitOfWork.Dispose();
             }
         }
 
