@@ -2,6 +2,33 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.689
+
+- **增加 QuestDB 时序数据库支持；（感谢 Daily 贡献）**
+- 修复 Array.Any OR 表达式树解析 bug；
+- 修复 GroupBy 之后 WithTempQuery 参数化时未传递的问题；
+- 修复 BulkUpdate 触发 Aop.AuditValue Insert 类型的问题；
+- 修复 Ado.ExecuteNonQuery 超时参数未生效的问题；#1441
+- 修复 Firebird CodeFirst 索引 DESC 问题；#1413
+- 优化 Firebird CodeFirst 迁移代码；
+- 优化 Firebird 表达式树位运算的适配解析；#1413
+- 优化 SqlServer timestamp 行版本的支持；#1412
+- 优化 pgsql15.0 部分类型兼容；#1436
+- 完善 Sqlite DbFirst 获取索引信息；#1425
+- 优化 适配达梦最新驱动；
+- 优化 IUpdate 组合更新方式；
+- 优化 IUpdate.Set(xx, null) 的情况；
+- 优化 ISelect\<object\> AsType 的父子类转换时的情况；#1427
+- 优化 支持动态操作 IncludeByPropertyName then.WhereDynamicFilter 操作；
+- 优化 WithTempQuery 场景的 DTO 映射查询；
+
+## v3.2.687
+
+- **修复 3.2.686 JsonMap bug；**
+- 优化 参数化增加 ExpandoObject 支持；#1403
+- 优化 pgsql15.0 Version 版本号处理；
+- 优化 pgsql CodeFirst Syncsture CREATE INDEX code；
+
 ## v3.2.686
 
 - 增加 FreeSqlBuilder UseQuoteSqlName 设置不使用 [] `` "" 限定符号；
