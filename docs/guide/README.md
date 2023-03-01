@@ -14,7 +14,7 @@
 
 支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/翰高/华为GaussDB/MsAccess` 等数据库，以及自定义适配其它数据库。
 
-- QQ 群：561616019(空闲)、4336577(已满)、8578575(已满)、52508226(已满)
+- QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)
 
 - 反馈问题请前往 [https://github.com/dotnetcore/FreeSql/issues](https://github.com/dotnetcore/FreeSql/issues)
 
