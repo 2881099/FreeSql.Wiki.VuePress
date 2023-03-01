@@ -2,7 +2,7 @@
 
 FreeSql 采用 MIT 最宽松的开源协议，永久免费开源。任何公司或个人，都可以使用在任何商业项目中。
 
-QQ 技术群：561616019（空闲）、4336577(满员)、8578575(满员)、52508226(满员)
+QQ 技术群：561616019(空闲)、4336577(满员)、8578575(满员)、52508226(满员)
 
 反馈问题请前往 [https://github.com/dotnetcore/FreeSql/issues](https://github.com/dotnetcore/FreeSql/issues)
 
