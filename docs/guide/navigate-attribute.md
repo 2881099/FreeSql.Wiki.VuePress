@@ -10,6 +10,7 @@ FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMan
 - [《树表查询》](%e6%9f%a5%e8%af%a2%e7%88%b6%e5%ad%90%e5%85%b3%e7%b3%bb)
 - [《级联保存》](%e8%81%94%e7%ba%a7%e4%bf%9d%e5%ad%98)
 - [《级联删除》](%E8%81%94%E7%BA%A7%E5%88%A0%E9%99%A4)
+- [《聚合根仓储》](%E8%81%9A%E5%90%88%E6%A0%B9%EF%BC%88%E5%AE%9E%E9%AA%8C%E5%AE%A4%EF%BC%89)
 
 导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
 
