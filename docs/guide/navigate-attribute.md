@@ -1,37 +1,43 @@
 # 导航属性 ✨
 
-导航属性是 FreeSql 的特色功能之一，可通过约定配置、或自定义配置对象间的关系。
+FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMany](https://www.cnblogs.com/FreeSql/p/16351417.html) 六种导航属性关系。
 
-导航属性有 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMany](https://www.cnblogs.com/FreeSql/p/16351417.html) 六种配置关系。
+导航属性能干什么？
 
-有了导航属性，多表查询会非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
+- [《多表查询》](%e5%a4%9a%e8%a1%a8%e6%9f%a5%e8%af%a2) Where(a => a.Parent.Parent.Name == "xx")
+- [《贪婪加载》](%e8%b4%aa%e5%a9%aa%e5%8a%a0%e8%bd%bd) Include/IncludeMany
+- [《延时加载》](%e5%bb%b6%e6%97%b6%e5%8a%a0%e8%bd%bd)
+- [《树表查询》](%e6%9f%a5%e8%af%a2%e7%88%b6%e5%ad%90%e5%85%b3%e7%b3%bb)
+- [《级联保存》](%e8%81%94%e7%ba%a7%e4%bf%9d%e5%ad%98)
+- [《级联删除》](%E8%81%94%E7%BA%A7%E5%88%A0%E9%99%A4)
 
-- 可约定（命名约定），可不约定（需指定 Navigate 特性关联）；
-- 无关联的，查询时可以指明 On 条件，LeftJoin(a => a.Parent.Id == a.ParentId)；
-- 已关联的，直接使用导航对象就行，On 条件会自动附上；
+导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
 
-[《导航属性【到底】可以解决什么问题？》](https://www.cnblogs.com/kellynic/p/13575053.html)
+# 自定义配置
 
-> 预热说明：导航属性加载，因为要解决死循环引用问题，当引用关系很复杂的时候，有可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select\<object\>().AsType(实体类);
-
-OneToMany/ManyToMany 集合导航属性支持的类型：ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
-
-# 自定义导航关系
+OneToMany/ManyToMany 支持的类型：ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
 
 ```csharp
-//导航属性，OneToMany
-[Navigate(nameof(song_tag.song_id))]
-public virtual List<song_tag> Obj_song_tag { get; set; }
-//在 song_tag 查找 song_id 属性，与 本实体.主键 关联
+//OneToMany
+class Group
+{
+    [Navigate(nameof(User.GroupId))]
+    public List<User> Users { get; set; }
+    //在 User 查找 GroupId 属性，与 本实体.主键 关联
+}
 
-//导航属性，ManyToOne/OneToOne
-[Navigate(nameof(song_id))]
-public virtual Song Obj_song { get; set; }
-//在 本实体 查找 song_id 属性，与 Song.主键 关联
+//ManyToOne
+class User
+{
+    public int GroupId { get; set; }
+    [Navigate(nameof(GroupId))]
+    public Group Group { get; set; }
+    //在 本实体 查找 GroupId 属性，与 Group.主键 关联
+}
 
-//导航属性，ManyToMany
-[Navigate(ManyToMany = typeof(tag_song))]
-public virtual List<tag> tags { get; set; }
+//ManyToMany
+[Navigate(ManyToMany = typeof(TagSong))]
+public List<Tag> Items { get; set; }
 ```
 
 ---
@@ -39,13 +45,11 @@ public virtual List<tag> tags { get; set; }
 也可以使用 FluentApi 在外部设置导航关系：
 
 ```csharp
-fsql.CodeFirst.ConfigEntity<实体类>(a => a
-    .Navigate(b => b.roles, null, typeof(多对多中间实体类))
+fsql.CodeFirst.ConfigEntity<T>(a => a
+    .Navigate(b => b.roles, null, typeof(TMid))
     .Navigate(b => b.users, "uid")
 );
 ```
-
-优先级，特性 > FluentApi
 
 > 注意：
 
@@ -53,13 +57,25 @@ fsql.CodeFirst.ConfigEntity<实体类>(a => a
 
 2、Navigate 设置的字符串是 类属性名，不是表 字段名！！！
 
-> 扩展：
+> 预热说明：导航属性配置的加载，因为要解决死循环引用，当相互引用关系很复杂的时候，可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select\<object\>().AsType(实体类);
 
-- [如何建立非主键导航属性 OneToOne/ManyToOne](https://github.com/dotnetcore/FreeSql/issues/604)
+# 与非主键关联
+
+```csharp
+//OneToMany
+[Navigate(nameof(User.GroupId), TempPrimary = nameof(Code))]
+public List<User> Users { get; set; }
+
+//ManyToOne
+[Navigate(nameof(GroupId), TempPrimary = nameof(Group.Code))]
+public Group Group { get; set; }
+```
+
+非主键关联权支持 OneToMany/ManyToOne 两种关系，并且只能在查询的时候有效。（不支持级联保存、级联删除）
 
 # 检测导航属性
 
-如何检测一个导航属性是否配置生效：
+如何检测一个导航属性是否有效：
 
 ```csharp
 var tbref = fsql.CodeFirst
@@ -69,118 +85,73 @@ var tbref = fsql.CodeFirst
 
 GetTableRef(string propertyName, bool isThrow);
 
-# 约定命名（无须指明 Navigate）
-
-### OneToOne 一对一
+# PgArrayToMany
 
 ```csharp
 class User
+{
+    public int[] RoleIds { get; set; }
+    [Navigate(nameof(RoleIds))]
+    public List<Role> Roles { get; set; }
+}
+class Role
 {
     public int Id { get; set; }
-    public UserExt Ext { get; set; }
-}
-
-class UserExt
-{
-    public int id { get; set; }
-    public User User { get; set; }
+    [Navigate(nameof(User.RoleIds))]
+    public List<User> Users { get; set; }
 }
 ```
 
-[《OneToOne 一对一，怎么添加数据？》](https://github.com/dotnetcore/FreeSql/issues/45)
+更多资料：[#1145](https://github.com/dotnetcore/FreeSql/issues/1145)
 
-### ManyToOne 多对一
+# 约定命名（无须指明 Navigate）
 
-```csharp
-class Group
-{
-    public int Id { get; set; } //Id、GroupId、Group_id
-}
-
-class User
-{
-    public int Id { get; set; } //Id、UserId、User_id
-
-    public int AGroupId { get; set; }
-    public Group AGroup { get; set; }
-
-    public int BGroupId { get; set; }
-    public Group BGroup { get; set; }
-}
-```
-
-### OneToMany 一对多
+提示：本节内容稍微了解即可，不是必须掌握的，可以跳过。
 
 ```csharp
 class Group
 {
     public int Id { get; set; } //Id、GroupId、Group_id
 
-    public ICollection<User> AUsers { get; set; }
-    public ICollection<User> BUsers { get; set; }
-}
-
-class User
-{
-    public int Id { get; set; } //Id、UserId、User_id
-
-    public int AGroupId { get; set; }
-    public Group AGroup { get; set; }
-
-    public int BGroupId { get; set; }
-    public Group BGroup { get; set; }
-}
-```
-
-[《OneToMany 一对多，怎么添加数据？》](https://github.com/dotnetcore/FreeSql/issues/46)
-
-### Parent 父子
-
-```csharp
-class Group
-{
-    public int Id { get; set; } //Id、GroupId、Group_id
+    public List<User> AUsers { get; set; }
+    public List<User> BUsers { get; set; }
 
     public int ParentId { get; set; } //ParentId、Parent_id
     public Group Parent { get; set; }
 
-    public ICollection<Group> Childs { get; set; }
+    public List<Group> Childs { get; set; }
 }
-```
-
-父子关系，与一对多其实差不多，添加数据参数上面的连接；
-
-### ManyToMany 多对多
-
-```csharp
-class Song
+class User
 {
-    [Column(IsIdentity = true)]
-    public int Id { get; set; }
-    public string Title { get; set; }
+    public int Id { get; set; } //Id、UserId、User_id
+    public UserExt Ext { get; set; }
 
-    public virtual ICollection<Tag> Tags { get; set; }
+    public int AGroupId { get; set; }
+    public Group AGroup { get; set; }
+
+    public int BGroupId { get; set; }
+    public Group BGroup { get; set; }
+
+    public List<Role> Roles { get; set; }
 }
-class Song_tag
+class UserExt
 {
-    public int Song_id { get; set; }
-    public virtual Song Song { get; set; }
-
-    public int Tag_id { get; set; }
-    public virtual Tag Tag { get; set; }
+    public int UserId { get; set; }
+    public User User { get; set; }
 }
-class Tag
+class Role
 {
-    [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Name { get; set; }
 
-    public int? Parent_id { get; set; }
-    public virtual Tag Parent { get; set; }
+    public List<User> Users { get; set; }
+}
+class UserRole
+{
+    public int UserId { get; set; }
+    public User User { get; set; }
 
-    public virtual ICollection<Song> Songs { get; set; }
-    public virtual ICollection<Tag> Tags { get; set; }
+    public int RoleId { get; set; }
+    public Role Role { get; set; }
 }
 ```
-
-Song、Tag、Song_tag，这三个实体使用了 OneToMany、ManyToOne、Parent、ManyToMany 4 种关系。
