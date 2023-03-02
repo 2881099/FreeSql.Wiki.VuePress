@@ -4,13 +4,13 @@ FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMan
 
 导航属性能干什么？
 
-- [《多表查询》](select-multi-table) Where(a => a.Parent.Parent.Name == "xx")
-- [《贪婪加载》](select-include) Include/IncludeMany
-- [《延时加载》](select-lazy-loading)
-- [《树表查询》](select-as-tree)
-- [《级联保存》](cascade-saving)
-- [《级联删除》](cascade-delete)
-- [《聚合根仓储》](aggregateroot)
+- [《多表查询》](select-multi-table.md) Where(a => a.Parent.Parent.Name == "xx")
+- [《贪婪加载》](select-include.md) Include/IncludeMany
+- [《延时加载》](select-lazy-loading.md)
+- [《树表查询》](select-as-tree.md)
+- [《级联保存》](cascade-saving.md)
+- [《级联删除》](cascade-delete.md)
+- [《聚合根仓储》](aggregateroot.md)
 
 导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
 
