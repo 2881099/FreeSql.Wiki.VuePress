@@ -2,7 +2,13 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.2.689
+## v3.2.690
+
+- 增加 [Navigate(xx, TempPrimary = xx)] 与非主键关联；（仅支持查询）
+- **修复 3.2.689/3.2.688 WithTempQuery DTO 映射查询遗留问题；**
+- 优化 AsTable 自动分表，提供超始小时的设置；
+
+## v3.2.688
 
 - **增加 QuestDB 时序数据库支持；（感谢 Daily 贡献）**
 - 修复 Array.Any OR 表达式树解析 bug；
