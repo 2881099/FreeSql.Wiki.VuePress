@@ -244,8 +244,8 @@ fsql.Select<Goods>().IncludeMany(a => a.Comment.Take(10));
 ```csharp
 //定义临时类，也可以是 Dto 类
 class Dto {
-    public int TypeId { get; set; }
-    public List<Goods > GoodsList { get; set; }
+  public int TypeId { get; set; }
+  public List<Goods > GoodsList { get; set; }
 }
 
 //查询 Goods 商品表，分类1、分类2、分类3 各10条数据
@@ -272,9 +272,9 @@ fsql.Select<Tag>().IncludeMany(a => a.Goods.Select(b => new Goods { Id = b.Id, T
 
 ```csharp
 fsql.Select<t1>()
-    .LeftJoin<t2>(...)
-    .WhereCascade(x => x.IsDeleted == false)
-    .ToList();
+  .LeftJoin<t2>(...)
+  .WhereCascade(x => x.IsDeleted == false)
+  .ToList();
 ```
 
 得到的 SQL：
@@ -306,19 +306,19 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 {
-    ""Logic"": ""And"",
-    ""Filters"":
-    [
-        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 1 },
-        {
-            ""Logic"": ""Or"",
-            ""Filters"":
-            [
-                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 2 },
-                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 3 }
-            ]
-        }
-    ]
+  ""Logic"": ""And"",
+  ""Filters"":
+  [
+    { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 1 },
+    {
+      ""Logic"": ""Or"",
+      ""Filters"":
+      [
+        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 2 },
+        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 3 }
+      ]
+    }
+  ]
 }");
 fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 //WHERE id = 1 AND (id = 2 OR id = 3)
