@@ -73,6 +73,14 @@ List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
     list1 = fsql.Select<T2>().ToList(),
     list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
 });
+List<匿名类> t12 = fsql.Select<Topic>()
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
 > 常量机制早期留给了原生 SQL，如果真的需要返回该字符串："'xxx'"
