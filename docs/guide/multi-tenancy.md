@@ -94,9 +94,9 @@ public void Configure(IApplicationBuilder app)
 
 ```csharp
 fsql.Select<t1>()
-.LeftJoin<t2>(...)
-.WhereCascade(x => x.IsDeleted == false)
-.ToList();
+  .LeftJoin<t2>(...)
+  .WhereCascade(x => x.IsDeleted == false)
+  .ToList();
 ```
 
 得到的 SQL：
