@@ -188,6 +188,15 @@ fsql.Select<Topic>().ToList(a => new
   list1 = fsql.Select<T2>().ToList(),
   list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
 });
+
+fsql.Select<Topic>()
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
 ## 10、集合属性
