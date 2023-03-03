@@ -81,19 +81,19 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
 {
-    ""Logic"": ""And"",
-    ""Filters"":
-    [
-        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 1 },
-        {
-            ""Logic"": ""Or"",
-            ""Filters"":
-            [
-                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 2 },
-                { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 3 }
-            ]
-        }
-    ]
+  ""Logic"": ""And"",
+  ""Filters"":
+  [
+    { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 1 },
+    {
+      ""Logic"": ""Or"",
+      ""Filters"":
+      [
+        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 2 },
+        { ""Field"": ""id"", ""Operator"": ""Equals"", ""Value"": 3 }
+      ]
+    }
+  ]
 }");
 fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 //WHERE id = 1 AND (id = 2 OR id = 3)
