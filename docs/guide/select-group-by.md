@@ -44,6 +44,16 @@ var list = fsql.Select<Topic>()
 
 > 不分组求聚合值，请使用 ToAggregate 替代 ToList
 
+```csharp
+var list = fsql.Select<Topic>()
+    .ToAggregate(a => new 
+    {
+        cou1 = a.Count(), 
+        arg1 = a.Avg(a.Value.Clicks), 
+        arg2 = a.Sum(a.Value.Clicks > 100 ? 1 : 0)
+    });
+```
+
 ## 导航属性分组
 
 假如 Topic 有导航属性 Category，Category 又有导航属性 Area，导航属性分组代码如下：
