@@ -73,17 +73,26 @@ new List<Song>(new[] { song1, song2, song3 })
 //v3.2.605+
 ```
 
-## 5、子查询 ToList
-
-> v3.2.650+ 以下最多执行3次 SQL
+## 5、子表ToList
 
 ```csharp
-fsql.Select<Song>().ToList(a => new
+//最多执行3次 SQL
+fsql.Select<Topic>().ToList(a => new
 {
     all = a,
-    list1 = fsql.Select<Tag>().ToList(),
-    list2 = fsql.Select<SongTag>().Where(b => b.SongId == a.Id).ToList()
+    list1 = fsql.Select<T2>().ToList(),
+    list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
 });
+
+//分组之后，最多执行3次 SQL
+fsql.Select<Topic>()
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
 ## 6、IncludeMany 两种方式对比
