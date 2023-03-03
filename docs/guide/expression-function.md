@@ -122,13 +122,13 @@ fsql.Select<T>()
 
 ```csharp
 fsql.Select<T1, T2>()
-.InnerJoin((a, b) => b.Id == a.Id)
-.ToList((a, b) => new
-{
+  .InnerJoin((a, b) => b.Id == a.Id)
+  .ToList((a, b) => new
+  {
     Id = a.Id,
     EdiId = b.Id,
     over1 = SqlExt.Rank().Over().OrderBy(a.Id).OrderByDescending(b.EdiId).ToValue()
-});
+  });
 ```
 
 > v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
@@ -176,13 +176,13 @@ fsql.Select<Topic>().ToList(a => new
 });
 
 fsql.Select<Topic>()
-  .GroupBy(a => new { a.Author })
-  .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-  .ToList(a => new {
-    a.Author, a.Count,
-    list1 = fsql.Select<T2>().ToList(),
-    list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
-  });
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
 ## 自定义解析
