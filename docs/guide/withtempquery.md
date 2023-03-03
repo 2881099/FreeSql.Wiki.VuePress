@@ -237,10 +237,10 @@ INNER JOIN (
 
 ## 子表Exists
 
-```cs
+```csharp
 fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
-  .ToList();
+    .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
+    .ToList();
 //SELECT a.[Id], a.[Title], a.[Clicks], a.[CreateTime], a.[CategoryId]
 //FROM [Topic] a
 //WHERE (exists(SELECT 1
@@ -253,10 +253,10 @@ fsql.Select<Topic>()
 
 ## 子表In
 
-```cs
+```csharp
 fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
-  .ToList();
+    .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
+    .ToList();
 //SELECT a.[Id], a.[Title], a.[Clicks], a.[CreateTime], a.[CategoryId]
 //FROM [Topic] a
 //WHERE (((a.[Id]) in (SELECT b.[Id]
@@ -267,10 +267,10 @@ fsql.Select<Topic>()
 
 v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
 
-```cs
+```csharp
 fsql.Select<Topic>().ToList(a => new {
-  id = a.Id,
-  concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
+    id = a.Id,
+    concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
 });
 //SELECT a.[Id], (SELECT group_concat(b.[Id] separator ',') 
 //    FROM [StringJoin01] b) 
@@ -278,16 +278,15 @@ fsql.Select<Topic>().ToList(a => new {
 ```
 
 ## 子表First/Count/Sum/Max/Min/Avg
-
 ```csharp
 fsql.Select<Category>().ToList(a => new  {
-  all = a,
-  first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
-  count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
-  sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
-  max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
-  min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
-  avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
+    all = a,
+    first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
+    count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
+    sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
+    max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
+    min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
+    avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
 });
 ```
 
@@ -297,9 +296,9 @@ fsql.Select<Category>().ToList(a => new  {
 //最多执行3次 SQL
 fsql.Select<Topic>().ToList(a => new
 {
-  all = a,
-  list1 = fsql.Select<T2>().ToList(),
-  list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
+    all = a,
+    list1 = fsql.Select<T2>().ToList(),
+    list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
 });
 
 //分组之后，最多执行3次 SQL
