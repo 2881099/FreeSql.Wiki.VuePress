@@ -198,6 +198,48 @@ GROUP BY a.`shareId`
 LIMIT 0,30
 ```
 
+#### 场景6：FromQuery 多个查询，最后映射查询
+
+```csharp
+var query2 = fsql.Select<UnitLog, LoadPlan, Instruction>()
+    .InnerJoin((a, b, c) => a.LoadNo == b.LoadNo && a.UnitTransactionType == "TO")
+    .InnerJoin((a, b, c) => b.InstructionNo == c.InstructionNo)
+    .WithTempQuery((a, b, c) => new
+    {
+        a.LoadNo,
+        a.SeqNoLog,
+        c.DeliveryInstractionStatus,
+        c.UpTime,
+        RN = SqlExt.RowNumber().Over().PartitionBy(a.UnitId).OrderByDescending(a.SeqNoLog).ToValue()
+    });
+var query3 = fsql.Select<Unit>();
+
+fsql.Select<UnitLog>()
+    .FromQuery(query2, query3)
+    .InnerJoin((a,b,c) => a.SeqNoLog == b.SeqNoLog)
+    .InnerJoin((a,b,c) => a.UnitId == c.UnitId)
+    .Where((a,b,c) => b.RN < 2)
+    .ToSql((a,b,c) => new MB51_View
+    {
+        //CkassIfCation = a.CkassIfCation,
+        PGI = b.DeliveryInstractionStatus,
+        PGITime = b.UpTime,
+        IsDelayPGI = true,
+        RunNo = c.RunNo
+    });
+```
+
+```sql
+SELECT a.[CkassIfCation] as1, b.[DeliveryInstractionStatus] as2, b.[UpTime] as3, 1 as4, c.[RunNo] as5 
+FROM [UnitLog] a 
+INNER JOIN (SELECT a.[LoadNo], a.[SeqNoLog], c.[DeliveryInstractionStatus], c.[UpTime], row_number() over( partition by a.[UnitId] order by a.[SeqNoLog] desc) [RN] 
+    FROM [UnitLog] a 
+    INNER JOIN [LoadPlan] b ON a.[LoadNo] = b.[LoadNo] AND a.[UnitTransactionType] = N'TO' 
+    INNER JOIN [Instruction] c ON b.[InstructionNo] = c.[InstructionNo] ) b ON a.[SeqNoLog] = b.[SeqNoLog] 
+INNER JOIN [Unit] c ON a.[UnitId] = c.[UnitId] 
+WHERE (b.[RN] < 2)
+```
+
 ## WithParameters 参数化共享
 
 开启参数化查询功能后，使用 WithParameters 共享参数化，避免产生相同的参数名称：
