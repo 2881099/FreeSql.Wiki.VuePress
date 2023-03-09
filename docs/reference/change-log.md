@@ -2,6 +2,18 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.691
+
+- 增加 ISelect\<T\> FromQuery 重载多表嵌套；
+- 增加 实体备注从 Description/Display/DisplayName 等特性兼容读取；
+- 增加 ISelectGrouping First 方法；
+- 增加 IInsertOrUpdate SetSource 重载方法；
+- 优化 WithTempQuery + ToList 使用子查询；
+- 优化 IInsertOrUpdate SetSource tempPrimary 自增的忽略插入；
+- 修复 Clickhouse 自动分表 where 条件分析问题；
+- 修复 DBFirst 延迟加载 ManyToOne 返回总是NULL；#1451
+- 修复 QuestDB CodeFirst AutoSubtableAttribute/ColumnAttribute判断bug
+
 ## v3.2.690
 
 - 增加 [Navigate(xx, TempPrimary = xx)] 与非主键关联；（仅支持查询）
