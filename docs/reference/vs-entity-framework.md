@@ -19,7 +19,7 @@
 | 生命周期      | Singleton                                        | Scoped      |
 | 使用方式      | IFreeSql、Repository                             | DbContext   |
 
-FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/人大金仓/神舟通用/Access。
+FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB，以及自定义适配。
 
 .NET ORM 各有自已看家本领，本文主要按 FreeSql 提供的功能进行列举比较，如有冒犯请见谅，也欢迎向 FreeSql 提出功能建议。
 
