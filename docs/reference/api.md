@@ -228,6 +228,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                                                       |
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                                                 |
 | ExecuteUpdated  | List\<T1\> |                         | 执行 SQL 语句，返回更新后的记录                                               |
+| Join | IUpdateJoin | | 联表更新 |
 
 ---
 
