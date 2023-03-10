@@ -259,7 +259,54 @@ UPDATE `T1` SET Title = '111' WHERE id in (select a.id from T1 a left join Optio
 - 更新前可预览测试数据，防止错误更新操作；
 - 支持复杂的更新操作，例如：`ISelect` 上使用 `Limit(10)` 更新附合条件的前 10 条记录；
 
-## 11、BulkCopy 批量更新
+## 11、联表更新 UpdateJoin
+
+v3.2.692+（高风险操作，高风险操作，高风险操作，请谨慎谨慎谨慎使用，测试并核对 ToSql 返回的内容）
+
+```csharp
+fsql.Update<T1>()
+  .Join<T2>((a, b) => a.id == b.groupid)
+  .Set((a, b) => a.bname == b.name) //其他表字段
+  .Set((a, b) => a.bcode == b.id + a.code)
+  .Set(a => a.flag, 1) //固定值
+  .Where((a, b) => a.id > 0 && b.id > 0)
+  .ExecuteAffrows();
+```
+
+不同数据库产生的 SQL 不一样，以 MySql 为例：
+```sql
+UPDATE `T1` a
+INNER JOIN `T2` b ON (a.`id` = b.`groupid`)
+SET a.`bname` = b.`name`, a.`bcode` = concat(b.`id`, a.`code`), a.`flag` = 1
+WHERE a.`id` > 0 AND b.`id` > 0
+```
+
+更复杂的联表更新：
+
+```csharp
+var query = fsql.Select<T2, T3>()
+  .InnerJoin(...)
+  .Where(...)
+  .WithTempQuery((a, b) => new { item1 = a, item2 = b });
+
+fsql.Update<T1>()
+  .Join(query, (a, b) => a.id == b.item1.groupid)
+  .Set((a, b) => a.bcode == b.item2.xcode)
+  .ExecuteAffrows();
+```
+
+```sql
+UPDATE `T1` a
+INNER JOIN (
+  SELECT ...
+  FROM `t2` a
+  INNER JOIN ...
+  Where ...
+) b ON (a.`id` = b.`groupid`)
+SET a.`bcode` = b.`xcode`
+```
+
+## 12、BulkCopy 批量更新
 
 FreeSql.Provider.SqlServer、FreeSql.Provider.MySqlConnector、FreeSql.Provider.PostgreSQL 
 
