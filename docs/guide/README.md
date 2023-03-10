@@ -12,7 +12,7 @@
 
 `FreeSql`是功能强大的 `.NET ORM`，支持 `.NetFramework 4.0+`、`.NetCore 2.1+`、`Xamarin`等支持 NetStandard 所有运行平台。
 
-支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/翰高/华为GaussDB/MsAccess` 等数据库，以及自定义适配其它数据库。
+支持 `MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess` 等数据库，以及自定义适配其它数据库。
 
 - QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)
 
@@ -32,7 +32,7 @@
 - [x] 支持导航属性查询，和延时加载；
 - [x] 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；
 - [x] 支持读写分离、分表分库，租户设计；
-- [x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/翰高/华为GaussDB/MsAccess；
+- [x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；
 
 ## 学习指南
 
