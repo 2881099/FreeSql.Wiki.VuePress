@@ -274,6 +274,7 @@ fsql.Update<T1>()
 ```
 
 不同数据库产生的 SQL 不一样，以 MySql 为例：
+
 ```sql
 UPDATE `T1` a
 INNER JOIN `T2` b ON (a.`id` = b.`groupid`)
@@ -339,3 +340,4 @@ fsql.Update<T1>().SetSource(list).ExecuteSqlBulkCopy();
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                                                         |
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                                                   |
 | ExecuteUpdated  | List\<T1\> |                         | 执行 SQL 语句，返回更新后的记录                                                 |
+| Join | IUpdateJoin | | 联表更新 |
