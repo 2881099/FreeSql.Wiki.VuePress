@@ -18,7 +18,7 @@ features:
     details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, Xamarin
     link: /guide/code-first
   - title: 多数据库支持
-    details: 🌳MySql、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、神舟通用、南大通用、翰高、ClickHouse、Access 等数据库
+    details: 🌳MySql、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、虚谷、神舟、翰高、ClickHouse、QuestDB、Access 等数据库
     link: /guide/install
   - title: 丰富的表达式函数
     details: ✒ 支持 丰富的表达式函数，以及灵活的自定义解析；
@@ -27,7 +27,7 @@ features:
     details: 💻 支持 DbFirst 模式，支持从数据库导入实体类，或使用实体类生成工具生成实体类；
     link: /guide/db-first
   - title: 类型映射
-    details: ⛳ 支持 深入的类型映射，比如 PgSql 的数组类型等；
+    details: ⛳ 支持 深入的类型映射，比如 Pgsql 的数组类型等；
     link: /guide/type-mapping
   - title: 导航属性
     details: 🏁 支持 导航属性一对多、多对多贪婪加载，以及延时加载；
