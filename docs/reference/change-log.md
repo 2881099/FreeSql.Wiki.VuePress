@@ -2,6 +2,13 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.692
+
+- 增加 IUpdate.Join 联表更新功能；(高风险操作，请谨慎使用)
+- 修复 InsertOrUpdateDict Oracle byte[] 长度判断问题；#1462
+- 修复 InsertDict 等字典操作在 SqlServer 下的问题；
+- 修复 ISelect\<T\> FromQuery 多表重载可能出现 null 报错；
+
 ## v3.2.691
 
 - 增加 ISelect\<T\> FromQuery 重载多表嵌套；
