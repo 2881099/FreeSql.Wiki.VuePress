@@ -199,7 +199,7 @@ fsql.Delete<Blog>()
 | UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                     |
 | UseLazyLoading                        | this          | 开启延时加载功能                                                                               |
 | UseMonitorCommand                     | this          | 监视全局 SQL 执行前后 |
-| UseMappingPriority                    | this          | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
+| UseMappingPriority                    | this          | 指定映射优先级（默认 Aop < FluentApi < Attribute）按顺序覆盖的逻辑，所以最后的那个优先级最高|
 | UseNameConvert                        | this          | 自动转换名称 Entity -\> Db                                                                     |
 | UseQuoteSqlName                       | this          | SQL名称是否使用 \[\] `` "" |
 | UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认 true) |
