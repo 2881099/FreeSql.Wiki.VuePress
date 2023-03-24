@@ -83,6 +83,19 @@ repo.InsertOrUpdate(实体);
 fsql.InsertOrUpdate<T1>().SetSource(list).ExecuteSqlBulkCopy();
 ```
 
+```sql
+SELECT ... INTO #temp_T1 FROM [T1] WHERE 1=2
+
+MERGE INTO [T1] t1 USING (select * from #temp_user1) t2 ON (t1.[id] = t2.[id])
+WHEN MATCHED THEN
+  update set ...
+WHEN NOT MATCHED THEN
+  insert (...)
+  values (...);
+
+DROP TABLE #temp_user1
+```
+
 ---
 
 ## 5、BeginEdit 批量编辑
