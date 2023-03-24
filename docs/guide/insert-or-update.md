@@ -111,7 +111,7 @@ list[0].Name = "123123";
 list.RemoveAt(1);
 
 repo.EndEdit(); //重载方法新旧对比 repo.EndEdit(newlist)
-}
+
 class T
 {
     public Guid Id { get; set; }
