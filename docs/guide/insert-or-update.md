@@ -101,31 +101,18 @@ DROP TABLE #temp_user1
 ## 5、BeginEdit 批量编辑
 
 ```csharp
-[Fact]
-public void BeginEdit()
-{
-    fsql.Delete<BeginEdit01>().Where("1=1").ExecuteAffrows();
-    var repo = fsql.GetRepository<BeginEdit01>();
-    var cts = new[] {
-        new BeginEdit01 { Name = "分类1" },
-        new BeginEdit01 { Name = "分类1_1" },
-        new BeginEdit01 { Name = "分类1_2" },
-        new BeginEdit01 { Name = "分类1_3" },
-        new BeginEdit01 { Name = "分类2" },
-        new BeginEdit01 { Name = "分类2_1" },
-        new BeginEdit01 { Name = "分类2_2" }
-    }.ToList();
-    repo.Insert(cts);
+var list = fsql.Select<T>().Where(...).ToList();
 
-    repo.BeginEdit(cts); //开始对 cts 进行编辑
+var repo = fsql.GetRepository<T>();
+repo.BeginEdit(list); //开始对 list 进行编辑
 
-    cts.Add(new BeginEdit01 { Name = "分类2_3" });
-    cts[0].Name = "123123";
-    cts.RemoveAt(1);
+list.Add(new T { Name = "分类2_3" });
+list[0].Name = "123123";
+list.RemoveAt(1);
 
-    Assert.Equal(3, repo.EndEdit()); //重载方法新旧对比 repo.EndEdit(newlist)
+repo.EndEdit(); //重载方法新旧对比 repo.EndEdit(newlist)
 }
-class BeginEdit01
+class T
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
@@ -135,19 +122,19 @@ class BeginEdit01
 上面的代码 EndEdit 方法执行的时候产生 3 条 SQL 如下：
 
 ```sql
-INSERT INTO "BeginEdit01"("Id", "Name") VALUES('5f26bf07-6ac3-cbe8-00da-7dd74818c3a6', '分类2_3')
+INSERT INTO "T"("Id", "Name") VALUES('5f26bf07-6ac3-cbe8-00da-7dd74818c3a6', '分类2_3')
 
 
-UPDATE "BeginEdit01" SET "Name" = '123123'
+UPDATE "T" SET "Name" = '123123'
 WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd01be76e26')
 
 
-DELETE FROM "BeginEdit01" WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd11bcf54dc')
+DELETE FROM "T" WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd11bcf54dc')
 ```
 
 场景：winform 加载表数据后，一顿添加、修改、删除操作之后，点击【保存】
 
-提醒：该操作只对变量 cts 有效，不是针对全表对比更新。
+提醒：该操作只对变量 list 有效，不是针对全表对比更新。
 
 ## 6、MySql 特有功能 On Duplicate Key Update
 
