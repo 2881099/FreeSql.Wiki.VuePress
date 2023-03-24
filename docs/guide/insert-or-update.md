@@ -71,7 +71,21 @@ repo.InsertOrUpdate(实体);
 
 ---
 
-## 4、BeginEdit 批量编辑
+## 4、BulkCopy 批量插入或更新
+
+仅在 FreeSql.Provider.SqlServer 扩展方法 ExecuteSqlBulkCopy 实现了批量插入或更新（v3.2.693），其他数据库未来补充。
+
+原理：使用 BulkCopy 将数据插入到临时表，再使用 MERGE INTO 联表操作。
+
+提示：当更新的字段数量超过 3000 时，收益较大。
+
+```csharp
+fsql.InsertOrUpdate<T1>().SetSource(list).ExecuteSqlBulkCopy();
+```
+
+---
+
+## 5、BeginEdit 批量编辑
 
 ```csharp
 [Fact]
@@ -122,7 +136,7 @@ DELETE FROM "BeginEdit01" WHERE ("Id" = '5f26bf00-6ac3-cbe8-00da-7dd11bcf54dc')
 
 提醒：该操作只对变量 cts 有效，不是针对全表对比更新。
 
-## 5、MySql 特有功能 On Duplicate Key Update
+## 6、MySql 特有功能 On Duplicate Key Update
 
 FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。
 
@@ -180,7 +194,7 @@ fsql.Insert(item)
 
 ---
 
-## 6、PostgreSQL 特有功能 On Conflict Do Update
+## 7、PostgreSQL 特有功能 On Conflict Do Update
 
 FreeSql.Provider.PostgreSQL 支持 PostgreSQL 9.5+ 特有的功能，On Conflict(id) Do Update。
 
