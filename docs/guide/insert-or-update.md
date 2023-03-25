@@ -73,7 +73,7 @@ repo.InsertOrUpdate(实体);
 
 ## 4、BulkCopy 批量插入或更新
 
-仅在 FreeSql.Provider.SqlServer 扩展方法 ExecuteSqlBulkCopy 实现了批量插入或更新（v3.2.693），其他数据库未来补充。
+FreeSql.Provider.SqlServer/FreeSql.Provider.Oracle 提供扩展方法 ExecuteSqlBulkCopy/ExecuteOracleBulkCopy 实现了批量插入或更新（v3.2.693），其他数据库未来补充。
 
 原理：使用 BulkCopy 将数据插入到临时表，再使用 MERGE INTO 联表操作。
 
