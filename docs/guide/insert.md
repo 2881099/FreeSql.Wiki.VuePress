@@ -87,6 +87,7 @@ FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批
 ## 3、BulkCopy
 
 | 程序包 | 扩展方法 | 说明 |
+| -- | -- | -- |
 | FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
 | FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
 | FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
