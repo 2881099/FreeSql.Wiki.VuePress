@@ -309,9 +309,13 @@ SET a.`bcode` = b.`xcode`
 
 ## 12、BulkCopy 批量更新
 
-FreeSql.Provider.SqlServer、FreeSql.Provider.MySqlConnector、FreeSql.Provider.PostgreSQL 
-
-分别实现了扩展方法 ExecuteSqlBulkCopy、ExecuteMySqlBulkCopy、ExecutePgCopy 实现批量更新（v3.2.685）
+| v3.2.693 | 扩展方法 | 说明 |
+| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
+| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
+| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
+| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
+| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
 
 原理：使用 BulkCopy 将数据插入到临时表，再使用 UPDATE FROM JOIN 联表更新。
 
