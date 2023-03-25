@@ -2,9 +2,7 @@
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql,
-     "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10"
-     )
+    .UseConnectionString(FreeSql.DataType.MySql, connectionString)
     .Build(); //请务必定义成 Singleton 单例模式
 ```
 
