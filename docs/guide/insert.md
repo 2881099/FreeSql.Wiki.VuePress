@@ -84,9 +84,15 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 
 FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批量插入建议关闭参数化功能，使用 .NoneParameter() 进行执行。
 
-## 3、ExecuteSqlBulkCopy、ExecutePgCopy、ExecuteMySqlBulkCopy
+## 3、BulkCopy
 
-Bulk Copy 操作以扩展方法的形式实现，针对 SqlServer/PostgreSQL/MySql 数据库，可用的包：FreeSql.Provider.SqlServer/FreeSql.Provider.PostgreSQL/FreeSql.Provider.MySqlConnector。
+| 程序包 | 扩展方法 | 说明 |
+| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
+| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
+| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
+| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
+| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
 
 ### 批量插入测试参考(52 个字段)
 
