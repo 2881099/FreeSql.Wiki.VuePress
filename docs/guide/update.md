@@ -309,7 +309,8 @@ SET a.`bcode` = b.`xcode`
 
 ## 12、BulkCopy 批量更新
 
-| v3.2.693 | 扩展方法 | 说明 |
+| 程序包 | 扩展方法 | 说明 (v3.2.693) |
+| -- | -- | -- |
 | FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
 | FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
 | FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
