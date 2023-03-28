@@ -17,6 +17,7 @@ title:  MySqlConnector
 - The given key '65535' was not present in the dictionary.
 - The type initializer for 'MySql.Data.MySqlClient.Replication.ReplicationManager' threw an exception.
 - Parameter '@xxx' must be defined.
+- Object cannot be cast from DBNull to other types.
 
 ## ExecuteMySqlBulkCopy
 
