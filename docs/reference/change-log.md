@@ -2,6 +2,17 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.693
+
+- 添加 IInsertOrUpdate 高性能插入或更新 SqlServer/MySql/Oracle/Pgsql/达梦/人大金仓；
+- 增加 IUpdate 高性能批量更新 Oracle/达梦/人大金仓；
+- 增加 TableInfo.SetAsTable 自动分表的设置；
+- **修复 SqlServer 自增 BulkUpdate bug；#1476**
+- 修复 表达式树解析 string.Concat 多于3个时的 bug；
+- 修复 UpdateJoin null 错误；
+- 优化 UpdateJoin Set 固定值解析；
+- 优化 .Select\<object\>().WithSql(sql).ToList() 体验；
+
 ## v3.2.692
 
 - 增加 IUpdate.Join 联表更新功能；(高风险操作，请谨慎使用)
