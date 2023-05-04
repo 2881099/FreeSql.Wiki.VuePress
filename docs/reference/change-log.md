@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.694
+
+- 增加 虚谷数据库 FreeSql.Provider.Xugu；
+- 增加 IInsert IgnoreInsertValueSql 方法临时忽略 InsertValueSql 设置；
+- 增加 部分 LocalExecuteScalar Aop.CommandAfter 事件；#1481
+- 增加 QuestDB SampleBy 对准日历参数；
+- 增加 动态操作创建实体API，fsql.CodeFirst.DynamicEntity；（感谢 Daily 贡献）
+
 ## v3.2.693
 
 - 添加 IInsertOrUpdate 高性能插入或更新 SqlServer/MySql/Oracle/Pgsql/达梦/人大金仓；
