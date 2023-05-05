@@ -30,31 +30,31 @@ repo.InsertOrUpdate(..);
 > 提示：动态编译技术 <https://natasha.dotnetcore.xyz/zh-Hans/docs/get_started/string-complie>
 
 ```csharp
-//v3.2.694 emit 动态创建实体类型
-Type type = fsql.CodeFirst.DynamicEntity("user", new TableAttribute { Name = "t_user" })
+//v3.2.695 emit 动态创建实体类型
+var table = fsql.CodeFirst.DynamicEntity("user", new TableAttribute { Name = "t_user" })
     .Property("id", typeof(int), new ColumnAttribute { IsIdentity = true, IsPrimary = rue })
     .Property("username", typeof(string), new ColumnAttribute { StringLength = 32 })
     .Build();
 
-//如果有必要，请将 type 缓存起来
+//如果有必要，请将 table 缓存起来
 
 Dictionary<string, object> dict = new Dictionary<string, object>();
 dict["id"] = 1;
 dict["username"] = "xxx";
 
 //将字典转化成 type 对应的 object
-object obj = FreeSql.Internal.DynamicCompileBuilder.CreateObjectByTypeByCodeFirst(fsql, type, dict);
+object obj = table.CreateInstance(dict);
 
 //插入
-fsql.Insert<object>().AsType(type).AppendData(obj).ExecuteAffrows();
+fsql.Insert<object>().AsType(table.Type).AppendData(obj).ExecuteAffrows();
 //更新
-fsql.Update<object>().AsType(type).SetSource(obj).ExecuteAffrows();
+fsql.Update<object>().AsType(table.Type).SetSource(obj).ExecuteAffrows();
 //插入或更新
-fsql.InsertOrUpdate<object>().AsType(type).SetSource(obj).ExecuteAffrows();
+fsql.InsertOrUpdate<object>().AsType(table.Type).SetSource(obj).ExecuteAffrows();
 //删除
-fsql.Delete<object>().AsType(type).WhereDynamic(obj).ExecuteAffrows();
+fsql.Delete<object>().AsType(table.Type).WhereDynamic(obj).ExecuteAffrows();
 //查询
-List<object> objs = fsql.Select<object>().AsType(type).ToList();
+List<object> objs = fsql.Select<object>().AsType(table.Type).ToList();
 ```
 
 ## 字典 CUD
