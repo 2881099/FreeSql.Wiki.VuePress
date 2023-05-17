@@ -27,7 +27,7 @@ class Topic { }
 
 > 属性名称：\[Column(Name = "xxx")\]
 
-特殊：[Table(Name = "\"ima_file@erp_lotesgzv1.lotes.com.cn\"")]
+特殊：[Table(Name = "\\"ima_file@erp_lotesgzv1.lotes.com.cn\\"")]
 
 ## 主键(Primary Key)
 
