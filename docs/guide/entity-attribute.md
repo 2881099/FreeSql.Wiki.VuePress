@@ -1,6 +1,8 @@
 # 实体特性✨
 
-v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column
+v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped
+
+MaxLength/StringLength/DatabaseGenerated/Table/Column
 
 ## 名称
 
