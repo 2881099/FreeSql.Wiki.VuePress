@@ -1,5 +1,11 @@
+@use "@sass-palette/hope-config";
 
+:root {
+  @media (min-width: hope-config.$laptop) {
+    --content-width: calc(100vw - 18rem);
+  }
 
-@media (min-width: 997px){
-    :root{--content-width:80%}
+  @media (min-width: hope-config.$pc) {
+    --content-width: calc(100vw - 40rem);
+  }
 }

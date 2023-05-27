@@ -1,6 +1,6 @@
 # Getting Started
 
-FreeSql is a powerful **.NET ORM** that supports all *.NET Standard* runtime platforms like *.NET Framework 4.0+*, *.NET Core 2.1+* and *Xamarin*, etc.
+FreeSql is a powerful **.NET ORM** that supports all _.NET Standard_ runtime platforms like _.NET Framework 4.0+_, _.NET Core 2.1+_ and _Xamarin_, etc.
 
 FreeSql supports MySql, SqlServer, PostgreSQL, Oracle, Sqlite, Firebird, Dameng, Shentong Database, Kingbase ES(V008R003), Hangao Database, ClickHouse, GBase and MsAccess.
 
@@ -30,16 +30,16 @@ public class Blog {
 
 FreeSql.Provider.XXX ([Optional Providers](Install))
 
-:::: code-group
-::: code-group-item .NET CLI
+::: code-tabs
+
+@tab .NET CLI
 
 ```bash
 dotnet add package FreeSql
 dotnet add package FreeSql.Provider.Sqlite
 ```
 
-:::
-::: code-group-item Package Manager
+@tab Package Manager
 
 ```bash
 Install-Package FreeSql
@@ -47,15 +47,16 @@ Install-Package FreeSql.Provider.Sqlite
 ```
 
 :::
-::::
 
 ## Declaring
 
 > Note: IFreeSql should be declared as a singleton in the project, not created every time it is used.
 
 - .NET Core Singleton
-:::: code-group
-::: code-group-item .NET Core 5
+
+::: code-tabs
+
+@tab .NET Core 5
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -65,7 +66,7 @@ public void ConfigureServices(IServiceCollection services)
         IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
         .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
-        .UseAutoSyncStructure(true)      
+        .UseAutoSyncStructure(true)
         //Automatically synchronize the entity structure to the database.
         //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
         .Build();
@@ -75,8 +76,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-:::
-::: code-group-item .NET 6
+@tab .NET 6
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -85,17 +85,16 @@ Func<IServiceProvider, IFreeSql> implementationFreeSql = r =>
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=db1.db")
         .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
-        .UseAutoSyncStructure(true) 
+        .UseAutoSyncStructure(true)
         //Automatically synchronize the entity structure to the database.
         //FreeSql will not scan the assembly, and will generate a table if and only when the CRUD instruction is executed.
         .Build();
     return fsql;
-}; 
+};
 builder.Services.AddSingleton<IFreeSql>(implementationFreeSql);
 ```
 
 :::
-::::
 
 - [.NET Core injects multiple FreeSql instances](https://github.com/dotnetcore/FreeSql/issues/44)
 - .NET Framework Singleton
@@ -115,7 +114,7 @@ public class DB
 }
 ```
 
-Then when using it, use `fsql` directly through ```IFreeSql fsql = DB.Sqlite;```.
+Then when using it, use `fsql` directly through `IFreeSql fsql = DB.Sqlite;`.
 
 IFreeSql is the top-level object of ORM, and all operations use its methods or properties:
 
@@ -193,35 +192,35 @@ fsql.Delete<Blog>()
 | UseNoneCommandParameter               | this          | Do not use command parameterized execution. for `Insert/Update`, you can also temporarily use `IInsert/IUpdate.NoneParameter()`                                                              |
 | UseGenerateCommandParameterWithLambda | this          | For lambda expression analysis, generate command parameterized execution                                                                                                                     |
 | UseLazyLoading                        | this          | Turn on the lazy loading function,                                                                                                                                                           |
-| UseMonitorCommand | this | Monitor before and after global SQL execution. |
-| UseMappingPriority | this | Specify mapping priority（default Aop < FluentApi < Attribute） |
+| UseMonitorCommand                     | this          | Monitor before and after global SQL execution.                                                                                                                                               |
+| UseMappingPriority                    | this          | Specify mapping priority（default Aop < FluentApi < Attribute）                                                                                                                              |
 | UseNameConvert                        | this          | Automatic name conversion Entity -\> Db                                                                                                                                                      |
 | UseExitAutoDisposePool                | this          | Listen to the AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress event to automatically release the connection pool (default true)                                                   |
 | Build\<T\>                            | IFreeSql\<T\> | Create an IFreeSql object. Note: Singleton design, don’t repeat creation                                                                                                                     |
 
 # ConnectionStrings
 
-| DataType                                                                                            | ConnectionString                                                                                                                                                                                |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DataType.MySql                                                                                      | Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1                                                                   |
-| DataType.PostgreSQL                                                                                 | Host=192.168.164.10;Port=5432;Username=postgres;Password=123456; Database=tedb;Pooling=true;Minimum Pool Size=1                                                                                 |
-| DataType.SqlServer                                                                                  | Data Source=.;User Id=sa;Password=123456;Initial Catalog=freesqlTest;TrustServerCertificate=true;Pooling=true;Min Pool Size=1                                                                   |
-| DataType.Oracle                                                                                     | user id=user1;password=123456; data source=//127.0.0.1:1521/XE;Pooling=true;Min Pool Size=1                                                                                                     |
-| DataType.Sqlite                                                                                     | Data Source=\|DataDirectory\|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1                                                                                                       |
-| DataType.Firebird                                                                                   | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456                                                                                                                           |
-| DataType.MsAccess                                                                                   | Provider=Microsoft.Jet.OleDb.4.0;Data Source=d:/accdb/2003.mdb                                                                                                                                  |
-| DataType.Dameng(达梦) | server=127.0.0.1;port=5236;user id=2user;password=123456789;database=2user;poolsize=5 |
-| DataType.ShenTong(神通) | HOST=192.168.164.10;PORT=2003;DATABASE=OSRDB;USERNAME=SYSDBA;PASSWORD=szoscar55;MAXPOOLSIZE=2 |
-| DataType.KingbaseES(人大金仓) V008R003 | Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST;MAXPOOLSIZE=2 |
-| DataType.Gbase(南大通用) | Driver={GBase ODBC DRIVER (64-Bit)};Host=192.168.164.134;Service=9088;Server=gbase01;Database=testdb;Protocol=onsoctcp;Uid=gbasedbt;Pwd=GBase123;Db_locale=zh_CN.utf8;Client_locale=zh_CN.utf8 |
-| DataType.OdbcMySql | Driver={MySQL ODBC 8.0 Unicode Driver}; Server=127.0.0.1;Persist Security Info=False; Trusted_Connection=Yes;UID=root;PWD=root; DATABASE=cccddd_odbc;Charset=utf8; SslMode=none;Min Pool Size=1 |
-| DataType.OdbcSqlServer | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min Pool Size=1 |
-| DataType.OdbcOracle | Driver={Oracle in XE};Server=//127.0.0.1:1521/XE; Persist Security Info=False; Trusted_Connection=Yes;UID=odbc1;PWD=123456; Min Pool Size=1 |
-| DataType.OdbcPostgreSQL | Driver={PostgreSQL Unicode(x64)};Server=192.168.164.10; Port=5432;UID=postgres;PWD=123456; Database=tedb_odbc;Pooling=true;Min Pool Size=1 |
-| DataType.OdbcDameng (达梦) | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789 |
-| DataType.OdbcKingbaseES (人大金仓) V008R003 | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST |
-| DataType.Odbc | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1 |
-| [DataType.Custom](https://github.com/dotnetcore/FreeSql/tree/master/Providers/FreeSql.Provider.Custom) | Custom connection string, access any database |
+| DataType                                                                                               | ConnectionString                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DataType.MySql                                                                                         | Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1                                                                   |
+| DataType.PostgreSQL                                                                                    | Host=192.168.164.10;Port=5432;Username=postgres;Password=123456; Database=tedb;Pooling=true;Minimum Pool Size=1                                                                                 |
+| DataType.SqlServer                                                                                     | Data Source=.;User Id=sa;Password=123456;Initial Catalog=freesqlTest;TrustServerCertificate=true;Pooling=true;Min Pool Size=1                                                                   |
+| DataType.Oracle                                                                                        | user id=user1;password=123456; data source=//127.0.0.1:1521/XE;Pooling=true;Min Pool Size=1                                                                                                     |
+| DataType.Sqlite                                                                                        | Data Source=\|DataDirectory\|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1                                                                                                       |
+| DataType.Firebird                                                                                      | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456                                                                                                                           |
+| DataType.MsAccess                                                                                      | Provider=Microsoft.Jet.OleDb.4.0;Data Source=d:/accdb/2003.mdb                                                                                                                                  |
+| DataType.Dameng(达梦)                                                                                  | server=127.0.0.1;port=5236;user id=2user;password=123456789;database=2user;poolsize=5                                                                                                           |
+| DataType.ShenTong(神通)                                                                                | HOST=192.168.164.10;PORT=2003;DATABASE=OSRDB;USERNAME=SYSDBA;PASSWORD=szoscar55;MAXPOOLSIZE=2                                                                                                   |
+| DataType.KingbaseES(人大金仓) V008R003                                                                 | Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST;MAXPOOLSIZE=2                                                                                                                 |
+| DataType.Gbase(南大通用)                                                                               | Driver={GBase ODBC DRIVER (64-Bit)};Host=192.168.164.134;Service=9088;Server=gbase01;Database=testdb;Protocol=onsoctcp;Uid=gbasedbt;Pwd=GBase123;Db_locale=zh_CN.utf8;Client_locale=zh_CN.utf8  |
+| DataType.OdbcMySql                                                                                     | Driver={MySQL ODBC 8.0 Unicode Driver}; Server=127.0.0.1;Persist Security Info=False; Trusted_Connection=Yes;UID=root;PWD=root; DATABASE=cccddd_odbc;Charset=utf8; SslMode=none;Min Pool Size=1 |
+| DataType.OdbcSqlServer                                                                                 | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min Pool Size=1                              |
+| DataType.OdbcOracle                                                                                    | Driver={Oracle in XE};Server=//127.0.0.1:1521/XE; Persist Security Info=False; Trusted_Connection=Yes;UID=odbc1;PWD=123456; Min Pool Size=1                                                     |
+| DataType.OdbcPostgreSQL                                                                                | Driver={PostgreSQL Unicode(x64)};Server=192.168.164.10; Port=5432;UID=postgres;PWD=123456; Database=tedb_odbc;Pooling=true;Min Pool Size=1                                                      |
+| DataType.OdbcDameng (达梦)                                                                             | Driver={DM8 ODBC DRIVER};Server=127.0.0.1:5236; Persist Security Info=False; Trusted_Connection=Yes; UID=USER1;PWD=123456789                                                                    |
+| DataType.OdbcKingbaseES (人大金仓) V008R003                                                            | Driver={KingbaseES 8.2 ODBC Driver ANSI};Server=127.0.0.1;Port=54321;UID=USER2;PWD=123456789;database=TEST                                                                                      |
+| DataType.Odbc                                                                                          | Driver={SQL Server};Server=.;Persist Security Info=False; Trusted_Connection=Yes;Integrated Security=True; DATABASE=freesqlTest_odbc; Pooling=true;Min pool size=1                              |
+| [DataType.Custom](https://github.com/dotnetcore/FreeSql/tree/master/Providers/FreeSql.Provider.Custom) | Custom connection string, access any database                                                                                                                                                   |
 
 ## Reference
 

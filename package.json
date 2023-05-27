@@ -1,32 +1,23 @@
 {
-    "name": "freesql-docs",
-    "version": "2.0.0",
-    "description": "A project of vuepress-theme-hope",
-    "license": "MIT",
-    "scripts": {
-        "build:vite": "vuepress-vite build docs",
-        "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
-        "build:webpack": "vuepress-webpack build docs",
-        "build:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack build docs",
-        "dev:vite": "vuepress-vite dev docs",
-        "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
-        "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
-        "dev:webpack": "vuepress-webpack dev docs",
-        "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
-        "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
-        "lint": "prettier --check --write .",
-        "lint:check": "prettier --check .",
-        "lint-md": "markdownlint **/*.md --ignore node_modules --fix",
-        "test": "echo \"Warning: no test specified\" && exit 0"
-    },
-    "dependencies": {
-        "@vuepress/cli": "2.0.0-beta.53",
-        "@vuepress/client": "2.0.0-beta.53",
-        "@vuepress/plugin-docsearch": "2.0.0-beta.53",
-        "@vuepress/plugin-google-analytics": "2.0.0-beta.53",
-        "vue": "^3.2.37",
-        "vuepress-theme-hope": "2.0.0-beta.124",
-        "vuepress-vite": "2.0.0-beta.53",
-        "vuepress-webpack": "2.0.0-beta.53"
-    }
+  "name": "freesql-docs",
+  "version": "2.0.0",
+  "description": "Docs for freesql",
+  "license": "MIT",
+  "scripts": {
+    "docs:build": "vuepress-vite build docs",
+    "docs:dev": "vuepress dev docs",
+    "lint": "prettier --check --write .",
+    "lint:check": "prettier --check ."
+  },
+  "packageManager": "pnpm@8.5.1",
+  "dependencies": {
+    "@vuepress/cli": "2.0.0-beta.62",
+    "@vuepress/client": "2.0.0-beta.62",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.62",
+    "@vuepress/plugin-google-analytics": "2.0.0-beta.62",
+    "prettier": "^2.8.8",
+    "vue": "^3.3.4",
+    "vuepress": "2.0.0-beta.62",
+    "vuepress-theme-hope": "2.0.0-beta.215"
+  }
 }
