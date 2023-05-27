@@ -49,7 +49,7 @@ export const zhNavbarConfig = navbar([
                     },
                     {
                         text: '浏览API（国内镜像）',
-                        link: 'http://124.70.130.97:8082/api/index.html'
+                        link: 'http://101.34.7.82:8082/api/index.html'
                     },
                     {
                         text: '提Issues',

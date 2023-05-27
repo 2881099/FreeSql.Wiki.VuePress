@@ -1,6 +1,6 @@
 # API 文档
 
-- [http://124.70.130.97:8082/api/FreeSql.html](http://124.70.130.97:8082/api/FreeSql.html)
+- [http://101.34.7.82:8082/api/FreeSql.html](http://101.34.7.82:8082/api/FreeSql.html)
 
 ## FreeSqlBuilder
 

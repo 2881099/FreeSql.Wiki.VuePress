@@ -4,7 +4,7 @@
   "description": "Docs for freesql",
   "license": "MIT",
   "scripts": {
-    "docs:build": "vuepress-vite build docs",
+    "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
     "lint": "prettier --check --write .",
     "lint:check": "prettier --check ."

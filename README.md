@@ -15,13 +15,13 @@ pnpm install
 ## run
 
 ```bash
-pnpm dev:vite
+pnpm docs:dev
 ```
 
 ## build
 
 ```bash
-pnpm build:vite
+pnpm docs:build
 ```
 
 ## upgrade package
@@ -32,8 +32,7 @@ pnpm up @vuepress/cli@2.0.0-beta.53
 pnpm up @vuepress/client@2.0.0-beta.53
 pnpm up @vuepress/plugin-docsearch@2.0.0-beta.53
 pnpm up @vuepress/plugin-google-analytics@2.0.0-beta.53
-pnpm up vuepress-vite@2.0.0-beta.53
-pnpm up vuepress-webpack@2.0.0-beta.53
+pnpm up vuepress@2.0.0-beta.53
 ```
 
 ## vuepress-next
@@ -53,5 +52,5 @@ pnpm up vuepress-webpack@2.0.0-beta.53
 
 - [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
+- [API参考(国内镜像)](http://101.34.7.82:8082/api/index.html)
 - [API参考](https://docs.dotnet-china.com/FreeSql/index.html)

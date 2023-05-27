@@ -49,7 +49,7 @@ EasyCms后台权限管理系统 基于`Asp.net Core`的后台快速开发框架�
 
 - [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API 参考(国内镜像)](http://124.70.130.97:8082/api/index.html)
+- [API 参考(国内镜像)](http://101.34.7.82:8082/api/index.html)
 - [API 参考](https://docs.dotnet-china.com/FreeSql/index.html)
 
 ## 源码
