@@ -1,18 +1,18 @@
-name: Sync to Git Mirror 
+name: Sync to Git Mirror
 on:
-    push:
-        branches:
-            - main
-            - gh-pages
+  push:
+    branches:
+      - main
+      - gh-pages
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Sync to Git Mirror 💕
-              uses: wearerequired/git-mirror-action@master
-              env:
-                  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-              with:
-                  source-repo: "git@github.com:dotnetcore/FreeSql.Wiki.VuePress.git"
-                  destination-repo: "git@github.com:igeekfan/FreeSql.Wiki.VuePress.git"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Git Mirror 💕
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          source-repo: "git@github.com:dotnetcore/FreeSql.Wiki.VuePress.git"
+          destination-repo: "git@github.com:igeekfan/FreeSql.Wiki.VuePress.git"
