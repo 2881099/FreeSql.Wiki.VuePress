@@ -2,13 +2,26 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.2.694
+## v3.2.696
+
+- 修复 \<object\> + AsType + (a as BaseEntity) 解析问题；#1427
+- 修复 IUpdateJoin 联表更新表达式赋值解析报错；
+- 修复 MySqlProvider .NetFramework 下可能报初始化类型错误；
+- 修复 自动分表 IUpdate/IDelete AsTable 不生效的问题；
+- 修复 FromQuery + WithTempQuery 嵌套查询多层后别名问题；#1510
+- 修复 WithTempQuery + Oracle 分页问题；#1519
+- 修复 Oracle 插入 LONG RAW 类型的问题；
+- 修复 BulkCopyUpdate 临时表名大小写问题；
+- 优化 IUpdate 批量 case when 同值的 SQL 生成；#1393
+
+## v3.2.695
 
 - 增加 虚谷数据库 FreeSql.Provider.Xugu；
 - 增加 IInsert IgnoreInsertValueSql 方法临时忽略 InsertValueSql 设置；
 - 增加 部分 LocalExecuteScalar Aop.CommandAfter 事件；#1481
 - 增加 QuestDB SampleBy 对准日历参数；
 - 增加 动态操作创建实体API，fsql.CodeFirst.DynamicEntity；（感谢 Daily 贡献）
+- 修复 OracleOledb 引起的读取类型问题； 
 
 ## v3.2.693
 
