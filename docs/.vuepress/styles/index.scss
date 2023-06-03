@@ -1,11 +1,15 @@
 @use "@sass-palette/hope-config";
 
 :root {
-  @media (min-width: hope-config.$laptop) {
-    --content-width: calc(100vw - 18rem);
-  }
+    @media (min-width: hope-config.$laptop) {
+        --content-width: calc(100vw - 18rem);
+    }
 
-  @media (min-width: hope-config.$pc) {
-    --content-width: calc(100vw - 40rem);
-  }
+    @media (min-width: hope-config.$pc) {
+        --content-width: calc(100vw - 40rem);
+    }
+
+    .hero-info-wrapper #main-title {
+        -webkit-text-fill-color: var(--theme-color) !important;
+    }
 }
