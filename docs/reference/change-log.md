@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.697
+
+- 增加 IInsertOrUpdate.UpdateSet 指定更新；
+- 修复 3.2.696 自动分表 bug；#1527 e79860164d5d12e4f7df747f0e29503dff301cb7
+
 ## v3.2.696
 
 - 修复 \<object\> + AsType + (a as BaseEntity) 解析问题；#1427
