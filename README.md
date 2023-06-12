@@ -1,6 +1,7 @@
 # FreeSql Docs
 
 - [https://freesql.net](https://freesql.net)
+- [freesql.net.dist.zip](https://github.com/2881099/FreeSql.Wiki.VuePress/files/11719032/freesql.net.dist.zip)
 
 ## install
 
