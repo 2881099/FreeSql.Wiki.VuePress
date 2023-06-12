@@ -1,0 +1,2 @@
+Algolia-Crawler-Verif: 05A5435CE0C9BA98
+Sitemap: https://freesql.net/sitemap.xml
