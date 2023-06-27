@@ -77,6 +77,7 @@ ISelect.WhereDynamicFilter 方法实现动态过滤条件（与前端交互）�
 - Range：范围查询
 - DateRange：日期范围，有特殊处理 value\[1\] + 1
 - Any/NotAny：是否符合 value 中任何一项（直白的说是 SQL IN）
+- Custom：[自定义解析](https://github.com/dotnetcore/FreeSql/discussions/1550)
 
 ```csharp
 DynamicFilterInfo dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(@"
