@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 12 Jun 2023 07:11:44 GMT</pubDate>
-    <lastBuildDate>Mon, 12 Jun 2023 07:11:44 GMT</lastBuildDate>
+    <pubDate>Tue, 27 Jun 2023 12:32:14 GMT</pubDate>
+    <lastBuildDate>Tue, 27 Jun 2023 12:32:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7279,6 +7279,7 @@ FROM "Topic" a</p>
 <li>Range：范围查询</li>
 <li>DateRange：日期范围，有特殊处理 value[1] + 1</li>
 <li>Any/NotAny：是否符合 value 中任何一项（直白的说是 SQL IN）</li>
+<li>Custom：<a href="https://github.com/dotnetcore/FreeSql/discussions/1550" target="_blank" rel="noopener noreferrer">自定义解析</a></li>
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>动态排序：ISelect.OrderByPropertyName("Parent.Code")</p>
