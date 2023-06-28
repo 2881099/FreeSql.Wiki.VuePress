@@ -129,7 +129,7 @@ LATEST ON a.xxxx  PARTITION BY a.xxxx
 
 #### BulkCopy
 
-> 实测七列10W数据预热后只需1-2秒，100W数据15秒左右
+> 实测七列10W数据预热后只需1.5秒，100W数据14秒左右
 
 ```csharp
 //需要启用RestAPI
