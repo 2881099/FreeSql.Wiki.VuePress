@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-06-27T12:32:14.951Z</updated>
+  <updated>2023-06-28T08:24:24.999Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11,7 +11,7 @@
     <title type="text">FreeSql.Provider.QuestDb</title>
     <id>https://freesql.net/guide/freesql-provider-questdb.html</id>
     <link href="https://freesql.net/guide/freesql-provider-questdb.html"/>
-    <updated>2023-02-22T18:09:30.000Z</updated>
+    <updated>2023-06-28T08:22:51.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeSql.Provider.QuestDb</h1>
 <h2> 介绍</h2>
 <p><code>QuestDB </code>是一款针对时序数据实时处理优化的关系型列存数据库， 支持 Rest API 方式访问，同时兼容 PostgreSQL 访问协议，以及 InfluxDB 写入的访问协议。自带 Web Console，方便数据库的基本访问</p>
@@ -28,7 +28,12 @@
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 特有功能</h2>
-<h4> Sample By</h4>
+<h4> QuestFunc</h4>
+<ul>
+<li>QuestFunc 实现了 QuestDB 官方文档的函数</li>
+<li>SelectLongSequence 对应 long_sequence</li>
+</ul>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Sample By</h4>
 <blockquote>
 <p>SAMPLE BY用于时间序列数据，将大型数据集汇总为同质时间块的聚合，作为SELECT语句的一部分</p>
 </blockquote>
@@ -36,15 +41,15 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>生成SQL</p>
 </blockquote>
-<div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> GroupBy</h4>
+<div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> GroupBy</h4>
 <blockquote>
-<p>需要注意的是QuestDb的GroupBy与其他关系型 数据库不同</p>
+<p>需要注意的是 QuestDB 的 GroupBy 与其他关系型 数据库不同</p>
 </blockquote>
 <p><a href="https://questdb.io/docs/concept/sql-extensions/#group-by-is-optional" target="_blank" rel="noopener noreferrer">官网说明：SQL extensions | QuestDB</a></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>生成SQL</p>
 </blockquote>
-<div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Latest On</h4>
+<div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> Latest On</h4>
 <blockquote>
 <p>对于多个时间序列存储在同一个表中的场景，根据时间戳检索给定键或键组合的最新项</p>
 </blockquote>
@@ -58,7 +63,7 @@
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4> 自动分表、索引</h4>
 <blockquote>
-<p>QuestDb支持自动分表</p>
+<p>QuestDB 支持自动分表</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 常见问题</h2>
 <h4> table busy</h4>
