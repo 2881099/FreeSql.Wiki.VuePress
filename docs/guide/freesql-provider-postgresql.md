@@ -96,6 +96,8 @@ class model
 
 > 注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序
 
+参考资料：[《PostgreSQL 空间地理类型，自定义解析方案 #1422》](https://github.com/dotnetcore/FreeSql/discussions/1422)
+
 ## 时序数据库
 
 timescaledb 是 postgresql的一个插件，一个开源的时间序列数据库，为快速获取和复杂查询进行了优化。它执行的是“完整的SQL”，相应地很容易像传统的关系数据库那样使用。
