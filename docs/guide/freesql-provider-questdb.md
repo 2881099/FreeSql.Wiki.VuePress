@@ -35,6 +35,28 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ## 特有功能
 
+#### QuestFunc
+
+- QuestFunc 实现了 QuestDB 官方文档的函数
+- SelectLongSequence 对应 long_sequence
+
+```csharp
+fsql.SelectLongSequence(10, () => new
+    {
+        rndstr = QuestFunc.rnd_str(10, 5, 10, 0),
+        rnddate = QuestFunc.rnd_date(QuestFunc.to_date("2020", "yyyy"), QuestFunc.to_date("2023", "yyyy"))
+    })
+    .From<User1>()
+    .InnerJoin((a, b) => a.rndstr == b.Username)
+    .ToList();
+//SELECT *
+//FROM (
+//    SELECT rnd_str(10,5,10,0) "rndstr", rnd_date(to_date('2020','yyyy'),to_date('2023','yyyy'),0) "rnddate"
+//    FROM long_sequence(10)
+//) a
+//INNER JOIN "user1" b ON a."rndstr" = b."username"
+```
+
 #### Sample By
 
 > SAMPLE BY用于时间序列数据，将大型数据集汇总为同质时间块的聚合，作为SELECT语句的一部分
@@ -43,7 +65,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ```csharp
 fsql.Select<Table>()
-    .SampleBy(1, SampleUnits.d)
+    .SampleBy(1, SampleUnit.day)
     .WithTempQuery(q => new { q.Id, q.Activos, count = SqlExt.Count(q.Id).ToValue() })
     .Where(q => q.Id != "xxx")
     .ToSql();
@@ -52,24 +74,17 @@ fsql.Select<Table>()
 > 生成SQL
 
 ```sql
-SELECT
-  *
-FROM
-  (
-    SELECT
-      a."Id",
-      a."Activos",
-      count(a."Id") "count"
-    FROM
-      "Table" a SAMPLE BY 1d
-  ) a
-WHERE
-  (a."Id" <> '1')
+SELECT *
+FROM (
+    SELECT a."Id", a."Activos", count(a."Id") "count"
+    FROM "Table" a SAMPLE BY 1d
+) a
+WHERE (a."Id" <> '1')
 ```
 
 #### GroupBy
 
-> 需要注意的是QuestDb的GroupBy与其他关系型 数据库不同
+> 需要注意的是 QuestDB 的 GroupBy 与其他关系型 数据库不同
 
 [官网说明：SQL extensions | QuestDB](https://questdb.io/docs/concept/sql-extensions/#group-by-is-optional)
 
@@ -84,22 +99,12 @@ fsql.Select<Table>()
 > 生成SQL
 
 ```sql
-SELECT
-  *
-FROM
-  (
-    SELECT
-      a."Id",
-      a."xxx",
-      count(a."Id") "count"
-    FROM
-      "Table" a
-  ) a
-WHERE
-  (
-    a."Id" <> '1'
-    AND a."count" > 1
-  )
+SELECT *
+FROM (
+    SELECT a."Id", a."xxx", count(a."Id") "count"
+    FROM "Table" a
+) a
+WHERE (a."Id" <> '1' AND a."count" > 1)
 ```
 
 #### Latest On
@@ -133,7 +138,7 @@ fsql.Insert(list).ExecuteBulkCopyAsync();
 
 #### 自动分表、索引
 
-> QuestDb支持自动分表
+> QuestDB 支持自动分表
 
 ```csharp
 [Index("Id_Index", nameof(Id), false)]
