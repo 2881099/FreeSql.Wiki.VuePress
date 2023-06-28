@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 28 Jun 2023 08:24:24 GMT</pubDate>
-    <lastBuildDate>Wed, 28 Jun 2023 08:24:24 GMT</lastBuildDate>
+    <pubDate>Wed, 28 Jun 2023 08:24:51 GMT</pubDate>
+    <lastBuildDate>Wed, 28 Jun 2023 08:24:51 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -58,7 +58,7 @@
 </blockquote>
 <div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> BulkCopy</h4>
 <blockquote>
-<p>实测七列10W数据预热后只需1-2秒，100W数据15秒左右</p>
+<p>实测七列10W数据预热后只需1.5秒，100W数据14秒左右</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4> 自动分表、索引</h4>
 <blockquote>
