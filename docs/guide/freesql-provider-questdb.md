@@ -136,6 +136,8 @@ LATEST ON a.xxxx  PARTITION BY a.xxxx
 fsql.Insert(list).ExecuteBulkCopyAsync();
 ```
 
+注意：RestAPI 不经过 ado.net，因为不触发 UseMonitorCommand/Aop.CommandBefore/After 等事件
+
 #### 自动分表、索引
 
 > QuestDB 支持自动分表
