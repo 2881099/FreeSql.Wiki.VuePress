@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 29 Jun 2023 03:32:20 GMT</pubDate>
-    <lastBuildDate>Thu, 29 Jun 2023 03:32:20 GMT</lastBuildDate>
+    <pubDate>Thu, 29 Jun 2023 03:35:45 GMT</pubDate>
+    <lastBuildDate>Thu, 29 Jun 2023 03:35:45 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -72,7 +72,8 @@
 <blockquote>
 <p>解决方案，启用RestAPI后 Insert/Update就会默认使用HTTP方式</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> RestAPI设置账号密码</h4>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>注意：RestAPI 不经过 ado.net，因为不触发 UseMonitorCommand/Aop.CommandBefore/After 等事件</p>
+<h4> RestAPI设置账号密码</h4>
 <p>QuestDb WebConsole并不支持设置账号密码，但是官网给出解决方案 使用Nginx代理</p>
 <p><a href="https://questdb.io/blog/2022/08/05/setting-basic-auth-nginx/#introduction" target="_blank" rel="noopener noreferrer">Setting up Basic Authentication for QuestDB open source using Nginx | QuestDB</a></p>
 <h4> QuestDb不支持删除？</h4>

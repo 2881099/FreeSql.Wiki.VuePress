@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-06-29T03:32:20.708Z</updated>
+  <updated>2023-06-29T03:35:45.860Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11,7 +11,7 @@
     <title type="text">FreeSql.Provider.QuestDb</title>
     <id>https://freesql.net/guide/freesql-provider-questdb.html</id>
     <link href="https://freesql.net/guide/freesql-provider-questdb.html"/>
-    <updated>2023-06-29T03:30:45.000Z</updated>
+    <updated>2023-06-29T03:34:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeSql.Provider.QuestDb</h1>
 <h2> 介绍</h2>
 <p><code>QuestDB </code>是一款针对时序数据实时处理优化的关系型列存数据库， 支持 Rest API 方式访问，同时兼容 PostgreSQL 访问协议，以及 InfluxDB 写入的访问协议。自带 Web Console，方便数据库的基本访问</p>
@@ -73,7 +73,8 @@
 <blockquote>
 <p>解决方案，启用RestAPI后 Insert/Update就会默认使用HTTP方式</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4> RestAPI设置账号密码</h4>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>注意：RestAPI 不经过 ado.net，因为不触发 UseMonitorCommand/Aop.CommandBefore/After 等事件</p>
+<h4> RestAPI设置账号密码</h4>
 <p>QuestDb WebConsole并不支持设置账号密码，但是官网给出解决方案 使用Nginx代理</p>
 <p><a href="https://questdb.io/blog/2022/08/05/setting-basic-auth-nginx/#introduction" target="_blank" rel="noopener noreferrer">Setting up Basic Authentication for QuestDB open source using Nginx | QuestDB</a></p>
 <h4> QuestDb不支持删除？</h4>
