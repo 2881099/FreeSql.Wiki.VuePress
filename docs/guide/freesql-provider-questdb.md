@@ -175,6 +175,8 @@ new FreeSql.FreeSqlBuilder()
     .UseQuestDbRestAPI("localhost:9000", "username", "password") 
 ```
 
+注意：RestAPI 不经过 ado.net，因为不触发 UseMonitorCommand/Aop.CommandBefore/After 等事件
+
 #### RestAPI设置账号密码
 
 QuestDb WebConsole并不支持设置账号密码，但是官网给出解决方案 使用Nginx代理
