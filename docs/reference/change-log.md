@@ -2,6 +2,24 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.698
+
+- 增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755
+- 增加 InsertOrUpdateDict WhereIdentityPrimary 方法；
+- 增加 pgsql 索引 B_Tree, Hash, GiST, GIN, SP_GiST, BRIN；
+- 修复 pgsql jsonb poco 方案联表查询问题；#1549 #1071
+- 修复 pgsql Geo 函数自定义解析深度问题；#1422
+- 修复 PgCopy 处理 jsonb 类型的问题；#1532
+- 修复 Enum.ToString() 即使 MapType=int 也应解析成 string；#1252 #806
+- 修复 repository/dbset AddRange AuditValue IEnumable 失败的 bug；#1545
+- 修复 达梦某情况连接串解析 user id 问题；
+- 修复 QuestDB 表达式解析 DateTime.UtcNow bug；
+- 修复 QuestDb BulkCopy在特定情况下无法解析表名问题；
+- 优化 QuestDB Guid 映射；
+- 优化 QuestDB 类型映射，表达式函数解析，新增 QuestFunc 函数解析；
+- 优化 uow + ISelect.ToUpdate 事务传播；#1562
+- 调整 QuestDB SampleUnits 命名，去掉 s；
+
 ## v3.2.697
 
 - 增加 IInsertOrUpdate.UpdateSet 指定更新；
