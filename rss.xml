@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 06 Jul 2023 03:29:33 GMT</pubDate>
-    <lastBuildDate>Thu, 06 Jul 2023 03:29:33 GMT</lastBuildDate>
+    <pubDate>Thu, 06 Jul 2023 05:25:12 GMT</pubDate>
+    <lastBuildDate>Thu, 06 Jul 2023 05:25:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -9821,10 +9821,28 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.697 增加 IInsertOrUpdate.UpdateSet 指定更新；; 修复 3.2.696 自动分表 bug；#1527 e79860164d5d12e4f7df747f0e29503dff301cb7; v3.2.696 修复 \ + AsType + (a as BaseEntity...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.698 增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755; 增加 InsertOrUpdateDict WhereIdentityPrimary 方法；; 增加 pgsql 索引 BTree, Hash, G...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.698</h2>
+<ul>
+<li>增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755</li>
+<li>增加 InsertOrUpdateDict WhereIdentityPrimary 方法；</li>
+<li>增加 pgsql 索引 B_Tree, Hash, GiST, GIN, SP_GiST, BRIN；</li>
+<li>修复 pgsql jsonb poco 方案联表查询问题；#1549 #1071</li>
+<li>修复 pgsql Geo 函数自定义解析深度问题；#1422</li>
+<li>修复 PgCopy 处理 jsonb 类型的问题；#1532</li>
+<li>修复 Enum.ToString() 即使 MapType=int 也应解析成 string；#1252 #806</li>
+<li>修复 repository/dbset AddRange AuditValue IEnumable 失败的 bug；#1545</li>
+<li>修复 达梦某情况连接串解析 user id 问题；</li>
+<li>修复 QuestDB 表达式解析 DateTime.UtcNow bug；</li>
+<li>修复 QuestDb BulkCopy在特定情况下无法解析表名问题；</li>
+<li>优化 QuestDB Guid 映射；</li>
+<li>优化 QuestDB 类型映射，表达式函数解析，新增 QuestFunc 函数解析；</li>
+<li>优化 uow + ISelect.ToUpdate 事务传播；#1562</li>
+<li>调整 QuestDB SampleUnits 命名，去掉 s；</li>
+</ul>
 <h2> v3.2.697</h2>
 <ul>
 <li>增加 IInsertOrUpdate.UpdateSet 指定更新；</li>
