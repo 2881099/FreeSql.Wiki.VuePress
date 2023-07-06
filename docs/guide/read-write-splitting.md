@@ -28,4 +28,6 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 fsql.Select<T>().Where(a => a.Id == 1).ToOne(); //读【从库】（默认）
 
 fsql.Select<T>().Master().WhereId(a => a.Id == 1).ToOne(); //强制读【主库】
+
+fsql.Ado.Query<T>("/*master*/ select * from t where ..."); //强制读【主库】
 ```
