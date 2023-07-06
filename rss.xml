@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 06 Jul 2023 02:37:10 GMT</pubDate>
-    <lastBuildDate>Thu, 06 Jul 2023 02:37:10 GMT</lastBuildDate>
+    <pubDate>Thu, 06 Jul 2023 03:29:33 GMT</pubDate>
+    <lastBuildDate>Thu, 06 Jul 2023 03:29:33 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6474,7 +6474,7 @@ repo1.DataFilter.Disable("test")</p>
 <p>FreeSql 实现了第 3 种方案，支持一个【主库】多个【从库】，【从库】的查询策略为随机方式。</p>
 <p>若某【从库】发生故障，将切换到其他可用【从库】，若已全部不可用则使用【主库】查询。</p>
 <p>出现故障【从库】被隔离起来间隔性的检查可用状态，以待恢复。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>仓储</title>
