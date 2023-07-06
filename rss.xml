@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 29 Jun 2023 03:35:45 GMT</pubDate>
-    <lastBuildDate>Thu, 29 Jun 2023 03:35:45 GMT</lastBuildDate>
+    <pubDate>Thu, 06 Jul 2023 02:37:10 GMT</pubDate>
+    <lastBuildDate>Thu, 06 Jul 2023 02:37:10 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4842,7 +4842,7 @@ repo1.DataFilter.Disable("test")</p>
 </tr>
 <tr>
 <td>DataType.Dameng(达梦)</td>
-<td>server=127.0.0.1;port=5236;user id=2user;password=123456789;database=2user;poolsize=5</td>
+<td>server=127.0.0.1;port=5236;user=2user;password=123456789;database=2user;poolsize=5</td>
 </tr>
 <tr>
 <td>DataType.ShenTong(神通)</td>
