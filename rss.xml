@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 06 Jul 2023 05:25:12 GMT</pubDate>
-    <lastBuildDate>Thu, 06 Jul 2023 05:25:12 GMT</lastBuildDate>
+    <pubDate>Fri, 07 Jul 2023 06:30:57 GMT</pubDate>
+    <lastBuildDate>Fri, 07 Jul 2023 06:30:57 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4577,7 +4577,7 @@ db.Add(new Xxx());</p>
       <content:encoded><![CDATA[<h1> 过滤器</h1>
 <h2> 全局过滤器（建议）</h2>
 <p>FreeSql 基础层实现了 Select/Update/Delete 可设置的全局过滤器功能。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Apply 泛型参数可以设置为任何类型，当使用 Select/Update/Delete 方法时会进行过滤器匹配尝试（try catch）：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Apply 泛型参数可以设置为任何类型，当使用 Select/Update/Delete 方法时会进行过滤器匹配尝试（try catch）：</p>
 <ul>
 <li>匹配成功的，将附加 where 条件；</li>
 <li>匹配失败的，标记下次不再匹配，避免性能损耗；</li>
