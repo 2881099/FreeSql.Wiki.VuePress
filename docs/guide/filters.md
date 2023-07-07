@@ -16,6 +16,9 @@ fsql.GlobalFilter
 
     .ApplyIf<TestAddEnum>("test4", () => TenantId.Value != Guid.Empty, a => a.Id == TenantId.Value);
     //1.9.0 ApplyIf 委托的返回值(第二个参数) true 才生效
+
+    .Apply<ITenant>("test5", a => a.TenantId == TenantId.Value, before: true)
+    //v3.2.700 增加 before 将条件放在 where 最前面
 ```
 
 Apply 泛型参数可以设置为任何类型，当使用 Select/Update/Delete 方法时会进行过滤器匹配尝试（try catch）：
