@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-07-11T11:49:43.813Z</updated>
+  <updated>2023-07-11T17:22:10.616Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1172,7 +1172,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">BaseEntity</title>
     <id>https://freesql.net/guide/freeSql-extensions-baseentity.html</id>
     <link href="https://freesql.net/guide/freeSql-extensions-baseentity.html"/>
-    <updated>2023-07-11T11:48:33.000Z</updated>
+    <updated>2023-07-11T17:21:01.000Z</updated>
     <summary type="html"><![CDATA[<h2> 前言</h2>
 <p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
 <p>它们日常操作不方便之处：</p>
@@ -1228,7 +1228,9 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 </blockquote>
 <h2> 事务建议</h2>
 <p>1、同线程事务，不支持异步：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、如果你是异步控</p>
+<p>由于 AsyncLocal 平台兼容不好，所以交给外部管理事务。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
 <p>在 Scoped 结束时：_asyncUow.Value = null;</p>
 <p>如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>

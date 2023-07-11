@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 11 Jul 2023 11:49:43 GMT</pubDate>
-    <lastBuildDate>Tue, 11 Jul 2023 11:49:43 GMT</lastBuildDate>
+    <pubDate>Tue, 11 Jul 2023 17:22:10 GMT</pubDate>
+    <lastBuildDate>Tue, 11 Jul 2023 17:22:10 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1063,7 +1063,9 @@
 </blockquote>
 <h2> 事务建议</h2>
 <p>1、同线程事务，不支持异步：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、如果你是异步控</p>
+<p>由于 AsyncLocal 平台兼容不好，所以交给外部管理事务。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
 <p>在 Scoped 结束时：_asyncUow.Value = null;</p>
 <p>如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
