@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-07-07T06:30:57.313Z</updated>
+  <updated>2023-07-11T11:49:43.813Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1172,7 +1172,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">BaseEntity</title>
     <id>https://freesql.net/guide/freeSql-extensions-baseentity.html</id>
     <link href="https://freesql.net/guide/freeSql-extensions-baseentity.html"/>
-    <updated>2023-01-27T07:44:56.000Z</updated>
+    <updated>2023-07-11T11:48:33.000Z</updated>
     <summary type="html"><![CDATA[<h2> 前言</h2>
 <p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
 <p>它们日常操作不方便之处：</p>
@@ -1214,7 +1214,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 </li>
 </ul>
 <h2> 声明</h2>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不想主键是自增键，可以重写属性：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>有关更多实体的特性配置，请参考资料：<a href="/guide/entity-attribute.html" target="blank">实体特性</a></p>
