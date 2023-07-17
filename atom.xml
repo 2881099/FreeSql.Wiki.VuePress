@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-07-11T17:22:10.616Z</updated>
+  <updated>2023-07-17T05:40:02.216Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3180,7 +3180,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">指南</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2023-03-10T02:48:20.000Z</updated>
+    <updated>2023-07-17T05:38:46.000Z</updated>
     <summary type="html"><![CDATA[<h1> 指南</h1>
 <p><a href="https://github.com/dotnetcore" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/member project of-NCC-9e20c9.svg" alt="Member project of .NET Core Community" loading="lazy"></a>
 <a href="https://www.nuget.org/packages/FreeSql" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/FreeSql.svg?style=flat-square" alt="nuget" loading="lazy"></a>
@@ -3211,15 +3211,15 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <figure><img src="/wechat_qrcode.jpg" alt="分享.NET Core+FreeSql相关技术" tabindex="0" loading="lazy"><figcaption>分享.NET Core+FreeSql相关技术</figcaption></figure>
 <h2> 特性</h2>
 <ul>
-<li>[x] 支持 CodeFirst 迁移；</li>
-<li>[x] 支持 DbFirst 从数据库导入实体类，支持三种模板生成器；</li>
-<li>[x] 采用 ExpressionTree 高性能读取数据；</li>
-<li>[x] 支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；</li>
-<li>[x] 支持丰富的表达式函数；</li>
-<li>[x] 支持导航属性查询，和延时加载；</li>
-<li>[x] 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；</li>
-<li>[x] 支持读写分离、分表分库，租户设计；</li>
-<li>[x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；</li>
+<li>支持 CodeFirst 迁移；</li>
+<li>支持 DbFirst 从数据库导入实体类，支持三种模板生成器；</li>
+<li>采用 ExpressionTree 高性能读取数据；</li>
+<li>支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；</li>
+<li>支持丰富的表达式函数；</li>
+<li>支持导航属性查询，和延时加载；</li>
+<li>支持同步/异步数据库操作方法，丰富多彩的链式查询方法；</li>
+<li>支持读写分离、分表分库，租户设计；</li>
+<li>支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；</li>
 </ul>
 <h2> 学习指南</h2>
 <p>FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（<a href="/guide/db-first.html" target="blank">DbFirst</a>），和支持基于模型创建数据库（<a href="/guide/code-first.html" target="blank">CodeFirst</a>)。</p>

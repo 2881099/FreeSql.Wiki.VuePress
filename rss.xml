@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 11 Jul 2023 17:22:10 GMT</pubDate>
-    <lastBuildDate>Tue, 11 Jul 2023 17:22:10 GMT</lastBuildDate>
+    <pubDate>Mon, 17 Jul 2023 05:40:02 GMT</pubDate>
+    <lastBuildDate>Mon, 17 Jul 2023 05:40:02 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2416,15 +2416,15 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <figure><img src="/wechat_qrcode.jpg" alt="分享.NET Core+FreeSql相关技术" tabindex="0" loading="lazy"><figcaption>分享.NET Core+FreeSql相关技术</figcaption></figure>
 <h2> 特性</h2>
 <ul>
-<li>[x] 支持 CodeFirst 迁移；</li>
-<li>[x] 支持 DbFirst 从数据库导入实体类，支持三种模板生成器；</li>
-<li>[x] 采用 ExpressionTree 高性能读取数据；</li>
-<li>[x] 支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；</li>
-<li>[x] 支持丰富的表达式函数；</li>
-<li>[x] 支持导航属性查询，和延时加载；</li>
-<li>[x] 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；</li>
-<li>[x] 支持读写分离、分表分库，租户设计；</li>
-<li>[x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；</li>
+<li>支持 CodeFirst 迁移；</li>
+<li>支持 DbFirst 从数据库导入实体类，支持三种模板生成器；</li>
+<li>采用 ExpressionTree 高性能读取数据；</li>
+<li>支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；</li>
+<li>支持丰富的表达式函数；</li>
+<li>支持导航属性查询，和延时加载；</li>
+<li>支持同步/异步数据库操作方法，丰富多彩的链式查询方法；</li>
+<li>支持读写分离、分表分库，租户设计；</li>
+<li>支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；</li>
 </ul>
 <h2> 学习指南</h2>
 <p>FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（<a href="/guide/db-first.html" target="blank">DbFirst</a>），和支持基于模型创建数据库（<a href="/guide/code-first.html" target="blank">CodeFirst</a>)。</p>
