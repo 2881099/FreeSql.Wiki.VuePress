@@ -24,15 +24,15 @@
 
 ## 特性
 
-- [x] 支持 CodeFirst 迁移；
-- [x] 支持 DbFirst 从数据库导入实体类，支持三种模板生成器；
-- [x] 采用 ExpressionTree 高性能读取数据；
-- [x] 支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；
-- [x] 支持丰富的表达式函数；
-- [x] 支持导航属性查询，和延时加载；
-- [x] 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；
-- [x] 支持读写分离、分表分库，租户设计；
-- [x] 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；
+- 支持 CodeFirst 迁移；
+- 支持 DbFirst 从数据库导入实体类，支持三种模板生成器；
+- 采用 ExpressionTree 高性能读取数据；
+- 支持深入的类型映射，比如 pgsql 的数组类型，堪称匠心制作；
+- 支持丰富的表达式函数；
+- 支持导航属性查询，和延时加载；
+- 支持同步/异步数据库操作方法，丰富多彩的链式查询方法；
+- 支持读写分离、分表分库，租户设计；
+- 支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；
 
 ## 学习指南
 
