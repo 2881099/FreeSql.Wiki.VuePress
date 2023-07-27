@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-07-17T05:40:02.217Z</updated>
+  <updated>2023-07-27T15:12:57.883Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -128,7 +128,7 @@
     <title type="text">Delete</title>
     <id>https://freesql.net/en/guide/Delete-Data.html</id>
     <link href="https://freesql.net/en/guide/Delete-Data.html"/>
-    <updated>2022-05-31T14:08:53.000Z</updated>
+    <updated>2023-07-27T15:11:15.000Z</updated>
     <summary type="html"><![CDATA[<h1> Delete</h1>
 <p>Deleting data is a very dangerous operation. FreeSql does not support deletion very powerfully. By default, it only supports single-table and conditional deletion methods.</p>
 <p>If it is executed when the <code>Where</code> condition is empty, only <code>0</code> or the <code>default</code> value is returned, and no real SQL delete operation is performed.</p>]]></summary>

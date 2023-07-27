@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-07-17T05:40:02.216Z</updated>
+  <updated>2023-07-27T15:12:57.883Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3817,7 +3817,7 @@ db.Add(new Xxx());</p>
     <title type="text">删除</title>
     <id>https://freesql.net/guide/delete.html</id>
     <link href="https://freesql.net/guide/delete.html"/>
-    <updated>2023-02-09T04:09:14.000Z</updated>
+    <updated>2023-07-27T15:11:15.000Z</updated>
     <summary type="html"><![CDATA[<h1> 删除</h1>
 <p>删除是一个非常危险的操作，FreeSql 对删除支持并不强大，默认仅支持单表、且有条件的删除方法。</p>
 <p>若 <code>Where</code> 条件为空的时候执行，仅返回 <code>0</code> 或默认值，不执行真正的 SQL 删除操作。</p>
@@ -3850,7 +3850,11 @@ db.Add(new Xxx());</p>
 <blockquote>
 <p>出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：<code>fsql.Delete&lt;T&gt;().Where("1=1").ExecuteAffrows()</code></p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 字典删除</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 注意点</h3>
+<ul>
+<li>"<strong>id = @id</strong>"中的@字符为<a href="https://freesql.net/guide/ado.html#%E5%8F%82%E6%95%B0%E5%8C%96" target="_blank" rel="noopener noreferrer">参数化</a>，不同数据库，参数化字符不同</li>
+</ul>
+<h2> 字典删除</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> ISelect.ToDelete 高级删除</h2>
 <p><code>IDelete</code> 默认不支持导航对象，多表关联等。<code>ISelect.ToDelete</code> 可将查询转为 <code>IDelete</code>，以便使用导航对象删除数据，如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>注意：此方法不是将数据查询到内存循环删除，上面的代码产生如下 SQL 执行：</p>

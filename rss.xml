@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 17 Jul 2023 05:40:02 GMT</pubDate>
-    <lastBuildDate>Mon, 17 Jul 2023 05:40:02 GMT</lastBuildDate>
+    <pubDate>Thu, 27 Jul 2023 15:12:57 GMT</pubDate>
+    <lastBuildDate>Thu, 27 Jul 2023 15:12:57 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2958,7 +2958,11 @@ db.Add(new Xxx());</p>
 <blockquote>
 <p>出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：<code>fsql.Delete&lt;T&gt;().Where("1=1").ExecuteAffrows()</code></p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 字典删除</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 注意点</h3>
+<ul>
+<li>"<strong>id = @id</strong>"中的@字符为<a href="https://freesql.net/guide/ado.html#%E5%8F%82%E6%95%B0%E5%8C%96" target="_blank" rel="noopener noreferrer">参数化</a>，不同数据库，参数化字符不同</li>
+</ul>
+<h2> 字典删除</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> ISelect.ToDelete 高级删除</h2>
 <p><code>IDelete</code> 默认不支持导航对象，多表关联等。<code>ISelect.ToDelete</code> 可将查询转为 <code>IDelete</code>，以便使用导航对象删除数据，如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>注意：此方法不是将数据查询到内存循环删除，上面的代码产生如下 SQL 执行：</p>
