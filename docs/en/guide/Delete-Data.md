@@ -20,9 +20,11 @@ class Topic {
 ```
 
 ## Dynamic Conditions
+
 ```csharp
-fsql.Delete<Topic>(object dywhere)
+fsql.Delete<Topic>(object dywhere).ExecuteAffrows()
 ```
+
 `dywhere` supports:
 
 * Primary key value
@@ -32,16 +34,16 @@ fsql.Delete<Topic>(object dywhere)
 * `new { id = 1 }`
 
 ```csharp
-var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ToSql();
+var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1 OR `Id` = 2)
 
-var t2 = fsql.Delete<Topic>(new Topic { Id = 1, Title = "test" }).ToSql();
+var t2 = fsql.Delete<Topic>(new Topic { Id = 1, Title = "test" }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 
-var t3 = fsql.Delete<Topic>(new[] { new Topic { Id = 1, Title = "test" }, new Topic { Id = 2, Title = "test" } }).ToSql();
+var t3 = fsql.Delete<Topic>(new[] { new Topic { Id = 1, Title = "test" }, new Topic { Id = 2, Title = "test" } }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1 OR `Id` = 2)
 
-var t4 = fsql.Delete<Topic>(new { id = 1 }).ToSql();
+var t4 = fsql.Delete<Topic>(new { id = 1 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 ```
 
@@ -83,6 +85,7 @@ fsql.DeleteDict(dic).AsTable("table1").ExecuteAffrows();
 ```csharp
 fsql.Select<T1>().Where(a => a.Options.xxx == 1).ToDelete().ExecuteAffrows();
 ```
+
 Note: This method is not to query the data to the memory and delete it cyclically. The above code generates and executes the following SQL:
 
 ```sql
@@ -91,8 +94,8 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 The benefits of using this method for complex deletion:
 
-- Preview data before deleting to prevent mistaken deletion operations;
-- Support complex deletion operations, for example: Use `Limit(10)` on `ISelect` to delete the first 10 records that meet the conditions;
+* Preview data before deleting to prevent mistaken deletion operations;
+* Support complex deletion operations, for example: Use `Limit(10)` on `ISelect` to delete the first 10 records that meet the conditions;
 
 ## Cascade deletion of IBaseRepository
 
@@ -138,14 +141,14 @@ var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //DELETE FROM "user" WHERE ("id" IN (3,4,5))
 //DELETE FROM "usergroup" WHERE ("id" = 1)
 
-//ret   Count = 7	System.Collections.Generic.List<object>
-//  [0]	{UserExt}	object {UserExt}
-//  [1]	{UserExt}	object {UserExt}
-//  [2]	{UserExt}	object {UserExt}
-//  [3]	{User}	    object {User}
-//  [4]	{User}	    object {User}
-//  [5]	{User}  	object {User}
-//  [6]	{UserGroup}	object {UserGroup}
+//ret   Count = 7 System.Collections.Generic.List<object>
+//  [0] {UserExt} object {UserExt}
+//  [1] {UserExt} object {UserExt}
+//  [2] {UserExt} object {UserExt}
+//  [3] {User}     object {User}
+//  [4] {User}     object {User}
+//  [5] {User}   object {User}
+//  [6] {UserGroup} object {UserGroup}
 
 public class Group
 {
@@ -180,12 +183,12 @@ public class UserExt
 
 ## Reference
 
-- [《Database Transaction》](Database-Transaction)
-- [《FreeSql 101, Part 1: Insert Data》](Insert-Data)
-- [《FreeSql 101, Part 3: Update Data》](Update-Data)
-- [《FreeSql 101, Part 4: Query Data》](Query-Data)
-- [《Repository Layer》](Repository-Layer)
-- [《Tenant》](Tenant)
+* [《Database Transaction》](Database-Transaction)
+* [《FreeSql 101, Part 1: Insert Data》](Insert-Data)
+* [《FreeSql 101, Part 3: Update Data》](Update-Data)
+* [《FreeSql 101, Part 4: Query Data》](Query-Data)
+* [《Repository Layer》](Repository-Layer)
+* [《Tenant》](Tenant)
 
 ## API
 
@@ -200,4 +203,3 @@ public class UserExt
 | ToSql           | string     |                         | Returns the SQL statement to be executed.                                                   |
 | ExecuteAffrows  | long       |                         | Execute SQL and return the number of rows affected.                                         |
 | ExecuteDeleted  | List\<T1\> |                         | Execute SQL and return the deleted records.                                                 |
-

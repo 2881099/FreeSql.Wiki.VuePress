@@ -20,8 +20,9 @@ class Topic {
 ```
 
 ## 动态条件
+
 ```csharp
-fsql.Delete<Topic>(object dywhere)
+fsql.Delete<Topic>(object dywhere).ExecuteAffrows()
 ```
 
 `dywhere` 支持：
@@ -33,16 +34,16 @@ fsql.Delete<Topic>(object dywhere)
 * `new { id = 1 }`
 
 ```csharp
-var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ToSql();
+var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1 OR `Id` = 2)
 
-var t2 = fsql.Delete<Topic>(new Topic { Id = 1, Title = "test" }).ToSql();
+var t2 = fsql.Delete<Topic>(new Topic { Id = 1, Title = "test" }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 
-var t3 = fsql.Delete<Topic>(new[] { new Topic { Id = 1, Title = "test" }, new Topic { Id = 2, Title = "test" } }).ToSql();
+var t3 = fsql.Delete<Topic>(new[] { new Topic { Id = 1, Title = "test" }, new Topic { Id = 2, Title = "test" } }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` in (1, 2))
 
-var t4 = fsql.Delete<Topic>(new { id = 1 }).ToSql();
+var t4 = fsql.Delete<Topic>(new { id = 1 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 ```
 
@@ -51,21 +52,25 @@ var t4 = fsql.Delete<Topic>(new { id = 1 }).ToSql();
 > 出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：`fsql.Delete<T>().Where("1=1").ExecuteAffrows()`
 
 ```csharp
-var t5 = fsql.Delete<Topic>().Where(a => a.Id == 1).ToSql();
+var t5 = fsql.Delete<Topic>().Where(a => a.Id == 1).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 
-var t6 = fsql.Delete<Topic>().Where("id = @id", new { id = 1 }).ToSql();
+var t6 = fsql.Delete<Topic>().Where("id = @id", new { id = 1 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (id = @id)
 
 var item = new Topic { Id = 1, Title = "newtitle" };
-var t7 = fsql.Delete<Topic>().Where(item).ToSql();
+var t7 = fsql.Delete<Topic>().Where(item).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 
 var items = new List<Topic>();
 for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newtitle{a}", Clicks = a * 100 });
-var t8 = fsql.Delete<Topic>().Where(items).ToSql();
+var t8 = fsql.Delete<Topic>().Where(items).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 ```
+
+### 注意点
+
+* "**id = @id**"中的@字符为[参数化](https://freesql.net/guide/ado.html#%E5%8F%82%E6%95%B0%E5%8C%96)，不同数据库，参数化字符不同
 
 ## 字典删除
 
@@ -93,8 +98,8 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 复杂删除使用此方法的好处：
 
-- 删除前可预览测试数据，防止错误删除操作；
-- 支持复杂的删除操作，例如：`ISelect` 上使用 `Limit(10)` 删除附合条件的前 10 条记录；
+* 删除前可预览测试数据，防止错误删除操作；
+* 支持复杂的删除操作，例如：`ISelect` 上使用 `Limit(10)` 删除附合条件的前 10 条记录；
 
 ## IBaseRepository 级联删除
 
@@ -142,14 +147,14 @@ var ret = repo.DeleteCascadeByDatabase(a => a.Id == 1);
 //DELETE FROM "user" WHERE ("id" IN (3,4,5))
 //DELETE FROM "usergroup" WHERE ("id" = 1)
 
-//ret   Count = 7	System.Collections.Generic.List<object>
-//  [0]	{UserExt}	object {UserExt}
-//  [1]	{UserExt}	object {UserExt}
-//  [2]	{UserExt}	object {UserExt}
-//  [3]	{User}	    object {User}
-//  [4]	{User}	    object {User}
-//  [5]	{User}  	object {User}
-//  [6]	{UserGroup}	object {UserGroup}
+//ret   Count = 7 System.Collections.Generic.List<object>
+//  [0] {UserExt} object {UserExt}
+//  [1] {UserExt} object {UserExt}
+//  [2] {UserExt} object {UserExt}
+//  [3] {User}     object {User}
+//  [4] {User}     object {User}
+//  [5] {User}   object {User}
+//  [6] {UserGroup} object {UserGroup}
 
 public class UserGroup
 {
