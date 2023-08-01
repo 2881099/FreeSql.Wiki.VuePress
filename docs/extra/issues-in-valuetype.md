@@ -13,8 +13,6 @@ var t2 = fsql.Select<T>()
   .ToList();
 ```
 
-> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))
-
 Oracle 产生如下SQL：
 
 ```sql
@@ -31,6 +29,8 @@ SELECT .. FROM ..
 WHERE (a."Id" = '685ee1f6-bdf6-4719-a291-c709b8a1378f' AND a."ct1" = '2019-12-07 23:55:27' OR 
 a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
 ```
+
+> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))
 
 代码实现：
 
