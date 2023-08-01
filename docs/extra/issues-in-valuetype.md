@@ -4,7 +4,7 @@ FreeSql 基础库为了不依赖 System.ValueType.dll，所以将以下代码抽
 
 ```csharp
 //元组集合
-vae lst = new List<(Guid, DateTime)>();
+var lst = new List<(Guid, DateTime)>();
 lst.Add((Guid.NewGuid(), DateTime.Now));
 lst.Add((Guid.NewGuid(), DateTime.Now));
 
@@ -12,6 +12,8 @@ var t2 = fsql.Select<T>()
   .Where(a => lst.Contains(a.Id, a.ct1))
   .ToList();
 ```
+
+> v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))v3.2.650 使用 .Where(a => list.Any(b => b.Item1 == a. Id && b.Item2 == a. ct1))
 
 Oracle 产生如下SQL：
 
