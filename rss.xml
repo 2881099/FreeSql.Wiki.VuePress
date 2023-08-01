@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 27 Jul 2023 15:12:57 GMT</pubDate>
-    <lastBuildDate>Thu, 27 Jul 2023 15:12:57 GMT</lastBuildDate>
+    <pubDate>Tue, 01 Aug 2023 10:59:09 GMT</pubDate>
+    <lastBuildDate>Tue, 01 Aug 2023 10:59:09 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1403,11 +1403,14 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/extra/issues-in-valuetype.html</link>
       <guid>https://freesql.net/extra/issues-in-valuetype.html</guid>
       <source url="https://freesql.net/rss.xml">In多列查询，表达式自定义实现</source>
-      <description>FreeSql 基础库为了不依赖 System.ValueType.dll，所以将以下代码抽离了出来。 Oracle 产生如下SQL： 非 ORACLE 产生如下 SQL： 代码实现：</description>
+      <description>FreeSql 基础库为了不依赖 System.ValueType.dll，所以将以下代码抽离了出来。 v3.2.650 使用 .Where(a =&amp;gt; list.Any(b =&amp;gt; b.Item1 == a. Id &amp;&amp; b.Item2 == a. ct1))v3.2.650 使用 .Where(a =&amp;gt; list.Any(b =&amp;gt; b.Item1 ==...</description>
       <pubDate>Fri, 24 Jun 2022 16:45:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1> In多列查询，表达式自定义实现</h1>
 <p>FreeSql 基础库为了不依赖 System.ValueType.dll，所以将以下代码抽离了出来。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Oracle 产生如下SQL：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>v3.2.650 使用 .Where(a =&gt; list.Any(b =&gt; b.Item1 == a. Id &amp;&amp; b.Item2 == a. ct1))v3.2.650 使用 .Where(a =&gt; list.Any(b =&gt; b.Item1 == a. Id &amp;&amp; b.Item2 == a. ct1))</p>
+</blockquote>
+<p>Oracle 产生如下SQL：</p>
 <div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>非 ORACLE 产生如下 SQL：</p>
 <div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>代码实现：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
