@@ -37,12 +37,15 @@ var table = fsql.CodeFirst.DynamicEntity("user", new TableAttribute { Name = "t_
     .Build();
 
 //如果有必要，请将 table 缓存起来
+if (fsql.DbFirst.ExistsTable(table.DbName) == false)
+    fsql.CodeFirst.SyncStructure(table.Type); //创建表
 
 Dictionary<string, object> dict = new Dictionary<string, object>();
 dict["id"] = 1;
 dict["username"] = "xxx";
 
 //将字典转化成 type 对应的 object
+//也可以直接使用 InsertDict/UpdateDict/DeleteDict 等字典 CUD 功能
 object obj = table.CreateInstance(dict);
 
 //插入
