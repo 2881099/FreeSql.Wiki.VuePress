@@ -37,6 +37,8 @@ var table = fsql.CodeFirst.DynamicEntity("user", new TableAttribute { Name = "t_
     .Build();
 
 //如果有必要，请将 table 缓存起来
+
+//DB有无表判断
 if (fsql.DbFirst.ExistsTable(table.DbName) == false)
     fsql.CodeFirst.SyncStructure(table.Type); //创建表
 
