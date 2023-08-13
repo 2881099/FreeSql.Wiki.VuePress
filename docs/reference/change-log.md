@@ -2,6 +2,15 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.700
+
+- 增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492
+- 增加 多表 As 设置别名的方法 fsql.Select<T1, T2>().As("t1", "t2")；
+- 优化 WithTempQuery + SqlServer 未指定 OrderBy 的分页；
+- 优化 GetPropertiesDictIgnoreCase 不返回没有 get 的属性；
+- 修复 QuestDB Guid 类型的问题；
+- 修复 BaseEntity 子查询 .Where 问题；#1586
+
 ## v3.2.698
 
 - 增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755
