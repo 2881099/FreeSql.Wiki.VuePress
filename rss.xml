@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 02 Aug 2023 03:28:26 GMT</pubDate>
-    <lastBuildDate>Wed, 02 Aug 2023 03:28:26 GMT</lastBuildDate>
+    <pubDate>Sun, 13 Aug 2023 04:23:46 GMT</pubDate>
+    <lastBuildDate>Sun, 13 Aug 2023 04:23:46 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -9830,10 +9830,19 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.698 增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755; 增加 InsertOrUpdateDict WhereIdentityPrimary 方法；; 增加 pgsql 索引 BTree, Hash, G...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.700 增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492; 增加 多表 As 设置别名的方法 fsql.Select().As(&amp;quot;t1&amp;quot;, &amp;quot;t2&amp;quot;)；; 优化 WithTempQuery + SqlServer 未指定 Ord...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.700</h2>
+<ul>
+<li>增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492</li>
+<li>增加 多表 As 设置别名的方法 fsql.Select&lt;T1, T2&gt;().As("t1", "t2")；</li>
+<li>优化 WithTempQuery + SqlServer 未指定 OrderBy 的分页；</li>
+<li>优化 GetPropertiesDictIgnoreCase 不返回没有 get 的属性；</li>
+<li>修复 QuestDB Guid 类型的问题；</li>
+<li>修复 BaseEntity 子查询 .Where 问题；#1586</li>
+</ul>
 <h2> v3.2.698</h2>
 <ul>
 <li>增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755</li>

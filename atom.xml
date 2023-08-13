@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-08-02T03:28:26.395Z</updated>
+  <updated>2023-08-13T04:23:46.876Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11278,29 +11278,29 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-07-06T05:23:57.000Z</updated>
+    <updated>2023-08-13T04:22:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.698</h2>
+<h2> v3.2.700</h2>
 <ul>
-<li>增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755</li>
-<li>增加 InsertOrUpdateDict WhereIdentityPrimary 方法；</li>
-<li>增加 pgsql 索引 B_Tree, Hash, GiST, GIN, SP_GiST, BRIN；</li>
-<li>修复 pgsql jsonb poco 方案联表查询问题；#1549 #1071</li>
-<li>修复 pgsql Geo 函数自定义解析深度问题；#1422</li>
-<li>修复 PgCopy 处理 jsonb 类型的问题；#1532</li>
-<li>修复 Enum.ToString() 即使 MapType=int 也应解析成 string；#1252 #806</li>
-<li>修复 repository/dbset AddRange AuditValue IEnumable 失败的 bug；#1545</li>
-<li>修复 达梦某情况连接串解析 user id 问题；</li>
-<li>修复 QuestDB 表达式解析 DateTime.UtcNow bug；</li>
-<li>修复 QuestDb BulkCopy在特定情况下无法解析表名问题；</li>
-<li>优化 QuestDB Guid 映射；</li>
-<li>优化 QuestDB 类型映射，表达式函数解析，新增 QuestFunc 函数解析；</li>
-<li>优化 uow + ISelect.ToUpdate 事务传播；#1562</li>
-<li>调整 QuestDB SampleUnits 命名，去掉 s；</li>
+<li>增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492</li>
+<li>增加 多表 As 设置别名的方法 fsql.Select&lt;T1, T2&gt;().As("t1", "t2")；</li>
+<li>优化 WithTempQuery + SqlServer 未指定 OrderBy 的分页；</li>
+<li>优化 GetPropertiesDictIgnoreCase 不返回没有 get 的属性；</li>
+<li>修复 QuestDB Guid 类型的问题；</li>
+<li>修复 BaseEntity 子查询 .Where 问题；#1586</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.700</h2>
+<ul>
+<li>增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492</li>
+<li>增加 多表 As 设置别名的方法 fsql.Select&lt;T1, T2&gt;().As("t1", "t2")；</li>
+<li>优化 WithTempQuery + SqlServer 未指定 OrderBy 的分页；</li>
+<li>优化 GetPropertiesDictIgnoreCase 不返回没有 get 的属性；</li>
+<li>修复 QuestDB Guid 类型的问题；</li>
+<li>修复 BaseEntity 子查询 .Where 问题；#1586</li>
+</ul>
 <h2> v3.2.698</h2>
 <ul>
 <li>增加 FreeSqlBuilder UseAdoConnectionPool 更换连接池方案；#1524 #1343 #1283 #755</li>
