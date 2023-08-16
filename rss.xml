@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 13 Aug 2023 04:23:46 GMT</pubDate>
-    <lastBuildDate>Sun, 13 Aug 2023 04:23:46 GMT</lastBuildDate>
+    <pubDate>Wed, 16 Aug 2023 05:03:28 GMT</pubDate>
+    <lastBuildDate>Wed, 16 Aug 2023 05:03:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4727,7 +4727,7 @@ repo1.DataFilter.Disable("test")</p>
 <tr>
 <td>UseAdoConnectionPool</td>
 <td>this</td>
-<td>设置连接池方案</td>
+<td>设置连接池方案（默认 false，远程访问建议设置 true）</td>
 </tr>
 <tr>
 <td>UseSlave</td>
