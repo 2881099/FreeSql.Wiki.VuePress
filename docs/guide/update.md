@@ -166,6 +166,11 @@ fsql.Update<Topic>()
 
 > SetSource 默认依赖实体 IsPrimary 特性，临时主键可使用 SetSource(items, a => a.Code)
 
+> Oracle CASE when N'' 字符集不匹配，
+
+- 原因：实体主键 Column DbType 与表类型不一致造成，
+- 解决：[Column(DbType = "varchar2", StingLength = 255)]
+
 ## 4、自定义 SQL
 
 ```csharp
