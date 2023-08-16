@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-08-16T05:03:28.801Z</updated>
+  <updated>2023-08-16T05:13:55.599Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9731,7 +9731,7 @@ FROM "Topic" a</p>
     <title type="text">修改</title>
     <id>https://freesql.net/guide/update.html</id>
     <link href="https://freesql.net/guide/update.html"/>
-    <updated>2023-03-25T08:03:46.000Z</updated>
+    <updated>2023-08-16T05:12:46.000Z</updated>
     <summary type="html"><![CDATA[<h1> 修改</h1>
 <p><code>FreeSql</code> 提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">static</span> <span class="token class-name">IFreeSql</span> fsql <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">FreeSql<span class="token punctuation">.</span>FreeSqlBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -9784,6 +9784,13 @@ FROM "Topic" a</p>
 <blockquote>
 <p>SetSource 默认依赖实体 IsPrimary 特性，临时主键可使用 SetSource(items, a =&gt; a.Code)</p>
 </blockquote>
+<blockquote>
+<p>Oracle CASE when N'' 字符集不匹配，</p>
+</blockquote>
+<ul>
+<li>原因：实体主键 Column DbType 与表类型不一致造成，</li>
+<li>解决：[Column(DbType = "varchar2", StingLength = 255)]</li>
+</ul>
 <h2> 4、自定义 SQL</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 5、根据 Dto 更新</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 6、Set/SetSource/SetDto 区别</h2>

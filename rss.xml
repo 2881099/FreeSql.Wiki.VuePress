@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 16 Aug 2023 05:03:28 GMT</pubDate>
-    <lastBuildDate>Wed, 16 Aug 2023 05:03:28 GMT</lastBuildDate>
+    <pubDate>Wed, 16 Aug 2023 05:13:55 GMT</pubDate>
+    <lastBuildDate>Wed, 16 Aug 2023 05:13:55 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8416,6 +8416,13 @@ FROM "Topic" a</p>
 <blockquote>
 <p>SetSource 默认依赖实体 IsPrimary 特性，临时主键可使用 SetSource(items, a =&gt; a.Code)</p>
 </blockquote>
+<blockquote>
+<p>Oracle CASE when N'' 字符集不匹配，</p>
+</blockquote>
+<ul>
+<li>原因：实体主键 Column DbType 与表类型不一致造成，</li>
+<li>解决：[Column(DbType = "varchar2", StingLength = 255)]</li>
+</ul>
 <h2> 4、自定义 SQL</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 5、根据 Dto 更新</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 6、Set/SetSource/SetDto 区别</h2>
