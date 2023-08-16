@@ -191,7 +191,7 @@ fsql.Delete<Blog>()
 | 方法                                  | 返回值        | 说明                                                                                           |
 | ------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
 | UseConnectionString                   | this          | 设置连接串                                                                                     |
-| UseAdoConnectionPool                  | this          | 设置连接池方案                                                                                   |
+| UseAdoConnectionPool                  | this          | 设置连接池方案（默认 false，远程访问建议设置 true）                                               |
 | UseSlave                              | this          | 设置从数据库，支持多个                                                                         |
 | UseSlaveWeight | this | 设置从数据库权重 |
 | UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                             |
