@@ -188,6 +188,39 @@ class Topic {
 
 ## 自定义类型映射(MapType)
 
+v3.2.701 版本自定义类型转换
+
+```csharp
+FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonClass), new String_JsonClass());
+
+
+class Product
+{
+    public Guid id { get; set; }
+    [Column(MapType = typeof(string), StringLength = -1)]
+    public JsonClass json { get; set; }
+}
+
+class JsonClass
+{
+    public int a { get; set; }
+    public int b { get; set; }
+}
+class String_JsonClass : TypeHandler<JsonClass>
+{
+    public override object Serialize(JsonClass value)
+    {
+        return JsonConvert.SerializeObject(value);
+    }
+    public override JsonClass Deserialize(object value)
+    {
+        return JsonConvert.DeserializeObject<JsonClass>((string)value);
+    }
+}
+```
+
+使用 MapType 枚举 -> string/int 等等如下：
+
 ```csharp
 class EnumTestMap {
     public Guid id { get; set; }
