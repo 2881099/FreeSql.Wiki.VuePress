@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 16 Aug 2023 05:13:55 GMT</pubDate>
-    <lastBuildDate>Wed, 16 Aug 2023 05:13:55 GMT</lastBuildDate>
+    <pubDate>Mon, 28 Aug 2023 10:58:32 GMT</pubDate>
+    <lastBuildDate>Mon, 28 Aug 2023 10:58:32 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3182,6 +3182,8 @@ db.Add(new Xxx());</p>
 <p>适用 SetSource 更新，无论使用什么方法更新 version 的值都会增加 1</p>
 </blockquote>
 <h2> 自定义类型映射(MapType)</h2>
+<p>v3.2.701 版本自定义类型转换</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>BigInteger 也可以映射使用，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - * / 等操作；</p>
 <p>v0.9.15 版本还可以将值对象映射成 typeof(string)，安装扩展包：</p>
 <blockquote>
