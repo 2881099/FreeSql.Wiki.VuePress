@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 28 Aug 2023 10:59:33 GMT</pubDate>
-    <lastBuildDate>Mon, 28 Aug 2023 10:59:33 GMT</lastBuildDate>
+    <pubDate>Fri, 01 Sep 2023 01:38:08 GMT</pubDate>
+    <lastBuildDate>Fri, 01 Sep 2023 01:38:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3198,7 +3198,7 @@ db.Add(new Xxx());</p>
 <h2> 自定义插入值(InsertValueSql)</h2>
 <p>执行 Insert 方法时使用此值，它的语法是 SQL。</p>
 <p>注意：如果是 getdate() 这种请可考虑使用 ServerTime，因为它对数据库间作了适配。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 自定义重写(RewriteSql)、重读(RereadSql)</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 自定义重写(RewriteSql)、重读(RereadSql)</h2>
 <p>写入时重写 SQL、读取时重写 SQL，适合 geography 类型的读写场景。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 禁用迁移</h2>
 <p>IFreeSql.CodeFirst.IsAutoSyncStructure 可设置全局【自动迁移结构】功能，也可通过 FreeSqlBuilder.UseAutoSyncStructure(true) 创建 IFreeSql 的时候设置功能。</p>
