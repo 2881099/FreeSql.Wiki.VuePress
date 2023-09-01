@@ -292,6 +292,10 @@ class Type {
 
 fsql.Insert(new Type()).ExecuteAffrows();
 //INSERT INTO `type`(`Name`) VALUES('xxx')
+
+//v3.2.700 忽略 InsertValueSql
+fsql.Insert(new Type()).IgnoreInsertValueSql(a => a.Name).ExecuteAffrows();
+//INSERT INTO `type`(`Name`) VALUES('')
 ```
 
 ## 自定义重写(RewriteSql)、重读(RereadSql)
