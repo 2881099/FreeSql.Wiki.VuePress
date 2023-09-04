@@ -14,7 +14,7 @@ FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMan
 
 导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！
 
-# 自定义配置
+## 自定义配置
 
 OneToMany/ManyToMany 支持的类型：ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
 
@@ -60,7 +60,7 @@ fsql.CodeFirst.ConfigEntity<T>(a => a
 
 > 预热说明：导航属性配置的加载，因为要解决死循环引用，当相互引用关系很复杂的时候，可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select\<object\>().AsType(实体类);
 
-# 与非主键关联
+## 与非主键关联
 
 ```csharp
 //OneToMany
@@ -74,7 +74,7 @@ public Group Group { get; set; }
 
 非主键关联权支持 OneToMany/ManyToOne 两种关系，并且只能在查询的时候有效。（不支持级联保存、级联删除）
 
-# 检测导航属性
+## 检测导航属性
 
 如何检测一个导航属性是否有效：
 
@@ -86,7 +86,30 @@ var tbref = fsql.CodeFirst
 
 GetTableRef(string propertyName, bool isThrow);
 
-# PgArrayToMany
+## OneToOne
+
+```csharp
+class User
+{
+    [Key]
+    public int Id { get; set; }
+    [Navigate(nameof(Id))]
+    public UserExt Ext { get; set; }
+    //...
+}
+class UserExt
+{
+    [Key]
+    public int UserId { get; set; }
+    [Navigate(nameof(UserId))]
+    public User User { get; set; }
+    //...
+}
+```
+
+一对一，要求两边都使用 Navigate 特性与自身的【主键】关联。（支持级联保存，级联删除）
+
+## PgArrayToMany
 
 ```csharp
 class User
@@ -105,7 +128,7 @@ class Role
 
 更多资料：[#1145](https://github.com/dotnetcore/FreeSql/issues/1145)
 
-# 约定命名（无须指明 Navigate）
+## 约定命名（无须指明 Navigate）
 
 提示：本节内容稍微了解即可，不是必须掌握的，可以跳过。
 
