@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 01 Sep 2023 01:38:08 GMT</pubDate>
-    <lastBuildDate>Fri, 01 Sep 2023 01:38:08 GMT</lastBuildDate>
+    <pubDate>Mon, 04 Sep 2023 07:33:40 GMT</pubDate>
+    <lastBuildDate>Mon, 04 Sep 2023 07:33:40 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6048,7 +6048,7 @@ repo1.DataFilter.Disable("test")</p>
 <li><a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a></li>
 </ul>
 <p>导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！</p>
-<h1> 自定义配置</h1>
+<h2> 自定义配置</h2>
 <p>OneToMany/ManyToMany 支持的类型：ICollection&lt;T&gt;、List&lt;T&gt;、ObservableCollection&lt;T&gt;</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
 <p>也可以使用 FluentApi 在外部设置导航关系：</p>
@@ -6060,14 +6060,16 @@ repo1.DataFilter.Disable("test")</p>
 <blockquote>
 <p>预热说明：导航属性配置的加载，因为要解决死循环引用，当相互引用关系很复杂的时候，可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select&lt;object&gt;().AsType(实体类);</p>
 </blockquote>
-<h1> 与非主键关联</h1>
+<h2> 与非主键关联</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>非主键关联权支持 OneToMany/ManyToOne 两种关系，并且只能在查询的时候有效。（不支持级联保存、级联删除）</p>
-<h1> 检测导航属性</h1>
+<h2> 检测导航属性</h2>
 <p>如何检测一个导航属性是否有效：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>GetTableRef(string propertyName, bool isThrow);</p>
-<h1> PgArrayToMany</h1>
+<h2> OneToOne</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一对一，要求两边都使用 Navigate 特性与自身的【主键】关联。（支持级联保存，级联删除）</p>
+<h2> PgArrayToMany</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>更多资料：<a href="https://github.com/dotnetcore/FreeSql/issues/1145" target="_blank" rel="noopener noreferrer">#1145</a></p>
-<h1> 约定命名（无须指明 Navigate）</h1>
+<h2> 约定命名（无须指明 Navigate）</h2>
 <p>提示：本节内容稍微了解即可，不是必须掌握的，可以跳过。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>

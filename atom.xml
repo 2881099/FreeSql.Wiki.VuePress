@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-09-01T01:38:08.074Z</updated>
+  <updated>2023-09-04T07:33:40.284Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7064,7 +7064,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">导航属性 ✨</title>
     <id>https://freesql.net/guide/navigate-attribute.html</id>
     <link href="https://freesql.net/guide/navigate-attribute.html"/>
-    <updated>2023-03-02T07:46:26.000Z</updated>
+    <updated>2023-09-04T07:32:17.000Z</updated>
     <summary type="html"><![CDATA[<h1> 导航属性 ✨</h1>
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
@@ -7090,7 +7090,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <li><a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a></li>
 </ul>
 <p>导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！</p>
-<h1> 自定义配置</h1>
+<h2> 自定义配置</h2>
 <p>OneToMany/ManyToMany 支持的类型：ICollection&lt;T&gt;、List&lt;T&gt;、ObservableCollection&lt;T&gt;</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
 <p>也可以使用 FluentApi 在外部设置导航关系：</p>
@@ -7102,14 +7102,16 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <blockquote>
 <p>预热说明：导航属性配置的加载，因为要解决死循环引用，当相互引用关系很复杂的时候，可能导致首次使用导航属性失败，第二次就可以了。解决办法可以程序启动时就预热所有实体类，循环执行 fsql.Select&lt;object&gt;().AsType(实体类);</p>
 </blockquote>
-<h1> 与非主键关联</h1>
+<h2> 与非主键关联</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>非主键关联权支持 OneToMany/ManyToOne 两种关系，并且只能在查询的时候有效。（不支持级联保存、级联删除）</p>
-<h1> 检测导航属性</h1>
+<h2> 检测导航属性</h2>
 <p>如何检测一个导航属性是否有效：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>GetTableRef(string propertyName, bool isThrow);</p>
-<h1> PgArrayToMany</h1>
+<h2> OneToOne</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一对一，要求两边都使用 Navigate 特性与自身的【主键】关联。（支持级联保存，级联删除）</p>
+<h2> PgArrayToMany</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>更多资料：<a href="https://github.com/dotnetcore/FreeSql/issues/1145" target="_blank" rel="noopener noreferrer">#1145</a></p>
-<h1> 约定命名（无须指明 Navigate）</h1>
+<h2> 约定命名（无须指明 Navigate）</h2>
 <p>提示：本节内容稍微了解即可，不是必须掌握的，可以跳过。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
