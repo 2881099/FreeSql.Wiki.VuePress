@@ -4,7 +4,7 @@ FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMan
 
 导航属性能干什么？
 
-- [《多表查询》](select-multi-table.md) Where(a => a.Parent.Parent.Name == "xx")
+- [《多表查询》](select-multi-table.md) Where(a => a.Parent.Parent.Name == "xx") Where(a => a.Childs.Any(b => b.title == "xxx"))
 - [《贪婪加载》](select-include.md) Include/IncludeMany
 - [《延时加载》](select-lazy-loading.md)
 - [《树表查询》](select-as-tree.md)
