@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-09-04T07:33:40.284Z</updated>
+  <updated>2023-09-04T07:48:42.032Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7064,12 +7064,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">导航属性 ✨</title>
     <id>https://freesql.net/guide/navigate-attribute.html</id>
     <link href="https://freesql.net/guide/navigate-attribute.html"/>
-    <updated>2023-09-04T07:32:17.000Z</updated>
+    <updated>2023-09-04T07:47:33.000Z</updated>
     <summary type="html"><![CDATA[<h1> 导航属性 ✨</h1>
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
 <ul>
-<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx")</li>
+<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
 <li><a href="/guide/select-include.html" target="blank">《贪婪加载》</a> Include/IncludeMany</li>
 <li><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></li>
 <li><a href="/guide/select-as-tree.html" target="blank">《树表查询》</a></li>
@@ -7081,7 +7081,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
 <ul>
-<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx")</li>
+<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
 <li><a href="/guide/select-include.html" target="blank">《贪婪加载》</a> Include/IncludeMany</li>
 <li><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></li>
 <li><a href="/guide/select-as-tree.html" target="blank">《树表查询》</a></li>

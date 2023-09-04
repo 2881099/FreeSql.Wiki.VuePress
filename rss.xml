@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 04 Sep 2023 07:33:40 GMT</pubDate>
-    <lastBuildDate>Mon, 04 Sep 2023 07:33:40 GMT</lastBuildDate>
+    <pubDate>Mon, 04 Sep 2023 07:48:42 GMT</pubDate>
+    <lastBuildDate>Mon, 04 Sep 2023 07:48:42 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6039,7 +6039,7 @@ repo1.DataFilter.Disable("test")</p>
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
 <ul>
-<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx")</li>
+<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
 <li><a href="/guide/select-include.html" target="blank">《贪婪加载》</a> Include/IncludeMany</li>
 <li><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></li>
 <li><a href="/guide/select-as-tree.html" target="blank">《树表查询》</a></li>
