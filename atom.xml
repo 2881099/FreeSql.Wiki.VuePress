@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-09-06T07:21:06.058Z</updated>
+  <updated>2023-09-06T12:21:38.383Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9055,7 +9055,7 @@ FROM "Topic" a</p>
     <title type="text">分表分库</title>
     <id>https://freesql.net/guide/sharding.html</id>
     <link href="https://freesql.net/guide/sharding.html"/>
-    <updated>2022-08-25T02:13:17.000Z</updated>
+    <updated>2023-09-06T12:20:17.000Z</updated>
     <summary type="html"><![CDATA[<h1> 分表分库</h1>
 <h2> 理论知识</h2>
 <p>分表 - 从表面意思上看呢，就是把一张表分成 N 多个小表，每一个小表都是完整的一张表。分表后数据都是存放在分表里，总表只是一个外壳，存取数据发生在一个一个的分表里面。分表后单表的并发能力提高了，磁盘 I/O 性能也提高了。并发能力为什么提高了呢，因为查寻一次所花的时间变短了，如果出现高并发的话，总表可以根据不同 的查询，将并发压力分到不同的小表里面。</p>
@@ -9084,7 +9084,7 @@ FROM "Topic" a</p>
 <blockquote>
 <p>若最大日期大于当前时间，可手工扩容分表：</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
 <th>示范</th>

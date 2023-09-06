@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Sep 2023 07:21:06 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Sep 2023 07:21:06 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Sep 2023 12:21:38 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Sep 2023 12:21:38 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7765,7 +7765,7 @@ FROM "Topic" a</p>
 <blockquote>
 <p>若最大日期大于当前时间，可手工扩容分表：</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
 <th>示范</th>
