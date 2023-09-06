@@ -76,9 +76,13 @@ class AsTableLog
 > 若最大日期大于当前时间，可手工扩容分表：
 
 ```csharp
-fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
+var tableName = fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog))
     .AsTableImpl
     .GetTableNameByColumnValue(DateTime.Parse("2023-7-1"), autoExpand: true);
+
+//创建数据库表
+if (fsql.DbFirst.ExistsTable(tableName) == false)
+    fsql.CodeFirst.SyncStructure(typeof(AsTableLog), tableName);
 ```
 
 | 示范 | 说明 |
