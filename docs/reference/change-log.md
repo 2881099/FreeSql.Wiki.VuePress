@@ -2,6 +2,19 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.705
+
+- 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；
+- 增加 IInsertOrUpdate BatchOptions 选项；
+- 修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；
+- 修复 ClickHouse CodeFirst 多主键问题
+- 修复 DynamicEntity 特性构造函数实例化问题
+- 修复 IInsertOrUpdate BulkCopy 临时表名的问题；#1603
+- 修复 MySql + InsertOrUpdateDict + IfExistsDoNothing 错误；#1601
+- 优化 MySql/Sqlite InsertOrUpdate + IfExistsDoNothing 简化 SQL insert ignore into；#1601
+- 优化 WithLock/WithIndex 非 SqlServer 时忽略；
+- 调整 MySql 不支持 utc_timestamp 统一调速为 current_timestamp；#1604
+
 ## v3.2.700
 
 - 增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492
