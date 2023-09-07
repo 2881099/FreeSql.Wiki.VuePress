@@ -49,8 +49,8 @@ var list = fsql.Select<Topic>()
     .ToAggregate(a => new 
     {
         cou1 = a.Count(), 
-        arg1 = a.Avg(a.Value.Clicks), 
-        arg2 = a.Sum(a.Value.Clicks > 100 ? 1 : 0)
+        arg1 = a.Avg(a.Key.Clicks), 
+        arg2 = a.Sum(a.Key.Clicks > 100 ? 1 : 0)
     });
 ```
 
