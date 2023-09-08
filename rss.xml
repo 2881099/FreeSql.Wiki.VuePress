@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 07 Sep 2023 06:55:19 GMT</pubDate>
-    <lastBuildDate>Thu, 07 Sep 2023 06:55:19 GMT</lastBuildDate>
+    <pubDate>Fri, 08 Sep 2023 04:19:32 GMT</pubDate>
+    <lastBuildDate>Fri, 08 Sep 2023 04:19:32 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -9843,14 +9843,15 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.705 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；; 增加 IInsertOrUpdate BatchOptions 选项；; 修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；; 修复 ClickHouse CodeFirs...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.800 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；; 增加 IInsertOrUpdate BatchOptions 选项；; 修复 v3.2.700 oracle/达梦子查询 BUG；; 修复 FreeSql.Geneartor 无法生成人大金...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.705</h2>
+<h2> v3.2.800</h2>
 <ul>
 <li>增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；</li>
 <li>增加 IInsertOrUpdate BatchOptions 选项；</li>
+<li><strong>修复 v3.2.700 oracle/达梦子查询 BUG；</strong></li>
 <li>修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；</li>
 <li>修复 ClickHouse CodeFirst 多主键问题</li>
 <li>修复 DynamicEntity 特性构造函数实例化问题</li>
@@ -9860,7 +9861,7 @@ FROM "Topic" a</p>
 <li>优化 WithLock/WithIndex 非 SqlServer 时忽略；</li>
 <li>调整 MySql 不支持 utc_timestamp 统一调速为 current_timestamp；#1604</li>
 </ul>
-<h2> v3.2.700</h2>
+<h2> v3.2.700 (oracle/达梦子查询有 BUG)</h2>
 <ul>
 <li>增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492</li>
 <li>增加 多表 As 设置别名的方法 fsql.Select&lt;T1, T2&gt;().As("t1", "t2")；</li>
