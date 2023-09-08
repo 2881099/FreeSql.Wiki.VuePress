@@ -2,7 +2,7 @@
 
 ## 自定义类型映射(MapType)
 
-v3.2.701 版本自定义类型转换
+### v3.2.701 版本自定义类型转换
 
 ```csharp
 FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonClass), new String_JsonClass());
@@ -33,7 +33,7 @@ class String_JsonClass : TypeHandler<JsonClass>
 }
 ```
 
-使用 MapType 枚举 -> string/int 等等如下：
+### 使用 MapType 枚举 -> string/int 等等如下：
 
 ```csharp
 class EnumTestMap {
@@ -167,6 +167,25 @@ public class S_SysConfig {
 | JObject                                                             | jsonb                            |
 | JArray                                                              | jsonb                            |
 | 数组                                                                | 以上所有类型都支持，包括默认类型 |
+
+## 自定义重写(RewriteSql)、重读(RereadSql)
+
+写入时重写 SQL、读取时重写 SQL，适合 geography 类型的读写场景。
+
+```csharp
+[Column(
+    DbType = "geography", 
+    RewriteSql = "geography::STGeomFromText({0}, 4236)", 
+    RereadSql = "{0}.STAsText()"
+)]
+public string geo { get; set; }
+
+//插入：INSERT INTO [ts_geocrud01]([id], [geo]) VALUES(@id_0, geography::STGeomFromText(@geo_0, 4236))
+
+//查询：SELECT TOP 1 a.[id], a.[geo].STAsText() 
+//FROM [ts_geocrud01] a 
+//WHERE (a.[id] = 'c7227d5e-0bcf-4b71-8f0f-d69a552fe84e')
+```
 
 ## 优先级
 
