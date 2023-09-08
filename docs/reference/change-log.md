@@ -2,10 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.2.705
+## v3.2.800
 
 - 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；
 - 增加 IInsertOrUpdate BatchOptions 选项；
+- **修复 v3.2.700 oracle/达梦子查询 BUG；**
 - 修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；
 - 修复 ClickHouse CodeFirst 多主键问题
 - 修复 DynamicEntity 特性构造函数实例化问题
@@ -15,7 +16,7 @@
 - 优化 WithLock/WithIndex 非 SqlServer 时忽略；
 - 调整 MySql 不支持 utc_timestamp 统一调速为 current_timestamp；#1604
 
-## v3.2.700
+## v3.2.700 (oracle/达梦子查询有 BUG)
 
 - 增加 GlobalFilter.Apply before 参数将过滤条件插入 where 之前；#1566 #1492
 - 增加 多表 As 设置别名的方法 fsql.Select<T1, T2>().As("t1", "t2")；
