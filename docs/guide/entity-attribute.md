@@ -48,6 +48,9 @@ class Topic {
 
 > 联合主键，在多个属性标记特性
 
+> Oracle 主键名长度大于30 \[OraclePrimaryKeyName(name)\]
+class table {...}
+
 ## 自增(Identity)
 
 ```csharp
