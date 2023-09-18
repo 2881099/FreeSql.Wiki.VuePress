@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 08 Sep 2023 06:47:43 GMT</pubDate>
-    <lastBuildDate>Fri, 08 Sep 2023 06:47:43 GMT</lastBuildDate>
+    <pubDate>Mon, 18 Sep 2023 20:46:27 GMT</pubDate>
+    <lastBuildDate>Mon, 18 Sep 2023 20:46:27 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3095,6 +3095,10 @@ db.Add(new Xxx());</p>
 </ul>
 <blockquote>
 <p>联合主键，在多个属性标记特性</p>
+</blockquote>
+<blockquote>
+<p>Oracle 主键名长度大于30 [OraclePrimaryKeyName(name)]
+class table {...}</p>
 </blockquote>
 <h2> 自增(Identity)</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>约定：</p>

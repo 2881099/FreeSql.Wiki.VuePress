@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-09-08T06:47:43.120Z</updated>
+  <updated>2023-09-18T20:46:27.208Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3949,7 +3949,7 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2023-09-01T01:37:02.000Z</updated>
+    <updated>2023-09-18T20:45:21.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped</p>
 <p>MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
@@ -3993,6 +3993,10 @@ db.Add(new Xxx());</p>
 </ul>
 <blockquote>
 <p>联合主键，在多个属性标记特性</p>
+</blockquote>
+<blockquote>
+<p>Oracle 主键名长度大于30 [OraclePrimaryKeyName(name)]
+class table {...}</p>
 </blockquote>
 <h2> 自增(Identity)</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>约定：</p>
