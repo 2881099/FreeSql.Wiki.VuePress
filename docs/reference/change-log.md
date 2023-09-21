@@ -8,13 +8,20 @@
 - 增加 IInsertOrUpdate BatchOptions 选项；
 - **修复 v3.2.700 oracle/达梦子查询 BUG；**
 - 修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；
-- 修复 ClickHouse CodeFirst 多主键问题
-- 修复 DynamicEntity 特性构造函数实例化问题
+- 修复 ClickHouse CodeFirst 多主键问题；
+- 修复 QuestDB BulkCopy 自定义表名无效的问题；
+- 修复 QuestDb And Or 优先级解析问题；
+- 修复 DynamicEntity 特性构造函数实例化问题；
 - 修复 IInsertOrUpdate BulkCopy 临时表名的问题；#1603
+- 修复 IUpdateJoin + 全局过滤器 + 从表不生效问题；#1612
+- 修复 JsonMap 进行 null 或非 null 查询；#1613
+- 修复 GroupBy + WithTempQuery + .Key.xx + 特性名与实体不同 + 三元表达式解析问题；
+- 修复 MySql AsTreeCte cte_path 可能长度过短问题；
 - 修复 MySql + InsertOrUpdateDict + IfExistsDoNothing 错误；#1601
 - 优化 MySql/Sqlite InsertOrUpdate + IfExistsDoNothing 简化 SQL insert ignore into；#1601
 - 优化 WithLock/WithIndex 非 SqlServer 时忽略；
-- 调整 MySql 不支持 utc_timestamp 统一调速为 current_timestamp；#1604
+- 优化 MySql ServerTime = DateTimeKind.Utc 不支持 utc_timestamp 默认值问题；#1604
+- 优化 ObjectPool 恢复可用的时机；
 
 ## v3.2.700 (oracle/达梦子查询有 BUG)
 
