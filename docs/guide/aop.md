@@ -97,7 +97,18 @@ FreeSql 自带迁移功能，那么迁移的 SQL 语句长啥样，你可能会�
 
 fsql.Aop.SyncStructureBefore、fsql.Aop.SyncStructureAfter 这两个事件将排上用场。
 
-## ConfigEntityProperty
+## ConfigEntity
+
+### 统一设置架构
+
+```csharp
+//提前设置 FreeSqlBuilder AOP 优先级
+//UseMappingPriority(MappingPriorityType.Attribute, MappingPriorityType.FluentApi, MappingPriorityType.Aop)
+
+fsql.Aop.ConfigEntity += (s, e) => {
+    e.ModifyResult.Name = "public." + e.ModifyResult.Name;
+};
+```
 
 ### MySql Enum 映射
 
