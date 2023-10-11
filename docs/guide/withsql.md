@@ -5,30 +5,24 @@
 定义实体类
 
 ```csharp
-    public class TestClass
-    {
-        [Column(Name = "ID", IsPrimary = true)]
-        public string No { get; set; }
-        public int? Age { get; set; }
-        public string Name { get; set; }
-        [Column(Name = "BIRTH_DAY")]
-        public DateTime? Birthday { get; set; }
-        public decimal Point { get; set; }
-        public Sex? Sex { get; set; }
-    }
-    public enum Sex
-    {
-        Boy,
-        Girl
-    }
-    public class TestClssDto
-    {
-        public string ID { get; set; }
-
-        public int? Age { get; set; }
-
-        public DateTime? Birthday { get; set; }
-    }
+public class TestClass
+{
+    [Column(Name = "ID", IsPrimary = true)]
+    public string No { get; set; }
+    public int? Age { get; set; }
+    public string Name { get; set; }
+    [Column(Name = "BIRTH_DAY")]
+    public DateTime? Birthday { get; set; }
+    public decimal Point { get; set; }
+    public Sex? Sex { get; set; }
+}
+public enum Sex { Boy, Girl }
+public class TestClssDto
+{
+    public string ID { get; set; }
+    public int? Age { get; set; }
+    public DateTime? Birthday { get; set; }
+}
 ```
 
 不同的查询方式。
@@ -42,26 +36,30 @@
 
 ```csharp
 DataTable dt1 = _fsql.Select<object>()
-    .WithSql("select * from TestClass ")
-    .ToDataTable("ID,Age");
+    .WithSql("select * from TestClass")
+    .Where(...)
+    .ToDataTable("ID, Age");
 ```
 
 ```sql
-SELECT ID,Age
-    FROM(select * from TestClass  ) a
+SELECT ID, Age
+FROM ( select * from TestClass ) a
+WHERE ...
 ```
 
 ### 2.返回 DataTable
 
 ```csharp
 DataTable dt2 = _fsql.Select<object>()
-    .WithSql("select * from TestClass ")
+    .WithSql("select * from TestClass")
+    .Where(...)
     .ToDataTable("*");
 ```
 
 ```sql
 SELECT *
-FROM ( select * from TestClass  ) a
+FROM ( select * from TestClass ) a
+WHERE ...
 ```
 
 ### 3.返回`List<Tuplue>` 即`List<(string,string)>` 元组
@@ -69,13 +67,15 @@ FROM ( select * from TestClass  ) a
 ```csharp
 List<(string,string)> list1 = _fsql
     .Select<object>()
-    .WithSql("select * from TestClass ")
-    .ToList<(string, string)>("ID,Age");
+    .WithSql("select * from TestClass")
+    .Where(...)
+    .ToList<(string, string)>("ID, Age");
 ```
 
 ```sql
 SELECT ID, Age
-    FROM(select * from TestClass  ) a
+FROM ( select * from TestClass ) a
+WHERE ...
 ```
 
 ### 4.返回`List<object>`
@@ -83,18 +83,20 @@ SELECT ID, Age
 ```csharp
 var list2 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
+    .Where(...)
     .ToList<object>("*");
 ```
 
 ```sql
 SELECT *
-    FROM(select * from TestClass  ) a
+FROM ( select * from TestClass ) a
+WHERE ...
 ```
 
 ### 5.返回`List<object>` 且能支持分页
 
 ```csharp
-  var list3 = _fsql.Select<object>()
+var list3 = _fsql.Select<object>()
     .WithSql("select * from TestClass ")
     .WhereIf(true, "1=1")
     .Page(1, 10).OrderBy("ID DESC")
@@ -103,10 +105,10 @@ SELECT *
 
 ```sql
 SELECT ID, Age
-    FROM(select * from TestClass  ) a
-    WHERE(1 = 1)
-    ORDER BY ID DESC
-    limit 0,10
+FROM ( select * from TestClass ) a
+WHERE (1 = 1)
+ORDER BY ID DESC
+limit 0,10
 ```
 
 ### 6.返回`List<TestClassDto>`且能支持分页
@@ -122,13 +124,13 @@ var list4 = _fsql.Select<object>()
 
 ```sql
 SELECT ID,Age,BIRTH_DAY as Birthday
-    FROM(select * from TestClass  ) a
-    WHERE(1 = 1)
-    ORDER BY ID DESC
-    limit 0,10
+FROM ( select * from TestClass ) a
+WHERE (1 = 1)
+ORDER BY ID DESC
+limit 0,10
 ```
 
-## 通过 WithSql+ ToSQL 实现 Union ALL 查询方法
+## 通过 WithSql + ToSQL 实现 Union ALL 查询方法
 
 ### 1、二次 ISelect 查询：WithSql 使用多次，等于 UNION ALL 查询
 
