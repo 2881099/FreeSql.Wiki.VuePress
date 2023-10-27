@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-10-27T13:33:50.004Z</updated>
+  <updated>2023-10-27T13:38:16.479Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11300,7 +11300,7 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-10-27T13:32:42.000Z</updated>
+    <updated>2023-10-27T13:36:58.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
 <h2> v3.2.802</h2>
@@ -11335,7 +11335,7 @@ FROM "Topic" a</p>
 <li>优化 IUpdateJoin AsTable 同时对多表名设置；</li>
 <li>优化 多实例情况下 TableInfo 集合缓存；</li>
 </ul>
-<h2> v3.2.800</h2>
+<h2> v3.2.801</h2>
 <ul>
 <li>增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；</li>
 <li>增加 IInsertOrUpdate BatchOptions 选项；</li>

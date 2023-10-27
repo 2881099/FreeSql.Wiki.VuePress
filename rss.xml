@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 27 Oct 2023 13:33:50 GMT</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2023 13:33:50 GMT</lastBuildDate>
+    <pubDate>Fri, 27 Oct 2023 13:38:16 GMT</pubDate>
+    <lastBuildDate>Fri, 27 Oct 2023 13:38:16 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -9869,7 +9869,7 @@ FROM "Topic" a</p>
 <li>优化 IUpdateJoin AsTable 同时对多表名设置；</li>
 <li>优化 多实例情况下 TableInfo 集合缓存；</li>
 </ul>
-<h2> v3.2.800</h2>
+<h2> v3.2.801</h2>
 <ul>
 <li>增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；</li>
 <li>增加 IInsertOrUpdate BatchOptions 选项；</li>
