@@ -17,7 +17,7 @@
 - 优化 IUpdateJoin AsTable 同时对多表名设置；
 - 优化 多实例情况下 TableInfo 集合缓存；
 
-## v3.2.800
+## v3.2.801
 
 - 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；
 - 增加 IInsertOrUpdate BatchOptions 选项；
