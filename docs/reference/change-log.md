@@ -2,6 +2,21 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.802
+
+- 增加 Aop.AuditDataReader 参数属性 PropertyInfo，实现自定义拦截；
+- 修复 v3.2.801 AsTreeCte cte_path 别名问题；
+- 修复 UpdateJoin SetIf 逻辑判断问题；
+- 修复 UpdateJoin IsVersion 字段的别名问题；
+- 修复 RawJoin 可能生成错误的 SQL；
+- 修复 Repository.InsertOrUpdate 更新未变化时的 SQL 错误；#1630
+- 修复 IncludeMany 变异 Where + ToList dto 无法级联；
+- 修复 Ado.net 扩展方法 SqliteCore 支持；#1638
+- 修复 Xugu 有关 bug；
+- 优化 TypeHandlers 支持 DateTime 映射规则；#1634
+- 优化 IUpdateJoin AsTable 同时对多表名设置；
+- 优化 多实例情况下 TableInfo 集合缓存；
+
 ## v3.2.800
 
 - 增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；
