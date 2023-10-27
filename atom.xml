@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-10-11T11:23:42.513Z</updated>
+  <updated>2023-10-27T13:33:50.004Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11300,32 +11300,41 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-09-21T12:25:10.000Z</updated>
+    <updated>2023-10-27T13:32:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.800</h2>
+<h2> v3.2.802</h2>
 <ul>
-<li>增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；</li>
-<li>增加 IInsertOrUpdate BatchOptions 选项；</li>
-<li><strong>修复 v3.2.700 oracle/达梦子查询 BUG；</strong></li>
-<li>修复 FreeSql.Geneartor 无法生成人大金仓数据库问题；</li>
-<li>修复 ClickHouse CodeFirst 多主键问题；</li>
-<li>修复 QuestDB BulkCopy 自定义表名无效的问题；</li>
-<li>修复 QuestDb And Or 优先级解析问题；</li>
-<li>修复 DynamicEntity 特性构造函数实例化问题；</li>
-<li>修复 IInsertOrUpdate BulkCopy 临时表名的问题；#1603</li>
-<li>修复 IUpdateJoin + 全局过滤器 + 从表不生效问题；#1612</li>
-<li>修复 JsonMap 进行 null 或非 null 查询；#1613</li>
-<li>修复 GroupBy + WithTempQuery + .Key.xx + 特性名与实体不同 + 三元表达式解析问题；</li>
-<li>修复 MySql AsTreeCte cte_path 可能长度过短问题；</li>
-<li>修复 MySql + InsertOrUpdateDict + IfExistsDoNothing 错误；#1601</li>
-<li>优化 MySql/Sqlite InsertOrUpdate + IfExistsDoNothing 简化 SQL insert ignore into；#1601</li>
-<li>优化 WithLock/WithIndex 非 SqlServer 时忽略；</li>
-<li>优化 MySql ServerTime = DateTimeKind.Utc 不支持 utc_timestamp 默认值问题；#1604</li>
-<li>优化 ObjectPool 恢复可用的时机；</li>
+<li>增加 Aop.AuditDataReader 参数属性 PropertyInfo，实现自定义拦截；</li>
+<li>修复 v3.2.801 AsTreeCte cte_path 别名问题；</li>
+<li>修复 UpdateJoin SetIf 逻辑判断问题；</li>
+<li>修复 UpdateJoin IsVersion 字段的别名问题；</li>
+<li>修复 RawJoin 可能生成错误的 SQL；</li>
+<li>修复 Repository.InsertOrUpdate 更新未变化时的 SQL 错误；#1630</li>
+<li>修复 IncludeMany 变异 Where + ToList dto 无法级联；</li>
+<li>修复 Ado.net 扩展方法 SqliteCore 支持；#1638</li>
+<li>修复 Xugu 有关 bug；</li>
+<li>优化 TypeHandlers 支持 DateTime 映射规则；#1634</li>
+<li>优化 IUpdateJoin AsTable 同时对多表名设置；</li>
+<li>优化 多实例情况下 TableInfo 集合缓存；</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.802</h2>
+<ul>
+<li>增加 Aop.AuditDataReader 参数属性 PropertyInfo，实现自定义拦截；</li>
+<li>修复 v3.2.801 AsTreeCte cte_path 别名问题；</li>
+<li>修复 UpdateJoin SetIf 逻辑判断问题；</li>
+<li>修复 UpdateJoin IsVersion 字段的别名问题；</li>
+<li>修复 RawJoin 可能生成错误的 SQL；</li>
+<li>修复 Repository.InsertOrUpdate 更新未变化时的 SQL 错误；#1630</li>
+<li>修复 IncludeMany 变异 Where + ToList dto 无法级联；</li>
+<li>修复 Ado.net 扩展方法 SqliteCore 支持；#1638</li>
+<li>修复 Xugu 有关 bug；</li>
+<li>优化 TypeHandlers 支持 DateTime 映射规则；#1634</li>
+<li>优化 IUpdateJoin AsTable 同时对多表名设置；</li>
+<li>优化 多实例情况下 TableInfo 集合缓存；</li>
+</ul>
 <h2> v3.2.800</h2>
 <ul>
 <li>增加 FreeSql.Internal.Utils.TypeHandlers 自定义类型映射；</li>
