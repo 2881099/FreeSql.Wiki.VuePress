@@ -13,9 +13,31 @@ FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临
 > Install-Package FreeScheduler
 
 ```c#
-static Lazy<Scheduler> _schedulerLazy = new Lazy(() => new Scheduler(new MyTaskHandler()));
-static Scheduler scheduler => _schedulerLazy.Value;
+class xxx
+{
+    public static Scheduler scheduler = new FreeSchedulerBuilder()
+        .OnExecuting(task =>
+        {
+            Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.fff")}] {task.Topic} 被执行");
+            switch (task.Topic)
+            {
+                case "order_cancel": OrderCancel(task.Body); break;
+                case "order_msg": OrderMsg(task.Body); break;
+            }
+        })
+        .Build();
+}
 ```
+
+| FreeSchedulerBuilder Method | 说明 |
+| -- | -- |
+| OnExecuting(Action<TaskInfo> executing) | 任务触发 |
+| UseFreeSql() | 基于 数据库，使用 FreeSql ORM 持久化 |
+| UseFreeRedis() | 基于 Redis，使用 FreeRedis 持久化 |
+| UseCluster() | 开启集群（依赖 Redis），支持跨进程 |
+| UseCustomInterval(Func<TaskInfo, TimeSpan?> nextDelay) | 自定义间隔（可实现 cron） |
+| UseScanInterval() | 扫描线程间隔（默认值：200毫秒），值越小触发精准，试试 1ms |
+| Build() | 创建 Scheduler 对象 |
 
 ## 临时任务(不可持久化)
 
@@ -25,7 +47,6 @@ void Callback()
     Console.WriteLine("时间到了");
     scheduler.AddTempTask(TimeSpan.FromSeconds(10), Callback); //下一次定时
 }
-
 scheduler.AddTempTask(TimeSpan.FromSeconds(10), Callback);
 ```
 
@@ -36,58 +57,7 @@ scheduler.AddTempTask(TimeSpan.FromSeconds(10), Callback);
 | bool ExistsTempTask(string id) | 判断任务是否存在(临时任务) |
 | int QuantityTempTask | 任务数量(临时任务) |
 
-## 普通任务
-
-```c#
-class MyTaskHandler : FreeScheduler.TaskHandlers.TestHandler
-{
-    public override void OnExecuting(Scheduler scheduler, TaskInfo task)
-    {
-        //todo..
-    }
-}
-```
-
-## 持久化任务
-
-```c#
-// 使用 FreeSql 持久化任务
-class MyTaskHandler : FreeScheduler.TaskHandlers.FreeSqlHandler
-{
-    public MyTaskHandler(IFreeSql fsql) : base(fsql) { }
-
-    public override void OnExecuting(Scheduler scheduler, TaskInfo task)
-    {
-        Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.fff")}] {task.Topic} 被执行");
-
-        //强制使任务完成
-        //task.Status = TaskStatus.Completed;
-    }
-}
-```
-
-Redis 持久化请安装：
-
-> dotnet add package FreeScheduler.TaskHandlers.FreeRedis
-
-> Install-Package FreeScheduler.TaskHandlers.FreeRedis
-
-## 管理任务
-
-```c#
-// 使用 FreeSql 或者 SQL 查询 TaskInfo、TaskLog 两个表进行分页显示
-fsql.Select<TaskInfo>().Count(out var total).Page(pageNumber, 30).ToList();
-fsql.Select<TaskLog>().Count(out var total).Page(pageNumber, 30).ToList();
-
-//暂停任务
-scheduler.PauseTask(id);
-//恢复暂停的任务
-scheduler.ResumeTask(id);
-//删除任务
-scheduler.RemoveTask(id);
-```
-
-## API (循环任务/可持久化)
+## 循环任务/可持久化
 
 ```c#
 //每5秒触发，执行N次
@@ -105,17 +75,17 @@ var id = scheduler.AddTaskRunOnWeek("topic1", "body1", round: 1, "1:20:00:00");
 //每月1日 20:00:00 触发，指定utc时间，执行12次
 var id = scheduler.AddTaskRunOnMonth("topic1", "body1", round: 12, "1:20:00:00");
 
-//自定义间隔
+//自定义间隔 cron
 var id = scheduler.AddTaskCustom("topic1", "body1", "0/1 * * * * ? ");
-class MyCustomTaskHandler : FreeScheduler.ITaskIntervalCustomHandler
-{
-    public TimeSpan? NextDelay(TaskInfo task)
+new FreeSchedulerBuilder()
+    ...
+    .UseCustomInterval(task =>
     {
         //利用 cron 功能库解析 task.IntervalArgument 得到下一次执行时间
         //与当前时间相减，得到 TimeSpan，若返回 null 则任务完成
         return TimeSpan.FromSeconds(5);
-    }
-}
+    })
+    .Build();
 ```
 
 | Method | 说明 |
@@ -133,3 +103,18 @@ class MyCustomTaskHandler : FreeScheduler.ITaskIntervalCustomHandler
 | bool PauseTask(string id) | 暂停正在运行的任务 |
 | TaskInfo[] FindTask(lambda) | 查询正在运行中的任务 |
 | int QuantityTask | 任务数量 |
+
+## 管理任务
+
+```c#
+// 使用 FreeSql 或者 SQL 查询 TaskInfo、TaskLog 两个表进行分页显示
+fsql.Select<TaskInfo>().Count(out var total).Page(pageNumber, 30).ToList();
+fsql.Select<TaskLog>().Count(out var total).Page(pageNumber, 30).ToList();
+
+//暂停任务
+scheduler.PauseTask(id);
+//恢复暂停的任务
+scheduler.ResumeTask(id);
+//删除任务
+scheduler.RemoveTask(id);
+```
