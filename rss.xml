@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 27 Oct 2023 13:38:16 GMT</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2023 13:38:16 GMT</lastBuildDate>
+    <pubDate>Sun, 05 Nov 2023 11:48:21 GMT</pubDate>
+    <lastBuildDate>Sun, 05 Nov 2023 11:48:21 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -578,8 +578,46 @@
 <blockquote>
 <p>Install-Package FreeScheduler</p>
 </blockquote>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 临时任务(不可持久化)</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<thead>
+<tr>
+<th>FreeSchedulerBuilder Method</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OnExecuting(Action&lt;TaskInfo&gt; executing)</td>
+<td>任务触发</td>
+</tr>
+<tr>
+<td>UseFreeSql()</td>
+<td>基于 数据库，使用 FreeSql ORM 持久化</td>
+</tr>
+<tr>
+<td>UseFreeRedis()</td>
+<td>基于 Redis，使用 FreeRedis 持久化</td>
+</tr>
+<tr>
+<td>UseCluster()</td>
+<td>开启集群（依赖 Redis），支持跨进程</td>
+</tr>
+<tr>
+<td>UseCustomInterval(Func&lt;TaskInfo, TimeSpan?&gt; nextDelay)</td>
+<td>自定义间隔（可实现 cron）</td>
+</tr>
+<tr>
+<td>UseScanInterval()</td>
+<td>扫描线程间隔（默认值：200毫秒），值越小触发精准，试试 1ms</td>
+</tr>
+<tr>
+<td>Build()</td>
+<td>创建 Scheduler 对象</td>
+</tr>
+</tbody>
+</table>
+<h2> 临时任务(不可持久化)</h2>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
 <th>Method</th>
@@ -605,17 +643,7 @@
 </tr>
 </tbody>
 </table>
-<h2> 普通任务</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 持久化任务</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Redis 持久化请安装：</p>
-<blockquote>
-<p>dotnet add package FreeScheduler.TaskHandlers.FreeRedis</p>
-</blockquote>
-<blockquote>
-<p>Install-Package FreeScheduler.TaskHandlers.FreeRedis</p>
-</blockquote>
-<h2> 管理任务</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> API (循环任务/可持久化)</h2>
+<h2> 循环任务/可持久化</h2>
 <div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
@@ -678,7 +706,8 @@
 </tr>
 </tbody>
 </table>
-]]></content:encoded>
+<h2> 管理任务</h2>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>FreeRedis</title>
