@@ -31,11 +31,11 @@ class xxx
 
 | FreeSchedulerBuilder Method | 说明 |
 | -- | -- |
-| OnExecuting(Action<TaskInfo> executing) | 任务触发 |
+| OnExecuting(Action\<TaskInfo\> executing) | 任务触发 |
 | UseFreeSql() | 基于 数据库，使用 FreeSql ORM 持久化 |
 | UseFreeRedis() | 基于 Redis，使用 FreeRedis 持久化 |
 | UseCluster() | 开启集群（依赖 Redis），支持跨进程 |
-| UseCustomInterval(Func<TaskInfo, TimeSpan?> nextDelay) | 自定义间隔（可实现 cron） |
+| UseCustomInterval(Func\<TaskInfo, TimeSpan?\> nextDelay) | 自定义间隔（可实现 cron） |
 | UseScanInterval() | 扫描线程间隔（默认值：200毫秒），值越小触发精准，试试 1ms |
 | Build() | 创建 Scheduler 对象 |
 
