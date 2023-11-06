@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-05T11:48:21.867Z</updated>
+  <updated>2023-11-06T08:38:23.264Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -606,7 +606,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">FreeScheduler</title>
     <id>https://freesql.net/guide/freescheduler.html</id>
     <link href="https://freesql.net/guide/freescheduler.html"/>
-    <updated>2023-11-05T11:47:05.000Z</updated>
+    <updated>2023-11-06T08:37:12.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeScheduler</h1>
 <p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeScheduler" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeScheduler</a></p>]]></summary>
@@ -643,7 +643,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </tr>
 <tr>
 <td>UseCluster()</td>
-<td>开启集群（依赖 Redis），支持跨进程</td>
+<td>开启集群（依赖 Redis），支持跨进程互通，进程离线后其他进程重新加载任务</td>
 </tr>
 <tr>
 <td>UseCustomInterval(Func&lt;TaskInfo, TimeSpan?&gt; nextDelay)</td>
