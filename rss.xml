@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 06 Nov 2023 08:47:11 GMT</pubDate>
-    <lastBuildDate>Mon, 06 Nov 2023 08:47:11 GMT</lastBuildDate>
+    <pubDate>Mon, 06 Nov 2023 11:20:17 GMT</pubDate>
+    <lastBuildDate>Mon, 06 Nov 2023 11:20:17 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -715,7 +715,10 @@
 </tbody>
 </table>
 <h2> 管理任务</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>示例项目：https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Dashboard</p>
+<figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/3fb7dd5d-e7d7-4fe1-8da7-1e0f2e7c208d" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/3fb7dd5d-e7d7-4fe1-8da7-1e0f2e7c208d" type="image/"/>
     </item>
     <item>
       <title>FreeRedis</title>

@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-06T08:47:11.774Z</updated>
+  <updated>2023-11-06T11:20:17.086Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -606,7 +606,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">FreeScheduler</title>
     <id>https://freesql.net/guide/freescheduler.html</id>
     <link href="https://freesql.net/guide/freescheduler.html"/>
-    <updated>2023-11-06T08:45:55.000Z</updated>
+    <updated>2023-11-06T11:18:54.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeScheduler</h1>
 <p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeScheduler" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeScheduler</a></p>]]></summary>
@@ -758,7 +758,9 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </tbody>
 </table>
 <h2> 管理任务</h2>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>示例项目：https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Dashboard</p>
+<figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/3fb7dd5d-e7d7-4fe1-8da7-1e0f2e7c208d" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+]]></content>
     <published>2022-08-30T05:41:38.000Z</published>
   </entry>
   <entry>
