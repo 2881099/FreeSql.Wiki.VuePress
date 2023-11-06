@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 06 Nov 2023 08:38:23 GMT</pubDate>
-    <lastBuildDate>Mon, 06 Nov 2023 08:38:23 GMT</lastBuildDate>
+    <pubDate>Mon, 06 Nov 2023 08:47:11 GMT</pubDate>
+    <lastBuildDate>Mon, 06 Nov 2023 08:47:11 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -616,6 +616,14 @@
 </tr>
 </tbody>
 </table>
+<h2> 集群特性</h2>
+<ul>
+<li>支持 单项目，多站点部署</li>
+<li>支持 多进程，不重复执行</li>
+<li>支持 进程退出后，由其他进程重新加载任务（约30秒后）</li>
+<li>支持 进程互通，任意进程都可以执行（RemoveTask/ExistsTask/PauseTask/RunNowTask/RemoveTempTask/ExistsTempTask）</li>
+<li>支持 进程意外离线后，卸载进程内的任务，重新安排上线</li>
+</ul>
 <h2> 临时任务(不可持久化)</h2>
 <div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
