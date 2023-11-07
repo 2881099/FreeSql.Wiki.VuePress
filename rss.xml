@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 06 Nov 2023 11:53:32 GMT</pubDate>
-    <lastBuildDate>Mon, 06 Nov 2023 11:53:32 GMT</lastBuildDate>
+    <pubDate>Tue, 07 Nov 2023 03:24:49 GMT</pubDate>
+    <lastBuildDate>Tue, 07 Nov 2023 03:24:49 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -578,10 +578,10 @@
 <blockquote>
 <p>Install-Package FreeScheduler</p>
 </blockquote>
-<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<div class="language-c# line-numbers-mode" data-ext="c#"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
-<th>FreeSchedulerBuilder Method</th>
+<th>Method</th>
 <th>说明</th>
 </tr>
 </thead>
@@ -600,15 +600,15 @@
 </tr>
 <tr>
 <td>UseCluster()</td>
-<td>开启集群（依赖 Redis），支持跨进程互通，进程离线后其他进程重新加载任务</td>
+<td>开启集群（依赖 Redis），支持跨进程互通</td>
 </tr>
 <tr>
-<td>UseCustomInterval(Func&lt;TaskInfo, TimeSpan?&gt; nextDelay)</td>
+<td>UseCustomInterval()</td>
 <td>自定义间隔（可实现 cron）</td>
 </tr>
 <tr>
 <td>UseScanInterval()</td>
-<td>扫描线程间隔（默认值：200毫秒），值越小触发精准，试试 1ms</td>
+<td>扫描间隔（默认200ms），值越小触发精准</td>
 </tr>
 <tr>
 <td>Build()</td>
