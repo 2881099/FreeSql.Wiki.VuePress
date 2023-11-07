@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 07 Nov 2023 03:24:49 GMT</pubDate>
-    <lastBuildDate>Tue, 07 Nov 2023 03:24:49 GMT</lastBuildDate>
+    <pubDate>Tue, 07 Nov 2023 03:25:36 GMT</pubDate>
+    <lastBuildDate>Tue, 07 Nov 2023 03:25:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -565,10 +565,10 @@
       <link>https://freesql.net/guide/freescheduler.html</link>
       <guid>https://freesql.net/guide/freescheduler.html</guid>
       <source url="https://freesql.net/rss.xml">FreeScheduler</source>
-      <description>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。 开源地址：https://github.com/2881099/FreeScheduler ...</description>
+      <description>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集群、临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。 开源地址：https://github.com/2881099/FreeSchedul...</description>
       <pubDate>Tue, 30 Aug 2022 05:41:38 GMT</pubDate>
       <content:encoded><![CDATA[<h1> FreeScheduler</h1>
-<p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
+<p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集群、临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeScheduler" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeScheduler</a></p>
 <p>扩展资料：<a href="https://www.cnblogs.com/FreeSql/p/16623030.html" target="_blank" rel="noopener noreferrer">《.NET 定时任务 -- FreeScheduler 支持 cron、持久化、可变定时设置》</a></p>
 <h2> 快速开始</h2>
