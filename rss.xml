@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 08 Nov 2023 16:52:37 GMT</pubDate>
-    <lastBuildDate>Wed, 08 Nov 2023 16:52:37 GMT</lastBuildDate>
+    <pubDate>Wed, 08 Nov 2023 16:55:08 GMT</pubDate>
+    <lastBuildDate>Wed, 08 Nov 2023 16:55:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -613,7 +613,7 @@
 </tbody>
 </table>
 <p>使用 ASP.NET Core 项目，一行代码解决如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" alt="Admin Dashboard" tabindex="0" loading="lazy"><figcaption>Admin Dashboard</figcaption></figure>
 <h2> 集群特性</h2>
 <ul>
 <li>支持 单项目，多站点部署</li>
@@ -715,9 +715,9 @@
 <h2> 管理任务</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果正在使用 ASP.NET Core 项目，一行代码解决如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
-<img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" loading="lazy"></p>
+<img src="/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" alt="Admin Dashboard" loading="lazy"></p>
 ]]></content:encoded>
-      <enclosure url="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" type="image/"/>
+      <enclosure url="https://freesql.net/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" type="image/png"/>
     </item>
     <item>
       <title>FreeRedis</title>

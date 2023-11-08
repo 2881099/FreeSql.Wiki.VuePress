@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-08T16:52:37.819Z</updated>
+  <updated>2023-11-08T16:55:08.011Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -606,7 +606,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">FreeScheduler</title>
     <id>https://freesql.net/guide/freescheduler.html</id>
     <link href="https://freesql.net/guide/freescheduler.html"/>
-    <updated>2023-11-08T16:43:11.000Z</updated>
+    <updated>2023-11-08T16:54:02.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeScheduler</h1>
 <p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集群、临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeScheduler" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeScheduler</a></p>]]></summary>
@@ -656,7 +656,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </tbody>
 </table>
 <p>使用 ASP.NET Core 项目，一行代码解决如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" alt="Admin Dashboard" tabindex="0" loading="lazy"><figcaption>Admin Dashboard</figcaption></figure>
 <h2> 集群特性</h2>
 <ul>
 <li>支持 单项目，多站点部署</li>
@@ -758,7 +758,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <h2> 管理任务</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果正在使用 ASP.NET Core 项目，一行代码解决如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
-<img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" loading="lazy"></p>
+<img src="/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" alt="Admin Dashboard" loading="lazy"></p>
 ]]></content>
     <published>2022-08-30T05:41:38.000Z</published>
   </entry>
