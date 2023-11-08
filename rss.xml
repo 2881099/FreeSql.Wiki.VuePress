@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 08 Nov 2023 16:55:08 GMT</pubDate>
-    <lastBuildDate>Wed, 08 Nov 2023 16:55:08 GMT</lastBuildDate>
+    <pubDate>Wed, 08 Nov 2023 22:23:22 GMT</pubDate>
+    <lastBuildDate>Wed, 08 Nov 2023 22:23:22 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -592,7 +592,7 @@
 </tr>
 <tr>
 <td>UseStorage()</td>
-<td>基于 数据库或者 Redis 持久化，默认保留7天数据</td>
+<td>基于 数据库或者 Redis 持久化</td>
 </tr>
 <tr>
 <td>UseCluster()</td>
@@ -712,7 +712,11 @@
 </tr>
 </tbody>
 </table>
-<h2> 管理任务</h2>
+<h2> 系统预留任务</h2>
+<blockquote>
+<p>[系统预留]清理已完成的任务</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 管理任务</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果正在使用 ASP.NET Core 项目，一行代码解决如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
 <img src="/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png" alt="Admin Dashboard" loading="lazy"></p>
