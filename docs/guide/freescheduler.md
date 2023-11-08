@@ -12,7 +12,7 @@ FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集
 
 > Install-Package FreeScheduler
 
-```c#
+```csharp
 static Scheduler scheduler = new FreeSchedulerBuilder()
     .OnExecuting(task =>
     {
@@ -44,9 +44,17 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
 - 支持 进程互通，任意进程都可以执行（RemoveTask/ExistsTask/PauseTask/RunNowTask/RemoveTempTask/ExistsTempTask）
 - 支持 进程意外离线后，卸载进程内的任务，重新安排上线
 
+如果正在使用 ASP.NET Core 项目，一行代码解决如下：
+
+```csharp
+app.UseFreeSchedulerUI("/freescheduler/");
+```
+
+![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
+
 ## 临时任务(不可持久化)
 
-```c#
+```csharp
 void Callback()
 {
     Console.WriteLine("时间到了");
@@ -64,7 +72,7 @@ scheduler.AddTempTask(TimeSpan.FromSeconds(10), Callback);
 
 ## 循环任务/可持久化
 
-```c#
+```csharp
 //每5秒触发，执行N次
 var id = scheduler.AddTask("topic1", "body1", round: -1, 5);
 
@@ -113,7 +121,7 @@ new FreeSchedulerBuilder()
 
 ## 管理任务
 
-```c#
+```csharp
 // 使用 FreeSql 或者 SQL 查询 TaskInfo、TaskLog 两个表进行分页显示
 fsql.Select<TaskInfo>().Count(out var total).Page(pageNumber, 30).ToList();
 fsql.Select<TaskLog>().Count(out var total).Page(pageNumber, 30).ToList();
@@ -126,8 +134,12 @@ scheduler.ResumeTask(id);
 scheduler.RemoveTask(id);
 ```
 
-示例项目：https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Dashboard
+如果正在使用 ASP.NET Core 项目，一行代码解决如下：
 
-![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/fadfd7f4-c6de-4326-be65-f7c1012651ef)
+```csharp
+app.UseFreeSchedulerUI("/freescheduler/");
+```
 
+https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
+![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
 
