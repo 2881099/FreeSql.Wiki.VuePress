@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 08 Nov 2023 11:24:08 GMT</pubDate>
-    <lastBuildDate>Wed, 08 Nov 2023 11:24:08 GMT</lastBuildDate>
+    <pubDate>Wed, 08 Nov 2023 11:27:58 GMT</pubDate>
+    <lastBuildDate>Wed, 08 Nov 2023 11:27:58 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -616,6 +616,8 @@
 </tr>
 </tbody>
 </table>
+<p>使用 ASP.NET Core 项目，一行代码解决如下：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 集群特性</h2>
 <ul>
 <li>支持 单项目，多站点部署</li>
@@ -624,8 +626,6 @@
 <li>支持 进程互通，任意进程都可以执行（RemoveTask/ExistsTask/PauseTask/RunNowTask/RemoveTempTask/ExistsTempTask）</li>
 <li>支持 进程意外离线后，卸载进程内的任务，重新安排上线</li>
 </ul>
-<p>如果正在使用 ASP.NET Core 项目，一行代码解决如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><figure><img src="https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 临时任务(不可持久化)</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
