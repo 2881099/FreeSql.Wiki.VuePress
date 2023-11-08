@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 08 Nov 2023 11:27:58 GMT</pubDate>
-    <lastBuildDate>Wed, 08 Nov 2023 11:27:58 GMT</lastBuildDate>
+    <pubDate>Wed, 08 Nov 2023 16:44:19 GMT</pubDate>
+    <lastBuildDate>Wed, 08 Nov 2023 16:44:19 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -591,12 +591,8 @@
 <td>任务触发</td>
 </tr>
 <tr>
-<td>UseFreeSql()</td>
-<td>基于 数据库，使用 FreeSql ORM 持久化</td>
-</tr>
-<tr>
-<td>UseFreeRedis()</td>
-<td>基于 Redis，使用 FreeRedis 持久化</td>
+<td>UseStorage()</td>
+<td>基于 数据库或者 Redis 持久化，默认保留7天数据</td>
 </tr>
 <tr>
 <td>UseCluster()</td>
