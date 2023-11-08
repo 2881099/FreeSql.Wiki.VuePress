@@ -41,7 +41,7 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
 app.UseFreeSchedulerUI("/freescheduler/");
 ```
 
-![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
+![Admin Dashboard](/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png)
 
 ## 集群特性
 
@@ -141,5 +141,5 @@ app.UseFreeSchedulerUI("/freescheduler/");
 ```
 
 https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
-![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
+![Admin Dashboard](/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png)
 
