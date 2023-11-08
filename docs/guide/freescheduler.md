@@ -36,6 +36,14 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
 | UseScanInterval() | 扫描间隔（默认200ms），值越小触发精准 |
 | Build() | 创建 Scheduler 对象 |
 
+使用 ASP.NET Core 项目，一行代码解决如下：
+
+```csharp
+app.UseFreeSchedulerUI("/freescheduler/");
+```
+
+![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
+
 ## 集群特性
 
 - 支持 单项目，多站点部署
@@ -44,13 +52,6 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
 - 支持 进程互通，任意进程都可以执行（RemoveTask/ExistsTask/PauseTask/RunNowTask/RemoveTempTask/ExistsTempTask）
 - 支持 进程意外离线后，卸载进程内的任务，重新安排上线
 
-如果正在使用 ASP.NET Core 项目，一行代码解决如下：
-
-```csharp
-app.UseFreeSchedulerUI("/freescheduler/");
-```
-
-![image](https://github.com/2881099/FreeSql.Wiki.VuePress/assets/16286519/a5d5f4bb-6af9-4695-9570-8777c39d7329)
 
 ## 临时任务(不可持久化)
 
