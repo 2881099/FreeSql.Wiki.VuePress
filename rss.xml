@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 10 Nov 2023 10:53:05 GMT</pubDate>
-    <lastBuildDate>Fri, 10 Nov 2023 10:53:05 GMT</lastBuildDate>
+    <pubDate>Sat, 11 Nov 2023 04:33:08 GMT</pubDate>
+    <lastBuildDate>Sat, 11 Nov 2023 04:33:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -714,7 +714,7 @@
 </table>
 <h2> 系统预留任务</h2>
 <blockquote>
-<p>[系统预留]清理已完成的任务</p>
+<p>[系统预留]清理任务数据</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 管理任务</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果正在使用 ASP.NET Core 项目，一行代码解决如下：</p>
