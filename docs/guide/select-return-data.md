@@ -33,6 +33,8 @@ List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Type.Id == a.TypeId).ToLis
 //此时会查询 Topic普通字段 + 导航对象Type 字段
 ```
 
+更多导航属性的数据返回：[贪婪加载](select-include.md)
+
 ## 5、指定字段返回
 
 ```csharp
