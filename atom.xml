@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-11T04:33:08.658Z</updated>
+  <updated>2023-11-14T11:24:36.011Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8365,7 +8365,7 @@ FROM "Topic" a</p>
     <title type="text">返回数据 ✨</title>
     <id>https://freesql.net/guide/select-return-data.html</id>
     <link href="https://freesql.net/guide/select-return-data.html"/>
-    <updated>2023-03-03T02:21:08.000Z</updated>
+    <updated>2023-11-14T11:23:05.000Z</updated>
     <summary type="html"><![CDATA[<h1> 返回数据 ✨</h1>
 <p>FreeSql 采用 ExpressionTree 优化读取速度，如果懂技术的你一定知道 .NET Core 技术下除了原生代码，最快就是 Emit 和 ExpressionTree。项目在初期使用的反射 + 缓存，虽然 .NET Core 优化了反射性能，但经过与 Dapper 性能测试对比之后，发现仍然有一定差距，改成 ExpresstionTree 后才与 Dapper 性能相当。FreeSql 支持的类型较多，实现 ExpressionTree 的复杂度较大，有兴趣的朋友可以翻阅源代码。</p>
 <h2> 1、返回单条记录</h2>
@@ -8383,7 +8383,8 @@ FROM "Topic" a</p>
 <p>查询数据加工为树型，注意：实体需要配置父子导航属性</p>
 </blockquote>
 <h2> 4、返回 List + 导航属性的数据</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 5、指定字段返回</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>更多导航属性的数据返回：<a href="/guide/select-include.html" target="blank">贪婪加载</a></p>
+<h2> 5、指定字段返回</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>常量机制早期留给了原生 SQL，如果真的需要返回该字符串："'xxx'"</p>
 </blockquote>
