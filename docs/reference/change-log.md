@@ -408,4 +408,4 @@
 - 修复 AsTreeCte + RereadSql 不能同时使用的 bug；#964
 - 修复 FreeSql.Generator 工具生成 model 失败 [#882](https://github.com/dotnetcore/FreeSql/issues/882)
 
-更多历史更新日志，请访问：https://github.com/dotnetcore/FreeSql/wiki/%e6%9b%b4%e6%96%b0%e6%97%a5%e5%bf%97
+> 更多历史更新日志，请访问：https://github.com/dotnetcore/FreeSql/wiki/%e6%9b%b4%e6%96%b0%e6%97%a5%e5%bf%97
