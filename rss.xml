@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 15 Nov 2023 07:10:31 GMT</pubDate>
-    <lastBuildDate>Wed, 15 Nov 2023 07:10:31 GMT</lastBuildDate>
+    <pubDate>Wed, 15 Nov 2023 12:58:41 GMT</pubDate>
+    <lastBuildDate>Wed, 15 Nov 2023 12:58:41 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10304,7 +10304,9 @@ FROM "Topic" a</p>
 <li>修复 AsTreeCte + RereadSql 不能同时使用的 bug；#964</li>
 <li>修复 FreeSql.Generator 工具生成 model 失败 <a href="https://github.com/dotnetcore/FreeSql/issues/882" target="_blank" rel="noopener noreferrer">#882</a></li>
 </ul>
+<blockquote>
 <p>更多历史更新日志，请访问：https://github.com/dotnetcore/FreeSql/wiki/%e6%9b%b4%e6%96%b0%e6%97%a5%e5%bf%97</p>
+</blockquote>
 ]]></content:encoded>
     </item>
     <item>
