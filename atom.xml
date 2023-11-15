@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-15T20:18:52.908Z</updated>
+  <updated>2023-11-15T22:07:13.273Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11343,14 +11343,15 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-11-15T12:57:42.000Z</updated>
+    <updated>2023-11-15T22:06:15.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.803</h2>
+<h2> v3.2.805</h2>
 <ul>
 <li>更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；</li>
 <li>调整 DataType.SqlServer/MySql/PostgreSQL 默认使用 Ado 连接池；</li>
 <li>增加 InsertDict ExecuteIdentity 重载指定自增列；</li>
+<li>修复 Expression 导致 AOT 运行失败的问题；</li>
 <li>修复 MySql 8.0 索引 DESC 的判断；#1664</li>
 <li>修复 Xugu Insert + AsTable + ExecuteIdentity bug；</li>
 <li>修复 虚谷日期格式化函数映射；</li>
@@ -11358,11 +11359,12 @@ FROM "Topic" a</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.803</h2>
+<h2> v3.2.805</h2>
 <ul>
 <li>更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；</li>
 <li>调整 DataType.SqlServer/MySql/PostgreSQL 默认使用 Ado 连接池；</li>
 <li>增加 InsertDict ExecuteIdentity 重载指定自增列；</li>
+<li>修复 Expression 导致 AOT 运行失败的问题；</li>
 <li>修复 MySql 8.0 索引 DESC 的判断；#1664</li>
 <li>修复 Xugu Insert + AsTable + ExecuteIdentity bug；</li>
 <li>修复 虚谷日期格式化函数映射；</li>
