@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-15T12:58:41.650Z</updated>
+  <updated>2023-11-15T20:18:52.908Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -770,14 +770,14 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">FreeRedis</title>
     <id>https://freesql.net/guide/freeredis.html</id>
     <link href="https://freesql.net/guide/freeredis.html"/>
-    <updated>2022-08-30T06:15:27.000Z</updated>
+    <updated>2023-11-15T20:17:51.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeRedis</h1>
 <p><code>CSRedisCore</code> 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。</p>
-<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>。</p>
+<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>，支持几乎所有 .NET 平台和 AOT。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeRedis" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeRedis</a></p>]]></summary>
     <content type="html"><![CDATA[<h1> FreeRedis</h1>
 <p><code>CSRedisCore</code> 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。</p>
-<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>。</p>
+<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>，支持几乎所有 .NET 平台和 AOT。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeRedis" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeRedis</a></p>
 <ul>
 <li>🌈 所有方法名与 redis-cli 保持一致</li>

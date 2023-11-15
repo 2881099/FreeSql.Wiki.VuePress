@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 15 Nov 2023 12:58:41 GMT</pubDate>
-    <lastBuildDate>Wed, 15 Nov 2023 12:58:41 GMT</lastBuildDate>
+    <pubDate>Wed, 15 Nov 2023 20:18:52 GMT</pubDate>
+    <lastBuildDate>Wed, 15 Nov 2023 20:18:52 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -728,11 +728,11 @@
       <link>https://freesql.net/guide/freeredis.html</link>
       <guid>https://freesql.net/guide/freeredis.html</guid>
       <source url="https://freesql.net/rss.xml">FreeRedis</source>
-      <description>CSRedisCore 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。 后来重构了更简易的 FreeRedis，目前推荐大家使用 FreeRedis。 开源地址：https://github.com/2881099/FreeRedis (https:...</description>
+      <description>CSRedisCore 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。 后来重构了更简易的 FreeRedis，目前推荐大家使用 FreeRedis，支持几乎所有 .NET 平台和 AOT。 开源地址：https://github.com/28810...</description>
       <pubDate>Tue, 30 Aug 2022 05:39:40 GMT</pubDate>
       <content:encoded><![CDATA[<h1> FreeRedis</h1>
 <p><code>CSRedisCore</code> 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。</p>
-<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>。</p>
+<p>后来重构了更简易的 <code>FreeRedis</code>，目前推荐大家使用 <code>FreeRedis</code>，支持几乎所有 .NET 平台和 AOT。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeRedis" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeRedis</a></p>
 <ul>
 <li>🌈 所有方法名与 redis-cli 保持一致</li>
