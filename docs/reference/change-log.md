@@ -2,11 +2,12 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.2.803
+## v3.2.805
 
 - 更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；
 - 调整 DataType.SqlServer/MySql/PostgreSQL 默认使用 Ado 连接池；
 - 增加 InsertDict ExecuteIdentity 重载指定自增列；
+- 修复 Expression 导致 AOT 运行失败的问题；
 - 修复 MySql 8.0 索引 DESC 的判断；#1664
 - 修复 Xugu Insert + AsTable + ExecuteIdentity bug；
 - 修复 虚谷日期格式化函数映射；
