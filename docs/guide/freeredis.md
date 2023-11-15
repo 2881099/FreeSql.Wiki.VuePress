@@ -2,7 +2,7 @@
 
 `CSRedisCore` 是 .NETFramework 4.0 及以上 访问 redis-server 的客户端组件，也是 FreeSql 作者早年发布的 nuget 版本。
 
-后来重构了更简易的 `FreeRedis`，目前推荐大家使用 `FreeRedis`。
+后来重构了更简易的 `FreeRedis`，目前推荐大家使用 `FreeRedis`，支持几乎所有 .NET 平台和 AOT。
 
 开源地址：[https://github.com/2881099/FreeRedis](https://github.com/2881099/FreeRedis)
 
