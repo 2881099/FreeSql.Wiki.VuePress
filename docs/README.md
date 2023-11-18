@@ -15,7 +15,7 @@ features:
     details: 💡以开发者为中心的设计理念，想你所想，亦享你所享。
     link: /guide/
   - title: 多场景实现
-    details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, Xamarin
+    details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, AOT, Xamarin
     link: /guide/code-first
   - title: 多数据库支持
     details: 🌳MySql、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、虚谷、神舟、翰高、ClickHouse、QuestDB、Access 等数据库
