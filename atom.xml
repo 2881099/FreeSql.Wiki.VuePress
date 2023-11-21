@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-18T07:50:19.373Z</updated>
+  <updated>2023-11-21T18:39:23.268Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1282,16 +1282,23 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">JsonMap</title>
     <id>https://freesql.net/guide/freesql-extensions-jsonmap.html</id>
     <link href="https://freesql.net/guide/freesql-extensions-jsonmap.html"/>
-    <updated>2022-12-29T03:49:07.000Z</updated>
+    <updated>2023-11-21T18:38:27.000Z</updated>
     <summary type="html"><![CDATA[<h1> JsonMap</h1>
+<blockquote>
+<p>推荐使用 v3.2.701+ 版本新增加的自定义类型转换器</p>
+</blockquote>
 <p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>dotnet <span class="token function">add</span> package FreeSql.Extensions.JsonMap
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> JsonMap</h1>
+<blockquote>
+<p>推荐使用 v3.2.701+ 版本新增加的自定义类型转换器</p>
+</blockquote>
 <p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 注意事项</h2>
 <p>[JsonMap]不能标记在 <b>T</b> 为string类型的实体上，否则会在特定情况下导致系统内所有标记了[Column(MapType=typeof(string)]的字段引发类型转换错误</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>]]></content>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> [推荐]自定义类型转换</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
     <published>2022-08-11T15:34:05.000Z</published>
   </entry>
   <entry>

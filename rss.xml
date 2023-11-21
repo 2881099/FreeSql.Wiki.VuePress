@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 18 Nov 2023 07:50:19 GMT</pubDate>
-    <lastBuildDate>Sat, 18 Nov 2023 07:50:19 GMT</lastBuildDate>
+    <pubDate>Tue, 21 Nov 2023 18:39:23 GMT</pubDate>
+    <lastBuildDate>Tue, 21 Nov 2023 18:39:23 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1118,13 +1118,17 @@
       <link>https://freesql.net/guide/freesql-extensions-jsonmap.html</link>
       <guid>https://freesql.net/guide/freesql-extensions-jsonmap.html</guid>
       <source url="https://freesql.net/rss.xml">JsonMap</source>
-      <description>FreeSql 扩展包，将值对象映射成 typeof(string)，安装扩展包： 注意事项 [JsonMap]不能标记在 T 为string类型的实体上，否则会在特定情况下导致系统内所有标记了[Column(MapType=typeof(string)]的字段引发类型转换错误</description>
+      <description>推荐使用 v3.2.701+ 版本新增加的自定义类型转换器 FreeSql 扩展包，将值对象映射成 typeof(string)，安装扩展包： 注意事项 [JsonMap]不能标记在 T 为string类型的实体上，否则会在特定情况下导致系统内所有标记了[Column(MapType=typeof(string)]的字段引发类型转换错误 [推荐]自定义...</description>
       <pubDate>Thu, 11 Aug 2022 15:34:05 GMT</pubDate>
       <content:encoded><![CDATA[<h1> JsonMap</h1>
+<blockquote>
+<p>推荐使用 v3.2.701+ 版本新增加的自定义类型转换器</p>
+</blockquote>
 <p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 注意事项</h2>
 <p>[JsonMap]不能标记在 <b>T</b> 为string类型的实体上，否则会在特定情况下导致系统内所有标记了[Column(MapType=typeof(string)]的字段引发类型转换错误</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> [推荐]自定义类型转换</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>级联删除</title>
