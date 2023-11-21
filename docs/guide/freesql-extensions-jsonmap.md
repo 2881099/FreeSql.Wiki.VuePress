@@ -1,5 +1,7 @@
 # JsonMap
 
+> 推荐使用 v3.2.701+ 版本新增加的自定义类型转换器
+
 FreeSql 扩展包，将值对象映射成 `typeof(string)`，安装扩展包：
 
 ```bash
@@ -32,4 +34,35 @@ public class S_SysConfig<T>
 
 ```
 ExpressionTree 转换类型错误，值(Success)，类型(TEnum)，目标类型(System.String)，Unable to cast object of type 'TEnum' to type 'System.String'.
+```
+
+## [推荐]自定义类型转换
+
+```csharp
+FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonClass), new String_JsonClass());
+
+
+class Product
+{
+    public Guid id { get; set; }
+    [Column(MapType = typeof(string), StringLength = -1)]
+    public JsonClass json { get; set; }
+}
+
+class JsonClass
+{
+    public int a { get; set; }
+    public int b { get; set; }
+}
+class String_JsonClass : TypeHandler<JsonClass>
+{
+    public override object Serialize(JsonClass value)
+    {
+        return JsonConvert.SerializeObject(value);
+    }
+    public override JsonClass Deserialize(object value)
+    {
+        return JsonConvert.DeserializeObject<JsonClass>((string)value);
+    }
+}
 ```
