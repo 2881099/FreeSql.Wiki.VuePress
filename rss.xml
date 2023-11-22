@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 22 Nov 2023 10:48:29 GMT</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 10:48:29 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 11:20:56 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 11:20:56 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7867,7 +7867,7 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<p>第一个月12个月，后面的表按1个月：</p>
+<p>第一个表12个月，后面的表按1个月：</p>
 <blockquote>
 <p>AsTable = "createtime=2022-1-1(12,1 month)"</p>
 </blockquote>
