@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 22 Nov 2023 11:20:56 GMT</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 11:20:56 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 11:46:14 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 11:46:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1608,7 +1608,11 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序</p>
 </blockquote>
-<p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1422" target="_blank" rel="noopener noreferrer">《PostgreSQL 空间地理类型，自定义解析方案 #1422》</a></p>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://github.com/dotnetcore/FreeSql/discussions/1422" target="_blank" rel="noopener noreferrer">《PostgreSQL 空间地理类型，自定义解析方案 #1422》</a></li>
+<li><a href="https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84" target="_blank" rel="noopener noreferrer">《PostgreSQL 特别类型映射》</a></li>
+</ul>
 <h2> 时序数据库</h2>
 <p>timescaledb 是 postgresql的一个插件，一个开源的时间序列数据库，为快速获取和复杂查询进行了优化。它执行的是“完整的SQL”，相应地很容易像传统的关系数据库那样使用。</p>
 ]]></content:encoded>
