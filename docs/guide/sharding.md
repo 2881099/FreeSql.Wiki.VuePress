@@ -97,7 +97,8 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 第一个表12个月，后面的表按1个月：
 
-> AsTable = "createtime=2022-1-1(12,1 month)"
+- AsTable = "createtime=2022-1-1(12,1 month)"
+- fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetTableName(0, "自定义表名")
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
