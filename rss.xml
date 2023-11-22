@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 22 Nov 2023 06:23:22 GMT</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 06:23:22 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 08:14:04 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 08:14:04 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2333,6 +2333,11 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <tr>
 <td>问卷星</td>
 <td>2000 元</td>
+<td></td>
+</tr>
+<tr>
+<td>面向百度编程</td>
+<td>1000 元</td>
 <td></td>
 </tr>
 </tbody>
