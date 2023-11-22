@@ -99,7 +99,7 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 > AsTable = "createtime=2022-1-1(12,1 month)"
 
-第一个表名不时间命名：
+第一个表非时间命名：
 
 > fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetTableName(0, "自定义表名")
 
