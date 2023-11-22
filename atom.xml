@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-22T08:15:06.614Z</updated>
+  <updated>2023-11-22T08:15:54.716Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2508,7 +2508,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">特别鸣谢</title>
     <id>https://freesql.net/reference/donation.html</id>
     <link href="https://freesql.net/reference/donation.html"/>
-    <updated>2023-11-22T08:13:05.000Z</updated>
+    <updated>2023-11-22T08:14:38.000Z</updated>
     <summary type="html"><![CDATA[<h1> 特别鸣谢</h1>
 <table>
 <thead>
@@ -2787,6 +2787,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>问卷星</td>
 <td>2000 元</td>
+<td></td>
+</tr>
+<tr>
+<td>与你无关</td>
+<td>5000元</td>
 <td></td>
 </tr>
 <tr>
@@ -3074,6 +3079,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>问卷星</td>
 <td>2000 元</td>
+<td></td>
+</tr>
+<tr>
+<td>与你无关</td>
+<td>5000元</td>
 <td></td>
 </tr>
 <tr>
