@@ -97,7 +97,7 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 第一个月12个月，后面的表按1个月：
 
-> [Table(Name = "as_table_log_{yyyyMM}", AsTable = "createtime=2022-1-1(12,1 month)")]
+> AsTable = "createtime=2022-1-1(12,1 month)"
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
