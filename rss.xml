@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 22 Nov 2023 11:46:14 GMT</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 11:46:14 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 13:52:33 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 13:52:33 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7872,9 +7872,10 @@ FROM "Topic" a</p>
 </tbody>
 </table>
 <p>第一个表12个月，后面的表按1个月：</p>
-<blockquote>
-<p>AsTable = "createtime=2022-1-1(12,1 month)"</p>
-</blockquote>
+<ul>
+<li>AsTable = "createtime=2022-1-1(12,1 month)"</li>
+<li>fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetTableName(0, "自定义表名")</li>
+</ul>
 <p>详细介绍：<a href="https://github.com/dotnetcore/FreeSql/discussions/1066" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1066</a></p>
 <h2> 【分库】常规技巧</h2>
 <p>1、Sqlite 跨库</p>
