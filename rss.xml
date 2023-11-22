@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 22 Nov 2023 10:48:12 GMT</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 10:48:12 GMT</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 10:48:29 GMT</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 10:48:29 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7869,7 +7869,7 @@ FROM "Topic" a</p>
 </table>
 <p>第一个月12个月，后面的表按1个月：</p>
 <blockquote>
-<p>[Table(Name = "as_table_log_{yyyyMM}", AsTable = "createtime=2022-1-1(12,1 month)")]</p>
+<p>AsTable = "createtime=2022-1-1(12,1 month)"</p>
 </blockquote>
 <p>详细介绍：<a href="https://github.com/dotnetcore/FreeSql/discussions/1066" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1066</a></p>
 <h2> 【分库】常规技巧</h2>
