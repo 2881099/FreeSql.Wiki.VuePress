@@ -103,6 +103,10 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 > fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetTableName(0, "自定义表名")
 
+每个月1日10点分表：
+
+> \[Table(Name = "as_table_log_{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
+
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
 ## 【分库】常规技巧
