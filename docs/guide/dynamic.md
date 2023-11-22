@@ -131,6 +131,52 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 
 [《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》](https://www.cnblogs.com/FreeSql/p/16485310.html)
 
+实现 Custom 的例子：
+
+```json
+{
+  Logic: 'And',
+  Filters:
+  [
+    { Field: 'id', Operator: 'Equals', Value: 1 },
+    {
+      Logic: 'Or',
+      Filters:
+      [
+        { Field: 'id', Operator: 'Equals', Value: 2 },
+        {
+            Field: '{{ DynamicFilterCustomImpl.CustomLinq }}', 
+            Operator: 'Custom', 
+            Value: 'Title.StartsWith(\'new topic 1\')'
+        }
+      ]
+    }
+  ]
+}
+```
+
+```csharp
+var dyfilter = JsonConvert.DeserializeObject<DynamicFilterInfo>(json);
+fsql.Select<Topic>().WhereDynamicFilter(dyfilter).ToList();
+// WHERE id = 1 AND (id = 2 OR title like 'new topic 1%')
+
+//nuget 安装 System.Linq.Dynamic.Core
+public class DynamicFilterCustomImpl
+{
+    //JSON Field 对应这个值
+    public static string CustomLinq = $"{nameof(DynamicFilterCustomImpl.DynamicLinq)} {typeof(DynamicFilterCustomImpl).FullName},{typeof(DynamicFilterCustomImpl).Assembly.FullName}";
+
+    [DynamicFilterCustom]
+    public static LambdaExpression DynamicLinq(object sender, string value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) value = "1==2";
+        ParameterExpression t = Expression.Parameter(sender.GetType().GetGenericArguments()[0], "t");
+        var exp = DynamicExpressionParser.ParseLambda(new ParameterExpression[] { t }, typeof(bool), value);
+        return exp;
+    }
+}
+```
+
 ## 动态排序
 
 1、ISelect.OrderBy(string sql) 使用原生排序：
