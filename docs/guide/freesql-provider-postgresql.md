@@ -96,7 +96,10 @@ class model
 
 > 注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序
 
-参考资料：[《PostgreSQL 空间地理类型，自定义解析方案 #1422》](https://github.com/dotnetcore/FreeSql/discussions/1422)
+参考资料：
+
+- [《PostgreSQL 空间地理类型，自定义解析方案 #1422》](https://github.com/dotnetcore/FreeSql/discussions/1422)
+- [《PostgreSQL 特别类型映射》](https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84)
 
 ## 时序数据库
 
