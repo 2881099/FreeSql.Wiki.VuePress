@@ -50,8 +50,8 @@ export default hopeTheme({
     git: true,
     mdEnhance: {
       codetabs: true,
-      container: false,
       figure: true,
+      hint: false,
       imgLazyload: true,
     },
     pwa: true,
