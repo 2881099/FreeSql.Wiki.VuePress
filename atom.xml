@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-11-29T00:43:56.985Z</updated>
+  <updated>2023-12-01T04:43:10.797Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -6152,7 +6152,7 @@ repo1.DataFilter.Disable("test")</p>
     <title type="text">新增</title>
     <id>https://freesql.net/guide/insert.html</id>
     <link href="https://freesql.net/guide/insert.html"/>
-    <updated>2023-03-25T08:05:45.000Z</updated>
+    <updated>2023-12-01T04:42:19.000Z</updated>
     <summary type="html"><![CDATA[<h1> 新增</h1>
 <p><code>FreeSql</code> 提供单条和批量插入数据的方法，在特定的数据库执行还可以返回插入后的记录。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> connectionString <span class="token operator">=</span> <span class="token string">"Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;"</span> <span class="token operator">+</span>
@@ -6539,6 +6539,12 @@ repo1.DataFilter.Disable("test")</p>
 <td>&lt;this&gt;</td>
 <td>Lambda</td>
 <td>忽略的列</td>
+</tr>
+<tr>
+<td>IgnoreInsertValueSql</td>
+<td>&lt;this&gt;</td>
+<td>Lambda</td>
+<td>忽略的设置过 InsertValueSql 的列</td>
 </tr>
 <tr>
 <td>CommandTimeout</td>

@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 29 Nov 2023 00:43:56 GMT</pubDate>
-    <lastBuildDate>Wed, 29 Nov 2023 00:43:56 GMT</lastBuildDate>
+    <pubDate>Fri, 01 Dec 2023 04:43:10 GMT</pubDate>
+    <lastBuildDate>Fri, 01 Dec 2023 04:43:10 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5523,6 +5523,12 @@ repo1.DataFilter.Disable("test")</p>
 <td>&lt;this&gt;</td>
 <td>Lambda</td>
 <td>忽略的列</td>
+</tr>
+<tr>
+<td>IgnoreInsertValueSql</td>
+<td>&lt;this&gt;</td>
+<td>Lambda</td>
+<td>忽略的设置过 InsertValueSql 的列</td>
 </tr>
 <tr>
 <td>CommandTimeout</td>
