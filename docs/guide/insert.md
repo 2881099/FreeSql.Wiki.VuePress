@@ -268,6 +268,7 @@ fsql.Insert(item)
 | InsertIdentity       | \<this\>                   | 无                      | 指明插入自增列                                        |
 | InsertColumns        | \<this\>                   | Lambda                  | 只插入的列                                            |
 | IgnoreColumns        | \<this\>                   | Lambda                  | 忽略的列                                              |
+| IgnoreInsertValueSql | \<this\>                   | Lambda                  | 忽略的设置过 InsertValueSql 的列                        |
 | CommandTimeout       | \<this\>                   | int                     | 命令超时设置(秒)                                      |
 | WithTransaction      | \<this\>                   | DbTransaction           | 设置事务对象                                          |
 | WithConnection       | \<this\>                   | DbConnection            | 设置连接对象                                          |
