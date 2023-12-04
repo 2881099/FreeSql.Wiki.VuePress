@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 01 Dec 2023 04:43:10 GMT</pubDate>
-    <lastBuildDate>Fri, 01 Dec 2023 04:43:10 GMT</lastBuildDate>
+    <pubDate>Mon, 04 Dec 2023 15:18:50 GMT</pubDate>
+    <lastBuildDate>Mon, 04 Dec 2023 15:18:50 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2000,6 +2000,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <tr>
 <td style="text-align:center"><a href="https://github.com/luoyunchong/lin-cms-dotnetcore" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&amp;repo=lin-cms-dotnetcore" alt="ReadMe Card" loading="lazy"></a></td>
 <td style="text-align:left">😃A simple and practical CMS implemented by .NET 6 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://github.com/leooneone/aibpm.plus" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=leooneone&amp;repo=aibpm.plus" alt="ReadMe Card" loading="lazy"></a></td>
+<td style="text-align:left">AIBPM是一个MIT协议开源的工作流引擎，动态表单设计，工作流引擎，前端采用Vue3.0+ElementPlus</td>
 </tr>
 <tr>
 <td style="text-align:center"><a href="https://github.com/alonsoalon/TenantSite.Server" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=alonsoalon&amp;repo=TenantSite.Server" alt="ReadMe Card" loading="lazy"></a></td>
