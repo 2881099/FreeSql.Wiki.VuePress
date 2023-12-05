@@ -41,12 +41,6 @@ EasyCms后台权限管理系统 基于`Asp.net Core`的后台快速开发框架�
 目前系统包含功能有登录，用户管理，应用菜单管理，权限管理，字典管理，退出登录，也方便扩展多租户使用。
 通过这些基础功能的实现，分享自己对系统框架设计的理解，对`ddd`设计的理解，希望对大家学习使用`.net core`有帮助，少踩一些坑，当然也会存在不足之处，还望指出。
 
-
-### [AIBPM是一个开源的工作流引擎](https://github.com/leooneone/aibpm.ui.plus)
-- 文档地址：https://doc.aibpm.ailicloud.com/
-
-AIBPM是一个开源的工作流引擎。基于 vue3.x + CompositionAPI setup 语法糖 + typescript + vite + element plus + vue-router-next + pinia 技术，适配手机、平板、pc 的工单/工作流引擎，希望减少工作量，帮助大家实现快速开发。
-
 ## FreeSql 官方博客
 
 - [https://www.cnblogs.com/kellynic/](https://www.cnblogs.com/kellynic/)
