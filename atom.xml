@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-04T15:18:50.249Z</updated>
+  <updated>2023-12-05T08:34:54.713Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2399,7 +2399,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Awesome FreeSql</title>
     <id>https://freesql.net/reference/awesome-freesql.html</id>
     <link href="https://freesql.net/reference/awesome-freesql.html"/>
-    <updated>2023-12-04T15:18:00.000Z</updated>
+    <updated>2023-12-05T08:34:09.000Z</updated>
     <summary type="html"><![CDATA[<h1> Awesome FreeSql</h1>
 <h2> 基于 FreeSql 的开源项目</h2>
 <div class="freesql_open">
@@ -2496,6 +2496,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <p>基于<code>.Net 5</code>平台的快速开发框架。
 目前系统包含功能有登录，用户管理，应用菜单管理，权限管理，字典管理，退出登录，也方便扩展多租户使用。
 通过这些基础功能的实现，分享自己对系统框架设计的理解，对<code>ddd</code>设计的理解，希望对大家学习使用<code>.net core</code>有帮助，少踩一些坑，当然也会存在不足之处，还望指出。</p>
+<h3> <a href="https://github.com/leooneone/aibpm.ui.plus" target="_blank" rel="noopener noreferrer">AIBPM是一个开源的工作流引擎</a></h3>
+<ul>
+<li>文档地址：https://doc.aibpm.ailicloud.com/</li>
+</ul>
+<p>AIBPM是一个开源的工作流引擎。基于 vue3.x + CompositionAPI setup 语法糖 + typescript + vite + element plus + vue-router-next + pinia 技术，适配手机、平板、pc 的工单/工作流引擎，希望减少工作量，帮助大家实现快速开发。</p>
 <h2> FreeSql 官方博客</h2>
 <ul>
 <li><a href="https://www.cnblogs.com/kellynic/" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/kellynic/</a></li>
