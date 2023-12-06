@@ -4,7 +4,7 @@ tag:
   - Repository
 ---
 
-`FreeSql.Repository` 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。
+`FreeSql.Repository` 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，实现仓储层（CURD）。
 
 ## 特性
 
