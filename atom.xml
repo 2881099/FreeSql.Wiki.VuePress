@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T21:53:46.232Z</updated>
+  <updated>2023-12-06T22:01:05.491Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7752,7 +7752,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">仓储</title>
     <id>https://freesql.net/guide/repository.html</id>
     <link href="https://freesql.net/guide/repository.html"/>
-    <updated>2023-12-06T21:52:58.000Z</updated>
+    <updated>2023-12-06T22:00:22.000Z</updated>
     <summary type="html"><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。</p>
 <h2> 特性</h2>
 <ul>
@@ -7791,8 +7791,8 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>是不是觉得先查询再更新，啰嗦？</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>repo.CompareState(item) 可获取 item 的状态变化信息</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 过滤与验证</h2>
-<p>假设我们有 User(用户)、Topic(主题)两个实体，在领域类中定义了两个仓储：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本进行了改进，增加了 filter lambda 表达式参数。</p>
+<p>假设我们有 User(用户)、Topic(主题)两个实体，定义了两个仓储：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本增加了 filter lambda 表达式参数。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；</li>
 <li>在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；</li>
