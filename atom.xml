@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T21:44:24.213Z</updated>
+  <updated>2023-12-06T21:53:46.232Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7752,8 +7752,8 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">仓储</title>
     <id>https://freesql.net/guide/repository.html</id>
     <link href="https://freesql.net/guide/repository.html"/>
-    <updated>2022-08-15T16:01:12.000Z</updated>
-    <summary type="html"><![CDATA[<p><code>FreeSql.Repository</code> 作为扩展，实现了通用仓储层功能。与其他规范标准一样，仓储层也有相应的规范定义。FreeSql.Repository 参考 abp vnext 接口，定义和实现基础的仓储层（CURD），应该算比较通用的方法吧。</p>
+    <updated>2023-12-06T21:52:58.000Z</updated>
+    <summary type="html"><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。</p>
 <h2> 特性</h2>
 <ul>
 <li>Select/Attach 快照对象，Update 只更新变化的字段；</li>
@@ -7761,7 +7761,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <li>InsertOrUpdate 插入或更新；</li>
 <li>SaveMany 方法快速保存导航对象（一对多、多对多）；</li>
 </ul>]]></summary>
-    <content type="html"><![CDATA[<p><code>FreeSql.Repository</code> 作为扩展，实现了通用仓储层功能。与其他规范标准一样，仓储层也有相应的规范定义。FreeSql.Repository 参考 abp vnext 接口，定义和实现基础的仓储层（CURD），应该算比较通用的方法吧。</p>
+    <content type="html"><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。</p>
 <h2> 特性</h2>
 <ul>
 <li>Select/Attach 快照对象，Update 只更新变化的字段；</li>
