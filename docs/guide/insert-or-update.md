@@ -1,4 +1,4 @@
-# 新增和修改
+# 新增或修改
 
 ## 1、IFreeSql.InsertOrUpdate
 
