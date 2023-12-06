@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 22:10:06 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 22:10:06 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 22:23:31 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 22:23:31 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6574,9 +6574,9 @@ repo1.DataFilter.Disable("test")</p>
       <link>https://freesql.net/guide/repository.html</link>
       <guid>https://freesql.net/guide/repository.html</guid>
       <source url="https://freesql.net/rss.xml">仓储</source>
-      <description>FreeSql.Repository 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。 特性 Select/Attach 快照对象，Update 只更新变化的字段；; Insert 插入数据，适配各数据库优化执行 ExecuteAffrows/ExecuteIdenti...</description>
+      <description>FreeSql.Repository 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，实现仓储层（CURD）。 特性 Select/Attach 快照对象，Update 只更新变化的字段；; Insert 插入数据，适配各数据库优化执行 ExecuteAffrows/ExecuteIdentity/Exe...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
-      <content:encoded><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，定义和实现基础的仓储层（CURD）。</p>
+      <content:encoded><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，实现仓储层（CURD）。</p>
 <h2> 特性</h2>
 <ul>
 <li>Select/Attach 快照对象，Update 只更新变化的字段；</li>
