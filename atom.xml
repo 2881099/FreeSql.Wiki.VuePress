@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T13:32:59.927Z</updated>
+  <updated>2023-12-06T21:30:15.957Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -6628,7 +6628,7 @@ repo1.DataFilter.Disable("test")</p>
     <title type="text">安装</title>
     <id>https://freesql.net/guide/install.html</id>
     <link href="https://freesql.net/guide/install.html"/>
-    <updated>2023-11-28T09:50:50.000Z</updated>
+    <updated>2023-12-06T21:29:31.000Z</updated>
     <summary type="html"><![CDATA[<h1> 安装</h1>
 <h2> 版本</h2>
 <p>FreeSql 是一个 .NET Standard 2.0 库，仅支持 .NET Framework 4.0 或 .NET Core 或更高版本的应用程序。</p>
@@ -6684,7 +6684,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <td><strong><a href="https://www.nuget.org/packages/FreeSql.Provider.MySqlConnector" target="_blank" rel="noopener noreferrer"><img src="https://buildstats.info/nuget/FreeSql.Provider.MySqlConnector" alt="NuGet" loading="lazy"></a></strong></td>
 </tr>
 <tr>
-<td>FreeSql.Provider.PostgreSQL</td>
+<td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
 <td>NETStandard2.0、net45</td>
 <td>基于 PostgreSQL 9.5+</td>
 <td><strong><a href="https://www.nuget.org/packages/FreeSql.Provider.PostgreSQL" target="_blank" rel="noopener noreferrer"><img src="https://buildstats.info/nuget/FreeSql.Provider.PostgreSQL" alt="NuGet" loading="lazy"></a></strong></td>

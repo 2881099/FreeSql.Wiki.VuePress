@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 13:32:59 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 13:32:59 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 21:30:15 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 21:30:15 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5660,7 +5660,7 @@ repo1.DataFilter.Disable("test")</p>
 <td><strong><a href="https://www.nuget.org/packages/FreeSql.Provider.MySqlConnector" target="_blank" rel="noopener noreferrer"><img src="https://buildstats.info/nuget/FreeSql.Provider.MySqlConnector" alt="NuGet" loading="lazy"></a></strong></td>
 </tr>
 <tr>
-<td>FreeSql.Provider.PostgreSQL</td>
+<td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
 <td>NETStandard2.0、net45</td>
 <td>基于 PostgreSQL 9.5+</td>
 <td><strong><a href="https://www.nuget.org/packages/FreeSql.Provider.PostgreSQL" target="_blank" rel="noopener noreferrer"><img src="https://buildstats.info/nuget/FreeSql.Provider.PostgreSQL" alt="NuGet" loading="lazy"></a></strong></td>
