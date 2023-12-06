@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T22:44:04.427Z</updated>
+  <updated>2023-12-06T22:51:28.779Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3432,9 +3432,9 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">级联保存</title>
     <id>https://freesql.net/guide/cascade-saving.html</id>
     <link href="https://freesql.net/guide/cascade-saving.html"/>
-    <updated>2023-12-06T22:43:16.000Z</updated>
+    <updated>2023-12-06T22:50:23.000Z</updated>
     <summary type="html"><![CDATA[<h1> 级联保存</h1>
-<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
+<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
 <h2> SaveMany 手工保存</h2>
 <p>完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> repo <span class="token operator">=</span> fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">GetRepository</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>Type<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -3450,7 +3450,7 @@ repo<span class="token punctuation">.</span><span class="token function">Insert<
 repo<span class="token punctuation">.</span><span class="token function">SaveMany</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token string">"Topics"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//手工完整保存 Topics</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 级联保存</h1>
-<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
+<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
 <h2> SaveMany 手工保存</h2>
 <p>完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>

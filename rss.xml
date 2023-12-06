@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 22:44:04 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 22:44:04 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 22:51:28 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 22:51:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2616,10 +2616,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/guide/cascade-saving.html</link>
       <guid>https://freesql.net/guide/cascade-saving.html</guid>
       <source url="https://freesql.net/rss.xml">级联保存</source>
-      <description>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。 SaveMany 手工保存 完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。 SaveMany 仅支持 One...</description>
+      <description>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。 SaveMany 手工保存 完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。 SaveMany 仅支持 OneToMa...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 级联保存</h1>
-<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
+<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
 <h2> SaveMany 手工保存</h2>
 <p>完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
