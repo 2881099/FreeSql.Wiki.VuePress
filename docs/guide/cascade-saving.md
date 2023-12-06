@@ -1,12 +1,10 @@
 # 级联保存
 
-实践发现，N 对 1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。
+实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。
 
 ## SaveMany 手工保存
 
-完整保存，对比表已存在的数据，计算出添加、修改、删除执行。
-
-递归保存导航属性不安全，不可控，并非技术问题，而是出于安全考虑，提供了手工完整保存的方式。
+完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。
 
 ```csharp
 var repo = fsql.GetRepository<Type>();
@@ -24,16 +22,18 @@ repo.SaveMany(type, "Topics"); //手工完整保存 Topics
 
 - SaveMany 仅支持 OneToMany、ManyToMany 导航属性
 - 只保存 Topics，不向下递归追朔
-- 当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据，确认？
-- ManyToMany 机制为，完整对比保存中间表，外部表只追加不更新
+- 当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据
+- ManyToMany 完整对比保存中间表，外部表只追加不更新
 
-如：
+多对多举例：
 
 - 本表 Song
 - 外部表 Tag
 - 中间表 SongTag
 
 ## EnableCascadeSave 仓储级联保存
+
+> 本功能是较早时期实现的，可移步了解最新的[《聚合根仓储》](aggregateroot.md)级联机制
 
 DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归追朔其 OneToOne、OneToMany、ManyToMany 导航属性也一并保存，本文档说明实现的机制防止误用。
 
@@ -48,23 +48,17 @@ repo.DbContextOptions.EnableCascadeSave = true; //需要手工开启
 repo.Insert(type);
 ```
 
-- 不删除 Topics 子表已存在的数据，确认？
-- 当 Topics 属性为 Empty 时，不做任何操作，确认？
-- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下 18 层，确认？
+- 不删除 Topics 子表已存在的数据
+- 当 Topics 属性为 Empty 时，不做任何操作
+- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下 18 层
 
 > 向下 18 层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。
 
 > 保存【类型】表对象的时候，他会向下检索出集合属性【文章】，然后如果【文章】被保存的时候，再继续向下检索出集合属性【评论】。一起做 InsertOrUpdate 操作。
 
-3、ManyToMany 完整对比保存中间表，追加外部表
+3、ManyToMany 完整对比保存中间表，外部表只追加不更新
 
 完整对比保存中间表，对比【多对多】中间表已存在的数据，计算出添加、修改、删除执行。
-
-追加外部表，只追加不更新。
-
-- 本表 Song
-- 外部表 Tag
-- 中间表 SongTag
 
 ---
 
