@@ -159,6 +159,8 @@ var logRepository = fsql.GetGuidRepository<Log>(null, oldname => $"{oldname}_{Da
 - v0.11.12 以后的版本可以使用 CodeFirst 迁移分表；
 - 不可在分表分库的实体类型中使用《延时加载》；
 
+更多请移步[《分表分库》](sharding.md)
+
 ## 兼容问题
 
 SqlServer 提供的 output inserted 特性，在表使用了自增或数据库定义了默认值的时候，使用它可以快速将 insert 的数据返回。PostgreSQL 也有相应的功能，如此方便但不是每个数据库都支持。
