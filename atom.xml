@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T22:06:09.704Z</updated>
+  <updated>2023-12-06T22:10:06.522Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9788,9 +9788,9 @@ FROM "Topic" a</p>
     <title type="text">UnitOfWork</title>
     <id>https://freesql.net/guide/unit-of-work.html</id>
     <link href="https://freesql.net/guide/unit-of-work.html"/>
-    <updated>2022-08-19T12:06:05.000Z</updated>
+    <updated>2023-12-06T22:09:23.000Z</updated>
     <summary type="html"><![CDATA[<h1> UnitOfWork</h1>
-<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务；</p>
+<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name"><span class="token keyword">var</span></span> connstr <span class="token operator">=</span> <span class="token string">"Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;"</span> <span class="token operator">+</span>
   <span class="token string">"Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10"</span><span class="token punctuation">;</span>
 
@@ -9800,7 +9800,7 @@ FROM "Topic" a</p>
   <span class="token punctuation">.</span><span class="token function">Build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//请务必定义成 Singleton 单例模式</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> UnitOfWork</h1>
-<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务；</p>
+<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 如何使用</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>参考：<a href="/guide/unitofwork-manager.html" target="blank">在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播</a></p>
 <h2> 接口定义</h2>

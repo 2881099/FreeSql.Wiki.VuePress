@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 22:06:09 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 22:06:09 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 22:10:06 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 22:10:06 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8428,10 +8428,10 @@ FROM "Topic" a</p>
       <link>https://freesql.net/guide/unit-of-work.html</link>
       <guid>https://freesql.net/guide/unit-of-work.html</guid>
       <source url="https://freesql.net/rss.xml">UnitOfWork</source>
-      <description>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务； 如何使用 参考：在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播 (unitofwork-manager.md) 接口定义 uow.GetOrB...</description>
+      <description>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务； 如何使用 参考：在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播 (unitofwork-manager.md) 接口定义 uow.GetOrB...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> UnitOfWork</h1>
-<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务；</p>
+<p>UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 如何使用</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>参考：<a href="/guide/unitofwork-manager.html" target="blank">在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播</a></p>
 <h2> 接口定义</h2>
