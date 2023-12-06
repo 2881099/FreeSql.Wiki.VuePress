@@ -127,18 +127,18 @@ Dictionary<string, object[]> CompareState(TEntity newdata);
 
 ## 过滤与验证
 
-假设我们有 User(用户)、Topic(主题)两个实体，在领域类中定义了两个仓储：
+假设我们有 User(用户)、Topic(主题)两个实体，定义了两个仓储：
 
 ```csharp
-var userRepository = fsql.GetGuidRepository<User>();
-var topicRepository = fsql.GetGuidRepository<Topic>();
+var userRepository = fsql.GetRepository<User>();
+var topicRepository = fsql.GetRepository<Topic>();
 ```
 
-在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本进行了改进，增加了 filter lambda 表达式参数。
+在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本增加了 filter lambda 表达式参数。
 
 ```csharp
-var userRepository = fsql.GetGuidRepository<User>(a => a.Id == 1);
-var topicRepository = fsql.GetGuidRepository<Topic>(a => a.UserId == 1);
+var userRepository = fsql.GetRepository<User>(a => a.Id == 1);
+var topicRepository = fsql.GetRepository<Topic>(a => a.UserId == 1);
 ```
 
 - 在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；
