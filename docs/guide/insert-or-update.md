@@ -62,6 +62,8 @@ var repo = fsql.GetRepository<T>();
 repo.InsertOrUpdate(实体);
 ```
 
+状态管理是数据副本，查询时自动形成副本，只有使用 DbContext/Repository 查询才有状态管理。
+
 如果内部的状态管理存在数据，则更新。
 
 如果内部的状态管理不存在数据，则查询数据库，判断是否存在。
