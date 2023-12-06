@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 21:42:01 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 21:42:01 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 21:44:24 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 21:44:24 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2850,7 +2850,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>dotnet add package FreeSql.DbContext</p>
 </blockquote>
 <h2> 如何使用</h2>
-<p>0、通用方法，为啥是 0？？？</p>
+<p>0、通用方法</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意：DbContext 对象多线程不安全</p>
 </blockquote>

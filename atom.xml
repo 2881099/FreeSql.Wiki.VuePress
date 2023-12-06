@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T21:42:01.092Z</updated>
+  <updated>2023-12-06T21:44:24.213Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3707,7 +3707,7 @@ fsql<span class="token punctuation">.</span>Aop<span class="token punctuation">.
     <title type="text">DbContext</title>
     <id>https://freesql.net/guide/db-context.html</id>
     <link href="https://freesql.net/guide/db-context.html"/>
-    <updated>2022-05-16T12:50:28.000Z</updated>
+    <updated>2023-12-06T21:43:38.000Z</updated>
     <summary type="html"><![CDATA[<h1> DbContext</h1>
 <p>FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终通过 SaveChanges 方法提交事务。</p>
 <h2> 特性</h2>
@@ -3731,7 +3731,7 @@ fsql<span class="token punctuation">.</span>Aop<span class="token punctuation">.
 <p>dotnet add package FreeSql.DbContext</p>
 </blockquote>
 <h2> 如何使用</h2>
-<p>0、通用方法，为啥是 0？？？</p>
+<p>0、通用方法</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意：DbContext 对象多线程不安全</p>
 </blockquote>
