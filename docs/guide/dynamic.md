@@ -66,7 +66,7 @@ fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows
 
 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对应类型 List\<Dictionary\<string, object\>\>
 
-## 无类型 CRUD（不依赖动态编译）
+## 无类型 CRUD（更高级）
 
 不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。
 
