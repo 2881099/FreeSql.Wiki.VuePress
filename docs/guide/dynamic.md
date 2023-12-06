@@ -4,16 +4,13 @@
 
 ```csharp
 fsql.Insert<object>().AsType(实体类型)
-  .AppendData(data)
-  .ExecuteAffrows();
+  .AppendData(data).ExecuteAffrows();
 
 fsql.Update<object>().AsType(实体类型)
-  .SetSource(data)
-  .ExecuteAffrows();
+  .SetSource(data).ExecuteAffrows();
 
 fsql.Delete<object>().AsType(实体类型)
-  .Where(a => (a as BaseEntity).Id == 1)
-  .ExecuteAffrows();
+  .Where(a => (a as BaseEntity).Id == 1).ExecuteAffrows();
 
 //fsql.Select<object>()...
 
@@ -27,22 +24,19 @@ repo.Delete(..);
 repo.InsertOrUpdate(..);
 ```
 
-> 提示：动态编译技术 <https://natasha.dotnetcore.xyz/zh-Hans/docs/get_started/string-complie>
+v3.2.695 emit 动态创建实体类型
 
 ```csharp
-//v3.2.695 emit 动态创建实体类型
 var table = fsql.CodeFirst.DynamicEntity("user", new TableAttribute { Name = "t_user" })
-    .Property("id", typeof(int), new ColumnAttribute { IsIdentity = true, IsPrimary = rue })
-    .Property("username", typeof(string), new ColumnAttribute { StringLength = 32 })
-    .Build();
+  .Property("id", typeof(int), new ColumnAttribute { IsIdentity = true, IsPrimary = rue })
+  .Property("username", typeof(string), new ColumnAttribute { StringLength = 32 })
+  .Build();
 
 //如果有必要，请将 table 缓存起来
-
-//DB有无表判断
 if (fsql.DbFirst.ExistsTable(table.DbName) == false)
     fsql.CodeFirst.SyncStructure(table.Type); //创建表
 
-Dictionary<string, object> dict = new Dictionary<string, object>();
+var dict = new Dictionary<string, object>();
 dict["id"] = 1;
 dict["username"] = "xxx";
 
@@ -50,15 +44,10 @@ dict["username"] = "xxx";
 //也可以直接使用 InsertDict/UpdateDict/DeleteDict 等字典 CUD 功能
 object obj = table.CreateInstance(dict);
 
-//插入
 fsql.Insert<object>().AsType(table.Type).AppendData(obj).ExecuteAffrows();
-//更新
 fsql.Update<object>().AsType(table.Type).SetSource(obj).ExecuteAffrows();
-//插入或更新
 fsql.InsertOrUpdate<object>().AsType(table.Type).SetSource(obj).ExecuteAffrows();
-//删除
 fsql.Delete<object>().AsType(table.Type).WhereDynamic(obj).ExecuteAffrows();
-//查询
 List<object> objs = fsql.Select<object>().AsType(table.Type).ToList();
 ```
 
@@ -76,6 +65,156 @@ fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows
 ```
 
 InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对应类型 List\<Dictionary\<string, object\>\>
+
+## 无类型 CRUD（不依赖动态编译）
+
+不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。
+
+```csharp
+var item = JsonConvert.DeserializeObject<Dictionary<string, object>>(@"
+{
+  ""Name"":""user1"",
+  ""Ext"":
+  {
+    ""Remarks"":[{""Remark"":""remark1""},{""Remark"":""remark2""}]
+  },
+  ""Claims"":[{""ClaimName"":""claim1""},{""ClaimName"":""claim2""},{""ClaimName"":""claim3""}],
+  ""Roles"":[{""Name"":""role1""},{""Name"":""role2""}]
+}");
+ctx.Insert(item);
+
+var item2 = JsonConvert.DeserializeObject<Dictionary<string, object>>(@"
+{
+  ""Id"":1,
+  ""Name"":""user1111"",
+  ""Ext"":{},
+  ""Claims"":[{""Id"":1,""ClaimName"":""claim1111""},{""Id"":""3"",""ClaimName"":""claim3222222""},{""ClaimName"":""claim0000""}],
+  ""Roles"":[{""Name"":""role111100001""},{""Id"":2,""Name"":""role2""}]
+}");
+ctx.Update(item2);
+ctx.Delete(item2);
+```
+
+```sql
+INSERT INTO [Role]([Name]) OUTPUT INSERTED.[Id] as [Id], INSERTED.[Name] as [Name] VALUES(N'role1'), (N'role2')
+INSERT INTO [User]([Name]) OUTPUT INSERTED.[Id] as [Id], INSERTED.[Name] as [Name] VALUES(N'user1')
+INSERT INTO [UserExt]([UserId]) VALUES(1)
+INSERT INTO [UserExtRemarks]([RemarkId], [UserId], [Remark]) VALUES('6570e3f8-a226-c3ac-00d1-a3dd18b30339', 1, N'remark1'), ('6570e3f8-a226-c3ac-00d1-a3de16d9aa68', 1, N'remark2')
+INSERT INTO [UserClaim]([UserId], [ClaimName]) OUTPUT INSERTED.[Id] as [Id], INSERTED.[UserId] as [UserId], INSERTED.[ClaimName] as [ClaimName] VALUES(1, N'claim1'), (1, N'claim2'), (1, N'claim3')
+INSERT INTO [UserRole]([UserId], [RoleId]) VALUES(1, 5), (1, 6)
+
+INSERT INTO [Role]([Name]) OUTPUT INSERTED.[Id] as [Id], INSERTED.[Name] as [Name] VALUES(N'role111100001'), (N'role2')
+INSERT INTO [UserClaim]([UserId], [ClaimName]) OUTPUT INSERTED.[Id] as [Id], INSERTED.[UserId] as [UserId], INSERTED.[ClaimName] as [ClaimName] VALUES(1, N'claim0000')
+INSERT INTO [UserRole]([UserId], [RoleId]) VALUES(1, 7), (1, 8)
+DELETE FROM [UserRole] WHERE ([UserId] = 1 AND [RoleId] = 6)
+DELETE FROM [UserRole] WHERE ([UserId] = 1 AND [RoleId] = 5)
+DELETE FROM [UserClaim] WHERE ([Id] = 2)
+UPDATE [User] SET [Name] = N'user1111'
+WHERE ([Id] = 1)
+UPDATE [UserClaim] SET [ClaimName] = CASE [Id]
+WHEN 1 THEN N'claim1111'
+WHEN 3 THEN N'claim3222222' END
+WHERE ([Id] IN (1,3))
+
+DELETE FROM [UserRole] WHERE (([UserId] = 1 AND [RoleId] = 7) OR ([UserId] = 1 AND [RoleId] = 8))
+DELETE FROM [UserClaim] WHERE ([Id] IN (1,3,4))
+DELETE FROM [UserExt] WHERE ([UserId] = 1)
+DELETE FROM [User] WHERE ([Id] = 1)
+```
+
+查询，返回结果是字典 Dictionary\<string, object\>：
+
+```csharp
+//自动级联
+ctx.Select.Where("id", 1).ToList();
+
+//单独查询
+ctx.SelectNoTracking("User")
+  //.IncludeAll()
+  .Include("Ext.Remarks", then => then.Where("remark", "like", "error"))
+  .Include("Roles", then => then.Include("Users",
+    then => then.Include("Ext.Remarks")))
+  .ToList();
+
+//普通多表查询
+ctx.SelectNoTracking("User")
+  .LeftJoin("UserExt", "UserId", "User.Id")
+  .ToList();
+//[{id:1, UserExt:{} },..]
+```
+
+上述 ctx 对象依赖 json 配置如下：
+
+```json
+[
+  {
+    "Name":"User",
+    "Comment":"用户表",
+    "Columns": [
+      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
+      {"Name":"Name","MapType":"System.String"}
+    ],
+    "Navigates":[
+      {"Name":"Ext","Type":"OneToOne","RelTable":"UserExt"},
+      {"Name":"Claims","Type":"OneToMany","RelTable":"UserClaim","Bind":"UserId"},
+      {"Name":"Roles","Type":"ManyToMany","RelTable":"Role","ManyToMany":"UserRole"}
+    ],
+    "Indexes":[]
+  },
+  {
+    "Name":"UserExt",
+    "Comment":"用户扩展信息表",
+    "Columns":[
+      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
+    ],
+    "Navigates":[
+      {"Name":"Remarks","Type":"OneToMany","RelTable":"UserExtRemarks","Bind":"UserId"},
+    ],
+  },
+  {
+    "Name":"UserExtRemarks",
+    "Comment":"用户扩展信息表-子表",
+    "Columns":[
+      {"Name":"RemarkId","IsPrimary":true,"MapType":"System.Guid"},
+      {"Name":"UserId","MapType":"System.Int32"},
+      {"Name":"Remark","MapType":"System.String"},
+    ],
+  },
+  {
+    "Name":"UserClaim",
+    "Comment":"一对多测试表",
+    "Columns":[
+      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
+      {"Name":"UserId","MapType":"System.Int32"},
+      {"Name":"ClaimName","MapType":"System.String"},
+    ],
+  },
+  {
+    "Name":"Role",
+    "Comment":"权限表",
+    "Columns":[
+      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
+      {"Name":"Name","MapType":"System.String"}
+    ],
+    "Navigates":[
+      {"Name":"Users","Type":"ManyToMany","RelTable":"User","ManyToMany":"UserRole"}
+    ],
+    "Indexes":[]
+  },
+  {
+    "Name":"UserRole",
+    "Comment":"多对多中间表",
+    "Columns":[
+      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
+      {"Name":"RoleId","IsPrimary":true,"MapType":"System.Int32"}
+    ],
+    "Navigates":[
+      {"Name":"User","Type":"ManyToOne","RelTable":"User","Bind":"UserId"},
+      {"Name":"Role","Type":"ManyToOne","RelTable":"Role","Bind":"RoleId"}
+    ]
+  }
+]
+```
 
 ## 动态条件
 
