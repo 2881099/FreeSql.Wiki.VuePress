@@ -1,6 +1,6 @@
 # UnitOfWork
 
-UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部采用了数据库事务；
+UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务；
 
 ```csharp
 var connstr = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" +
