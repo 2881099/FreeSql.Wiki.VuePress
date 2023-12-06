@@ -1,6 +1,6 @@
 # 级联保存
 
-实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。
+实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。
 
 ## SaveMany 手工保存
 
