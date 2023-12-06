@@ -18,7 +18,7 @@ FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终
 
 ## 如何使用
 
-0、通用方法，为啥是 0？？？
+0、通用方法
 
 ```csharp
 using (var ctx = fsql.CreateDbContext()) {
