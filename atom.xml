@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-06T21:30:15.957Z</updated>
+  <updated>2023-12-06T21:34:20.997Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1586,6 +1586,169 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <published>2022-07-09T09:12:12.000Z</published>
   </entry>
   <entry>
+    <title type="text">MySqlConnector</title>
+    <id>https://freesql.net/guide/freesql-provider-mysqlconnector.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-mysqlconnector.html"/>
+    <updated>2023-03-28T11:28:42.000Z</updated>
+    <summary type="html"><![CDATA[<!-- # FreeSql.Provider.MySqlConnector -->
+<p><code>FreeSql.Provider.MySqlConnector</code>是<code>FreeSql</code>基于社区提供的最新的<a href="https://github.com/mysql-net/MySqlConnector" target="_blank" rel="noopener noreferrer"><code>MySqlConnector</code></a>驱动的实现，兼容性、性能都比<code>FreeSql.Provider.MySql</code>好，且支持多种数据库，如：<code>MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase</code></p>]]></summary>
+    <content type="html"><![CDATA[<!-- # FreeSql.Provider.MySqlConnector -->
+<p><code>FreeSql.Provider.MySqlConnector</code>是<code>FreeSql</code>基于社区提供的最新的<a href="https://github.com/mysql-net/MySqlConnector" target="_blank" rel="noopener noreferrer"><code>MySqlConnector</code></a>驱动的实现，兼容性、性能都比<code>FreeSql.Provider.MySql</code>好，且支持多种数据库，如：<code>MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase</code></p>
+<p>并且支持BulkCopy，<strong>推荐使用</strong></p>
+<p>如果你使用 <code>FreeSql.Provider.MySql</code> 发生了以下错误，请替换到 FreeSql.Provider.MySqlConnector：</p>
+<ul>
+<li>The given key '0' was not present in the dictionary.</li>
+<li>The given key '25653' was not present in the dictionary.</li>
+<li>The given key '26995' was not present in the dictionary.</li>
+<li>The given key '28261 was not present in the dictionary.</li>
+<li>The given key '65535' was not present in the dictionary.</li>
+<li>The type initializer for 'MySql.Data.MySqlClient.Replication.ReplicationManager' threw an exception.</li>
+<li>Parameter '@xxx' must be defined.</li>
+<li>Object cannot be cast from DBNull to other types.</li>
+</ul>
+<h2> ExecuteMySqlBulkCopy</h2>
+<ul>
+<li>主键无值</li>
+</ul>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>Id主键有值时</li>
+</ul>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+    <published>2022-06-24T16:45:08.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">FreeSql.Provider.Oracle</title>
+    <id>https://freesql.net/guide/freesql-provider-oracle.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-oracle.html"/>
+    <updated>2022-08-26T09:51:00.000Z</updated>
+    <summary type="html"><![CDATA[<h1> FreeSql.Provider.Oracle</h1>
+<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
+<p>若想以 Ado.net 驱动访问数据库，请安装：</p>
+<blockquote>
+<p>dotnet add package FreeSql.Provider.Oracle</p>
+</blockquote>
+<p>若想以 ODBC 驱动访问数据库，请安装：</p>]]></summary>
+    <content type="html"><![CDATA[<h1> FreeSql.Provider.Oracle</h1>
+<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
+<p>若想以 Ado.net 驱动访问数据库，请安装：</p>
+<blockquote>
+<p>dotnet add package FreeSql.Provider.Oracle</p>
+</blockquote>
+<p>若想以 ODBC 驱动访问数据库，请安装：</p>
+<blockquote>
+<p>dotnet add package FreeSql.Provider.Odbc</p>
+</blockquote>
+<p>若想以 Oledb 驱动访问数据库，请安装：</p>
+<blockquote>
+<p>dotnet add package FreeSql.Provider.OracleOledb</p>
+</blockquote>
+<hr>
+<p>关于 Oracle US7ASCII 中文乱码的问题，Ado.Net 和 Odbc 无法解决。包括最新的.Net Core、.NET6、.NET7 都无法解决这个问题。</p>
+<p>安装 FreeSql.Provider.OracleOledb 使用 Oledb 驱动解决读取使用 US7ASCII 的 Oracle 数据库中文显示乱码问题。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
+<ul>
+<li>要么 FreeSql，原始用法；</li>
+<li>要么 FreeSql.Repository，仓储+工作单元习惯；</li>
+<li>要么 FreeSql.DbContext，很像 EFCore 的使用习惯；</li>
+<li>要么 FreeSql.BaseEntity，充血模式；</li>
+<li>要么 直接像 dapper 那样使用 OracleConnection 扩展方法；</li>
+</ul>
+]]></content>
+    <published>2022-06-24T16:45:08.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">PostgreSQL</title>
+    <id>https://freesql.net/guide/freesql-provider-postgresql.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-postgresql.html"/>
+    <updated>2023-11-22T11:45:18.000Z</updated>
+    <summary type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
+<p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
+<h2> 数组、字典</h2>
+<p>PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&lt;string, string&gt; 字典类型。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">class</span> <span class="token class-name">model</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> tagIds <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//映射数组</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> tagNames <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> dict <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//映射 hstore</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 支持索引查询</span>
+fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Select</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>model<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span> a<span class="token punctuation">.</span>tagIds<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Select</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>model<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span> a<span class="token punctuation">.</span>dict<span class="token punctuation">.</span><span class="token function">ContainsKey</span><span class="token punctuation">(</span><span class="token string">"key1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
+    <content type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
+<p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
+<h2> 数组、字典</h2>
+<p>PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&lt;string, string&gt; 字典类型。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>参考资料：<a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">《PostgreSQL Array 数组类型与 FreeSql 打出一套【组合拳】》</a></p>
+<h2> JSONB</h2>
+<p>PostgreSQL JSON 类型的查询性能不输 mongodb，适合做动态结构的数据存储场景。</p>
+<p>FreeSql.Provider.PostgreSQL 默认使用 Newtonsoft.Json.Linq 映射 jsonb 类型，如下三种均可：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
+<thead>
+<tr>
+<th>lambda 表达式树函数</th>
+<th>PostgreSQL</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a.Count</td>
+<td>jsonb_array_length(coalesce(a, '[]))</td>
+<td>json数组类型的长度</td>
+</tr>
+<tr>
+<td>a.Any()</td>
+<td>jsonb_array_length(coalesce(a, '[])) &gt; 0</td>
+<td>json数组类型，是否为空</td>
+</tr>
+<tr>
+<td>a.Contains(b)</td>
+<td>coalesce(a, '{}') @&gt; b::jsonb</td>
+<td>json中是否包含b</td>
+</tr>
+<tr>
+<td>a.ContainsKey(b)</td>
+<td>coalesce(a, '{}') ? b</td>
+<td>json中是否包含键b</td>
+</tr>
+<tr>
+<td>a.Concat(b)</td>
+<td>coalesce(a, '{}')</td>
+<td></td>
+</tr>
+<tr>
+<td>JObject.Parse(a)</td>
+<td>a::jsonb</td>
+<td>转化字符串为json类型</td>
+</tr>
+<tr>
+<td>a["x"]["y"]</td>
+<td>a-&gt;x-&gt;y</td>
+<td>json成员访问</td>
+</tr>
+</tbody>
+</table>
+<p>更多 lambda 表达式树函数，可以看下<a href="https://freesql.net/guide/expression-function.html" target="_blank" rel="noopener noreferrer">《表达式函数》</a>文档，支持自定义解析。</p>
+<p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1071" target="_blank" rel="noopener noreferrer">《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》</a></p>
+<h2> 空间地理类型</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序</p>
+</blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://github.com/dotnetcore/FreeSql/discussions/1422" target="_blank" rel="noopener noreferrer">《PostgreSQL 空间地理类型，自定义解析方案 #1422》</a></li>
+<li><a href="https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84" target="_blank" rel="noopener noreferrer">《PostgreSQL 特别类型映射》</a></li>
+</ul>
+<h2> 时序数据库</h2>
+<p>timescaledb 是 postgresql的一个插件，一个开源的时间序列数据库，为快速获取和复杂查询进行了优化。它执行的是“完整的SQL”，相应地很容易像传统的关系数据库那样使用。</p>
+]]></content>
+    <published>2022-06-24T16:45:08.000Z</published>
+  </entry>
+  <entry>
     <title type="text">FreeSql 实现审计日志</title>
     <id>https://freesql.net/extra/freesql-auditlog.html</id>
     <link href="https://freesql.net/extra/freesql-auditlog.html"/>
@@ -1825,169 +1988,6 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
 <p>1、[Column(DbType = "DATETIME")]</p>
 <p>2、统一处理的话写个AOP</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
-    <published>2022-06-24T16:45:08.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">MySqlConnector</title>
-    <id>https://freesql.net/guide/freesql-provider-mysqlconnector.html</id>
-    <link href="https://freesql.net/guide/freesql-provider-mysqlconnector.html"/>
-    <updated>2023-03-28T11:28:42.000Z</updated>
-    <summary type="html"><![CDATA[<!-- # FreeSql.Provider.MySqlConnector -->
-<p><code>FreeSql.Provider.MySqlConnector</code>是<code>FreeSql</code>基于社区提供的最新的<a href="https://github.com/mysql-net/MySqlConnector" target="_blank" rel="noopener noreferrer"><code>MySqlConnector</code></a>驱动的实现，兼容性、性能都比<code>FreeSql.Provider.MySql</code>好，且支持多种数据库，如：<code>MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase</code></p>]]></summary>
-    <content type="html"><![CDATA[<!-- # FreeSql.Provider.MySqlConnector -->
-<p><code>FreeSql.Provider.MySqlConnector</code>是<code>FreeSql</code>基于社区提供的最新的<a href="https://github.com/mysql-net/MySqlConnector" target="_blank" rel="noopener noreferrer"><code>MySqlConnector</code></a>驱动的实现，兼容性、性能都比<code>FreeSql.Provider.MySql</code>好，且支持多种数据库，如：<code>MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase</code></p>
-<p>并且支持BulkCopy，<strong>推荐使用</strong></p>
-<p>如果你使用 <code>FreeSql.Provider.MySql</code> 发生了以下错误，请替换到 FreeSql.Provider.MySqlConnector：</p>
-<ul>
-<li>The given key '0' was not present in the dictionary.</li>
-<li>The given key '25653' was not present in the dictionary.</li>
-<li>The given key '26995' was not present in the dictionary.</li>
-<li>The given key '28261 was not present in the dictionary.</li>
-<li>The given key '65535' was not present in the dictionary.</li>
-<li>The type initializer for 'MySql.Data.MySqlClient.Replication.ReplicationManager' threw an exception.</li>
-<li>Parameter '@xxx' must be defined.</li>
-<li>Object cannot be cast from DBNull to other types.</li>
-</ul>
-<h2> ExecuteMySqlBulkCopy</h2>
-<ul>
-<li>主键无值</li>
-</ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>Id主键有值时</li>
-</ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
-    <published>2022-06-24T16:45:08.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">FreeSql.Provider.Oracle</title>
-    <id>https://freesql.net/guide/freesql-provider-oracle.html</id>
-    <link href="https://freesql.net/guide/freesql-provider-oracle.html"/>
-    <updated>2022-08-26T09:51:00.000Z</updated>
-    <summary type="html"><![CDATA[<h1> FreeSql.Provider.Oracle</h1>
-<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
-<p>若想以 Ado.net 驱动访问数据库，请安装：</p>
-<blockquote>
-<p>dotnet add package FreeSql.Provider.Oracle</p>
-</blockquote>
-<p>若想以 ODBC 驱动访问数据库，请安装：</p>]]></summary>
-    <content type="html"><![CDATA[<h1> FreeSql.Provider.Oracle</h1>
-<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
-<p>若想以 Ado.net 驱动访问数据库，请安装：</p>
-<blockquote>
-<p>dotnet add package FreeSql.Provider.Oracle</p>
-</blockquote>
-<p>若想以 ODBC 驱动访问数据库，请安装：</p>
-<blockquote>
-<p>dotnet add package FreeSql.Provider.Odbc</p>
-</blockquote>
-<p>若想以 Oledb 驱动访问数据库，请安装：</p>
-<blockquote>
-<p>dotnet add package FreeSql.Provider.OracleOledb</p>
-</blockquote>
-<hr>
-<p>关于 Oracle US7ASCII 中文乱码的问题，Ado.Net 和 Odbc 无法解决。包括最新的.Net Core、.NET6、.NET7 都无法解决这个问题。</p>
-<p>安装 FreeSql.Provider.OracleOledb 使用 Oledb 驱动解决读取使用 US7ASCII 的 Oracle 数据库中文显示乱码问题。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
-<ul>
-<li>要么 FreeSql，原始用法；</li>
-<li>要么 FreeSql.Repository，仓储+工作单元习惯；</li>
-<li>要么 FreeSql.DbContext，很像 EFCore 的使用习惯；</li>
-<li>要么 FreeSql.BaseEntity，充血模式；</li>
-<li>要么 直接像 dapper 那样使用 OracleConnection 扩展方法；</li>
-</ul>
-]]></content>
-    <published>2022-06-24T16:45:08.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">PostgreSQL</title>
-    <id>https://freesql.net/guide/freesql-provider-postgresql.html</id>
-    <link href="https://freesql.net/guide/freesql-provider-postgresql.html"/>
-    <updated>2023-11-22T11:45:18.000Z</updated>
-    <summary type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
-<p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
-<h2> 数组、字典</h2>
-<p>PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&lt;string, string&gt; 字典类型。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">class</span> <span class="token class-name">model</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> tagIds <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//映射数组</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> tagNames <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    
-    <span class="token keyword">public</span> <span class="token return-type class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> dict <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//映射 hstore</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 支持索引查询</span>
-fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Select</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>model<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span> a<span class="token punctuation">.</span>tagIds<span class="token punctuation">.</span><span class="token function">Contains</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Select</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>model<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span> a<span class="token punctuation">.</span>dict<span class="token punctuation">.</span><span class="token function">ContainsKey</span><span class="token punctuation">(</span><span class="token string">"key1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
-    <content type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
-<p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
-<h2> 数组、字典</h2>
-<p>PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&lt;string, string&gt; 字典类型。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>参考资料：<a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">《PostgreSQL Array 数组类型与 FreeSql 打出一套【组合拳】》</a></p>
-<h2> JSONB</h2>
-<p>PostgreSQL JSON 类型的查询性能不输 mongodb，适合做动态结构的数据存储场景。</p>
-<p>FreeSql.Provider.PostgreSQL 默认使用 Newtonsoft.Json.Linq 映射 jsonb 类型，如下三种均可：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
-<thead>
-<tr>
-<th>lambda 表达式树函数</th>
-<th>PostgreSQL</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a.Count</td>
-<td>jsonb_array_length(coalesce(a, '[]))</td>
-<td>json数组类型的长度</td>
-</tr>
-<tr>
-<td>a.Any()</td>
-<td>jsonb_array_length(coalesce(a, '[])) &gt; 0</td>
-<td>json数组类型，是否为空</td>
-</tr>
-<tr>
-<td>a.Contains(b)</td>
-<td>coalesce(a, '{}') @&gt; b::jsonb</td>
-<td>json中是否包含b</td>
-</tr>
-<tr>
-<td>a.ContainsKey(b)</td>
-<td>coalesce(a, '{}') ? b</td>
-<td>json中是否包含键b</td>
-</tr>
-<tr>
-<td>a.Concat(b)</td>
-<td>coalesce(a, '{}')</td>
-<td></td>
-</tr>
-<tr>
-<td>JObject.Parse(a)</td>
-<td>a::jsonb</td>
-<td>转化字符串为json类型</td>
-</tr>
-<tr>
-<td>a["x"]["y"]</td>
-<td>a-&gt;x-&gt;y</td>
-<td>json成员访问</td>
-</tr>
-</tbody>
-</table>
-<p>更多 lambda 表达式树函数，可以看下<a href="https://freesql.net/guide/expression-function.html" target="_blank" rel="noopener noreferrer">《表达式函数》</a>文档，支持自定义解析。</p>
-<p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1071" target="_blank" rel="noopener noreferrer">《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》</a></p>
-<h2> 空间地理类型</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序</p>
-</blockquote>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://github.com/dotnetcore/FreeSql/discussions/1422" target="_blank" rel="noopener noreferrer">《PostgreSQL 空间地理类型，自定义解析方案 #1422》</a></li>
-<li><a href="https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84" target="_blank" rel="noopener noreferrer">《PostgreSQL 特别类型映射》</a></li>
-</ul>
-<h2> 时序数据库</h2>
-<p>timescaledb 是 postgresql的一个插件，一个开源的时间序列数据库，为快速获取和复杂查询进行了优化。它执行的是“完整的SQL”，相应地很容易像传统的关系数据库那样使用。</p>
-]]></content>
     <published>2022-06-24T16:45:08.000Z</published>
   </entry>
   <entry>
@@ -5922,11 +5922,11 @@ repo1.DataFilter.Disable("test")</p>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
   <entry>
-    <title type="text">新增和修改</title>
+    <title type="text">新增或修改</title>
     <id>https://freesql.net/guide/insert-or-update.html</id>
     <link href="https://freesql.net/guide/insert-or-update.html"/>
-    <updated>2023-05-30T09:32:05.000Z</updated>
-    <summary type="html"><![CDATA[<h1> 新增和修改</h1>
+    <updated>2023-12-06T21:33:33.000Z</updated>
+    <summary type="html"><![CDATA[<h1> 新增或修改</h1>
 <h2> 1、IFreeSql.InsertOrUpdate</h2>
 <p>IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用数据库特性：(v1.5.0+)</p>
 <table>
@@ -5984,7 +5984,7 @@ repo1.DataFilter.Disable("test")</p>
 </tr>
 </tbody>
 </table>]]></summary>
-    <content type="html"><![CDATA[<h1> 新增和修改</h1>
+    <content type="html"><![CDATA[<h1> 新增或修改</h1>
 <h2> 1、IFreeSql.InsertOrUpdate</h2>
 <p>IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用数据库特性：(v1.5.0+)</p>
 <table>
