@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 22:23:31 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 22:23:31 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 22:44:04 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 22:44:04 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2616,26 +2616,28 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/guide/cascade-saving.html</link>
       <guid>https://freesql.net/guide/cascade-saving.html</guid>
       <source url="https://freesql.net/rss.xml">级联保存</source>
-      <description>实践发现，N 对 1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。 SaveMany 手工保存 完整...</description>
+      <description>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。 SaveMany 手工保存 完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。 SaveMany 仅支持 One...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 级联保存</h1>
-<p>实践发现，N 对 1 不适合做级联保存。保存 Topic 的时候把 Type 信息也保存？我个人认为自下向上保存的功能太不可控了，FreeSql 目前不支持自下向上保存。因此下面我们只讲 OneToOne/OneToMany/ManyToMany 级联保存。至于 ManyToOne 级联保存使用手工处理，更加安全可控。</p>
+<p>实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Categate 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。</p>
 <h2> SaveMany 手工保存</h2>
-<p>完整保存，对比表已存在的数据，计算出添加、修改、删除执行。</p>
-<p>递归保存导航属性不安全，不可控，并非技术问题，而是出于安全考虑，提供了手工完整保存的方式。</p>
+<p>完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>SaveMany 仅支持 OneToMany、ManyToMany 导航属性</li>
 <li>只保存 Topics，不向下递归追朔</li>
-<li>当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据，确认？</li>
-<li>ManyToMany 机制为，完整对比保存中间表，外部表只追加不更新</li>
+<li>当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据</li>
+<li>ManyToMany 完整对比保存中间表，外部表只追加不更新</li>
 </ul>
-<p>如：</p>
+<p>多对多举例：</p>
 <ul>
 <li>本表 Song</li>
 <li>外部表 Tag</li>
 <li>中间表 SongTag</li>
 </ul>
 <h2> EnableCascadeSave 仓储级联保存</h2>
+<blockquote>
+<p>本功能是较早时期实现的，可移步了解最新的<a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a>级联机制</p>
+</blockquote>
 <p>DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归追朔其 OneToOne、OneToMany、ManyToMany 导航属性也一并保存，本文档说明实现的机制防止误用。</p>
 <p>1、OneToOne 级联保存</p>
 <blockquote>
@@ -2643,9 +2645,9 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </blockquote>
 <p>2、OneToMany 追加或更新子表，不删除子表已存在的数据</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>不删除 Topics 子表已存在的数据，确认？</li>
-<li>当 Topics 属性为 Empty 时，不做任何操作，确认？</li>
-<li>保存 Topics 的时候，还会保存 Topics[0-..] 的下级集合属性，向下 18 层，确认？</li>
+<li>不删除 Topics 子表已存在的数据</li>
+<li>当 Topics 属性为 Empty 时，不做任何操作</li>
+<li>保存 Topics 的时候，还会保存 Topics[0-..] 的下级集合属性，向下 18 层</li>
 </ul>
 <blockquote>
 <p>向下 18 层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。</p>
@@ -2653,14 +2655,8 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <blockquote>
 <p>保存【类型】表对象的时候，他会向下检索出集合属性【文章】，然后如果【文章】被保存的时候，再继续向下检索出集合属性【评论】。一起做 InsertOrUpdate 操作。</p>
 </blockquote>
-<p>3、ManyToMany 完整对比保存中间表，追加外部表</p>
+<p>3、ManyToMany 完整对比保存中间表，外部表只追加不更新</p>
 <p>完整对比保存中间表，对比【多对多】中间表已存在的数据，计算出添加、修改、删除执行。</p>
-<p>追加外部表，只追加不更新。</p>
-<ul>
-<li>本表 Song</li>
-<li>外部表 Tag</li>
-<li>中间表 SongTag</li>
-</ul>
 <hr>
 <p>测试 1：追加保存 OneToMany</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
