@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Dec 2023 22:01:05 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Dec 2023 22:01:05 GMT</lastBuildDate>
+    <pubDate>Wed, 06 Dec 2023 22:06:09 GMT</pubDate>
+    <lastBuildDate>Wed, 06 Dec 2023 22:06:09 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6620,6 +6620,7 @@ repo1.DataFilter.Disable("test")</p>
 <li>v0.11.12 以后的版本可以使用 CodeFirst 迁移分表；</li>
 <li>不可在分表分库的实体类型中使用《延时加载》；</li>
 </ul>
+<p>更多请移步<a href="/guide/sharding.html" target="blank">《分表分库》</a></p>
 <h2> 兼容问题</h2>
 <p>SqlServer 提供的 output inserted 特性，在表使用了自增或数据库定义了默认值的时候，使用它可以快速将 insert 的数据返回。PostgreSQL 也有相应的功能，如此方便但不是每个数据库都支持。</p>
 <p>当采用了不支持该特性的数据库（Sqlite/MySql/Oracle/达梦/南大通用/MsAccess），并且实体使用了自增属性，仓储批量插入将变为逐条执行，可以考虑以下改进：</p>
