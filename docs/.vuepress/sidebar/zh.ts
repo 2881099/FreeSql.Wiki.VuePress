@@ -108,6 +108,7 @@ export const zhSidebarConfig = sidebar({
             "multi-tenancy",
             "performance",
             "dynamic",
+            "lowcode",
           ],
         },
         {
