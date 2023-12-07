@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-07T05:54:05.331Z</updated>
+  <updated>2023-12-07T05:55:26.192Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11,9 +11,9 @@
     <title type="text">低代码</title>
     <id>https://freesql.net/guide/lowcode.html</id>
     <link href="https://freesql.net/guide/lowcode.html"/>
-    <updated>2023-12-07T05:53:21.000Z</updated>
+    <updated>2023-12-07T05:54:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> 低代码</h1>
-<p>本篇是继《动态操作》文档之后的大功能，专门为低代码设计。</p>
+<p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
 <p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无放释放，对 Type 的版本也难以管理。</p>
 <p>本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。</p>
 <p>注意：本功能是独立的，请勿与其他文档的级联机制搞混。</p>
@@ -28,7 +28,7 @@ fsql<span class="token punctuation">.</span><span class="token function">DeleteD
 fsql<span class="token punctuation">.</span><span class="token function">InsertOrUpdateDict</span><span class="token punctuation">(</span>dic<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">AsTable</span><span class="token punctuation">(</span><span class="token string">"table1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">WherePrimary</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ExecuteAffrows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 低代码</h1>
-<p>本篇是继《动态操作》文档之后的大功能，专门为低代码设计。</p>
+<p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
 <p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无放释放，对 Type 的版本也难以管理。</p>
 <p>本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。</p>
 <p>注意：本功能是独立的，请勿与其他文档的级联机制搞混。</p>
