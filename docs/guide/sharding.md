@@ -107,6 +107,10 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 > \[Table(Name = "as_table_log_{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
 
+未设置时间条件时，只命中最新的 3个分表：
+
+> fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetDefaultAllTables(value => value.Take(3).ToArray());
+
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
 ## 【分库】常规技巧
