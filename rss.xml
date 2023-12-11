@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 07 Dec 2023 05:56:26 GMT</pubDate>
-    <lastBuildDate>Thu, 07 Dec 2023 05:56:26 GMT</lastBuildDate>
+    <pubDate>Mon, 11 Dec 2023 08:54:39 GMT</pubDate>
+    <lastBuildDate>Mon, 11 Dec 2023 08:54:39 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8013,6 +8013,10 @@ FROM "Topic" a</p>
 <p>每个月1日10点分表：</p>
 <blockquote>
 <p>[Table(Name = "as_table_log_{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")]</p>
+</blockquote>
+<p>未设置时间条件时，只命中最新的 3个分表：</p>
+<blockquote>
+<p>fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetDefaultAllTables(value =&gt; value.Take(3).ToArray());</p>
 </blockquote>
 <p>详细介绍：<a href="https://github.com/dotnetcore/FreeSql/discussions/1066" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1066</a></p>
 <h2> 【分库】常规技巧</h2>
