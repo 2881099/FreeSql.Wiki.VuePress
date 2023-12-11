@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 11 Dec 2023 08:54:39 GMT</pubDate>
-    <lastBuildDate>Mon, 11 Dec 2023 08:54:39 GMT</lastBuildDate>
+    <pubDate>Mon, 11 Dec 2023 09:30:47 GMT</pubDate>
+    <lastBuildDate>Mon, 11 Dec 2023 09:30:47 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -15,11 +15,11 @@
       <link>https://freesql.net/guide/lowcode.html</link>
       <guid>https://freesql.net/guide/lowcode.html</guid>
       <source url="https://freesql.net/rss.xml">低代码</source>
-      <description>本篇是继《动态操作》 (dynamic.md)文档之后的大功能，专门为低代码设计。 FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无放释放，对 Type 的版本也难以管理。 本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。 注意：本功能是独立的，请勿与其他文档的级联机...</description>
+      <description>本篇是继《动态操作》 (dynamic.md)文档之后的大功能，专门为低代码设计。 FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无法释放，对 Type 的版本也难以管理。 本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。 注意：本功能是独立的，请勿与其他文档的级联机...</description>
       <pubDate>Thu, 07 Dec 2023 05:53:21 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 低代码</h1>
 <p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
-<p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无放释放，对 Type 的版本也难以管理。</p>
+<p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无法释放，对 Type 的版本也难以管理。</p>
 <p>本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。</p>
 <p>注意：本功能是独立的，请勿与其他文档的级联机制搞混。</p>
 <h2> 字典 CUD（单表）</h2>
