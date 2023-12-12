@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 11 Dec 2023 09:30:47 GMT</pubDate>
-    <lastBuildDate>Mon, 11 Dec 2023 09:30:47 GMT</lastBuildDate>
+    <pubDate>Tue, 12 Dec 2023 12:49:41 GMT</pubDate>
+    <lastBuildDate>Tue, 12 Dec 2023 12:49:41 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7946,7 +7946,7 @@ FROM "Topic" a</p>
 <p>分库 - 把原本存储于一个库的数据分块存储到多个库上，把原本存储于一个表的数据分块存储到多个表上。数据库中的数据量不一定是可控的，在未进行分表分库的情况下，随着时间和业务的发展，库中的表会越来越多，表中的数据量也会越来越大，相应地，数据操作，增删改查的开销也会越来越大；另外，一台服务器的资源（CPU、磁盘、内存、IO 等）是有限的，最终数据库所能承载的数据量、数据处理能力都将遭遇瓶颈。</p>
 <h2> 手工分表 AsTable</h2>
 <p>FreeSql 原生用法、FreeSql.Repository 仓储用法 都提供了 AsTable 方法对分表进行 CRUD 操作，例如：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>跨库，但是在同一个数据库服务器下，也可以使用 AsTable(oldname =&gt; $"db2.dbo.{oldname}")</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>跨库，但是在同一个数据库服务器下，也可以使用 AsTable(oldname =&gt; $"db2.dbo.{oldname}")</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>分表总结：</p>
 <ul>
 <li>分表、相同服务器跨库 可以使用 AsTable 进行 CRUD；</li>
