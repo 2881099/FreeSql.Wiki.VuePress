@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 12 Dec 2023 12:49:41 GMT</pubDate>
-    <lastBuildDate>Tue, 12 Dec 2023 12:49:41 GMT</lastBuildDate>
+    <pubDate>Wed, 13 Dec 2023 09:52:02 GMT</pubDate>
+    <lastBuildDate>Wed, 13 Dec 2023 09:52:02 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2184,7 +2184,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/reference/donation.html</link>
       <guid>https://freesql.net/reference/donation.html</guid>
       <source url="https://freesql.net/rss.xml">特别鸣谢</source>
-      <description>捐赠者 金额 留言 ------------------- --------- ---- L\*y 58 元 花花 88 元 麦兜很乖 50 元 网络来者 2000 元 John 99.99 元 alex 666 元 bacongao 36 元 无名 100 元 Eternity 188 元 无名 10 元 ⌒.Helper~..oO 66 元 习惯与...</description>
+      <description>捐赠者 金额 时间 ------------------- --------- ---- L\*y 58 元 花花 88 元 麦兜很乖 50 元 网络来者 2000 元 John 99.99 元 alex 666 元 bacongao 36 元 无名 100 元 Eternity 188 元 无名 10 元 ⌒.Helper~..oO 66 元 习惯与...</description>
       <pubDate>Tue, 09 Feb 2021 12:13:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 特别鸣谢</h1>
 <table>
@@ -2192,7 +2192,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <tr>
 <th>捐赠者</th>
 <th>金额</th>
-<th>留言</th>
+<th>时间</th>
 </tr>
 </thead>
 <tbody>
@@ -2475,6 +2475,11 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <td>看门大爷</td>
 <td>1000 元</td>
 <td></td>
+</tr>
+<tr>
+<td>建爽</td>
+<td>200元</td>
+<td>2023-12-13</td>
 </tr>
 </tbody>
 </table>
