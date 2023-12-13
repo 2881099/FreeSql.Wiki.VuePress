@@ -2,6 +2,33 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.806
+
+- **增加 低代码扩展包 [FreeSql.Extensions.ZoreEntity](https://freesql.net/guide/lowcode.html)；**
+- **增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568**
+- 增加 Clickhouse BulkCopy；
+- 增加 IBaseRepository.AsTable 重载方法支持多表表名设置；
+- **增加 IAsTable 自动分表支持不规则时间间隔；**
+- **增加 IAsTable.SetTableName 自动分表设置分表名；**
+- **增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；**
+- 增加 IUpdate.ExecuteUpdated 指定字段返回；#1681
+- 增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；
+- 增加 IUpdate/IDelete WhereDynamicFilter API；#1521
+- 增加 WithSql().WhereDynamicFilter 的支持；
+- 增加 pgsql 扩展方法 ISelect<T>.DistinctOn；#1680
+- 修复 Column DbType 与 StringLength 多次替换问题；
+- 修复 Where(a => a.bool) 当使用了 MapType(int) 时出现 bug；
+- 修复 SqlServer 批量更新 bool? null 值生成多余的 case when SQL；
+- 修复 Xugu 批量插入/更新 SQL 报错；
+- 修复 OledbOracle 参数化处理 bug；
+- 修复 多表子查询参数化共享问题；
+- 补充 达梦 IDbFirst datetime 处理；
+- 补充 FluentApi AsTable 方法；
+- **优化 自动分表 join 分表（自动贴合）；**
+- 优化 UnionAll + WithTempQuery 嵌套的 SQL；
+- 优化 Update 无字段时不做任何处理；
+- 优化 表达式解析变量或常量 ToString；
+
 ## v3.2.805
 
 - 更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；
