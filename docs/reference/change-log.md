@@ -14,7 +14,7 @@
 - 增加 IUpdate.ExecuteUpdated 指定字段返回；#1681
 - 增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；
 - 增加 IUpdate/IDelete WhereDynamicFilter API；#1521
-- 增加 WithSql().WhereDynamicFilter 的支持；
+- 增加 WithSql(..).WhereDynamicFilter 的支持；
 - 增加 pgsql 扩展方法 ISelect<T>.DistinctOn；#1680
 - 修复 Column DbType 与 StringLength 多次替换问题；
 - 修复 Where(a => a.bool) 当使用了 MapType(int) 时出现 bug；
