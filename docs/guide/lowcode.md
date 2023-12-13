@@ -27,7 +27,13 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对�
 
 不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。
 
+nuget 安装：
+
+> dotnet add package FreeSql.Extensions.ZoreEntity
+
 ```csharp
+var ctx = new ZoreDbContext(fsql, JsonConvert.DeserializeObject<TableDescriptor[]>(json)); //在文档后面
+
 var item = JsonConvert.DeserializeObject<Dictionary<string, object>>(@"
 {
   ""Name"":""user1"",
