@@ -78,6 +78,7 @@ export const zhSidebarConfig = sidebar({
             "freesql-extensions-baseentity",
             "freesql-extensions-jsonmap",
             "freesqladminlte",
+            "lowcode",
           ],
         },
         {
