@@ -4,7 +4,7 @@
 
 ## v3.2.806
 
-- **增加 低代码扩展包 [FreeSql.Extensions.ZoreEntity](lowcode.md)；**
+- **增加 低代码扩展包 [FreeSql.Extensions.ZoreEntity](./guide/lowcode.md)；**
 - **增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568**
 - 增加 Clickhouse BulkCopy；
 - 增加 IBaseRepository.AsTable 重载方法支持多表表名设置；
