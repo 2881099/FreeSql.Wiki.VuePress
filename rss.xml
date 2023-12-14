@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 13 Dec 2023 13:34:04 GMT</pubDate>
-    <lastBuildDate>Wed, 13 Dec 2023 13:34:04 GMT</lastBuildDate>
+    <pubDate>Thu, 14 Dec 2023 11:58:42 GMT</pubDate>
+    <lastBuildDate>Thu, 14 Dec 2023 11:58:42 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1200,7 +1200,10 @@
 <h2> 无类型 CRUD（更高级）</h2>
 <p>不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。</p>
 <p>内容较长，请移步<a href="/guide/lowcode.html" target="blank">《低代码》</a></p>
-<h2> 动态条件</h2>
+<h2> 动态表名</h2>
+<p>1、仓储 Repository</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、原生 IFreeSql</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 动态条件</h2>
 <p>1、ISelect.Where(string sql) 使用原生条件：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>2、动态 Lambda 表达式</p>
 <ul>
@@ -2062,7 +2065,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/guide/withsql.html</link>
       <guid>https://freesql.net/guide/withsql.html</guid>
       <source url="https://freesql.net/rss.xml">WithSql</source>
-      <description>WithSql 自定义 SQL 定义实体类 不同的查询方式。 返回DataTable; 返回List 即List元组; 返回List 且能支持分页; 返回List且能支持分页; 1.返回 DataTable 2.返回 DataTable 3.返回List 即List 元组 4.返回List 5.返回List 且能支持分页 6.返回List且能支持分页 ...</description>
+      <description>WithSql 自定义 SQL 定义实体类 不同的查询方式。 返回DataTable; 返回List 即List元组; 返回List 且能支持分页; 返回List且能支持分页; 1.动态表名 2.返回 DataTable 3.返回 DataTable 4.返回List 即List 元组 5.返回List 6.返回List 且能支持分页 7.返回List...</description>
       <pubDate>Wed, 16 Jun 2021 16:56:09 GMT</pubDate>
       <content:encoded><![CDATA[<h1> WithSql</h1>
 <h2> WithSql 自定义 SQL</h2>
@@ -2074,12 +2077,13 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <li>返回<code>List&lt;object&gt;</code> 且能支持分页</li>
 <li>返回<code>List&lt;TestClassDto&gt;</code>且能支持分页</li>
 </ul>
-<h3> 1.返回 DataTable</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 2.返回 DataTable</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 3.返回<code>List&lt;Tuplue&gt;</code> 即<code>List&lt;(string,string)&gt;</code> 元组</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 4.返回<code>List&lt;object&gt;</code></h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 5.返回<code>List&lt;object&gt;</code> 且能支持分页</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 6.返回<code>List&lt;TestClassDto&gt;</code>且能支持分页</h3>
+<h3> 1.动态表名</h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3> 2.返回 DataTable</h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 3.返回 DataTable</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 4.返回<code>List&lt;Tuplue&gt;</code> 即<code>List&lt;(string,string)&gt;</code> 元组</h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 5.返回<code>List&lt;object&gt;</code></h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 6.返回<code>List&lt;object&gt;</code> 且能支持分页</h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 7.返回<code>List&lt;TestClassDto&gt;</code>且能支持分页</h3>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 通过 WithSql + ToSQL 实现 Union ALL 查询方法</h2>
 <h3> 1、二次 ISelect 查询：WithSql 使用多次，等于 UNION ALL 查询</h3>
 <p>WithSql 使用多次为 UNION ALL 查询，所以我们可以利用 ISelect.ToSql(FieldAliasOptions.AsProperty) 得到生成的 SQL，如下：</p>
@@ -3152,7 +3156,8 @@ db.Add(new Xxx());</p>
 <li><code>new[] { Topic对象1, Topic对象2 }</code></li>
 <li><code>new { id = 1 }</code></li>
 </ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 删除条件</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 动态表名</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 删除条件</h2>
 <blockquote>
 <p>出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：<code>fsql.Delete&lt;T&gt;().Where("1=1").ExecuteAffrows()</code></p>
 </blockquote>
@@ -5569,17 +5574,18 @@ repo1.DataFilter.Disable("test")</p>
 <blockquote>
 <p>测试结果，是在相同操作系统下进行的，并且都有预热</p>
 </blockquote>
-<h2> 4、插入指定的列</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 5、忽略列</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 6、列插入优先级</h2>
+<h2> 4、动态表名</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 5、插入指定的列</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 6、忽略列</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 7、列插入优先级</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在没有使用 <code>InsertColumns/IgnoreColumns</code> 的情况下，实体所有列将被插入数据库；</p>
 <p>在使用 <code>InsertColumns</code>，没有使用 <code>IgnoreColumns</code> 的情况下，只有指定的列插入数据库；</p>
 <p>在使用 <code>IgnoreColumns</code> 的情况下，只有未被指定的列插入数据库；</p>
-<h2> 7、字典插入</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 8、导入表数据</h2>
+<h2> 8、字典插入</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 9、导入表数据</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>注意：因为 <code>Clicks</code>、<code>CreateTime</code> 没有被选择，所以使用目标实体属性<code>[Column(InsertValueSql = xx)]</code> 设置的值，或者使用目标实体属性的 <code>c#</code>默认值。</p>
-<h2> 9、MySql 特有功能 <code>Insert Ignore Into</code></h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 10、MySql 特有功能 <code>On Duplicate Key Update</code></h2>
+<h2> 10、MySql 特有功能 <code>Insert Ignore Into</code></h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 11、MySql 特有功能 <code>On Duplicate Key Update</code></h2>
 <p>FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。</p>
 <p>这个功能也可以实现插入或更新数据，并且支持批量操作。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>OnDuplicateKeyUpdate() 之后可以调用的方法：</p>
@@ -7511,7 +7517,16 @@ FROM "Topic" a</p>
 <li>Custom：<a href="https://github.com/dotnetcore/FreeSql/discussions/1550" target="_blank" rel="noopener noreferrer">自定义解析</a></li>
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>动态表名：ISelect.AsTable((t, old) =&gt; $"{old}_201903")</p>
+</blockquote>
+<blockquote>
 <p>动态排序：ISelect.OrderByPropertyName("Parent.Code")</p>
+</blockquote>
+<blockquote>
+<p>动态返回：ISelect.ToDataTableByPropertyName(new string[] { "Parent.Code", "Id" })</p>
+</blockquote>
+<blockquote>
+<p>动态贪婪加载：ISelect.IncludeByPropertyName("Parent.Parent").IncludeByPropertyName("Parent.Childs")</p>
 </blockquote>
 <h2> API</h2>
 <table>
@@ -8609,7 +8624,7 @@ FROM "Topic" a</p>
       <link>https://freesql.net/guide/update.html</link>
       <guid>https://freesql.net/guide/update.html</guid>
       <source url="https://freesql.net/rss.xml">修改</source>
-      <description>FreeSql 提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。 动态条件 dywhere 支持： 主键值; new[] { 主键值1, 主键值2 }; Topic 对象; new[] { Topic对象1, Topic对象2 }; new { id = 1 }; 1、更新指定列 支持 Set() 多次，相当于拼...</description>
+      <description>FreeSql 提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。 动态条件 dywhere 支持： 主键值; new[] { 主键值1, 主键值2 }; Topic 对象; new[] { Topic对象1, Topic对象2 }; new { id = 1 }; 动态表名 1、更新指定列 支持 Set() 多次...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 修改</h1>
 <p><code>FreeSql</code> 提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。</p>
@@ -8622,7 +8637,8 @@ FROM "Topic" a</p>
 <li><code>new[] { Topic对象1, Topic对象2 }</code></li>
 <li><code>new { id = 1 }</code></li>
 </ul>
-<h2> 1、更新指定列</h2>
+<h2> 动态表名</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 1、更新指定列</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>支持 <code>Set()</code> 多次，相当于拼接</p>
 </blockquote>
@@ -10069,10 +10085,37 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.805 更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；; 调整 DataType.SqlServer/MySql/PostgreSQL 默认使用 Ado 连接池；; 增加 InsertDict ExecuteIdentity 重载指...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.806 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBaseRepository.AsTable 重载方...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.806</h2>
+<ul>
+<li><strong>增加 低代码扩展包 FreeSql.Extensions.ZoreEntity；</strong></li>
+<li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
+<li>增加 Clickhouse BulkCopy；</li>
+<li>增加 IBaseRepository.AsTable 重载方法支持多表表名设置；</li>
+<li><strong>增加 IAsTable 自动分表支持不规则时间间隔；</strong></li>
+<li><strong>增加 IAsTable.SetTableName 自动分表设置分表名；</strong></li>
+<li><strong>增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；</strong></li>
+<li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
+<li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
+<li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
+<li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
+<li>增加 pgsql 扩展方法 ISelect<code>&lt;</code>T<code>&gt;</code>.DistinctOn；#1680</li>
+<li>修复 Column DbType 与 StringLength 多次替换问题；</li>
+<li>修复 Where(a =&gt; a.bool) 当使用了 MapType(int) 时出现 bug；</li>
+<li>修复 SqlServer 批量更新 bool? null 值生成多余的 case when SQL；</li>
+<li>修复 Xugu 批量插入/更新 SQL 报错；</li>
+<li>修复 OledbOracle 参数化处理 bug；</li>
+<li>修复 多表子查询参数化共享问题；</li>
+<li>补充 达梦 IDbFirst datetime 处理；</li>
+<li>补充 FluentApi AsTable 方法；</li>
+<li><strong>优化 自动分表 join 分表（自动贴合）；</strong></li>
+<li>优化 UnionAll + WithTempQuery 嵌套的 SQL；</li>
+<li>优化 Update 无字段时不做任何处理；</li>
+<li>优化 表达式解析变量或常量 ToString；</li>
+</ul>
 <h2> v3.2.805</h2>
 <ul>
 <li>更新 支持到 .net8.0，FreeSql.DbContext 放弃 .netcoreapp2.1 依赖注入；</li>
