@@ -121,7 +121,13 @@ FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批
 
 > 测试结果，是在相同操作系统下进行的，并且都有预热
 
-## 4、插入指定的列
+## 4、动态表名
+
+```csharp
+fsql.Insert(items).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表插入
+```
+
+## 5、插入指定的列
 
 ```csharp
 var t3 = fsql.Insert(items).InsertColumns(a => a.Title).ExecuteAffrows();
@@ -137,7 +143,7 @@ var t4 = fsql.Insert(items).InsertColumns(a =>new { a.Title, a.Clicks }).Execute
 //(?Clicks9, ?Title9)
 ```
 
-## 5、忽略列
+## 6、忽略列
 
 ```csharp
 var t5 = fsql.Insert(items).IgnoreColumns(a => a.CreateTime).ExecuteAffrows();
@@ -153,7 +159,7 @@ var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).Ex
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 6、列插入优先级
+## 7、列插入优先级
 
 ```csharp
 全部列 < 指定列(InsertColumns) < 忽略列(IgnoreColumns)
@@ -165,7 +171,7 @@ var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).Ex
 
 在使用 `IgnoreColumns` 的情况下，只有未被指定的列插入数据库；
 
-## 7、字典插入
+## 8、字典插入
 
 ```csharp
 var dic = new Dictionary<string, object>();
@@ -175,7 +181,7 @@ dic.Add("name", "xxxx");
 fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
 ```
 
-## 8、导入表数据
+## 9、导入表数据
 
 ```csharp
 int affrows = fsql.Select<Topic>()
@@ -195,7 +201,7 @@ limit 10
 
 注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性`[Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c#`默认值。
 
-## 9、MySql 特有功能 `Insert Ignore Into`
+## 10、MySql 特有功能 `Insert Ignore Into`
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
@@ -204,7 +210,7 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 10、MySql 特有功能 `On Duplicate Key Update`
+## 11、MySql 特有功能 `On Duplicate Key Update`
 
 FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。
 
