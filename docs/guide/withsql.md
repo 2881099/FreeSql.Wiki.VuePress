@@ -32,7 +32,14 @@ public class TestClssDto
 - 返回`List<object>` 且能支持分页
 - 返回`List<TestClassDto>`且能支持分页
 
-### 1.返回 DataTable
+### 1.动态表名
+
+```csharp
+//对 TestClass_201903 表查询
+fsql.Select<TestClass>().AsTable((t, old) => $"{old}_201903").ToList();
+```
+
+### 2.返回 DataTable
 
 ```csharp
 DataTable dt1 = _fsql.Select<object>()
@@ -47,7 +54,7 @@ FROM ( select * from TestClass ) a
 WHERE ...
 ```
 
-### 2.返回 DataTable
+## 3.返回 DataTable
 
 ```csharp
 DataTable dt2 = _fsql.Select<object>()
@@ -62,7 +69,7 @@ FROM ( select * from TestClass ) a
 WHERE ...
 ```
 
-### 3.返回`List<Tuplue>` 即`List<(string,string)>` 元组
+### 4.返回`List<Tuplue>` 即`List<(string,string)>` 元组
 
 ```csharp
 List<(string,string)> list1 = _fsql
@@ -78,7 +85,7 @@ FROM ( select * from TestClass ) a
 WHERE ...
 ```
 
-### 4.返回`List<object>`
+### 5.返回`List<object>`
 
 ```csharp
 var list2 = _fsql.Select<object>()
@@ -93,7 +100,7 @@ FROM ( select * from TestClass ) a
 WHERE ...
 ```
 
-### 5.返回`List<object>` 且能支持分页
+### 6.返回`List<object>` 且能支持分页
 
 ```csharp
 var list3 = _fsql.Select<object>()
@@ -111,7 +118,7 @@ ORDER BY ID DESC
 limit 0,10
 ```
 
-### 6.返回`List<TestClassDto>`且能支持分页
+### 7.返回`List<TestClassDto>`且能支持分页
 
 ```csharp
 var list4 = _fsql.Select<object>()

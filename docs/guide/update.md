@@ -31,6 +31,12 @@ fsql.Update<Topic>(object dywhere)
 - `new[] { Topic对象1, Topic对象2 }`
 - `new { id = 1 }`
 
+## 动态表名
+
+```csharp
+fsql.Update<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表更新
+```
+
 ## 1、更新指定列
 
 ```csharp

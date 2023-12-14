@@ -47,6 +47,12 @@ var t4 = fsql.Delete<Topic>(new { id = 1 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 ```
 
+## 动态表名
+
+```csharp
+fsql.Delete<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表删除
+```
+
 ## 删除条件
 
 > 出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：`fsql.Delete<T>().Where("1=1").ExecuteAffrows()`
