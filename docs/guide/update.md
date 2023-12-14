@@ -34,7 +34,7 @@ fsql.Update<Topic>(object dywhere)
 ## 动态表名
 
 ```csharp
-fsql.Delete<Topic>(1).AsTable("Topic_201903").ExecuteAffrows();
+fsql.Update<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表更新
 ```
 
 ## 1、更新指定列
