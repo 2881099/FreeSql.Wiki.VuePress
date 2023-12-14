@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 14 Dec 2023 11:58:42 GMT</pubDate>
-    <lastBuildDate>Thu, 14 Dec 2023 11:58:42 GMT</lastBuildDate>
+    <pubDate>Thu, 14 Dec 2023 11:59:59 GMT</pubDate>
+    <lastBuildDate>Thu, 14 Dec 2023 11:59:59 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10085,13 +10085,13 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.806 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBaseRepository.AsTable 重载方...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.806 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity (lowcode.md)；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBaseRepositor...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
 <h2> v3.2.806</h2>
 <ul>
-<li><strong>增加 低代码扩展包 FreeSql.Extensions.ZoreEntity；</strong></li>
+<li><strong>增加 低代码扩展包 <a href="/reference/lowcode.html" target="blank">FreeSql.Extensions.ZoreEntity</a>；</strong></li>
 <li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
 <li>增加 Clickhouse BulkCopy；</li>
 <li>增加 IBaseRepository.AsTable 重载方法支持多表表名设置；</li>
@@ -10102,7 +10102,7 @@ FROM "Topic" a</p>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
-<li>增加 pgsql 扩展方法 ISelect<code>&lt;</code>T<code>&gt;</code>.DistinctOn；#1680</li>
+<li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>
 <li>修复 Where(a =&gt; a.bool) 当使用了 MapType(int) 时出现 bug；</li>
 <li>修复 SqlServer 批量更新 bool? null 值生成多余的 case when SQL；</li>
