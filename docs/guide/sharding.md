@@ -13,7 +13,7 @@ FreeSql 原生用法、FreeSql.Repository 仓储用法 都提供了 AsTable 方�
 ```csharp
 var repo = fsql.GetRepository<Log>();
 repo.AsTable(oldname => $"{oldname}_201903"); //对 Log_201903 表 CRUD
-//repo.AsType((type, oldname) => $"{oldname}_201903"); //对 Log_201903 表 CRUD（级联有关表也增加该后辍）
+//repo.AsTable((type, oldname) => $"{oldname}_201903"); //对 Log_201903 表 CRUD（级联有关表也增加该后辍）
 
 repo.Insert(new Log { ... });
 ```
