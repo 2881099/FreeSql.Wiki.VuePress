@@ -72,6 +72,27 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对�
 
 内容较长，请移步[《低代码》](lowcode.md)
 
+## 动态表名
+
+1、仓储 Repository
+
+```csharp
+var repo = fsql.GetRepository<Log>();
+repo.AsTable(old => $"{old}_201903"); //对 Log_201903 表 CRUD
+//repo.AsTable((t, old) => $"{old}_201903"); //对 Log_201903 表 CRUD（级联有关表也增加该后辍）
+repo.Insert(new Log { ... });
+```
+
+2、原生 IFreeSql
+
+```csharp
+fsql.Select<Log>().AsTable((t, old) => $"{old}_201903").ToList(); //对 Log_201903 表查询
+fsql.Insert(new Log { ... }).AsTable("Log_201903").ExecuteAffrows(); //对 Log_201903 表插入
+fsql.Update<Log>().AsTable("Log_201903").SetSource(item).ExecuteAffrows(); //对 Log_201903 表更新
+fsql.Delete<Log>().AsTable("Log_201903").Where(a => a.Id == 1).ExecuteAffrows(); //对 Log_201903 表删除
+fsql.InsertOrUpdate<Log>().AsTable("Log_201903").SetSource(item).ExecuteAffrows(); //对 Log_201903 表插入或更新
+```
+
 ## 动态条件
 
 1、ISelect.Where(string sql) 使用原生条件：
