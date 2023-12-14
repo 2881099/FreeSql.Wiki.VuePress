@@ -101,11 +101,11 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 ```
 
 > 动态表名：ISelect.AsTable((t, old) => $"{old}_201903")
-> 
+
 > 动态排序：ISelect.OrderByPropertyName("Parent.Code")
-> 
+
 > 动态返回：ISelect.ToDataTableByPropertyName(new string[] { "Parent.Code", "Id" })
-> 
+
 > 动态贪婪加载：ISelect.IncludeByPropertyName("Parent.Parent").IncludeByPropertyName("Parent.Childs")
 
 ## API
