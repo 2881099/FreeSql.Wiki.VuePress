@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 14 Dec 2023 12:01:45 GMT</pubDate>
-    <lastBuildDate>Thu, 14 Dec 2023 12:01:45 GMT</lastBuildDate>
+    <pubDate>Sun, 17 Dec 2023 05:25:11 GMT</pubDate>
+    <lastBuildDate>Sun, 17 Dec 2023 05:25:11 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7497,6 +7497,83 @@ FROM "Topic" a</p>
 <td><a href="/guide/select-return-data.html" target="blank">《返回数据》</a></td>
 <td></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h2> 表达式函数</h2>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>Lambda 表达式</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in</td>
+<td>Where(a =&gt; new [] { 1,2,3 }.Contains(a.Id))</td>
+<td>[Id] in (1,2,3)</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>Where(a =&gt; !new [] { 1,2,3 }.Contains(a.Id))</td>
+<td>[Id] not in (1,2,3)</td>
+</tr>
+<tr>
+<td>多列in</td>
+<td>Where(a =&gt; list.Any(b =&gt; b.Item1 == a.Id &amp;&amp; b.Item2 == a.ct1))</td>
+<td>([Id]=1 and [ct1]=1) or ([Id]=2 and [ct1]=2)</td>
+</tr>
+<tr>
+<td>like '%xxx%'</td>
+<td>Where(a =&gt; a.Title.Contains("xxx"))</td>
+<td>[Title] like '%xxx%'</td>
+</tr>
+<tr>
+<td>like 'xxx%'</td>
+<td>Where(a =&gt; a.Title.StartsWith("xxx"))</td>
+<td>[Title] like 'xxx%'</td>
+</tr>
+<tr>
+<td>like '%xxx'</td>
+<td>Where(a =&gt; a.Title.EndsWith("xxx"))</td>
+<td>[Title] like '%xxx'</td>
+</tr>
+<tr>
+<td>日期范围</td>
+<td>Where(a =&gt; a.Time.Between(time1, time2))</td>
+<td>[Time] between @time1 and @time2</td>
+</tr>
+<tr>
+<td>是否存在</td>
+<td>.Any()</td>
+<td>select 1 from ...</td>
+</tr>
+<tr>
+<td>总数</td>
+<td>.Count()</td>
+<td>select count(*) from ...</td>
+</tr>
+<tr>
+<td>求和</td>
+<td>.Sum(a =&gt; a.Score)</td>
+<td>select sum([Score]) from ...</td>
+</tr>
+<tr>
+<td>平均</td>
+<td>.Avg(a =&gt; a.Score)</td>
+<td>select avg([Score]) from ...</td>
+</tr>
+<tr>
+<td>最大值</td>
+<td>.Max(a =&gt; a.Score)</td>
+<td>select max([Score]) from ...</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td>.Min(a =&gt; a.Score)</td>
+<td>select min([Score]) from ...</td>
 </tr>
 </tbody>
 </table>
