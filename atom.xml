@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-17T05:25:55.993Z</updated>
+  <updated>2023-12-17T05:42:38.576Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -4346,7 +4346,7 @@ class table {...}</p>
     <title type="text">表达式函数</title>
     <id>https://freesql.net/guide/expression-function.html</id>
     <link href="https://freesql.net/guide/expression-function.html"/>
-    <updated>2023-03-03T02:24:20.000Z</updated>
+    <updated>2023-12-17T05:41:48.000Z</updated>
     <summary type="html"><![CDATA[<h1> 表达式函数</h1>
 <p>这是 <code>FreeSql</code> 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code>查询、数组（<code>PostgreSQL</code>的数组）、字典（PostgreSQL HStore)等等。</p>
 <h2> 动态Lambda表达式</h2>
@@ -4407,6 +4407,116 @@ class table {...}</p>
 <h2> 开窗函数</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充</p>
+</blockquote>
+<p>FreeSql 默认集成了 SqlExt.cs 扩展解析方法：</p>
+<table>
+<thead>
+<tr>
+<th>lambda</th>
+<th>sql</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SqlExt.IsNull(id, 0)</td>
+<td>isnull/ifnull/coalesce/nvl</td>
+<td>兼容各大数据库</td>
+</tr>
+<tr>
+<td>SqlExt.DistinctCount(id)</td>
+<td>count(distinct id)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.GreaterThan</td>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>SqlExt.GreaterThanOrEqual</td>
+<td>&gt;=</td>
+<td>大于或等于</td>
+</tr>
+<tr>
+<td>SqlExt.LessThan</td>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>SqlExt.LessThanOrEqual</td>
+<td>&lt;=</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>SqlExt.EqualIsNull</td>
+<td>IS NULL</td>
+<td>是否为 NULL</td>
+</tr>
+<tr>
+<td>SqlExt.Case(字典)</td>
+<td>case when .. end</td>
+<td>根据字典 case</td>
+</tr>
+<tr>
+<td>SqlExt.GroupConcat</td>
+<td>group_concat(distinct .. order by .. separator ..)</td>
+<td>MySql</td>
+</tr>
+<tr>
+<td>SqlExt.FindInSet</td>
+<td>find_in_set(str, strlist)</td>
+<td>MySql</td>
+</tr>
+<tr>
+<td>SqlExt.StringAgg</td>
+<td>string_agg(.., ..)</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td>SqlExt.Rank().Over().PartitionBy().ToValue()</td>
+<td>rank() over(partition by xx)</td>
+<td>开窗函数</td>
+</tr>
+<tr>
+<td>SqlExt.DenseRank().Over().PartitionBy().ToValue()</td>
+<td>dense_rank() over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Count(id).Over().PartitionBy().ToValue()</td>
+<td>count(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Sum(id).Over().PartitionBy().ToValue()</td>
+<td>sum(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Avg(id).Over().PartitionBy().ToValue()</td>
+<td>avg(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Max(id).Over().PartitionBy().ToValue()</td>
+<td>max(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Min(id).Over().PartitionBy().ToValue()</td>
+<td>min(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.RowNumber(id).Over().PartitionBy().ToValue()</td>
+<td>row_number(id) over(partition by xx)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以上是利用《自定义解析》实现的功能</p>
 </blockquote>
 <h2> 子表Join</h2>
 <blockquote>
