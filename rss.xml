@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 17 Dec 2023 05:42:38 GMT</pubDate>
-    <lastBuildDate>Sun, 17 Dec 2023 05:42:38 GMT</lastBuildDate>
+    <pubDate>Sun, 17 Dec 2023 23:50:34 GMT</pubDate>
+    <lastBuildDate>Sun, 17 Dec 2023 23:50:34 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5860,7 +5860,7 @@ repo1.DataFilter.Disable("test")</p>
 <h2> 版本</h2>
 <p>FreeSql 是一个 .NET Standard 2.0 库，仅支持 .NET Framework 4.0 或 .NET Core 或更高版本的应用程序。</p>
 <h2> 安装包</h2>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要访问什么数据库，就安装对应的Provider.XX类库，也可直接安装FreeSql.All</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>需要访问什么数据库，就安装对应的Provider.XX类库，也可直接安装FreeSql.All</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> Packages</h2>
 <table>
 <thead>
