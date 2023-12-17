@@ -29,6 +29,8 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 | 最大值 | .Max(a => a.Score) | select max([Score]) from ... |
 | 最小值 | .Min(a => a.Score) | select min([Score]) from ... |
 
+更详细请前往[《表达式函数》](expression-function.md)
+
 ## SqlServer WithLock/WithIndex
 
 ```csharp
