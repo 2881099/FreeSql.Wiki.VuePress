@@ -133,6 +133,32 @@ fsql.Select<T1, T2>()
 
 > v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
 
+FreeSql 默认集成了 SqlExt.cs 扩展解析方法：
+
+| lambda | sql | 说明 |
+| -- | -- | -- |
+| SqlExt.IsNull(id, 0) | isnull/ifnull/coalesce/nvl | 兼容各大数据库 |
+| SqlExt.DistinctCount(id) | count(distinct id) | |
+| SqlExt.GreaterThan | &gt; | 大于 |
+| SqlExt.GreaterThanOrEqual | &gt;= | 大于或等于 |
+| SqlExt.LessThan | &lt; | 小于 |
+| SqlExt.LessThanOrEqual | &lt;= | 小于 |
+| SqlExt.EqualIsNull | IS NULL | 是否为 NULL |
+| SqlExt.Case(字典) | case when .. end | 根据字典 case |
+| SqlExt.GroupConcat | group_concat(distinct .. order by .. separator ..) | MySql |
+| SqlExt.FindInSet | find_in_set(str, strlist) | MySql |
+| SqlExt.StringAgg | string_agg(.., ..) | PostgreSQL |
+| SqlExt.Rank().Over().PartitionBy().ToValue() | rank() over(partition by xx) | 开窗函数 |
+| SqlExt.DenseRank().Over().PartitionBy().ToValue() | dense_rank() over(partition by xx) | |
+| SqlExt.Count(id).Over().PartitionBy().ToValue() | count(id) over(partition by xx) | |
+| SqlExt.Sum(id).Over().PartitionBy().ToValue() | sum(id) over(partition by xx) | |
+| SqlExt.Avg(id).Over().PartitionBy().ToValue() | avg(id) over(partition by xx) | |
+| SqlExt.Max(id).Over().PartitionBy().ToValue() | max(id) over(partition by xx) | |
+| SqlExt.Min(id).Over().PartitionBy().ToValue() | min(id) over(partition by xx) | |
+| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx) | |
+
+> 以上是利用《自定义解析》实现的功能
+
 ## 子表Join
 
 > v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
