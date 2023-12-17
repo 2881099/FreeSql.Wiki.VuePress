@@ -11,6 +11,24 @@ FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表
 | [《分组聚合查询》](select-group-by.md)  | [《表达式函数》](expression-function.md) | [《多租户》](multi-tenancy.md) |
 | [《返回数据》](select-return-data.md) |  |  |
 
+## 表达式函数
+
+| 说明 | Lambda 表达式 | SQL |
+| --- | --- | --- |
+| in | Where(a => new [] { 1,2,3 }.Contains(a.Id)) | [Id] in (1,2,3) |
+| not in | Where(a => !new [] { 1,2,3 }.Contains(a.Id)) | [Id] not in (1,2,3) |
+| 多列in | Where(a => list.Any(b => b.Item1 == a.Id && b.Item2 == a.ct1)) | ([Id]=1 and [ct1]=1) or ([Id]=2 and [ct1]=2) |
+| like '%xxx%' | Where(a => a.Title.Contains("xxx")) | [Title] like '%xxx%' |
+| like 'xxx%' | Where(a => a.Title.StartsWith("xxx")) | [Title] like 'xxx%' |
+| like '%xxx' | Where(a => a.Title.EndsWith("xxx")) | [Title] like '%xxx' |
+| 日期范围 | Where(a => a.Time.Between(time1, time2)) | [Time] between @time1 and @time2 |
+| 是否存在 | .Any() | select 1 from ... |
+| 总数 | .Count() | select count(*) from ... |
+| 求和 | .Sum(a => a.Score) | select sum([Score]) from ... |
+| 平均 | .Avg(a => a.Score) | select avg([Score]) from ... |
+| 最大值 | .Max(a => a.Score) | select max([Score]) from ... |
+| 最小值 | .Min(a => a.Score) | select min([Score]) from ... |
+
 ## SqlServer WithLock/WithIndex
 
 ```csharp
