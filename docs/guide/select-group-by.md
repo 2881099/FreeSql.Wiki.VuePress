@@ -96,7 +96,7 @@ var list = fsql.Select<Topic, Category, Area>()
 - g.Value.Item2 对应 Category
 - g.Value.Item3 对应 Area
 
-| 说明 | Lambda 表达式 | SQL |
+| 说明 | 方法 | SQL |
 | --- | --- | --- |
 | 总数 | .Count() | select count(*) from ... |
 | 求和 | .Sum(a => a.Score) | select sum([Score]) from ... |
