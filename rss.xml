@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 17 Dec 2023 23:50:34 GMT</pubDate>
-    <lastBuildDate>Sun, 17 Dec 2023 23:50:34 GMT</lastBuildDate>
+    <pubDate>Mon, 18 Dec 2023 01:48:20 GMT</pubDate>
+    <lastBuildDate>Mon, 18 Dec 2023 01:48:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7145,6 +7145,156 @@ repo1.DataFilter.Disable("test")</p>
 <li>g.Value.Item2 对应 Category</li>
 <li>g.Value.Item3 对应 Area</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>Lambda 表达式</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总数</td>
+<td>.Count()</td>
+<td>select count(*) from ...</td>
+</tr>
+<tr>
+<td>求和</td>
+<td>.Sum(a =&gt; a.Score)</td>
+<td>select sum([Score]) from ...</td>
+</tr>
+<tr>
+<td>平均</td>
+<td>.Avg(a =&gt; a.Score)</td>
+<td>select avg([Score]) from ...</td>
+</tr>
+<tr>
+<td>最大值</td>
+<td>.Max(a =&gt; a.Score)</td>
+<td>select max([Score]) from ...</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td>.Min(a =&gt; a.Score)</td>
+<td>select min([Score]) from ...</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>lambda</th>
+<th>sql</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SqlExt.IsNull(id, 0)</td>
+<td>isnull/ifnull/coalesce/nvl</td>
+<td>兼容各大数据库</td>
+</tr>
+<tr>
+<td>SqlExt.DistinctCount(id)</td>
+<td>count(distinct id)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.GreaterThan</td>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>SqlExt.GreaterThanOrEqual</td>
+<td>&gt;=</td>
+<td>大于或等于</td>
+</tr>
+<tr>
+<td>SqlExt.LessThan</td>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>SqlExt.LessThanOrEqual</td>
+<td>&lt;=</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>SqlExt.EqualIsNull</td>
+<td>IS NULL</td>
+<td>是否为 NULL</td>
+</tr>
+<tr>
+<td>SqlExt.Case(字典)</td>
+<td>case when .. end</td>
+<td>根据字典 case</td>
+</tr>
+<tr>
+<td>SqlExt.GroupConcat</td>
+<td>group_concat(distinct .. order by .. separator ..)</td>
+<td>MySql</td>
+</tr>
+<tr>
+<td>SqlExt.FindInSet</td>
+<td>find_in_set(str, strlist)</td>
+<td>MySql</td>
+</tr>
+<tr>
+<td>SqlExt.StringAgg</td>
+<td>string_agg(.., ..)</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td>SqlExt.Rank().Over().PartitionBy().ToValue()</td>
+<td>rank() over(partition by xx)</td>
+<td>开窗函数</td>
+</tr>
+<tr>
+<td>SqlExt.DenseRank().Over().PartitionBy().ToValue()</td>
+<td>dense_rank() over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Count(id).Over().PartitionBy().ToValue()</td>
+<td>count(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Sum(id).Over().PartitionBy().ToValue()</td>
+<td>sum(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Avg(id).Over().PartitionBy().ToValue()</td>
+<td>avg(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Max(id).Over().PartitionBy().ToValue()</td>
+<td>max(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.Min(id).Over().PartitionBy().ToValue()</td>
+<td>min(id) over(partition by xx)</td>
+<td></td>
+</tr>
+<tr>
+<td>SqlExt.RowNumber(id).Over().PartitionBy().ToValue()</td>
+<td>row_number(id) over(partition by xx)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2> 查询分组第一条记录</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>提示：支持多表嵌套查询，fsql.Select&lt;User1, UserGroup1&gt;()</p>
+</blockquote>
+<div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果数据库不支持开窗函数，可以使用分组嵌套查询解决：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>查看更多<a href="/guide/withtempquery.html" target="blank">《嵌套查询》</a>文档</p>
+</blockquote>
 <h2> Aggregate</h2>
 <h3> Distinct</h3>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
