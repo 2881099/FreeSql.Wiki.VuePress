@@ -96,6 +96,86 @@ var list = fsql.Select<Topic, Category, Area>()
 - g.Value.Item2 对应 Category
 - g.Value.Item3 对应 Area
 
+| 说明 | Lambda 表达式 | SQL |
+| --- | --- | --- |
+| 总数 | .Count() | select count(*) from ... |
+| 求和 | .Sum(a => a.Score) | select sum([Score]) from ... |
+| 平均 | .Avg(a => a.Score) | select avg([Score]) from ... |
+| 最大值 | .Max(a => a.Score) | select max([Score]) from ... |
+| 最小值 | .Min(a => a.Score) | select min([Score]) from ... |
+
+| lambda | sql | 说明 |
+| -- | -- | -- |
+| SqlExt.IsNull(id, 0) | isnull/ifnull/coalesce/nvl | 兼容各大数据库 |
+| SqlExt.DistinctCount(id) | count(distinct id) | |
+| SqlExt.GreaterThan | &gt; | 大于 |
+| SqlExt.GreaterThanOrEqual | &gt;= | 大于或等于 |
+| SqlExt.LessThan | &lt; | 小于 |
+| SqlExt.LessThanOrEqual | &lt;= | 小于 |
+| SqlExt.EqualIsNull | IS NULL | 是否为 NULL |
+| SqlExt.Case(字典) | case when .. end | 根据字典 case |
+| SqlExt.GroupConcat | group_concat(distinct .. order by .. separator ..) | MySql |
+| SqlExt.FindInSet | find_in_set(str, strlist) | MySql |
+| SqlExt.StringAgg | string_agg(.., ..) | PostgreSQL |
+| SqlExt.Rank().Over().PartitionBy().ToValue() | rank() over(partition by xx) | 开窗函数 |
+| SqlExt.DenseRank().Over().PartitionBy().ToValue() | dense_rank() over(partition by xx) | |
+| SqlExt.Count(id).Over().PartitionBy().ToValue() | count(id) over(partition by xx) | |
+| SqlExt.Sum(id).Over().PartitionBy().ToValue() | sum(id) over(partition by xx) | |
+| SqlExt.Avg(id).Over().PartitionBy().ToValue() | avg(id) over(partition by xx) | |
+| SqlExt.Max(id).Over().PartitionBy().ToValue() | max(id) over(partition by xx) | |
+| SqlExt.Min(id).Over().PartitionBy().ToValue() | min(id) over(partition by xx) | |
+| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx) | |
+
+## 查询分组第一条记录
+
+```cs
+fsql.Select<User1>()
+    .Where(a => a.Id < 1000)
+    .WithTempQuery(a => new
+    {
+        item = a,
+        rownum = SqlExt.RowNumber().Over().PartitionBy(a.Nickname).OrderBy(a.Id).ToValue()
+    })
+    .Where(a => a.rownum == 1)
+    .ToList();
+```
+
+> 提示：支持多表嵌套查询，fsql.Select\<User1, UserGroup1\>()
+
+```sql
+SELECT *
+FROM (
+    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum]
+    FROM [User1] a
+    WHERE a.[Id] < 1000
+) a
+WHERE (a.[rownum] = 1)
+```
+
+如果数据库不支持开窗函数，可以使用分组嵌套查询解决：
+
+```csharp
+fsql.Select<User1>()
+    .Where(a => a.Id < 1000)
+    .GroupBy(a => a.Nickname)
+    .WithTempQuery(g => new { min = g.Min(g.Value.Id) })
+    .From<User1>()
+    .InnerJoin((a, b) => a.min == b.Id)
+    .ToList((a, b) => b);
+```
+
+```sql
+SELECT b.[Id], b.[Nickname] 
+FROM ( 
+    SELECT min(a.[Id]) [min] 
+    FROM [User1] a 
+    WHERE a.[Id] < 1000 
+    GROUP BY a.[Nickname] ) a 
+INNER JOIN [User1] b ON a.[min] = b.[Id]
+```
+
+> 查看更多[《嵌套查询》](withtempquery.md)文档
+
 ## Aggregate
 
 ### Distinct
