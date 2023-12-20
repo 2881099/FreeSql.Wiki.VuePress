@@ -14,6 +14,7 @@
 - 增加 IUpdate.ExecuteUpdated 指定字段返回；#1681
 - 增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；
 - 增加 IUpdate/IDelete WhereDynamicFilter API；#1521
+- 增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688
 - 增加 WithSql(..).WhereDynamicFilter 的支持；
 - 增加 pgsql 扩展方法 ISelect.DistinctOn；#1680
 - 修复 Column DbType 与 StringLength 多次替换问题；
@@ -22,11 +23,13 @@
 - 修复 Xugu 批量插入/更新 SQL 报错；
 - 修复 OledbOracle 参数化处理 bug；
 - 修复 多表子查询参数化共享问题；
+- 修复 嵌套查询 DTO 映射可能触发循环引用 bug；
 - 补充 达梦 IDbFirst datetime 处理；
 - 补充 FluentApi AsTable 方法；
 - **优化 自动分表 join 分表（自动贴合）；**
 - 优化 UnionAll + WithTempQuery 嵌套的 SQL；
 - 优化 Update 无字段时不做任何处理；
+- 优化 IUpdate 未使用 .Set 时忽略执行；#1694
 - 优化 表达式解析变量或常量 ToString；
 
 ## v3.2.805
