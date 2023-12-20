@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-18T01:48:48.747Z</updated>
+  <updated>2023-12-20T11:18:32.507Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11903,7 +11903,7 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-12-14T12:01:00.000Z</updated>
+    <updated>2023-12-20T11:17:47.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
 <h2> v3.2.806</h2>
@@ -11918,6 +11918,7 @@ FROM "Topic" a</p>
 <li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
+<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
 <li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>
@@ -11926,11 +11927,13 @@ FROM "Topic" a</p>
 <li>修复 Xugu 批量插入/更新 SQL 报错；</li>
 <li>修复 OledbOracle 参数化处理 bug；</li>
 <li>修复 多表子查询参数化共享问题；</li>
+<li>修复 嵌套查询 DTO 映射可能触发循环引用 bug；</li>
 <li>补充 达梦 IDbFirst datetime 处理；</li>
 <li>补充 FluentApi AsTable 方法；</li>
 <li><strong>优化 自动分表 join 分表（自动贴合）；</strong></li>
 <li>优化 UnionAll + WithTempQuery 嵌套的 SQL；</li>
 <li>优化 Update 无字段时不做任何处理；</li>
+<li>优化 IUpdate 未使用 .Set 时忽略执行；#1694</li>
 <li>优化 表达式解析变量或常量 ToString；</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
@@ -11947,6 +11950,7 @@ FROM "Topic" a</p>
 <li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
+<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
 <li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>
@@ -11955,11 +11959,13 @@ FROM "Topic" a</p>
 <li>修复 Xugu 批量插入/更新 SQL 报错；</li>
 <li>修复 OledbOracle 参数化处理 bug；</li>
 <li>修复 多表子查询参数化共享问题；</li>
+<li>修复 嵌套查询 DTO 映射可能触发循环引用 bug；</li>
 <li>补充 达梦 IDbFirst datetime 处理；</li>
 <li>补充 FluentApi AsTable 方法；</li>
 <li><strong>优化 自动分表 join 分表（自动贴合）；</strong></li>
 <li>优化 UnionAll + WithTempQuery 嵌套的 SQL；</li>
 <li>优化 Update 无字段时不做任何处理；</li>
+<li>优化 IUpdate 未使用 .Set 时忽略执行；#1694</li>
 <li>优化 表达式解析变量或常量 ToString；</li>
 </ul>
 <h2> v3.2.805</h2>
