@@ -2,7 +2,7 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.2.806
+## v3.2.808
 
 - **增加 低代码扩展包 [FreeSql.Extensions.ZoreEntity](../guide/lowcode.md)；**
 - **增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568**
@@ -12,9 +12,9 @@
 - **增加 IAsTable.SetTableName 自动分表设置分表名；**
 - **增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；**
 - 增加 IUpdate.ExecuteUpdated 指定字段返回；#1681
+- 增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688
 - 增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；
 - 增加 IUpdate/IDelete WhereDynamicFilter API；#1521
-- 增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688
 - 增加 WithSql(..).WhereDynamicFilter 的支持；
 - 增加 pgsql 扩展方法 ISelect.DistinctOn；#1680
 - 修复 Column DbType 与 StringLength 多次替换问题；
