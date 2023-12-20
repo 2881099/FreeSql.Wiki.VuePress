@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-20T11:18:32.507Z</updated>
+  <updated>2023-12-20T11:32:03.410Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11903,10 +11903,10 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-12-20T11:17:47.000Z</updated>
+    <updated>2023-12-20T11:31:18.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.806</h2>
+<h2> v3.2.808</h2>
 <ul>
 <li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZoreEntity</a>；</strong></li>
 <li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
@@ -11916,9 +11916,9 @@ FROM "Topic" a</p>
 <li><strong>增加 IAsTable.SetTableName 自动分表设置分表名；</strong></li>
 <li><strong>增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；</strong></li>
 <li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
+<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
-<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
 <li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>
@@ -11938,7 +11938,7 @@ FROM "Topic" a</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.806</h2>
+<h2> v3.2.808</h2>
 <ul>
 <li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZoreEntity</a>；</strong></li>
 <li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
@@ -11948,9 +11948,9 @@ FROM "Topic" a</p>
 <li><strong>增加 IAsTable.SetTableName 自动分表设置分表名；</strong></li>
 <li><strong>增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；</strong></li>
 <li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
+<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
-<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
 <li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>

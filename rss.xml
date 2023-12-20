@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 20 Dec 2023 11:18:32 GMT</pubDate>
-    <lastBuildDate>Wed, 20 Dec 2023 11:18:32 GMT</lastBuildDate>
+    <pubDate>Wed, 20 Dec 2023 11:32:03 GMT</pubDate>
+    <lastBuildDate>Wed, 20 Dec 2023 11:32:03 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10423,11 +10423,11 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.806 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity (../guide/lowcode.md)；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBase...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.808 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity (../guide/lowcode.md)；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBase...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.806</h2>
+<h2> v3.2.808</h2>
 <ul>
 <li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZoreEntity</a>；</strong></li>
 <li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
@@ -10437,9 +10437,9 @@ FROM "Topic" a</p>
 <li><strong>增加 IAsTable.SetTableName 自动分表设置分表名；</strong></li>
 <li><strong>增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；</strong></li>
 <li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
+<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
 <li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
-<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
 <li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
 <li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
 <li>修复 Column DbType 与 StringLength 多次替换问题；</li>
