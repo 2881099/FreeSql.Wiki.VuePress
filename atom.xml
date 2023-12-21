@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-21T08:37:26.634Z</updated>
+  <updated>2023-12-21T08:39:45.066Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11,7 +11,7 @@
     <title type="text">低代码</title>
     <id>https://freesql.net/guide/lowcode.html</id>
     <link href="https://freesql.net/guide/lowcode.html"/>
-    <updated>2023-12-13T13:31:54.000Z</updated>
+    <updated>2023-12-21T08:38:59.000Z</updated>
     <summary type="html"><![CDATA[<h1> 低代码</h1>
 <p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
 <p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无法释放，对 Type 的版本也难以管理。</p>
@@ -38,7 +38,7 @@ fsql<span class="token punctuation">.</span><span class="token function">InsertO
 <p>不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。</p>
 <p>nuget 安装：</p>
 <blockquote>
-<p>dotnet add package FreeSql.Extensions.ZoreEntity</p>
+<p>dotnet add package FreeSql.Extensions.ZeroEntity</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>查询，返回结果是字典 Dictionary&lt;string, object&gt;：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上述 ctx 对象依赖 json 配置如下：</p>
