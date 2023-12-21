@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 20 Dec 2023 11:32:03 GMT</pubDate>
-    <lastBuildDate>Wed, 20 Dec 2023 11:32:03 GMT</lastBuildDate>
+    <pubDate>Thu, 21 Dec 2023 08:37:26 GMT</pubDate>
+    <lastBuildDate>Thu, 21 Dec 2023 08:37:26 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10423,13 +10423,13 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.808 增加 低代码扩展包 FreeSql.Extensions.ZoreEntity (../guide/lowcode.md)；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBase...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.808 增加 低代码扩展包 FreeSql.Extensions.ZeroEntity (../guide/lowcode.md)；; 增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568; 增加 Clickhouse BulkCopy；; 增加 IBase...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
 <h2> v3.2.808</h2>
 <ul>
-<li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZoreEntity</a>；</strong></li>
+<li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZeroEntity</a>；</strong></li>
 <li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
 <li>增加 Clickhouse BulkCopy；</li>
 <li>增加 IBaseRepository.AsTable 重载方法支持多表表名设置；</li>
