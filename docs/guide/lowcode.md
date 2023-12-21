@@ -29,10 +29,10 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对�
 
 nuget 安装：
 
-> dotnet add package FreeSql.Extensions.ZoreEntity
+> dotnet add package FreeSql.Extensions.ZeroEntity
 
 ```csharp
-var ctx = new ZoreDbContext(fsql, JsonConvert.DeserializeObject<TableDescriptor[]>(json)); //在文档后面
+var ctx = new ZeroDbContext(fsql, JsonConvert.DeserializeObject<TableDescriptor[]>(json)); //在文档后面
 
 var item = JsonConvert.DeserializeObject<Dictionary<string, object>>(@"
 {
