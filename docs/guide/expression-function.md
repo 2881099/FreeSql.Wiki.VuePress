@@ -108,7 +108,7 @@ fsql.Select<T>()
 
 ```csharp
 fsql.Select<T>()
-  .First(a => a.CreateTime.ToString("HH:mm:ss");
+  .First(a => a.CreateTime.ToString("HH:mm:ss"));
 // SELECT date_format(a.`CreateTime`, '%H:%i:%s') as1 
 // FROM `xxx` a 
 // limit 0,1
