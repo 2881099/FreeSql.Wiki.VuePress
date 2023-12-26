@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2023-12-26T07:45:49.382Z</updated>
+  <updated>2023-12-26T07:46:05.944Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -4346,7 +4346,7 @@ class table {...}</p>
     <title type="text">表达式函数</title>
     <id>https://freesql.net/guide/expression-function.html</id>
     <link href="https://freesql.net/guide/expression-function.html"/>
-    <updated>2023-12-17T05:41:48.000Z</updated>
+    <updated>2023-12-26T07:45:22.000Z</updated>
     <summary type="html"><![CDATA[<h1> 表达式函数</h1>
 <p>这是 <code>FreeSql</code> 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code>查询、数组（<code>PostgreSQL</code>的数组）、字典（PostgreSQL HStore)等等。</p>
 <h2> 动态Lambda表达式</h2>
