@@ -24,7 +24,7 @@ var list = fsql.Select<Topic>()
     .Where(a => a.Id > 10)
     .Count(out var total) //总记录数量
     .Page(1, 20)
-    .Tolist();
+    .ToList();
 ```
 
 > Count(out var total) 是同步方法，原因是 out 不支持异步，如果介意可以单独执行如下：
