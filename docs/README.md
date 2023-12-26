@@ -4,11 +4,11 @@ heroImage: /logo.png
 heroText: 🦄 FreeSql
 tagline: 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+、Xamarin，国产首个支持 AOT 发布的 ORM✨
 actions:
-  - text: 心动不如行动 💡
+  - text: 进入文档 💡
     link: /guide/
     type: primary
-  - text: 服务支持 💻
-    link: /reference/service-support.md
+  - text: 视频教程 💻
+    link: https://b23.tv/TCDCBLg
     type: default
 features:
   - title: 开发者优先
