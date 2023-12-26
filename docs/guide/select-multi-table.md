@@ -211,7 +211,7 @@ fsql.Select<Category>()
 
 ```csharp
 fsql.Select<Category>()
-  .Where(a => fsql.Select<Topic>().Any(b => b.Title.Contains("xx")))
+  .Where(a => fsql.Select<Topic>().Any(b => b.CategoryId == a.Id && b.Title.Contains("xx")))
   .ToList();
 ```
 
