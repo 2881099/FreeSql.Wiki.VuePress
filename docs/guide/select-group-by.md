@@ -20,22 +20,23 @@ class Topic
 ```csharp
 var list = fsql.Select<Topic>()
     .GroupBy(a => new { tt2 = a.Title.Substring(0, 2), mod4 = a.Id % 4 })
-    .Having(a => a.Count() > 0 && a.Avg(a.Key.mod4) > 0 && a.Max(a.Key.mod4) > 0)
-    .Having(a => a.Count() < 300 || a.Avg(a.Key.mod4) < 100)
-    .OrderBy(a => a.Key.tt2)
-    .OrderByDescending(a => a.Count())
-    .ToList(a => new 
+    .Having(g => g.Count() > 0 && g.Avg(g.Key.mod4) > 0 && g.Max(g.Key.mod4) > 0)
+    .Having(g => g.Count() < 300 || g.Avg(g.Key.mod4) < 100)
+    .OrderBy(g => g.Key.tt2)
+    .OrderByDescending(g => g.Count())
+    .ToList(g => new 
     {
-        a.Key, 
-        cou1 = a.Count(), 
-        arg1 = a.Avg(a.Value.Clicks), 
-        arg2 = a.Sum(a.Value.Clicks > 100 ? 1 : 0)
+        g.Key, 
+        cou1 = g.Count(), 
+        arg1 = g.Avg(g.Value.Clicks), 
+        arg2 = g.Sum(g.Value.Clicks > 100 ? 1 : 0)
     });
 //SELECT 
-//substr(a.`Title`, 1, 2) as1, 
-//count(1) as2, 
-//avg(a.`Clicks`) as3, 
-//sum(case when a.`Clicks` > 100 then 1 else 0 end) as4 
+//substr(a.`Title`, 1, 2) as1,
+//(a.`Id` % 4) as2, 
+//count(1) as3, 
+//avg(a.`Clicks`) as4, 
+//sum(case when a.`Clicks` > 100 then 1 else 0 end) as5 
 //FROM `Topic` a 
 //GROUP BY substr(a.`Title`, 1, 2), (a.`Id` % 4) 
 //HAVING (count(1) > 0 AND avg((a.`Id` % 4)) > 0 AND max((a.`Id` % 4)) > 0) AND (count(1) < 300 OR avg((a.`Id` % 4)) < 100)
@@ -46,11 +47,11 @@ var list = fsql.Select<Topic>()
 
 ```csharp
 var list = fsql.Select<Topic>()
-    .ToAggregate(a => new 
+    .ToAggregate(g => new 
     {
-        cou1 = a.Count(), 
-        arg1 = a.Avg(a.Key.Clicks), 
-        arg2 = a.Sum(a.Key.Clicks > 100 ? 1 : 0)
+        cou1 = g.Count(), 
+        arg1 = g.Avg(g.Key.Clicks), 
+        arg2 = g.Sum(g.Key.Clicks > 100 ? 1 : 0)
     });
 ```
 
@@ -61,7 +62,7 @@ var list = fsql.Select<Topic>()
 ```csharp
 var list = fsql.Select<Topic>()
     .GroupBy(a => new { a.Clicks, a.Category })
-    .ToList(a => new { a.Key.Category.Area.Name });
+    .ToList(g => new { g.Key.Category.Area.Name });
 ```
 
 注意：如上这样编写，会报错无法解析 a.Key.Category.Area.Name，解决办法使用 Include：
@@ -72,7 +73,7 @@ var list = fsql.Select<Topic>()
     //必须添加此行，否则只分组 Category 而不包含它的下级导航属性 Area
 
     .GroupBy(a => new { a.Clicks, a.Category })
-    .ToList(a => new { a.Key.Category.Area.Name });
+    .ToList(g => new { g.Key.Category.Area.Name });
 ```
 
 但是，你还可以这样解决：
@@ -80,7 +81,7 @@ var list = fsql.Select<Topic>()
 ```csharp
 var list = fsql.Select<Topic>()
     .GroupBy(a => new { a.Clicks, a.Category, a.Category.Area })
-    .ToList(a => new { a.Key.Area.Name });
+    .ToList(g => new { g.Key.Area.Name });
 ```
 
 ## 多表分组
