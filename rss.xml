@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 28 Dec 2023 11:11:12 GMT</pubDate>
-    <lastBuildDate>Thu, 28 Dec 2023 11:11:12 GMT</lastBuildDate>
+    <pubDate>Thu, 28 Dec 2023 17:44:52 GMT</pubDate>
+    <lastBuildDate>Thu, 28 Dec 2023 17:44:52 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2696,7 +2696,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件</p>
 </blockquote>
 <h2> 审计命令</h2>
-<p>fsql.Aop.CommandBefore、fsql.Aop.CommandAfterHandler 这两个事件触发所有 SQL 命令的执行前、和执行后。</p>
+<p>fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。</p>
 <p>执行后的事件会附带异常信息、耗时信息等。</p>
 <p>建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。</p>
 <blockquote>
