@@ -88,6 +88,8 @@ var list = fsql.Select<Topic>()
 
 ```csharp
 var list = fsql.Select<Topic, Category, Area>()
+    .InnerJoin((a, b, c) => b.Id == a.CategoryId)
+    .InnerJoin((a, b, c) => c.Id == b.AreaId)
     .GroupBy((a, b, c) => new { a.Title, c.Name })
     .Having(g => g.Count() < 300 || g.Avg(g.Value.Item1.Clicks) < 100)
     .ToList(g => new { count = g.Count(), Name = g.Key.Name });
