@@ -74,6 +74,7 @@ fsql.Select<User1>()
     //.FromQuery(fsql.Select<UserExt, UserGroup, xxx>() //子多表查询联表
     //    .WithTempQuery((a,b,c) => new { ... }))
     .InnerJoin((a, b) => a.item.Id == b.UserId)
+    .Where((a, b) => a.rownum == 1)
     .ToList((a, b) => new
     {
         user = a.item,
