@@ -36,11 +36,13 @@ WHERE ((a."Id" = 1 OR a."Id" = 2))
 
 ```csharp
 var sql = fsql.Select<User, Group>()
+    .InnerJoin((a, b) => a.GroupId == b.Id)
     .Where((a, b) => a.Id == 1)
     .WithTempQuery((a, b) => new { user = a, group = b }) //匿名类型
 
     .UnionAll(
         fsql.Select<User, Group>()
+            .InnerJoin((a, b) => a.GroupId == b.Id)
             .Where((a, b) => a.Id == 2)
             .WithTempQuery((a, b) => new { user = a, group = b }) //匿名类型
     )
