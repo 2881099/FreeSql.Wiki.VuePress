@@ -124,7 +124,7 @@ FROM (
     SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
     FROM [User] a ) a 
 INNER JOIN ( 
-    SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [rownum] 
+    SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [sum1] 
     FROM [UserExt] a 
     WHERE (a.[UserId] > 0) 
     GROUP BY a.[UserId], a.[Remark] ) b ON a.[Id] = b.[UserId] 
