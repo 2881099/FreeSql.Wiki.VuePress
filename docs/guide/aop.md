@@ -55,7 +55,7 @@ class Order {
 
 ## 审计命令
 
-fsql.Aop.CommandBefore、fsql.Aop.CommandAfterHandler 这两个事件触发所有 SQL 命令的执行前、和执行后。
+fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。
 
 执行后的事件会附带异常信息、耗时信息等。
 
