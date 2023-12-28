@@ -91,6 +91,12 @@ var list = fsql.Select<Topic, Category, Area>()
     .GroupBy((a, b, c) => new { a.Title, c.Name })
     .Having(g => g.Count() < 300 || g.Avg(g.Value.Item1.Clicks) < 100)
     .ToList(g => new { count = g.Count(), Name = g.Key.Name });
+//SELECT count(1), c.name
+//FROM topic a
+//LEFT JOIN cagetory b ON b.id = a.category_id
+//LEFT JOIN area c ON c.id = b.area_id
+//GROUP BY a.title, c.name
+//HAVING count(1) < 300 AND avg(a.clicks) < 100
 ```
 
 - g.Value.Item1 对应 Topic
