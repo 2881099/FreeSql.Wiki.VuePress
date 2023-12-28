@@ -68,7 +68,6 @@ fsql.Select<User1>()
         item = a,
         rownum = SqlExt.RowNumber().Over().PartitionBy(a.Nickname).OrderBy(a.Id).ToValue()
     })
-    .Where(a => a.rownum == 1)
     //.From<UserExt>() //普通联表
     .FromQuery(fsql.Select<UserExt>().Where(b => b.Id > 0)) //子查询联表
     //.FromQuery(fsql.Select<UserExt, UserGroup, xxx>() //子多表查询联表
