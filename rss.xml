@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 02 Jan 2024 14:49:57 GMT</pubDate>
-    <lastBuildDate>Tue, 02 Jan 2024 14:49:57 GMT</lastBuildDate>
+    <pubDate>Fri, 05 Jan 2024 04:11:00 GMT</pubDate>
+    <lastBuildDate>Fri, 05 Jan 2024 04:11:00 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1405,6 +1405,11 @@
 <td>南大通用</td>
 <td>FreeSql.Provider.GBase</td>
 <td>Informix</td>
+</tr>
+<tr>
+<td>虚谷</td>
+<td>FreeSql.Provider.Xugu</td>
+<td>Oracle</td>
 </tr>
 <tr>
 <td>翰高</td>
