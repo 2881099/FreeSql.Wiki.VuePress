@@ -6,6 +6,7 @@
 | 神州通用 | FreeSql.Provider.ShenTong | PostgreSQL |
 | 人大金仓 | FreeSql.Provider.KingbaseES | PostgreSQL |
 | 南大通用 | FreeSql.Provider.GBase | Informix |
+| 虚谷 | FreeSql.Provider.Xugu | Oracle |
 | 翰高 | FreeSql.Provider.Custom、FreeSql.Provider.Odbc | PostgreSQL |
 
 由于太多，在此不一一列举，它们大多数语法兼容 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库之一。
