@@ -1,6 +1,7 @@
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { defineUserConfig } from "vuepress";
+import { componentsPlugin } from "vuepress-plugin-components";
 
 import theme from "./theme.js";
 
@@ -67,6 +68,18 @@ export default defineUserConfig({
   theme,
   shouldPrefetch: false,
   plugins: [
+      componentsPlugin({
+        rootComponents:{
+            backToTop:true,
+        },
+        components:[
+            "BiliBili",
+            "VPBanner",
+            "VPCard",
+            "Badge",
+            "Share"
+          ]
+      }),
     docsearchPlugin({
       appId: "8QM97XX5VE",
       apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
