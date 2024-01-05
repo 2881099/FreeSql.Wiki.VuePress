@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-05T04:11:00.213Z</updated>
+  <updated>2024-01-05T15:31:48.529Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2551,103 +2551,20 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Awesome FreeSql</title>
     <id>https://freesql.net/reference/awesome-freesql.html</id>
     <link href="https://freesql.net/reference/awesome-freesql.html"/>
-    <updated>2023-12-05T08:35:48.000Z</updated>
+    <updated>2024-01-05T15:30:47.000Z</updated>
     <summary type="html"><![CDATA[<h1> Awesome FreeSql</h1>
-<h2> 基于 FreeSql 的开源项目</h2>
-<div class="freesql_open">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="https://github.com/zhontai/Admin.Core" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=zhontai&amp;repo=Admin.Core" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left"><code>Admin</code>后端，前后端分离的权限管理系统。支持多租户、动态Api、任务调度、滑块拼图验证、国内外主流数据库自由切换和动态高级查询。基于.Net跨平台开发的WebApi。集成统一认证授权、数据验证、缓存、Ip限流、全Api鉴权、集成测试、性能分析、接口文档等。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/luoyunchong/lin-cms-dotnetcore" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&amp;repo=lin-cms-dotnetcore" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">😃A simple and practical CMS implemented by .NET 6 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/leooneone/aibpm.plus" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=leooneone&amp;repo=aibpm.plus" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">AIBPM是一个MIT协议开源的工作流引擎，动态表单设计，工作流引擎，前端采用Vue3.0+ElementPlus</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/alonsoalon/TenantSite.Server" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=alonsoalon&amp;repo=TenantSite.Server" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">SaaS 企业应用管理系统，定位于企业应用的SaaS服务框架，企业云端应用的基础开发框架（当然也可以部署于本地），系统被设计用于多租户，采用前端后端完全分离技术方案。 抽离企业应用软件研发公共部分，让研发人员有条件聚焦在业务研发，实现了用于权限管理的基础数据维护，权限赋权，缓存，上传等常规功能。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/hejiyong/fscms" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hejiyong&amp;repo=fscms" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">fscms 文档类的cms，通过wiki动态生成文档，包括后端完整权限管理和前端文档页，采用freesql orm，layer。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/densen2014/FreeSqlDemos" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=densen2014&amp;repo=FreeSqlDemos" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">FreeSql 的各种工程 demo, console,xamarin app,ios,android,wpf,blazor,nf461</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/yc-l/yc.boilerplate" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=yc-l&amp;repo=yc.boilerplate" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">YC.Boilerplate 是一套快速开发框架，采用当下流行的前后端分离开发模式，前端 采用VUE 2.0、后端采用Net 5.0；框架实现了多租户、动态webApi、多种ORM、IOC、数据库表和业务代码生成等等一系列模块，并开发了用户管理、角色权限、组织机构、数据字典、审计日志等常规功能。</td>
-</tr>
-</tbody>
-</table>
-</div>]]></summary>
-    <content type="html"><![CDATA[<h1> Awesome FreeSql</h1>
-<h2> 基于 FreeSql 的开源项目</h2>
-<div class="freesql_open">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="https://github.com/zhontai/Admin.Core" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=zhontai&amp;repo=Admin.Core" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left"><code>Admin</code>后端，前后端分离的权限管理系统。支持多租户、动态Api、任务调度、滑块拼图验证、国内外主流数据库自由切换和动态高级查询。基于.Net跨平台开发的WebApi。集成统一认证授权、数据验证、缓存、Ip限流、全Api鉴权、集成测试、性能分析、接口文档等。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/luoyunchong/lin-cms-dotnetcore" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&amp;repo=lin-cms-dotnetcore" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">😃A simple and practical CMS implemented by .NET 6 + FreeSql；前后端分离、Docker部署、OAtuh2授权登录、自动化部署DevOps、自动同步至Gitee、代码生成器、仿掘金专栏</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/leooneone/aibpm.plus" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=leooneone&amp;repo=aibpm.plus" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">AIBPM是一个MIT协议开源的工作流引擎，动态表单设计，工作流引擎，前端采用Vue3.0+ElementPlus</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/alonsoalon/TenantSite.Server" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=alonsoalon&amp;repo=TenantSite.Server" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">SaaS 企业应用管理系统，定位于企业应用的SaaS服务框架，企业云端应用的基础开发框架（当然也可以部署于本地），系统被设计用于多租户，采用前端后端完全分离技术方案。 抽离企业应用软件研发公共部分，让研发人员有条件聚焦在业务研发，实现了用于权限管理的基础数据维护，权限赋权，缓存，上传等常规功能。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/hejiyong/fscms" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hejiyong&amp;repo=fscms" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">fscms 文档类的cms，通过wiki动态生成文档，包括后端完整权限管理和前端文档页，采用freesql orm，layer。</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/densen2014/FreeSqlDemos" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=densen2014&amp;repo=FreeSqlDemos" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">FreeSql 的各种工程 demo, console,xamarin app,ios,android,wpf,blazor,nf461</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://github.com/yc-l/yc.boilerplate" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-stats.vercel.app/api/pin/?username=yc-l&amp;repo=yc.boilerplate" alt="ReadMe Card" loading="lazy"></a></td>
-<td style="text-align:left">YC.Boilerplate 是一套快速开发框架，采用当下流行的前后端分离开发模式，前端 采用VUE 2.0、后端采用Net 5.0；框架实现了多租户、动态webApi、多种ORM、IOC、数据库表和业务代码生成等等一系列模块，并开发了用户管理、角色权限、组织机构、数据字典、审计日志等常规功能。</td>
-</tr>
-</tbody>
-</table>
+<h2> 基于 FreeSql 的仓库项目</h2>
+<div class="flex">
 </div>
-<!-- 无法正常预览 -->
-<!-- |[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=jasonyush&repo=EasyCMS)](https://github.com/jasonyush/EasyCMS)|EasyCms 企业建站，事业单位使用的 CMS 管理系统| -->
-<h3> <a href="https://github.com/aprilyush/EasyCMS" target="_blank" rel="noopener noreferrer">EasyCMS</a></h3>
-<p>EasyCms后台权限管理系统 基于<code>Asp.net Core</code>的后台快速开发框架，可用于快速开发 企业后台管理系统，WebApi接口，微信公众号和小程序后台，企业站。</p>
-<h3> <a href="https://gitee.com/sundayisblue/BoYuanCore/" target="_blank" rel="noopener noreferrer">基于.Net Core 3.1 或 .Net 5 框架简单 2 层架构，实现基于权限角色的页面级权限后台框架</a></h3>
-<p>实现页面权限基于权限角色的后台框架，配套完善代码生成工具，可开箱即用，适用于中小型项目快速开发。 项目为<code>.Net Core 3.1</code>或<code>.Net 5</code>，使用简单的<code>service</code>分层架构，前端为<code>FineUICore</code> , 数据层使用 FreeSql ORM+
-雪花算法实体模式，兼容各种不同的数据库迁移(支持的数据库：<code>SqlServer</code>, <code>Mysql</code>, <code>Postgresql</code>,<code>Oracle</code> 等)，并有完善的异常拦截写入日志功能。 优秀的编码体验，层次分明，简单易学，从而实现快速开发的目的，
-或入门学习<code>.Net Core</code>。</p>
-<h3> <a href="https://gitee.com/rongguohao/HaoHaoPlay_Back" target="_blank" rel="noopener noreferrer">基于.Net 5 平台的快速开发框架</a></h3>
-<p>基于<code>.Net 5</code>平台的快速开发框架。
-目前系统包含功能有登录，用户管理，应用菜单管理，权限管理，字典管理，退出登录，也方便扩展多租户使用。
-通过这些基础功能的实现，分享自己对系统框架设计的理解，对<code>ddd</code>设计的理解，希望对大家学习使用<code>.net core</code>有帮助，少踩一些坑，当然也会存在不足之处，还望指出。</p>
+<h2> FreeSql 官方博客</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/kellynic/" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/kellynic/</a></li>
+<li><a href="https://www.cnblogs.com/freesql/" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/freesql/</a></li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h1> Awesome FreeSql</h1>
+<h2> 基于 FreeSql 的仓库项目</h2>
+<div class="flex">
+</div>
 <h2> FreeSql 官方博客</h2>
 <ul>
 <li><a href="https://www.cnblogs.com/kellynic/" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/kellynic/</a></li>
