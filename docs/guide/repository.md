@@ -76,7 +76,7 @@ public class SongRepository : BaseRepository<Song, int>
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton<IFreeSql>(fsql);
-    services.AddFreeRepository(null, this.GetType().Assembly);
+    services.AddFreeRepository(null, typeof(你继承后的任一仓储类型).Assembly); //如果没有继承的仓储，第二个参数不用传
 }
 
 //在控制器使用
