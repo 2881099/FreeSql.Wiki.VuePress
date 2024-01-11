@@ -116,6 +116,7 @@ new FreeSchedulerBuilder()
 | bool ExistsTask(string id) | 判断任务是否存在 |
 | bool ResumeTask(string id) | 恢复已暂停的任务 |
 | bool PauseTask(string id) | 暂停正在运行的任务 |
+| bool RunNow(string id) | 立即运行任务 |
 | TaskInfo[] FindTask(lambda) | 查询正在运行中的任务 |
 | int QuantityTask | 任务数量 |
 
