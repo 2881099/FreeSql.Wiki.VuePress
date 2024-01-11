@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 11 Jan 2024 08:19:02 GMT</pubDate>
-    <lastBuildDate>Thu, 11 Jan 2024 08:19:02 GMT</lastBuildDate>
+    <pubDate>Thu, 11 Jan 2024 08:20:07 GMT</pubDate>
+    <lastBuildDate>Thu, 11 Jan 2024 08:20:07 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -886,8 +886,8 @@
 <td>暂停正在运行的任务</td>
 </tr>
 <tr>
-<td>bool RunNow(string id)</td>
-<td>立即运行任务</td>
+<td>bool RunNowTask(string id)</td>
+<td>立刻运行任务（人工触发）</td>
 </tr>
 <tr>
 <td>TaskInfo[] FindTask(lambda)</td>

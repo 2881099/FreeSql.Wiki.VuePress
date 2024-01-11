@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-11T08:19:02.068Z</updated>
+  <updated>2024-01-11T08:20:07.008Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -814,7 +814,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">FreeScheduler</title>
     <id>https://freesql.net/guide/freescheduler.html</id>
     <link href="https://freesql.net/guide/freescheduler.html"/>
-    <updated>2024-01-11T08:18:15.000Z</updated>
+    <updated>2024-01-11T08:19:14.000Z</updated>
     <summary type="html"><![CDATA[<h1> FreeScheduler</h1>
 <p>FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集群、临时的延时任务和重复循环任务(可持久化)，可按秒，每天/每周/每月固定时间，自定义间隔执行，支持 .NET Core 2.1+、.NET Framework 4.0+ 运行环境。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeScheduler" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeScheduler</a></p>]]></summary>
@@ -954,8 +954,8 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>暂停正在运行的任务</td>
 </tr>
 <tr>
-<td>bool RunNow(string id)</td>
-<td>立即运行任务</td>
+<td>bool RunNowTask(string id)</td>
+<td>立刻运行任务（人工触发）</td>
 </tr>
 <tr>
 <td>TaskInfo[] FindTask(lambda)</td>
