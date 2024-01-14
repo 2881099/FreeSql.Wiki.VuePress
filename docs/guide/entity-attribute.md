@@ -4,7 +4,7 @@ v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped
 
 MaxLength/StringLength/DatabaseGenerated/Table/Column
 
-## 名称
+## 表名
 
 ```csharp
 [Table(Name = "tb_topic")]

@@ -49,7 +49,3 @@ dotnet add package FreeSql.All
 | FreeSql.Extensions.Linq                                                                                     | NETStandard2.0、net45、net40 | LinqToSql IQueryable 扩展包                                                                           | **[![NuGet](https://buildstats.info/nuget/FreeSql.Extensions.Linq)](https://www.nuget.org/packages/FreeSql.Extensions.Linq)**                         |
 | [FreeSql.Extensions.BaseEntity](freesql-extensions-baseentity.md)                                                                                  | NETStandard2.0               |                                                                                                       | **[![NuGet](https://buildstats.info/nuget/FreeSql.Extensions.BaseEntity)](https://www.nuget.org/packages/FreeSql.Extensions.BaseEntity)**             |
 | FreeSql.Generator                                                                                           | NETCoreapp3.1                | 从数据库生成实体类，[生成器是如何实现的？](https://www.cnblogs.com/igeekfan/p/freesql-generator.html) | **[![NuGet](https://buildstats.info/nuget/FreeSql.Generator)](https://www.nuget.org/packages/FreeSql.Generator)**                                     |
-
-## 学习指南
-
-FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（[db-first](db-first.md)），和支持基于模型创建数据库（[code-first](code-first.md))。

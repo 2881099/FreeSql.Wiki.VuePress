@@ -77,7 +77,8 @@ export default defineUserConfig({
             "VPBanner",
             "VPCard",
             "Badge",
-            "Share"
+            "Share",
+            "FontIcon"
           ]
       }),
     docsearchPlugin({

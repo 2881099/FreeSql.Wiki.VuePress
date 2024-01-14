@@ -1,25 +1,5 @@
 # 入门
 
-## 模型
-
-`FreeSql` 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
-
-可从现有数据库生成实体模型，`FreeSql` 提供 `IDbFirst` 接口实现[生成实体模型](db-first.md)。
-
-或者手动创建模型，基于模型创建或修改数据库，提供 `ICodeFirst` 同步结构的 `API`（甚至可以做到开发阶段自动同步）。
-
-```csharp
-using FreeSql.DataAnnotations;
-using System;
-
-public class Blog {
-    [Column(IsIdentity = true, IsPrimary = true)]
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-    public int Rating { get; set; }
-}
-```
-
 ## 安装包
 
 FreeSql.Provider.xxx([可选的驱动](install.md))
@@ -40,6 +20,26 @@ Install-Package FreeSql.Provider.Sqlite
 ```
 
 :::
+
+## 模型
+
+`FreeSql` 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
+
+可从现有数据库生成实体模型，`FreeSql` 提供 `IDbFirst` 接口实现[生成实体模型](db-first.md)。
+
+或者手动创建模型，基于模型创建或修改数据库，提供[CodeFirst](code-first.md) 同步结构的 `API`（甚至可以做到开发阶段自动同步）。
+
+```csharp
+using FreeSql.DataAnnotations;
+using System;
+
+public class Blog {
+    [Column(IsIdentity = true, IsPrimary = true)]
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public int Rating { get; set; }
+}
+```
 
 ## 声明
 

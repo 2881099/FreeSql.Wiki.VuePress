@@ -1,5 +1,5 @@
 ---
-title: 流式接口
+title: Fluent API
 tag:
   - Fluent API
   - ConfigEntity
