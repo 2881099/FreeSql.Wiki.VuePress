@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-14T10:17:41.797Z</updated>
+  <updated>2024-01-14T16:08:29.847Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3342,7 +3342,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">指南</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2023-11-18T07:49:19.000Z</updated>
+    <updated>2024-01-14T16:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 指南</h1>
 <p><a href="https://github.com/dotnetcore" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/member project of-NCC-9e20c9.svg" alt="Member project of .NET Core Community" loading="lazy"></a>
 <a href="https://www.nuget.org/packages/FreeSql" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/FreeSql.svg?style=flat-square" alt="nuget" loading="lazy"></a>
@@ -3382,43 +3382,6 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <li>支持同步/异步数据库操作方法，丰富多彩的链式查询方法；</li>
 <li>支持读写分离、分表分库，租户设计；</li>
 <li>支持多种数据库，MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/ClickHouse/QuestDB/达梦/南大通用GBase/神通/人大金仓/虚谷/翰高/华为GaussDB/MsAccess；</li>
-</ul>
-<h2> 学习指南</h2>
-<p>FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（<a href="/guide/db-first.html" target="blank">DbFirst</a>），和支持基于模型创建数据库（<a href="/guide/code-first.html" target="blank">CodeFirst</a>)。</p>
-<h4> 基础</h4>
-<ul>
-<li><a href="/guide/insert.html" target="blank">《学习 FreeSql 之一：添加数据》</a></li>
-<li><a href="/guide/delete.html" target="blank">《学习 FreeSql 之二：删除数据》</a></li>
-<li><a href="/guide/update.html" target="blank">《学习 FreeSql 之三：修改数据》</a></li>
-<li><a href="/guide/select.html" target="blank">《学习 FreeSql 之四：查询数据》</a></li>
-<li><a href="/guide/repository.html" target="blank">《仓储层 Repository》</a></li>
-</ul>
-<h4> 进阶</h4>
-<ul>
-<li><a href="/guide/code-first.html" target="blank">《CodeFirst 模式开发介绍》</a>
-<ul>
-<li><a href="/guide/entity-attribute.html" target="blank">《CodeFirst 模式之一：实体特性》</a></li>
-<li><a href="/guide/fluent-api.html" target="blank">《CodeFirst 模式之二：FluentApi》</a></li>
-<li><a href="/guide/custom-attribute.html" target="blank">《CodeFirst 模式之三：自定义特性》</a></li>
-<li><a href="/guide/type-mapping.html" target="blank">《CodeFirst 模式之四：类型映射》</a></li>
-<li><a href="/guide/code-first.html#%E8%BF%81%E7%A7%BB%E7%BB%93%E6%9E%84" target="blank">《CodeFirst 模式之五：迁移结构》</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><a href="/guide/db-first.html" target="blank">《DbFirst 模式开发介绍》</a></li>
-</ul>
-<h4> 高级</h4>
-<ul>
-<li><a href="/guide/transaction.html" target="blank">《数据库事务》</a></li>
-<li><a href="/guide/read-write-splitting.html" target="blank">《使用读写分离》</a></li>
-<li><a href="/guide/sharding.html" target="blank">《分表分库》</a></li>
-<li><a href="/guide/multi-tenancy.html" target="blank">《多租户》</a></li>
-<li><a href="/guide/select-return-data.html" target="blank">《返回数据》</a></li>
-<li><a href="/guide/select-lazy-loading.html" target="blank">《优化之：延时加载》</a></li>
-<li><a href="/guide/select-include.html" target="blank">《优化之：贪婪加载》</a></li>
-<li><a href="/guide/expression-function.html" target="blank">《Expression 表达式函数》</a></li>
-<li><a href="/guide/aop.html" target="blank">《AOP》</a></li>
 </ul>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
@@ -4105,18 +4068,18 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2023-09-18T20:45:21.000Z</updated>
+    <updated>2024-01-14T16:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped</p>
 <p>MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
-<h2> 名称</h2>
+<h2> 表名</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Table</span><span class="token attribute-arguments"><span class="token punctuation">(</span>Name <span class="token operator">=</span> <span class="token string">"tb_topic"</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
 <span class="token keyword">class</span> <span class="token class-name">Topic</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped</p>
 <p>MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
-<h2> 名称</h2>
+<h2> 表名</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>架构：[Table(Name = "dbo.tb_topic")]</p>
 <p>注意：带点的表名，使用 [Table(Name = "`sys.config`")] 解决</p>
 <blockquote>
@@ -5830,10 +5793,10 @@ repo1.DataFilter.Disable("test")</p>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
   <entry>
-    <title type="text">流式接口</title>
+    <title type="text">Fluent API</title>
     <id>https://freesql.net/guide/fluent-api.html</id>
     <link href="https://freesql.net/guide/fluent-api.html"/>
-    <updated>2022-08-11T15:34:05.000Z</updated>
+    <updated>2024-01-14T16:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h2> 支持 Fluent API</h2>
 <p>FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置实体的数据库特性。<code>Fluent Api</code> 的方法命名与特性名保持一致，共三种使用方法，选择<strong>一种即可</strong>：</p>
 <blockquote>
@@ -5868,21 +5831,23 @@ repo1.DataFilter.Disable("test")</p>
     <title type="text">入门</title>
     <id>https://freesql.net/guide/getting-started.html</id>
     <link href="https://freesql.net/guide/getting-started.html"/>
-    <updated>2023-08-16T05:02:07.000Z</updated>
+    <updated>2024-01-14T16:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
-<h2> 模型</h2>
-<p><code>FreeSql</code> 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。</p>
-<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="/guide/db-first.html" target="blank">生成实体模型</a>。</p>
-<p>或者手动创建模型，基于模型创建或修改数据库，提供 <code>ICodeFirst</code> 同步结构的 <code>API</code>（甚至可以做到开发阶段自动同步）。</p>]]></summary>
-    <content type="html"><![CDATA[<h1> 入门</h1>
-<h2> 模型</h2>
-<p><code>FreeSql</code> 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。</p>
-<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="/guide/db-first.html" target="blank">生成实体模型</a>。</p>
-<p>或者手动创建模型，基于模型创建或修改数据库，提供 <code>ICodeFirst</code> 同步结构的 <code>API</code>（甚至可以做到开发阶段自动同步）。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 安装包</h2>
+<h2> 安装包</h2>
 <p>FreeSql.Provider.xxx(<a href="/guide/install.html" target="blank">可选的驱动</a>)</p>
 
-<h2> 声明</h2>
+<h2> 模型</h2>
+<p><code>FreeSql</code> 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。</p>
+<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="/guide/db-first.html" target="blank">生成实体模型</a>。</p>]]></summary>
+    <content type="html"><![CDATA[<h1> 入门</h1>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.xxx(<a href="/guide/install.html" target="blank">可选的驱动</a>)</p>
+
+<h2> 模型</h2>
+<p><code>FreeSql</code> 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。</p>
+<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="/guide/db-first.html" target="blank">生成实体模型</a>。</p>
+<p>或者手动创建模型，基于模型创建或修改数据库，提供<a href="/guide/code-first.html" target="blank">CodeFirst</a> 同步结构的 <code>API</code>（甚至可以做到开发阶段自动同步）。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 声明</h2>
 <blockquote>
 <p>注意： IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。</p>
 </blockquote>
@@ -6820,7 +6785,7 @@ repo1.DataFilter.Disable("test")</p>
     <title type="text">安装</title>
     <id>https://freesql.net/guide/install.html</id>
     <link href="https://freesql.net/guide/install.html"/>
-    <updated>2023-12-17T23:49:46.000Z</updated>
+    <updated>2024-01-14T16:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 安装</h1>
 <h2> 版本</h2>
 <p>FreeSql 是一个 .NET Standard 2.0 库，仅支持 .NET Framework 4.0 或 .NET Core 或更高版本的应用程序。</p>
@@ -7014,8 +6979,6 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 </tr>
 </tbody>
 </table>
-<h2> 学习指南</h2>
-<p>FreeSql 除了支持基本的增删查改功能外，还支持基于现有数据库创建模型（<a href="/guide/db-first.html" target="blank">db-first</a>），和支持基于模型创建数据库（<a href="/guide/code-first.html" target="blank">code-first</a>)。</p>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
@@ -9703,17 +9666,17 @@ FROM "Topic" a</p>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
   <entry>
-    <title type="text">事务</title>
+    <title type="text">事务Transaction</title>
     <id>https://freesql.net/guide/transaction.html</id>
     <link href="https://freesql.net/guide/transaction.html"/>
-    <updated>2022-08-19T12:05:37.000Z</updated>
-    <summary type="html"><![CDATA[<h1> 事务</h1>
+    <updated>2024-01-14T16:07:40.000Z</updated>
+    <summary type="html"><![CDATA[<h1> 事务Transaction</h1>
 <p>本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：<a href="https://github.com/2881099/FreeSql.Cloud" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeSql.Cloud</a></p>
 <h2> 0、UnitOfWorkManager跨方法异步</h2>
 <ul>
 <li><a href="/guide/unitofwork-manager.html" target="blank">AOP + FreeSql 基于特性标签实现跨方法异步事务</a></li>
 </ul>]]></summary>
-    <content type="html"><![CDATA[<h1> 事务</h1>
+    <content type="html"><![CDATA[<h1> 事务Transaction</h1>
 <p>本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：<a href="https://github.com/2881099/FreeSql.Cloud" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeSql.Cloud</a></p>
 <h2> 0、UnitOfWorkManager跨方法异步</h2>
 <ul>
