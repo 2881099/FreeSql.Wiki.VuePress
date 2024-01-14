@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.810
+
+- 修复 GroupBy + WithTempQuery 别名问题；
+- 修复 DbContext/Repository InsertOrUpdate 无变化时触发 Insert 逻辑报错；#1700
+- 修复 ClickHouse 数组类型 hasAny 与 In 解析冲突问题；#1699
+- 补充 WithMemory null/Empty 参数判断；
+- 优化 表达式树解析；
+
 ## v3.2.808
 
 - **增加 低代码扩展包 [FreeSql.Extensions.ZeroEntity](../guide/lowcode.md)；**
