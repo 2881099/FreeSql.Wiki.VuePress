@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-11T08:20:07.008Z</updated>
+  <updated>2024-01-14T10:17:41.797Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11834,41 +11834,27 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2023-12-21T08:36:44.000Z</updated>
+    <updated>2024-01-14T10:16:49.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.808</h2>
+<h2> v3.2.810</h2>
 <ul>
-<li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZeroEntity</a>；</strong></li>
-<li><strong>增加 Clickhouse Bool/Array 类型适配；（感谢 d4ilys）#1568</strong></li>
-<li>增加 Clickhouse BulkCopy；</li>
-<li>增加 IBaseRepository.AsTable 重载方法支持多表表名设置；</li>
-<li><strong>增加 IAsTable 自动分表支持不规则时间间隔；</strong></li>
-<li><strong>增加 IAsTable.SetTableName 自动分表设置分表名；</strong></li>
-<li><strong>增加 IAsTable.SetDefaultAllTables 自动分表拦截未使用 where 条件的场景；</strong></li>
-<li>增加 IUpdate.ExecuteUpdated 指定字段返回；#1681</li>
-<li>增加 IUpdate.SetDtoIgnore 忽略Dto更新方法；#1688</li>
-<li>增加 ICodeFirst.SyncStructure(TableInfo) 重载方法迁移表结构；</li>
-<li>增加 IUpdate/IDelete WhereDynamicFilter API；#1521</li>
-<li>增加 WithSql(..).WhereDynamicFilter 的支持；</li>
-<li>增加 pgsql 扩展方法 ISelect.DistinctOn；#1680</li>
-<li>修复 Column DbType 与 StringLength 多次替换问题；</li>
-<li>修复 Where(a =&gt; a.bool) 当使用了 MapType(int) 时出现 bug；</li>
-<li>修复 SqlServer 批量更新 bool? null 值生成多余的 case when SQL；</li>
-<li>修复 Xugu 批量插入/更新 SQL 报错；</li>
-<li>修复 OledbOracle 参数化处理 bug；</li>
-<li>修复 多表子查询参数化共享问题；</li>
-<li>修复 嵌套查询 DTO 映射可能触发循环引用 bug；</li>
-<li>补充 达梦 IDbFirst datetime 处理；</li>
-<li>补充 FluentApi AsTable 方法；</li>
-<li><strong>优化 自动分表 join 分表（自动贴合）；</strong></li>
-<li>优化 UnionAll + WithTempQuery 嵌套的 SQL；</li>
-<li>优化 Update 无字段时不做任何处理；</li>
-<li>优化 IUpdate 未使用 .Set 时忽略执行；#1694</li>
-<li>优化 表达式解析变量或常量 ToString；</li>
+<li>修复 GroupBy + WithTempQuery 别名问题；</li>
+<li>修复 DbContext/Repository InsertOrUpdate 无变化时触发 Insert 逻辑报错；#1700</li>
+<li>修复 ClickHouse 数组类型 hasAny 与 In 解析冲突问题；#1699</li>
+<li>补充 WithMemory null/Empty 参数判断；</li>
+<li>优化 表达式树解析；</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.810</h2>
+<ul>
+<li>修复 GroupBy + WithTempQuery 别名问题；</li>
+<li>修复 DbContext/Repository InsertOrUpdate 无变化时触发 Insert 逻辑报错；#1700</li>
+<li>修复 ClickHouse 数组类型 hasAny 与 In 解析冲突问题；#1699</li>
+<li>补充 WithMemory null/Empty 参数判断；</li>
+<li>优化 表达式树解析；</li>
+</ul>
 <h2> v3.2.808</h2>
 <ul>
 <li><strong>增加 低代码扩展包 <a href="/guide/lowcode.html" target="blank">FreeSql.Extensions.ZeroEntity</a>；</strong></li>
