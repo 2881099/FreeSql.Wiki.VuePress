@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 18 Jan 2024 08:16:58 GMT</pubDate>
-    <lastBuildDate>Thu, 18 Jan 2024 08:16:58 GMT</lastBuildDate>
+    <pubDate>Sat, 20 Jan 2024 12:21:54 GMT</pubDate>
+    <lastBuildDate>Sat, 20 Jan 2024 12:21:54 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -772,6 +772,10 @@
 <tr>
 <td>OnExecuting(Action&lt;TaskInfo&gt; executing)</td>
 <td>任务触发</td>
+</tr>
+<tr>
+<td>UseTimeZone()</td>
+<td>设置时区</td>
 </tr>
 <tr>
 <td>UseStorage()</td>
