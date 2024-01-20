@@ -29,6 +29,7 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
 | Method | 说明 |
 | -- | -- |
 | OnExecuting(Action\<TaskInfo\> executing) | 任务触发 |
+| UseTimeZone()	| 设置时区 |
 | UseStorage() | 基于 数据库或者 Redis 持久化 |
 | UseCluster() | 开启集群（依赖 Redis），支持跨进程互通 |
 | UseCustomInterval() | 自定义间隔（可实现 cron） |
