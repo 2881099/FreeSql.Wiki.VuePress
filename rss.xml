@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 29 Jan 2024 01:00:10 GMT</pubDate>
-    <lastBuildDate>Mon, 29 Jan 2024 01:00:10 GMT</lastBuildDate>
+    <pubDate>Mon, 29 Jan 2024 01:34:25 GMT</pubDate>
+    <lastBuildDate>Mon, 29 Jan 2024 01:34:25 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10349,10 +10349,18 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.810 修复 GroupBy + WithTempQuery 别名问题；; 修复 DbContext/Repository InsertOrUpdate 无变化时触发 Insert 逻辑报错；#1700; 修复 ClickHouse 数组类型 hasAny 与 In 解析冲突问题；#1699; 补...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.811 增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；; 修复 Enum -&amp;gt; MapType(string) + GroupBy 解析问题；#1727; 修复 MySql AsTreeCte pathSelector 别名问题；; 修复 Cli...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.811</h2>
+<ul>
+<li>增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；</li>
+<li>修复 Enum -&gt; MapType(string) + GroupBy 解析问题；#1727</li>
+<li>修复 MySql AsTreeCte pathSelector 别名问题；</li>
+<li>修复 ClickHouse UpdateDict 报错问题；#1712</li>
+<li>修复 MsAccess 日期问题；#1724 #1725</li>
+</ul>
 <h2> v3.2.810</h2>
 <ul>
 <li>修复 GroupBy + WithTempQuery 别名问题；</li>
