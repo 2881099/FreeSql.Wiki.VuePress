@@ -133,28 +133,19 @@ repo.DbContextOptions.AuditValue 适合与 Ioc AddScoped 信息结合。
 
 ```csharp
 services.AddSingleton(fsql);
-services.AddScoped(r => 
-{
+services.AddScoped<Action<DbContextAuditValueEventArgs>>(r => e => {
     var user = r.GetService<User>();
-    var options = new RepositoryOptions();
-    options.AuditValue += (_, e) =>
-    {
-        if (user == null) return;
-
-        if (e.AuditValueType == AuditValueType.Insert &&
-            e.Object is IEntityCreated obj1 && obj1 != null)
-        {
-            obj1.CreatedUserId = user.Id;
-            obj1.CreatedUserName = user.Username;
-        }
-        if (e.AuditValueType == AuditValueType.Update &&
-            e.Object is IEntityModified obj2 && obj2 != null)
-        {
-            obj2.ModifiedUserId = user.Id;
-            obj2.ModifiedUserName = user.Username;
-        }
-    };
-    return options;
+    if (user == null) return;
+    if (e.AuditValueType == AuditValueType.Insert &&
+        e.Object is IEntityCreated obj1 && obj1 != null) {
+        obj1.CreatedUserId = user.Id;
+        obj1.CreatedUserName = user.Username;
+    }
+    if (e.AuditValueType == AuditValueType.Update &&
+        e.Object is IEntityModified obj2 && obj2 != null) {
+        obj2.ModifiedUserId = user.Id;
+        obj2.ModifiedUserName = user.Username;
+    }
 });
 services.AddScoped(typeof(IBaseRepository<>), typeof(MyRepository<>));
 services.AddScoped(typeof(IBaseRepository<,>), typeof(MyRepository<,>));
@@ -162,20 +153,15 @@ services.AddScoped(typeof(IBaseRepository<,>), typeof(MyRepository<,>));
 //以下实现 MyRepository
 class MyRepository<TEntity, TKey> : BaseRepository<TEntity, TKey> where TEntity : class
 {
-    public MyRepository(IFreeSql fsql, RepositoryOptions options) : base(fsql, null, null)
+    public MyRepository(IFreeSql fsql, Action<DbContextAuditValueEventArgs> auditValue) : base(fsql, null, null)
     {
         uowManager?.Binding(this);
-        if (options != null)
-        {
-            DbContextOptions.NoneParameter = options.NoneParameter;
-            DbContextOptions.EnableGlobalFilter = options.EnableGlobalFilter;
-            DbContextOptions.AuditValue += options.AuditValueHandler;
-        }
+        if (auditValue != null) DbContextOptions.AuditValue += (_, e) => auditValue(e);
     }
 }
 class MyRepository<TEntity> : MyRepository<TEntity, long> where TEntity : class
 {
-    public MyRepository(IFreeSql fsql, RepositoryOptions options) : base(fsql, options) { }
+    public MyRepository(IFreeSql fsql, Action<DbContextAuditValueEventArgs> auditValue) : base(fsql, auditValue) { }
 }
 ```
 
