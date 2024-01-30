@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-30T14:10:00.574Z</updated>
+  <updated>2024-01-30T14:20:31.834Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2559,7 +2559,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Awesome FreeSql</title>
     <id>https://freesql.net/reference/awesome-freesql.html</id>
     <link href="https://freesql.net/reference/awesome-freesql.html"/>
-    <updated>2024-01-05T15:30:47.000Z</updated>
+    <updated>2024-01-30T14:02:21.000Z</updated>
     <summary type="html"><![CDATA[<h1> Awesome FreeSql</h1>
 <h2> 基于 FreeSql 的仓库项目</h2>
 <div class="flex">
@@ -2583,7 +2583,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <li><a href="https://freesql.net" target="_blank" rel="noopener noreferrer">https://freesql.net</a></li>
 <li><a href="https://github.com/dotnetcore/FreeSql/wiki" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/wiki</a></li>
 <li><a href="http://101.34.7.82:8082/api/index.html" target="_blank" rel="noopener noreferrer">API 参考(国内镜像)</a></li>
-<li><a href="https://docs.dotnet-china.com/FreeSql/index.html" target="_blank" rel="noopener noreferrer">API 参考</a></li>
+<li><a href="https://dotnetcore.github.io/FreeSql/index.html" target="_blank" rel="noopener noreferrer">API 参考</a></li>
 </ul>
 <h2> 源码</h2>
 <ul>

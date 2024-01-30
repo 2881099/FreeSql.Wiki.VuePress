@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 30 Jan 2024 14:10:00 GMT</pubDate>
-    <lastBuildDate>Tue, 30 Jan 2024 14:10:00 GMT</lastBuildDate>
+    <pubDate>Tue, 30 Jan 2024 14:20:31 GMT</pubDate>
+    <lastBuildDate>Tue, 30 Jan 2024 14:20:31 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2140,7 +2140,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <li><a href="https://freesql.net" target="_blank" rel="noopener noreferrer">https://freesql.net</a></li>
 <li><a href="https://github.com/dotnetcore/FreeSql/wiki" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/wiki</a></li>
 <li><a href="http://101.34.7.82:8082/api/index.html" target="_blank" rel="noopener noreferrer">API 参考(国内镜像)</a></li>
-<li><a href="https://docs.dotnet-china.com/FreeSql/index.html" target="_blank" rel="noopener noreferrer">API 参考</a></li>
+<li><a href="https://dotnetcore.github.io/FreeSql/index.html" target="_blank" rel="noopener noreferrer">API 参考</a></li>
 </ul>
 <h2> 源码</h2>
 <ul>
