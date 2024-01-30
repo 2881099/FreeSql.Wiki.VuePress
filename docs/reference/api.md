@@ -7,6 +7,7 @@
 | 方法 | 返回值 | 说明 |
 | -- | -- | -- |
 | UseConnectionString | this | 设置连接串 |
+| UseAdoConnectionPool | this | 设置连接池方案（默认 false，远程访问建议设置 true） |
 | UseSlave | this | 设置从数据库，支持多个 |
 | UseSlaveWeight | this | 设置从数据库权重 |
 | UseConnectionFactory | this | 设置自定义数据库连接对象（放弃内置对象连接池技术） |
@@ -17,6 +18,7 @@
 | UseMonitorCommand | this | 监视全局 SQL 执行前后 |
 | UseMappingPriority | this | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
 | **UseNameConvert** | this | 自动转换名称 Entity -\> Db |
+| UseQuoteSqlName | this | SQL名称是否使用 \[\] `` "" |
 | UseExitAutoDisposePool | this | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认true) |
 | Build\<T\> | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建 |
 
