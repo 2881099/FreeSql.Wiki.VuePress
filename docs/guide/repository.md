@@ -125,6 +125,52 @@ repo.CompareState(item) 可获取 item 的状态变化信息
 Dictionary<string, object[]> CompareState(TEntity newdata);
 ```
 
+## Ioc + 登陆信息
+
+repo.DbContextOptions.AuditValue 适合与 Ioc AddScoped 信息结合。
+
+如下示例：使用仓储插入/更新时自动使用登陆信息
+
+```csharp
+services.AddSingleton(fsql);
+services.AddScoped(r => new MyRepositoryOptions
+{
+    AuditValue = e => {
+        var user = r.GetService<User>();
+        if (user == null) return;
+        if (e.AuditValueType == AuditValueType.Insert &&
+            e.Object is IEntityCreated obj1 && obj1 != null) {
+            obj1.CreatedUserId = user.Id;
+            obj1.CreatedUserName = user.Username;
+        }
+        if (e.AuditValueType == AuditValueType.Update &&
+            e.Object is IEntityModified obj2 && obj2 != null) {
+            obj2.ModifiedUserId = user.Id;
+            obj2.ModifiedUserName = user.Username;
+        }
+    }
+});
+services.AddScoped(typeof(IBaseRepository<>), typeof(MyRepository<>));
+services.AddScoped(typeof(IBaseRepository<,>), typeof(MyRepository<,>));
+
+//以下实现 MyRepository
+class MyRepository<TEntity, TKey> : BaseRepository<TEntity, TKey> where TEntity : class
+{
+    public MyRepository(IFreeSql fsql, MyRepositoryOptions options) : base(fsql, null, null)
+    {
+        if (options?.AuditValue != null) DbContextOptions.AuditValue += (_, e) => options.AuditValue(e);
+    }
+}
+class MyRepository<TEntity> : MyRepository<TEntity, long> where TEntity : class
+{
+    public MyRepository(IFreeSql fsql, MyRepositoryOptions options) : base(fsql, options) { }
+}
+class MyRepositoryOptions
+{
+    public Action<DbContextAuditValueEventArgs> AuditValue { get; set; }
+}
+```
+
 ## 过滤与验证
 
 假设我们有 User(用户)、Topic(主题)两个实体，定义了两个仓储：

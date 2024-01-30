@@ -77,6 +77,7 @@ fsql.Ado.CommandFluent("dbo.GetICMaxNum")
         p2 = p; //Output 参数
         p.DbType = DbType.Int32;
         p.Direction = ParameterDirection.Output;
+        (p as SqlParameter).Size = 50; //具体的数据库参数
     })
     .ExecuteNonQuery(); //.Query<T>() 或者 .ExecuteDataTable() 或者 ...
 

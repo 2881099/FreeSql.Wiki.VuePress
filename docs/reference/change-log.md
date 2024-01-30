@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.811
+
+- 增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；
+- 修复 Enum -> MapType(string) + GroupBy 解析问题；#1727
+- 修复 MySql AsTreeCte pathSelector 别名问题；
+- 修复 ClickHouse UpdateDict 报错问题；#1712
+- 修复 MsAccess 日期问题；#1724 #1725
+
 ## v3.2.810
 
 - 修复 GroupBy + WithTempQuery 别名问题；
