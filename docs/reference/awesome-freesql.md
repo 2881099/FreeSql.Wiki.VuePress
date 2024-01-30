@@ -159,7 +159,7 @@
 - [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
 - [API 参考(国内镜像)](http://101.34.7.82:8082/api/index.html)
-- [API 参考](https://docs.dotnet-china.com/FreeSql/index.html)
+- [API 参考](https://dotnetcore.github.io/FreeSql/index.html)
 
 ## 源码
 
