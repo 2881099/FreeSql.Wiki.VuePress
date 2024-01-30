@@ -45,7 +45,7 @@ export const zhNavbarConfig = navbar([
                 children: [
                     {
                         text: '浏览API',
-                        link: 'https://docs.dotnet-china.com/FreeSql/api/index.html'
+                        link: 'https://dotnetcore.github.io/FreeSql/api/index.html'
                     },
                     {
                         text: '浏览API（国内镜像）',
