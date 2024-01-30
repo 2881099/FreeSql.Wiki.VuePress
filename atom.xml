@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-30T13:40:51.933Z</updated>
+  <updated>2024-01-30T13:56:28.480Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -10507,7 +10507,7 @@ FROM "Topic" a</p>
     <title type="text">API 文档</title>
     <id>https://freesql.net/reference/api.html</id>
     <link href="https://freesql.net/reference/api.html"/>
-    <updated>2023-05-27T08:51:24.000Z</updated>
+    <updated>2024-01-30T13:55:37.000Z</updated>
     <summary type="html"><![CDATA[<h1> API 文档</h1>
 <ul>
 <li><a href="http://101.34.7.82:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://101.34.7.82:8082/api/FreeSql.html</a></li>
@@ -10526,6 +10526,11 @@ FROM "Topic" a</p>
 <td>UseConnectionString</td>
 <td>this</td>
 <td>设置连接串</td>
+</tr>
+<tr>
+<td>UseAdoConnectionPool</td>
+<td>this</td>
+<td>设置连接池方案（默认 false，远程访问建议设置 true）</td>
 </tr>
 <tr>
 <td>UseSlave</td>
@@ -10576,6 +10581,11 @@ FROM "Topic" a</p>
 <td><strong>UseNameConvert</strong></td>
 <td>this</td>
 <td>自动转换名称 Entity -&gt; Db</td>
+</tr>
+<tr>
+<td>UseQuoteSqlName</td>
+<td>this</td>
+<td>SQL名称是否使用 [] `` ""</td>
 </tr>
 <tr>
 <td>UseExitAutoDisposePool</td>
@@ -10609,6 +10619,11 @@ FROM "Topic" a</p>
 <td>设置连接串</td>
 </tr>
 <tr>
+<td>UseAdoConnectionPool</td>
+<td>this</td>
+<td>设置连接池方案（默认 false，远程访问建议设置 true）</td>
+</tr>
+<tr>
 <td>UseSlave</td>
 <td>this</td>
 <td>设置从数据库，支持多个</td>
@@ -10657,6 +10672,11 @@ FROM "Topic" a</p>
 <td><strong>UseNameConvert</strong></td>
 <td>this</td>
 <td>自动转换名称 Entity -&gt; Db</td>
+</tr>
+<tr>
+<td>UseQuoteSqlName</td>
+<td>this</td>
+<td>SQL名称是否使用 [] `` ""</td>
 </tr>
 <tr>
 <td>UseExitAutoDisposePool</td>
