@@ -124,6 +124,10 @@ export const zhSidebarConfig = sidebar({
             "freescheduler",
             "freeim",
             {
+              text: "Admin Blazor",
+              link: "adminblazor",
+            },
+            {
               text: "More..",
               link: "otherworks",
             },
