@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 30 Jan 2024 14:20:31 GMT</pubDate>
-    <lastBuildDate>Tue, 30 Jan 2024 14:20:31 GMT</lastBuildDate>
+    <pubDate>Wed, 31 Jan 2024 07:22:13 GMT</pubDate>
+    <lastBuildDate>Wed, 31 Jan 2024 07:22:13 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1059,7 +1059,7 @@
       <link>https://freesql.net/guide/otherworks.html</link>
       <guid>https://freesql.net/guide/otherworks.html</guid>
       <source url="https://freesql.net/rss.xml">其他作品</source>
-      <description>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有： 开源项目 描述 开源地址 开源协议 --- --- --- --- FreeIM 聊天系统架构 https://github.com/2881099/FreeIM MIT FreeRedis Redis SDK https://github.com/2881099/FreeRedi...</description>
+      <description>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有： 开源项目 描述 开源地址 开源协议 --- --- --- --- AdminBlazor Blazor 后台权限管理 https://gitee.com/FreeSql/AdminBlazor Apache2.0 FreeIM 聊天系统架构 https://github.com/...</description>
       <pubDate>Tue, 30 Aug 2022 05:35:49 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 其他作品</h1>
 <p>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有：</p>
@@ -1074,6 +1074,12 @@
 </thead>
 <tbody>
 <tr>
+<td>AdminBlazor</td>
+<td>Blazor 后台权限管理</td>
+<td>https://gitee.com/FreeSql/AdminBlazor</td>
+<td>Apache2.0</td>
+</tr>
+<tr>
 <td>FreeIM</td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
@@ -1083,6 +1089,12 @@
 <td>FreeRedis</td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>FreeScheduler</td>
+<td>定时任务</td>
+<td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
 </tr>
 <tr>
@@ -1096,12 +1108,6 @@
 <td>斗DI主网络版</td>
 <td>https://github.com/2881099/FightLandlord</td>
 <td>学习用途</td>
-</tr>
-<tr>
-<td>FreeScheduler</td>
-<td>定时任务</td>
-<td>https://github.com/2881099/FreeScheduler</td>
-<td>MIT</td>
 </tr>
 <tr>
 <td>IdleBus</td>

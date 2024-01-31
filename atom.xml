@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-30T14:20:31.834Z</updated>
+  <updated>2024-01-31T07:22:13.837Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1129,7 +1129,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">其他作品</title>
     <id>https://freesql.net/guide/otherworks.html</id>
     <link href="https://freesql.net/guide/otherworks.html"/>
-    <updated>2022-08-30T05:53:28.000Z</updated>
+    <updated>2024-01-31T07:21:15.000Z</updated>
     <summary type="html"><![CDATA[<h1> 其他作品</h1>
 <p>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有：</p>
 <table>
@@ -1143,6 +1143,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
+<td>AdminBlazor</td>
+<td>Blazor 后台权限管理</td>
+<td>https://gitee.com/FreeSql/AdminBlazor</td>
+<td>Apache2.0</td>
+</tr>
+<tr>
 <td>FreeIM</td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
@@ -1152,6 +1158,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>FreeRedis</td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>FreeScheduler</td>
+<td>定时任务</td>
+<td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
 </tr>
 <tr>
@@ -1165,12 +1177,6 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>斗DI主网络版</td>
 <td>https://github.com/2881099/FightLandlord</td>
 <td>学习用途</td>
-</tr>
-<tr>
-<td>FreeScheduler</td>
-<td>定时任务</td>
-<td>https://github.com/2881099/FreeScheduler</td>
-<td>MIT</td>
 </tr>
 <tr>
 <td>IdleBus</td>
@@ -1217,6 +1223,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
+<td>AdminBlazor</td>
+<td>Blazor 后台权限管理</td>
+<td>https://gitee.com/FreeSql/AdminBlazor</td>
+<td>Apache2.0</td>
+</tr>
+<tr>
 <td>FreeIM</td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
@@ -1226,6 +1238,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>FreeRedis</td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>FreeScheduler</td>
+<td>定时任务</td>
+<td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
 </tr>
 <tr>
@@ -1239,12 +1257,6 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>斗DI主网络版</td>
 <td>https://github.com/2881099/FightLandlord</td>
 <td>学习用途</td>
-</tr>
-<tr>
-<td>FreeScheduler</td>
-<td>定时任务</td>
-<td>https://github.com/2881099/FreeScheduler</td>
-<td>MIT</td>
 </tr>
 <tr>
 <td>IdleBus</td>
