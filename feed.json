@@ -6,6 +6,18 @@
   "description": "FreeSql Documents",
   "items": [
     {
+      "title": "AdminBlazor",
+      "url": "https://freesql.net/guide/adminblazor.html",
+      "id": "https://freesql.net/guide/adminblazor.html",
+      "summary": "AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能 菜单管理; 角色管理; 用户管理; 定时任务; 字典管理; 依赖组件 BootstrapBlazor; FreeSql; FreeScheduler; Rougamo; 1. 安装模板 ...",
+      "content_html": "<h1> AdminBlazor</h1>\n<p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>\n<h2> 集成功能</h2>\n<ul>\n<li>菜单管理</li>\n<li>角色管理</li>\n<li>用户管理</li>\n<li>定时任务</li>\n<li>字典管理</li>\n</ul>\n<h2> 依赖组件</h2>\n<ul>\n<li>BootstrapBlazor</li>\n<li>FreeSql</li>\n<li>FreeScheduler</li>\n<li>Rougamo</li>\n</ul>\n<h1> 快速开始</h1>\n<h2> 1. 安装模板</h2>\n<blockquote>\n<p>dotnet new install AdminBlazor.Template</p>\n</blockquote>\n<h2> 2. 新建项目</h2>\n<blockquote>\n<p>dotnet new admin</p>\n</blockquote>\n<h2> 3. 运行访问</h2>\n<blockquote>\n<p>http://localhost:5231/Admin</p>\n</blockquote>\n<p>用户名：admin 密码：freesql</p>\n<h2> 4. 新建菜单，类型选择增删改查</h2>\n<figure><img src=\"https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/01.png\" alt=\"image\" tabindex=\"0\" loading=\"lazy\"><figcaption>image</figcaption></figure>\n<h2> 5. 生成代码</h2>\n<figure><img src=\"https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/02.png\" alt=\"image\" tabindex=\"0\" loading=\"lazy\"><figcaption>image</figcaption></figure>\n<h1> 权限</h1>\n<ul>\n<li>UserEntity 对多对 RoleEntity</li>\n<li>RoleEntity 对多对 MenuEntity</li>\n</ul>\n<p>提示：AdminLoginInfo 类型已设置成 [CascadeParameter]</p>\n<div class=\"language-csharp line-numbers-mode\" data-ext=\"cs\"><div class=\"line-numbers\" aria-hidden=\"true\"><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>\n<div class=\"language-csharp line-numbers-mode\" data-ext=\"cs\"><div class=\"line-numbers\" aria-hidden=\"true\"><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>\n<figure><img src=\"https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/03.png\" alt=\"image\" tabindex=\"0\" loading=\"lazy\"><figcaption>image</figcaption></figure>\n<h1> 组件</h1>\n<p>== AdminTable2</p>\n<p>== AllocTable2</p>\n<p>== InputTable2</p>\n<p>== SelectEntity</p>\n<p>== SelectEnum</p>\n<p>== SelectTable2</p>\n<p>== AdminModal</p>\n",
+      "image": "https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/01.png",
+      "date_published": "2024-01-31T22:10:27.000Z",
+      "date_modified": "2024-01-31T22:10:27.000Z",
+      "authors": [],
+      "tags": []
+    },
+    {
       "title": "低代码",
       "url": "https://freesql.net/guide/lowcode.html",
       "id": "https://freesql.net/guide/lowcode.html",

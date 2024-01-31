@@ -6,10 +6,72 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 31 Jan 2024 07:32:36 GMT</pubDate>
-    <lastBuildDate>Wed, 31 Jan 2024 07:32:36 GMT</lastBuildDate>
+    <pubDate>Wed, 31 Jan 2024 22:11:20 GMT</pubDate>
+    <lastBuildDate>Wed, 31 Jan 2024 22:11:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>AdminBlazor</title>
+      <link>https://freesql.net/guide/adminblazor.html</link>
+      <guid>https://freesql.net/guide/adminblazor.html</guid>
+      <source url="https://freesql.net/rss.xml">AdminBlazor</source>
+      <description>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能 菜单管理; 角色管理; 用户管理; 定时任务; 字典管理; 依赖组件 BootstrapBlazor; FreeSql; FreeScheduler; Rougamo; 1. 安装模板 ...</description>
+      <pubDate>Wed, 31 Jan 2024 22:10:27 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> AdminBlazor</h1>
+<p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
+<h2> 集成功能</h2>
+<ul>
+<li>菜单管理</li>
+<li>角色管理</li>
+<li>用户管理</li>
+<li>定时任务</li>
+<li>字典管理</li>
+</ul>
+<h2> 依赖组件</h2>
+<ul>
+<li>BootstrapBlazor</li>
+<li>FreeSql</li>
+<li>FreeScheduler</li>
+<li>Rougamo</li>
+</ul>
+<h1> 快速开始</h1>
+<h2> 1. 安装模板</h2>
+<blockquote>
+<p>dotnet new install AdminBlazor.Template</p>
+</blockquote>
+<h2> 2. 新建项目</h2>
+<blockquote>
+<p>dotnet new admin</p>
+</blockquote>
+<h2> 3. 运行访问</h2>
+<blockquote>
+<p>http://localhost:5231/Admin</p>
+</blockquote>
+<p>用户名：admin 密码：freesql</p>
+<h2> 4. 新建菜单，类型选择增删改查</h2>
+<figure><img src="https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/01.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<h2> 5. 生成代码</h2>
+<figure><img src="https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/02.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<h1> 权限</h1>
+<ul>
+<li>UserEntity 对多对 RoleEntity</li>
+<li>RoleEntity 对多对 MenuEntity</li>
+</ul>
+<p>提示：AdminLoginInfo 类型已设置成 [CascadeParameter]</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
+<figure><img src="https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/03.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<h1> 组件</h1>
+<p>== AdminTable2</p>
+<p>== AllocTable2</p>
+<p>== InputTable2</p>
+<p>== SelectEntity</p>
+<p>== SelectEnum</p>
+<p>== SelectTable2</p>
+<p>== AdminModal</p>
+]]></content:encoded>
+      <enclosure url="https://gitee.com/FreeSql/AdminBlazor/raw/master/Images/01.png" type="image/png"/>
+    </item>
     <item>
       <title>低代码</title>
       <link>https://freesql.net/guide/lowcode.html</link>
