@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-02-01T00:03:55.561Z</updated>
+  <updated>2024-02-01T06:28:17.260Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12222,23 +12222,23 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-01-29T01:33:35.000Z</updated>
+    <updated>2024-02-01T06:27:26.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.811</h2>
+<h2> v3.2.812</h2>
 <ul>
 <li>增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；</li>
-<li>修复 Enum -&gt; MapType(string) + GroupBy 解析问题；#1727</li>
+<li>优化 ManyToMany 导航属性约定命名匹配嵌套类；</li>
 <li>修复 MySql AsTreeCte pathSelector 别名问题；</li>
 <li>修复 ClickHouse UpdateDict 报错问题；#1712</li>
 <li>修复 MsAccess 日期问题；#1724 #1725</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.811</h2>
+<h2> v3.2.812</h2>
 <ul>
 <li>增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；</li>
-<li>修复 Enum -&gt; MapType(string) + GroupBy 解析问题；#1727</li>
+<li>优化 ManyToMany 导航属性约定命名匹配嵌套类；</li>
 <li>修复 MySql AsTreeCte pathSelector 别名问题；</li>
 <li>修复 ClickHouse UpdateDict 报错问题；#1712</li>
 <li>修复 MsAccess 日期问题；#1724 #1725</li>
