@@ -3,15 +3,15 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-01-31T23:58:53.977Z</updated>
+  <updated>2024-02-01T00:02:22.060Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
   <entry>
     <title type="text"></title>
-    <id>https://freesql.net/guide/adminblazor.html</id>
-    <link href="https://freesql.net/guide/adminblazor.html"/>
-    <updated>2024-01-31T23:53:04.000Z</updated>
+    <id>https://freesql.net/guide/AdminBlazor1.html</id>
+    <link href="https://freesql.net/guide/AdminBlazor1.html"/>
+    <updated>2024-02-01T00:01:22.000Z</updated>
     <summary type="html"><![CDATA[<h2> 项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
 <p>集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理</p>
@@ -391,7 +391,7 @@
 </tbody>
 </table>
 ]]></content>
-    <published>2024-01-31T22:10:27.000Z</published>
+    <published>2024-02-01T00:01:22.000Z</published>
   </entry>
   <entry>
     <title type="text">低代码</title>

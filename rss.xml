@@ -6,17 +6,17 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 31 Jan 2024 23:58:53 GMT</pubDate>
-    <lastBuildDate>Wed, 31 Jan 2024 23:58:53 GMT</lastBuildDate>
+    <pubDate>Thu, 01 Feb 2024 00:02:22 GMT</pubDate>
+    <lastBuildDate>Thu, 01 Feb 2024 00:02:22 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
       <title></title>
-      <link>https://freesql.net/guide/adminblazor.html</link>
-      <guid>https://freesql.net/guide/adminblazor.html</guid>
+      <link>https://freesql.net/guide/AdminBlazor1.html</link>
+      <guid>https://freesql.net/guide/AdminBlazor1.html</guid>
       <source url="https://freesql.net/rss.xml"></source>
       <description>项目介绍 AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo 快速开始 1. 安装模板...</description>
-      <pubDate>Wed, 31 Jan 2024 22:10:27 GMT</pubDate>
+      <pubDate>Thu, 01 Feb 2024 00:01:22 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
 <p>集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理</p>
