@@ -78,10 +78,7 @@ export const zhSidebarConfig = sidebar({
             "freesql-extensions-baseentity",
             "freesql-extensions-jsonmap",
             "freesqladminlte",
-            {
-              text: "Admin Blazor",
-              link: "adminblazor",
-            },
+            "AdminBlazor",
             "lowcode",
           ],
         },
