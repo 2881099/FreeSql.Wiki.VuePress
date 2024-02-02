@@ -42,7 +42,7 @@ export const zhNavbarConfig = navbar([
         children: [
             {
                 text: 'AdminBlazor（后台管理系统）',
-                link: '/guide/freeredis.md'
+                link: '/guide/AdminBlazor.md'
             },
             {
                 text: 'FreeRedis（RedisClient）',
