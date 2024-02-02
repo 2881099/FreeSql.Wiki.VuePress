@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 02 Feb 2024 07:17:48 GMT</pubDate>
-    <lastBuildDate>Fri, 02 Feb 2024 07:17:48 GMT</lastBuildDate>
+    <pubDate>Fri, 02 Feb 2024 15:30:21 GMT</pubDate>
+    <lastBuildDate>Fri, 02 Feb 2024 15:30:21 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -56,8 +56,8 @@
 <figure><img src="/adminblazor/02.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 权限</h2>
 <ul>
-<li>UserEntity 对多对 RoleEntity</li>
-<li>RoleEntity 对多对 MenuEntity</li>
+<li>UserEntity 多对多 RoleEntity</li>
+<li>RoleEntity 多对多 MenuEntity</li>
 </ul>
 <p>提示：AdminLoginInfo 类型已设置成 [CascadeParameter]</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>
