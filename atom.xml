@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-02-02T15:30:21.258Z</updated>
+  <updated>2024-02-02T15:34:18.867Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1523,7 +1523,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">其他作品</title>
     <id>https://freesql.net/guide/otherworks.html</id>
     <link href="https://freesql.net/guide/otherworks.html"/>
-    <updated>2024-01-31T07:21:15.000Z</updated>
+    <updated>2024-02-02T15:33:31.000Z</updated>
     <summary type="html"><![CDATA[<h1> 其他作品</h1>
 <p>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有：</p>
 <table>
@@ -1537,25 +1537,25 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
-<td>AdminBlazor</td>
+<td><a href="/guide/AdminBlazor.html" target="blank">AdminBlazor</a></td>
 <td>Blazor 后台权限管理</td>
 <td>https://gitee.com/FreeSql/AdminBlazor</td>
 <td>Apache2.0</td>
 </tr>
 <tr>
-<td>FreeIM</td>
+<td><a href="/guide/freeim.html" target="blank">FreeIM</a></td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td>FreeRedis</td>
+<td><a href="/guide/freeredis.html" target="blank">FreeRedis</a></td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td>FreeScheduler</td>
+<td><a href="/guide/freescheduler.html" target="blank">FreeScheduler</a></td>
 <td>定时任务</td>
 <td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
@@ -1617,25 +1617,25 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
-<td>AdminBlazor</td>
+<td><a href="/guide/AdminBlazor.html" target="blank">AdminBlazor</a></td>
 <td>Blazor 后台权限管理</td>
 <td>https://gitee.com/FreeSql/AdminBlazor</td>
 <td>Apache2.0</td>
 </tr>
 <tr>
-<td>FreeIM</td>
+<td><a href="/guide/freeim.html" target="blank">FreeIM</a></td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td>FreeRedis</td>
+<td><a href="/guide/freeredis.html" target="blank">FreeRedis</a></td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td>FreeScheduler</td>
+<td><a href="/guide/freescheduler.html" target="blank">FreeScheduler</a></td>
 <td>定时任务</td>
 <td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
@@ -1703,6 +1703,11 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <p>使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。</p>
 <p>开源地址：<a href="https://github.com/2881099/FreeIM" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeIM</a></p>
 <p>扩展资料：<a href="https://www.cnblogs.com/FreeSql/p/16632727.html" target="_blank" rel="noopener noreferrer">《C#.NET im 聊天通讯架构设计 -- FreeIM 支持集群、职责分明、高性能》</a></p>
+<h2> AdminBlazor</h2>
+<p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
+<p>集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理</p>
+<p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
+<p>开源地址：<a href="https://github.com/2881099/AdminBlazor" target="_blank" rel="noopener noreferrer">https://github.com/2881099/AdminBlazor</a></p>
 <h2> FightLandlord</h2>
 <p>.NETCore斗地主服务端 + HTML5前端，使用了 FreeIM 网络通讯</p>
 <p>开源地址：<a href="https://github.com/2881099/FightLandlord" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FightLandlord</a></p>
