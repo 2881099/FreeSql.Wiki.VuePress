@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 01 Feb 2024 07:52:29 GMT</pubDate>
-    <lastBuildDate>Thu, 01 Feb 2024 07:52:29 GMT</lastBuildDate>
+    <pubDate>Fri, 02 Feb 2024 07:17:48 GMT</pubDate>
+    <lastBuildDate>Fri, 02 Feb 2024 07:17:48 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -357,6 +357,14 @@
 <tr>
 <td>bool Visible</td>
 <td>是否显示</td>
+</tr>
+<tr>
+<td>bool IsBackdropStatic</td>
+<td>是否静态模式</td>
+</tr>
+<tr>
+<td>bool IsKeyboard</td>
+<td>是否接受 ESC 关闭</td>
 </tr>
 <tr>
 <td>string DialogClassName</td>
