@@ -4,10 +4,10 @@ FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有
 
 | 开源项目 | 描述 | 开源地址 | 开源协议 |
 | --- | --- | --- | --- |
-| AdminBlazor | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor | Apache2.0 |
-| FreeIM | 聊天系统架构 | https://github.com/2881099/FreeIM | MIT |
-| FreeRedis | Redis SDK | https://github.com/2881099/FreeRedis | MIT |
-| FreeScheduler | 定时任务 | https://github.com/2881099/FreeScheduler | MIT |
+| [AdminBlazor](AdminBlazor.md) | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor | Apache2.0 |
+| [FreeIM](freeim.md) | 聊天系统架构 | https://github.com/2881099/FreeIM | MIT |
+| [FreeRedis](freeredis.md) | Redis SDK | https://github.com/2881099/FreeRedis | MIT |
+| [FreeScheduler](freescheduler.md) | 定时任务 | https://github.com/2881099/FreeScheduler | MIT |
 | csredis |  | https://github.com/2881099/csredis | MIT |
 | FightLandlord | 斗DI主网络版 | https://github.com/2881099/FightLandlord | 学习用途 |
 | IdleBus | 空闲容器 | https://github.com/2881099/IdleBus | MIT |
@@ -53,6 +53,16 @@ FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接
 开源地址：[https://github.com/2881099/FreeIM](https://github.com/2881099/FreeIM)
 
 扩展资料：[《C#.NET im 聊天通讯架构设计 -- FreeIM 支持集群、职责分明、高性能》](https://www.cnblogs.com/FreeSql/p/16632727.html)
+
+## AdminBlazor
+
+AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。
+
+集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理
+
+依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
+
+开源地址：[https://github.com/2881099/AdminBlazor](https://github.com/2881099/AdminBlazor)
 
 ## FightLandlord
 
