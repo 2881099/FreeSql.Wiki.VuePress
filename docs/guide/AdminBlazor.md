@@ -36,8 +36,8 @@ AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/�
 
 ## 权限
 
-- UserEntity 对多对 RoleEntity
-- RoleEntity 对多对 MenuEntity
+- UserEntity 多对多 RoleEntity
+- RoleEntity 多对多 MenuEntity
 
 提示：AdminLoginInfo 类型已设置成 \[CascadeParameter\]
 
