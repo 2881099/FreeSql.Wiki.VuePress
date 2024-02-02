@@ -37,30 +37,28 @@ export const zhNavbarConfig = navbar([
         icon: "any",
     },
     {
-        text: 'API',
+        text: '其他作品',
         icon: "api",
         children: [
             {
-                text: '学习与交流',
-                children: [
-                    {
-                        text: '浏览API',
-                        link: 'https://dotnetcore.github.io/FreeSql/api/index.html'
-                    },
-                    {
-                        text: '浏览API（国内镜像）',
-                        link: 'http://101.34.7.82:8082/api/index.html'
-                    },
-                    {
-                        text: '提Issues',
-                        link: 'https://github.com/dotnetcore/FreeSql/issues/new'
-                    },
-                    {
-                        text: 'NuGet',
-                        link: 'https://www.nuget.org/packages?q=freesql'
-                    }
-                ]
-
+                text: 'AdminBlazor（后台管理系统）',
+                link: '/guide/freeredis.md'
+            },
+            {
+                text: 'FreeRedis（RedisClient）',
+                link: '/guide/freeredis.md'
+            },
+            {
+                text: 'FreeScheduler（定时任务）',
+                link: '/guide/freescheduler.md'
+            },
+            {
+                text: 'FreeIM（通讯架构）',
+                link: '/guide/freeim.md'
+            },
+            {
+                text: '更多作品（CSRedisCore）',
+                link: '/guide/otherworks.md'
             }
         ]
     },
