@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 02 Feb 2024 20:03:50 GMT</pubDate>
-    <lastBuildDate>Fri, 02 Feb 2024 20:03:50 GMT</lastBuildDate>
+    <pubDate>Sun, 04 Feb 2024 12:23:18 GMT</pubDate>
+    <lastBuildDate>Sun, 04 Feb 2024 12:23:18 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -64,6 +64,7 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
 <figure><img src="/adminblazor/03.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 组件</h2>
+<p>以下几个是 AdminBlazor 封装的组件，更多丰富的 UI 组件可以看：BootstrapBlazor</p>
 <h3> 1. 增删改查 AdminTable2&lt;TItem&gt;</h3>
 <blockquote>
 <p>使用 FreeSql 对实体类型 TItem 增删改查</p>
