@@ -70,6 +70,8 @@ void ButtonClick()
 
 ## 组件
 
+以下几个是 AdminBlazor 封装的组件，更多丰富的 UI 组件可以看：BootstrapBlazor
+
 ### 1. 增删改查 AdminTable2\<TItem\>
 
 > 使用 FreeSql 对实体类型 TItem 增删改查
