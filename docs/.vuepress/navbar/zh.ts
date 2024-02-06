@@ -41,7 +41,7 @@ export const zhNavbarConfig = navbar([
         icon: "api",
         children: [
             {
-                text: 'AdminBlazor（后台管理系统）',
+                text: 'AdminBlazor SaaS（后台管理系统）',
                 link: '/guide/AdminBlazor.md'
             },
             {
