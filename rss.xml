@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 04 Feb 2024 12:23:18 GMT</pubDate>
-    <lastBuildDate>Sun, 04 Feb 2024 12:23:18 GMT</lastBuildDate>
+    <pubDate>Tue, 06 Feb 2024 02:21:41 GMT</pubDate>
+    <lastBuildDate>Tue, 06 Feb 2024 02:21:41 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -15,11 +15,11 @@
       <link>https://freesql.net/guide/AdminBlazor.html</link>
       <guid>https://freesql.net/guide/AdminBlazor.html</guid>
       <source url="https://freesql.net/rss.xml"></source>
-      <description>项目介绍 AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo 快速开始 1. 安装模板...</description>
+      <description>项目介绍 AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单、角色、用户、定时任务、数据字典、租户 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo 快速开始 1....</description>
       <pubDate>Thu, 01 Feb 2024 00:01:34 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 项目介绍</h2>
-<p>AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
-<p>集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理</p>
+<p>AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
+<p>集成功能：菜单、角色、用户、定时任务、数据字典、租户</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <h2> 快速开始</h2>
 <ol>
@@ -59,11 +59,24 @@
 <li>UserEntity 多对多 RoleEntity</li>
 <li>RoleEntity 多对多 MenuEntity</li>
 </ul>
-<p>提示：AdminLoginInfo 类型已设置成 [CascadeParameter]</p>
+<p>提示：AdminContext 类型已设置成 [CascadeParameter]</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
 <figure><img src="/adminblazor/03.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
-<h2> 组件</h2>
+<h2> 租户</h2>
+<p>提示：AdminContext 类型已设置成 [CascadeParameter]</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每个租户独立数据库，注入方式：</p>
+<ul>
+<li>访问租户：IFreeSql/IAggregateRootRepository&lt;T&gt;</li>
+<li>访问主库：FreeSqlCloud</li>
+</ul>
+<blockquote>
+<p>FreeSqlCloud API 访问方式与 IFreeSql 一样
+IAggregateRootRepository 是级联操作友好的仓储模式</p>
+</blockquote>
+<figure><img src="/adminblazor/04.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<h2> 定时任务</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 组件</h2>
 <p>以下几个是 AdminBlazor 封装的组件，更多丰富的 UI 组件可以看：BootstrapBlazor</p>
 <h3> 1. 增删改查 AdminTable2&lt;TItem&gt;</h3>
 <blockquote>
