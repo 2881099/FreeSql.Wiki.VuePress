@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 06 Feb 2024 02:33:23 GMT</pubDate>
-    <lastBuildDate>Tue, 06 Feb 2024 02:33:23 GMT</lastBuildDate>
+    <pubDate>Thu, 08 Feb 2024 08:38:25 GMT</pubDate>
+    <lastBuildDate>Thu, 08 Feb 2024 08:38:25 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -15,12 +15,16 @@
       <link>https://freesql.net/guide/AdminBlazor.html</link>
       <guid>https://freesql.net/guide/AdminBlazor.html</guid>
       <source url="https://freesql.net/rss.xml"></source>
-      <description>项目介绍 AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单、角色、用户、定时任务、数据字典、租户 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo 快速开始 1....</description>
+      <description>项目介绍 AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单、角色、用户、定时任务、数据字典、租户 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo github:...</description>
       <pubDate>Thu, 01 Feb 2024 00:01:34 GMT</pubDate>
       <content:encoded><![CDATA[<h2> 项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
 <p>集成功能：菜单、角色、用户、定时任务、数据字典、租户</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
+<ul>
+<li>github: https://github.com/2881099/AdminBlazor</li>
+<li>gitee: https://gitee.com/FreeSql/AdminBlazor</li>
+</ul>
 <h2> 快速开始</h2>
 <ol>
 <li>安装模板</li>
@@ -59,12 +63,12 @@
 <li>UserEntity 多对多 RoleEntity</li>
 <li>RoleEntity 多对多 MenuEntity</li>
 </ul>
-<p>提示：AdminContext 类型已设置成 [CascadeParameter]</p>
+<p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
 <figure><img src="/adminblazor/03.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 租户</h2>
-<p>提示：AdminContext 类型已设置成 [CascadeParameter]</p>
+<p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每个租户独立数据库，注入方式：</p>
 <ul>
 <li>访问租户：IFreeSql/IAggregateRootRepository&lt;T&gt;</li>
