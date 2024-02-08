@@ -6,6 +6,9 @@ AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限
 
 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
 
+- github: https://github.com/2881099/AdminBlazor
+- gitee: https://gitee.com/FreeSql/AdminBlazor
+
 ## 快速开始
 
 1. 安装模板
@@ -39,7 +42,7 @@ AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限
 - UserEntity 多对多 RoleEntity
 - RoleEntity 多对多 MenuEntity
 
-提示：AdminContext 类型已设置成 \[CascadeParameter\]
+提示：AdminContext 类型已注入为 Scoped
 
 ```csharp
 class AdminContext
@@ -70,7 +73,7 @@ void ButtonClick()
 
 ## 租户
 
-提示：AdminContext 类型已设置成 \[CascadeParameter\]
+提示：AdminContext 类型已注入为 Scoped
 
 ```csharp
 class AdminContext
