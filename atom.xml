@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-02-08T08:38:25.065Z</updated>
+  <updated>2024-02-18T11:17:58.616Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -11,7 +11,7 @@
     <title type="text"></title>
     <id>https://freesql.net/guide/AdminBlazor.html</id>
     <link href="https://freesql.net/guide/AdminBlazor.html"/>
-    <updated>2024-02-08T08:37:33.000Z</updated>
+    <updated>2024-02-18T11:17:11.000Z</updated>
     <summary type="html"><![CDATA[<h2> 项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
 <p>集成功能：菜单、角色、用户、定时任务、数据字典、租户</p>
@@ -28,6 +28,12 @@
 <li>github: https://github.com/2881099/AdminBlazor</li>
 <li>gitee: https://gitee.com/FreeSql/AdminBlazor</li>
 </ul>
+<p>正常更新一行记录</p>
+<ul>
+<li>vue -&gt; webapi orm 查询数据 -&gt; 转成 dto 返回 -&gt; 绑定 js 对象 -&gt; 前端提交时把 js 对象转成 http post DTO -&gt; webapi 获取 dto 转成实体对象 -&gt; orm.Update() -&gt; 更新成功</li>
+<li>blazor server -&gt; orm 查询数据 item -&gt; item 与 html 控件双向绑定 -&gt; 前端提交时 orm.Update(item) -&gt; 更新成功</li>
+</ul>
+<p>自己体会一下。。~~</p>
 <h2> 快速开始</h2>
 <ol>
 <li>安装模板</li>

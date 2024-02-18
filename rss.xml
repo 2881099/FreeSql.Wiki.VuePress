@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 08 Feb 2024 08:38:25 GMT</pubDate>
-    <lastBuildDate>Thu, 08 Feb 2024 08:38:25 GMT</lastBuildDate>
+    <pubDate>Sun, 18 Feb 2024 11:17:58 GMT</pubDate>
+    <lastBuildDate>Sun, 18 Feb 2024 11:17:58 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -25,6 +25,12 @@
 <li>github: https://github.com/2881099/AdminBlazor</li>
 <li>gitee: https://gitee.com/FreeSql/AdminBlazor</li>
 </ul>
+<p>正常更新一行记录</p>
+<ul>
+<li>vue -&gt; webapi orm 查询数据 -&gt; 转成 dto 返回 -&gt; 绑定 js 对象 -&gt; 前端提交时把 js 对象转成 http post DTO -&gt; webapi 获取 dto 转成实体对象 -&gt; orm.Update() -&gt; 更新成功</li>
+<li>blazor server -&gt; orm 查询数据 item -&gt; item 与 html 控件双向绑定 -&gt; 前端提交时 orm.Update(item) -&gt; 更新成功</li>
+</ul>
+<p>自己体会一下。。~~</p>
 <h2> 快速开始</h2>
 <ol>
 <li>安装模板</li>
