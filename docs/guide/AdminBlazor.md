@@ -9,6 +9,14 @@ AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限
 - github: https://github.com/2881099/AdminBlazor
 - gitee: https://gitee.com/FreeSql/AdminBlazor
 
+正常更新一行记录
+
+- vue -> webapi orm 查询数据 -> 转成 dto 返回 -> 绑定 js 对象 -> 前端提交时把 js 对象转成 http post DTO -> webapi 获取 dto 转成实体对象 -> orm.Update() -> 更新成功
+- blazor server -> orm 查询数据 item -> item 与 html 控件双向绑定 -> 前端提交时 orm.Update(item) -> 更新成功
+
+
+自己体会一下。。~~
+
 ## 快速开始
 
 1. 安装模板
