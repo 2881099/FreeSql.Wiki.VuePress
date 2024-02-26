@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 18 Feb 2024 11:17:58 GMT</pubDate>
-    <lastBuildDate>Sun, 18 Feb 2024 11:17:58 GMT</lastBuildDate>
+    <pubDate>Mon, 26 Feb 2024 06:44:11 GMT</pubDate>
+    <lastBuildDate>Mon, 26 Feb 2024 06:44:11 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7384,7 +7384,7 @@ repo1.DataFilter.Disable("test")</p>
 <td>保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比）</td>
 </tr>
 <tr>
-<td><a href="/guide/insert-or-update.html#_4%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91" target="blank">BeginEdit</a></td>
+<td><a href="/guide/insert-or-update.html#_5%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91" target="blank">BeginEdit</a></td>
 <td>-</td>
 <td>List&lt;TEntity&gt;</td>
 <td>准备编辑一个 List 实体</td>

@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-02-18T11:17:58.616Z</updated>
+  <updated>2024-02-26T06:44:11.261Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8341,7 +8341,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">仓储</title>
     <id>https://freesql.net/guide/repository.html</id>
     <link href="https://freesql.net/guide/repository.html"/>
-    <updated>2024-01-29T00:59:20.000Z</updated>
+    <updated>2024-02-26T06:43:24.000Z</updated>
     <summary type="html"><![CDATA[<p><code>FreeSql.Repository</code> 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，实现仓储层（CURD）。</p>
 <h2> 特性</h2>
 <ul>
@@ -8573,7 +8573,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <td>保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比）</td>
 </tr>
 <tr>
-<td><a href="/guide/insert-or-update.html#_4%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91" target="blank">BeginEdit</a></td>
+<td><a href="/guide/insert-or-update.html#_5%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91" target="blank">BeginEdit</a></td>
 <td>-</td>
 <td>List&lt;TEntity&gt;</td>
 <td>准备编辑一个 List 实体</td>
