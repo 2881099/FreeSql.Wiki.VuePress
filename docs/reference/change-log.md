@@ -2,6 +2,15 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.815
+
+- 修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737
+- 修复 Clickhouse ToInt32/ToInt64 解析错误；
+- 修复 WithMemory 对 InsertValueSql 属性无效的问题；
+- 修复 ZeroDbContext GroupBy BUG；
+- 修复 聚合根仓储 InsertOrUpdate OneToMany 只插入一条记录的 bug；
+- 优化 TypeHandlers 支持 Enum 枚举映射规则；#1634
+
 ## v3.2.812
 
 - 增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；
