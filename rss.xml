@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 26 Feb 2024 06:44:11 GMT</pubDate>
-    <lastBuildDate>Mon, 26 Feb 2024 06:44:11 GMT</lastBuildDate>
+    <pubDate>Tue, 27 Feb 2024 11:46:20 GMT</pubDate>
+    <lastBuildDate>Tue, 27 Feb 2024 11:46:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10779,10 +10779,19 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.812 增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；; 优化 ManyToMany 导航属性约定命名匹配嵌套类；; 修复 MySql AsTreeCte pathSelector 别名问题；; 修复 ClickHouse UpdateDict ...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.815 修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737; 修复 Clickhouse ToInt32/ToInt64 解析错误；; 修复 WithMemory 对 InsertValueSql 属性无效的问题；; 修复 ZeroDbContext GroupBy...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.815</h2>
+<ul>
+<li>修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737</li>
+<li>修复 Clickhouse ToInt32/ToInt64 解析错误；</li>
+<li>修复 WithMemory 对 InsertValueSql 属性无效的问题；</li>
+<li>修复 ZeroDbContext GroupBy BUG；</li>
+<li>修复 聚合根仓储 InsertOrUpdate OneToMany 只插入一条记录的 bug；</li>
+<li>优化 TypeHandlers 支持 Enum 枚举映射规则；#1634</li>
+</ul>
 <h2> v3.2.812</h2>
 <ul>
 <li>增加 DbContextOptions.AuditValue 基于 Ioc Scoped 审计值；</li>
