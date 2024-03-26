@@ -2,6 +2,19 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.820
+
+- 增加 DynamicEntity TypeBuilder 只读属性；
+- 修复 .NET9 TimeSpan.FromSeconds Reflect bug；#1748 #99588
+- 修复 IBaseRepository.IncludePropertyName 可能报错的问题；#1740
+- 修复 弱类型 IBaseRepository<object> 级联操作问题；#1740
+- 修复 Where(HzyTuple) 参数为 null 时的错误；#1744
+- 修复 IUpdate.SetSource SqlServer 批量更新 Cast 问题；#1755
+- 修复 SqlServer 导航属性 .Any 布尔子条件解析问题；
+- 优化 DbSet/Repository Attach 与 CanUpdate AuditValue 状态不同步问题；#1746
+- 优化 QuestDb BulkCopy 重命名为：ExecuteQuestDbBulkCopy；#1758
+- 优化 Clickhouse BulkCopy 重命名为：ExecuteClickHouseBulkCopy；#1758
+  
 ## v3.2.815
 
 - 修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737
