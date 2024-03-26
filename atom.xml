@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-03-17T21:07:13.697Z</updated>
+  <updated>2024-03-26T11:45:08.339Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12256,20 +12256,37 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-02-27T11:45:32.000Z</updated>
+    <updated>2024-03-26T11:44:24.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.815</h2>
+<h2> v3.2.820</h2>
 <ul>
-<li>修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737</li>
-<li>修复 Clickhouse ToInt32/ToInt64 解析错误；</li>
-<li>修复 WithMemory 对 InsertValueSql 属性无效的问题；</li>
-<li>修复 ZeroDbContext GroupBy BUG；</li>
-<li>修复 聚合根仓储 InsertOrUpdate OneToMany 只插入一条记录的 bug；</li>
-<li>优化 TypeHandlers 支持 Enum 枚举映射规则；#1634</li>
+<li>增加 DynamicEntity TypeBuilder 只读属性；</li>
+<li>修复 .NET9 TimeSpan.FromSeconds Reflect bug；#1748</li>
+<li>修复 IBaseRepository.IncludePropertyName 可能报错的问题；#1740</li>
+<li>修复 弱类型 IBaseRepository&lt;object&gt; 级联操作问题；#1740</li>
+<li>修复 Where(HzyTuple) 参数为 null 时的错误；#1744</li>
+<li>修复 IUpdate.SetSource SqlServer 批量更新 Cast 问题；#1755</li>
+<li>修复 SqlServer 导航属性 .Any 布尔子条件解析问题；</li>
+<li>优化 DbSet/Repository Attach 与 CanUpdate AuditValue 状态不同步问题；#1746</li>
+<li>优化 QuestDb BulkCopy 重命名为：ExecuteQuestDbBulkCopy；#1758</li>
+<li>优化 Clickhouse BulkCopy 重命名为：ExecuteClickHouseBulkCopy；#1758</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.820</h2>
+<ul>
+<li>增加 DynamicEntity TypeBuilder 只读属性；</li>
+<li>修复 .NET9 TimeSpan.FromSeconds Reflect bug；#1748</li>
+<li>修复 IBaseRepository.IncludePropertyName 可能报错的问题；#1740</li>
+<li>修复 弱类型 IBaseRepository&lt;object&gt; 级联操作问题；#1740</li>
+<li>修复 Where(HzyTuple) 参数为 null 时的错误；#1744</li>
+<li>修复 IUpdate.SetSource SqlServer 批量更新 Cast 问题；#1755</li>
+<li>修复 SqlServer 导航属性 .Any 布尔子条件解析问题；</li>
+<li>优化 DbSet/Repository Attach 与 CanUpdate AuditValue 状态不同步问题；#1746</li>
+<li>优化 QuestDb BulkCopy 重命名为：ExecuteQuestDbBulkCopy；#1758</li>
+<li>优化 Clickhouse BulkCopy 重命名为：ExecuteClickHouseBulkCopy；#1758</li>
+</ul>
 <h2> v3.2.815</h2>
 <ul>
 <li>修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737</li>
