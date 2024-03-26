@@ -14,7 +14,7 @@
 - 优化 DbSet/Repository Attach 与 CanUpdate AuditValue 状态不同步问题；#1746
 - 优化 QuestDb BulkCopy 重命名为：ExecuteQuestDbBulkCopy；#1758
 - 优化 Clickhouse BulkCopy 重命名为：ExecuteClickHouseBulkCopy；#1758
-  
+
 ## v3.2.815
 
 - 修复 MySqlEnum CHAR/BYTE 替换后前面多个空格的问题；#1737
