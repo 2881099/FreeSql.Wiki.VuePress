@@ -4,6 +4,8 @@ FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接
 
 使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。
 
+*接受定制项目开发，详细请联系作者*
+
 开源地址：[https://github.com/2881099/FreeIM](https://github.com/2881099/FreeIM)
 
 扩展资料：[《C#.NET im 聊天通讯架构设计 -- FreeIM 支持集群、职责分明、高性能》](https://www.cnblogs.com/FreeSql/p/16632727.html)
