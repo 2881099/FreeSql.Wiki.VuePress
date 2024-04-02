@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 26 Mar 2024 11:45:08 GMT</pubDate>
-    <lastBuildDate>Tue, 26 Mar 2024 11:45:08 GMT</lastBuildDate>
+    <pubDate>Tue, 02 Apr 2024 10:15:33 GMT</pubDate>
+    <lastBuildDate>Tue, 02 Apr 2024 10:15:33 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1044,11 +1044,12 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
       <link>https://freesql.net/guide/freeim.html</link>
       <guid>https://freesql.net/guide/freeim.html</guid>
       <source url="https://freesql.net/rss.xml">FreeIM</source>
-      <description>FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。 使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。 开源地址：https://github.com/2881099/FreeIM (https://github.com/2881099/...</description>
+      <description>FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。 使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。 接受定制项目开发，详细请联系作者 开源地址：https://github.com/2881099/FreeIM (https://gi...</description>
       <pubDate>Tue, 30 Aug 2022 05:43:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> FreeIM</h1>
 <p>FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。</p>
 <p>使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。</p>
+<p><em>接受定制项目开发，详细请联系作者</em></p>
 <p>开源地址：<a href="https://github.com/2881099/FreeIM" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeIM</a></p>
 <p>扩展资料：<a href="https://www.cnblogs.com/FreeSql/p/16632727.html" target="_blank" rel="noopener noreferrer">《C#.NET im 聊天通讯架构设计 -- FreeIM 支持集群、职责分明、高性能》</a></p>
 <blockquote>
