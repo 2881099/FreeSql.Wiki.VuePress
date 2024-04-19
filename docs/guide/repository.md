@@ -60,7 +60,22 @@ var curd = fsql.GetRepository<Song>();
 - 不支持从不同的线程同时使用同一仓储实例
 - 通过GetRepository相当于直接new DefaultRepository<TEntity, int>，每次调用都会创建一个新的实例,.NET Core中不建议使用
 
-方法 2、继承实现；
+方法 2、泛型仓储+依赖注入（.NET Core)；
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IFreeSql>(fsql);
+    services.AddFreeRepository(null);
+}
+
+//在控制器使用泛型仓储
+public SongsController(IBaseRepository<Song> songRepository)
+{
+}
+```
+
+方法 3、继承泛型仓储+依赖注入（.NET Core)；
 
 ```csharp
 public class SongRepository : BaseRepository<Song, int>
@@ -69,25 +84,19 @@ public class SongRepository : BaseRepository<Song, int>
 
     //在这里增加 CURD 以外的方法
 }
-```
 
-方法 3、依赖注入；
-
-```csharp
+//注入服务
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton<IFreeSql>(fsql);
     services.AddFreeRepository(null, typeof(SongRepository).Assembly); //如果没有继承的仓储，第二个参数不用传
 }
 
-//在控制器使用
-public SongsController(IBaseRepository<Song> songRepository)
-{
-}
-//或使用继承的仓储
+//使用继承的仓储
 public SongsController(SongRepository songRepository)
 {
 }
+
 ```
 
 > 依赖注入的方式可实现全局【过滤与验证】的设定，方便租户功能的设计；
