@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 19 Apr 2024 13:59:48 GMT</pubDate>
-    <lastBuildDate>Fri, 19 Apr 2024 13:59:48 GMT</lastBuildDate>
+    <pubDate>Mon, 29 Apr 2024 09:27:32 GMT</pubDate>
+    <lastBuildDate>Mon, 29 Apr 2024 09:27:32 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7142,13 +7142,13 @@ repo1.DataFilter.Disable("test")</p>
       <link>https://freesql.net/guide/read-write-splitting.html</link>
       <guid>https://freesql.net/guide/read-write-splitting.html</guid>
       <source url="https://freesql.net/rss.xml">读写分离</source>
-      <description>FreeSql 支持数据库读写分离，本功能是客户端的读写分离行为，数据库服务器该怎么配置仍然那样配置，不受本功能影响，为了方便描述后面讲到的【读写分离】都是指客户端的功能支持。 各种数据库的读写方案不一，数据库端开启读写分离功能后，读写分离的实现大致分为以下几种： 1、nginx 代理，配置繁琐且容易出错； 2、中件间，如 MyCat； 3、在 cli...</description>
+      <description>FreeSql 支持数据库读写分离，本功能是客户端的读写分离行为，数据库服务器该怎么配置仍然那样配置，不受本功能影响，为了方便描述后面讲到的【读写分离】都是指客户端的功能支持。 各种数据库的读写方案不一，数据库端开启读写分离功能后，读写分离的实现大致分为以下几种： 1、nginx 代理，配置繁琐且容易出错； 2、中间件，如 MyCat； 3、在 cli...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 读写分离</h1>
 <p>FreeSql 支持数据库读写分离，本功能是客户端的读写分离行为，数据库服务器该怎么配置仍然那样配置，不受本功能影响，为了方便描述后面讲到的【读写分离】都是指客户端的功能支持。</p>
 <p>各种数据库的读写方案不一，数据库端开启读写分离功能后，读写分离的实现大致分为以下几种：</p>
 <p>1、nginx 代理，配置繁琐且容易出错；</p>
-<p>2、中件间，如 MyCat；</p>
+<p>2、中间件，如 MyCat；</p>
 <p>3、在 client 端支持；</p>
 <p>FreeSql 实现了第 3 种方案，支持一个【主库】多个【从库】，【从库】的查询策略为随机方式。</p>
 <p>若某【从库】发生故障，将切换到其他可用【从库】，若已全部不可用则使用【主库】查询。</p>

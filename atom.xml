@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-04-19T13:59:48.901Z</updated>
+  <updated>2024-04-29T09:27:32.303Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8317,12 +8317,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">读写分离</title>
     <id>https://freesql.net/guide/read-write-splitting.html</id>
     <link href="https://freesql.net/guide/read-write-splitting.html"/>
-    <updated>2024-03-17T08:02:46.000Z</updated>
+    <updated>2024-04-29T07:55:22.000Z</updated>
     <summary type="html"><![CDATA[<h1> 读写分离</h1>
 <p>FreeSql 支持数据库读写分离，本功能是客户端的读写分离行为，数据库服务器该怎么配置仍然那样配置，不受本功能影响，为了方便描述后面讲到的【读写分离】都是指客户端的功能支持。</p>
 <p>各种数据库的读写方案不一，数据库端开启读写分离功能后，读写分离的实现大致分为以下几种：</p>
 <p>1、nginx 代理，配置繁琐且容易出错；</p>
-<p>2、中件间，如 MyCat；</p>
+<p>2、中间件，如 MyCat；</p>
 <p>3、在 client 端支持；</p>
 <p>FreeSql 实现了第 3 种方案，支持一个【主库】多个【从库】，【从库】的查询策略为随机方式。</p>
 <p>若某【从库】发生故障，将切换到其他可用【从库】，若已全部不可用则使用【主库】查询。</p>]]></summary>
@@ -8330,7 +8330,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 <p>FreeSql 支持数据库读写分离，本功能是客户端的读写分离行为，数据库服务器该怎么配置仍然那样配置，不受本功能影响，为了方便描述后面讲到的【读写分离】都是指客户端的功能支持。</p>
 <p>各种数据库的读写方案不一，数据库端开启读写分离功能后，读写分离的实现大致分为以下几种：</p>
 <p>1、nginx 代理，配置繁琐且容易出错；</p>
-<p>2、中件间，如 MyCat；</p>
+<p>2、中间件，如 MyCat；</p>
 <p>3、在 client 端支持；</p>
 <p>FreeSql 实现了第 3 种方案，支持一个【主库】多个【从库】，【从库】的查询策略为随机方式。</p>
 <p>若某【从库】发生故障，将切换到其他可用【从库】，若已全部不可用则使用【主库】查询。</p>
