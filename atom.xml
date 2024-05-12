@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-04-29T09:27:32.303Z</updated>
+  <updated>2024-05-12T04:04:36.487Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12258,24 +12258,33 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-03-26T11:44:24.000Z</updated>
+    <updated>2024-05-12T04:03:50.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.820</h2>
+<h2> v3.2.822</h2>
 <ul>
-<li>增加 DynamicEntity TypeBuilder 只读属性；</li>
-<li>修复 .NET9 TimeSpan.FromSeconds Reflect bug；#1748</li>
-<li>修复 IBaseRepository.IncludePropertyName 可能报错的问题；#1740</li>
-<li>修复 弱类型 IBaseRepository&lt;object&gt; 级联操作问题；#1740</li>
-<li>修复 Where(HzyTuple) 参数为 null 时的错误；#1744</li>
-<li>修复 IUpdate.SetSource SqlServer 批量更新 Cast 问题；#1755</li>
-<li>修复 SqlServer 导航属性 .Any 布尔子条件解析问题；</li>
-<li>优化 DbSet/Repository Attach 与 CanUpdate AuditValue 状态不同步问题；#1746</li>
-<li>优化 QuestDb BulkCopy 重命名为：ExecuteQuestDbBulkCopy；#1758</li>
-<li>优化 Clickhouse BulkCopy 重命名为：ExecuteClickHouseBulkCopy；#1758</li>
+<li>增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；</li>
+<li>修复 时枚举转 int 再转字符串报错；#1781</li>
+</ul>
+<h2> v3.2.821</h2>
+<ul>
+<li>修复 clickhouse.client 7.2.2 批量插入失败问题；#1776</li>
+<li>修复 IInsertOrUpdate.ExecuteMySqlBulkCopyAsync 异步方法会出现空引用的异常；#1762</li>
+<li>修复 DynamicCompileBuilder Extend 方法设置基类后失效问题；#1774</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.822</h2>
+<ul>
+<li>增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；</li>
+<li>修复 时枚举转 int 再转字符串报错；#1781</li>
+</ul>
+<h2> v3.2.821</h2>
+<ul>
+<li>修复 clickhouse.client 7.2.2 批量插入失败问题；#1776</li>
+<li>修复 IInsertOrUpdate.ExecuteMySqlBulkCopyAsync 异步方法会出现空引用的异常；#1762</li>
+<li>修复 DynamicCompileBuilder Extend 方法设置基类后失效问题；#1774</li>
+</ul>
 <h2> v3.2.820</h2>
 <ul>
 <li>增加 DynamicEntity TypeBuilder 只读属性；</li>

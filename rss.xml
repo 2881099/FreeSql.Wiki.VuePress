@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 29 Apr 2024 09:27:32 GMT</pubDate>
-    <lastBuildDate>Mon, 29 Apr 2024 09:27:32 GMT</lastBuildDate>
+    <pubDate>Sun, 12 May 2024 04:04:36 GMT</pubDate>
+    <lastBuildDate>Sun, 12 May 2024 04:04:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10781,10 +10781,21 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.820 增加 DynamicEntity TypeBuilder 只读属性；; 修复 .NET9 TimeSpan.FromSeconds Reflect bug；#1748; 修复 IBaseRepository.IncludePropertyName 可能报错的问题；#1740; 修复 弱类型...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.822 增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；; 修复 时枚举转 int 再转字符串报错；#1781; v3.2.821 修复 clickhouse.client 7.2.2 批量插入失败问题；#1776; 修...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.822</h2>
+<ul>
+<li>增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；</li>
+<li>修复 时枚举转 int 再转字符串报错；#1781</li>
+</ul>
+<h2> v3.2.821</h2>
+<ul>
+<li>修复 clickhouse.client 7.2.2 批量插入失败问题；#1776</li>
+<li>修复 IInsertOrUpdate.ExecuteMySqlBulkCopyAsync 异步方法会出现空引用的异常；#1762</li>
+<li>修复 DynamicCompileBuilder Extend 方法设置基类后失效问题；#1774</li>
+</ul>
 <h2> v3.2.820</h2>
 <ul>
 <li>增加 DynamicEntity TypeBuilder 只读属性；</li>
