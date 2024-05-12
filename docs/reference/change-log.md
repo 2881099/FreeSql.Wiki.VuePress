@@ -2,6 +2,17 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.822
+
+- 增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；
+- 修复 时枚举转 int 再转字符串报错；#1781
+
+## v3.2.821
+
+- 修复 clickhouse.client 7.2.2 批量插入失败问题；#1776
+- 修复 IInsertOrUpdate.ExecuteMySqlBulkCopyAsync 异步方法会出现空引用的异常；#1762
+- 修复 DynamicCompileBuilder Extend 方法设置基类后失效问题；#1774
+
 ## v3.2.820
 
 - 增加 DynamicEntity TypeBuilder 只读属性；
