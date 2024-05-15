@@ -32,6 +32,8 @@ docker pull igeekfan/freesql-doc:latest
 docker run --name freesql-doc -d -p 8081:80 igeekfan/freesql-doc:latest
 ```
 
+这样我们就可以通过 [http://localhost:8081](http://localhost:8081) 访问文档了。
+
 ## Docker Build
 
 ```bash
@@ -43,7 +45,6 @@ docker tag igeekfan/freesql-doc igeekfan/freesql-doc:latest
 docker login
 ## 推送到docker hub
 docker push igeekfan/freesql-doc:latest
-
 ## 运行本地镜像
 docker run --name freesql-doc -d -p 8081:80 igeekfan/freesql-doc:latest
 ```
