@@ -25,6 +25,29 @@ pnpm docs:dev
 pnpm docs:build
 ```
 
+## Docker Run
+
+```bash
+docker pull igeekfan/freesql-doc:latest
+docker run --name freesql-doc -d -p 8081:80 igeekfan/freesql-doc:latest
+```
+
+## Docker Build
+
+```bash
+docker stop freesql-doc
+docker rm freesql-doc
+docker rmi igeekfan/freesql-doc
+docker build -t igeekfan/freesql-doc .
+docker tag igeekfan/freesql-doc igeekfan/freesql-doc:latest
+docker login
+## 推送到docker hub
+docker push igeekfan/freesql-doc:latest
+
+## 运行本地镜像
+docker run --name freesql-doc -d -p 8081:80 igeekfan/freesql-doc:latest
+```
+
 ## upgrade package
 
 ```bash
