@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.825
+
+- 修复 开发环境分层编译，可能导致XML注释文件被锁报错的问题；
+- 修复 聚合根仓储级联插入 OnToMany 雪花主键只插入一条记录；
+
 ## v3.2.822
 
 - 增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；
