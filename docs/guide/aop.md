@@ -2,28 +2,33 @@
 
 FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。
 
-## 审计 CRUD(如何监视 SQL？)
+## 审计命令(如何监视 SQL？)
 
-如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
+如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手
 
-FreeSql 支持简单的类似功能：
+fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。
+
+执行后的事件会附带异常信息、耗时信息等。
+
+建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。
+
+> 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
 
 ```csharp
-fsql.Aop.CurdAfter += (s, e) =>
+fsql.Aop.CommandBefore += (s, e) => 
 {
-    Console.WriteLine($"ManagedThreadId:{Thread.CurrentThread.ManagedThreadId};"+
-    $" FullName:{e.EntityType.FullName} ElapsedMilliseconds:{e.ElapsedMilliseconds}ms, {e.Sql}");
-    if (e.ElapsedMilliseconds > 200)
+    //e.Command.CommandText = null; 可拦截命令
+};
+
+fsql.Aop.CommandAfter += (s, e) =>
+{
+    if (e.Exception != null)
     {
-        //记录日志
-        //发送短信给负责人
+        //做一些日志记录的操作。以下为示例。
+        Trace.WriteLine($"Message:{e.Exception.Message }\r\nStackTrace:{e.Exception.StackTrace}\r\nCommandText:{e.Command.CommandText}");
     }
 };
 ```
-
-只需要一个事件，就可以对全局起到作用。
-
-还有一个 CurdBefore 在执行 sql 之前触发，常用于记录日志或开发调试。
 
 ## 审计属性值
 
@@ -52,32 +57,6 @@ class Order {
 如果命名规范，可以在 aop 里判断，`if (e.Property.Name == "createtime") e.Value = DateTime.Now;`
 
 > v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件
-
-## 审计命令
-
-fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。
-
-执行后的事件会附带异常信息、耗时信息等。
-
-建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。
-
-> 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
-
-```csharp
-fsql.Aop.CommandBefore += (s, e) => 
-{
-    //e.Command.CommandText = null; 可拦截命令
-};
-
-fsql.Aop.CommandAfter += (s, e) =>
-{
-    if (e.Exception != null)
-    {
-        //做一些日志记录的操作。以下为示例。
-        Trace.WriteLine($"Message:{e.Exception.Message }\r\nStackTrace:{e.Exception.StackTrace}\r\nCommandText:{e.Command.CommandText}");
-    }
-};
-```
 
 ## 审计迁移脚本
 
