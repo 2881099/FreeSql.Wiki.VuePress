@@ -216,7 +216,7 @@ fsql.Aop.ParseExpression += (s, e) =>
 
 这个解析有点复杂，当 `e.Expression` 很复杂的时候，我们还提供了 `e.FreeParse` 方法，使用它相当于调用 `FreeSql` 内置表达式解析引擎，辅助您进行解析。
 
-## 自定义类型转换
+## 自定义全局类型转换
 框架中，除基础类型以外可以使用`TypeHandlers`添加转换器，一个具体的类对应一个转换器。
 
 现在假定你有个BT需求：把数据库中的“A10”  转换成 枚举的  TestType.A(int值10)
