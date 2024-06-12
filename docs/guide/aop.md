@@ -230,10 +230,10 @@ fsql.Aop.ParseExpression += (s, e) =>
 freeSql.Aop.ConfigEntityProperty += (s, e) =>
 {
     if(e.Property.PropertyType.IsEnum)
-     {
+    {
         EnumToValueStringHandler hander = new EnumToValueStringHandler(e.Property.PropertyType);
         FreeSql.Internal.Utils.TypeHandlers.TryAdd(hander.ModelType, hander);
-     }
+    }
 };
 
 //转换器代码
