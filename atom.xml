@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-06-12T07:23:23.511Z</updated>
+  <updated>2024-06-12T07:35:47.318Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3827,31 +3827,25 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">AOP✨</title>
     <id>https://freesql.net/guide/aop.html</id>
     <link href="https://freesql.net/guide/aop.html"/>
-    <updated>2024-06-12T07:22:40.000Z</updated>
+    <updated>2024-06-12T07:34:53.000Z</updated>
     <summary type="html"><![CDATA[<h1> AOP✨</h1>
 <p>FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。</p>
-<h2> 审计 CRUD(如何监视 SQL？)</h2>
-<p>如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。</p>
-<p>FreeSql 支持简单的类似功能：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code>fsql<span class="token punctuation">.</span>Aop<span class="token punctuation">.</span>CurdAfter <span class="token operator">+=</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> e<span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
-<span class="token punctuation">{</span>
-    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"ManagedThreadId:</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">Thread<span class="token punctuation">.</span>CurrentThread<span class="token punctuation">.</span>ManagedThreadId</span><span class="token punctuation">}</span></span><span class="token string">;"</span></span><span class="token operator">+</span>
-    <span class="token interpolation-string"><span class="token string">$" FullName:</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">e<span class="token punctuation">.</span>EntityType<span class="token punctuation">.</span>FullName</span><span class="token punctuation">}</span></span><span class="token string"> ElapsedMilliseconds:</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">e<span class="token punctuation">.</span>ElapsedMilliseconds</span><span class="token punctuation">}</span></span><span class="token string">ms, </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">e<span class="token punctuation">.</span>Sql</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>ElapsedMilliseconds <span class="token operator">&gt;</span> <span class="token number">200</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">//记录日志</span>
-        <span class="token comment">//发送短信给负责人</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
+<h2> 审计命令(如何监视 SQL？)</h2>
+<p>如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手</p>
+<p>fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。</p>
+<p>执行后的事件会附带异常信息、耗时信息等。</p>
+<p>建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。</p>]]></summary>
     <content type="html"><![CDATA[<h1> AOP✨</h1>
 <p>FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。</p>
-<h2> 审计 CRUD(如何监视 SQL？)</h2>
-<p>如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。</p>
-<p>FreeSql 支持简单的类似功能：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>只需要一个事件，就可以对全局起到作用。</p>
-<p>还有一个 CurdBefore 在执行 sql 之前触发，常用于记录日志或开发调试。</p>
-<h2> 审计属性值</h2>
+<h2> 审计命令(如何监视 SQL？)</h2>
+<p>如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手</p>
+<p>fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。</p>
+<p>执行后的事件会附带异常信息、耗时信息等。</p>
+<p>建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。</p>
+<blockquote>
+<p>提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 审计属性值</h2>
 <p>实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花 id 值。</p>
 <blockquote>
@@ -3861,14 +3855,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <blockquote>
 <p>v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件</p>
 </blockquote>
-<h2> 审计命令</h2>
-<p>fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL 命令的执行前、和执行后。</p>
-<p>执行后的事件会附带异常信息、耗时信息等。</p>
-<p>建议在开发模式下开启无参数化模式，new FreeSqlBuilder().UseNoneCommandParameter(true)。</p>
-<blockquote>
-<p>提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。</p>
-</blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 审计迁移脚本</h2>
+<h2> 审计迁移脚本</h2>
 <p>FreeSql 自带迁移功能，那么迁移的 SQL 语句长啥样，你可能会好奇。</p>
 <ul>
 <li>
