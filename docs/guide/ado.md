@@ -40,10 +40,13 @@ Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典�
 关于**参数前缀**：
 
 - odbc 是 **?** 并且没有标识，所以 freesql 禁用了 odbc 参数化
-- oracle 是 **:**
-- mysql.data 是 **?**
-- mysqlconnector 是 **@**
-- 其他基本都是 **@**
+
+|类型|前缀符号|
+|--|--|
+|oracle|**:**|
+|mysql.data|**?**|
+|mysqlconnector|**@**|
+|其他|**@**|
 
 IN 参数化查询：
 
