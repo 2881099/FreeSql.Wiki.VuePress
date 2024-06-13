@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-06-12T07:35:47.318Z</updated>
+  <updated>2024-06-13T06:30:04.091Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3632,7 +3632,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">ADO</title>
     <id>https://freesql.net/guide/ado.html</id>
     <link href="https://freesql.net/guide/ado.html"/>
-    <updated>2024-01-18T08:16:13.000Z</updated>
+    <updated>2024-06-13T03:11:31.000Z</updated>
     <summary type="html"><![CDATA[<h1> ADO</h1>
 <p>Ado 是 IFreeSql 下重要的对象之一，它包括所有对 SQL 操作的封装，提供 ExecuteReader、ExecuteDataSet、ExecuteDataTable、ExecuteNonQuery、ExecuteScalar 等方法，使用起来和传统 SqlHelper 一样。</p>
 <h2> 查询 SQL 返回实体</h2>
@@ -3666,11 +3666,33 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>关于<strong>参数前缀</strong>：</p>
 <ul>
 <li>odbc 是 <strong>?</strong> 并且没有标识，所以 freesql 禁用了 odbc 参数化</li>
-<li>oracle 是 <strong>:</strong></li>
-<li>mysql.data 是 <strong>?</strong></li>
-<li>mysqlconnector 是 <strong>@</strong></li>
-<li>其他基本都是 <strong>@</strong></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>前缀符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oracle</td>
+<td><strong>:</strong></td>
+</tr>
+<tr>
+<td>mysql.data</td>
+<td><strong>?</strong></td>
+</tr>
+<tr>
+<td>mysqlconnector</td>
+<td><strong>@</strong></td>
+</tr>
+<tr>
+<td>其他</td>
+<td><strong>@</strong></td>
+</tr>
+</tbody>
+</table>
 <p>IN 参数化查询：</p>
 <blockquote>
 <p>当前仅支持 Array 和 IList 类型绑定</p>
@@ -3827,7 +3849,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">AOP✨</title>
     <id>https://freesql.net/guide/aop.html</id>
     <link href="https://freesql.net/guide/aop.html"/>
-    <updated>2024-06-12T07:34:53.000Z</updated>
+    <updated>2024-06-13T02:05:41.000Z</updated>
     <summary type="html"><![CDATA[<h1> AOP✨</h1>
 <p>FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。</p>
 <h2> 审计命令(如何监视 SQL？)</h2>
@@ -3898,15 +3920,15 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这个解析有点复杂，当 <code>e.Expression</code> 很复杂的时候，我们还提供了 <code>e.FreeParse</code> 方法，使用它相当于调用 <code>FreeSql</code> 内置表达式解析引擎，辅助您进行解析。</p>
 <h2> 自定义全局类型转换</h2>
 <p>框架中，除基础类型以外可以使用 <code>TypeHandlers</code> 添加转换器，一个具体的类对应一个转换器。</p>
-<p>现在假定你有个BT需求：把数据库中的 <code>A10</code> 转换成 枚举的 TestType.A(int值10)</p>
+<p>现在假定你有个BT需求：把数据库中的 <code>'A10'</code> 转换成 枚举的 TestType.A(int值10)</p>
 <ul>
 <li>在 EF 中，框架遍历所有实体，在ctx创建时根据具体的 Enum 类型添加转换器。</li>
 <li>在 FreeSql 中，思路类似。ConfigEntityProperty 委托中可以获取到属性的类型，然后创建一个具体的转换器即可。</li>
 </ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>核心思路是 <code>ITypeHandler.Type</code> 变成变量，可以从外部传递。额外有些问题要注意：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>核心思路是 <code>ITypeHandler.Type</code> 变成变量，可以从外部传递。额外有些问题要注意：</p>
 <ol>
 <li>所有的 "xxxEnum" 都会执行这个转换，如果有多个数据库多种格式，需要在 <code>Handler</code> 中处理</li>
-<li>实体类超级多，枚举属性超级多时，<strong>可能影响性能</strong> 。确实很多时建议不在实体类上修改，可以通过部分类，新加一个属性去处理。(属性设置为IsIgnore,getter、seter中执行转换)</li>
+<li>实体类超级多，枚举属性超级多时，<strong>可能影响性能</strong> 。确实很多时建议不在实体类上修改，可以通过部分类(partial class)，新加一个属性去处理。(属性设置为Ignore,在getter、setter中执行转换)</li>
 </ol>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
