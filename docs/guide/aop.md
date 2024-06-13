@@ -199,7 +199,7 @@ fsql.Aop.ParseExpression += (s, e) =>
 
 框架中，除基础类型以外可以使用 `TypeHandlers` 添加转换器，一个具体的类对应一个转换器。
 
-现在假定你有个BT需求：把数据库中的 `A10` 转换成 枚举的 TestType.A(int值10)
+现在假定你有个BT需求：把数据库中的 `'A10'` 转换成 枚举的 TestType.A(int值10)
 
 - 在 EF 中，框架遍历所有实体，在ctx创建时根据具体的 Enum 类型添加转换器。
 - 在 FreeSql 中，思路类似。ConfigEntityProperty 委托中可以获取到属性的类型，然后创建一个具体的转换器即可。
@@ -218,15 +218,17 @@ freeSql.Aop.ConfigEntityProperty += (s, e) =>
 //转换器代码
 public class EnumToValueStringHandler : ITypeHandler
 {
+    //ModelType这里使用 ModelType 来表达最后Handler针对那个Type进行处理
     private readonly Type enumType;
+    Type ITypeHandler.Type { get => this.enumType; } 
+    public Type ModelType { get => this.enumType; }
 
-    //我这里传递具体的 type 信息，就能针对具体的枚举执行转换了
+    //构造函数上传递具体的 type 信息，就能针对具体的枚举执行转换了
+    //你也可以根据你的需要替换为另一个Type类
     public EnumToValueStringHandler(Type enumType)
     {
         this.enumType = enumType;
     }
-
-    Type ITypeHandler.Type { get => this.enumType; }
 
     // xxEnum -> string 附加A
     object ITypeHandler.Serialize(object value)
@@ -237,7 +239,7 @@ public class EnumToValueStringHandler : ITypeHandler
     // string -> xxEnum 去掉A
     object ITypeHandler.Deserialize(object value)
     {
-        return Enum.Parse<TesttttEnum>(((string)value).Replace("A", ""));
+        return Enum.Parse<TestType>(((string)value).Replace("A", ""));
     }
 }
 ```
