@@ -246,4 +246,4 @@ public class EnumToValueStringHandler : ITypeHandler
 核心思路是 `ITypeHandler.Type` 变成变量，可以从外部传递。额外有些问题要注意：
 
 1. 所有的 "xxxEnum" 都会执行这个转换，如果有多个数据库多种格式，需要在 `Handler` 中处理
-2. 实体类超级多，枚举属性超级多时，**可能影响性能** 。确实很多时建议不在实体类上修改，可以通过部分类(partial class)，新加一个属性去处理。(属性设置为Ignore,在getter、seter中执行转换)
+2. 实体类超级多，枚举属性超级多时，**可能影响性能** 。确实很多时建议不在实体类上修改，可以通过部分类(partial class)，新加一个属性去处理。(属性设置为Ignore,在getter、setter中执行转换)
