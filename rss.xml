@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 13 Jun 2024 06:30:04 GMT</pubDate>
-    <lastBuildDate>Thu, 13 Jun 2024 06:30:04 GMT</lastBuildDate>
+    <pubDate>Fri, 14 Jun 2024 10:43:06 GMT</pubDate>
+    <lastBuildDate>Fri, 14 Jun 2024 10:43:06 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8759,6 +8759,7 @@ FROM "Topic" a</p>
 <p>fsql.CodeFirst.GetTableByEntity(typeof(AsTableLog)).AsTableImpl.SetDefaultAllTables(value =&gt; value.Take(3).ToArray());</p>
 </blockquote>
 <p>详细介绍：<a href="https://github.com/dotnetcore/FreeSql/discussions/1066" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1066</a></p>
+<p>分表场景的索引可以这样：[Index("{tablename}_idx_01", "phone")]</p>
 <h2> 【分库】常规技巧</h2>
 <p>1、Sqlite 跨库</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>SQLite 跨库操作是 FreeSql 独有的功能，连接串 attachs 参数值逗号分割。</p>
