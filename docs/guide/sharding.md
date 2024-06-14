@@ -114,6 +114,8 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
+分表场景的索引可以这样：\[Index("{tablename}_idx_01", "phone")\]
+
 ## 【分库】常规技巧
 
 1、Sqlite 跨库
