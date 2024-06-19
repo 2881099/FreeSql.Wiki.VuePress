@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-06-14T10:43:06.921Z</updated>
+  <updated>2024-06-19T07:20:51.289Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12280,22 +12280,27 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-05-20T04:22:10.000Z</updated>
+    <updated>2024-06-19T07:19:58.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.2.825</h2>
+<h2> v3.2.830</h2>
 <ul>
-<li>修复 开发环境分层编译，可能导致XML注释文件被锁报错的问题；</li>
-<li>修复 聚合根仓储级联插入 OnToMany 雪花主键只插入一条记录；</li>
-</ul>
-<h2> v3.2.822</h2>
-<ul>
-<li>增加 vb.net Lambda 解析 AddChecked/SubtractChecked/MultiplyChecked；</li>
-<li>修复 时枚举转 int 再转字符串报错；#1781</li>
-</ul>
-<h2> v3.2.821</h2>]]></summary>
+<li>增加 ClickHouse 表分区支持；（感谢d4ilys贡献）</li>
+<li>修复 .Contains('b%') 部分数据库函数参数位置错误；#1826</li>
+<li>修复 ClickHouse 批量更新 DateTime 问题；</li>
+<li>修复 Cilckhouse CodeFirst主键问题；</li>
+<li>调整 命名空间 FreeSql.Provider.ClickHouse.Attributes -&gt; FreeSql.DataAnnotations；#1815</li>
+</ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.830</h2>
+<ul>
+<li>增加 ClickHouse 表分区支持；（感谢d4ilys贡献）</li>
+<li>修复 .Contains('b%') 部分数据库函数参数位置错误；#1826</li>
+<li>修复 ClickHouse 批量更新 DateTime 问题；</li>
+<li>修复 Cilckhouse CodeFirst主键问题；</li>
+<li>调整 命名空间 FreeSql.Provider.ClickHouse.Attributes -&gt; FreeSql.DataAnnotations；#1815</li>
+</ul>
 <h2> v3.2.825</h2>
 <ul>
 <li>修复 开发环境分层编译，可能导致XML注释文件被锁报错的问题；</li>
