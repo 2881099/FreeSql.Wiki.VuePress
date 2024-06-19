@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.830
+
+- 增加 ClickHouse 表分区支持；（感谢d4ilys贡献）
+- 修复 .Contains('b%') 部分数据库函数参数位置错误；#1826
+- 修复 ClickHouse 批量更新 DateTime 问题；
+- 修复 Cilckhouse CodeFirst主键问题；
+- 调整 命名空间 FreeSql.Provider.ClickHouse.Attributes -> FreeSql.DataAnnotations；#1815
+
 ## v3.2.825
 
 - 修复 开发环境分层编译，可能导致XML注释文件被锁报错的问题；
