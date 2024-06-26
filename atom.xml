@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-06-26T11:11:43.356Z</updated>
+  <updated>2024-06-26T11:31:05.578Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12280,9 +12280,15 @@ FROM "Topic" a</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-06-19T07:19:58.000Z</updated>
+    <updated>2024-06-26T11:30:18.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.831</h2>
+<ul>
+<li>修复 */表达式解析问题；#1836</li>
+<li>优化 Ado读写分离存储过程默认使用从库；#1833</li>
+<li>增加 ZeroEntity 自定义异常及相关；</li>
+</ul>
 <h2> v3.2.830</h2>
 <ul>
 <li>增加 ClickHouse 表分区支持；（感谢d4ilys贡献）</li>
@@ -12293,6 +12299,12 @@ FROM "Topic" a</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.831</h2>
+<ul>
+<li>修复 */表达式解析问题；#1836</li>
+<li>优化 Ado读写分离存储过程默认使用从库；#1833</li>
+<li>增加 ZeroEntity 自定义异常及相关；</li>
+</ul>
 <h2> v3.2.830</h2>
 <ul>
 <li>增加 ClickHouse 表分区支持；（感谢d4ilys贡献）</li>

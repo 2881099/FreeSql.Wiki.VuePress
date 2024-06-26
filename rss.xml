@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 26 Jun 2024 11:11:43 GMT</pubDate>
-    <lastBuildDate>Wed, 26 Jun 2024 11:11:43 GMT</lastBuildDate>
+    <pubDate>Wed, 26 Jun 2024 11:31:05 GMT</pubDate>
+    <lastBuildDate>Wed, 26 Jun 2024 11:31:05 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10812,10 +10812,16 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.830 增加 ClickHouse 表分区支持；（感谢d4ilys贡献）; 修复 .Contains(&amp;apos;b%&amp;apos;) 部分数据库函数参数位置错误；#1826; 修复 ClickHouse 批量更新 DateTime 问题；; 修复 Cilckhouse CodeFirst主键问题；; 调整 命名空间 ...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.831 修复 */表达式解析问题；#1836; 优化 Ado读写分离存储过程默认使用从库；#1833; 增加 ZeroEntity 自定义异常及相关；; v3.2.830 增加 ClickHouse 表分区支持；（感谢d4ilys贡献）; 修复 .Contains(&amp;apos;b%&amp;apos;) 部分数据库函数参数位...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.831</h2>
+<ul>
+<li>修复 */表达式解析问题；#1836</li>
+<li>优化 Ado读写分离存储过程默认使用从库；#1833</li>
+<li>增加 ZeroEntity 自定义异常及相关；</li>
+</ul>
 <h2> v3.2.830</h2>
 <ul>
 <li>增加 ClickHouse 表分区支持；（感谢d4ilys贡献）</li>
