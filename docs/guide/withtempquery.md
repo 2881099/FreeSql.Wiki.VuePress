@@ -2,11 +2,11 @@
 
 ## WithTempQuery
 
-意见往集：<https://github.com/dotnetcore/FreeSql/discussions/1192>
-
 需求版本：v3.2.666+
 
 GroupBy + WithTempQuery(嵌套查询) + FromQuery + UnionAll 组合使用，会让查询功能更加强大、灵活。
+
+注意：FromQuery 多个 WithTempQuery 匿名类型时，确保不是同一个类型（可使用任意属性区分） [#1620](https://github.com/dotnetcore/FreeSql/issues/1620)
 
 ## 场景1：查询分组第一条记录
 
