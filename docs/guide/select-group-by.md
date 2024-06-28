@@ -28,15 +28,17 @@ var list = fsql.Select<Topic>()
     {
         g.Key, 
         cou1 = g.Count(), 
-        arg1 = g.Avg(g.Value.Clicks), 
-        arg2 = g.Sum(g.Value.Clicks > 100 ? 1 : 0)
+        arg1 = g.Avg(g.Value.Clicks),
+        arg2 = g.Count(g.Value.Clicks > 100 ? 1 : 0)
+        arg3 = g.Sum(g.Value.Clicks) //支持 Sum(g.Key.Clicks > 100 ? 1: 0) 这种写法
     });
 //SELECT 
 //substr(a.`Title`, 1, 2) as1,
 //(a.`Id` % 4) as2, 
 //count(1) as3, 
 //avg(a.`Clicks`) as4, 
-//sum(case when a.`Clicks` > 100 then 1 else 0 end) as5 
+//count(case when a.`Clicks` > 100 then 1 else 0 end) as5
+//sum(a.`Clicks`) as6 
 //FROM `Topic` a 
 //GROUP BY substr(a.`Title`, 1, 2), (a.`Id` % 4) 
 //HAVING (count(1) > 0 AND avg((a.`Id` % 4)) > 0 AND max((a.`Id` % 4)) > 0) AND (count(1) < 300 OR avg((a.`Id` % 4)) < 100)
@@ -51,7 +53,8 @@ var list = fsql.Select<Topic>()
     {
         cou1 = g.Count(), 
         arg1 = g.Avg(g.Key.Clicks), 
-        arg2 = g.Sum(g.Key.Clicks > 100 ? 1 : 0)
+        arg2 = g.Count(g.Key.Clicks > 100 ? 1 : 0),
+        arg3 = g.Sum(g.Key.Clicks) //支持 Sum(g.Key.Clicks > 100 ? 1: 0) 这种写法
     });
 ```
 
