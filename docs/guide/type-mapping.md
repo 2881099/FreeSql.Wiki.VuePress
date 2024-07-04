@@ -31,6 +31,24 @@ class String_JsonClass : TypeHandler<JsonClass>
         return JsonConvert.DeserializeObject<JsonClass>((string)value);
     }
 }
+
+class Class1
+{
+    //自定义 DateTimeOffset
+    [Column(MapType = typeof(string), DbType = "datetime")]
+    public DateTimeOffset Join { get; set; }
+}
+class DateTimeOffsetTypeHandler : TypeHandler<DateTimeOffset>
+{
+    public override object Serialize(DateTimeOffset value)
+    {
+        return value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+    }
+    public override DateTimeOffset Deserialize(object value)
+    {
+        return DateTimeOffset.TryParse((string)value, out var dts) ? dts : DateTimeOffset.MinValue;
+    }
+}
 ```
 
 ### 使用 MapType 枚举 -> string/int 等等如下：
