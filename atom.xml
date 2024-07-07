@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-06-27T07:44:13.985Z</updated>
+  <updated>2024-07-07T10:44:43.846Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -10132,7 +10132,7 @@ FROM "Topic" a</p>
     <title type="text">事务Transaction</title>
     <id>https://freesql.net/guide/transaction.html</id>
     <link href="https://freesql.net/guide/transaction.html"/>
-    <updated>2024-01-14T16:07:40.000Z</updated>
+    <updated>2024-07-07T10:43:56.000Z</updated>
     <summary type="html"><![CDATA[<h1> 事务Transaction</h1>
 <p>本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：<a href="https://github.com/2881099/FreeSql.Cloud" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeSql.Cloud</a></p>
 <h2> 0、UnitOfWorkManager跨方法异步</h2>
@@ -10146,6 +10146,7 @@ FROM "Topic" a</p>
 <li><a href="/guide/unitofwork-manager.html" target="blank">AOP + FreeSql 基于特性标签实现跨方法异步事务</a></li>
 </ul>
 <h2> 1、UnitOfWork 事务</h2>
+<p>提示：工作单元依赖 FreeSql.DbContext.dll，后面 fsql.Transaction 同线程事务内置无依赖。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2、DbContext 事务</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 3、同线程事务</h2>
 <p>同线程事务，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步），比较适合 WinForm/WPF UI 主线程使用事务的场景。</p>
@@ -10192,7 +10193,7 @@ FROM "Topic" a</p>
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2023-09-08T06:46:06.000Z</updated>
+    <updated>2024-07-04T08:08:52.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 自定义类型映射(MapType)</h2>
 <h3> v3.2.701 版本自定义类型转换</h3>
@@ -10222,11 +10223,29 @@ FROM "Topic" a</p>
         <span class="token keyword">return</span> JsonConvert<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">DeserializeObject</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>JsonClass<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">)</span><span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
+
+<span class="token keyword">class</span> <span class="token class-name">Class1</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//自定义 DateTimeOffset</span>
+    <span class="token punctuation">[</span><span class="token function">Column</span><span class="token punctuation">(</span>MapType <span class="token operator">=</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name"><span class="token keyword">string</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> DbType <span class="token operator">=</span> <span class="token string">"datetime"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name">DateTimeOffset</span> Join <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">DateTimeOffsetTypeHandler</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">TypeHandler<span class="token punctuation">&lt;</span>DateTimeOffset<span class="token punctuation">&gt;</span></span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">object</span></span> <span class="token function">Serialize</span><span class="token punctuation">(</span><span class="token class-name">DateTimeOffset</span> <span class="token keyword">value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">value</span><span class="token punctuation">.</span><span class="token function">ToUniversalTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name">DateTimeOffset</span> <span class="token function">Deserialize</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> <span class="token keyword">value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> DateTimeOffset<span class="token punctuation">.</span>TryParse<span class="token class-name"><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">)</span><span class="token keyword">value</span><span class="token punctuation">,</span> <span class="token keyword">out</span> <span class="token keyword">var</span> dts<span class="token punctuation">)</span> <span class="token punctuation">?</span></span> dts <span class="token punctuation">:</span> DateTimeOffset<span class="token punctuation">.</span>MinValue<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 自定义类型映射(MapType)</h2>
 <h3> v3.2.701 版本自定义类型转换</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用 MapType 枚举 -&gt; string/int 等等如下：</h3>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用 MapType 枚举 -&gt; string/int 等等如下：</h3>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>应该不需要解释了吧？</p>
 <p>BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - * / 等操作；</p>
 <p>v0.9.15 版本还可以将值对象映射成 typeof(string)，安装扩展包：</p>
