@@ -8,6 +8,8 @@
 
 ## 1、UnitOfWork 事务
 
+提示：工作单元依赖 FreeSql.DbContext.dll，后面 fsql.Transaction 同线程事务内置无依赖。
+
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
