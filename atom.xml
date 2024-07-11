@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-07-11T11:37:35.120Z</updated>
+  <updated>2024-07-11T11:50:21.521Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7688,7 +7688,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
     <title type="text">多租户</title>
     <id>https://freesql.net/guide/multi-tenancy.html</id>
     <link href="https://freesql.net/guide/multi-tenancy.html"/>
-    <updated>2024-07-11T11:36:43.000Z</updated>
+    <updated>2024-07-11T11:49:29.000Z</updated>
     <summary type="html"><![CDATA[<h1> 多租户</h1>
 <h3> 什么是多租户</h3>
 <p>维基百科：“软件多租户是指一种软件架构，在这种软件架构中，软件的一个实例运行在服务器上并且为多个租户服务”。一个租户是一组共享该软件实例特定权限的用户。有了多租户架构，软件应用被设计成为每个租户提供一个 专用的实例包括该实例的数据的共享，还可以共享配置，用户管理，租户自己的功能和非功能属性。多租户和多实例架构相比，多租户分离了代表不同的租户操作的多个实例。</p>
@@ -7734,12 +7734,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.Sqlite
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。</p>
 <blockquote>
-<p>v3.2.833 动态设置表名</p>
-</blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>更多说明参考：<a href="/guide/repository.html" target="blank">《FreeSql.Repository 仓储》</a>、<a href="/guide/sharding.html" target="blank">《分表分库》</a>。</p>
 </blockquote>
-<h3> 方案三：按租户分库</h3>
+<blockquote>
+<p>v3.2.833 动态设置表名</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 方案三：按租户分库</h3>
 <ul>
 <li>场景1：同数据库实例（未跨服务器），租户间使用不同的数据库名或Schema区分，使用方法与方案二相同；</li>
 <li>场景2：跨服务器分库，本段讲解该场景；</li>
