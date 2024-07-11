@@ -135,6 +135,8 @@ var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantMa
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。
 
+> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
+
 > v3.2.833 动态设置表名
 
 ```csharp
@@ -169,8 +171,6 @@ public class TenantAccessor : IDisposable
     }
 }
 ```
-
-> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
 
 ### 方案三：按租户分库
 
