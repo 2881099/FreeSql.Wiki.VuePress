@@ -86,6 +86,7 @@ fsql.Aop.SyncStructureBefore、fsql.Aop.SyncStructureAfter 这两个事件将排
 
 fsql.Aop.ConfigEntity += (s, e) => {
     e.ModifyResult.Name = "public." + e.ModifyResult.Name;
+    //提示：可以利用 AsyncLocal 动态设置表名 v3.2.833
 };
 ```
 
