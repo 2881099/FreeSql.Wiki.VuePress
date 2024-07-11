@@ -135,6 +135,41 @@ var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantMa
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。
 
+> v3.2.833 动态设置表名
+
+```csharp
+var fsql = new FreeSql.FreeSqlBuilder()
+    .UseMappingPriority(MappingPriorityType.Attribute, MappingPriorityType.FluentApi, MappingPriorityType.Aop)
+    ....;
+fsql.Aop.ConfigEntity += (s, e) => { e.ModifyResult.Name = $"{TenantAccessor.Current}.{e.ModifyResult.Name}"; //表名 };
+
+app.Use(async (context, next) =>
+{
+    // 使用者通过 aspnetcore 中间件，解析 token 得到租户信息
+    string tenant = YourGetTenantFunction();
+    using (new TenantAccessor(tenant))
+    {
+        await next();
+    }
+});
+
+public class TenantAccessor : IDisposable
+{
+    static AsyncLocal<string> current = new AsyncLocal<string>();
+    public static string Current => current.Value ?? "public";
+
+    public TenantAccessor(string tenant)
+    {
+        current.Value = tenant;
+    }
+
+    public void Dispose()
+    {
+        current.Value = null;
+    }
+}
+```
+
 > 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
 
 ### 方案三：按租户分库
