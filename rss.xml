@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 11 Jul 2024 11:02:53 GMT</pubDate>
-    <lastBuildDate>Thu, 11 Jul 2024 11:02:53 GMT</lastBuildDate>
+    <pubDate>Thu, 11 Jul 2024 11:37:35 GMT</pubDate>
+    <lastBuildDate>Thu, 11 Jul 2024 11:37:35 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6701,6 +6701,9 @@ repo1.DataFilter.Disable("test")</p>
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。</p>
 <blockquote>
+<p>v3.2.833 动态设置表名</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>更多说明参考：<a href="/guide/repository.html" target="blank">《FreeSql.Repository 仓储》</a>、<a href="/guide/sharding.html" target="blank">《分表分库》</a>。</p>
 </blockquote>
 <h3> 方案三：按租户分库</h3>
