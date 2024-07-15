@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 15 Jul 2024 14:34:11 GMT</pubDate>
-    <lastBuildDate>Mon, 15 Jul 2024 14:34:11 GMT</lastBuildDate>
+    <pubDate>Mon, 15 Jul 2024 14:48:51 GMT</pubDate>
+    <lastBuildDate>Mon, 15 Jul 2024 14:48:51 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10816,10 +10816,16 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.832 修复 */表达式解析问题；#1836; 修复 Extesions.Linq COUNT Distinct 生成sql错误；#1838; 优化 Ado读写分离存储过程默认使用从库；#1833; 增加 ZeroEntity 自定义异常及相关；; v3.2.830 增加 ClickHouse 表...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.2.833 添加 Aop.ConfigEntity 动态设置表名功能；#364 #1835 #1729 #1542 #1248 #1247 #407 #387; 增加 UpdateDict/DeleteDict 方法 Where(sql)；#1840; 优化 GroupBy 聚合函数 Count(bo...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2> v3.2.833</h2>
+<ul>
+<li>添加 Aop.ConfigEntity 动态设置表名功能；#364 #1835 #1729 #1542 #1248 #1247 #407 #387</li>
+<li>增加 UpdateDict/DeleteDict 方法 Where(sql)；#1840</li>
+<li>优化 GroupBy 聚合函数 Count(bool) 解析成 sum(case when)；#1841</li>
+</ul>
 <h2> v3.2.832</h2>
 <ul>
 <li>修复 */表达式解析问题；#1836</li>
