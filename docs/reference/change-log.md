@@ -2,6 +2,12 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.2.833
+
+- 添加 Aop.ConfigEntity 动态设置表名功能；#364 #1835 #1729 #1542 #1248 #1247 #407 #387
+- 增加 UpdateDict/DeleteDict 方法 Where(sql)；#1840
+- 优化 GroupBy 聚合函数 Count(bool) 解析成 sum(case when)；#1841
+
 ## v3.2.832
 
 - 修复 */表达式解析问题；#1836
