@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 11 Jul 2024 11:50:21 GMT</pubDate>
-    <lastBuildDate>Thu, 11 Jul 2024 11:50:21 GMT</lastBuildDate>
+    <pubDate>Mon, 15 Jul 2024 14:34:11 GMT</pubDate>
+    <lastBuildDate>Mon, 15 Jul 2024 14:34:11 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -86,7 +86,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 </blockquote>
 <figure><img src="/adminblazor/04.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2> 定时任务</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 组件</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 组件</h2>
 <p>以下几个是 AdminBlazor 封装的组件，更多丰富的 UI 组件可以看：BootstrapBlazor</p>
 <h3> 1. 增删改查 AdminTable2&lt;TItem&gt;</h3>
 <blockquote>
