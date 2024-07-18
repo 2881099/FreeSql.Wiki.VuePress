@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 15 Jul 2024 14:48:51 GMT</pubDate>
-    <lastBuildDate>Mon, 15 Jul 2024 14:48:51 GMT</lastBuildDate>
+    <pubDate>Thu, 18 Jul 2024 01:56:13 GMT</pubDate>
+    <lastBuildDate>Thu, 18 Jul 2024 01:56:13 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5379,9 +5379,9 @@ repo1.DataFilter.Disable("test")</p>
 
 <ul>
 <li><a href="/extra/idlebus-freesql.html" target="blank">.NET Core 注入多个 FreeSql 实例</a></li>
-<li>.NET Framework 单例</li>
+<li>.NET Framework 单例（支持连接多个数据库）</li>
 </ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意：<code>class DB&lt;T&gt;</code> 泛型类不适合定义 static 单例</p>
 </blockquote>
 <p>然后直接通过 <code>IFreeSql  fsql = DB.Sqlite;</code>  即可得到 fsql 实例。</p>
@@ -5499,7 +5499,7 @@ repo1.DataFilter.Disable("test")</p>
 <tbody>
 <tr>
 <td>DataType.MySql</td>
-<td>Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1</td>
+<td>Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8mb4; SslMode=none;Min pool size=1</td>
 </tr>
 <tr>
 <td>DataType.PostgreSQL</td>

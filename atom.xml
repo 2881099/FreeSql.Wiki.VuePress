@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-07-15T14:48:51.962Z</updated>
+  <updated>2024-07-18T01:56:13.580Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -6289,7 +6289,7 @@ repo1.DataFilter.Disable("test")</p>
     <title type="text">入门</title>
     <id>https://freesql.net/guide/getting-started.html</id>
     <link href="https://freesql.net/guide/getting-started.html"/>
-    <updated>2024-01-14T16:07:40.000Z</updated>
+    <updated>2024-07-18T01:55:16.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <h2> 安装包</h2>
 <p>FreeSql.Provider.xxx(<a href="/guide/install.html" target="blank">可选的驱动</a>)</p>
@@ -6315,9 +6315,9 @@ repo1.DataFilter.Disable("test")</p>
 
 <ul>
 <li><a href="/extra/idlebus-freesql.html" target="blank">.NET Core 注入多个 FreeSql 实例</a></li>
-<li>.NET Framework 单例</li>
+<li>.NET Framework 单例（支持连接多个数据库）</li>
 </ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意：<code>class DB&lt;T&gt;</code> 泛型类不适合定义 static 单例</p>
 </blockquote>
 <p>然后直接通过 <code>IFreeSql  fsql = DB.Sqlite;</code>  即可得到 fsql 实例。</p>
@@ -6435,7 +6435,7 @@ repo1.DataFilter.Disable("test")</p>
 <tbody>
 <tr>
 <td>DataType.MySql</td>
-<td>Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1</td>
+<td>Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8mb4; SslMode=none;Min pool size=1</td>
 </tr>
 <tr>
 <td>DataType.PostgreSQL</td>
