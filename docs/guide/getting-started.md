@@ -103,7 +103,7 @@ using(IServiceScope serviceScope = app.Services.CreateScope())
 :::
   
 - [.NET Core 注入多个 FreeSql 实例](../extra/idlebus-freesql.md)
-- .NET Framework 单例
+- .NET Framework 单例（支持连接多个数据库）
 
 ```csharp
 public class DB
@@ -114,6 +114,18 @@ public class DB
          .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
          .Build());
     public static IFreeSql Sqlite => sqliteLazy.Value;
+
+    static Lazy<IFreeSql> mysqlLazy = new Lazy<IFreeSql>(() => new FreeSqlBuilder()
+            .UseConnectionString(FreeSql.DataType.MySql, @"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=DispatchProxy;Charset=utf8mb4;SslMode=none;Max pool size=50;Connection LifeTime=20")
+            .UseAutoSyncStructure(true)   //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+            //.UseAdoConnectionPool(true) //使用Ado原生连接池，
+            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower) //数据库、表、字段使用下划线命名，代码使用C#大驼峰
+            .UseMonitorCommand( //监听SQL命令
+                cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText) 
+                )
+            .Build());
+    
+    public static IFreeSql MySql => mysqlLazy.Value;
 }
 ```
 
@@ -210,7 +222,7 @@ fsql.Delete<Blog>()
 
 | DataType                           | ConnectionString                                                                                                                                                                                |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DataType.MySql                     | Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1                                                                   |
+| DataType.MySql                     | Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8mb4; SslMode=none;Min pool size=1                                                                   |
 | DataType.PostgreSQL                | Host=192.168.164.10;Port=5432;Username=postgres;Password=123456; Database=tedb;ArrayNullabilityMode=Always;Pooling=true;Minimum Pool Size=1                                                                                 |
 | DataType.SqlServer                 | Data Source=.;User Id=sa;Password=123456;Initial Catalog=freesqlTest;Encrypt=True;TrustServerCertificate=True;Pooling=true;Min Pool Size=1                                                     |
 | DataType.Oracle                    | user id=user1;password=123456; data source=//127.0.0.1:1521/XE;Pooling=true;Min Pool Size=1                                                                                                     |

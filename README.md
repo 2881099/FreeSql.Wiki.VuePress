@@ -6,7 +6,7 @@
 ## install
 
 ```bash
-npm install -g pnpm@next-7
+npm install -g pnpm
 ```
 
 ```bash
