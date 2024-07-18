@@ -85,14 +85,16 @@ Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
     IFreeSql fsql = new FreeSql.FreeSqlBuilder()
         .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
         .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句
-        .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+#if DEBUG
+        .UseAutoSyncStructure(true) //建议仅DEBUG模式、连测试库时使用
+#endif
         .Build();
     return fsql;
 };
 builder.Services.AddSingleton<IFreeSql>(fsqlFactory);
 
 WebApplication app = builder.Build();
-//在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
+//在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等，请在DEBUG模式、连测试库时使用
 using(IServiceScope serviceScope = app.Services.CreateScope())
 {
     var fsql = serviceScope.ServiceProvider.GetRequiredService<IFreeSql>();
@@ -111,15 +113,19 @@ public class DB
    static Lazy<IFreeSql> sqliteLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder()
          .UseMonitorCommand(cmd => Trace.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句,Trace在输出选项卡中查看
          .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
-         .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+#if DEBUG
+          .UseAutoSyncStructure(true) //建议仅DEBUG模式、连测试库时使用
+#endif
          .Build());
     public static IFreeSql Sqlite => sqliteLazy.Value;
 
     static Lazy<IFreeSql> mysqlLazy = new Lazy<IFreeSql>(() => new FreeSqlBuilder()
             .UseConnectionString(FreeSql.DataType.MySql, @"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=DispatchProxy;Charset=utf8mb4;SslMode=none;Max pool size=50;Connection LifeTime=20")
-            .UseAutoSyncStructure(true)   //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+#if DEBUG
+          .UseAutoSyncStructure(true) //建议仅DEBUG模式、连测试库时使用
+#endif
             //.UseAdoConnectionPool(true) //使用Ado原生连接池，
-            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower) //数据库、表、字段使用下划线命名，代码使用C#大驼峰
+            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
             .UseMonitorCommand( //监听SQL命令
                 cmd => Trace.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText) 
                 )
@@ -135,6 +141,15 @@ public class DB
 
 `IFreeSql` 是 `ORM` 最顶级对象，所有操作都是使用它的方法或者属性：
 
+- `UseAutoSyncStructure` 配置了自动同步实体结构到数据库，但FreeSql不会扫描程序集，只有CRUD时才会生成表。
+- 可调用`SyncStructure`方法实时同步表结构(建议仅DEBUG模式、连测试库时使用)
+- `UseNameConvert` 数据库、表、字段使用下划线命名，代码使用C#大驼峰
+- `UseAdoConnectionPool` 默认为false,使用FreeSql内部连接池，支持状态不可用检测等特性，如果配置为true则使用Ado原生连接池
+
+```csharp
+fsql.CodeFirst.SyncStructure(typeof(Topic),typeof(Tag));//Topic 为要同步的实体类
+```
+- CURD
 ```csharp
 
 fsql.Select<T>(); //查询
