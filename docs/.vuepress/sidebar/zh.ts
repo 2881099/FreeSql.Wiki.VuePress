@@ -54,12 +54,7 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         {
-          text: "DbContext",
-          collapsible: true,
-          children: ["db-context", "ifreesql-context"],
-        },
-        {
-          text: "特别提供程序",
+          text: "Providers",
           collapsible: true,
           children: [
             "freesql-provider-custom",
