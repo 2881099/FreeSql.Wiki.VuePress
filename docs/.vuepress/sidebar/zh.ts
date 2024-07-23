@@ -54,7 +54,7 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         {
-          text: "Providers",
+          text: "特别提供者",
           collapsible: true,
           children: [
             "freesql-provider-custom",
