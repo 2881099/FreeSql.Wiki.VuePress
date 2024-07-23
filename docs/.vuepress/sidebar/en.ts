@@ -48,11 +48,6 @@ export const enSidebarConfig = sidebar([
         ],
       },
       {
-        text: "DbContext",
-        collapsible: true,
-        children: ["/guide/db-context", "/guide/ifreesql-context"],
-      },
-      {
         text: "CodeFirst",
         collapsible: true,
         children: ["Entity-Relationship"],

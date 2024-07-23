@@ -1,17 +1,10 @@
-# 新增
-
-`FreeSql` 提供单条和批量插入数据的方法，在特定的数据库执行还可以返回插入后的记录。
+# 插入
 
 ```csharp
-var connectionString = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" +
-    "Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10";
+IFreeSql fsql; //如何创建请移步入门文档
 
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, connectionString)
-    .UseAutoSyncStructure(true) //自动同步实体结构到数据库
-    .Build(); //请务必定义成 Singleton 单例模式
-
-class Topic {
+class Topic
+{
     [Column(IsIdentity = true, IsPrimary = true)]
     public int Id { get; set; }
     public int Clicks { get; set; }
@@ -31,6 +24,8 @@ var t1 = fsql.Insert(items[0]).ExecuteAffrows();
 //VALUES(?Clicks0, ?Title0, ?CreateTime0)
 ```
 
+## 2、返回自增
+
 如果表有自增列，插入数据后应该要返回 id。
 
 方法 1：(原始)
@@ -43,15 +38,15 @@ items[0].Id = id;
 方法 2：(依赖 FreeSql.Repository)
 
 ```csharp
-var repo = fsql.GetRepository<Topic>();
+IBaseRepository<Topic> repo = fsql.GetRepository<Topic>();  //可以从 IOC 容器中获取
 repo.Insert(items[0]);
 ```
 
-> 内部会将插入后的自增值填充给 items[0].Id (支持批量插入回填)
+> 仓储内部会将插入后的自增值填充给 items[0].Id (支持批量插入回填)
 
 > DbFirst 模式序列：[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]
 
-## 2、批量插入
+## 3、批量插入
 
 ```csharp
 var t2 = fsql.Insert(items).ExecuteAffrows();
@@ -63,11 +58,9 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 //(?Clicks8, ?Title8, ?CreateTime8), (?Clicks9, ?Title9, ?CreateTime9)
 ```
 
-> 解决了 SqlServer 批量添加容易导致的错误：传入的请求具有过多的参数。该服务器支持最多 2100 个参数。请减少参数的数目，然后重新发送该请求。
+批量插入建议关闭参数化功能，使用 .NoneParameter() 提升执行效率。
 
-> 原理为拆成多个包用事务执行；
-
-当插入大批量数据时，内部采用分割分批执行的逻辑进行。分割规则如下：
+当插入大批量数据时，内部分批执行，规则如下：
 
 |            | 数量 | 参数量 |
 | ---------- | ---- | ------ |
@@ -77,22 +70,17 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 | Oracle     | 500  | 999    |
 | Sqlite     | 5000 | 999    |
 
-> 数量：为每批分割的大小，如批量插入 10000 条数据，在 mysql 执行时会分割为两批。<br />
-> 参数量：为每批分割的参数量大小，如批量插入 10000 条数据，每行需要使用 5 个参数化，在 mysql 执行时会分割为每批 3000 / 5。
+也可以通过 BatchOptions 设置合适的值。当外部未提供事务时，内部自开事务，实现插入完整性。
 
-分割执行后，当外部未提供事务时，内部自开事务，实现插入完整性。也可以通过 BatchOptions 设置合适的值。
-
-FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批量插入建议关闭参数化功能，使用 .NoneParameter() 进行执行。
-
-## 3、BulkCopy
+## 4、高性能 BulkCopy
 
 | 程序包 | 扩展方法 | 说明 |
 | -- | -- | -- |
 | FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
 | FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
 | FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
 | FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
+| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
 | FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
 
 批量插入测试参考(52 个字段)
@@ -121,13 +109,13 @@ FreeSql 适配了每一种数据类型参数化，和不参数化的使用。批
 
 > 测试结果，是在相同操作系统下进行的，并且都有预热
 
-## 4、动态表名
+## 5、动态表名
 
 ```csharp
 fsql.Insert(items).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表插入
 ```
 
-## 5、插入指定的列
+## 6、插入指定列
 
 ```csharp
 var t3 = fsql.Insert(items).InsertColumns(a => a.Title).ExecuteAffrows();
@@ -143,7 +131,7 @@ var t4 = fsql.Insert(items).InsertColumns(a =>new { a.Title, a.Clicks }).Execute
 //(?Clicks9, ?Title9)
 ```
 
-## 6、忽略列
+## 7、忽略列
 
 ```csharp
 var t5 = fsql.Insert(items).IgnoreColumns(a => a.CreateTime).ExecuteAffrows();
@@ -159,18 +147,6 @@ var t6 = fsql.Insert(items).IgnoreColumns(a => new { a.Title, a.CreateTime }).Ex
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 7、列插入优先级
-
-```csharp
-全部列 < 指定列(InsertColumns) < 忽略列(IgnoreColumns)
-```
-
-在没有使用 `InsertColumns/IgnoreColumns` 的情况下，实体所有列将被插入数据库；
-
-在使用 `InsertColumns`，没有使用 `IgnoreColumns` 的情况下，只有指定的列插入数据库；
-
-在使用 `IgnoreColumns` 的情况下，只有未被指定的列插入数据库；
-
 ## 8、字典插入
 
 ```csharp
@@ -179,9 +155,10 @@ dic.Add("id", 1);
 dic.Add("name", "xxxx");
 
 fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
+//提示：List<Dictionary<string, object>> 为批量插入
 ```
 
-## 9、导入表数据
+## 9、导入表
 
 ```csharp
 int affrows = fsql.Select<Topic>()
@@ -201,7 +178,7 @@ limit 10
 
 注意：因为 `Clicks`、`CreateTime` 没有被选择，所以使用目标实体属性`[Column(InsertValueSql = xx)]` 设置的值，或者使用目标实体属性的 `c#`默认值。
 
-## 10、MySql 特有功能 `Insert Ignore Into`
+## 10、MySql `Insert Ignore Into`
 
 ```csharp
 fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
@@ -210,25 +187,24 @@ fsql.Insert<Topic>().MySqlIgnoreInto().AppendData(items).ExecuteAffrows();
 //(?Clicks5), (?Clicks6), (?Clicks7), (?Clicks8), (?Clicks9)
 ```
 
-## 11、MySql 特有功能 `On Duplicate Key Update`
+## 11、MySql `On Duplicate Key Update`
 
-FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能，On Duplicate Key Update。
-
-这个功能也可以实现插入或更新数据，并且支持批量操作。
+FreeSql.Provider.MySql 和 FreeSql.Provider.MySqlConnector 支持 MySql 特有的功能 On Duplicate Key Update，实现插入或更新数据（支持批量）。
 
 ```csharp
-class TestOnDuplicateKeyUpdateInfo {
+class TestInfo
+{
     [Column(IsIdentity = true)]
     public int id { get; set; }
     public string title { get; set; }
     public DateTime time { get; set; }
 }
 
-var item = new TestOnDuplicateKeyUpdateInfo { id = 100, title = "title-100", time = DateTime.Parse("2000-01-01") };
+var item = new TestInfo { id = 100, title = "title-100", time = DateTime.Parse("2000-01-01") };
 fsql.Insert(item)
     .NoneParameter()
     .OnDuplicateKeyUpdate().ToSql();
-//INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
+//INSERT INTO `TestInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
 //`title` = VALUES(`title`), 
 //`time` = VALUES(`time`)
@@ -254,7 +230,7 @@ fsql.Insert(item)
     .IgnoreColumns(a => a.time)
     .NoneParameter()
     .OnDuplicateKeyUpdate().ToSql();
-//INSERT INTO `TestOnDuplicateKeyUpdateInfo`(`id`, `title`) VALUES(200, 'title-200')
+//INSERT INTO `TestInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
 //`title` = VALUES(`title`), 
 //`time` = '2000-01-01 00:00:00.000'
@@ -265,6 +241,24 @@ fsql.Insert(item)
 当 insert 部分中存在的列，在 update 中将以 VALUES(\`字段\`) 的形式设置；
 
 当 insert 部分中不存在的列，在 update 中将为常量形式设置，当操作实体数组的时候，此常量为 case when ... end 执行（与 IUpdate 一样）；
+
+## 12、PostgreSQL `On Conflict Do Update`
+
+FreeSql.Provider.PostgreSQL 支持 PostgreSQL 9.5+ 特有的功能 On Conflict(id) Do Update，使用方法 MySql OnDuplicateKeyUpdate 大致相同。
+
+```csharp
+fsql.Insert(items)
+    .IgnoreColumns(a => a.time)
+    .NoneParameter()
+    .OnConflictDoUpdate().ToSql();
+//INSERT INTO ""TestInfo""(""id"", ""title"") VALUES(200, 'title-200'), (201, 'title-201'), (202, 'title-202')
+//ON CONFLICT(""id"") DO UPDATE SET
+//""title"" = EXCLUDED.""title"",
+//""time"" = CASE EXCLUDED.""id""
+//WHEN 200 THEN '2000-01-01 00:00:00.000000'
+//WHEN 201 THEN '2000-01-01 00:00:00.000000'
+//WHEN 202 THEN '2000-01-01 00:00:00.000000' END::timestamp
+```
 
 ## API
 
@@ -279,8 +273,8 @@ fsql.Insert(item)
 | WithTransaction      | \<this\>                   | DbTransaction           | 设置事务对象                                          |
 | WithConnection       | \<this\>                   | DbConnection            | 设置连接对象                                          |
 | ToSql                | string                     |                         | 返回即将执行的 SQL 语句                               |
-| OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能，On Duplicate Key Update             |
-| OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能，On Conflict Do Update          |
+| OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能 On Duplicate Key Update             |
+| OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能 On Conflict Do Update          |
 | ExecuteAffrows       | long                       |                         | 执行 SQL 语句，返回影响的行数                         |
 | ExecuteIdentity      | long                       |                         | 执行 SQL 语句，返回自增值                             |
 | ExecuteInserted      | List\<T1\>                 |                         | 执行 SQL 语句，返回插入后的记录                       |

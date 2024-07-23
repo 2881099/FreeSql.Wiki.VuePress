@@ -1,8 +1,8 @@
 # 事务Transaction
 
-本文所有内容基于单机数据库事务，分布式数据库 TCC/SAGA 方案请移步：[https://github.com/2881099/FreeSql.Cloud](https://github.com/2881099/FreeSql.Cloud)
 
-## 0、UnitOfWorkManager跨方法异步
+
+## ASP.NET Core AOP 事务
 
 - [AOP + FreeSql 基于特性标签实现跨方法异步事务](unitofwork-manager.md)
 
@@ -30,21 +30,7 @@ using (var uow = fsql.CreateUnitOfWork())
 }
 ```
 
-## 2、DbContext 事务
-
-```csharp
-using (var ctx = fsql.CreateDbContext()) {
-  var song = ctx.Set<Song>();
-  var user = ctx.Set<User>();
-
-  song.Add(new Song());
-  user.Update(...);
-
-  ctx.SaveChanges();
-}
-```
-
-## 3、同线程事务
+## 2、同线程事务
 
 同线程事务，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步），比较适合 WinForm/WPF UI 主线程使用事务的场景。
 
@@ -79,72 +65,6 @@ fsql.Transaction(() =>  {
 - 事务对象在线程挂载，每个线程只可开启一个事务连接，嵌套使用的是同一个事务；
 
 - 事务体内代码不可以切换线程，因此不可使用任何异步方法，包括 FreeSql 提供的数据库异步方法（可以使用任何 Curd 同步方法）；
-
-## 4、外部事务
-
-在与其他开源项目一起使用时，事务由外部开启，使用 WithTransaction 将事务对象传入执行。
-
-```csharp
-    await fsql.Update<xxx>()
-    .WithTransaction(指定事务)
-    .Set(a => a.Clicks + 1)
-    .ExecuteAffrowsAsync();
-```
-
-ISelect、IInsert、IUpdate、IDelete，都支持 WithTransaction 方法。
-
-### 获取DbTransaction
-
-- 异步方法
-
-```csharp
-    using Object<DbConnection> conn = await _freeSql.Ado.MasterPool.GetAsync();
-    await using DbTransaction transaction = await conn.Value.BeginTransactionAsync();
-```
-
-- 同步方法(using新语法)
-
-```csharp
-    using Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get();
-    using DbTransaction transaction = conn.Value.BeginTransaction();
-```
-
-- 同步方法(using旧语法)
-
-```csharp
-    using(Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get())
-    {
-        using(DbTransaction transaction = conn.Value.BeginTransaction())
-        {
-            ...
-        }
-    }
-```
-
-### 示例
-
-```csharp
-public async Task CreateAsync(CreateGroupDto inputDto)
-{
-    using Object<DbConnection> conn = _freeSql.Ado.MasterPool.Get();
-    using DbTransaction transaction = conn.Value.BeginTransaction();
-    try
-    {
-        await fsql.Update<xxx>()
-        .WithTransaction(transaction)
-        .Set(a => a.Clicks + 1)
-        .ExecuteAffrowsAsync();
-
-        transaction.Commit();
-    }
-    catch (Exception ex)
-    {
-        transaction.Rollback();
-        //记录日志，抛出异常（使用全局异常）或者返回自定义数据 
-        throw;
-    } 
-}
-```
 
 ## 5、更新排他锁
 

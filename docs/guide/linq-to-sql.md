@@ -1,10 +1,10 @@
 # LinqToSql
 
-原本不支持 IQueryable 主要出于使用习惯的考虑，编写代码的智能总会提示出现一堆你不想使用的方法（对不起，我有强迫症），IQueryable 自身提供了一堆没法实现的方法，还有外部入侵的扩展方法，严重影响编码体验。如下图：
+linq to sql 写法过于生硬不灵活，left join 写法非常不好，建议慢慢放充转向 Labmda 链式风格，早日走向康庄大道。
+
+IQueryable 方法入侵问题，如下图很多不能实现的，以及第三方包入侵的扩展方法，严重影响编程体验。
 
 ![image](https://user-images.githubusercontent.com/16286519/57295126-5dd7bd00-70fc-11e9-99c0-d1c46423afa2.png)
-
-v1.4.0+ 版本请使用以下命令安装（老版本不需要安装）：
 
 > dotnet add package FreeSql.Extensions.Linq
 

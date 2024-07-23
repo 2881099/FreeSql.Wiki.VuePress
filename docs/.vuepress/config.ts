@@ -9,18 +9,18 @@ export default defineUserConfig({
   base: "/",
   port: 8083,
 
-  locales: {
-    "/": {
-      lang: "zh-CN",
-      title: "FreeSql 官方文档",
-      description: "FreeSql Documents",
-    },
-    "/en/": {
-      lang: "en-US",
-      title: "FreeSql Documents",
-      description: "FreeSql Documents",
-    },
-  },
+  // locales: {
+  //   "/": {
+  //     lang: "zh-CN",
+  //     title: "FreeSql 官方文档",
+  //     description: "FreeSql Documents",
+  //   },
+  //   "/en/": {
+  //     lang: "en-US",
+  //     title: "FreeSql Documents",
+  //     description: "FreeSql Documents",
+  //   },
+  // },
 
   head: [
     [

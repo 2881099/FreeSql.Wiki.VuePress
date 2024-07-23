@@ -1,11 +1,10 @@
-# 多表查询
+# 多表查询 ✨
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10")
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
-class Topic {
+class Topic 
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Title { get; set; }
@@ -15,7 +14,8 @@ class Topic {
     public int CategoryId { get; set; }
     public Category Category { get; set; }
 }
-class Category {
+class Category 
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Name { get; set; }
@@ -24,29 +24,14 @@ class Category {
     public CategoryType Parent { get; set; }
     public List<Topic> Topics { get; set; }
 }
-class CategoryType {
+class CategoryType
+{
     public int Id { get; set; }
     public string Name { get; set; }
 }
 ```
 
-## 1、导航属性联表
-
-```csharp
-fsql.Select<Topic>()
-  .LeftJoin(a => a.Category.Id == a.CategoryId)
-  .LeftJoin(a => a.Category.Parent.Id == a.Category.ParentId)
-  .Where(a => a.Category.Parent.Id > 0)
-  .ToList();
-//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`, a__Category.`Id` as6, a__Category.`Name`, a__Category.`ParentId`
-//FROM `Topic` a
-//LEFT JOIN `Category` a__Category ON a__Category.`Id` = a.`CategoryId`
-//LEFT JOIN `CategoryType` a__Category__Parent ON a__Category__Parent.`Id` = a__Category.`ParentId`
-```
-
-> 提示：正确配置 【导航关系】后，不需要手工调用 LeftJoin
-
-## 2、复杂联表
+## 1、多表 Join
 
 ```csharp
 fsql.Select<Topic, Category, CategoryType>()
@@ -78,6 +63,22 @@ fsql.Select<Topic, Category, CategoryType>()
 
 > 经验：[一对多，分表只取最后一条记录](https://github.com/dotnetcore/FreeSql/issues/430)
 
+## 2、导航属性 Join
+
+```csharp
+fsql.Select<Topic>()
+  .LeftJoin(a => a.Category.Id == a.CategoryId)
+  .LeftJoin(a => a.Category.Parent.Id == a.Category.ParentId)
+  .Where(a => a.Category.Parent.Id > 0)
+  .ToList();
+//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`, a__Category.`Id` as6, a__Category.`Name`, a__Category.`ParentId`
+//FROM `Topic` a
+//LEFT JOIN `Category` a__Category ON a__Category.`Id` = a.`CategoryId`
+//LEFT JOIN `CategoryType` a__Category__Parent ON a__Category__Parent.`Id` = a__Category.`ParentId`
+```
+
+> 提示：正确配置 【导航关系】后，不需要手工调用 LeftJoin
+
 ## 3、WithSql
 
 ```csharp
@@ -99,27 +100,7 @@ fsql.Select<Topic, Category, CategoryType>()
 
 > 提示：ISelect.ToSql 可与 WithSql 配合使用
 
-## 4、SQL联表
-
-```csharp
-fsql.Select<Topic>()
-  .LeftJoin("Category b on b.Id = a.CategoryId and b.Name = @bname", new { bname = "xxx" })
-  .ToList();
-//SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
-//FROM `Topic` a
-//LEFT JOIN Category b on b.Id = a.CategoryId and b.Name = @bname
-```
-
-延伸问题：SQL联表 b 表的字段如何在 ToList 中指定？
-
-```csharp
-.ToList(a => new {
-  bid = Convert.ToInt32("b.Id"),
-  bName = "b.Name"
-})
-```
-
-## 5、子表Exists
+## 4、子表Exists
 
 ```csharp
 fsql.Select<Topic>()
@@ -135,7 +116,7 @@ fsql.Select<Topic>()
 
 > 提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分
 
-## 6、子表In
+## 5、子表In
 
 ```csharp
 fsql.Select<Topic>()
@@ -147,7 +128,26 @@ fsql.Select<Topic>()
 //    FROM `Topic` b)))
 ```
 
-## 7、子表Join
+## 6、子表List导航属性
+
+```csharp
+fsql.Select<Category>()
+  .Where(a => a.Topics.Any(b => b.Title.Contains("xx"))) //v3.2.600 以下使用 a.Topics.AsSelect()
+  .ToList();
+```
+
+效果等同于：
+
+```csharp
+fsql.Select<Category>()
+  .Where(a => fsql.Select<Topic>().Any(b => b.CategoryId == a.Id && b.Title.Contains("xx")))
+  .ToList();
+```
+
+将集合属性快速转换为 ISelect 进行子查询操作。
+
+
+## 7、子表string.Join
 
 v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
 
@@ -166,7 +166,8 @@ fsql.Select<Topic>().ToList(a => new {
 ## 8、子表First/Count/Sum/Max/Min/Avg
 
 ```csharp
-fsql.Select<Category>().ToList(a => new  {
+fsql.Select<Category>().ToList(a => new 
+{
   all = a,
   first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
   count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
@@ -192,32 +193,15 @@ fsql.Select<Topic>().ToList(a => new
 fsql.Select<Topic>()
   .GroupBy(a => new { a.Author })
   .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-  .ToList(a => new {
+  .ToList(a => new
+  {
     a.Author, a.Count,
     list1 = fsql.Select<T2>().ToList(),
     list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
   });
 ```
 
-## 10、集合属性
-
-```csharp
-fsql.Select<Category>()
-  .Where(a => a.Topics.Any(b => b.Title.Contains("xx"))) //v3.2.600 以下使用 a.Topics.AsSelect()
-  .ToList();
-```
-
-效果等同于：
-
-```csharp
-fsql.Select<Category>()
-  .Where(a => fsql.Select<Topic>().Any(b => b.CategoryId == a.Id && b.Title.Contains("xx")))
-  .ToList();
-```
-
-将集合属性快速转换为 ISelect 进行子查询操作。
-
-## 11、WhereCascade
+## 10、WhereCascade
 
 多表查询时，像isdeleted每个表都给条件，挺麻烦的。WhereCascade使用后生成sql时，所有表都附上这个条件。
 

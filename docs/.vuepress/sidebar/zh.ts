@@ -14,16 +14,16 @@ export const zhSidebarConfig = sidebar({
           collapsible: true,
           children: [
             "",
-            "getting-started",
-            "install",
             "insert",
             "delete",
             "update",
             "insert-or-update",
+            "entity-attribute",
+            "navigate-attribute",
           ],
         },
         {
-          text: "查询",
+          text: "查询 ✨",
           collapsible: true,
           children: [
             "select",
@@ -38,11 +38,10 @@ export const zhSidebarConfig = sidebar({
             "select-include",
             "select-as-tree",
             "linq-to-sql",
-            "withsql",
           ],
         },
         {
-          text: "Repository",
+          text: "Repository ✨",
           collapsible: true,
           children: [
             "repository",
@@ -81,18 +80,15 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         {
-          text: "CodeFirst ✨",
+          text: "CodeFirst",
           collapsible: true,
           children: [
             "code-first",
-            "entity-attribute",
             "fluent-api",
-            "custom-attribute",
             "type-mapping",
           ],
         },
         "db-first",
-        "navigate-attribute",
         "expression-function",
         "transaction",
         "filters",

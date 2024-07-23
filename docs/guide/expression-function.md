@@ -178,7 +178,8 @@ fsql.Select<Topic>().ToList(a => new {
 ## 子表First/Count/Sum/Max/Min/Avg
 
 ```csharp
-fsql.Select<Category>().ToList(a => new  {
+fsql.Select<Category>().ToList(a => new 
+{
   all = a,
   first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
   count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
@@ -204,7 +205,8 @@ fsql.Select<Topic>().ToList(a => new
 fsql.Select<Topic>()
   .GroupBy(a => new { a.Author })
   .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-  .ToList(a => new {
+  .ToList(a => new 
+  {
     a.Author, a.Count,
     list1 = fsql.Select<T2>().ToList(),
     list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()

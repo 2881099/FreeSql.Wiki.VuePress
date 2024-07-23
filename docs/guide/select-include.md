@@ -1,58 +1,81 @@
 # 贪婪加载 ✨
 
-## 1、导航属性 ManyToOne
-
-ManyToOne 导航属性通过 ToList(includeNestedMembers: false) 加载，参数说明：
-
-false: 返回 2 级 Join 的导航数据（默认）；
-
-true: 返回所有层级深度 Join 的导航数据（未使用的导航数据不会返回）；
+## 1、子表ToList
 
 ```csharp
-Select<Tag>().Include(a => a.Parent.Parent).ToList(true);
+//最多执行3次 SQL
+fsql.Select<Song>().ToList(a => new
+{
+    all = a,
+    list1 = fsql.Select<T2>().ToList(),
+    list2 = fsql.Select<T2>().Where(b => b.SongId == a.Id).ToList()
+});
 
-Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList(true);
-//这样写，不需要再标记 Join，解析表达式时自动处理成 LeftJoin
+//分组之后，最多执行3次 SQL
+fsql.Select<Song>()
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new 
+    {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
-## 2、导航属性 OneToMany/ManyToMany/PgArrayToMany
+---
 
-IncludeMany 贪婪加载集合的导航属性，其实是分两次查询，在 ToList 后进行了数据重装。
+
+接下来的内容，严重依赖[【导航属性】](navigate-attribute)的正确配置，请先学会再继续向下！
+
+## 2、导航属性 ManyToOne/OneToOne
+
+Include 最终使用 Left Join 的方式（查询一次）返回多表记录。
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.Songs).ToList();
+fsql.Select<Tag>().Include(a => a.Parent.Parent).ToList();
+
+fsql.Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList();
+//这样写，不需要再标记 Include，解析表达式时自动处理
 ```
 
-IncludeMany 有第二个参数，可以进行二次查询前的修饰工作。
+## 3、集合属性 OneToMany/ManyToMany/PgArrayToMany
+
+IncludeMany 最终在 ToList 之后再查询子表的方式（总共查询两次）返回多表记录。
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.Songs,
-    then => then.Where(song => song.User == "admin")).ToList();
+fsql.Select<Tag>().IncludeMany(a => a.Songs).ToList();
 ```
 
-其实在 then 那里，还可以继续进行向下 Include/IncludeMany。只要你喜欢，向下 100 层也没问题。
+## 4、IncludeMany 增强
 
-## 3、变异
-
-没有配置导航关系，也可以贪婪加载。
+第二次查询 then 修饰：
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.TestManys.Where(b => b.TagId == a.Id));
+fsql.Select<Tag>().IncludeMany(a => a.Songs,
+    then => then.Where(b => b.User == "admin")).ToList();
+//ISelect<Song> then 可以继续向下 Include/IncludeMany，支持向下 100 层
 ```
 
-只查询每项子集合的前几条数据，避免像 EfCore 加载所有数据导致 IO 性能低下（比如某商品下有 2000 条评论）。
+1对多 没有配置导航关系，也可以贪婪加载：
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.TestManys.Take(10));
+fsql.Select<Tag>().IncludeMany(a => a.TestManys.Where(b => b.TagId == a.Id));
 ```
 
-子集合返回部分字段，避免字段过多的问题。
+只查询每个子集合的前几条数据：
 
 ```csharp
-Select<Tag>().IncludeMany(a => a.TestManys.Select(b => new TestMany { Title = b.Title ... }));
+fsql.Select<Tag>().IncludeMany(a => a.TestManys.Take(10));
 ```
 
-## 4、IncludeMany 扩展方法
+子集合返回部分字段：
+
+```csharp
+fsql.Select<Tag>().IncludeMany(a => a.TestManys.Select(b => new TestMany { Title = b.Title ... }));
+```
+
+## 5、IncludeMany 扩展方法
 
 当主数据已存在内存中，子数据怎么加载？所以我们增加了 List\<T\> 扩展方法，示例如下：
 
@@ -62,6 +85,7 @@ new List<Song>(new[] { song1, song2, song3 })
 ```
 
 ```csharp
+//v3.2.605+
 new List<Song>(new[] { song1, song2, song3 })
     .IncludeByPropertyName(
         orm: fsql,
@@ -70,29 +94,6 @@ new List<Song>(new[] { song1, song2, song3 })
         take: 5,
         select: "id,name"
     );
-//v3.2.605+
-```
-
-## 5、子表ToList
-
-```csharp
-//最多执行3次 SQL
-fsql.Select<Topic>().ToList(a => new
-{
-    all = a,
-    list1 = fsql.Select<T2>().ToList(),
-    list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
-});
-
-//分组之后，最多执行3次 SQL
-fsql.Select<Topic>()
-    .GroupBy(a => new { a.Author })
-    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-    .ToList(a => new {
-        a.Author, a.Count,
-        list1 = fsql.Select<T2>().ToList(),
-        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
-    });
 ```
 
 ## 6、IncludeMany 两种方式对比
@@ -145,13 +146,15 @@ WHERE ((a."SysModuleId") in ('menu1','menu2'))
 案例：查询 Vod 表，分类 1、分类 2、分类 3 各 10 条数据
 
 ```csharp
-class Vod {
+class Vod
+{
     public Guid Id { get; set; }
     public int TypeId { get; set; }
 }
 
 //定义临时类，也可以是 Dto 类
-class Dto {
+class Dto
+{
     public int TypeId { get; set; }
     public List<Vod> Vods { get; set; }
 }

@@ -1,6 +1,8 @@
 # 返回数据 ✨
 
-FreeSql 采用 ExpressionTree 优化读取速度，如果懂技术的你一定知道 .NET Core 技术下除了原生代码，最快就是 Emit 和 ExpressionTree。项目在初期使用的反射 + 缓存，虽然 .NET Core 优化了反射性能，但经过与 Dapper 性能测试对比之后，发现仍然有一定差距，改成 ExpresstionTree 后才与 Dapper 性能相当。FreeSql 支持的类型较多，实现 ExpressionTree 的复杂度较大，有兴趣的朋友可以翻阅源代码。
+FreeSql 使用 ExpressionTree 读取数据记录，.NET 技术下除了原生代码，最快的方案是 Emit 和 ExpressionTree。
+
+ExpressionTree 天然支持 .NET AOT 编译，FreeSql 在 2018 年做出的技术决策将在未来一直受益。
 
 ## 1、返回单条记录
 
@@ -19,23 +21,23 @@ List<Topic> t1 = fsql.Select<Topic>().ToList();
 ## 3、返回 TreeList
 
 ```csharp
-List<Category> t2 = fsql.Select<Category>.ToTreeList();
-List<Category> t3 = fsql.Select<Category>.Where(a => a.Name = "家电").AsTreeCte().ToTreeList();
-//v1.6.0 AsTreeCte() 递归CTE查询 家电 下的所有子分类
+List<Area> t2 = fsql.Select<Area>.ToTreeList();
+List<Area> t3 = fsql.Select<Area>.Where(a => a.Name = "湖北").AsTreeCte().ToTreeList();
+//v1.6.0 AsTreeCte() 递归CTE查询 湖北 下的所有子分类
 ```
 
-> 查询数据加工为树型，注意：实体需要配置父子导航属性
+> 查询数据加工为树型，注意：实体需要配置[父子导航属性](select-as-tree)
 
 ## 4、返回 List + 导航属性的数据
 
 ```csharp
-List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Type.Id == a.TypeId).ToList();
-//此时会查询 Topic普通字段 + 导航对象Type 字段
+List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Category.Id == a.CategoryId).ToList();
+//此时会查询 Topic普通字段 + 导航对象Category 字段
 ```
 
 更多导航属性的数据返回：[贪婪加载](select-include.md)
 
-## 5、指定字段返回
+## 5、指定返回
 
 ```csharp
 //返回一个字段
@@ -48,20 +50,22 @@ List<匿名类> t6 = fsql.Select<Topic>().ToList(a => new { a.Id, a.Title });
 List<(int, string)> t7 = fsql.Select<Topic>().ToList<(int, string)>("id, title");
 
 //返回导航属性
-List<匿名类> t8 = fsql.Select<Topic>().ToList(a => new {
+List<匿名类> t8 = fsql.Select<Topic>().ToList(a => new
+{
     a.Id, a.Title,
-    a.Type //导航属性
+    a.Category //导航属性
 });
 
 //返回SQL字段
-List<匿名类> t9 = fsql.Select<Topic>().ToList(a => new {
+List<匿名类> t9 = fsql.Select<Topic>().ToList(a => new
+{
     cstitle = "substr(a.title, 0, 2)", //将 substr(a.title, 0, 2) 作为查询字段
     csnow = Convert.ToDateTime("now()"), //将 now() 作为查询字段
-    //奇思妙想：怎么查询开窗函数的结果
 });
 
 //返回子查询的字段
-List<匿名类> t10 = fsql.Select<Topic>().ToList(a => new {
+List<匿名类> t10 = fsql.Select<Topic>().ToList(a => new
+{
     a.Id,
     count = fsql.Select<T2>().Count(),
     max = fsql.Select<T2>().Max(b => b.Id),
@@ -70,7 +74,8 @@ List<匿名类> t10 = fsql.Select<Topic>().ToList(a => new {
 });
 
 //返回子查询集合 v3.2.650+ 以下最多执行3次 SQL
-List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
+List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new
+{
     a.Id,
     list1 = fsql.Select<T2>().ToList(),
     list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
@@ -78,7 +83,8 @@ List<匿名类> t11 = fsql.Select<Topic>().ToList(a => new {
 List<匿名类> t12 = fsql.Select<Topic>()
     .GroupBy(a => new { a.Author })
     .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-    .ToList(a => new {
+    .ToList(a => new
+    {
         a.Author, a.Count,
         list1 = fsql.Select<T2>().ToList(),
         list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
@@ -144,13 +150,11 @@ DTO 查询只映射默认字段（普通属性），映射对象请使用：
 执行查询，分块返回数据，可减少内存开销。比如读取 10 万条数据，每次返回 100 条处理。
 
 ```csharp
-var testlist1 = fsql.Select<Song>().OrderBy(a => a.Id).ToList();
-var testlist2 = new List<Song>();
-fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done => {
-    testlist2.AddRange(done.Object);
+fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done =>
+{
+    List<Song> list = done.Object;
     //done.IsBreak = true; v1.7.0 停止读取
 });
-//这里示范，最终 testlist1 与 testlist2 返回的数据相同。
 ```
 
 ## 9、ToSql
@@ -160,12 +164,11 @@ fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done => {
 - FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；
 - FieldAliasOptions.AsProperty 使用属性名作为字段别名，合适使用二次构造 SQL 再次执行；
 
-> v3.2.666 开启参数化查询功能后，使用 WithParameters 共享参数化，避免多个查询对象产生相同的参数名称，例如：[UnionAll 联合查询](%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2)
-
 ## 10、执行 SQL
 
 ```csharp
-class xxx {
+class xxx
+{
     public int Id { get; set; }
     public string Path { get; set; }
     public string Title2 { get; set; }
@@ -178,40 +181,7 @@ List<dynamic> t13 = fsql.Ado.Query<dynamic>("select * from song");
 
 > 注意：Ado.Query 的实体特性是无效的，比如 [Column(Name = "xxx")] 无效
 
-## 11、WithSql
-
-```csharp
-fsql.Select<Topic>()
-    .WithSql("select * from Topic where clicks > @val", new { val = 10 })
-    .Page(1, 10)
-    .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
-//FROM (select * from Topic where clicks > @val) a
-```
-
-> WithSql 使用多次为 UNION ALL 查询
-
-> v3.2.666 [UnionAll 联合查询](unionall.md)、[WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
-
-> v3.2.666 WithMemory 使用内存数据进行查询
-
-```csharp
-var list = new List<Topic>();
-list.Add(new Topic { ... });
-list.Add(new Topic { ... });
-
-fsql.Select<Topic>()
-    .WithMemory(list)
-    .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (
-//  SELECT ...
-//  UNION ALL
-//  SELECT ...
-//) a 
-```
-
-## 12、API
+## 11、API
 
 | 方法 | 返回值 | 参数 | 描述 |
 | ------------- | - | - | - |

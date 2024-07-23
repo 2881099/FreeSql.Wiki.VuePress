@@ -3,12 +3,10 @@
 `FreeSql` 提供丰富的数据库更新功能，支持单条或批量更新，在特定的数据库执行还可以返回更新后的记录。
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, connectionString)
-    .UseAutoSyncStructure(true) //自动同步实体结构到数据库
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
-class Topic {
+class Topic
+{
     [Column(IsIdentity = true, IsPrimary = true)]
     public int Id { get; set; }
     public int Clicks { get; set; }
@@ -17,13 +15,13 @@ class Topic {
 }
 ```
 
-## 动态条件
+## 1、动态条件
 
 ```csharp
 fsql.Update<Topic>(object dywhere)
 ```
 
-`dywhere` 支持：
+`dywhere` 可以是：
 
 - 主键值
 - `new[] { 主键值1, 主键值2 }`
@@ -31,13 +29,30 @@ fsql.Update<Topic>(object dywhere)
 - `new[] { Topic对象1, Topic对象2 }`
 - `new { id = 1 }`
 
-## 动态表名
+## 2、动态表名
 
 ```csharp
 fsql.Update<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表更新
 ```
 
-## 1、更新指定列
+
+## 3、更新条件
+
+> 除了上面介绍的 `dywhere` 构造参数外，还支持 `Where lambda/sql` 方法
+
+> 出于安全考虑，没有条件不执行更新动作，避免误更新全表数据。更新全表数据：`fsql.Update<T>().Where(a => true).Set(a => a.Xxx == xxx).ExecuteAffrows()`
+
+```csharp
+fsql.Update<Topic>()
+  .Set(a => a.Title, "新标题")
+  .Set(a => a.Time, DateTime.Now)
+  .Where(a => a.Id == 1)
+  .ExecuteAffrows();
+//UPDATE `Topic` SET `Title` = @p_0, `Time` = @p_1
+//WHERE (Id = 1)
+```
+
+## 4、更新指定列 Set
 
 ```csharp
 fsql.Update<Topic>(1)
@@ -68,43 +83,15 @@ fsql.Update<Topic>(1)
 //WHERE (`Id` = 1)
 ```
 
-## 2、更新条件
-
-> 除了上面介绍的 `dywhere` 构造参数外，还支持 `Where lambda/sql` 方法
-
-> 出于安全考虑，没有条件不执行更新动作，避免误更新全表数据。更新全表数据：`fsql.Update<T>().Where("1=1").Set(a => a.Xxx == xxx).ExecuteAffrows()`
-
-```csharp
-fsql.Update<Topic>()
-  .Set(a => a.Title, "新标题")
-  .Set(a => a.Time, DateTime.Now)
-  .Where(a => a.Id == 1)
-  .ExecuteAffrows();
-//UPDATE `Topic` SET `Title` = @p_0, `Time` = @p_1
-//WHERE (Id = 1)
-```
-
-## 3、更新实体
+## 5、更新实体 SetSource
 
 方法 1：(推荐)
 
 > 只更新变化的属性，依赖 `FreeSql.Repository`
 
 ```csharp
-var repo = fsql.GetRepository<Topic>();
+var repo = fsql.GetRepository<Topic>(); //可以从 IOC 容器中获取
 var item = repo.Where(a => a.Id == 1).First();  //此时快照 item
-item.Title = "newtitle";
-repo.Update(item); //对比快照时的变化
-//UPDATE `Topic` SET `Title` = @p_0
-//WHERE (`Id` = 1)
-```
-
-> 是不是觉得先查询再更新，啰嗦？
-
-```csharp
-var repo = fsql.GetRepository<Topic>();
-var item = new Topic { Id = 1 };
-repo.Attach(item); //此时快照 item
 item.Title = "newtitle";
 repo.Update(item); //对比快照时的变化
 //UPDATE `Topic` SET `Title` = @p_0
@@ -177,17 +164,7 @@ fsql.Update<Topic>()
 - 原因：实体主键 Column DbType 与表类型不一致造成，
 - 解决：[Column(DbType = "varchar2", StingLength = 255)]
 
-## 4、自定义 SQL
-
-```csharp
-fsql.Update<Topic>()
-  .SetRaw("Title = @title", new { title = "新标题" })
-  .Where("Id = @id", 1)
-  .ExecuteAffrows();
-//UPDATE `Topic` SET Title = @title WHERE (Id = @id)
-```
-
-## 5、根据 Dto 更新
+## 6、更新 SetDto
 
 ```csharp
 fsql.Update<T>()
@@ -202,7 +179,7 @@ fsql.Update<T>()
   .ExecuteAffrows();
 ```
 
-## 6、Set/SetSource/SetDto 区别
+## 7、Set/SetSource/SetDto 区别
 
 他们三个是平级功能，分别对应：
 
@@ -212,7 +189,7 @@ fsql.Update<T>()
 
 - `SetDto` 是 `Set` 的批量操作
 
-## 7、字典更新
+## 8、字典更新
 
 ```csharp
 var dic = new Dictionary<string, object>();
@@ -220,9 +197,10 @@ dic.Add("id", 1);
 dic.Add("name", "xxxx");
 
 fsql.UpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
+//提示：List<Dictionary<string, object>> 为批量更新
 ```
 
-## 8、乐观锁
+## 9、乐观锁
 
 更新整个实体数据时，在并发情况下极容易造成旧数据将新的记录更新。
 
@@ -232,7 +210,7 @@ fsql.UpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
 
 > 适用 `SetSource` 更新，每次更新 `version` 的值都会增加 `1`
 
-## 9、悲观锁
+## 10、悲观锁
 
 ```csharp
 var user = fsql.Select<User>()
@@ -248,7 +226,7 @@ var user = fsql.Select<User>()
 SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ```
 
-## 10、ISelect.ToUpdate 高级更新
+## 11、ISelect.ToUpdate 高级更新
 
 `IUpdate` 默认不支持导航对象，多表关联等。`ISelect.ToUpdate` 可将查询转为 `IUpdate`，以便使用导航对象更新数据，如下：
 
@@ -270,7 +248,7 @@ UPDATE `T1` SET Title = '111' WHERE id in (select a.id from T1 a left join Optio
 - 更新前可预览测试数据，防止错误更新操作；
 - 支持复杂的更新操作，例如：`ISelect` 上使用 `Limit(10)` 更新附合条件的前 10 条记录；
 
-## 11、联表更新 UpdateJoin
+## 12、联表更新 UpdateJoin
 
 v3.2.692+（高风险操作，高风险操作，高风险操作，请谨慎谨慎谨慎使用，测试并核对 ToSql 返回的内容）
 
@@ -318,15 +296,15 @@ INNER JOIN (
 SET a.`bcode` = b.`xcode`
 ```
 
-## 12、BulkCopy 批量更新
+## 13、高性能 BulkCopy
 
 | 程序包 | 扩展方法 | 说明 (v3.2.693) |
 | -- | -- | -- |
 | FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
 | FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
 | FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
 | FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
+| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
 | FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
 
 原理：使用 BulkCopy 将数据插入到临时表，再使用 UPDATE FROM JOIN 联表更新。

@@ -84,7 +84,7 @@ WHERE ((a."Id" = 1 OR a."Id" = 2))
 
 ## WithParameters 参数化共享
 
-开启参数化查询功能后，使用 WithParameters 共享参数化，避免产生相同的参数名称：
+开启参数化查询功能后，使用 WithParameters 共享参数化，可避免产生相同的参数名称：
 
 ```csharp
 var dbpars = new List<DbParameter>();

@@ -43,20 +43,20 @@ fsql.Select<Area>().Where(a => a.Childs.Any(c => c.Name == "北京")).First();
 定义 Childs 属性，还可以使用【级联保存】、【贪婪加载】等等操作。
 
 ```csharp
-fsql.Delete<Area>().Where("1=1").ExecuteAffrows();
 var repo = fsql.GetRepository<Area>();
 repo.DbContextOptions.EnableCascadeSave = true;
-repo.DbContextOptions.NoneParameter = true;
 repo.Insert(new Area
 {
   Code = "100000",
   Name = "中国",
-  Childs = new List<Area>(new[] {
+  Childs = new List<Area>(new[] 
+  {
     new Area
     {
       Code = "110000",
       Name = "北京",
-      Childs = new List<Area>(new[] {
+      Childs = new List<Area>(new[] 
+      {
         new Area{ Code="110100", Name = "北京市" },
         new Area{ Code="110101", Name = "东城区" },
       })
@@ -73,18 +73,16 @@ repo.Insert(new Area
 var t1 = fsql.Select<Area>().ToTreeList();
 Assert.Single(t1);
 Assert.Equal("100000", t1[0].Code);
-Assert.Single(t1[0].Childs);
 Assert.Equal("110000", t1[0].Childs[0].Code);
-Assert.Equal(2, t1[0].Childs[0].Childs.Count);
 Assert.Equal("110100", t1[0].Childs[0].Childs[0].Code);
 Assert.Equal("110101", t1[0].Childs[0].Childs[1].Code);
 ```
 
-查询数据本来是平面的，ToTreeList 方法将返回的平面数据在内存中加工为树型 List 返回。
+ToList 查询数据是平面的，ToTreeList 将返回的平面数据在内存加工为树型 List 返回。
 
 ## 2、AsTreeCte 递归删除
 
-MySql连接字符串需要增加 `Allow User Variables=True`，否则会有`MySqlException Parameter '@cte ids' must be defined`
+MySql 连接字符串需要增加 `Allow User Variables=True`，否则会有 `MySqlException Parameter '@cte ids' must be defined`
 
 很常见的无限级分类表功能，删除树节点时，把子节点也处理一下。
 

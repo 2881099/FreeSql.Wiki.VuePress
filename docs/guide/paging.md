@@ -1,11 +1,10 @@
 # 分页查询
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10")
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
-class Topic {
+class Topic
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Title { get; set; }
@@ -32,13 +31,12 @@ var list = fsql.Select<Topic>()
 提示：数据量大一般不建议查 Count/CountAsync，而应该采用流式分页（上一页、下一页、不返回总数量）
 
 ```csharp
-var select = fsql.Select<Topic>()
-    .Where(a => a.Id > 10);
+var select = fsql.Select<Topic>().Where(a => a.Id > 10);
 var total = await select.CountAsync();
 var list = await select.Page(1, 20).ToListAsync();
 ```
 
-`BasePagingInfo`是提供的分页类,`PageNumber`,`PageSize`,`Count`，如下内容，`.Page(page)`后，`page.Count`就有统计值了
+`BasePagingInfo` 拥有 `PageNumber`,`PageSize`,`Count`，如下内容 `.Page(page)`，`page.Count` 就有统计值了
 
 ```csharp
 public class TopicGetListInput: BasePagingInfo

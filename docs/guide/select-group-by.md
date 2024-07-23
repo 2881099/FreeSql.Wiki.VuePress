@@ -1,9 +1,7 @@
 # 分组聚合
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10")
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
 class Topic 
 {
@@ -15,7 +13,7 @@ class Topic
 }
 ```
 
-## GroupBy分组聚合
+## 1、单表分组
 
 ```csharp
 var list = fsql.Select<Topic>()
@@ -55,36 +53,7 @@ var list = fsql.Select<Topic>()
     });
 ```
 
-## 导航属性分组
-
-假如 Topic 有导航属性 Category，Category 又有导航属性 Area，导航属性分组代码如下：
-
-```csharp
-var list = fsql.Select<Topic>()
-    .GroupBy(a => new { a.Clicks, a.Category })
-    .ToList(g => new { g.Key.Category.Area.Name });
-```
-
-注意：如上这样编写，会报错无法解析 a.Key.Category.Area.Name，解决办法使用 Include：
-
-```csharp
-var list = fsql.Select<Topic>()
-    .Include(a => a.Category.Area)
-    //必须添加此行，否则只分组 Category 而不包含它的下级导航属性 Area
-
-    .GroupBy(a => new { a.Clicks, a.Category })
-    .ToList(g => new { g.Key.Category.Area.Name });
-```
-
-但是，你还可以这样解决：
-
-```csharp
-var list = fsql.Select<Topic>()
-    .GroupBy(a => new { a.Clicks, a.Category, a.Category.Area })
-    .ToList(g => new { g.Key.Area.Name });
-```
-
-## 多表分组
+## 2、多表分组
 
 ```csharp
 var list = fsql.Select<Topic, Category, Area>()
@@ -135,7 +104,7 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.Min(id).Over().PartitionBy().ToValue() | min(id) over(partition by xx) | |
 | SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx) | |
 
-## 查询分组第一条记录
+## 3、分组第一条记录
 
 ```cs
 fsql.Select<User1>()
@@ -185,7 +154,7 @@ INNER JOIN [User1] b ON a.[min] = b.[Id]
 
 > 查看更多[《嵌套查询》](withtempquery.md)文档
 
-## Aggregate
+## 4、Aggregate
 
 ### Distinct
 
@@ -222,6 +191,35 @@ var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
 
 > SELECT count(distinct a."Title") as1, count(distinct a."Clicks") as2 
 FROM "Topic" a
+
+## 5、导航属性分组
+
+假如 Topic 有导航属性 Category，Category 又有导航属性 Area，导航属性分组代码如下：
+
+```csharp
+var list = fsql.Select<Topic>()
+    .GroupBy(a => new { a.Clicks, a.Category })
+    .ToList(g => new { g.Key.Category.Area.Name });
+```
+
+注意：如上这样编写，会报错无法解析 a.Key.Category.Area.Name，解决办法使用 Include：
+
+```csharp
+var list = fsql.Select<Topic>()
+    .Include(a => a.Category.Area)
+    //必须添加此行，否则只分组 Category 而不包含它的下级导航属性 Area
+
+    .GroupBy(a => new { a.Clicks, a.Category })
+    .ToList(g => new { g.Key.Category.Area.Name });
+```
+
+但是，你还可以这样解决：
+
+```csharp
+var list = fsql.Select<Topic>()
+    .GroupBy(a => new { a.Clicks, a.Category, a.Category.Area })
+    .ToList(g => new { g.Key.Area.Name });
+```
 
 ## API
 

@@ -1,6 +1,6 @@
 # 查询
 
-FreeSql 在查询数据下足了功夫，链式查询语法、多表查询、表达式函数支持得非常到位。
+FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。
 
 | | | |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ fsql.SetGlobalSelectWithLock(SqlServerLock.NoLock, new Dictionary<Type, bool>
 });
 ```
 
-## 特别介绍 WhereDynamicFilter
+## 动态过滤 WhereDynamicFilter
 
 [《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》](https://www.cnblogs.com/FreeSql/p/16485310.html)
 

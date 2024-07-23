@@ -1,11 +1,10 @@
 # 单表查询
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10")
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
-class Topic {
+class Topic
+{
     [Column(IsIdentity = true)]
     public int Id { get; set; }
     public string Title { get; set; }

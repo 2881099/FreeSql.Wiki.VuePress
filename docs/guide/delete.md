@@ -1,16 +1,14 @@
 # 删除
 
-删除是一个非常危险的操作，FreeSql 对删除支持并不强大，默认仅支持单表、且有条件的删除方法。
+删除是一个非常危险的操作，FreeSql 默认仅支持单表、且有条件的删除方法。
 
-若 `Where` 条件为空的时候执行，仅返回 `0` 或默认值，不执行真正的 SQL 删除操作。
+若 `Where` 条件为空，将不执行真正的 SQL 删除操作。
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.MySql, connectionString)
-    .UseAutoSyncStructure(true) //自动同步实体结构到数据库
-    .Build(); //请务必定义成 Singleton 单例模式
+IFreeSql fsql; //如何创建请移步入门文档
 
-class Topic {
+class Topic
+{
     [Column(IsIdentity = true, IsPrimary = true)]
     public int Id { get; set; }
     public int Clicks { get; set; }
@@ -19,13 +17,13 @@ class Topic {
 }
 ```
 
-## 动态条件
+## 1、动态条件
 
 ```csharp
 fsql.Delete<Topic>(object dywhere).ExecuteAffrows()
 ```
 
-`dywhere` 支持：
+`dywhere` 可以是：
 
 * 主键值
 * `new[] { 主键值1, 主键值2 }`
@@ -47,15 +45,15 @@ var t4 = fsql.Delete<Topic>(new { id = 1 }).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` = 1)
 ```
 
-## 动态表名
+## 2、动态表名
 
 ```csharp
 fsql.Delete<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表删除
 ```
 
-## 删除条件
+## 3、删除条件
 
-> 出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：`fsql.Delete<T>().Where("1=1").ExecuteAffrows()`
+> 出于安全考虑，没有条件不执行删除动作，避免误删除全表数据。删除全表数据：`fsql.Delete<T>().Where(a => true).ExecuteAffrows()`
 
 ```csharp
 var t5 = fsql.Delete<Topic>().Where(a => a.Id == 1).ExecuteAffrows();
@@ -74,11 +72,7 @@ var t8 = fsql.Delete<Topic>().Where(items).ExecuteAffrows();
 //DELETE FROM `Topic` WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 ```
 
-### 注意点
-
-* "**id = @id**"中的@字符为[参数化](https://freesql.net/guide/ado.html#%E5%8F%82%E6%95%B0%E5%8C%96)，不同数据库，参数化字符不同
-
-## 字典删除
+## 4、字典删除
 
 ```csharp
 var dic = new Dictionary<string, object>();
@@ -86,9 +80,10 @@ dic.Add("id", 1);
 dic.Add("name", "xxxx");
 
 fsql.DeleteDict(dic).AsTable("table1").ExecuteAffrows();
+//提示：List<Dictionary<string, object>> 为批量删除
 ```
 
-## ISelect.ToDelete 高级删除
+## 5、ISelect.ToDelete 高级删除
 
 `IDelete` 默认不支持导航对象，多表关联等。`ISelect.ToDelete` 可将查询转为 `IDelete`，以便使用导航对象删除数据，如下：
 
@@ -107,11 +102,11 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 * 删除前可预览测试数据，防止错误删除操作；
 * 支持复杂的删除操作，例如：`ISelect` 上使用 `Limit(10)` 删除附合条件的前 10 条记录；
 
-## IBaseRepository 级联删除
+## 6、IBaseRepository 级联删除
 
 1、第一种：基于【对象】级联删除
 
-> 比如 Include/IncludeMany 查询的对象，可以使用此方法级联删除它们。
+> 使用 Include/IncludeMany 贪婪加载 OneToOne/OneToMany/ManyToMany 导航属性，可以使用此方法级联删除它们。
 
 ```csharp
 var repo = fsql.GetRepository<UserGroup>();

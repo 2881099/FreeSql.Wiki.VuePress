@@ -11,30 +11,41 @@ actions:
     link: https://b23.tv/TCDCBLg
     type: default
 features:
-  - title: 开发者优先
-    details: 💡以开发者为中心的设计理念，想你所想，亦享你所享。
+  - title: 轻松入门
+    details: 💡 5 分钟入门，1 小时成为高手
     link: /guide/
-  - title: 多场景实现
-    details: 🛠 支持 CodeFirst / DbFirst / DbContext / Repository / UnitOfWork / AOP / 支持 .NETCore 2.1+, .NETFramework 4.0+, AOT, Xamarin
+  - title: 超前理念
+    details: MIT 开源，零依赖包
+  - title: 数据库
+    details: 支持常见 15 种数据库
+    link: /guide/
+  - title: 查询
+    details: 多表/嵌套/联合/递归等
+    link: /guide/select
+  - title: CodeFirst
+    details: 实体类自动同步表结构
     link: /guide/code-first
-  - title: 多数据库支持
-    details: 🌳MySql、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、虚谷、神舟、翰高、ClickHouse、QuestDB、Access 等数据库
-    link: /guide/install
-  - title: 丰富的表达式函数
-    details: ✒ 支持 丰富的表达式函数，以及灵活的自定义解析；
-    link: /guide/expression-function
   - title: DbFirst
-    details: 💻 支持 DbFirst 模式，支持从数据库导入实体类，或使用实体类生成工具生成实体类；
+    details: 从数据库导入实体类
     link: /guide/db-first
-  - title: 类型映射
-    details: ⛳ 支持 深入的类型映射，比如 Pgsql 的数组类型等；
-    link: /guide/type-mapping
   - title: 导航属性
-    details: 🏁 支持 导航属性一对多、多对多贪婪加载，以及延时加载；
+    details: 一对多/多对多，级联
     link: /guide/navigate-attribute
   - title: 读写分离
-    details: 📃 支持 读写分离、分表分库、过滤器、乐观锁、悲观锁；
+    details: 一行代码现读写分离
     link: /guide/read-write-splitting
+  - title: 高性能
+    details: BulkCopy 插入/更新/保存
+    link: /guide/performance
+  - title: 大数据
+    details: 自动分表/ClickHouse
+    link: /guide/sharding
+  - title: 多租户
+    details: 提供三种多租户方案
+    link: /guide/multi-tenancy
+  - title: 低代码
+    details: 动态操作，无实体API
+    link: /guide/lowcode
 footer: MIT Licensed | Copyright © 2018-present nicye
 ---
 
