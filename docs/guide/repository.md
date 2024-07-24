@@ -4,41 +4,31 @@ tag:
   - Repository
 ---
 
-`FreeSql.Repository` 实现了通用仓储层功能。FreeSql.Repository 参考 abp vnext 接口规范，实现仓储层（CURD）。
+`FreeSql` 实现了通用仓储层功能。FreeSql.DbContext 参考 abp vnext 接口规范，实现仓储层（CURD）。
 
-## 特性
-
-- Select/Attach 快照对象，Update 只更新变化的字段；
-- Insert 插入数据，适配各数据库优化执行 ExecuteAffrows/ExecuteIdentity/ExecuteInserted；
-- InsertOrUpdate 插入或更新；
-- SaveMany 方法快速保存导航对象（一对多、多对多）；
-
-## 安装
 
 ::: code-tabs
 
 @tab:active .NET CLI
 
 ```bash
- dotnet add package FreeSql.Repository
+ dotnet add package FreeSql.DbContext
 ```
 
 @tab .NET Framework
 
 ```bash
-Install-Package FreeSql.Repository
+Install-Package FreeSql.DbContext
 ```
 
 :::
 
-## 定义
+- Select/Attach 快照对象，Update 只更新变化的字段；
+- Insert 插入数据，适配各数据库优化执行 ExecuteAffrows/ExecuteIdentity/ExecuteInserted；
+- 级联保存、级联删除（一对一、一对多、多对多）；
+- 仓储 + 工作单元设计模式，风格简洁、统一；
 
 ```csharp
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.Sqlite, connectionString)
-    .UseAutoSyncStructure(true) //自动迁移实体的结构到数据库
-    .Build(); //请务必定义成 Singleton 单例模式
-
 public class Song
 {
     [Column(IsIdentity = true)]
@@ -47,27 +37,23 @@ public class Song
 }
 ```
 
-## 使用方法
+> 注意：Repository 对象多线程不安全，因此不应在多个线程上同时对其执行工作。
 
-方法 1、IFreeSql 的扩展方法；
+## 临时用法
 
 ```csharp
 var curd = fsql.GetRepository<Song>();
 ```
 
-> 注意：Repository 对象多线程不安全,因此不应在多个线程上同时对其执行工作。
+> 适合在局部代码中，临时的创建仓储，用完就扔掉了。
 
-- 不支持从不同的线程同时使用同一仓储实例
-- 通过GetRepository相当于直接new DefaultRepository<TEntity, int>，每次调用都会创建一个新的实例,.NET Core中不建议使用
+## 泛型仓储（依赖注入）
 
 方法 2、泛型仓储+依赖注入（.NET Core)；
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddSingleton<IFreeSql>(fsql);
-    services.AddFreeRepository(null);
-}
+//先看入门文档注入 IFreeSql
+services.AddFreeRepository();
 
 //在控制器使用泛型仓储
 public SongsController(IBaseRepository<Song> songRepository)
@@ -75,35 +61,26 @@ public SongsController(IBaseRepository<Song> songRepository)
 }
 ```
 
-方法 3、继承泛型仓储+依赖注入（.NET Core)；
+## 继承仓储（依赖注入）
 
 ```csharp
-public class SongRepository : BaseRepository<Song, int>
+//先看入门文档注入 IFreeSql
+services.AddFreeRepository(typeof(SongRepository).Assembly); //如果没有继承的仓储，第二个参数不用传
+
+//使用继承的仓储
+public SongsController(SongRepository repo1, TopicRepository repo2)
 {
-    public SongRepository(IFreeSql fsql) : base(fsql, null, null) {}
+}
+
+public class SongRepository : BaseRepository<Song>
+{
+    public SongRepository(IFreeSql fsql) : base(fsql) {}
 
     //在这里增加 CURD 以外的方法
 }
-
-//注入服务
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddSingleton<IFreeSql>(fsql);
-    services.AddFreeRepository(null, typeof(SongRepository).Assembly); //如果没有继承的仓储，第二个参数不用传
-}
-
-//使用继承的仓储
-public SongsController(SongRepository songRepository)
-{
-}
-
 ```
 
-> 依赖注入的方式可实现全局【过滤与验证】的设定，方便租户功能的设计；
-
-更多资料：[《过滤器、全局过滤器》](filters.md)
-
-## 状态管理
+## 对比更新
 
 只更新变化的属性：
 
@@ -185,42 +162,6 @@ class MyRepositoryOptions
 }
 ```
 
-## 过滤与验证
-
-假设我们有 User(用户)、Topic(主题)两个实体，定义了两个仓储：
-
-```csharp
-var userRepository = fsql.GetRepository<User>();
-var topicRepository = fsql.GetRepository<Topic>();
-```
-
-在开发过程中，总是担心 topicRepository 的数据安全问题，即有可能查询或操作到其他用户的主题。因此我们在 v0.0.7 版本增加了 filter lambda 表达式参数。
-
-```csharp
-var userRepository = fsql.GetRepository<User>(a => a.Id == 1);
-var topicRepository = fsql.GetRepository<Topic>(a => a.UserId == 1);
-```
-
-- 在查询/修改/删除时附加此条件，从而达到不会修改其他用户的数据；
-- 在添加时，使用表达式验证数据的合法性，若不合法则抛出异常；
-
-## 分表与分库
-
-FreeSql 提供 AsTable 分表的基础方法，GuidRepository 作为分存式仓储将实现了分表与分库（不支持跨服务器分库）的封装。
-
-```csharp
-var logRepository = fsql.GetGuidRepository<Log>(null, oldname => $"{oldname}_{DateTime.Now.ToString("YYYYMM")}");
-```
-
-上面我们得到一个日志仓储按年月分表，使用它 CURD 最终会操作 Log_201903 表。
-
-注意事项：
-
-- v0.11.12 以后的版本可以使用 CodeFirst 迁移分表；
-- 不可在分表分库的实体类型中使用《延时加载》；
-
-更多请移步[《分表分库》](sharding.md)
-
 ## 兼容问题
 
 SqlServer 提供的 output inserted 特性，在表使用了自增或数据库定义了默认值的时候，使用它可以快速将 insert 的数据返回。PostgreSQL 也有相应的功能，如此方便但不是每个数据库都支持。
@@ -242,7 +183,6 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | UnitOfWork       | IUnitOfWork            | 正在使用的工作单元                             |
 | Orm              | IFreeSql               | 正在使用的 Orm                                 |
 | DbContextOptions | DbContextOptions       | 正在使用的 DbContext 设置，修改设置不影响其他  |
-| DataFilter       | IDataFilter\<TEntity\> | 仓储过滤器，本对象内生效                       |
 | UpdateDiy        | IUpdate\<TEntity\>     | 准备更新数据，与仓储同事务                     |
 | Select           | ISelect\<TEntity\>     | 准备查询数据                                   |
 
@@ -265,7 +205,6 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | Attach                                                                                       | -              | TEntity                | 附加实体到状态管理，可用于不查询就更新或删除             |
 | Attach                                                                                       | -              | IEnumerable\<TEntity\> | 批量附加实体到状态管理                                   |
 | AttachOnlyPrimary                                                                            | -              | TEntity                | 只附加实体的主键数据到状态管理                           |
-| [SaveMany](cascade-saving.html)                                                              | -              | TEntity, string        | 保存实体的指定 ManyToMany/OneToMany 导航属性（完整对比） |
 | [BeginEdit](insert-or-update.html#_5%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91) | -              | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
 | EndEdit                                                                                      | int            | 无                     | 完成编辑数据，进行保存动作                               |
 

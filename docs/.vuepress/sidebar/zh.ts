@@ -79,6 +79,11 @@ export const zhSidebarConfig = sidebar({
             "lowcode",
           ],
         },
+        "expression-function",
+        "transaction",
+        "filters",
+        "ado",
+        "aop",
         {
           text: "CodeFirst",
           collapsible: true,
@@ -89,11 +94,6 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         "db-first",
-        "expression-function",
-        "transaction",
-        "filters",
-        "ado",
-        "aop",
         "more",
         {
           text: "高级功能",

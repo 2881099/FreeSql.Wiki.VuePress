@@ -26,9 +26,14 @@ using (var uow = fsql.CreateUnitOfWork())
 
   await fsql.Insert(item)... //错误，不在一个事务
 
+  var repo = uow.GetRepository<Song>(); //仓储 CRUD
+  await repo.InsertAsync(item);
+
   uow.Commit();
 }
 ```
+
+> 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务
 
 ## 2、仓储事务（依赖注入）
 

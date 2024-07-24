@@ -1,35 +1,27 @@
 # UnitOfWork
 
-UnitOfWork 可将多个仓储放在一个单元管理执行，最终通用 Commit 执行所有操作，内部使用了数据库事务；
-
-```csharp
-var connstr = "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;" +
-  "Initial Catalog=cccddd;Charset=utf8;SslMode=none;Max pool size=10";
-
-static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-  .UseConnectionString(FreeSql.DataType.MySql, connstr)
-  .UseAutoSyncStructure(true) //自动同步实体结构到数据库
-  .Build(); //请务必定义成 Singleton 单例模式
-```
+UnitOfWork 是对 DbTransaction 事务对象的封装，可以方便夹带私有数据。
 
 ## 如何使用
 
 ```csharp
 using (var uow = fsql.CreateUnitOfWork()) 
 {
-  var songRepo = fsql.GetRepository<Song>();
-  songRepo.UnitOfWork = uow;
-  var userRepo = fsql.GetRepository<User>();
-  userRepo.UnitOfWork = uow;
+  await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
+  await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
 
-  songRepo.Insert(new Song());
-  userRepo.Update(...);
+  await fsql.Insert(item)... //错误，不在一个事务
+
+  var repo1 = uow.GetRepository<Song>();
+  await repo1.InsertAsync(item);
 
   uow.Commit();
 }
 ```
 
-参考：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager.md)
+> 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务
+
+依赖注入（参考）：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager.md)
 
 ## 接口定义
 
@@ -78,16 +70,19 @@ fsql.SetDbContextOptions(opt => {
 单独设置：
 
 ```csharp
-var uow = fsql.CreateUnitOfWork();
-uow.OnEntityChange = report => {
-  Console.WriteLine(report);
-};
+using (var uow = fsql.CreateUnitOfWork())
+{
+  uow.OnEntityChange = report => {
+    Console.WriteLine(report);
+  };
+}
 ```
 
 参数 report 是一个 List 集合，集合元素的类型定义如下：
 
 ```csharp
-public class ChangeInfo {
+public class ChangeInfo
+{
   public object Object { get; set; }
   public EntityChangeType Type { get; set; }
   /// <summary>
