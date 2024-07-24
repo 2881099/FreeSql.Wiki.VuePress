@@ -1,38 +1,87 @@
 # 事务Transaction
 
+::: code-tabs
 
+@tab:active .NET CLI
 
-## ASP.NET Core AOP 事务
+```bash
+dotnet add package FreeSql.DbContext
+```
 
-- [AOP + FreeSql 基于特性标签实现跨方法异步事务](unitofwork-manager.md)
+@tab Package Manager
 
-## 1、UnitOfWork 事务
+```bash
+Install-Package FreeSql.DbContext
+```
 
-提示：工作单元依赖 FreeSql.DbContext.dll，后面 fsql.Transaction 同线程事务内置无依赖。
+:::
+
+## 1、常规事务
 
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
-  var songRepo = fsql.GetRepository<Song>();
-  var userRepo = fsql.GetRepository<User>();
-  songRepo.UnitOfWork = uow; //手工绑定工作单元
-  userRepo.UnitOfWork = uow;
+  await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
+  await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
 
-  songRepo.Insert(new Song());
-  userRepo.Update(...);
-
-  uow.Orm.Insert(new Song()).ExecuteAffrows();
-  //注意：uow.Orm 和 fsql 都是 IFreeSql
-  //uow.Orm CRUD 与 uow 是一个事务（理解为临时 IFreeSql）
-  //fsql CRUD 与 uow 不在一个事务
+  await fsql.Insert(item)... //错误，不在一个事务
 
   uow.Commit();
 }
 ```
 
-## 2、同线程事务
+## 2、仓储事务（依赖注入）
 
-同线程事务，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步），比较适合 WinForm/WPF UI 主线程使用事务的场景。
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
+{
+    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=freedb.db")
+        .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
+        .Build();
+    return fsql;
+};
+builder.Services.AddSingleton<IFreeSql>(fsqlFactory);
+
+builder.Services.AddFreeRepository();
+builder.Services.AddScoped<UnitOfWorkManager>();
+builder.Services.AddScoped<SongService>();
+WebApplication app = builder.Build();
+
+
+public class SongService
+{
+    readonly IBaseRepository<Song> _songRepository;
+    readonly IBaseRepository<Detail> _detailRepository;
+
+    public SongService(IBaseRepository<Song> songRepository, IBaseRepository<Detail> detailRepository)
+    {
+        _songRepository = songRepository;
+        _detailRepository = detailRepository;
+    }
+
+    [Transactional]
+    async public Task Test1()
+    {
+        //所有注入的仓储对象，都是一个事务
+        await _songRepository.InsertAsync(xxx1);
+        await _detailRepository.DeleteAsync(xxx2);
+        this.Test2();
+    }
+
+    [Transactional(Propagation = Propagation.Nested)]
+    public void Test2() //嵌套事务
+    {
+    }
+}
+```
+
+具体请移步文档：- [AOP 特性标签实现跨方法事务](unitofwork-manager.md)
+
+## 3、同线程事务
+
+同线程事务内置在 FreeSql.dll，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步）。
 
 用户购买了价值 100 元的商品：扣余额、扣库存。
 
@@ -66,7 +115,7 @@ fsql.Transaction(() =>  {
 
 - 事务体内代码不可以切换线程，因此不可使用任何异步方法，包括 FreeSql 提供的数据库异步方法（可以使用任何 Curd 同步方法）；
 
-## 5、更新排他锁
+## 4、悲观锁
 
 ```csharp
 var user = fsql.Select<User>().ForUpdate(true).Where(a => a.Id == 1).ToOne();
@@ -79,73 +128,3 @@ for update 在 Oracle/PostgreSQL/MySql 是通用的写法，我们对 SqlServer 
 SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ```
 
-## 6、示范代码
-
-```csharp
-//使用 全局线程事务
-fsql.Transaction(() =>
-{
-    fsql.Insert(new Products()).ExecuteAffrows();
-    fsql.Insert(new Products()).ExecuteAffrows();
-});
-
-
-//使用 UnitOfWork 事务
-using (var uow = fsql.CreateUnitOfWork())
-{
-    var repo = uow.GetRepository<Products>();
-    repo.Insert(new Products());
-
-    uow.Orm.Insert(new Products()).ExecuteAffrows(); //正常
-    fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-    fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
-
-    uow.Commit();
-}
-
-
-//使用 DbContext 事务
-using (var ctx = fsql.CreateDbContext())
-{
-    ctx.Add(new Products());
-
-    ctx.Orm.Insert(new Products()).ExecuteAffrows(); //正常
-    fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-    fsql.Insert(new Products()).WithTransaction(ctx.UnitOfWork.GetOrBeginTransaction()).ExecuteAffrows(); //正常
-
-    ctx.SaveChanges();
-}
-
-
-//使用 UnitOfWorkManager 管理类事务
-using (var uowManager = new UnitOfWorkManager(fsql))
-{
-    using (var uow = uowManager.Begin())
-    {
-        uow.Orm.Insert(new Products()).ExecuteAffrows(); //正常
-        fsql.Insert(new Products()).ExecuteAffrows(); //错误，没有传事务
-        fsql.Insert(new Products()).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
-
-        using (var uow2 = uowManager.Begin()) //与 uow 同一个事务
-        {
-            var repo1 = fsql.GetRepository<Products>();
-            repo1.UnitOfWork = uow2;
-            repo1.Insert(new Products());
-
-            uow2.Commit(); //事务还未提交
-        }
-
-        uow.Commit(); //事务提交
-    }
-}
-```
-
-- IFreeSql Curd 方法若不是使用同线程事务，需要指定 WithTransaction 传入事务；
-- IUnitOfWork Orm 与工作单元事务一致；
-- FreeSql.IBaseRepository curd 方法需要指定 UnitOfWork 传递工作单元事务；
-- FreeSql.DbContext 自带事务；
-- UnitOfWorkManager 适合做跨方法事务；
-
-[扩展阅读 1：IFreeSql 事务另类玩法，理解上面各种事务场景之后再看会更佳](https://github.com/dotnetcore/FreeSql/issues/322)
-
-[扩展阅读 2：对以上各种事务的理解及演变](https://www.cnblogs.com/kellynic/p/13551855.html)

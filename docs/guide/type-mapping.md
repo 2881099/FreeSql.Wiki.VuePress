@@ -2,7 +2,7 @@
 
 ## 自定义类型映射(MapType)
 
-### v3.2.701 版本自定义类型转换
+### v3.2.701 自定义类型转换
 
 ```csharp
 FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonClass), new String_JsonClass());
