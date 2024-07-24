@@ -1,6 +1,6 @@
 # UnitOfWork
 
-UnitOfWork 是对 DbTransaction 事务对象的封装，可以方便夹带私有数据。
+UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。
 
 ## 如何使用
 

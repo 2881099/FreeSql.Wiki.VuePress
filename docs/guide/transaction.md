@@ -18,6 +18,8 @@ Install-Package FreeSql.DbContext
 
 ## 1、常规事务
 
+UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。
+
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
