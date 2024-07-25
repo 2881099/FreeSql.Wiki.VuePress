@@ -37,6 +37,27 @@ using (var uow = fsql.CreateUnitOfWork())
 
 > 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务
 
+或者
+
+```csharp
+//使用 UnitOfWorkManager 管理类事务
+using (var uowManager = new UnitOfWorkManager(fsql))
+{
+    using (var uow = uowManager.Begin())
+    {
+        uow.Orm.Insert(item).ExecuteAffrows(); //正常
+        fsql.Insert(item).ExecuteAffrows(); //错误，没有传事务
+        fsql.Insert(item).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
+
+        using (var uow2 = uowManager.Begin()) //与 uow 同一个事务
+        {
+            uow2.Commit(); //事务还未提交
+        }
+        uow.Commit(); //事务提交
+    }
+}
+```
+
 ## 2、仓储事务（依赖注入）
 
 ```csharp
