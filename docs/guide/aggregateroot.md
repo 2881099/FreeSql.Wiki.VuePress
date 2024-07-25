@@ -4,7 +4,7 @@
 
 </style>
 
-FreeSql.Repository 定义了 IBaseRepository\<T\> 仓储接口，实现了单表的通用仓储对象，支持了级联保存、级联删除功能，（但是）使用时需要人工自己判断何时开启、何时使用。
+FreeSql.DbContext 定义了 IBaseRepository\<T\> 仓储接口，（虽然）支持了级联保存、级联删除功能，（但是）使用时需要人工自己判断何时开启、何时使用。
 
 本文看上去像 EF，实则有区别，主要区别在级联边界的规则设定，例如我们允许 OneToMany 从下层向上递归级联，但是仅限查询，不能增删改。研究目的希望从机制上杜绝痛点，让操作变得更可控。
 
@@ -17,6 +17,8 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 > dotnet add package FreeSql.Extensions.AggregateRoot
 
 意见征集、讨论区：[https://github.com/dotnetcore/FreeSql/discussions/1235](https://github.com/dotnetcore/FreeSql/discussions/1235)
+
+接下来的内容，严重依赖[【导航属性】](navigate-attribute)的正确配置，请先学会再继续向下！
 
 ## 设定边界
 

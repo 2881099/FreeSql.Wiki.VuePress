@@ -1,4 +1,4 @@
-# 导航属性 ✨
+# 导航属性
 
 FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMany](https://www.cnblogs.com/FreeSql/p/16351417.html) 六种导航属性关系。
 

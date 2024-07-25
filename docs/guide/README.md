@@ -95,7 +95,7 @@ builder.Services.AddSingleton<IFreeSql>(fsqlFactory);
 WebApplication app = builder.Build();
 ```
 
-@tab 传统老派 （无依赖注入）
+@tab .NET Framework（万能前辈）
 
 ```csharp
 //注意：class DB<T> 泛型类不适合定义 static 单例

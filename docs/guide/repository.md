@@ -4,8 +4,7 @@ tag:
   - Repository
 ---
 
-`FreeSql` 实现了通用仓储层功能。FreeSql.DbContext 参考 abp vnext 接口规范，实现仓储层（CURD）。
-
+`FreeSql.DbContext` 参考 abp vnext 接口规范，实现了通用的仓储层功能（CURD），理解成传统增强版（DAL）。
 
 ::: code-tabs
 
@@ -45,7 +44,7 @@ public class Song
 var curd = fsql.GetRepository<Song>();
 ```
 
-> 适合在局部代码中，临时的创建仓储，用完就扔掉了。
+> 适合在局部代码中，临时的创建仓储，用完就扔掉。
 
 ## 泛型仓储（依赖注入）
 
@@ -116,14 +115,16 @@ repo.CompareState(item) 可获取 item 的状态变化信息
 Dictionary<string, object[]> CompareState(TEntity newdata);
 ```
 
-## Ioc + 登陆信息
+## 登陆信息（依赖注入）
 
-repo.DbContextOptions.AuditValue 适合与 Ioc AddScoped 信息结合。
+repo.DbContextOptions.AuditValue 适合与 AddScoped（依赖注入） 信息结合，统一设置登陆信息。
 
 如下示例：使用仓储插入/更新时自动使用登陆信息
 
 ```csharp
 services.AddSingleton(fsql);
+services.AddScoped(typeof(IBaseRepository<>), typeof(MyRepository<>));
+services.AddScoped(typeof(IBaseRepository<,>), typeof(MyRepository<,>));
 services.AddScoped(r => new MyRepositoryOptions
 {
     AuditValue = e => {
@@ -141,13 +142,10 @@ services.AddScoped(r => new MyRepositoryOptions
         }
     }
 });
-services.AddScoped(typeof(IBaseRepository<>), typeof(MyRepository<>));
-services.AddScoped(typeof(IBaseRepository<,>), typeof(MyRepository<,>));
 
-//以下实现 MyRepository
 class MyRepository<TEntity, TKey> : BaseRepository<TEntity, TKey> where TEntity : class
 {
-    public MyRepository(IFreeSql fsql, MyRepositoryOptions options) : base(fsql, null, null)
+    public MyRepository(IFreeSql fsql, MyRepositoryOptions options) : base(fsql)
     {
         if (options?.AuditValue != null) DbContextOptions.AuditValue += (_, e) => options.AuditValue(e);
     }

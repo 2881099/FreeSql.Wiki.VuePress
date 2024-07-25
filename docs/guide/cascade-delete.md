@@ -1,8 +1,12 @@
 # 级联删除
 
+接下来的内容，严重依赖[【导航属性】](navigate-attribute)的正确配置，请先学会再继续向下！
+
+级联只针对 OneToOne/OneToMany/ManyToMany 三种导航属性，[级联保存](cascade-saving)文档已经解释过。
+
 ## 基于【对象】级联删除
 
-> 比如 Include/IncludeMany 查询的对象，可以使用此方法级联删除它们。
+> 比如 [Include/IncludeMany](select-include#_2%E3%80%81%E5%AF%BC%E8%88%AA%E5%B1%9E%E6%80%A7-manytoone-onetoone) 查询的对象，可以使用此方法级联删除它们。
 
 ```cs
 var repo = fsql.GetRepository<UserGroup>();

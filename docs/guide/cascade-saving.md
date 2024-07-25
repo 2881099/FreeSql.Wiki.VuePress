@@ -1,41 +1,47 @@
 # 级联保存
 
-实践发现，N 对 1 不适合做级联保存，例如：保存 Topic 的时候把 Type 信息也保存？自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。
+接下来的内容，严重依赖[【导航属性】](navigate-attribute)的正确配置，请先学会再继续向下！
 
-## SaveMany 手工保存
+- Topic：文章表
+- Category：分类表
+- Comment：评论表
+- Tag：标签表
+- ManyToOne（多对一）：Topic（多个）关联 Category（一个）；
+- OneToOne（一对一）：Topic（一个）关联 Content（一个）；
+- OneToMany（一对多：Topic（一个）关联 Comment（多个）；
+- ManyToMany（多对多）：Topic（多个）关联 Tag（多个）；
 
-完整保存指定的导航属性，对比表已存在的数据，计算出添加、修改、删除执行。
+ManyToOne（多对一）不适合做级联保存，保存 Topic 的时候把 Category 也保存，显然不合理（思考原因），自下向上保存的功能太不可控了。因此下面只讲 OneToOne/OneToMany/ManyToMany 级联保存。
 
-```csharp
-var repo = fsql.GetRepository<Type>();
-var type = new Type
-{
-    name = "c#",
-    Topics = new List<Topic>(new[]
-    {
-        new Topic { ... }
-    })
-};
-repo.Insert(type);
-repo.SaveMany(type, "Topics"); //手工完整保存 Topics
+> 若以上内容不能理解，请多看几遍！
+
+## 开启功能
+
+::: code-tabs
+
+@tab:active .NET CLI
+
+```bash
+ dotnet add package FreeSql.DbContext
 ```
 
-- SaveMany 仅支持 OneToMany、ManyToMany 导航属性
-- 只保存 Topics，不向下递归追朔
-- 当 Topics 为 Empty 时，删除 type 存在的 Topics 所有表数据
-- ManyToMany 完整对比保存中间表，外部表只追加不更新
+@tab .NET Framework
 
-多对多举例：
+```bash
+Install-Package FreeSql.DbContext
+```
 
-- 本表 Song
-- 外部表 Tag
-- 中间表 SongTag
+:::
 
-## EnableCascadeSave 仓储级联保存
+> 本功能 2019 年实现的（稳定），可移步了解 2022 年新发布的[《聚合根仓储》](aggregateroot.md)（级联更自动）
 
-> 本功能是较早时期实现的，可移步了解最新的[《聚合根仓储》](aggregateroot.md)级联机制
+仓储默认关闭了级联功能，需要手工开启：
 
-DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归追朔其 OneToOne、OneToMany、ManyToMany 导航属性也一并保存，本文档说明实现的机制防止误用。
+```csharp
+repo.DbContextOptions.EnableCascadeSave = true;
+```
+
+## 机制规则
 
 1、OneToOne 级联保存
 
@@ -44,23 +50,22 @@ DbContext/Repository EnableCascadeSave 可实现保存对象的时候，递归�
 2、OneToMany 追加或更新子表，不删除子表已存在的数据
 
 ```csharp
-repo.DbContextOptions.EnableCascadeSave = true; //需要手工开启
-repo.Insert(type);
+repo.Insert(topic);
 ```
 
-- 不删除 Topics 子表已存在的数据
-- 当 Topics 属性为 Empty 时，不做任何操作
-- 保存 Topics 的时候，还会保存 Topics\[0-..\] 的下级集合属性，向下 18 层
+- 不删除 Comment 子表已存在的数据
+- 当 topic.Comments 属性为 Empty 时，不做任何操作
+- 保存 topic.Comments 的时候，还会保存 topic.Comments\[0-..\] 的下级集合属性，向下 18 层
 
-> 向下 18 层的意思，比如【类型】表，下面有集合属性【文章】，【文章】下面有集合属性【评论】。
+> 向下 18 层的意思，比如【文章】表，下面有集合属性【评论】，【评论】下面有集合属性【子评论】。
 
-> 保存【类型】表对象的时候，他会向下检索出集合属性【文章】，然后如果【文章】被保存的时候，再继续向下检索出集合属性【评论】。一起做 InsertOrUpdate 操作。
+> 保存【文章】表对象的时候，他会向下检索出集合属性【评论】，然后如果【评论】被保存的时候，再继续向下检索出集合属性【子评论】。一起做 InsertOrUpdate 操作。
 
 3、ManyToMany 完整对比保存中间表，外部表只追加不更新
 
 完整对比保存中间表，对比【多对多】中间表已存在的数据，计算出添加、修改、删除执行。
 
----
+## 示例
 
 测试 1：追加保存 OneToMany
 
