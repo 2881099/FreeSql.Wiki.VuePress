@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroText: 🦄 FreeSql
-tagline: 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+、Xamarin，国产首个支持 AOT 发布的 ORM✨
+tagline: 功能简单、强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+、Xamarin，国产首个支持 AOT 发布的 ORM✨
 actions:
   - text: 进入文档 💡
     link: /guide/
@@ -32,7 +32,7 @@ features:
     details: 一对多/多对多，级联
     link: /guide/navigate-attribute
   - title: 读写分离
-    details: 一行代码现读写分离
+    details: 一行代码实现读写分离
     link: /guide/read-write-splitting
   - title: 高性能
     details: BulkCopy 插入/更新/保存

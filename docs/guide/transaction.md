@@ -23,32 +23,27 @@ UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
-  await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
-  await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
+    await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
+    await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
 
-  await fsql.Insert(item)... //错误，不在一个事务
+    await fsql.Insert(item)... //错误，不在一个事务
 
-  var repo = uow.GetRepository<Song>(); //仓储 CRUD
-  await repo.InsertAsync(item);
+    var repo = uow.GetRepository<Song>(); //仓储 CRUD
+    await repo.InsertAsync(item);
 
-  uow.Commit();
+    uow.Commit();
 }
 ```
 
 > 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务
 
-或者
+使用 UnitOfWorkManager 管理 UnitOfWork，如下：
 
 ```csharp
-//使用 UnitOfWorkManager 管理类事务
 using (var uowManager = new UnitOfWorkManager(fsql))
 {
     using (var uow = uowManager.Begin())
     {
-        uow.Orm.Insert(item).ExecuteAffrows(); //正常
-        fsql.Insert(item).ExecuteAffrows(); //错误，没有传事务
-        fsql.Insert(item).WithTransaction(uow.GetOrBeginTransaction()).ExecuteAffrows(); //正常
-
         using (var uow2 = uowManager.Begin()) //与 uow 同一个事务
         {
             uow2.Commit(); //事务还未提交
@@ -114,26 +109,23 @@ public class SongService
 用户购买了价值 100 元的商品：扣余额、扣库存。
 
 ```csharp
-fsql.Transaction(() =>  {
-  //fsql.Ado.TransactionCurrentThread 获得当前事务对象
+fsql.Transaction(() => 
+{
+    //fsql.Ado.TransactionCurrentThread 获得当前事务对象
 
-  var affrows = fsql.Update<User>()
-    .Set(a => a.Wealth - 100)
-    .Where(a => a.Wealth >= 100).ExecuteAffrows();
-    //判断别让用户余额扣成负数
+    var affrows = fsql.Update<User>()
+        .Set(a => a.Wealth - 100)
+        .Where(a => a.Wealth >= 100).ExecuteAffrows();
+        //判断别让用户余额扣成负数
 
-  if (affrows < 1)
-    throw new Exception("用户余额不足");
     //抛出异常，回滚事务，事务退出
+    if (affrows < 1) throw new Exception("用户余额不足");
 
-  affrows = fsql.Update<Goods>()
-    .Set(a => a.Stock - 1)
-    .Where(a => a.Stock >= 1).ExecuteAffrows();
-    //判断别让用库存扣成负数
-
-  if (affrows < 1)
-    throw new Exception("商品库存不足");
-    //抛出异常，回滚事务，事务退出
+    affrows = fsql.Update<Goods>()
+        .Set(a => a.Stock - 1)
+        .Where(a => a.Stock >= 1).ExecuteAffrows();
+        
+    if (affrows < 1) throw new Exception("商品库存不足");
 });
 ```
 

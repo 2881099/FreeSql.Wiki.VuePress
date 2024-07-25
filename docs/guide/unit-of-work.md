@@ -7,15 +7,15 @@ UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据
 ```csharp
 using (var uow = fsql.CreateUnitOfWork()) 
 {
-  await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
-  await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
+    await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
+    await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
 
-  await fsql.Insert(item)... //错误，不在一个事务
+    await fsql.Insert(item)... //错误，不在一个事务
 
-  var repo1 = uow.GetRepository<Song>();
-  await repo1.InsertAsync(item);
+    var repo1 = uow.GetRepository<Song>();
+    await repo1.InsertAsync(item);
 
-  uow.Commit();
+    uow.Commit();
 }
 ```
 
@@ -60,10 +60,12 @@ public interface IUnitOfWork : IDisposable
 全局设置：
 
 ```csharp
-fsql.SetDbContextOptions(opt => {
-  opt.OnEntityChange = report => {
-    Console.WriteLine(report);
-  };
+fsql.SetDbContextOptions(opt =>
+{
+    opt.OnEntityChange = report =>
+    {
+        Console.WriteLine(report);
+    };
 });
 ```
 
@@ -72,9 +74,10 @@ fsql.SetDbContextOptions(opt => {
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
-  uow.OnEntityChange = report => {
-    Console.WriteLine(report);
-  };
+    uow.OnEntityChange = report => 
+    {
+        Console.WriteLine(report);
+    };
 }
 ```
 
@@ -83,12 +86,12 @@ using (var uow = fsql.CreateUnitOfWork())
 ```csharp
 public class ChangeInfo
 {
-  public object Object { get; set; }
-  public EntityChangeType Type { get; set; }
-  /// <summary>
-  /// Type = Update 的时候，获取更新之前的对象
-  /// </summary>
-  public object BeforeObject { get; set; }
+    public object Object { get; set; }
+    public EntityChangeType Type { get; set; }
+    /// <summary>
+    /// Type = Update 的时候，获取更新之前的对象
+    /// </summary>
+    public object BeforeObject { get; set; }
 }
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```

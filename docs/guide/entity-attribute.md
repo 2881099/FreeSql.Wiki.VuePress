@@ -249,7 +249,8 @@ v0.9.15 JsonMap
 ```csharp
 fsql.UseJsonMap(); //开启功能
 
-public class Topic {
+public class Topic
+{
     [JsonMap]
     public TestConfig Config { get; set; }
 }

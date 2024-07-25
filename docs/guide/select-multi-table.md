@@ -35,24 +35,24 @@ class CategoryType
 
 ```csharp
 fsql.Select<Topic, Category, CategoryType>()
-  .LeftJoin((a,b,c) => a.CategoryId == b.Id)
-  .LeftJoin((a,b,c) => b.ParentId == c.Id)
-  .Where((a,b,c) => c.Id > 0)
-  .ToList((a,b,c) => new { a,b,c });
+    .LeftJoin((a,b,c) => a.CategoryId == b.Id)
+    .LeftJoin((a,b,c) => b.ParentId == c.Id)
+    .Where((a,b,c) => c.Id > 0)
+    .ToList((a,b,c) => new { a,b,c });
 
 //或者
 fsql.Select<Topic>().From<Category, CategoryType>((s, b, c) => s
-  .LeftJoin(a => a.CategoryId == b.Id)
-  .LeftJoin(a => b.ParentId == c.Id))
-  .Where((a,b,c) => c.Id > 0)
-  .ToList((a,b,c) => new { a,b,c });
+    .LeftJoin(a => a.CategoryId == b.Id)
+    .LeftJoin(a => b.ParentId == c.Id))
+    .Where((a,b,c) => c.Id > 0)
+    .ToList((a,b,c) => new { a,b,c });
   
 //减少定义 a,b,c 写法
 fsql.Select<Topic, Category, CategoryType>()
-  .LeftJoin(w => w.t1.CategoryId == w.t2.Id)
-  .LeftJoin(w => w.t2.ParentId == w.t3.Id)
-  .Where(w => w.t3.Id > 0)
-  .ToList(w => new { w.t1,w.t2,w.t3 });
+    .LeftJoin(w => w.t1.CategoryId == w.t2.Id)
+    .LeftJoin(w => w.t2.ParentId == w.t3.Id)
+    .Where(w => w.t3.Id > 0)
+    .ToList(w => new { w.t1,w.t2,w.t3 });
   
 //SELECT ...
 //FROM `Topic` a
@@ -67,10 +67,10 @@ fsql.Select<Topic, Category, CategoryType>()
 
 ```csharp
 fsql.Select<Topic>()
-  .LeftJoin(a => a.Category.Id == a.CategoryId)
-  .LeftJoin(a => a.Category.Parent.Id == a.Category.ParentId)
-  .Where(a => a.Category.Parent.Id > 0)
-  .ToList();
+    .LeftJoin(a => a.Category.Id == a.CategoryId)
+    .LeftJoin(a => a.Category.Parent.Id == a.Category.ParentId)
+    .Where(a => a.Category.Parent.Id > 0)
+    .ToList();
 //SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`, a__Category.`Id` as6, a__Category.`Name`, a__Category.`ParentId`
 //FROM `Topic` a
 //LEFT JOIN `Category` a__Category ON a__Category.`Id` = a.`CategoryId`
@@ -83,15 +83,15 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<Topic, Category, CategoryType>()
-  .WithSql(
-      "select * from Topic where id=@id1",
-      "select * from Category where id=@id2",
-      null, //不设置 CategoryType 对应的 SQL
-      new { id1 = 10, id2 = 11, id3 = 13 }
-  )
-  .LeftJoin((a,b,c) => a.CategoryId == b.Id)
-  .LeftJoin((a,b,c) => b.ParentId == c.Id)
-  .ToList();
+    .WithSql(
+        "select * from Topic where id=@id1",
+        "select * from Category where id=@id2",
+        null, //不设置 CategoryType 对应的 SQL
+        new { id1 = 10, id2 = 11, id3 = 13 }
+    )
+    .LeftJoin((a,b,c) => a.CategoryId == b.Id)
+    .LeftJoin((a,b,c) => b.ParentId == c.Id)
+    .ToList();
 //SELECT ...
 //FROM ( select * from Topic where id=@id1 ) a
 //LEFT JOIN ( select * from Category where id=@id2 ) b ON a.`CategoryId` = b.`Id`
@@ -104,8 +104,8 @@ fsql.Select<Topic, Category, CategoryType>()
 
 ```csharp
 fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
-  .ToList();
+    .Where(a => fsql.Select<Topic>().As("b").Where(b => b.Id == a.Id).Any())
+    .ToList();
 //SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
 //FROM `Topic` a
 //WHERE (exists(SELECT 1
@@ -120,8 +120,8 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<Topic>()
-  .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
-  .ToList();
+    .Where(a => fsql.Select<Topic>().As("b").ToList(b => b.Id).Contains(a.Id))
+    .ToList();
 //SELECT a.`Id`, a.`Title`, a.`Clicks`, a.`CreateTime`, a.`CategoryId`
 //FROM `Topic` a
 //WHERE (((a.`Id`) in (SELECT b.`Id`
@@ -132,16 +132,16 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<Category>()
-  .Where(a => a.Topics.Any(b => b.Title.Contains("xx"))) //v3.2.600 以下使用 a.Topics.AsSelect()
-  .ToList();
+    .Where(a => a.Topics.Any(b => b.Title.Contains("xx"))) //v3.2.600 以下使用 a.Topics.AsSelect()
+    .ToList();
 ```
 
 效果等同于：
 
 ```csharp
 fsql.Select<Category>()
-  .Where(a => fsql.Select<Topic>().Any(b => b.CategoryId == a.Id && b.Title.Contains("xx")))
-  .ToList();
+    .Where(a => fsql.Select<Topic>().Any(b => b.CategoryId == a.Id && b.Title.Contains("xx")))
+    .ToList();
 ```
 
 将集合属性快速转换为 ISelect 进行子查询操作。
@@ -152,9 +152,10 @@ fsql.Select<Category>()
 v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"
 
 ```csharp
-fsql.Select<Topic>().ToList(a => new {
-  id = a.Id,
-  concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
+fsql.Select<Topic>().ToList(a => new
+{
+    id = a.Id,
+    concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
 });
 //SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',') 
 //    FROM `StringJoin01` b) 
@@ -168,13 +169,13 @@ fsql.Select<Topic>().ToList(a => new {
 ```csharp
 fsql.Select<Category>().ToList(a => new 
 {
-  all = a,
-  first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
-  count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
-  sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
-  max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
-  min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
-  avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
+    all = a,
+    first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
+    count = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Count(),
+    sum = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Sum(b => b.Clicks),
+    max = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Max(b => b.Clicks),
+    min = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Min(b => b.Clicks),
+    avg = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).Avg(b => b.Clicks)
 });
 ```
 
@@ -185,20 +186,20 @@ fsql.Select<Category>().ToList(a => new
 ```csharp
 fsql.Select<Topic>().ToList(a => new
 {
-  all = a,
-  list1 = fsql.Select<T2>().ToList(),
-  list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
+    all = a,
+    list1 = fsql.Select<T2>().ToList(),
+    list2 = fsql.Select<T2>().Where(b => b.TopicId == a.Id).ToList()
 });
 
 fsql.Select<Topic>()
-  .GroupBy(a => new { a.Author })
-  .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-  .ToList(a => new
-  {
-    a.Author, a.Count,
-    list1 = fsql.Select<T2>().ToList(),
-    list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
-  });
+    .GroupBy(a => new { a.Author })
+    .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
+    .ToList(a => new
+    {
+        a.Author, a.Count,
+        list1 = fsql.Select<T2>().ToList(),
+        list2 = fsql.Select<T2>().Where(b => b.Author == a.Author).ToList()
+    });
 ```
 
 ## 10、WhereCascade
@@ -209,9 +210,9 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<t1>()
-  .LeftJoin<t2>(...)
-  .WhereCascade(x => x.IsDeleted == false)
-  .ToList();
+    .LeftJoin<t2>(...)
+    .WhereCascade(x => x.IsDeleted == false)
+    .ToList();
 ```
 
 得到的 SQL：

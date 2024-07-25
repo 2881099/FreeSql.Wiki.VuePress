@@ -44,10 +44,10 @@ fsql.Update<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_2019
 
 ```csharp
 fsql.Update<Topic>()
-  .Set(a => a.Title, "新标题")
-  .Set(a => a.Time, DateTime.Now)
-  .Where(a => a.Id == 1)
-  .ExecuteAffrows();
+    .Set(a => a.Title, "新标题")
+    .Set(a => a.Time, DateTime.Now)
+    .Where(a => a.Id == 1)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Title` = @p_0, `Time` = @p_1
 //WHERE (Id = 1)
 ```
@@ -56,8 +56,8 @@ fsql.Update<Topic>()
 
 ```csharp
 fsql.Update<Topic>(1)
-  .Set(a => a.CreateTime, DateTime.Now)
-  .ExecuteAffrows();
+    .Set(a => a.CreateTime, DateTime.Now)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `CreateTime` = '2018-12-08 00:04:59'
 //WHERE (`Id` = 1)
 ```
@@ -66,19 +66,19 @@ fsql.Update<Topic>(1)
 
 ```csharp
 fsql.Update<Topic>(1)
-  .Set(a => a.Clicks + 1)
-  .Set(a => a.Time == DateTime.Now)
-  .ExecuteAffrows();
+    .Set(a => a.Clicks + 1)
+    .Set(a => a.Time == DateTime.Now)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now()
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>(1)
-  .Set(a => new Topic
-  {
-    Clicks = a.Clicks + 1,
-    Time = DateTime.Now
-  })
-  .ExecuteAffrows();
+    .Set(a => new Topic
+    {
+        Clicks = a.Clicks + 1,
+        Time = DateTime.Now
+    })
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Clicks` = ifnull(`Clicks`,0) + 1, `Time` = now()
 //WHERE (`Id` = 1)
 ```
@@ -103,29 +103,29 @@ repo.Update(item); //对比快照时的变化
 ```csharp
 //v1.5.0 忽略更新 null 值的属性
 fsql.Update<Topic>()
-  .SetSourceIgnore(item, col => col == null)
-  .ExecuteAffrows();
+    .SetSourceIgnore(item, col => col == null)
+    .ExecuteAffrows();
 ```
 
 ```csharp
 var item = new Topic { Id = 1, Title = "newtitle" };
 fsql.Update<Topic>()
-  .SetSource(item)
-  .ExecuteAffrows();
+    .SetSource(item)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Clicks` = @p_0, `Title` = @p_1, `CreateTime` = @p_2
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>()
-  .SetSource(item)
-  .UpdateColumns(a => new { a.Title, a.CreateTime })
-  .ExecuteAffrows();
+    .SetSource(item)
+    .UpdateColumns(a => new { a.Title, a.CreateTime })
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Title` = @p_0, `CreateTime` = @p_1
 //WHERE (`Id` = 1)
 
 fsql.Update<Topic>()
-  .SetSource(item)
-  .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
-  .ExecuteAffrows();
+    .SetSource(item)
+    .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Title` = @p_0
 //WHERE (`Id` = 1)
 
@@ -133,24 +133,24 @@ var items = new List<Topic>();
 for (var a = 0; a < 10; a++) items.Add(new Topic { Id = a + 1, Title = $"newtitle{a}", Clicks = a * 100 });
 
 fsql.Update<Topic>()
-  .SetSource(items)
-  .ExecuteAffrows();
+    .SetSource(items)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Clicks` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END,
 //`Title` = CASE `Id` WHEN 1 THEN @p_10 WHEN 2 THEN @p_11 WHEN 3 THEN @p_12 WHEN 4 THEN @p_13 WHEN 5 THEN @p_14 WHEN 6 THEN @p_15 WHEN 7 THEN @p_16 WHEN 8 THEN @p_17 WHEN 9 THEN @p_18 WHEN 10 THEN @p_19 END,
 //`CreateTime` = CASE `Id` WHEN 1 THEN @p_20 WHEN 2 THEN @p_21 WHEN 3 THEN @p_22 WHEN 4 THEN @p_23 WHEN 5 THEN @p_24 WHEN 6 THEN @p_25 WHEN 7 THEN @p_26 WHEN 8 THEN @p_27 WHEN 9 THEN @p_28 WHEN 10 THEN @p_29 END
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 
 fsql.Update<Topic>()
-  .SetSource(items)
-  .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
-  .ExecuteAffrows();
+    .SetSource(items)
+    .IgnoreColumns(a => new { a.Clicks, a.CreateTime })
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Title` = CASE `Id` WHEN 1 THEN @p_0 WHEN 2 THEN @p_1 WHEN 3 THEN @p_2 WHEN 4 THEN @p_3 WHEN 5 THEN @p_4 WHEN 6 THEN @p_5 WHEN 7 THEN @p_6 WHEN 8 THEN @p_7 WHEN 9 THEN @p_8 WHEN 10 THEN @p_9 END
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 
 fsql.Update<Topic>()
-  .SetSource(items)
-  .Set(a => a.CreateTime, DateTime.Now)
-  .ExecuteAffrows();
+    .SetSource(items)
+    .Set(a => a.CreateTime, DateTime.Now)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `CreateTime` = @p_0
 //WHERE (`Id` IN (1,2,3,4,5,6,7,8,9,10))
 ```
@@ -168,15 +168,15 @@ fsql.Update<Topic>()
 
 ```csharp
 fsql.Update<T>()
-  .SetDto(new { title = "xxx", clicks = 2 })
-  .Where(a => a.Id == 1)
-  .ExecuteAffrows();
+    .SetDto(new { title = "xxx", clicks = 2 })
+    .Where(a => a.Id == 1)
+    .ExecuteAffrows();
 //UPDATE `Topic` SET `Title` = @p_0, `Clicks` = @p_1 WHERE (Id = 1)
 
 fsql.Update<T>()
-  .SetDto(new Dictionary<string, object> { ["title"] = "xxx", ["clicks"] = 2 })
-  .Where(a => a.Id == 1)
-  .ExecuteAffrows();
+    .SetDto(new Dictionary<string, object> { ["title"] = "xxx", ["clicks"] = 2 })
+    .Where(a => a.Id == 1)
+    .ExecuteAffrows();
 ```
 
 ## 7、Set/SetSource/SetDto 区别
@@ -214,9 +214,9 @@ fsql.UpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows();
 
 ```csharp
 var user = fsql.Select<User>()
-  .ForUpdate(true)
-  .Where(a => a.Id == 1)
-  .ToOne();
+    .ForUpdate(true)
+    .Where(a => a.Id == 1)
+    .ToOne();
 //SELECT ... FROM User a for update nowait
 ```
 
@@ -232,9 +232,9 @@ SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 
 ```csharp
 fsql.Select<T1>().Where(a => a.Options.xxx == 1)
-  .ToUpdate()
-  .Set(a => a.Title, "111")
-  .ExecuteAffrows();
+    .ToUpdate()
+    .Set(a => a.Title, "111")
+    .ExecuteAffrows();
 ```
 
 注意：此方法不是将数据查询到内存再更新，上面的代码产生如下 SQL 执行：
@@ -254,12 +254,12 @@ v3.2.692+（高风险操作，高风险操作，高风险操作，请谨慎谨�
 
 ```csharp
 fsql.Update<T1>()
-  .Join<T2>((a, b) => a.id == b.groupid)
-  .Set((a, b) => a.bname == b.name) //其他表字段
-  .Set((a, b) => a.bcode == b.id + a.code)
-  .Set(a => a.flag, 1) //固定值
-  .Where((a, b) => a.id > 0 && b.id > 0)
-  .ExecuteAffrows();
+    .Join<T2>((a, b) => a.id == b.groupid)
+    .Set((a, b) => a.bname == b.name) //其他表字段
+    .Set((a, b) => a.bcode == b.id + a.code)
+    .Set(a => a.flag, 1) //固定值
+    .Where((a, b) => a.id > 0 && b.id > 0)
+    .ExecuteAffrows();
 ```
 
 不同数据库产生的 SQL 不一样，以 MySql 为例：
@@ -275,14 +275,14 @@ WHERE a.`id` > 0 AND b.`id` > 0
 
 ```csharp
 var query = fsql.Select<T2, T3>()
-  .InnerJoin(...)
-  .Where(...)
-  .WithTempQuery((a, b) => new { item1 = a, item2 = b });
+    .InnerJoin(...)
+    .Where(...)
+    .WithTempQuery((a, b) => new { item1 = a, item2 = b });
 
 fsql.Update<T1>()
-  .Join(query, (a, b) => a.id == b.item1.groupid)
-  .Set((a, b) => a.bcode == b.item2.xcode)
-  .ExecuteAffrows();
+    .Join(query, (a, b) => a.id == b.item1.groupid)
+    .Set((a, b) => a.bcode == b.item2.xcode)
+    .ExecuteAffrows();
 ```
 
 ```sql

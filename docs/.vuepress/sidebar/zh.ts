@@ -53,7 +53,7 @@ export const zhSidebarConfig = sidebar({
           ],
         },
         {
-          text: "特别提供者",
+          text: "数据库驱动",
           collapsible: true,
           children: [
             "freesql-provider-custom",
@@ -61,6 +61,7 @@ export const zhSidebarConfig = sidebar({
             "freesql-provider-postgresql",
             "freesql-provider-sqlitecore",
             "freesql-provider-oracle",
+            "freesql-provider-sqlserver",
             "freesql-provider-odbc",
             "freesql-provider-questdb",
           ],
@@ -108,6 +109,10 @@ export const zhSidebarConfig = sidebar({
             "freeredis",
             "freescheduler",
             "freeim",
+            {
+              text: "AdminBlazor(SaaS)",
+              link: "AdminBlazor",
+            },
             {
               text: "More..",
               link: "otherworks",

@@ -1,14 +1,14 @@
 ---
-title:  MySqlConnector
+title:  MySql 系列数据库
 ---
 
 <!-- # FreeSql.Provider.MySqlConnector -->
 
-`FreeSql.Provider.MySqlConnector`是`FreeSql`基于社区提供的最新的[`MySqlConnector`](https://github.com/mysql-net/MySqlConnector)驱动的实现，兼容性、性能都比`FreeSql.Provider.MySql`好，且支持多种数据库，如：`MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase`
+`FreeSql.Provider.MySqlConnector`是`FreeSql`基于社区提供的最新的[`MySqlConnector`](https://github.com/mysql-net/MySqlConnector)驱动的实现，兼容性、性能都比`FreeSql.Provider.MySql`好，且支持多种数据库，如：`MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb`
 
 并且支持BulkCopy，**推荐使用**
 
-如果你使用 `FreeSql.Provider.MySql` 发生了以下错误，请替换到 FreeSql.Provider.MySqlConnector：
+如果你使用 `FreeSql.Provider.MySql` 发生了以下错误，请**替换**到 FreeSql.Provider.MySqlConnector：
 
 - The given key '0' was not present in the dictionary.
 - The given key '25653' was not present in the dictionary.
@@ -19,7 +19,7 @@ title:  MySqlConnector
 - Parameter '@xxx' must be defined.
 - Object cannot be cast from DBNull to other types.
 
-## ExecuteMySqlBulkCopy
+## 增删改 BulkCopy
 
 - 主键无值
 
@@ -52,4 +52,12 @@ List<Department> departments = new List<Department>()
 };
 fsql.Insert(departments)
     .ExecuteMySqlBulkCopy();
+```
+
+```csharp
+fsql.Update<T>.SetSource(items)
+    .ExecuteSqlBulkCopy(); //临时表 + MERGE INTO
+
+fsql.InsertOrUpdate<T>.SetSource(items)
+    .ExecuteSqlBulkCopy(); //临时表 + MERGE INTO
 ```

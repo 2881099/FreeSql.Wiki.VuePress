@@ -19,22 +19,22 @@ class Topic
 
 ```csharp
 fsql.Select<Topic>()
-  .Where(a => a.Id == 10)
-  .ToList();
+    .Where(a => a.Id == 10)
+    .ToList();
 ///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
 //FROM `Topic` a
 //WHERE (a.`Id` = 10)
 
 fsql.Select<Topic>()
-  .Where(a => a.Id == 10 && a.Id > 10 || a.Clicks > 100)
-  .ToList();
+    .Where(a => a.Id == 10 && a.Id > 10 || a.Clicks > 100)
+    .ToList();
 ///SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
 //FROM `Topic` a
 //WHERE (a.`Id` = 10 AND a.`Id` > 10 OR a.`Clicks` > 100)
 
 fsql.Select<Topic>()
-  .Where(a => new []{1,2,3}.Contains(a.Id))
-  .ToList();
+    .Where(a => new []{1,2,3}.Contains(a.Id))
+    .ToList();
 //SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
 //FROM `Topic` a
 //WHERE (a.`Id` in (1,2,3))
@@ -44,9 +44,9 @@ fsql.Select<Topic>()
 
 ```csharp
 fsql.Select<Topic>()
-  .WithSql("select * from Topic where clicks > @val", new { val = 10 })
-  .Page(1, 10)
-  .ToList()
+    .WithSql("select * from Topic where clicks > @val", new { val = 10 })
+    .Page(1, 10)
+    .ToList()
 //SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
 //FROM (select * from Topic where clicks > @val) a 
 ```
@@ -65,8 +65,8 @@ list.Add(new Topic { ... });
 list.Add(new Topic { ... });
 
 fsql.Select<Topic>()
-  .WithMemory(list)
-  .ToList()
+    .WithMemory(list)
+    .ToList()
 //SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
 //FROM (
 //  SELECT ...

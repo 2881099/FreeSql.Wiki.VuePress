@@ -1,4 +1,6 @@
-# FreeSql.Provider.Oracle
+---
+title:  Oracle
+---
 
 FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。
 
@@ -41,3 +43,26 @@ public class DB
 - 要么 FreeSql.DbContext，很像 EFCore 的使用习惯；
 - 要么 FreeSql.BaseEntity，充血模式；
 - 要么 直接像 dapper 那样使用 OracleConnection 扩展方法；
+
+## 主键名长度大于30
+
+```csharp
+[OraclePrimaryKeyName("TB_xxx_pk")] 
+class Topic
+{
+    
+}
+```
+
+## 增删改 BulkCopy
+
+```csharp
+fsql.Insert(items)
+    .ExecuteOracleBulkCopy();
+
+fsql.Update<T>.SetSource(items)
+    .ExecuteOracleBulkCopy(); //临时表 + MERGE INTO
+
+fsql.InsertOrUpdate<T>.SetSource(items)
+    .ExecuteOracleBulkCopy(); //临时表 + MERGE INTO
+```

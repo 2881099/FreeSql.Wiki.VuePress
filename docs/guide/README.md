@@ -31,7 +31,7 @@ Install-Package FreeSql.Provider.Sqlite
 | Package Name                                                                                                | 说明                                                                                                  |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | FreeSql.Provider.MySql                                                                                      | 基于 MySql.Data（Oracle 官方） |
-| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                       | 基于 MySqlConnector（MySql 开源社区，推荐++） |
+| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                       | 基于 MySqlConnector（开源社区，推荐++）<br>*MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb 等等* |
 | [FreeSql.Provider.PostgreSQL](freesql-provider-postgresql.md)                                               | 基于 PostgreSQL 9.5+ |
 | FreeSql.Provider.SqlServer                                                                                  | 基于 SqlServer 2005+ |
 | FreeSql.Provider.SqlServerForSystem                                                                         | 基于 System.Data.SqlClient + SqlServer 2005+ |
@@ -49,7 +49,7 @@ Install-Package FreeSql.Provider.Sqlite
 | FreeSql.Provider.GBase                                                                                      | 基于 南大通用GBase数据库 |
 | FreeSql.Provider.Xugu                                                                                       | 基于 虚谷数据库 |
 | [FreeSql.Provider.Odbc](freesql-provider-odbc.md)                                                           | 基于 ODBC |
-| [FreeSql.Provider.Custom](freesql-provider-custom.md)                                                       | 自定义数据库访问 |
+| [FreeSql.Provider.Custom](freesql-provider-custom.md)                                                       | 自定义适配<br>*SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等* |
 
 ## 创建实体
 

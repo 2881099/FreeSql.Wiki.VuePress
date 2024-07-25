@@ -15,16 +15,16 @@ FreeSql 导航属性之中，有针对父子关系的设置方式，如下：
 ```csharp
 public class Area
 {
-  [Column(IsPrimary = true)]
-  public string Code { get; set; }
+    [Column(IsPrimary = true)]
+    public string Code { get; set; }
 
-  public string Name { get; set; }
-  public string ParentCode { get; set; }
+    public string Name { get; set; }
+    public string ParentCode { get; set; }
 
-  [Navigate(nameof(ParentCode))]
-  public Area Parent { get; set; }
-  [Navigate(nameof(ParentCode))]
-  public List<Area> Childs { get; set; }
+    [Navigate(nameof(ParentCode))]
+    public Area Parent { get; set; }
+    [Navigate(nameof(ParentCode))]
+    public List<Area> Childs { get; set; }
 }
 ```
 
@@ -47,21 +47,21 @@ var repo = fsql.GetRepository<Area>();
 repo.DbContextOptions.EnableCascadeSave = true;
 repo.Insert(new Area
 {
-  Code = "100000",
-  Name = "中国",
-  Childs = new List<Area>(new[] 
-  {
-    new Area
+    Code = "100000",
+    Name = "中国",
+    Childs = new List<Area>(new[] 
     {
-      Code = "110000",
-      Name = "北京",
-      Childs = new List<Area>(new[] 
-      {
-        new Area{ Code="110100", Name = "北京市" },
-        new Area{ Code="110101", Name = "东城区" },
-      })
-    }
-  })
+        new Area
+        {
+            Code = "110000",
+            Name = "北京",
+            Childs = new List<Area>(new[] 
+            {
+                new Area{ Code="110100", Name = "北京市" },
+                new Area{ Code="110101", Name = "东城区" },
+            })
+        }
+    })
 });
 ```
 
@@ -88,21 +88,21 @@ MySql 连接字符串需要增加 `Allow User Variables=True`，否则会有 `My
 
 ```csharp
 fsql.Select<Area>()
-  .Where(a => a.Name == "中国")
-  .AsTreeCte()
-  .ToDelete()
-  .ExecuteAffrows(); //删除 中国 下的所有记录
+    .Where(a => a.Name == "中国")
+    .AsTreeCte()
+    .ToDelete()
+    .ExecuteAffrows(); //删除 中国 下的所有记录
 ```
 
 如果软删除：
 
 ```csharp
 fsql.Select<Area>()
-  .Where(a => a.Name == "中国")
-  .AsTreeCte()
-  .ToUpdate()
-  .Set(a => a.IsDeleted, true)
-  .ExecuteAffrows(); //软删除 中国 下的所有记录
+    .Where(a => a.Name == "中国")
+    .AsTreeCte()
+    .ToUpdate()
+    .Set(a => a.IsDeleted, true)
+    .ExecuteAffrows(); //软删除 中国 下的所有记录
 ```
 
 ## 3、AsTreeCte 递归查询
@@ -122,10 +122,10 @@ fsql.Select<Area>()
 
 ```csharp
 var t2 = fsql.Select<Area>()
-  .Where(a => a.Name == "中国")
-  .AsTreeCte() //查询 中国 下的所有记录
-  .OrderBy(a => a.Code)
-  .ToTreeList(); //非必须，也可以使用 ToList（见姿势二）
+    .Where(a => a.Name == "中国")
+    .AsTreeCte() //查询 中国 下的所有记录
+    .OrderBy(a => a.Code)
+    .ToTreeList(); //非必须，也可以使用 ToList（见姿势二）
 Assert.Single(t2);
 Assert.Equal("100000", t2[0].Code);
 Assert.Single(t2[0].Childs);
@@ -155,10 +155,10 @@ Assert.Equal("110101", t2[0].Childs[0].Childs[1].Code);
 
 ```csharp
 var t3 = fsql.Select<Area>()
-  .Where(a => a.Name == "中国")
-  .AsTreeCte()
-  .OrderBy(a => a.Code)
-  .ToList();
+    .Where(a => a.Name == "中国")
+    .AsTreeCte()
+    .OrderBy(a => a.Code)
+    .ToList();
 Assert.Equal(4, t3.Count);
 Assert.Equal("100000", t3[0].Code);
 Assert.Equal("110000", t3[1].Code);
@@ -173,14 +173,14 @@ Assert.Equal("110101", t3[3].Code);
 
 ```csharp
 var t4 = fsql.Select<Area>()
-  .Where(a => a.Name == "中国")
-  .AsTreeCte(a => a.Name + "[" + a.Code + "]")
-  .OrderBy(a => a.Code)
-  .ToList(a => new {
-    item = a,
-    level = Convert.ToInt32("a.cte_level"),
-    path = "a.cte_path"
-  });
+    .Where(a => a.Name == "中国")
+    .AsTreeCte(a => a.Name + "[" + a.Code + "]")
+    .OrderBy(a => a.Code)
+    .ToList(a => new {
+        item = a,
+        level = Convert.ToInt32("a.cte_level"),
+        path = "a.cte_path"
+    });
 Assert.Equal(4, t4.Count);
 Assert.Equal("100000", t4[0].item.Code);
 Assert.Equal("110000", t4[1].item.Code);

@@ -1,4 +1,4 @@
-# FreeSql.Provider.SqliteCore
+# Sqlite
 
 FreeSql.Provider.SqliteCore是`FreeSql`基于微软提供的最新的[`Microsoft.Data.Sqlite.Core`](https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/?tabs=netcore-cli)驱动的实现。
 **需要另外安装对应的bundle_xxx**实现加密。

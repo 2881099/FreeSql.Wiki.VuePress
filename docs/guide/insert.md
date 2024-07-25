@@ -162,11 +162,11 @@ fsql.InsertDict(dic).AsTable("table1").ExecuteAffrows();
 
 ```csharp
 int affrows = fsql.Select<Topic>()
-  .Limit(10)
-  .InsertInto(null, a => new Topic2
-  {
-    Title = a.Title
-  });
+    .Limit(10)
+    .InsertInto(null, a => new Topic2
+    {
+        Title = a.Title
+    });
 ```
 
 ```sql

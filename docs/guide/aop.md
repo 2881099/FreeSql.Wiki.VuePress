@@ -96,8 +96,8 @@ fsql.Aop.ConfigEntity += (s, e) => {
 
 ```csharp
 fsql.Aop.ConfigEntityProperty += (s, e) => {
-  if (e.Property.PropertyType.IsEnum)
-    e.ModifyResult.MapType = typeof(int);
+    if (e.Property.PropertyType.IsEnum)
+        e.ModifyResult.MapType = typeof(int);
 };
 ```
 
@@ -173,8 +173,8 @@ class MyColumnAttribute : Attribute
 fsql.Aop.AuditDataReader += (_, e) =>
 {
     if (e.DataReader.GetFieldType(e.Index) == typeof(string) &&
-      e.Value == DBNull.Value)
-        e.Value = "";
+        e.Value == DBNull.Value)
+            e.Value = "";
 };
 ```
 
