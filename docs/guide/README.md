@@ -31,7 +31,7 @@ Install-Package FreeSql.Provider.Sqlite
 | Package Name                                                                                                | 说明                                                                                                  |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | FreeSql.Provider.MySql                                                                                      | 基于 MySql.Data（Oracle 官方） |
-| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                       | 基于 MySqlConnector（开源社区） |
+| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                       | 基于 MySqlConnector（MySql 开源社区，推荐++） |
 | [FreeSql.Provider.PostgreSQL](freesql-provider-postgresql.md)                                               | 基于 PostgreSQL 9.5+ |
 | FreeSql.Provider.SqlServer                                                                                  | 基于 SqlServer 2005+ |
 | FreeSql.Provider.SqlServerForSystem                                                                         | 基于 System.Data.SqlClient + SqlServer 2005+ |

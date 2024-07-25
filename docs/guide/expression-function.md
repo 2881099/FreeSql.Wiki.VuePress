@@ -1,10 +1,10 @@
 # 表达式函数
 
-这是 ``FreeSql`` 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、``IN``查询、数组（``PostgreSQL``的数组）、字典（PostgreSQL HStore)等等。
+这是 `FreeSql` 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、`IN` 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。
 
-## 动态Lambda表达式
+SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见[开窗函数](#%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0)。
 
-- ``And``、``Or``扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
+## Lambda接拼
 
 - 单表
 
@@ -131,7 +131,7 @@ fsql.Select<T1, T2>()
   });
 ```
 
-> v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
+> v1.6.0 利用[自定义解析](#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90)功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充
 
 FreeSql 默认集成了 SqlExt.cs 扩展解析方法：
 
