@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description></description>
     <language>en-US</language>
-    <pubDate>Thu, 25 Jul 2024 04:08:41 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Jul 2024 04:08:41 GMT</lastBuildDate>
+    <pubDate>Thu, 25 Jul 2024 06:09:25 GMT</pubDate>
+    <lastBuildDate>Thu, 25 Jul 2024 06:09:25 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -11412,7 +11412,7 @@ FROM "Topic" a</p>
       <link>https://freesql.net/guide/transaction.html</link>
       <guid>https://freesql.net/guide/transaction.html</guid>
       <source url="https://freesql.net/rss.xml">事务Transaction</source>
-      <description>tab:active .NET CLI tab Package Manager 1、常规事务 UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务 2、仓储事务（依赖注入） 具体请移步文档：- AOP 特性标签实现跨方法事务 (unitofwor...</description>
+      <description>tab:active .NET CLI tab Package Manager 1、常规事务 UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务 或者 2、仓储事务（依赖注入） 具体请移步文档：- AOP 特性标签实现跨方法事务 (unitof...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 事务Transaction</h1>
 
@@ -11421,7 +11421,8 @@ FROM "Topic" a</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务</p>
 </blockquote>
-<h2> 2、仓储事务（依赖注入）</h2>
+<p>或者</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2、仓储事务（依赖注入）</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体请移步文档：- <a href="/guide/unitofwork-manager.html" target="blank">AOP 特性标签实现跨方法事务</a></p>
 <h2> 3、同线程事务</h2>
 <p>同线程事务内置在 FreeSql.dll，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步）。</p>

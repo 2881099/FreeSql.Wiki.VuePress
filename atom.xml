@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
   <id>https://freesql.net/</id>
   <title/>
-  <updated>2024-07-25T04:08:41.824Z</updated>
+  <updated>2024-07-25T06:09:25.743Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -13044,7 +13044,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">事务Transaction</title>
     <id>https://freesql.net/guide/transaction.html</id>
     <link href="https://freesql.net/guide/transaction.html"/>
-    <updated>2024-07-24T17:42:16.000Z</updated>
+    <updated>2024-07-25T06:08:37.000Z</updated>
     <summary type="html"><![CDATA[<h1> 事务Transaction</h1>
 
 <h2> 1、常规事务</h2>
@@ -13069,7 +13069,8 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务</p>
 </blockquote>
-<h2> 2、仓储事务（依赖注入）</h2>
+<p>或者</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2、仓储事务（依赖注入）</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体请移步文档：- <a href="/guide/unitofwork-manager.html" target="blank">AOP 特性标签实现跨方法事务</a></p>
 <h2> 3、同线程事务</h2>
 <p>同线程事务内置在 FreeSql.dll，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步）。</p>
