@@ -20,6 +20,7 @@ List<T2> list2 = result.Item2;
 string searchText = "abc";
 List<T> users = _fsql.Ado.Query<T>("select * from t1 where name like @name", new { name = "%" + searchText + "%" });
 
+//获取数据库时间
 //SELECT now(), utc_timestamp()
 var result = fsql.Ado.QuerySingle(() => new
 {
