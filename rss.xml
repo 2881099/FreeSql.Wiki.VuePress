@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description></description>
     <language>en-US</language>
-    <pubDate>Thu, 25 Jul 2024 04:00:13 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Jul 2024 04:00:13 GMT</lastBuildDate>
+    <pubDate>Thu, 25 Jul 2024 04:08:41 GMT</pubDate>
+    <lastBuildDate>Thu, 25 Jul 2024 04:08:41 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5928,7 +5928,7 @@ Size of Parameters: the size of the parameter size divided into each batch. For 
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
-<td>基于 MySqlConnector（开源社区）</td>
+<td>基于 MySqlConnector（MySql 开源社区，推荐++）</td>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
@@ -6953,18 +6953,14 @@ class table {...}</p>
       <link>https://freesql.net/guide/expression-function.html</link>
       <guid>https://freesql.net/guide/expression-function.html</guid>
       <source url="https://freesql.net/rss.xml">表达式函数</source>
-      <description>这是 FreeSql 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、IN查询、数组（PostgreSQL的数组）、字典（PostgreSQL HStore)等等。 动态Lambda表达式 And、``Or扩展方法 LambadaExpressionExtensions.cs (https://gi...</description>
+      <description>这是 FreeSql 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、IN 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。 SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见开窗函数 (#%E5%BC%80%E7%AA%97%E5...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 表达式函数</h1>
-<p>这是 <code>FreeSql</code> 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code>查询、数组（<code>PostgreSQL</code>的数组）、字典（PostgreSQL HStore)等等。</p>
-<h2> 动态Lambda表达式</h2>
+<p>这是 <code>FreeSql</code> 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code> 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。</p>
+<p>SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见<a href="#%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0">开窗函数</a>。</p>
+<h2> Lambda接拼</h2>
 <ul>
-<li>
-<p><code>And</code>、<code>Or</code>扩展方法 <a href="https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs" target="_blank" rel="noopener noreferrer">LambadaExpressionExtensions.cs</a></p>
-</li>
-<li>
-<p>单表</p>
-</li>
+<li>单表</li>
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>多表</li>
@@ -7003,7 +6999,7 @@ class table {...}</p>
 </blockquote>
 <h2> 开窗函数</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充</p>
+<p>v1.6.0 利用<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90">自定义解析</a>功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充</p>
 </blockquote>
 <p>FreeSql 默认集成了 SqlExt.cs 扩展解析方法：</p>
 <table>

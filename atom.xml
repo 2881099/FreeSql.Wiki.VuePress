@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
   <id>https://freesql.net/</id>
   <title/>
-  <updated>2024-07-25T04:00:13.096Z</updated>
+  <updated>2024-07-25T04:08:41.824Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -6935,7 +6935,7 @@ dotnet add package FreeSql.Provider.MySqlConnector
     <title type="text">入门</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2024-07-25T03:36:33.000Z</updated>
+    <updated>2024-07-25T04:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
@@ -6957,7 +6957,7 @@ dotnet add package FreeSql.Provider.MySqlConnector
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
-<td>基于 MySqlConnector（开源社区）</td>
+<td>基于 MySqlConnector（MySql 开源社区，推荐++）</td>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
@@ -7054,7 +7054,7 @@ dotnet add package FreeSql.Provider.MySqlConnector
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
-<td>基于 MySqlConnector（开源社区）</td>
+<td>基于 MySqlConnector（MySql 开源社区，推荐++）</td>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
@@ -8166,28 +8166,20 @@ class table {...}</p>
     <title type="text">表达式函数</title>
     <id>https://freesql.net/guide/expression-function.html</id>
     <link href="https://freesql.net/guide/expression-function.html"/>
-    <updated>2024-07-23T19:27:42.000Z</updated>
+    <updated>2024-07-25T04:07:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 表达式函数</h1>
-<p>这是 <code>FreeSql</code> 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code>查询、数组（<code>PostgreSQL</code>的数组）、字典（PostgreSQL HStore)等等。</p>
-<h2> 动态Lambda表达式</h2>
+<p>这是 <code>FreeSql</code> 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code> 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。</p>
+<p>SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见<a href="#%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0">开窗函数</a>。</p>
+<h2> Lambda接拼</h2>
 <ul>
-<li>
-<p><code>And</code>、<code>Or</code>扩展方法 <a href="https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs" target="_blank" rel="noopener noreferrer">LambadaExpressionExtensions.cs</a></p>
-</li>
-<li>
-<p>单表</p>
-</li>
+<li>单表</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 表达式函数</h1>
-<p>这是 <code>FreeSql</code> 非常特色的功能之一，深入细化函数解析，所支持的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code>查询、数组（<code>PostgreSQL</code>的数组）、字典（PostgreSQL HStore)等等。</p>
-<h2> 动态Lambda表达式</h2>
+<p>这是 <code>FreeSql</code> 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code> 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。</p>
+<p>SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见<a href="#%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0">开窗函数</a>。</p>
+<h2> Lambda接拼</h2>
 <ul>
-<li>
-<p><code>And</code>、<code>Or</code>扩展方法 <a href="https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs" target="_blank" rel="noopener noreferrer">LambadaExpressionExtensions.cs</a></p>
-</li>
-<li>
-<p>单表</p>
-</li>
+<li>单表</li>
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>多表</li>
@@ -8226,7 +8218,7 @@ class table {...}</p>
 </blockquote>
 <h2> 开窗函数</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>v1.6.0 利用自定义解析功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充</p>
+<p>v1.6.0 利用<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90">自定义解析</a>功能，增加 SqlExt.Rank().Over().PartitionBy(...)、MySql group_concat 常用函数，欢迎 PR 补充</p>
 </blockquote>
 <p>FreeSql 默认集成了 SqlExt.cs 扩展解析方法：</p>
 <table>
