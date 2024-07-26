@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Fri, 26 Jul 2024 14:56:06 GMT</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2024 14:56:06 GMT</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2024 15:36:04 GMT</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2024 15:36:04 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5121,11 +5121,11 @@ FROM "Topic" a</p>
 <td>Based on MySql.Data (official from Oracle)</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
+<td>FreeSql.Provider.MySqlConnector</td>
 <td>Based on MySqlConnector (open-source community, recommended++)<br><em>Supports MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb, etc.</em></td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
+<td>FreeSql.Provider.PostgreSQL</td>
 <td>Based on PostgreSQL 9.5+</td>
 </tr>
 <tr>
@@ -5141,7 +5141,7 @@ FROM "Topic" a</p>
 <td>Based on System.Data.SQLite.Core</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
+<td>FreeSql.Provider.SqliteCore</td>
 <td>Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx</td>
 </tr>
 <tr>
@@ -5149,7 +5149,7 @@ FROM "Topic" a</p>
 <td>Based on ClickHouse.Client</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
+<td>FreeSql.Provider.QuestDb</td>
 <td>Based on Npgsql and RestApi</td>
 </tr>
 <tr>
@@ -5157,7 +5157,7 @@ FROM "Topic" a</p>
 <td></td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-oracle.html" target="blank">FreeSql.Provider.OracleOledb</a></td>
+<td>FreeSql.Provider.OracleOledb</td>
 <td>Based on Oledb, addresses US7ASCII Chinese garbled text issue</td>
 </tr>
 <tr>
@@ -5189,11 +5189,11 @@ FROM "Topic" a</p>
 <td>Based on Xugu Database</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-odbc.html" target="blank">FreeSql.Provider.Odbc</a></td>
+<td>FreeSql.Provider.Odbc</td>
 <td>Based on ODBC</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
+<td>FreeSql.Provider.Custom</td>
 <td>Custom adaptation<br><em>Supports SqlServer2000, PolarDB, KunDB, other databases, etc.</em></td>
 </tr>
 </tbody>

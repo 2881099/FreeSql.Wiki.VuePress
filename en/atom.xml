@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-07-26T14:56:06.064Z</updated>
+  <updated>2024-07-26T15:36:04.101Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -5514,7 +5514,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Get started</title>
     <id>https://freesql.net/en/guide/</id>
     <link href="https://freesql.net/en/guide/"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-07-26T15:35:02.000Z</updated>
     <summary type="html"><![CDATA[<h1> Get started</h1>
 <p>FreeSql is a powerful Object-Relational Mapping (O/RM) component, supporting .NET Core 2.1+ and .NET Framework 4.0+.</p>
 <p>QQ Groups: 561616019 (Online), 4336577 (Full), 8578575 (Full), 52508226 (Full)</p>
@@ -5539,11 +5539,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>Based on MySql.Data (official from Oracle)</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
+<td>FreeSql.Provider.MySqlConnector</td>
 <td>Based on MySqlConnector (open-source community, recommended++)<br><em>Supports MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb, etc.</em></td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
+<td>FreeSql.Provider.PostgreSQL</td>
 <td>Based on PostgreSQL 9.5+</td>
 </tr>
 <tr>
@@ -5559,7 +5559,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>Based on System.Data.SQLite.Core</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
+<td>FreeSql.Provider.SqliteCore</td>
 <td>Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx</td>
 </tr>
 <tr>
@@ -5567,7 +5567,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>Based on ClickHouse.Client</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
+<td>FreeSql.Provider.QuestDb</td>
 <td>Based on Npgsql and RestApi</td>
 </tr>
 <tr>
@@ -5575,7 +5575,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td></td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-oracle.html" target="blank">FreeSql.Provider.OracleOledb</a></td>
+<td>FreeSql.Provider.OracleOledb</td>
 <td>Based on Oledb, addresses US7ASCII Chinese garbled text issue</td>
 </tr>
 <tr>
@@ -5607,11 +5607,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>Based on Xugu Database</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-odbc.html" target="blank">FreeSql.Provider.Odbc</a></td>
+<td>FreeSql.Provider.Odbc</td>
 <td>Based on ODBC</td>
 </tr>
 <tr>
-<td><a href="/en/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
+<td>FreeSql.Provider.Custom</td>
 <td>Custom adaptation<br><em>Supports SqlServer2000, PolarDB, KunDB, other databases, etc.</em></td>
 </tr>
 </tbody>
