@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://freesql.net/atom.xsl"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <id>https://freesql.net/</id>
-  <title/>
-  <updated>2024-07-25T07:48:55.365Z</updated>
+  <title>FreeSql 官方文档</title>
+  <subtitle>FreeSql Documents</subtitle>
+  <updated>2024-07-26T09:15:57.892Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
+  <entry>
+    <title type="text">ClickHouse</title>
+    <id>https://freesql.net/guide/freesql-provider-clickhouse.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-clickhouse.html"/>
+    <updated>2024-07-26T09:14:45.000Z</updated>
+    <summary type="html"><![CDATA[<h2> 介绍</h2>
+<p><code>ClickHouse</code> 是一个高性能的开源列式数据库，专为实时大数据分析设计。它以列存储数据，支持快速查询和聚合操作，适合处理大规模数据集。<code>ClickHouse</code> 具备分布式架构、数据压缩和高可用性特性，使其在处理复杂查询和实时数据分析时表现出色。</p>
+<p><a href="https://clickhouse.com/docs/en/" target="_blank" rel="noopener noreferrer">ClickHouse | 官网 </a></p>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.ClickHouse</p>]]></summary>
+    <content type="html"><![CDATA[<h2> 介绍</h2>
+<p><code>ClickHouse</code> 是一个高性能的开源列式数据库，专为实时大数据分析设计。它以列存储数据，支持快速查询和聚合操作，适合处理大规模数据集。<code>ClickHouse</code> 具备分布式架构、数据压缩和高可用性特性，使其在处理复杂查询和实时数据分析时表现出色。</p>
+<p><a href="https://clickhouse.com/docs/en/" target="_blank" rel="noopener noreferrer">ClickHouse | 官网 </a></p>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.ClickHouse</p>
+<p>.NET CLI</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+    <published>2024-07-26T09:14:45.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">Firebird（嵌入式）</title>
+    <id>https://freesql.net/guide/freesql-provider-firebird.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-firebird.html"/>
+    <updated>2024-07-26T09:14:45.000Z</updated>
+    <summary type="html"><![CDATA[<h2> 介绍</h2>
+<p><code>Firebird</code> 是一个开源的关系型数据库管理系统，它支持嵌入式部署。<code>Firebird</code> 嵌入式数据库适用于需要在本地应用程序中直接集成数据库的场景，无需单独的数据库服务器。它提供了强大的事务处理、数据完整性和并发控制功能，同时保持轻量级和高效。适合小型到中型应用程序，特别是那些需要在不依赖外部数据库服务器的情况下进行本地数据存储和操作的情况。</p>
+<p><code>Firebird</code> 和 <code>Sqlite</code> 都是本地数据库，<code>Firebird</code> 支持并发读写，<code>Sqlite</code> 不支持并发写。</p>]]></summary>
+    <content type="html"><![CDATA[<h2> 介绍</h2>
+<p><code>Firebird</code> 是一个开源的关系型数据库管理系统，它支持嵌入式部署。<code>Firebird</code> 嵌入式数据库适用于需要在本地应用程序中直接集成数据库的场景，无需单独的数据库服务器。它提供了强大的事务处理、数据完整性和并发控制功能，同时保持轻量级和高效。适合小型到中型应用程序，特别是那些需要在不依赖外部数据库服务器的情况下进行本地数据存储和操作的情况。</p>
+<p><code>Firebird</code> 和 <code>Sqlite</code> 都是本地数据库，<code>Firebird</code> 支持并发读写，<code>Sqlite</code> 不支持并发写。</p>
+<p><a href="https://firebirdsql.org/en/documentation/" target="_blank" rel="noopener noreferrer">Firebird | 官网 </a></p>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.Firebird</p>
+<p>.NET CLI</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+    <published>2024-07-26T09:14:45.000Z</published>
+  </entry>
   <entry>
     <title type="text">SqlServer</title>
     <id>https://freesql.net/guide/freesql-provider-sqlserver.html</id>
@@ -476,9 +518,9 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
     <title type="text">低代码</title>
     <id>https://freesql.net/guide/lowcode.html</id>
     <link href="https://freesql.net/guide/lowcode.html"/>
-    <updated>2023-12-21T08:38:59.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 低代码</h1>
-<p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
+<p>本篇是继<a href="dynamic">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
 <p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无法释放，对 Type 的版本也难以管理。</p>
 <p>本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。</p>
 <p>注意：本功能是独立的，请勿与其他文档的级联机制搞混。</p>
@@ -493,7 +535,7 @@ fsql<span class="token punctuation">.</span><span class="token function">DeleteD
 fsql<span class="token punctuation">.</span><span class="token function">InsertOrUpdateDict</span><span class="token punctuation">(</span>dic<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">AsTable</span><span class="token punctuation">(</span><span class="token string">"table1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">WherePrimary</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ExecuteAffrows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 低代码</h1>
-<p>本篇是继<a href="/guide/dynamic.html" target="blank">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
+<p>本篇是继<a href="dynamic">《动态操作》</a>文档之后的大功能，专门为低代码设计。</p>
 <p>FreeSql 默认依赖实体类型，虽然运行时可以动态创建 Type，但不断的动态编译导致会内存无法释放，对 Type 的版本也难以管理。</p>
 <p>本功能是独立的，使用纯字典（无实体类型）进行 CRUD，支持导航属性，级联操作等功能。</p>
 <p>注意：本功能是独立的，请勿与其他文档的级联机制搞混。</p>
@@ -616,7 +658,7 @@ fsql<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">BaseEntity</title>
     <id>https://freesql.net/guide/freesql-extensions-baseentity.html</id>
     <link href="https://freesql.net/guide/freesql-extensions-baseentity.html"/>
-    <updated>2023-11-28T09:50:50.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h2> 前言</h2>
 <p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
 <p>它们日常操作不方便之处：</p>
@@ -661,14 +703,14 @@ fsql<span class="token punctuation">.</span><span class="token function">InsertO
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不想主键是自增键，可以重写属性：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>有关更多实体的特性配置，请参考资料：<a href="/guide/entity-attribute.html" target="blank">实体特性</a></p>
+<p>有关更多实体的特性配置，请参考资料：<a href="entity-attribute">实体特性</a></p>
 </blockquote>
 <p>2、定义一个主键 Guid 的实体类型，保存数据时会自动产生有序不重复的 Guid 值（不用自己指定 Guid.NewGuid()）；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> CRUD 使用</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实体类型.Select 是一个查询对象，使用方法和 FreeSql.ISelect 一样；</p>
 <p>支持多表查询时，软删除条件会附加在每个表中；</p>
 <blockquote>
-<p>有关更多查询方法，请参考资料：<a href="/guide/select.html" target="blank">查询</a></p>
+<p>有关更多查询方法，请参考资料：<a href="select">查询</a></p>
 </blockquote>
 <h2> 事务建议</h2>
 <p>1、同线程事务，不支持异步：</p>
@@ -681,18 +723,17 @@ fsql<span class="token punctuation">.</span><span class="token function">InsertO
     <published>2023-11-28T09:50:50.000Z</published>
   </entry>
   <entry>
-    <title type="text">FreeSql.Provider.QuestDb</title>
+    <title type="text">QuestDB</title>
     <id>https://freesql.net/guide/freesql-provider-questdb.html</id>
     <link href="https://freesql.net/guide/freesql-provider-questdb.html"/>
-    <updated>2023-06-29T03:34:08.000Z</updated>
-    <summary type="html"><![CDATA[<h1> FreeSql.Provider.QuestDb</h1>
-<h2> 介绍</h2>
+    <updated>2024-07-26T09:14:45.000Z</updated>
+    <summary type="html"><![CDATA[<h2> 介绍</h2>
 <p><code>QuestDB </code>是一款针对时序数据实时处理优化的关系型列存数据库， 支持 Rest API 方式访问，同时兼容 PostgreSQL 访问协议，以及 InfluxDB 写入的访问协议。自带 Web Console，方便数据库的基本访问</p>
 <p><a href="https://questdb.io/" target="_blank" rel="noopener noreferrer">QuestDB | 官网 </a></p>
 <h2> 安装包</h2>
-<p>FreeSql.Provider.QuestDb</p>]]></summary>
-    <content type="html"><![CDATA[<h1> FreeSql.Provider.QuestDb</h1>
-<h2> 介绍</h2>
+<p>FreeSql.Provider.QuestDb</p>
+<p>.NET CLI</p>]]></summary>
+    <content type="html"><![CDATA[<h2> 介绍</h2>
 <p><code>QuestDB </code>是一款针对时序数据实时处理优化的关系型列存数据库， 支持 Rest API 方式访问，同时兼容 PostgreSQL 访问协议，以及 InfluxDB 写入的访问协议。自带 Web Console，方便数据库的基本访问</p>
 <p><a href="https://questdb.io/" target="_blank" rel="noopener noreferrer">QuestDB | 官网 </a></p>
 <h2> 安装包</h2>
@@ -1596,7 +1637,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">其他作品</title>
     <id>https://freesql.net/guide/otherworks.html</id>
     <link href="https://freesql.net/guide/otherworks.html"/>
-    <updated>2024-02-02T15:33:31.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 其他作品</h1>
 <p>FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有：</p>
 <table>
@@ -1610,25 +1651,25 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
-<td><a href="/guide/AdminBlazor.html" target="blank">AdminBlazor</a></td>
+<td><a href="AdminBlazor">AdminBlazor</a></td>
 <td>Blazor 后台权限管理</td>
 <td>https://gitee.com/FreeSql/AdminBlazor</td>
 <td>Apache2.0</td>
 </tr>
 <tr>
-<td><a href="/guide/freeim.html" target="blank">FreeIM</a></td>
+<td><a href="freeim">FreeIM</a></td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td><a href="/guide/freeredis.html" target="blank">FreeRedis</a></td>
+<td><a href="freeredis">FreeRedis</a></td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td><a href="/guide/freescheduler.html" target="blank">FreeScheduler</a></td>
+<td><a href="freescheduler">FreeScheduler</a></td>
 <td>定时任务</td>
 <td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
@@ -1690,25 +1731,25 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </thead>
 <tbody>
 <tr>
-<td><a href="/guide/AdminBlazor.html" target="blank">AdminBlazor</a></td>
+<td><a href="AdminBlazor">AdminBlazor</a></td>
 <td>Blazor 后台权限管理</td>
 <td>https://gitee.com/FreeSql/AdminBlazor</td>
 <td>Apache2.0</td>
 </tr>
 <tr>
-<td><a href="/guide/freeim.html" target="blank">FreeIM</a></td>
+<td><a href="freeim">FreeIM</a></td>
 <td>聊天系统架构</td>
 <td>https://github.com/2881099/FreeIM</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td><a href="/guide/freeredis.html" target="blank">FreeRedis</a></td>
+<td><a href="freeredis">FreeRedis</a></td>
 <td>Redis SDK</td>
 <td>https://github.com/2881099/FreeRedis</td>
 <td>MIT</td>
 </tr>
 <tr>
-<td><a href="/guide/freescheduler.html" target="blank">FreeScheduler</a></td>
+<td><a href="freescheduler">FreeScheduler</a></td>
 <td>定时任务</td>
 <td>https://github.com/2881099/FreeScheduler</td>
 <td>MIT</td>
@@ -1836,7 +1877,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">动态操作</title>
     <id>https://freesql.net/guide/dynamic.html</id>
     <link href="https://freesql.net/guide/dynamic.html"/>
-    <updated>2023-12-14T11:24:05.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 动态操作</h1>
 <h2> 弱类型 CRUD</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code>fsql<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Insert</span><span class="token generic class-name"><span class="token punctuation">&lt;</span><span class="token keyword">object</span><span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">AsType</span><span class="token punctuation">(</span>实体类型<span class="token punctuation">)</span>
@@ -1866,7 +1907,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对应类型 List&lt;Dictionary&lt;string, object&gt;&gt;</p>
 <h2> 无类型 CRUD（更高级）</h2>
 <p>不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。</p>
-<p>内容较长，请移步<a href="/guide/lowcode.html" target="blank">《低代码》</a></p>
+<p>内容较长，请移步<a href="lowcode">《低代码》</a></p>
 <h2> 动态表名</h2>
 <p>1、仓储 Repository</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、原生 IFreeSql</p>
@@ -1916,17 +1957,17 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">JsonMap</title>
     <id>https://freesql.net/guide/freesql-extensions-jsonmap.html</id>
     <link href="https://freesql.net/guide/freesql-extensions-jsonmap.html"/>
-    <updated>2023-11-29T00:36:31.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> JsonMap</h1>
 <blockquote>
-<p>推荐使用 v3.2.701+ 版本新增加的<a href="/guide/type-mapping.html" target="blank">自定义类型转换器</a></p>
+<p>推荐使用 v3.2.701+ 版本新增加的<a href="type-mapping">自定义类型转换器</a></p>
 </blockquote>
 <p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>dotnet <span class="token function">add</span> package FreeSql.Extensions.JsonMap
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> JsonMap</h1>
 <blockquote>
-<p>推荐使用 v3.2.701+ 版本新增加的<a href="/guide/type-mapping.html" target="blank">自定义类型转换器</a></p>
+<p>推荐使用 v3.2.701+ 版本新增加的<a href="type-mapping">自定义类型转换器</a></p>
 </blockquote>
 <p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 注意事项</h2>
@@ -2181,16 +2222,15 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <published>2022-07-09T09:12:12.000Z</published>
   </entry>
   <entry>
-    <title type="text">FreeSql.Provider.Odbc</title>
+    <title type="text">ODBC</title>
     <id>https://freesql.net/guide/freesql-provider-odbc.html</id>
     <link href="https://freesql.net/guide/freesql-provider-odbc.html"/>
-    <updated>2022-09-08T15:50:22.000Z</updated>
-    <summary type="html"><![CDATA[<h1> FreeSql.Provider.Odbc</h1>
-<p>FreeSql.Provider.Odbc 实现 ODBC 访问数据库，ODBC 属于比较原始的技术，更新慢，各大数据库厂支持得标准不一，不到万不得已最好别用 odbc，坑比较多。</p>
+    <updated>2024-07-26T09:14:45.000Z</updated>
+    <summary type="html"><![CDATA[<p>FreeSql.Provider.Odbc 实现 ODBC 访问数据库，ODBC 属于比较原始的技术，更新慢，各大数据库厂支持得标准不一，不到万不得已最好别用 odbc，坑比较多。</p>
 <p>FreeSql.Provider.Odbc 做了多种数据库的专用实现：SqlServer、PostgreSQL、Oracle、MySql、达梦、人大金仓，和一种通用实现。</p>
-<p>和原来的 FreeSql.Provider.SqlServer 等 ado.net 相比，只支持较少的基础类型，其他功能几乎都有，包括 CodeFirst 自动迁移。</p>]]></summary>
-    <content type="html"><![CDATA[<h1> FreeSql.Provider.Odbc</h1>
-<p>FreeSql.Provider.Odbc 实现 ODBC 访问数据库，ODBC 属于比较原始的技术，更新慢，各大数据库厂支持得标准不一，不到万不得已最好别用 odbc，坑比较多。</p>
+<p>和原来的 FreeSql.Provider.SqlServer 等 ado.net 相比，只支持较少的基础类型，其他功能几乎都有，包括 CodeFirst 自动迁移。</p>
+<p>国产数据库大多数都兼容 SqlServer、PostgreSQL、Oracle、MySql 这四种数据库，所以它们也可以用来访问国产数据库。</p>]]></summary>
+    <content type="html"><![CDATA[<p>FreeSql.Provider.Odbc 实现 ODBC 访问数据库，ODBC 属于比较原始的技术，更新慢，各大数据库厂支持得标准不一，不到万不得已最好别用 odbc，坑比较多。</p>
 <p>FreeSql.Provider.Odbc 做了多种数据库的专用实现：SqlServer、PostgreSQL、Oracle、MySql、达梦、人大金仓，和一种通用实现。</p>
 <p>和原来的 FreeSql.Provider.SqlServer 等 ado.net 相比，只支持较少的基础类型，其他功能几乎都有，包括 CodeFirst 自动迁移。</p>
 <p>国产数据库大多数都兼容 SqlServer、PostgreSQL、Oracle、MySql 这四种数据库，所以它们也可以用来访问国产数据库。</p>
@@ -2849,7 +2889,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">UowManager 事务 ✨</title>
     <id>https://freesql.net/guide/unitofwork-manager.html</id>
     <link href="https://freesql.net/guide/unitofwork-manager.html"/>
-    <updated>2024-07-25T03:36:33.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> UowManager 事务 ✨</h1>
 <p>本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。</p>
 <blockquote>
@@ -2916,9 +2956,9 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 startup.cs 注入此服务</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> 扩展：多库场景</h2>
-<p>FreeSql.Cloud 提供了<a href="/guide/sharding.html#%E3%80%90%E5%88%86%E5%BA%93%E3%80%91%E4%BD%BF%E7%94%A8-freesql-cloud" target="blank">跨数据库访问</a>，本段内容讲解 FreeSql.Cloud 多库场景 + UowManager 的接入方法。</p>
+<p>FreeSql.Cloud 提供了<a href="sharding#%E3%80%90%E5%88%86%E5%BA%93%E3%80%91%E4%BD%BF%E7%94%A8-freesql-cloud">跨数据库访问</a>，本段内容讲解 FreeSql.Cloud 多库场景 + UowManager 的接入方法。</p>
 <blockquote>
-<p>注意：<a href="/guide/multi-tenancy.html#%E6%96%B9%E6%A1%88%E4%B8%89-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%88%86%E5%BA%93" target="blank">多租户分库</a> 请跳过，多租户同一请求大部分都只操作一个数据库，只需在中间件 Change(tenant) 切换好。</p>
+<p>注意：<a href="multi-tenancy#%E6%96%B9%E6%A1%88%E4%B8%89-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%88%86%E5%BA%93">多租户分库</a> 请跳过，多租户同一请求大部分都只操作一个数据库，只需在中间件 Change(tenant) 切换好。</p>
 </blockquote>
 <hr>
 <p>以 DbEnum 为例定义 FreeSqlCloud 对象如下：</p>
@@ -3759,7 +3799,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">前言</title>
     <id>https://freesql.net/guide/BaseEntity.html</id>
     <link href="https://freesql.net/guide/BaseEntity.html"/>
-    <updated>2022-07-09T09:12:32.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 前言</h1>
 <p>尝试过 ado.net、dapper、ef，以及 Repository 仓储，甚至自己还写过生成器工具，以便做常规 CRUD 操作。</p>
 <p>它们日常操作不方便之处：</p>
@@ -3825,7 +3865,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不想主键是自增键，可以重写属性：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>有关更多实体的特性配置，可参阅 <a href="/guide/entity-attribute.html" target="blank">实体属性</a></p>
+<p>有关更多实体的特性配置，可参阅 <a href="entity-attribute">实体属性</a></p>
 </blockquote>
 <p>2、定义一个主键 Guid 的实体类型，保存数据时会自动产生有序不重复的 Guid 值（不用自己指定 Guid.NewGuid()）；</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>3、定义多主键的实体类型，可以在 static 构造函数中重写字段名；</p>
@@ -3833,7 +3873,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实体类型.Select 是一个查询对象，使用方法和 FreeSql.ISelect 一样；</p>
 <p>支持多表查询时，软删除条件会附加在每个表中；</p>
 <blockquote>
-<p>有关更多查询方法，可参阅 <a href="/guide/select.html" target="blank">查询</a></p>
+<p>有关更多查询方法，可参阅 <a href="select">查询</a></p>
 </blockquote>
 <p>示范项目：<a href="https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity</a></p>
 ]]></content>
@@ -3843,110 +3883,19 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">入门</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
 <p>反馈问题请前往 https://github.com/dotnetcore/FreeSql/issues</p>
 <h2> 安装包</h2>
-<p>需要访问什么数据库，就安装对应的 FreeSql.Provider.XX，也可直接安装FreeSql.All</p>
-
-<table>
-<thead>
-<tr>
-<th>Package Name</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FreeSql.Provider.MySql</td>
-<td>基于 MySql.Data（Oracle 官方）</td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
-<td>基于 MySqlConnector（开源社区，推荐++）<br><em>MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb 等等</em></td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
-<td>基于 PostgreSQL 9.5+</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.SqlServer</td>
-<td>基于 SqlServer 2005+</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.SqlServerForSystem</td>
-<td>基于 System.Data.SqlClient + SqlServer 2005+</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.Sqlite</td>
-<td>基于 System.Data.SQLite.Core</td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
-<td>基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.ClickHouse</td>
-<td>基于 ClickHouse.Client</td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
-<td>基于 Npgsql 和 RestApi</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.Oracle</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-oracle.html" target="blank">FreeSql.Provider.OracleOledb</a></td>
-<td>基于 Oledb 解决 US7ASCII 中文乱码问题</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.Firebird</td>
-<td></td>
-</tr>
-<tr>
-<td>FreeSql.Provider.MsAccess</td>
-<td></td>
-</tr>
-<tr>
-<td>FreeSql.Provider.Dameng</td>
-<td>基于 达梦数据库</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.ShenTong</td>
-<td>基于 神舟通用数据库</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.KingbaseES</td>
-<td>基于 人大金仓数据库</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.GBase</td>
-<td>基于 南大通用GBase数据库</td>
-</tr>
-<tr>
-<td>FreeSql.Provider.Xugu</td>
-<td>基于 虚谷数据库</td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-odbc.html" target="blank">FreeSql.Provider.Odbc</a></td>
-<td>基于 ODBC</td>
-</tr>
-<tr>
-<td><a href="/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
-<td>自定义适配<br><em>SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等</em></td>
-</tr>
-</tbody>
-</table>]]></summary>
+<p>需要访问什么数据库，就安装对应的 <code>FreeSql.Provider.XX</code>，也可直接安装 <code>FreeSql.All</code></p>]]></summary>
     <content type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
 <p>反馈问题请前往 https://github.com/dotnetcore/FreeSql/issues</p>
 <h2> 安装包</h2>
-<p>需要访问什么数据库，就安装对应的 FreeSql.Provider.XX，也可直接安装FreeSql.All</p>
+<p>需要访问什么数据库，就安装对应的 <code>FreeSql.Provider.XX</code>，也可直接安装 <code>FreeSql.All</code></p>
 
 <table>
 <thead>
@@ -3961,11 +3910,11 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>基于 MySql.Data（Oracle 官方）</td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
+<td><a href="freesql-provider-mysqlconnector">FreeSql.Provider.MySqlConnector</a></td>
 <td>基于 MySqlConnector（开源社区，推荐++）<br><em>MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb 等等</em></td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
+<td><a href="freesql-provider-postgresql">FreeSql.Provider.PostgreSQL</a></td>
 <td>基于 PostgreSQL 9.5+</td>
 </tr>
 <tr>
@@ -3981,7 +3930,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>基于 System.Data.SQLite.Core</td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
+<td><a href="freesql-provider-sqlitecore">FreeSql.Provider.SqliteCore</a></td>
 <td>基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx</td>
 </tr>
 <tr>
@@ -3989,7 +3938,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>基于 ClickHouse.Client</td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
+<td><a href="freesql-provider-questdb">FreeSql.Provider.QuestDb</a></td>
 <td>基于 Npgsql 和 RestApi</td>
 </tr>
 <tr>
@@ -3997,7 +3946,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td></td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-oracle.html" target="blank">FreeSql.Provider.OracleOledb</a></td>
+<td><a href="freesql-provider-oracle">FreeSql.Provider.OracleOledb</a></td>
 <td>基于 Oledb 解决 US7ASCII 中文乱码问题</td>
 </tr>
 <tr>
@@ -4029,19 +3978,19 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>基于 虚谷数据库</td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-odbc.html" target="blank">FreeSql.Provider.Odbc</a></td>
+<td><a href="freesql-provider-odbc">FreeSql.Provider.Odbc</a></td>
 <td>基于 ODBC</td>
 </tr>
 <tr>
-<td><a href="/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
+<td><a href="freesql-provider-custom">FreeSql.Provider.Custom</a></td>
 <td>自定义适配<br><em>SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等</em></td>
 </tr>
 </tbody>
 </table>
 <h2> 创建实体</h2>
 <p><code>FreeSql</code> 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。</p>
-<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="/guide/db-first.html" target="blank">生成实体模型</a>。</p>
-<p>或者手动创建模型，基于模型创建或修改数据库结构，提供<a href="/guide/code-first.html" target="blank">CodeFirst</a> 同步结构的 <code>API</code>（甚至可以做到开发阶段自动同步）。</p>
+<p>可从现有数据库生成实体模型，<code>FreeSql</code> 提供 <code>IDbFirst</code> 接口实现<a href="db-first">生成实体模型</a>。</p>
+<p>或者手动创建模型，基于模型创建或修改数据库结构，提供<a href="code-first">CodeFirst</a> 同步结构的 <code>API</code>（甚至可以做到开发阶段自动同步）。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 如何接入</h2>
 <blockquote>
 <p>注意：IFreeSql 在项目中应以单例声明，而不是在每次使用的时候创建。</p>
@@ -4262,7 +4211,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">AOP✨</title>
     <id>https://freesql.net/guide/aop.html</id>
     <link href="https://freesql.net/guide/aop.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> AOP✨</h1>
 <p>FreeSql AOP 已有的功能介绍，未来为会根据用户需求不断增强。</p>
 <h2> 审计命令(如何监视 SQL？)</h2>
@@ -4327,7 +4276,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 表达式拦截</h2>
 <p>FreeSql 内部表达式支持非常丰富，对各大数据库的兼容度也做得很好。</p>
 <blockquote>
-<p>有关表达式支持的程度，可参阅：<a href="/guide/expression-function.html" target="blank">表达式函数</a></p>
+<p>有关表达式支持的程度，可参阅：<a href="expression-function">表达式函数</a></p>
 </blockquote>
 <p>即便如此丰富，也仍然无法满足用户需求，FreeSql 对外开放了自定义表达式解析接口：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这个解析有点复杂，当 <code>e.Expression</code> 很复杂的时候，我们还提供了 <code>e.FreeParse</code> 方法，使用它相当于调用 <code>FreeSql</code> 内置表达式解析引擎，辅助您进行解析。</p>
@@ -4350,7 +4299,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">级联保存</title>
     <id>https://freesql.net/guide/cascade-saving.html</id>
     <link href="https://freesql.net/guide/cascade-saving.html"/>
-    <updated>2024-07-25T03:36:33.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 级联保存</h1>
 <p>接下来的内容，严重依赖<a href="navigate-attribute">【导航属性】</a>的正确配置，请先学会再继续向下！</p>
 <ul>
@@ -4382,13 +4331,13 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <h2> 开启功能</h2>
 
 <blockquote>
-<p>本功能 2019 年实现的（稳定），可移步了解 2022 年新发布的<a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a>（级联更自动）</p>
+<p>本功能 2019 年实现的（稳定），可移步了解 2022 年新发布的<a href="aggregateroot">《聚合根仓储》</a>（级联更自动）</p>
 </blockquote>
 <p>仓储默认关闭了级联功能，需要手工开启：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 机制规则</h2>
 <p>1、OneToOne 级联保存</p>
 <blockquote>
-<p>v3.2.606+ 支持，并且支持<a href="/guide/delete.html#ibaserepository-%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4" target="blank">级联删除功能</a></p>
+<p>v3.2.606+ 支持，并且支持<a href="delete#ibaserepository-%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4">级联删除功能</a></p>
 </blockquote>
 <p>2、OneToMany 追加或更新子表，不删除子表已存在的数据</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
@@ -4618,7 +4567,7 @@ fsql<span class="token punctuation">.</span>Aop<span class="token punctuation">.
     <title type="text">DbContext</title>
     <id>https://freesql.net/guide/db-context.html</id>
     <link href="https://freesql.net/guide/db-context.html"/>
-    <updated>2023-12-06T21:43:38.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> DbContext</h1>
 <p>FreeSql.DbContext 实现类似 EFCore 使用习惯，跟踪对象状态，最终通过 SaveChanges 方法提交事务。</p>
 <h2> 特性</h2>
@@ -4672,7 +4621,7 @@ db.Update(xxx);
 db.Add(new Xxx());</p>
 <p>Guid Id 的情况下，执行三次命令：前两次插入合并执行，update 为一次，后面的 add 为一次。</p>
 <h2> 联级保存</h2>
-<p>请移步文档 <a href="/guide/cascade-saving.html" target="blank">【联级保存】</a></p>
+<p>请移步文档 <a href="cascade-saving">【联级保存】</a></p>
 <h2> 实体变化事件</h2>
 <p>全局设置：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>单独设置 DbContext 或者 UnitOfWork：</p>
@@ -4931,7 +4880,7 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EF 特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
 <h2> 表名</h2>
@@ -5037,7 +4986,7 @@ class table {...}</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>乐观锁的原理，是利用实体某字段，如：long version，更新前先查询数据，此时 version 为 1，更新时产生的 SQL 会附加 where version = 1，当修改失败时（即 Affrows == 0）抛出异常（DbUpdateVersionException）。</p>
 <p>每个实体只支持一个乐观锁属性，支持 int/long/string/Guid</p>
 <blockquote>
-<p>适用 <a href="update#_5%E3%80%81%E6%9B%B4%E6%96%B0%E5%AE%9E%E4%BD%93-setsource">SetSource</a> 更新数据，无论使用什么方法更新 version 的值都会增加 1</p>
+<p>适用 <a href="update#_5%E3%80%81%E6%9B%B4%E6%96%B0%E5%AE%9E%E4%BD%93-setsource"><code>SetSource</code></a> 更新数据，无论使用什么方法更新 version 的值都会增加 1</p>
 </blockquote>
 <h2> 自定义类型映射(MapType)</h2>
 <p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
@@ -6549,7 +6498,7 @@ class table {...}</p>
     <title type="text">过滤器</title>
     <id>https://freesql.net/guide/filters.html</id>
     <link href="https://freesql.net/guide/filters.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 过滤器</h1>
 <p>IFreeSql 基础层实现了 Select/Update/Delete 可设置的全局过滤器功能，这些设置将追加到执行的 SQL WHERE 语句中。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name">AsyncLocal<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> TenantId <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">AsyncLocal<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -6578,7 +6527,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <h2> 如何禁用？</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>fsql.Update/Delete 方法效果同上。</p>
 <h2> 租户字段（动态值）</h2>
-<p>请移步文档：<a href="/guide/multi-tenancy.html#%E6%96%B9%E6%A1%88%E4%B8%80-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%AD%97%E6%AE%B5%E5%8C%BA%E5%88%86" target="blank">【多租户 - 按租户字段区分】</a></p>
+<p>请移步文档：<a href="multi-tenancy#%E6%96%B9%E6%A1%88%E4%B8%80-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%AD%97%E6%AE%B5%E5%8C%BA%E5%88%86">【多租户 - 按租户字段区分】</a></p>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
@@ -6586,17 +6535,43 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">Fluent API</title>
     <id>https://freesql.net/guide/fluent-api.html</id>
     <link href="https://freesql.net/guide/fluent-api.html"/>
-    <updated>2024-01-14T16:07:40.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h2> 支持 Fluent API</h2>
 <p>FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置实体的数据库特性。<code>Fluent Api</code> 的方法命名与特性名保持一致，共三种使用方法，选择<strong>一种即可</strong>：</p>
 <blockquote>
-<p>fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：<a href="/guide/entity-attribute.html" target="blank">《实体特性说明》</a></p>
+<p>fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：<a href="entity-attribute">《实体特性说明》</a></p>
 </blockquote>
-<h2> ConfigEntity</h2>]]></summary>
+<h2> ConfigEntity</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code>fsql<span class="token punctuation">.</span>CodeFirst
+    <span class="token punctuation">.</span><span class="token generic-method"><span class="token function">ConfigEntity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>TestFluenttb1<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span>
+    <span class="token punctuation">{</span>
+        a<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token string">"xxdkdkdk1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">.</span><span class="token function">Property</span><span class="token punctuation">(</span>b <span class="token operator">=&gt;</span> b<span class="token punctuation">.</span>Id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token string">"Id22"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">IsIdentity</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">.</span><span class="token function">Property</span><span class="token punctuation">(</span>b <span class="token operator">=&gt;</span> b<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DbType</span><span class="token punctuation">(</span><span class="token string">"varchar(100)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">IsNullable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token generic-method"><span class="token function">ConfigEntity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>TestFluenttb2<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span>a <span class="token operator">=&gt;</span>
+    <span class="token punctuation">{</span>
+        a<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token string">"xxdkdkdk2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">.</span><span class="token function">Property</span><span class="token punctuation">(</span>b <span class="token operator">=&gt;</span> b<span class="token punctuation">.</span>Id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token string">"Id22"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">IsIdentity</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">.</span><span class="token function">Property</span><span class="token punctuation">(</span>b <span class="token operator">=&gt;</span> b<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DbType</span><span class="token punctuation">(</span><span class="token string">"varchar(100)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">IsNullable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//以下为实体类</span>
+<span class="token keyword">class</span> <span class="token class-name">TestFluenttb1</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token string">"defaultValue"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Table</span><span class="token attribute-arguments"><span class="token punctuation">(</span>Name <span class="token operator">=</span> <span class="token string">"cccccdddwww"</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+<span class="token keyword">class</span> <span class="token class-name">TestFluenttb2</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token string">"defaultValue"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h2> 支持 Fluent API</h2>
 <p>FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置实体的数据库特性。<code>Fluent Api</code> 的方法命名与特性名保持一致，共三种使用方法，选择<strong>一种即可</strong>：</p>
 <blockquote>
-<p>fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：<a href="/guide/entity-attribute.html" target="blank">《实体特性说明》</a></p>
+<p>fsql 是一个 IFreeSql 对象、配置尽量只执行一次，避免性能损耗 参考：<a href="entity-attribute">《实体特性说明》</a></p>
 </blockquote>
 <h2> ConfigEntity</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
@@ -7334,7 +7309,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">你不知道的功能 ✨</title>
     <id>https://freesql.net/guide/more.html</id>
     <link href="https://freesql.net/guide/more.html"/>
-    <updated>2023-03-03T02:37:24.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 你不知道的功能 ✨</h1>
 <h2> 1、备注 -&gt; 迁移到数据库</h2>
 <p>FreeSql CodeFirst 支持将 c# 代码内的注释，迁移至数据库的备注。先决条件：</p>
@@ -7361,17 +7336,17 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <hr>
 <h2> 3、添加或修改</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>更多内容可参阅：<a href="/guide/insert-or-update.html" target="blank">添加或修改</a></p>
+<p>更多内容可参阅：<a href="insert-or-update">添加或修改</a></p>
 </blockquote>
 <hr>
 <h2> 4、弱类型 CURD</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
 <h2> 5、WithSql</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li><a href="/guide/withsql.html" target="blank">WithSql</a>使用多次为 UNION ALL 查询</li>
+<li><a href="withsql">WithSql</a>使用多次为 UNION ALL 查询</li>
 </ul>
 <blockquote>
-<p>v3.2.666 <a href="/guide/unionall.html" target="blank">UnionAll 联合查询</a>、<a href="/guide/withtempquery.html" target="blank">WithTempQuery + FromQuery 嵌套查询</a></p>
+<p>v3.2.666 <a href="unionall">UnionAll 联合查询</a>、<a href="withtempquery">WithTempQuery + FromQuery 嵌套查询</a></p>
 </blockquote>
 <blockquote>
 <p>v3.2.666 WithMemory 使用内存数据进行查询</p>
@@ -7540,7 +7515,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">多租户</title>
     <id>https://freesql.net/guide/multi-tenancy.html</id>
     <link href="https://freesql.net/guide/multi-tenancy.html"/>
-    <updated>2024-07-11T11:49:29.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 多租户</h1>
 <h3> 什么是多租户</h3>
 <p>维基百科：“软件多租户是指一种软件架构，在这种软件架构中，软件的一个实例运行在服务器上并且为多个租户服务”。一个租户是一组共享该软件实例特定权限的用户。有了多租户架构，软件应用被设计成为每个租户提供一个 专用的实例包括该实例的数据的共享，还可以共享配置，用户管理，租户自己的功能和非功能属性。多租户和多实例架构相比，多租户分离了代表不同的租户操作的多个实例。</p>
@@ -7586,7 +7561,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。</p>
 <blockquote>
-<p>更多说明参考：<a href="/guide/repository.html" target="blank">《FreeSql.Repository 仓储》</a>、<a href="/guide/sharding.html" target="blank">《分表分库》</a>。</p>
+<p>更多说明参考：<a href="repository">《FreeSql.Repository 仓储》</a>、<a href="sharding">《分表分库》</a>。</p>
 </blockquote>
 <blockquote>
 <p>v3.2.833 动态设置表名</p>
@@ -7617,30 +7592,30 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">导航属性</title>
     <id>https://freesql.net/guide/navigate-attribute.html</id>
     <link href="https://freesql.net/guide/navigate-attribute.html"/>
-    <updated>2024-07-25T03:36:33.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 导航属性</h1>
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
 <ul>
-<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
-<li><a href="/guide/select-include.html" target="blank">《贪婪加载》</a> Include/IncludeMany</li>
-<li><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></li>
-<li><a href="/guide/select-as-tree.html" target="blank">《树表查询》</a></li>
-<li><a href="/guide/cascade-saving.html" target="blank">《级联保存》</a></li>
-<li><a href="/guide/cascade-delete.html" target="blank">《级联删除》</a></li>
-<li><a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a></li>
+<li><a href="select-multi-table">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
+<li><a href="select-include">《贪婪加载》</a> Include/IncludeMany</li>
+<li><a href="select-lazy-loading">《延时加载》</a></li>
+<li><a href="select-as-tree">《树表查询》</a></li>
+<li><a href="cascade-saving">《级联保存》</a></li>
+<li><a href="cascade-delete">《级联删除》</a></li>
+<li><a href="aggregateroot">《聚合根仓储》</a></li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 导航属性</h1>
 <p>FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a> 六种导航属性关系。</p>
 <p>导航属性能干什么？</p>
 <ul>
-<li><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
-<li><a href="/guide/select-include.html" target="blank">《贪婪加载》</a> Include/IncludeMany</li>
-<li><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></li>
-<li><a href="/guide/select-as-tree.html" target="blank">《树表查询》</a></li>
-<li><a href="/guide/cascade-saving.html" target="blank">《级联保存》</a></li>
-<li><a href="/guide/cascade-delete.html" target="blank">《级联删除》</a></li>
-<li><a href="/guide/aggregateroot.html" target="blank">《聚合根仓储》</a></li>
+<li><a href="select-multi-table">《多表查询》</a> Where(a =&gt; a.Parent.Parent.Name == "xx") Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</li>
+<li><a href="select-include">《贪婪加载》</a> Include/IncludeMany</li>
+<li><a href="select-lazy-loading">《延时加载》</a></li>
+<li><a href="select-as-tree">《树表查询》</a></li>
+<li><a href="cascade-saving">《级联保存》</a></li>
+<li><a href="cascade-delete">《级联删除》</a></li>
+<li><a href="aggregateroot">《聚合根仓储》</a></li>
 </ul>
 <p>导航属性进行多表查询非常方便，lambda 表达式中直接使用导航对象点点点，舒服！！</p>
 <h2> 自定义配置</h2>
@@ -8217,7 +8192,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">仓储</title>
     <id>https://freesql.net/guide/repository.html</id>
     <link href="https://freesql.net/guide/repository.html"/>
-    <updated>2024-07-25T03:36:33.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<p><code>FreeSql.DbContext</code> 参考 abp vnext 接口规范，实现了通用的仓储层功能（CURD），理解成传统增强版（DAL）。</p>
 
 <ul>
@@ -8266,7 +8241,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <li>避免使用数据库的默认值功能；</li>
 </ul>
 <h2> 联级保存</h2>
-<p>请移步文档 <a href="/guide/cascade-saving.html" target="blank">《联级保存》</a></p>
+<p>请移步文档 <a href="cascade-saving">《联级保存》</a></p>
 <h2> API</h2>
 <table>
 <thead>
@@ -8422,7 +8397,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <td>只附加实体的主键数据到状态管理</td>
 </tr>
 <tr>
-<td><a href="/guide/insert-or-update.html#_5%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91" target="blank">BeginEdit</a></td>
+<td><a href="insert-or-update#_4%E3%80%81%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91-beginedit">BeginEdit</a></td>
 <td>-</td>
 <td>List&lt;TEntity&gt;</td>
 <td>准备编辑一个 List 实体</td>
@@ -8521,7 +8496,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">分组聚合</title>
     <id>https://freesql.net/guide/select-group-by.html</id>
     <link href="https://freesql.net/guide/select-group-by.html"/>
-    <updated>2024-07-23T19:27:42.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 分组聚合</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name">IFreeSql</span> fsql<span class="token punctuation">;</span> <span class="token comment">//如何创建请移步入门文档</span>
 
@@ -8693,7 +8668,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 </blockquote>
 <div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果数据库不支持开窗函数，可以使用分组嵌套查询解决：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>查看更多<a href="/guide/withtempquery.html" target="blank">《嵌套查询》</a>文档</p>
+<p>查看更多<a href="withtempquery">《嵌套查询》</a>文档</p>
 </blockquote>
 <h2> 4、Aggregate</h2>
 <h3> Distinct</h3>
@@ -9012,7 +8987,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">返回数据 ✨</title>
     <id>https://freesql.net/guide/select-return-data.html</id>
     <link href="https://freesql.net/guide/select-return-data.html"/>
-    <updated>2024-07-23T19:27:42.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 返回数据 ✨</h1>
 <p>FreeSql 使用 ExpressionTree 读取数据记录，.NET 技术下除了原生代码，最快的方案是 Emit 和 ExpressionTree。</p>
 <p>ExpressionTree 天然支持 .NET AOT 编译，FreeSql 在 2018 年做出的技术决策将在未来一直受益。</p>
@@ -9032,7 +9007,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <p>查询数据加工为树型，注意：实体需要配置<a href="select-as-tree">父子导航属性</a></p>
 </blockquote>
 <h2> 4、返回 List + 导航属性的数据</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>更多导航属性的数据返回：<a href="/guide/select-include.html" target="blank">贪婪加载</a></p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>更多导航属性的数据返回：<a href="select-include">贪婪加载</a></p>
 <h2> 5、指定返回</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>常量机制早期留给了原生 SQL，如果真的需要返回该字符串："'xxx'"</p>
@@ -9155,7 +9130,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">单表查询</title>
     <id>https://freesql.net/guide/select-single-table.html</id>
     <link href="https://freesql.net/guide/select-single-table.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 单表查询</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name">IFreeSql</span> fsql<span class="token punctuation">;</span> <span class="token comment">//如何创建请移步入门文档</span>
 
@@ -9172,12 +9147,12 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
     <content type="html"><![CDATA[<h1> 单表查询</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 单表</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> <a href="/guide/withsql.html" target="blank">WithSql</a></h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> <a href="withsql">WithSql</a></h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>关于<a href="/guide/withsql.html" target="blank">WithSql</a>的详情文档， 使用多次为 UNION ALL 查询</p>
+<p>使用多次 WithSql 等于 UNION ALL 查询</p>
 </blockquote>
 <blockquote>
-<p>v3.2.666 <a href="/guide/unionall.html" target="blank">UnionAll 联合查询</a>、<a href="/guide/withtempquery.html" target="blank">WithTempQuery + FromQuery 嵌套查询</a></p>
+<p>v3.2.666 <a href="unionall">UnionAll 联合查询</a>、<a href="withtempquery">WithTempQuery + FromQuery 嵌套查询</a></p>
 </blockquote>
 <blockquote>
 <p>v3.2.666 WithMemory 使用内存数据进行查询</p>
@@ -9192,7 +9167,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">查询</title>
     <id>https://freesql.net/guide/select.html</id>
     <link href="https://freesql.net/guide/select.html"/>
-    <updated>2024-07-23T19:27:42.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 查询</h1>
 <p>FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。</p>
 <table>
@@ -9205,32 +9180,32 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </thead>
 <tbody>
 <tr>
-<td><a href="/guide/paging.html" target="blank">《分页查询》</a></td>
-<td><a href="/guide/repository.html" target="blank">《仓储层 Repository》</a></td>
-<td><a href="/guide/read-write-splitting.html" target="blank">《读写分离》</a></td>
+<td><a href="paging">《分页查询》</a></td>
+<td><a href="repository">《仓储层 Repository》</a></td>
+<td><a href="read-write-splitting">《读写分离》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-single-table.html" target="blank">《单表查询》</a></td>
-<td><a href="/guide/filters.html" target="blank">《过滤器》</a></td>
-<td><a href="/guide/linq-to-sql.html" target="blank">《LinqToSql》</a></td>
+<td><a href="select-single-table">《单表查询》</a></td>
+<td><a href="filters">《过滤器》</a></td>
+<td><a href="linq-to-sql">《LinqToSql》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a></td>
-<td><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></td>
-<td><a href="/guide/performance.html" target="blank">《性能》</a></td>
+<td><a href="select-multi-table">《多表查询》</a></td>
+<td><a href="select-lazy-loading">《延时加载》</a></td>
+<td><a href="performance">《性能》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/withtempquery.html" target="blank">《嵌套查询》</a></td>
-<td><a href="/guide/select-include.html" target="blank">《贪婪加载》</a></td>
-<td><a href="/guide/sharding.html" target="blank">《分表分库》</a></td>
+<td><a href="withtempquery">《嵌套查询》</a></td>
+<td><a href="select-include">《贪婪加载》</a></td>
+<td><a href="sharding">《分表分库》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-group-by.html" target="blank">《分组聚合查询》</a></td>
-<td><a href="/guide/expression-function.html" target="blank">《表达式函数》</a></td>
-<td><a href="/guide/multi-tenancy.html" target="blank">《多租户》</a></td>
+<td><a href="select-group-by">《分组聚合查询》</a></td>
+<td><a href="expression-function">《表达式函数》</a></td>
+<td><a href="multi-tenancy">《多租户》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-return-data.html" target="blank">《返回数据》</a></td>
+<td><a href="select-return-data">《返回数据》</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -9248,32 +9223,32 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </thead>
 <tbody>
 <tr>
-<td><a href="/guide/paging.html" target="blank">《分页查询》</a></td>
-<td><a href="/guide/repository.html" target="blank">《仓储层 Repository》</a></td>
-<td><a href="/guide/read-write-splitting.html" target="blank">《读写分离》</a></td>
+<td><a href="paging">《分页查询》</a></td>
+<td><a href="repository">《仓储层 Repository》</a></td>
+<td><a href="read-write-splitting">《读写分离》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-single-table.html" target="blank">《单表查询》</a></td>
-<td><a href="/guide/filters.html" target="blank">《过滤器》</a></td>
-<td><a href="/guide/linq-to-sql.html" target="blank">《LinqToSql》</a></td>
+<td><a href="select-single-table">《单表查询》</a></td>
+<td><a href="filters">《过滤器》</a></td>
+<td><a href="linq-to-sql">《LinqToSql》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-multi-table.html" target="blank">《多表查询》</a></td>
-<td><a href="/guide/select-lazy-loading.html" target="blank">《延时加载》</a></td>
-<td><a href="/guide/performance.html" target="blank">《性能》</a></td>
+<td><a href="select-multi-table">《多表查询》</a></td>
+<td><a href="select-lazy-loading">《延时加载》</a></td>
+<td><a href="performance">《性能》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/withtempquery.html" target="blank">《嵌套查询》</a></td>
-<td><a href="/guide/select-include.html" target="blank">《贪婪加载》</a></td>
-<td><a href="/guide/sharding.html" target="blank">《分表分库》</a></td>
+<td><a href="withtempquery">《嵌套查询》</a></td>
+<td><a href="select-include">《贪婪加载》</a></td>
+<td><a href="sharding">《分表分库》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-group-by.html" target="blank">《分组聚合查询》</a></td>
-<td><a href="/guide/expression-function.html" target="blank">《表达式函数》</a></td>
-<td><a href="/guide/multi-tenancy.html" target="blank">《多租户》</a></td>
+<td><a href="select-group-by">《分组聚合查询》</a></td>
+<td><a href="expression-function">《表达式函数》</a></td>
+<td><a href="multi-tenancy">《多租户》</a></td>
 </tr>
 <tr>
-<td><a href="/guide/select-return-data.html" target="blank">《返回数据》</a></td>
+<td><a href="select-return-data">《返回数据》</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -9356,7 +9331,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tr>
 </tbody>
 </table>
-<p>更详细请前往<a href="/guide/expression-function.html" target="blank">《表达式函数》</a></p>
+<p>更详细请前往<a href="expression-function">《表达式函数》</a></p>
 <h2> SqlServer WithLock/WithIndex</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>多表：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>全局设置 NoLock：</p>
@@ -9385,7 +9360,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <blockquote>
 <p>动态贪婪加载：ISelect.IncludeByPropertyName("Parent.Parent").IncludeByPropertyName("Parent.Childs")</p>
 </blockquote>
-<h2> API</h2>
+<h2> 克隆查询 ISelect</h2>
+<p>科普：csharp 7.0 支持本地函数，方法内再定义临时方法，这个特性向大家推荐，在很多时候都非常有效。</p>
+<p>方法内还可以定义方法，那就称它：本地函数/嵌套方法。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> API</h2>
 <table>
 <thead>
 <tr>
@@ -9555,7 +9533,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>Where</td>
 <td>&lt;this&gt;</td>
 <td>string, parms</td>
-<td>原生 sql 语法条件，Where("id = @id", new { id = 1 } ,<a href="/guide/ado.html#%E5%8F%82%E6%95%B0%E5%8C%96" target="blank">注意前缀@,根据具体数据库决定</a> 其他地方不再说明。同理 )</td>
+<td>原生 sql 语法条件，Where("id = @id", new { id = 1 } ,<a href="ado#%E5%8F%82%E6%95%B0%E5%8C%96">注意前缀@,根据具体数据库决定</a> 其他地方不再说明。同理 )</td>
 <td></td>
 </tr>
 <tr>
@@ -9819,7 +9797,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">分表分库</title>
     <id>https://freesql.net/guide/sharding.html</id>
     <link href="https://freesql.net/guide/sharding.html"/>
-    <updated>2024-06-14T10:42:20.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 分表分库</h1>
 <h2> 理论知识</h2>
 <p>分表 - 从表面意思上看呢，就是把一张表分成 N 多个小表，每一个小表都是完整的一张表。分表后数据都是存放在分表里，总表只是一个外壳，存取数据发生在一个一个的分表里面。分表后单表的并发能力提高了，磁盘 I/O 性能也提高了。并发能力为什么提高了呢，因为查寻一次所花的时间变短了，如果出现高并发的话，总表可以根据不同 的查询，将并发压力分到不同的小表里面。</p>
@@ -9944,7 +9922,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <p>注意：是同一个对象实例创建之后，无法跟随切换，创建新对象实例不受影响。</p>
 </blockquote>
 <p>租户分库场景 Repository/UnitOfWorkManager 创建之前，先调用 fsql.Change 切换好数据库。</p>
-<p><a href="/guide/unitofwork-manager.html#freesql-cloud-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-unitofworkmanager" target="blank">《FreeSql.Cloud 如何使用 UnitOfWorkManager 实现 AOP 事务？》</a></p>
+<p><a href="unitofwork-manager#%E6%89%A9%E5%B1%95-%E5%A4%9A%E5%BA%93%E5%9C%BA%E6%99%AF">《FreeSql.Cloud 如何使用 UnitOfWorkManager 实现 AOP 事务？》</a></p>
 <p>4、动态创建对象（不推荐）</p>
 <p>但是。。。仍然有一种特殊需求，Repository 在创建之后，仍然能跟随 fsql.Change 切换数据库。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这种机制太不可控，所以只做了简单的扩展方法创建，并不推荐 Ioc 注入。</p>
@@ -9955,7 +9933,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">事务Transaction</title>
     <id>https://freesql.net/guide/transaction.html</id>
     <link href="https://freesql.net/guide/transaction.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 事务Transaction</h1>
 
 <h2> 1、常规事务</h2>
@@ -9982,7 +9960,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </blockquote>
 <p>使用 UnitOfWorkManager 管理 UnitOfWork，如下：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2、仓储事务（依赖注入）</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体请移步文档：- <a href="/guide/unitofwork-manager.html" target="blank">AOP 特性标签实现跨方法事务</a></p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体请移步文档：- <a href="unitofwork-manager">AOP 特性标签实现跨方法事务</a></p>
 <h2> 3、同线程事务</h2>
 <p>同线程事务内置在 FreeSql.dll，由 fsql.Transaction 管理事务提交回滚（缺点：不支持异步）。</p>
 <p>用户购买了价值 100 元的商品：扣余额、扣库存。</p>
@@ -10475,7 +10453,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">UnitOfWork</title>
     <id>https://freesql.net/guide/unit-of-work.html</id>
     <link href="https://freesql.net/guide/unit-of-work.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> UnitOfWork</h1>
 <p>UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。</p>
 <h2> 如何使用</h2>
@@ -10498,7 +10476,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务</p>
 </blockquote>
-<p>依赖注入（参考）：<a href="/guide/unitofwork-manager.html" target="blank">在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播</a></p>
+<p>依赖注入（参考）：<a href="unitofwork-manager">在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播</a></p>
 <h2> 接口定义</h2>
 <p>uow.GetOrBeginTransaction() 方法可获取事务对象。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 实体变化事件</h2>
@@ -10536,7 +10514,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <li>多对多联级更新导航属性的时候，对中间表的全部删除操作；</li>
 <li>通用仓储类 BaseRepository 有一个 Delete 方法，参数为表达式，而并非实体；</li>
 </ul>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>DbContext.SaveChanges，或者 Repository 对实体的 Insert/Update/Delete，或者 UnitOfWork.Commit 操作都会最多触发一次该事件。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Repository 对实体的 Insert/Update/Delete，或者 UnitOfWork.Commit 操作都会最多触发一次该事件。</p>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
@@ -12934,7 +12912,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">与 EntityFramework 比较</title>
     <id>https://freesql.net/reference/vs-entity-framework.html</id>
     <link href="https://freesql.net/reference/vs-entity-framework.html"/>
-    <updated>2023-03-10T02:59:47.000Z</updated>
+    <updated>2024-07-26T09:14:45.000Z</updated>
     <summary type="html"><![CDATA[<h1> 与 EntityFramework 比较</h1>
 <p>为什么要写这篇文章？</p>
 <p>2020 年 写下这篇完整一点的 .NET ORM 比较，为准备使用 FreeSql 的朋友解惑。</p>
@@ -13150,7 +13128,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 导航属性(Parent) <a href="/reference/select-as-tree.html" target="blank">父子关系的实体类</a></td>
+<td>.NET ORM 导航属性(Parent) <a href="select-as-tree">父子关系的实体类</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
@@ -13292,7 +13270,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 批量插入时，自动分批 <a href="/reference/insert.html" target="blank">参考文档</a></td>
+<td>.NET ORM 批量插入时，自动分批 <a href="insert">参考文档</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
@@ -13427,12 +13405,12 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 添加或更新，自动适配 merge into <a href="/reference/insert-or-update.html" target="blank">参考文档</a></td>
+<td>.NET ORM 添加或更新，自动适配 merge into <a href="insert-or-update">参考文档</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 批量编辑保存 <a href="/reference/insert-or-update.html" target="blank">参考文档</a></td>
+<td>.NET ORM 批量编辑保存 <a href="insert-or-update">参考文档</a></td>
 <td>✔</td>
 <td>✔</td>
 </tr>
@@ -13462,7 +13440,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 查询时，动态过滤条件(WhereDynamicFilter) <a href="/reference/select.html" target="blank">参考文档</a></td>
+<td>.NET ORM 查询时，动态过滤条件(WhereDynamicFilter) <a href="select">参考文档</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
@@ -13502,7 +13480,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>-</td>
 </tr>
 <tr>
-<td>.NET ORM 查询时，子查询拼接结果(string.Join) <a href="/reference/select-multi-table.html" target="blank">参考文档</a></td>
+<td>.NET ORM 查询时，子查询拼接结果(string.Join) <a href="select-multi-table">参考文档</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
@@ -13517,7 +13495,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>✔</td>
 </tr>
 <tr>
-<td>.NET ORM 查询时，针对树形结构表 <a href="/reference/select-as-tree.html" target="blank">父子关系的实体类</a></td>
+<td>.NET ORM 查询时，针对树形结构表 <a href="select-as-tree">父子关系的实体类</a></td>
 <td>✔</td>
 <td>-</td>
 </tr>
