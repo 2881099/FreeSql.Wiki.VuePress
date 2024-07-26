@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: 🦄 FreeSql
 tagline: A simple yet powerful Object-Relational Mapping (O/RM) component, supporting .NET Core 2.1+, .NET Framework 4.0+✨
 actions:
-  - text: Get started 💡
+  - text: Try IT →
     link: guide/
     type: primary
 features:
