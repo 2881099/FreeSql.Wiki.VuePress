@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Fri, 26 Jul 2024 14:41:05 GMT</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2024 14:41:05 GMT</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2024 14:56:06 GMT</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2024 14:56:06 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -44,7 +44,7 @@
 </ol>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>If you do not want the primary key to be auto-incremented, you can override the property:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>For more entity attribute configurations, see <a href="entity-attribute">Entity Attributes</a></p>
+<p>For more entity attribute configurations, see <a href="/en/guide/entity-attribute.html" target="blank">Entity Attributes</a></p>
 </blockquote>
 <ol start="2">
 <li>Define an entity type with a <code>Guid</code> primary key. The Guid value will be automatically generated and ordered, so you don't need to specify <code>Guid.NewGuid()</code> yourself:</li>
@@ -56,7 +56,7 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>EntityType.Select</code> is a query object and operates similarly to <code>FreeSql.ISelect</code>.</p>
 <p>When performing multi-table queries, the soft delete condition will be appended to each table.</p>
 <blockquote>
-<p>For more query methods, refer to <a href="select">Queries</a></p>
+<p>For more query methods, refer to <a href="/en/guide/select.html" target="blank">Queries</a></p>
 </blockquote>
 <p>Example project: <a href="https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity</a></p>
 ]]></content:encoded>
@@ -137,7 +137,7 @@
 <p>dotnet add package FreeSql.Extensions.AggregateRoot</p>
 </blockquote>
 <p>For feedback and discussion, visit: <a href="https://github.com/dotnetcore/FreeSql/discussions/1235" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1235</a></p>
-<p>The following content heavily relies on the correct configuration of <a href="navigate-attribute"><strong>Navigation Properties</strong></a>. Please learn about it before proceeding!</p>
+<p>The following content heavily relies on the correct configuration of <a href="/en/guide/navigate-attribute.html" target="blank"><strong>Navigation Properties</strong></a>. Please learn about it before proceeding!</p>
 <h2> Setting Boundaries</h2>
 <p>Define a primary entity class as the aggregate root and establish a safe jurisdictional boundary. During CRUD operations, everything within the boundary is treated as a whole.</p>
 <p>Navigation properties outside the boundary will be ignored during recursive <code>insert, update, delete</code> operations:</p>
@@ -391,7 +391,7 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Expression Interception</h2>
 <p>FreeSql's internal expression support is very rich and compatible with major databases.</p>
 <blockquote>
-<p>For details on expression support, refer to: <a href="expression-function">Expression Functions</a></p>
+<p>For details on expression support, refer to: <a href="/en/guide/expression-function.html" target="blank">Expression Functions</a></p>
 </blockquote>
 <p>Despite this richness, it may still not meet all user needs. FreeSql provides a custom expression parsing interface:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>This parsing can be complex. When <code>e.Expression</code> is very complicated, we also provide the <code>e.FreeParse</code> method, which is equivalent to calling FreeSql’s built-in expression parsing engine to assist with parsing.</p>
@@ -414,16 +414,16 @@
       <link>https://freesql.net/en/guide/cascade-delete.html</link>
       <guid>https://freesql.net/en/guide/cascade-delete.html</guid>
       <source url="https://freesql.net/en/rss.xml">Cascade Delete</source>
-      <description>Here is the translated document: The following content heavily relies on the correct configuration of Navigation Properties (navigate-attribute), so please ensure you understand...</description>
+      <description>Here is the translated document: The following content heavily relies on the correct configuration of Navigation Properties (navigate-attribute.md), so please ensure you underst...</description>
       <pubDate>Fri, 26 Jul 2024 09:14:45 GMT</pubDate>
       <content:encoded><![CDATA[<p>Here is the translated document:</p>
 <hr>
 <h1> Cascade Delete</h1>
-<p>The following content heavily relies on the correct configuration of <a href="navigate-attribute">Navigation Properties</a>, so please ensure you understand that first before proceeding!</p>
-<p>Cascade delete only applies to OneToOne, OneToMany, and ManyToMany navigation properties. The <a href="cascade-saving">Cascade Saving</a> document has already explained this.</p>
+<p>The following content heavily relies on the correct configuration of <a href="/en/guide/navigate-attribute.html" target="blank">Navigation Properties</a>, so please ensure you understand that first before proceeding!</p>
+<p>Cascade delete only applies to OneToOne, OneToMany, and ManyToMany navigation properties. The <a href="/en/guide/cascade-saving.html" target="blank">Cascade Saving</a> document has already explained this.</p>
 <h2> Cascade Delete Based on [Objects]</h2>
 <blockquote>
-<p>For example, objects retrieved using <a href="select-include#_2-navigation-properties-manytoone-onetoone">Include/IncludeMany</a> queries can be cascade deleted using this method.</p>
+<p>For example, objects retrieved using <a href="/en/guide/select-include.html#_2-navigation-properties-manytoone-onetoone" target="blank">Include/IncludeMany</a> queries can be cascade deleted using this method.</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Cascade Delete Based on [Database]</h2>
 <blockquote>
@@ -436,12 +436,12 @@
       <link>https://freesql.net/en/guide/cascade-saving.html</link>
       <guid>https://freesql.net/en/guide/cascade-saving.html</guid>
       <source url="https://freesql.net/en/rss.xml">Cascade Save</source>
-      <description>Here is the translated document: The following content heavily relies on the correct configuration of Navigation Properties (navigate-attribute), so please ensure you understand...</description>
+      <description>Here is the translated document: The following content heavily relies on the correct configuration of Navigation Properties (navigate-attribute.md), so please ensure you underst...</description>
       <pubDate>Fri, 26 Jul 2024 09:14:45 GMT</pubDate>
       <content:encoded><![CDATA[<p>Here is the translated document:</p>
 <hr>
 <h1> Cascade Save</h1>
-<p>The following content heavily relies on the correct configuration of <a href="navigate-attribute">Navigation Properties</a>, so please ensure you understand that first before proceeding!</p>
+<p>The following content heavily relies on the correct configuration of <a href="/en/guide/navigate-attribute.html" target="blank">Navigation Properties</a>, so please ensure you understand that first before proceeding!</p>
 <ul>
 <li><strong>Topic</strong>: Articles table</li>
 <li><strong>Category</strong>: Categories table</li>
@@ -459,7 +459,7 @@
 <h2> Enabling the Feature</h2>
 
 <blockquote>
-<p>This feature was implemented in 2019 (stable). You may also refer to the 2022 release of <a href="aggregateroot">“Aggregate Root Repository”</a> (more automatic cascade saving).</p>
+<p>This feature was implemented in 2019 (stable). You may also refer to the 2022 release of <a href="/en/guide/aggregateroot.html" target="blank">“Aggregate Root Repository”</a> (more automatic cascade saving).</p>
 </blockquote>
 <p>Cascade saving is disabled by default and needs to be enabled manually:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> Mechanism Rules</h2>
@@ -467,7 +467,7 @@
 <li>
 <p><strong>OneToOne Cascade Saving</strong></p>
 <blockquote>
-<p>Supported from v3.2.606+, and also supports <a href="cascade-delete">Cascade Delete</a> functionality.</p>
+<p>Supported from v3.2.606+, and also supports <a href="/en/guide/cascade-delete.html" target="blank">Cascade Delete</a> functionality.</p>
 </blockquote>
 </li>
 <li>
@@ -566,7 +566,7 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict all support batch operations, corresponding to types <code>List&lt;Dictionary&lt;string, object&gt;&gt;</code>.</p>
 <h2> Untyped CRUD (More Advanced)</h2>
 <p>Does not rely on entity types, does not require dynamic compilation, pure dictionary operations, supports navigation properties, cascading saves, a blessing for AOT compilation.</p>
-<p>For more details, please refer to <a href="lowcode">《Untyped Mapping》</a>.</p>
+<p>For more details, please refer to <a href="/en/guide/lowcode.html" target="blank">《Untyped Mapping》</a>.</p>
 <h2> Dynamic Table Names</h2>
 <ol>
 <li>Repository</li>
@@ -758,7 +758,7 @@
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>The principle of optimistic locking is to use a field in the entity, such as <code>long version</code>. Before updating, query the data; if <code>version</code> is 1, the generated SQL will include <code>where version = 1</code>. If the modification fails (i.e., <code>Affrows == 0</code>), an exception (<code>DbUpdateVersionException</code>) is thrown.</p>
 <p>Each entity supports only one optimistic lock property and supports <code>int</code>, <code>long</code>, <code>string</code>, <code>Guid</code>.</p>
 <blockquote>
-<p>Applicable to <a href="update#_5-setsource-entity"><code>SetSource</code></a> for updating data. Regardless of how the version value is updated, it will be incremented by 1.</p>
+<p>Applicable to <a href="/en/guide/update.html#_5-setsource-entity" target="blank"><code>SetSource</code></a> for updating data. Regardless of how the version value is updated, it will be incremented by 1.</p>
 </blockquote>
 <h2> Custom Type Mapping (MapType)</h2>
 <p>Use the <code>MapType</code> enumeration -&gt; <code>string/int</code> and so on, as follows:</p>
@@ -1037,7 +1037,7 @@
 <h2> How to Disable?</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>The <code>fsql.Update/Delete</code> methods behave similarly.</p>
 <h2> Tenant Fields (Dynamic Values)</h2>
-<p>Please refer to the documentation: <a href="multi-tenancy#approach-1-tenant-field-differentiation">【Multi-Tenancy - Distinguish by Tenant Field】</a></p>
+<p>Please refer to the documentation: <a href="/en/guide/multi-tenancy.html#approach-1-tenant-field-differentiation" target="blank">【Multi-Tenancy - Distinguish by Tenant Field】</a></p>
 ]]></content:encoded>
     </item>
     <item>
@@ -1050,7 +1050,7 @@
       <content:encoded><![CDATA[<h2> Fluent API Support</h2>
 <p>FreeSql offers Fluent API methods for configuring entity database features using a chain of calls. The <code>Fluent API</code> method names match the feature names and there are three ways to use it. You only need to choose one of the methods:</p>
 <blockquote>
-<p><code>fsql</code> refers to an <code>IFreeSql</code> object. Configuration should generally be done only once to avoid performance issues. For more details, see: <a href="entity-attribute">《Entity Attributes》</a>.</p>
+<p><code>fsql</code> refers to an <code>IFreeSql</code> object. Configuration should generally be done only once to avoid performance issues. For more details, see: <a href="/en/guide/entity-attribute.html" target="blank">《Entity Attributes》</a>.</p>
 </blockquote>
 <h2> ConfigEntity</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
@@ -1079,10 +1079,10 @@
       <link>https://freesql.net/en/guide/lowcode.html</link>
       <guid>https://freesql.net/en/guide/lowcode.html</guid>
       <source url="https://freesql.net/en/rss.xml">Untyped Mapping</source>
-      <description>This document follows the “Dynamic Operations” (dynamic) and is designed specifically for low-code solutions. FreeSql defaults to using entity types. Although types can be dynam...</description>
+      <description>This document follows the “Dynamic Operations” (dynamic.md) and is designed specifically for low-code solutions. FreeSql defaults to using entity types. Although types can be dy...</description>
       <pubDate>Fri, 26 Jul 2024 09:14:45 GMT</pubDate>
       <content:encoded><![CDATA[<h1> Untyped Mapping</h1>
-<p>This document follows the <a href="dynamic">“Dynamic Operations”</a> and is designed specifically for low-code solutions.</p>
+<p>This document follows the <a href="/en/guide/dynamic.html" target="blank">“Dynamic Operations”</a> and is designed specifically for low-code solutions.</p>
 <p>FreeSql defaults to using entity types. Although types can be dynamically created at runtime, frequent dynamic compilation can lead to memory leaks and difficulties in managing type versions.</p>
 <p>This feature operates independently and performs CRUD operations using pure dictionaries (without entity types), supporting features such as navigation properties and cascading operations.</p>
 <p>Note: This feature operates independently; do not confuse it with the cascading mechanism in other documents.</p>
@@ -1246,7 +1246,7 @@
 </ul>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>The above code creates a repository with tenant-specific tables, so operations will eventually affect the <code>Goods_1</code> table.</p>
 <blockquote>
-<p>For more details, see: <a href="repository">《FreeSql.Repository Repository》</a>, <a href="sharding">《Sharding》</a>.</p>
+<p>For more details, see: <a href="/en/guide/repository.html" target="blank">《FreeSql.Repository Repository》</a>, <a href="/en/guide/sharding.html" target="blank">《Sharding》</a>.</p>
 </blockquote>
 <blockquote>
 <p>v3.2.833 Dynamic Table Name Setting</p>
@@ -1283,13 +1283,13 @@
 <p>FreeSql offers six types of navigation properties: OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, and <a href="https://www.cnblogs.com/FreeSql/p/16351417.html" target="_blank" rel="noopener noreferrer">PgArrayToMany</a>.</p>
 <p>What can navigation properties do?</p>
 <ul>
-<li><a href="select-multi-table">Multi-table Queries</a> <code>Where(a =&gt; a.Parent.Parent.Name == "xx")</code> <code>Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</code></li>
-<li><a href="select-include">Eager Loading</a> <code>Include/IncludeMany</code></li>
-<li><a href="select-lazy-loading">Lazy Loading</a></li>
-<li><a href="select-as-tree">Tree Table Queries</a></li>
-<li><a href="cascade-saving">Cascade Saving</a></li>
-<li><a href="cascade-delete">Cascade Deletion</a></li>
-<li><a href="aggregateroot">Aggregate Root Repository</a></li>
+<li><a href="/en/guide/select-multi-table.html" target="blank">Multi-table Queries</a> <code>Where(a =&gt; a.Parent.Parent.Name == "xx")</code> <code>Where(a =&gt; a.Childs.Any(b =&gt; b.title == "xxx"))</code></li>
+<li><a href="/en/guide/select-include.html" target="blank">Eager Loading</a> <code>Include/IncludeMany</code></li>
+<li><a href="/en/guide/select-lazy-loading.html" target="blank">Lazy Loading</a></li>
+<li><a href="/en/guide/select-as-tree.html" target="blank">Tree Table Queries</a></li>
+<li><a href="/en/guide/cascade-saving.html" target="blank">Cascade Saving</a></li>
+<li><a href="/en/guide/cascade-delete.html" target="blank">Cascade Deletion</a></li>
+<li><a href="/en/guide/aggregateroot.html" target="blank">Aggregate Root Repository</a></li>
 </ul>
 <p>Navigation properties make multi-table queries very convenient, allowing direct use of navigation objects with lambda expressions—so comfortable!</p>
 <h2> Custom Configuration</h2>
@@ -1664,7 +1664,7 @@
 <li>Avoid using default value functionality in the database;</li>
 </ul>
 <h2> Cascade Save</h2>
-<p>Please refer to the document <a href="cascade-saving">《Cascade Save》</a></p>
+<p>Please refer to the document <a href="/en/guide/cascade-saving.html" target="blank">《Cascade Save》</a></p>
 <h2> API</h2>
 <table>
 <thead>
@@ -1760,7 +1760,7 @@
 <td>Batch delete data</td>
 </tr>
 <tr>
-<td><a href="cascade-delete">DeleteCascadeByDatabase</a></td>
+<td><a href="/en/guide/cascade-delete.html" target="blank">DeleteCascadeByDatabase</a></td>
 <td>List&lt;object&gt;</td>
 <td>Lambda</td>
 <td>Recursively delete data by navigation properties</td>
@@ -1820,7 +1820,7 @@
 <td>Attach only primary key data of entity to state management</td>
 </tr>
 <tr>
-<td><a href="insert-or-update#_4-table-beginedit">BeginEdit</a></td>
+<td><a href="/en/guide/insert-or-update.html#_4-table-beginedit" target="blank">BeginEdit</a></td>
 <td>-</td>
 <td>List&lt;TEntity&gt;</td>
 <td>Prepare to edit a list of entities</td>
@@ -2069,7 +2069,7 @@
 </blockquote>
 <div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>If the database does not support window functions, you can use grouped nested queries to solve this:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-sql line-numbers-mode" data-ext="sql"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>See more in the <a href="withtempquery">《Nested Queries》</a> documentation</p>
+<p>See more in the <a href="/en/guide/withtempquery.html" target="blank">《Nested Queries》</a> documentation</p>
 </blockquote>
 <h2> 4. Aggregate</h2>
 <h3> Distinct</h3>
@@ -2204,12 +2204,12 @@ FROM "Topic" a</p>
       <link>https://freesql.net/en/guide/select-include.html</link>
       <guid>https://freesql.net/en/guide/select-include.html</guid>
       <source url="https://freesql.net/en/rss.xml">Include Loading ✨</source>
-      <description>1. Child Table ToList The following content heavily relies on correct configuration of 【Navigation Properties】 (navigate-attribute); please learn it before continuing! 2. Naviga...</description>
+      <description>1. Child Table ToList The following content heavily relies on correct configuration of 【Navigation Properties】 (navigate-attribute.md); please learn it before continuing! 2. Nav...</description>
       <pubDate>Fri, 26 Jul 2024 09:14:45 GMT</pubDate>
       <content:encoded><![CDATA[<h1> Include Loading ✨</h1>
 <h2> 1. Child Table ToList</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
-<p>The following content heavily relies on correct configuration of <a href="navigate-attribute">【Navigation Properties】</a>; please learn it before continuing!</p>
+<p>The following content heavily relies on correct configuration of <a href="/en/guide/navigate-attribute.html" target="blank">【Navigation Properties】</a>; please learn it before continuing!</p>
 <h2> 2. Navigation Properties ManyToOne/OneToOne</h2>
 <p><code>Include</code> ultimately uses a Left Join approach (one query) to return multiple table records.</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 3. Collection Properties OneToMany/ManyToMany/PgArrayToMany</h2>
@@ -2271,10 +2271,10 @@ FROM "Topic" a</p>
 <h2> 2. Return List</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 3. Return TreeList</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>Data query processed into a tree structure. Note: Entities need to configure <a href="select-as-tree">parent-child navigation properties</a>.</p>
+<p>Data query processed into a tree structure. Note: Entities need to configure <a href="/en/guide/select-as-tree.html" target="blank">parent-child navigation properties</a>.</p>
 </blockquote>
 <h2> 4. Return List + Navigation Properties Data</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>More navigation properties data return: <a href="select-include">Eager Loading</a></p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>More navigation properties data return: <a href="/en/guide/select-include.html" target="blank">Eager Loading</a></p>
 <h2> 5. Specify Return</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>The constant mechanism was initially reserved for native SQL. If you really need to return the string: "'xxx'".</p>
@@ -2531,7 +2531,7 @@ FROM "Topic" a</p>
 <p>Note: Once the same object instance is created, it cannot follow database switching. Creating a new object instance is not affected.</p>
 </blockquote>
 <p>In multi-tenant sharding scenarios, switch the database using <code>fsql.Change</code> before creating Repository/UnitOfWorkManager.</p>
-<p><a href="unitofwork-manager#extension-multi-database">《How to Use UnitOfWorkManager with FreeSql.Cloud for AOP Transactions?》</a></p>
+<p><a href="/en/guide/unitofwork-manager.html#extension-multi-database" target="blank">《How to Use UnitOfWorkManager with FreeSql.Cloud for AOP Transactions?》</a></p>
 <ol start="4">
 <li>Dynamic Object Creation (Not Recommended)</li>
 </ol>
@@ -2555,7 +2555,7 @@ FROM "Topic" a</p>
 </blockquote>
 <p>Use <code>UnitOfWorkManager</code> to manage <code>UnitOfWork</code>, as follows:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2. Repository Transactions (Dependency Injection)</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>For more details, refer to the document: - <a href="unitofwork-manager">AOP Feature Tag Implementation for Cross-Method Transactions</a></p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>For more details, refer to the document: - <a href="/en/guide/unitofwork-manager.html" target="blank">AOP Feature Tag Implementation for Cross-Method Transactions</a></p>
 <h2> 3. Same-Thread Transactions</h2>
 <p>Same-thread transactions are built into FreeSql.dll, managed by <code>fsql.Transaction</code> for committing and rolling back transactions (Note: does not support asynchronous operations).</p>
 <p>A user purchases a product worth 100 yuan: deduct balance, deduct inventory.</p>
@@ -2602,7 +2602,7 @@ FROM "Topic" a</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>Tip: Within the <code>uow</code> scope, try not to use the <code>fsql</code> object to avoid being in different transactions.</p>
 </blockquote>
-<p>Dependency Injection (Reference): <a href="unitofwork-manager">Implementing Various Transaction Propagation with TransactionalAttribute + UnitOfWorkManager in ASP.NET Core</a></p>
+<p>Dependency Injection (Reference): <a href="/en/guide/unitofwork-manager.html" target="blank">Implementing Various Transaction Propagation with TransactionalAttribute + UnitOfWorkManager in ASP.NET Core</a></p>
 <h2> Interface Definition</h2>
 <p>The <code>uow.GetOrBeginTransaction()</code> method can retrieve the transaction object.</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Entity Change Events</h2>
@@ -2702,9 +2702,9 @@ FROM "Topic" a</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Register this service in <code>startup.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> Extension: Multi-Database</h2>
-<p>FreeSql.Cloud provides <a href="sharding#db-sharding-freesql-cloud">cross-database access</a>. This section explains how to integrate FreeSql.Cloud with UowManager for multi-database scenarios.</p>
+<p>FreeSql.Cloud provides <a href="/en/guide/sharding.html#db-sharding-freesql-cloud" target="blank">cross-database access</a>. This section explains how to integrate FreeSql.Cloud with UowManager for multi-database scenarios.</p>
 <blockquote>
-<p>Note: <a href="multi-tenancy#approach-3-tenant-specific-databases">Multi-tenant Database</a> should be skipped as multi-tenant requests usually only operate on one database. Just switch tenants in the middleware.</p>
+<p>Note: <a href="/en/guide/multi-tenancy.html#approach-3-tenant-specific-databases" target="blank">Multi-tenant Database</a> should be skipped as multi-tenant requests usually only operate on one database. Just switch tenants in the middleware.</p>
 </blockquote>
 <hr>
 <p>Define FreeSqlCloud object using <code>DbEnum</code> as follows:</p>
@@ -3776,7 +3776,7 @@ FROM "Topic" a</p>
       <link>https://freesql.net/en/guide/select-single-table.html</link>
       <guid>https://freesql.net/en/guide/select-single-table.html</guid>
       <source url="https://freesql.net/en/rss.xml">Single Table</source>
-      <description>Single Table WithSql Using WithSql multiple times is equivalent to UNION ALL queries. v3.2.666 UnionAll Union Queries (unionall), WithTempQuery + FromQuery Nested Queries (witht...</description>
+      <description>Single Table WithSql Using WithSql multiple times is equivalent to UNION ALL queries. v3.2.666 UnionAll Union Queries (unionall.md), WithTempQuery + FromQuery Nested Queries (wi...</description>
       <pubDate>Sat, 21 Aug 2021 05:59:59 GMT</pubDate>
       <content:encoded><![CDATA[<h1> Single Table</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Single Table</h2>
@@ -3785,7 +3785,7 @@ FROM "Topic" a</p>
 <p>Using WithSql multiple times is equivalent to UNION ALL queries.</p>
 </blockquote>
 <blockquote>
-<p>v3.2.666 <a href="unionall">UnionAll Union Queries</a>, <a href="withtempquery">WithTempQuery + FromQuery Nested Queries</a></p>
+<p>v3.2.666 <a href="/en/guide/unionall.html" target="blank">UnionAll Union Queries</a>, <a href="/en/guide/withtempquery.html" target="blank">WithTempQuery + FromQuery Nested Queries</a></p>
 </blockquote>
 <blockquote>
 <p>v3.2.666 WithMemory for querying using in-memory data.</p>
@@ -3814,32 +3814,32 @@ FROM "Topic" a</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="paging">《Paging Queries》</a></td>
-<td><a href="repository">《Repository Layer》</a></td>
-<td><a href="read-write-splitting">《Read-Write Separation》</a></td>
+<td><a href="/en/guide/paging.html" target="blank">《Paging Queries》</a></td>
+<td><a href="/en/guide/repository.html" target="blank">《Repository Layer》</a></td>
+<td><a href="/en/guide/read-write-splitting.html" target="blank">《Read-Write Separation》</a></td>
 </tr>
 <tr>
-<td><a href="select-single-table">《Single Table Queries》</a></td>
-<td><a href="filters">《Filters》</a></td>
-<td><a href="linq-to-sql">《LinqToSql》</a></td>
+<td><a href="/en/guide/select-single-table.html" target="blank">《Single Table Queries》</a></td>
+<td><a href="/en/guide/filters.html" target="blank">《Filters》</a></td>
+<td></td>
 </tr>
 <tr>
-<td><a href="select-multi-table">《Multi-Table Queries》</a></td>
-<td><a href="select-lazy-loading">《Lazy Loading》</a></td>
-<td><a href="performance">《Performance》</a></td>
+<td><a href="/en/guide/select-multi-table.html" target="blank">《Multi-Table Queries》</a></td>
+<td><a href="/en/guide/select-lazy-loading.html" target="blank">《Lazy Loading》</a></td>
+<td><a href="/en/guide/performance.html" target="blank">《Performance》</a></td>
 </tr>
 <tr>
-<td><a href="withtempquery">《Nested Queries》</a></td>
-<td><a href="select-include">《Eager Loading》</a></td>
-<td><a href="sharding">《Sharding》</a></td>
+<td><a href="/en/guide/withtempquery.html" target="blank">《Nested Queries》</a></td>
+<td><a href="/en/guide/select-include.html" target="blank">《Eager Loading》</a></td>
+<td><a href="/en/guide/sharding.html" target="blank">《Sharding》</a></td>
 </tr>
 <tr>
-<td><a href="select-group-by">《Group By Aggregation Queries》</a></td>
-<td><a href="expression-function">《Expression Functions》</a></td>
-<td><a href="multi-tenancy">《Multi-Tenancy》</a></td>
+<td><a href="/en/guide/select-group-by.html" target="blank">《Group By Aggregation Queries》</a></td>
+<td><a href="/en/guide/expression-function.html" target="blank">《Expression Functions》</a></td>
+<td><a href="/en/guide/multi-tenancy.html" target="blank">《Multi-Tenancy》</a></td>
 </tr>
 <tr>
-<td><a href="select-return-data">《Return Data》</a></td>
+<td><a href="/en/guide/select-return-data.html" target="blank">《Return Data》</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -3922,7 +3922,7 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<p>For more details, see <a href="expression-function">《Expression Functions》</a></p>
+<p>For more details, see <a href="/en/guide/expression-function.html" target="blank">《Expression Functions》</a></p>
 <h2> SqlServer WithLock/WithIndex</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Multi-table:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Global NoLock Setting:</p>
@@ -4131,7 +4131,7 @@ FROM "Topic" a</p>
 <td>Where</td>
 <td>&lt;this&gt;</td>
 <td>string, parms</td>
-<td>Native SQL syntax condition, Where("id = @id", new { id = 1 } ,<a href="ado#parameter">Note the prefix @, according to the specific database</a> not explained elsewhere. Same applies)</td>
+<td>Native SQL syntax condition, Where("id = @id", new { id = 1 } ,<a href="/en/guide/ado.html#parameter" target="blank">Note the prefix @, according to the specific database</a> not explained elsewhere. Same applies)</td>
 <td></td>
 </tr>
 <tr>
@@ -5121,11 +5121,11 @@ FROM "Topic" a</p>
 <td>Based on MySql.Data (official from Oracle)</td>
 </tr>
 <tr>
-<td><a href="freesql-provider-mysqlconnector">FreeSql.Provider.MySqlConnector</a></td>
+<td><a href="/en/guide/freesql-provider-mysqlconnector.html" target="blank">FreeSql.Provider.MySqlConnector</a></td>
 <td>Based on MySqlConnector (open-source community, recommended++)<br><em>Supports MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb, etc.</em></td>
 </tr>
 <tr>
-<td><a href="freesql-provider-postgresql">FreeSql.Provider.PostgreSQL</a></td>
+<td><a href="/en/guide/freesql-provider-postgresql.html" target="blank">FreeSql.Provider.PostgreSQL</a></td>
 <td>Based on PostgreSQL 9.5+</td>
 </tr>
 <tr>
@@ -5141,7 +5141,7 @@ FROM "Topic" a</p>
 <td>Based on System.Data.SQLite.Core</td>
 </tr>
 <tr>
-<td><a href="freesql-provider-sqlitecore">FreeSql.Provider.SqliteCore</a></td>
+<td><a href="/en/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
 <td>Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx</td>
 </tr>
 <tr>
@@ -5149,7 +5149,7 @@ FROM "Topic" a</p>
 <td>Based on ClickHouse.Client</td>
 </tr>
 <tr>
-<td><a href="freesql-provider-questdb">FreeSql.Provider.QuestDb</a></td>
+<td><a href="/en/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
 <td>Based on Npgsql and RestApi</td>
 </tr>
 <tr>
@@ -5157,7 +5157,7 @@ FROM "Topic" a</p>
 <td></td>
 </tr>
 <tr>
-<td><a href="freesql-provider-oracle">FreeSql.Provider.OracleOledb</a></td>
+<td><a href="/en/guide/freesql-provider-oracle.html" target="blank">FreeSql.Provider.OracleOledb</a></td>
 <td>Based on Oledb, addresses US7ASCII Chinese garbled text issue</td>
 </tr>
 <tr>
@@ -5189,19 +5189,19 @@ FROM "Topic" a</p>
 <td>Based on Xugu Database</td>
 </tr>
 <tr>
-<td><a href="freesql-provider-odbc">FreeSql.Provider.Odbc</a></td>
+<td><a href="/en/guide/freesql-provider-odbc.html" target="blank">FreeSql.Provider.Odbc</a></td>
 <td>Based on ODBC</td>
 </tr>
 <tr>
-<td><a href="freesql-provider-custom">FreeSql.Provider.Custom</a></td>
+<td><a href="/en/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
 <td>Custom adaptation<br><em>Supports SqlServer2000, PolarDB, KunDB, other databases, etc.</em></td>
 </tr>
 </tbody>
 </table>
 <h2> Create Entity</h2>
 <p><code>FreeSql</code> uses models to perform data access, where models are represented by entity classes that correspond to database tables or views, and are used for querying and saving data.</p>
-<p>You can generate entity models from an existing database using the <code>IDbFirst</code> interface provided by <code>FreeSql</code>, which implements <a href="db-first">Entity Model Generation</a>.</p>
-<p>Alternatively, you can manually create models. By creating or modifying the database structure based on these models, <code>FreeSql</code> provides <a href="code-first">CodeFirst</a> synchronization APIs (and even supports automatic synchronization during the development phase).</p>
+<p>You can generate entity models from an existing database using the <code>IDbFirst</code> interface provided by <code>FreeSql</code>, which implements <a href="/en/guide/db-first.html" target="blank">Entity Model Generation</a>.</p>
+<p>Alternatively, you can manually create models. By creating or modifying the database structure based on these models, <code>FreeSql</code> provides <a href="/en/guide/code-first.html" target="blank">CodeFirst</a> synchronization APIs (and even supports automatic synchronization during the development phase).</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> How to Use</h2>
 <blockquote>
 <p>Note: IFreeSql should be declared as a singleton in the project.</p>

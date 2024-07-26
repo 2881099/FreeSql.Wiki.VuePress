@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 26 Jul 2024 14:41:05 GMT</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2024 14:41:05 GMT</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2024 14:56:06 GMT</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2024 14:56:06 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -789,7 +789,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <p>dotnet add package FreeSql.Extensions.AggregateRoot</p>
 </blockquote>
 <p>意见征集、讨论区：<a href="https://github.com/dotnetcore/FreeSql/discussions/1235" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/discussions/1235</a></p>
-<p>接下来的内容，严重依赖<a href="navigate-attribute">【导航属性】</a>的正确配置，请先学会再继续向下！</p>
+<p>接下来的内容，严重依赖<a href="/guide/navigate-attribute.html" target="blank">【导航属性】</a>的正确配置，请先学会再继续向下！</p>
 <h2> 设定边界</h2>
 <p>将一个主要的实体类认定为聚合根，设定好安全的管辖范围（边界），CRUD 时会把边界之内的所有内容看作一个整体。</p>
 <p>边界之外的导航属性，<code>增删改</code> 递归时会忽略：</p>
@@ -2233,7 +2233,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </tr>
 </tbody>
 </table>
-<p>更多 lambda 表达式树函数，可以看下<a href="https://freesql.net/guide/expression-function.html" target="_blank" rel="noopener noreferrer">《表达式函数》</a>文档，支持自定义解析。</p>
+<p>更多 lambda 表达式树函数，可以看下<a href="/guide/expression-function.html" target="blank">《表达式函数》</a>文档，支持自定义解析。</p>
 <p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1071" target="_blank" rel="noopener noreferrer">《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》</a></p>
 <h2> 空间地理类型</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
@@ -2242,7 +2242,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>参考资料：</p>
 <ul>
 <li><a href="https://github.com/dotnetcore/FreeSql/discussions/1422" target="_blank" rel="noopener noreferrer">《PostgreSQL 空间地理类型，自定义解析方案 #1422》</a></li>
-<li><a href="https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84" target="_blank" rel="noopener noreferrer">《PostgreSQL 特别类型映射》</a></li>
+<li><a href="/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84" target="blank">《PostgreSQL 特别类型映射》</a></li>
 </ul>
 <h2> 时序数据库</h2>
 <p>timescaledb 是 postgresql的一个插件，一个开源的时间序列数据库，为快速获取和复杂查询进行了优化。它执行的是“完整的SQL”，相应地很容易像传统的关系数据库那样使用。</p>
