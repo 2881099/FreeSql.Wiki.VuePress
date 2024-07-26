@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-07-26T09:26:21.809Z</updated>
+  <updated>2024-07-26T14:13:24.700Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8192,7 +8192,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">仓储</title>
     <id>https://freesql.net/guide/repository.html</id>
     <link href="https://freesql.net/guide/repository.html"/>
-    <updated>2024-07-26T09:14:45.000Z</updated>
+    <updated>2024-07-26T14:12:22.000Z</updated>
     <summary type="html"><![CDATA[<p><code>FreeSql.DbContext</code> 参考 abp vnext 接口规范，实现了通用的仓储层功能（CURD），理解成传统增强版（DAL）。</p>
 
 <ul>
@@ -8337,7 +8337,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <td>批量删除数据</td>
 </tr>
 <tr>
-<td><a href="https://freesql.net/guide/cascade-delete.html" target="_blank" rel="noopener noreferrer">DeleteCascadeByDatabase</a></td>
+<td><a href="cascade-delete#%E5%9F%BA%E4%BA%8E%E3%80%90%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%91%E7%BA%A7%E8%81%94%E5%88%A0%E9%99%A4">DeleteCascadeByDatabase</a></td>
 <td>List&lt;object&gt;</td>
 <td>Lambda</td>
 <td>根据导航属性递归数据库删除数据</td>
