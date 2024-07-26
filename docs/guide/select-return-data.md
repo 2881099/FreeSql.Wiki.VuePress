@@ -26,7 +26,7 @@ List<Area> t3 = fsql.Select<Area>.Where(a => a.Name = "湖北").AsTreeCte().ToTr
 //v1.6.0 AsTreeCte() 递归CTE查询 湖北 下的所有子分类
 ```
 
-> 查询数据加工为树型，注意：实体需要配置[父子导航属性](select-as-tree)
+> 查询数据加工为树型，注意：实体需要配置[父子导航属性](select-as-tree.md)
 
 ## 4、返回 List + 导航属性的数据
 
@@ -35,7 +35,7 @@ List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Category.Id == a.CategoryI
 //此时会查询 Topic普通字段 + 导航对象Category 字段
 ```
 
-更多导航属性的数据返回：[贪婪加载](select-include)
+更多导航属性的数据返回：[贪婪加载](select-include.md)
 
 ## 5、指定返回
 

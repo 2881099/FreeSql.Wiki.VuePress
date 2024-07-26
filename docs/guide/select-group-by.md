@@ -152,7 +152,7 @@ FROM (
 INNER JOIN [User1] b ON a.[min] = b.[Id]
 ```
 
-> 查看更多[《嵌套查询》](withtempquery)文档
+> 查看更多[《嵌套查询》](withtempquery.md)文档
 
 ## 4、Aggregate
 

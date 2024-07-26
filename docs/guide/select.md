@@ -4,12 +4,12 @@ FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式
 
 | | | |
 | --- | --- | --- |
-| [《分页查询》](paging) | [《仓储层 Repository》](repository) | [《读写分离》](read-write-splitting) |
-| [《单表查询》](select-single-table) | [《过滤器》](filters) | [《LinqToSql》](linq-to-sql) |
-| [《多表查询》](select-multi-table) | [《延时加载》](select-lazy-loading) | [《性能》](performance) |
-| [《嵌套查询》](withtempquery) | [《贪婪加载》](select-include) | [《分表分库》](sharding) |
-| [《分组聚合查询》](select-group-by)  | [《表达式函数》](expression-function) | [《多租户》](multi-tenancy) |
-| [《返回数据》](select-return-data) |  |  |
+| [《分页查询》](paging.md) | [《仓储层 Repository》](repository.md) | [《读写分离》](read-write-splitting.md) |
+| [《单表查询》](select-single-table.md) | [《过滤器》](filters.md) | [《LinqToSql》](linq-to-sql.md) |
+| [《多表查询》](select-multi-table.md) | [《延时加载》](select-lazy-loading.md) | [《性能》](performance.md) |
+| [《嵌套查询》](withtempquery.md) | [《贪婪加载》](select-include.md) | [《分表分库》](sharding.md) |
+| [《分组聚合查询》](select-group-by.md)  | [《表达式函数》](expression-function.md) | [《多租户》](multi-tenancy.md) |
+| [《返回数据》](select-return-data.md) |  |  |
 
 ## 表达式函数
 
@@ -29,7 +29,7 @@ FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式
 | 最大值 | .Max(a => a.Score) | select max([Score]) from ... |
 | 最小值 | .Min(a => a.Score) | select min([Score]) from ... |
 
-更详细请前往[《表达式函数》](expression-function)
+更详细请前往[《表达式函数》](expression-function.md)
 
 ## SqlServer WithLock/WithIndex
 
@@ -175,7 +175,7 @@ public void Test()
 | 【条件】            |
 | Where               | \<this\>        | Lambda                             | 支持多表查询表达式，多次使用相当于 AND                                                                                                                                 |
 | WhereIf             | \<this\>        | bool, Lambda                       | 支持多表查询表达式                                                                                                                                                     |
-| Where               | \<this\>        | string, parms                      | 原生 sql 语法条件，Where("id = @id", new { id = 1 } ,[注意前缀@,根据具体数据库决定](ado#参数化) 其他地方不再说明。同理 )                                            |
+| Where               | \<this\>        | string, parms                      | 原生 sql 语法条件，Where("id = @id", new { id = 1 } ,[注意前缀@,根据具体数据库决定](ado.md#参数化) 其他地方不再说明。同理 )                                            |
 | WhereIf             | \<this\>        | bool, string, parms                | 原生 sql 语法条件，WhereIf(true, "id = @id", new { id = 1 }                                                                                                            |
 | WhereCascade        | \<this\>        | Lambda                             | 实现多表查询时，向每个表中附加条件                                                                                                                                     |
 | WhereDynamicFilter  | \<this\>        | DynamicFilterInfo                  | 动态过滤条件(与前端交互)                                                                                                                                               |

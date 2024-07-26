@@ -31,16 +31,16 @@ Install-Package FreeSql.Provider.Sqlite
 | Package Name                                                                                                | 说明                                                                                                  |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | FreeSql.Provider.MySql                                                                                      | 基于 MySql.Data（Oracle 官方） |
-| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector)                                       | 基于 MySqlConnector（开源社区，推荐++）<br>*MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb 等等* |
-| [FreeSql.Provider.PostgreSQL](freesql-provider-postgresql)                                               | 基于 PostgreSQL 9.5+ |
+| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                       | 基于 MySqlConnector（开源社区，推荐++）<br>*MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb 等等* |
+| [FreeSql.Provider.PostgreSQL](freesql-provider-postgresql.md)                                               | 基于 PostgreSQL 9.5+ |
 | FreeSql.Provider.SqlServer                                                                                  | 基于 SqlServer 2005+ |
 | FreeSql.Provider.SqlServerForSystem                                                                         | 基于 System.Data.SqlClient + SqlServer 2005+ |
 | FreeSql.Provider.Sqlite                                                                                     | 基于 System.Data.SQLite.Core |
-| [FreeSql.Provider.SqliteCore](freesql-provider-sqlitecore)                                               | 基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx |
+| [FreeSql.Provider.SqliteCore](freesql-provider-sqlitecore.md)                                               | 基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx |
 | FreeSql.Provider.ClickHouse                                                                                 | 基于 ClickHouse.Client |
-| [FreeSql.Provider.QuestDb](freesql-provider-questdb)                                                     | 基于 Npgsql 和 RestApi |
+| [FreeSql.Provider.QuestDb](freesql-provider-questdb.md)                                                     | 基于 Npgsql 和 RestApi |
 | FreeSql.Provider.Oracle                                                                                     | |
-| [FreeSql.Provider.OracleOledb](freesql-provider-oracle)                                                  | 基于 Oledb 解决 US7ASCII 中文乱码问题 |
+| [FreeSql.Provider.OracleOledb](freesql-provider-oracle.md)                                                  | 基于 Oledb 解决 US7ASCII 中文乱码问题 |
 | FreeSql.Provider.Firebird                                                                                   | |
 | FreeSql.Provider.MsAccess                                                                                   | |
 | FreeSql.Provider.Dameng                                                                                     | 基于 达梦数据库 |
@@ -48,16 +48,16 @@ Install-Package FreeSql.Provider.Sqlite
 | FreeSql.Provider.KingbaseES                                                                                 | 基于 人大金仓数据库 |
 | FreeSql.Provider.GBase                                                                                      | 基于 南大通用GBase数据库 |
 | FreeSql.Provider.Xugu                                                                                       | 基于 虚谷数据库 |
-| [FreeSql.Provider.Odbc](freesql-provider-odbc)                                                           | 基于 ODBC |
-| [FreeSql.Provider.Custom](freesql-provider-custom)                                                       | 自定义适配<br>*SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等* |
+| [FreeSql.Provider.Odbc](freesql-provider-odbc.md)                                                           | 基于 ODBC |
+| [FreeSql.Provider.Custom](freesql-provider-custom.md)                                                       | 自定义适配<br>*SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等* |
 
 ## 创建实体
 
 `FreeSql` 使用模型执行数据访问，模型由实体类表示数据库表或视图，用于查询和保存数据。
 
-可从现有数据库生成实体模型，`FreeSql` 提供 `IDbFirst` 接口实现[生成实体模型](db-first)。
+可从现有数据库生成实体模型，`FreeSql` 提供 `IDbFirst` 接口实现[生成实体模型](db-first.md)。
 
-或者手动创建模型，基于模型创建或修改数据库结构，提供[CodeFirst](code-first) 同步结构的 `API`（甚至可以做到开发阶段自动同步）。
+或者手动创建模型，基于模型创建或修改数据库结构，提供[CodeFirst](code-first.md) 同步结构的 `API`（甚至可以做到开发阶段自动同步）。
 
 ```csharp
 using FreeSql.DataAnnotations;

@@ -230,7 +230,7 @@ WHERE t1.IsDeleted = 0
 
 - 子查询，一对多、多对多、自定义的子查询；
 - Join 查询，导航属性、自定义的Join查询；
-- Include/[IncludeMany](../guide/select-include.md) 的子集合查询；
+- Include/[IncludeMany](select-include.md) 的子集合查询；
 
 > 暂时不支持【延时属性】的广播；
 

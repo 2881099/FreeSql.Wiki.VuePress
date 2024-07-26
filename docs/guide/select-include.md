@@ -26,7 +26,7 @@ fsql.Select<Song>()
 ---
 
 
-接下来的内容，严重依赖[【导航属性】](navigate-attribute)的正确配置，请先学会再继续向下！
+接下来的内容，严重依赖[【导航属性】](navigate-attribute.md)的正确配置，请先学会再继续向下！
 
 ## 2、导航属性 ManyToOne/OneToOne
 

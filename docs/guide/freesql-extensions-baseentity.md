@@ -57,7 +57,7 @@ public class UserGroup : BaseEntity<UserGroup, int>
 }
 ```
 
-> 有关更多实体的特性配置，请参考资料：[实体特性](entity-attribute)
+> 有关更多实体的特性配置，请参考资料：[实体特性](entity-attribute.md)
 
 2、定义一个主键 Guid 的实体类型，保存数据时会自动产生有序不重复的 Guid 值（不用自己指定 Guid.NewGuid()）；
 
@@ -99,7 +99,7 @@ var items = UserGroup.Where(a => a.Id > 10).ToList();
 
 支持多表查询时，软删除条件会附加在每个表中；
 
-> 有关更多查询方法，请参考资料：[查询](select)
+> 有关更多查询方法，请参考资料：[查询](select.md)
 
 ## 事务建议
 

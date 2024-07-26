@@ -143,9 +143,9 @@ services.AddScoped<ISongRepository, SongRepository>();
 
 ## 扩展：多库场景
 
-FreeSql.Cloud 提供了[跨数据库访问](sharding#%E3%80%90%E5%88%86%E5%BA%93%E3%80%91%E4%BD%BF%E7%94%A8-freesql-cloud)，本段内容讲解 FreeSql.Cloud 多库场景 + UowManager 的接入方法。
+FreeSql.Cloud 提供了[跨数据库访问](sharding.md#%E3%80%90%E5%88%86%E5%BA%93%E3%80%91%E4%BD%BF%E7%94%A8-freesql-cloud)，本段内容讲解 FreeSql.Cloud 多库场景 + UowManager 的接入方法。
 
-> 注意：[多租户分库](multi-tenancy#%E6%96%B9%E6%A1%88%E4%B8%89-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%88%86%E5%BA%93) 请跳过，多租户同一请求大部分都只操作一个数据库，只需在中间件 Change(tenant) 切换好。
+> 注意：[多租户分库](multi-tenancy.md#%E6%96%B9%E6%A1%88%E4%B8%89-%E6%8C%89%E7%A7%9F%E6%88%B7%E5%88%86%E5%BA%93) 请跳过，多租户同一请求大部分都只操作一个数据库，只需在中间件 Change(tenant) 切换好。
 
 ---
 

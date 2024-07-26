@@ -222,7 +222,7 @@ Guid Id 的情况下，执行三次命令：前两次插入合并执行，update
 
 ## 联级保存
 
-请移步文档 [【联级保存】](cascade-saving)
+请移步文档 [【联级保存】](cascade-saving.md)
 
 ## 实体变化事件
 

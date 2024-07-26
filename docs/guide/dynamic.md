@@ -70,7 +70,7 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict 都支持批量操作，对�
 
 不依赖实体类型，不需要动态编译，纯字典操作，支持导航属性，级联保存，AOT 编译福音。
 
-内容较长，请移步[《低代码》](lowcode)
+内容较长，请移步[《低代码》](lowcode.md)
 
 ## 动态表名
 
