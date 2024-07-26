@@ -4,10 +4,10 @@ FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有
 
 | 开源项目 | 描述 | 开源地址 | 开源协议 |
 | --- | --- | --- | --- |
-| [AdminBlazor](AdminBlazor.md) | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor | Apache2.0 |
-| [FreeIM](freeim.md) | 聊天系统架构 | https://github.com/2881099/FreeIM | MIT |
-| [FreeRedis](freeredis.md) | Redis SDK | https://github.com/2881099/FreeRedis | MIT |
-| [FreeScheduler](freescheduler.md) | 定时任务 | https://github.com/2881099/FreeScheduler | MIT |
+| [AdminBlazor](AdminBlazor) | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor | Apache2.0 |
+| [FreeIM](freeim) | 聊天系统架构 | https://github.com/2881099/FreeIM | MIT |
+| [FreeRedis](freeredis) | Redis SDK | https://github.com/2881099/FreeRedis | MIT |
+| [FreeScheduler](freescheduler) | 定时任务 | https://github.com/2881099/FreeScheduler | MIT |
 | csredis |  | https://github.com/2881099/csredis | MIT |
 | FightLandlord | 斗DI主网络版 | https://github.com/2881099/FightLandlord | 学习用途 |
 | IdleBus | 空闲容器 | https://github.com/2881099/IdleBus | MIT |

@@ -171,7 +171,7 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 
 ## 联级保存
 
-请移步文档 [《联级保存》](cascade-saving.md)
+请移步文档 [《联级保存》](cascade-saving)
 
 ## API
 
@@ -203,7 +203,7 @@ SqlServer 提供的 output inserted 特性，在表使用了自增或数据库�
 | Attach                                                                                       | -              | TEntity                | 附加实体到状态管理，可用于不查询就更新或删除             |
 | Attach                                                                                       | -              | IEnumerable\<TEntity\> | 批量附加实体到状态管理                                   |
 | AttachOnlyPrimary                                                                            | -              | TEntity                | 只附加实体的主键数据到状态管理                           |
-| [BeginEdit](insert-or-update.html#_5%E3%80%81beginedit-%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91) | -              | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
+| [BeginEdit](insert-or-update#_4%E3%80%81%E8%A1%A8%E6%A0%BC%E7%BC%96%E8%BE%91-beginedit) | -              | List\<TEntity\>        | 准备编辑一个 List 实体                                   |
 | EndEdit                                                                                      | int            | 无                     | 完成编辑数据，进行保存动作                               |
 
 > 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。

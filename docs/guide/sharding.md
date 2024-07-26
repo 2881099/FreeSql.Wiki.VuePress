@@ -231,7 +231,7 @@ FreeSql.Repository/UnitOfWorkManager 对象创建时固定了 IFreeSql，因此�
 
 租户分库场景 Repository/UnitOfWorkManager 创建之前，先调用 fsql.Change 切换好数据库。
 
-[《FreeSql.Cloud 如何使用 UnitOfWorkManager 实现 AOP 事务？》](unitofwork-manager.md#freesql-cloud-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-unitofworkmanager)
+[《FreeSql.Cloud 如何使用 UnitOfWorkManager 实现 AOP 事务？》](unitofwork-manager#%E6%89%A9%E5%B1%95-%E5%A4%9A%E5%BA%93%E5%9C%BA%E6%99%AF)
 
 4、动态创建对象（不推荐）
 

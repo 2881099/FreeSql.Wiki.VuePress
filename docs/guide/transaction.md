@@ -100,7 +100,7 @@ public class SongService
 }
 ```
 
-具体请移步文档：- [AOP 特性标签实现跨方法事务](unitofwork-manager.md)
+具体请移步文档：- [AOP 特性标签实现跨方法事务](unitofwork-manager)
 
 ## 3、同线程事务
 

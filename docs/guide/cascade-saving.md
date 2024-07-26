@@ -33,7 +33,7 @@ Install-Package FreeSql.DbContext
 
 :::
 
-> 本功能 2019 年实现的（稳定），可移步了解 2022 年新发布的[《聚合根仓储》](aggregateroot.md)（级联更自动）
+> 本功能 2019 年实现的（稳定），可移步了解 2022 年新发布的[《聚合根仓储》](aggregateroot)（级联更自动）
 
 仓储默认关闭了级联功能，需要手工开启：
 
@@ -45,7 +45,7 @@ repo.DbContextOptions.EnableCascadeSave = true;
 
 1、OneToOne 级联保存
 
-> v3.2.606+ 支持，并且支持[级联删除功能](delete.md#ibaserepository-级联删除)
+> v3.2.606+ 支持，并且支持[级联删除功能](delete#ibaserepository-级联删除)
 
 2、OneToMany 追加或更新子表，不删除子表已存在的数据
 

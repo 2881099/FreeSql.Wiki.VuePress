@@ -4,12 +4,12 @@ FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式
 
 | | | |
 | --- | --- | --- |
-| [《分页查询》](paging.md) | [《仓储层 Repository》](repository.md) | [《读写分离》](read-write-splitting.md) |
-| [《单表查询》](select-single-table.md) | [《过滤器》](filters.md) | [《LinqToSql》](linq-to-sql.md) |
-| [《多表查询》](select-multi-table.md) | [《延时加载》](select-lazy-loading.md) | [《性能》](performance.md) |
-| [《嵌套查询》](withtempquery.md) | [《贪婪加载》](select-include.md) | [《分表分库》](sharding.md) |
-| [《分组聚合查询》](select-group-by.md)  | [《表达式函数》](expression-function.md) | [《多租户》](multi-tenancy.md) |
-| [《返回数据》](select-return-data.md) |  |  |
+| [《分页查询》](paging) | [《仓储层 Repository》](repository) | [《读写分离》](read-write-splitting) |
+| [《单表查询》](select-single-table) | [《过滤器》](filters) | [《LinqToSql》](linq-to-sql) |
+| [《多表查询》](select-multi-table) | [《延时加载》](select-lazy-loading) | [《性能》](performance) |
+| [《嵌套查询》](withtempquery) | [《贪婪加载》](select-include) | [《分表分库》](sharding) |
+| [《分组聚合查询》](select-group-by)  | [《表达式函数》](expression-function) | [《多租户》](multi-tenancy) |
+| [《返回数据》](select-return-data) |  |  |
 
 ## 表达式函数
 
@@ -29,7 +29,7 @@ FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式
 | 最大值 | .Max(a => a.Score) | select max([Score]) from ... |
 | 最小值 | .Min(a => a.Score) | select min([Score]) from ... |
 
-更详细请前往[《表达式函数》](expression-function.md)
+更详细请前往[《表达式函数》](expression-function)
 
 ## SqlServer WithLock/WithIndex
 
@@ -128,6 +128,27 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 
 > 动态贪婪加载：ISelect.IncludeByPropertyName("Parent.Parent").IncludeByPropertyName("Parent.Childs")
 
+## 克隆查询 ISelect
+
+科普：csharp 7.0 支持本地函数，方法内再定义临时方法，这个特性向大家推荐，在很多时候都非常有效。
+
+方法内还可以定义方法，那就称它：本地函数/嵌套方法。
+
+```csharp
+public void Test()
+{
+    ISelect<AdmRoute> getSelect() => fsql.Select<AdmRoute>().Include(a => a.Parent)
+        .WhereIf(!string.IsNullOrEmpty(key), a => a.Name.Contains(key) || ...)
+        .WhereIf(Parent_Id?.Any() == true, a => Parent_Id.Contains(a.ParentId))
+        .WhereIf(mn_Roles_Id?.Any() == true, a => a.Roles.Any(b => mn_Roles_Id.Contains(b.Id)));
+
+    var select1 = getSelect();
+    var select2 = getSelect();
+    select1.Where(a => a.Status == 0);
+    //此时 select2 不会附加 a.Status == 0 条件
+}
+```
+
 ## API
 
 | 方法                | 返回值          | 参数                               | 描述                   |                                                                                                                                         |
@@ -154,7 +175,7 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 | 【条件】            |
 | Where               | \<this\>        | Lambda                             | 支持多表查询表达式，多次使用相当于 AND                                                                                                                                 |
 | WhereIf             | \<this\>        | bool, Lambda                       | 支持多表查询表达式                                                                                                                                                     |
-| Where               | \<this\>        | string, parms                      | 原生 sql 语法条件，Where("id = @id", new { id = 1 } ,[注意前缀@,根据具体数据库决定](ado.md#参数化) 其他地方不再说明。同理 )                                            |
+| Where               | \<this\>        | string, parms                      | 原生 sql 语法条件，Where("id = @id", new { id = 1 } ,[注意前缀@,根据具体数据库决定](ado#参数化) 其他地方不再说明。同理 )                                            |
 | WhereIf             | \<this\>        | bool, string, parms                | 原生 sql 语法条件，WhereIf(true, "id = @id", new { id = 1 }                                                                                                            |
 | WhereCascade        | \<this\>        | Lambda                             | 实现多表查询时，向每个表中附加条件                                                                                                                                     |
 | WhereDynamicFilter  | \<this\>        | DynamicFilterInfo                  | 动态过滤条件(与前端交互)                                                                                                                                               |

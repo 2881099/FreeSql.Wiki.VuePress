@@ -63,7 +63,9 @@ export const zhSidebarConfig = sidebar({
             "freesql-provider-oracle",
             "freesql-provider-sqlserver",
             "freesql-provider-odbc",
+            "freesql-provider-clickhouse",
             "freesql-provider-questdb",
+            "freesql-provider-firebird",
           ],
         },
         {

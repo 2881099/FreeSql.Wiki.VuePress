@@ -35,7 +35,7 @@ var repo = fsql.GetRepository<T>();
 repo.InsertOrUpdate(实体);
 ```
 
-> 更多内容可参阅：[添加或修改](insert-or-update.md)
+> 更多内容可参阅：[添加或修改](insert-or-update)
 
 ---
 
@@ -89,9 +89,9 @@ fsql.Select<Topic>()
 //FROM (select * from Topic where clicks > @val) a 
 ```
 
-- [WithSql](withsql.md)使用多次为 UNION ALL 查询
+- [WithSql](withsql)使用多次为 UNION ALL 查询
 
-> v3.2.666 [UnionAll 联合查询](unionall.md)、[WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
+> v3.2.666 [UnionAll 联合查询](unionall)、[WithTempQuery + FromQuery 嵌套查询](withtempquery)
 
 > v3.2.666 WithMemory 使用内存数据进行查询
 

@@ -40,7 +40,7 @@ fsql.Select<Topic>()
 //WHERE (a.`Id` in (1,2,3))
 ```
 
-## [WithSql](withsql.md)
+## [WithSql](withsql)
 
 ```csharp
 fsql.Select<Topic>()
@@ -51,9 +51,9 @@ fsql.Select<Topic>()
 //FROM (select * from Topic where clicks > @val) a 
 ```
 
-> 关于[WithSql](withsql.md)的详情文档， 使用多次为 UNION ALL 查询
+> 使用多次 WithSql 等于 UNION ALL 查询
 
-> v3.2.666 [UnionAll 联合查询](unionall.md)、[WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
+> v3.2.666 [UnionAll 联合查询](unionall)、[WithTempQuery + FromQuery 嵌套查询](withtempquery)
 
 > v3.2.666 WithMemory 使用内存数据进行查询
 

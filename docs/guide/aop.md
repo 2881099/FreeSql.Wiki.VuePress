@@ -182,7 +182,7 @@ fsql.Aop.AuditDataReader += (_, e) =>
 
 FreeSql 内部表达式支持非常丰富，对各大数据库的兼容度也做得很好。
 
-> 有关表达式支持的程度，可参阅：[表达式函数](expression-function.md)
+> 有关表达式支持的程度，可参阅：[表达式函数](expression-function)
 
 即便如此丰富，也仍然无法满足用户需求，FreeSql 对外开放了自定义表达式解析接口：
 

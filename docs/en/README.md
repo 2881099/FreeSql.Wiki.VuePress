@@ -2,32 +2,64 @@
 home: true
 heroImage: /logo.png
 heroText: 🦄 FreeSql
-tagline: Powerful O/RM component,Support .NET Core 2.1+、.NET Framework 4.0+ and Xamarin✨
+tagline: A simple yet powerful Object-Relational Mapping (O/RM) component, supporting .NET Core 2.1+, .NET Framework 4.0+✨
 actions:
-  - text: Try IT →
-    link: /en/guide/
+  - text: Get started 💡
+    link: guide/
     type: primary
 features:
-- title: Developer first
-  link: /en/guide/
-  details: 💡 The developer centered design concept
-- title: Implementation
-  link: /guide/code-first
-  details: 🦄support CodeFirst / DbFirst / Repository / UnitOfWork / AOP /  .NETCore 2.1+, .NETFramework 4.0+, Xamarin
-- title: DataBase support
-  details: 🌳 Mysql, Postgresql, SqlServer, Oracle, Sqlite, Firebird, 达梦, 人大金仓, 神通, Access
-  link: /en/guide/install
-- title: DbFirst
-  details: 💻 DbFirst Mode,FreeSql.Generator(.NET Core CLI)
-  link: /guide/db-first
-- title: Type mapping
-  details: ⛳ Support deep type mapping, such as array type of PgSQL;
-  link: /guide/type-mapping
-- title: Navigation properties
-  details: 🏁 one to many, many to many greedy loading and delayed loading of navigation content;
-  link: /en/guide/Entity-Relationship
-- title: Read write separation
-  details: 📃 Read write separation、Separate tables and databases, filters, optimistic locks and pessimistic locks;
-  link: /guide/read-write-splitting
+  - title: Getting Started
+    details: 💡 Get started in 5 minutes, become an expert in 1 hour
+    link: guide/
+  - title: Advanced Concepts
+    details: MIT open-source, zero dependencies
+  - title: Databases
+    details: Supports 15 common databases
+    link: guide/
+  - title: Querying
+    details: Multi-table / Nested / Joins / Recursive, etc.
+    link: guide/select
+  - title: CodeFirst
+    details: Automatically syncs table structures with entity classes
+    link: guide/code-first
+  - title: DbFirst
+    details: Import entity classes from the database
+    link: guide/db-first
+  - title: Navigation Properties
+    details: One-to-many / Many-to-many / One-to-one, cascading
+    link: guide/navigate-attribute
+  - title: Read/Write Separation
+    details: Implement read/write separation with one line of code
+    link: guide/read-write-splitting
+  - title: High Performance
+    details: BulkCopy for insert/update/save operations
+    link: guide/performance
+  - title: Big Data
+    details: Automatic sharding / ClickHouse
+    link: guide/sharding
+  - title: Multi-Tenancy
+    details: Provides three multi-tenancy solutions
+    link: guide/multi-tenancy
+  - title: Low Code
+    details: Dynamic operations, no entity API
+    link: guide/lowcode
 footer: MIT Licensed | Copyright © 2018-present nicye
 ---
+
+## 👯 Contributors
+
+<a href="https://contributors-img.web.app/image?repo=dotnetcore/FreeSql">
+  <img src="https://contributors-img.web.app/image?repo=dotnetcore/FreeSql" />
+</a>
+
+## 💕 Donation
+
+> Thank you so much for your!
+
+- [Alipay](https://www.cnblogs.com/FreeSql/gallery/image/338860.html)
+
+- [WeChat](https://www.cnblogs.com/FreeSql/gallery/image/338859.html)
+
+## 🗄 License
+
+[MIT](https://github.com/dotnetcore/FreeSql/blob/master/LICENSE)

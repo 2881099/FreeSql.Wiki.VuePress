@@ -35,7 +35,7 @@ List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Category.Id == a.CategoryI
 //此时会查询 Topic普通字段 + 导航对象Category 字段
 ```
 
-更多导航属性的数据返回：[贪婪加载](select-include.md)
+更多导航属性的数据返回：[贪婪加载](select-include)
 
 ## 5、指定返回
 

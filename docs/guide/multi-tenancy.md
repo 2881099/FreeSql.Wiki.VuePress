@@ -135,7 +135,7 @@ var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantMa
 
 上面我们得到一个仓储按租户分表，使用它 CURD 最终会操作 Goods_1 表。
 
-> 更多说明参考：[《FreeSql.Repository 仓储》](repository.md)、[《分表分库》](sharding.md)。
+> 更多说明参考：[《FreeSql.Repository 仓储》](repository)、[《分表分库》](sharding)。
 
 > v3.2.833 动态设置表名
 

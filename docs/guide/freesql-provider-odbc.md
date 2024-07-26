@@ -1,4 +1,6 @@
-# FreeSql.Provider.Odbc
+---
+title:  ODBC
+---
 
 FreeSql.Provider.Odbc 实现 ODBC 访问数据库，ODBC 属于比较原始的技术，更新慢，各大数据库厂支持得标准不一，不到万不得已最好别用 odbc，坑比较多。
 

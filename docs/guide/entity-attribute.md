@@ -191,7 +191,7 @@ class Topic
 
 每个实体只支持一个乐观锁属性，支持 int/long/string/Guid
 
-> 适用 [SetSource](update#_5%E3%80%81%E6%9B%B4%E6%96%B0%E5%AE%9E%E4%BD%93-setsource) 更新数据，无论使用什么方法更新 version 的值都会增加 1
+> 适用 [`SetSource`](update#_5%E3%80%81%E6%9B%B4%E6%96%B0%E5%AE%9E%E4%BD%93-setsource) 更新数据，无论使用什么方法更新 version 的值都会增加 1
 
 ## 自定义类型映射(MapType)
 

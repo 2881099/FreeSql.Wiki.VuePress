@@ -21,7 +21,7 @@ using (var uow = fsql.CreateUnitOfWork())
 
 > 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务
 
-依赖注入（参考）：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager.md)
+依赖注入（参考）：[在 asp.net core 中使用 TransactionalAttribute + UnitOfWorkManager 实现多种事务传播](unitofwork-manager)
 
 ## 接口定义
 
@@ -112,4 +112,4 @@ SqlRaw 目前有两处地方比较特殊：
 int Delete(Expression<Func<TEntity, bool>> predicate);
 ```
 
-DbContext.SaveChanges，或者 Repository 对实体的 Insert/Update/Delete，或者 UnitOfWork.Commit 操作都会最多触发一次该事件。
+Repository 对实体的 Insert/Update/Delete，或者 UnitOfWork.Commit 操作都会最多触发一次该事件。

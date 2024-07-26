@@ -1,6 +1,6 @@
 # JsonMap
 
-> 推荐使用 v3.2.701+ 版本新增加的[自定义类型转换器](type-mapping.md)
+> 推荐使用 v3.2.701+ 版本新增加的[自定义类型转换器](type-mapping)
 
 FreeSql 扩展包，将值对象映射成 `typeof(string)`，安装扩展包：
 

@@ -49,7 +49,7 @@ FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦
 | .NET ORM 导航属性(ManyToOne)                                    | ✔       | ✔      |
 | .NET ORM 导航属性(OneToMany)                                    | ✔       | ✔      |
 | .NET ORM 导航属性(ManyToMany)                                   | ✔       | -      |
-| .NET ORM 导航属性(Parent) [父子关系的实体类](select-as-tree.md) | ✔       | -      |
+| .NET ORM 导航属性(Parent) [父子关系的实体类](select-as-tree) | ✔       | -      |
 | .NET ORM 导航属性延时加载、贪婪加载、级联保存                   | ✔       | ✔      |
 | .NET ORM 自定义表达式树解析                                     | ✔       | -      |
 | .NET ORM 全局过滤器                                             | ✔       | ✔      |
@@ -80,7 +80,7 @@ FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦
 | .NET ORM 插入时，On Duplicate Key Update                                                   | ✔       | -      |
 | .NET ORM 插入时，On Conflict Do Update                                                     | ✔       | -      |
 | .NET ORM 批量插入 [性能测试结果参考文档](https://www.cnblogs.com/kellynic/p/10557882.html) | ✔       | -      |
-| .NET ORM 批量插入时，自动分批 [参考文档](insert.md)                                        | ✔       | -      |
+| .NET ORM 批量插入时，自动分批 [参考文档](insert)                                        | ✔       | -      |
 | .NET ORM 批量插入时，使用 BulkCopy                                                         | ✔       | -      |
 |                                                                                            |         |        |
 | .NET ORM 更新(单条)                                                                        | ✔       | ✔      |
@@ -107,14 +107,14 @@ FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦
 | .NET ORM 删除时，返回插入后的记录                                                          | ✔       | -      |
 | .NET ORM 级联保存                                                                          | ✔       | ✔      |
 | .NET ORM 添加或更新                                                                        | ✔       | -      |
-| .NET ORM 添加或更新，自动适配 merge into [参考文档](insert-or-update.md)                   | ✔       | -      |
-| .NET ORM 批量编辑保存 [参考文档](insert-or-update.md)                                      | ✔       | ✔      |
+| .NET ORM 添加或更新，自动适配 merge into [参考文档](insert-or-update)                   | ✔       | -      |
+| .NET ORM 批量编辑保存 [参考文档](insert-or-update)                                      | ✔       | ✔      |
 |                                                                                            |         |        |
 | .NET ORM 查询(单条)                                                                        | ✔       | ✔      |
 | .NET ORM 查询时，分页                                                                      | ✔       | ✔      |
 | .NET ORM 查询时，分页支持 SqlServer2008                                                    | ✔       | -      |
 | .NET ORM 查询时，动态条件(WhereDynamic)                                                    | ✔       | -      |
-| .NET ORM 查询时，动态过滤条件(WhereDynamicFilter) [参考文档](select.md)                    | ✔       | -      |
+| .NET ORM 查询时，动态过滤条件(WhereDynamicFilter) [参考文档](select)                    | ✔       | -      |
 | .NET ORM 查询时，自动附加全局过滤器条件                                                    | ✔       | -      |
 | .NET ORM 查询时，多表条件传播(WhereCascade)                                                | ✔       | -      |
 | .NET ORM 查询时，在 lambda 中使用导航属性                                                  | ✔       | ✔      |
@@ -122,7 +122,7 @@ FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦
 | .NET ORM 查询时，传 Sql 作二次查询(WithSql)                                                | ✔       | -      |
 | .NET ORM 查询时，子查询(Exists)                                                            | ✔       | -      |
 | .NET ORM 查询时，子查询(In)                                                                | ✔       | -      |
-| .NET ORM 查询时，子查询拼接结果(string.Join) [参考文档](select-multi-table.md)             | ✔       | -      |
+| .NET ORM 查询时，子查询拼接结果(string.Join) [参考文档](select-multi-table)             | ✔       | -      |
 | .NET ORM 查询时，使用分组聚合(GroupBy/Having)                                              | ✔       | ✔      |
 | .NET ORM 查询时，使用 Linq To Sql 语法                                                     | ✔       | ✔      |
-| .NET ORM 查询时，针对树形结构表 [父子关系的实体类](select-as-tree.md)                      | ✔       | -      |
+| .NET ORM 查询时，针对树形结构表 [父子关系的实体类](select-as-tree)                      | ✔       | -      |
