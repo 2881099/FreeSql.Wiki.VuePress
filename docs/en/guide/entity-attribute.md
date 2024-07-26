@@ -192,7 +192,7 @@ The principle of optimistic locking is to use a field in the entity, such as `lo
 
 Each entity supports only one optimistic lock property and supports `int`, `long`, `string`, `Guid`.
 
-> Applicable to [`SetSource`](update#_5-setsource-entity) for updating data. Regardless of how the version value is updated, it will be incremented by 1.
+> Applicable to [`SetSource`](update.md#_5-setsource-entity) for updating data. Regardless of how the version value is updated, it will be incremented by 1.
 
 ## Custom Type Mapping (MapType)
 

@@ -1,6 +1,6 @@
 # Untyped Mapping
 
-This document follows the [“Dynamic Operations”](dynamic) and is designed specifically for low-code solutions.
+This document follows the [“Dynamic Operations”](dynamic.md) and is designed specifically for low-code solutions.
 
 FreeSql defaults to using entity types. Although types can be dynamically created at runtime, frequent dynamic compilation can lead to memory leaks and difficulties in managing type versions.
 

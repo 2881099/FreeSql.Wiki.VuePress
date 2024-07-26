@@ -26,7 +26,7 @@ List<Area> t3 = fsql.Select<Area>().Where(a => a.Name == "Hubei").AsTreeCte().To
 //v1.6.0 AsTreeCte() recursive CTE query to get all subcategories under Hubei
 ```
 
-> Data query processed into a tree structure. Note: Entities need to configure [parent-child navigation properties](select-as-tree).
+> Data query processed into a tree structure. Note: Entities need to configure [parent-child navigation properties](select-as-tree.md).
 
 ## 4. Return List + Navigation Properties Data
 
@@ -35,7 +35,7 @@ List<Topic> t4 = fsql.Select<Topic>().LeftJoin(a => a.Category.Id == a.CategoryI
 //At this point, it will query Topic normal fields + navigation object Category fields
 ```
 
-More navigation properties data return: [Eager Loading](select-include)
+More navigation properties data return: [Eager Loading](select-include.md)
 
 ## 5. Specify Return
 

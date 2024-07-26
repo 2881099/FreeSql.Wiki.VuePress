@@ -179,7 +179,7 @@ fsql.Aop.AuditDataReader += (_, e) =>
 
 FreeSql's internal expression support is very rich and compatible with major databases.
 
-> For details on expression support, refer to: [Expression Functions](expression-function)
+> For details on expression support, refer to: [Expression Functions](expression-function.md)
 
 Despite this richness, it may still not meet all user needs. FreeSql provides a custom expression parsing interface:
 

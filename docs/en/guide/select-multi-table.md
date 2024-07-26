@@ -229,7 +229,7 @@ Applicable Scope:
 
 - Subqueries, one-to-many, many-to-many, and custom subqueries.
 - Join queries, navigation properties, and custom Join queries.
-- Sub-collection queries using Include/[IncludeMany](../guide/select-include.md).
+- Sub-collection queries using Include/[IncludeMany](select-include.md).
 
 > Broadcast of [Lazy Loading] properties is not currently supported.
 

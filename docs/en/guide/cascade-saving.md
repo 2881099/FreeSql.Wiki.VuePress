@@ -4,7 +4,7 @@ Here is the translated document:
 
 # Cascade Save
 
-The following content heavily relies on the correct configuration of [Navigation Properties](navigate-attribute), so please ensure you understand that first before proceeding!
+The following content heavily relies on the correct configuration of [Navigation Properties](navigate-attribute.md), so please ensure you understand that first before proceeding!
 
 - **Topic**: Articles table
 - **Category**: Categories table
@@ -37,7 +37,7 @@ Install-Package FreeSql.DbContext
 
 :::
 
-> This feature was implemented in 2019 (stable). You may also refer to the 2022 release of [“Aggregate Root Repository”](aggregateroot) (more automatic cascade saving).
+> This feature was implemented in 2019 (stable). You may also refer to the 2022 release of [“Aggregate Root Repository”](aggregateroot.md) (more automatic cascade saving).
 
 Cascade saving is disabled by default and needs to be enabled manually:
 
@@ -49,7 +49,7 @@ repo.DbContextOptions.EnableCascadeSave = true;
 
 1. **OneToOne Cascade Saving**
 
-   > Supported from v3.2.606+, and also supports [Cascade Delete](cascade-delete) functionality.
+   > Supported from v3.2.606+, and also supports [Cascade Delete](cascade-delete.md) functionality.
 
 2. **OneToMany**: Appending or updating child records without deleting existing child records
 

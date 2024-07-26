@@ -18,7 +18,7 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 
 For feedback and discussion, visit: [https://github.com/dotnetcore/FreeSql/discussions/1235](https://github.com/dotnetcore/FreeSql/discussions/1235)
 
-The following content heavily relies on the correct configuration of [**Navigation Properties**](navigate-attribute). Please learn about it before proceeding!
+The following content heavily relies on the correct configuration of [**Navigation Properties**](navigate-attribute.md). Please learn about it before proceeding!
 
 ## Setting Boundaries
 

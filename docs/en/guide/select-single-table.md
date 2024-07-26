@@ -53,7 +53,7 @@ fsql.Select<Topic>()
 
 > Using WithSql multiple times is equivalent to UNION ALL queries.
 
-> v3.2.666 [UnionAll Union Queries](unionall), [WithTempQuery + FromQuery Nested Queries](withtempquery)
+> v3.2.666 [UnionAll Union Queries](unionall.md), [WithTempQuery + FromQuery Nested Queries](withtempquery.md)
 
 > v3.2.666 WithMemory for querying using in-memory data.
 

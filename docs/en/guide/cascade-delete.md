@@ -4,13 +4,13 @@ Here is the translated document:
 
 # Cascade Delete
 
-The following content heavily relies on the correct configuration of [Navigation Properties](navigate-attribute), so please ensure you understand that first before proceeding!
+The following content heavily relies on the correct configuration of [Navigation Properties](navigate-attribute.md), so please ensure you understand that first before proceeding!
 
-Cascade delete only applies to OneToOne, OneToMany, and ManyToMany navigation properties. The [Cascade Saving](cascade-saving) document has already explained this.
+Cascade delete only applies to OneToOne, OneToMany, and ManyToMany navigation properties. The [Cascade Saving](cascade-saving.md) document has already explained this.
 
 ## Cascade Delete Based on [Objects]
 
-> For example, objects retrieved using [Include/IncludeMany](select-include#_2-navigation-properties-manytoone-onetoone) queries can be cascade deleted using this method.
+> For example, objects retrieved using [Include/IncludeMany](select-include.md#_2-navigation-properties-manytoone-onetoone) queries can be cascade deleted using this method.
 
 ```csharp
 var repo = fsql.GetRepository<UserGroup>();

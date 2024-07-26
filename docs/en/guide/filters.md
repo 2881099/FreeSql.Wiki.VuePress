@@ -38,4 +38,4 @@ The `fsql.Update/Delete` methods behave similarly.
 
 ## Tenant Fields (Dynamic Values)
 
-Please refer to the documentation: [【Multi-Tenancy - Distinguish by Tenant Field】](multi-tenancy#approach-1-tenant-field-differentiation)
+Please refer to the documentation: [【Multi-Tenancy - Distinguish by Tenant Field】](multi-tenancy.md#approach-1-tenant-field-differentiation)

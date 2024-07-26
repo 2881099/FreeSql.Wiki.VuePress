@@ -4,13 +4,13 @@ FreeSql offers six types of navigation properties: OneToMany, ManyToOne, ManyToM
 
 What can navigation properties do?
 
-- [Multi-table Queries](select-multi-table) `Where(a => a.Parent.Parent.Name == "xx")` `Where(a => a.Childs.Any(b => b.title == "xxx"))`
-- [Eager Loading](select-include) `Include/IncludeMany`
-- [Lazy Loading](select-lazy-loading)
-- [Tree Table Queries](select-as-tree)
-- [Cascade Saving](cascade-saving)
-- [Cascade Deletion](cascade-delete)
-- [Aggregate Root Repository](aggregateroot)
+- [Multi-table Queries](select-multi-table.md) `Where(a => a.Parent.Parent.Name == "xx")` `Where(a => a.Childs.Any(b => b.title == "xxx"))`
+- [Eager Loading](select-include.md) `Include/IncludeMany`
+- [Lazy Loading](select-lazy-loading.md)
+- [Tree Table Queries](select-as-tree.md)
+- [Cascade Saving](cascade-saving.md)
+- [Cascade Deletion](cascade-delete.md)
+- [Aggregate Root Repository](aggregateroot.md)
 
 Navigation properties make multi-table queries very convenient, allowing direct use of navigation objects with lambda expressions—so comfortable!
 

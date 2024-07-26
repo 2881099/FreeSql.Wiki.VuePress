@@ -25,7 +25,7 @@ fsql.Select<Song>()
 
 ---
 
-The following content heavily relies on correct configuration of [【Navigation Properties】](navigate-attribute); please learn it before continuing!
+The following content heavily relies on correct configuration of [【Navigation Properties】](navigate-attribute.md); please learn it before continuing!
 
 ## 2. Navigation Properties ManyToOne/OneToOne
 

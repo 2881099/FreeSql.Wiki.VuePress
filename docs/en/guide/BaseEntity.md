@@ -40,7 +40,7 @@ public class UserGroup : BaseEntity<UserGroup, int> {
 }
 ```
 
-> For more entity attribute configurations, see [Entity Attributes](entity-attribute)
+> For more entity attribute configurations, see [Entity Attributes](entity-attribute.md)
 
 2. Define an entity type with a `Guid` primary key. The Guid value will be automatically generated and ordered, so you don't need to specify `Guid.NewGuid()` yourself:
 
@@ -98,6 +98,6 @@ var items = UserGroup.Where(a => a.Id > 10).ToList();
 
 When performing multi-table queries, the soft delete condition will be appended to each table.
 
-> For more query methods, refer to [Queries](select)
+> For more query methods, refer to [Queries](select.md)
 
 Example project: [https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity](https://github.com/dotnetcore/FreeSql/tree/master/Examples/base_entity)

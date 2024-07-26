@@ -171,7 +171,7 @@ When using databases that do not support this feature (Sqlite/MySql/Oracle/Damen
 
 ## Cascade Save
 
-Please refer to the document [《Cascade Save》](cascade-saving)
+Please refer to the document [《Cascade Save》](cascade-saving.md)
 
 ## API
 
@@ -193,7 +193,7 @@ Please refer to the document [《Cascade Save》](cascade-saving)
 | Delete                                                                                     | int            | Lambda                 | Delete data based on lambda conditions                |
 | Delete                                                                                     | int            | TEntity                | Delete data                                           |
 | Delete                                                                                     | int            | IEnumerable\<TEntity\> | Batch delete data                                     |
-| [DeleteCascadeByDatabase](cascade-delete)                   | List\<object\> | Lambda                 | Recursively delete data by navigation properties      |
+| [DeleteCascadeByDatabase](cascade-delete.md)                   | List\<object\> | Lambda                 | Recursively delete data by navigation properties      |
 | Insert                                                                                     | -              | TEntity                | Insert data, if the entity has auto-increment columns, the auto-increment value will be filled into the entity after insertion |
 | Insert                                                                                     | -              | IEnumerable\<TEntity\> | Batch insert data                                     |
 | Update                                                                                     | -              | TEntity                | Update data                                           |
@@ -203,7 +203,7 @@ Please refer to the document [《Cascade Save》](cascade-saving)
 | Attach                                                                                     | -              | TEntity                | Attach entity to state management, used for updating or deleting without querying |
 | Attach                                                                                     | -              | IEnumerable\<TEntity\> | Batch attach entities to state management            |
 | AttachOnlyPrimary                                                                          | -              | TEntity                | Attach only primary key data of entity to state management |
-| [BeginEdit](insert-or-update#_4-table-beginedit) | -              | List\<TEntity\>        | Prepare to edit a list of entities                    |
+| [BeginEdit](insert-or-update.md#_4-table-beginedit) | -              | List\<TEntity\>        | Prepare to edit a list of entities                    |
 | EndEdit                                                                                    | int            | None                   | Complete editing data and perform save actions       |
 
 > State management allows Update to only update changed fields (not all fields), and using Attach and Update is very comfortable.

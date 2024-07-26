@@ -70,7 +70,7 @@ InsertDict/UpdateDict/DeleteDict/InsertOrUpdateDict all support batch operations
 
 Does not rely on entity types, does not require dynamic compilation, pure dictionary operations, supports navigation properties, cascading saves, a blessing for AOT compilation.
 
-For more details, please refer to [《Untyped Mapping》](lowcode).
+For more details, please refer to [《Untyped Mapping》](lowcode.md).
 
 ## Dynamic Table Names
 

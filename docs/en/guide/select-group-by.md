@@ -152,7 +152,7 @@ FROM (
 INNER JOIN [User1] b ON a.[min] = b.[Id]
 ```
 
-> See more in the [《Nested Queries》](withtempquery) documentation
+> See more in the [《Nested Queries》](withtempquery.md) documentation
 
 ## 4. Aggregate
 

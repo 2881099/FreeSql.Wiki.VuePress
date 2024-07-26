@@ -68,7 +68,7 @@ fsql.Select<model>().Where(a => int.Parse(a.jsonb2["key1"]["key2"].ToString()) >
 | JObject.Parse(a) | a::jsonb | 转化字符串为json类型 |
 | a["x"]["y"] | a->x->y | json成员访问 |
 
-更多 lambda 表达式树函数，可以看下[《表达式函数》](https://freesql.net/guide/expression-function.html)文档，支持自定义解析。
+更多 lambda 表达式树函数，可以看下[《表达式函数》](expression-function.md)文档，支持自定义解析。
 
 参考资料：[《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》](https://github.com/dotnetcore/FreeSql/discussions/1071)
 
@@ -99,7 +99,7 @@ class model
 参考资料：
 
 - [《PostgreSQL 空间地理类型，自定义解析方案 #1422》](https://github.com/dotnetcore/FreeSql/discussions/1422)
-- [《PostgreSQL 特别类型映射》](https://freesql.net/guide/type-mapping.html#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84)
+- [《PostgreSQL 特别类型映射》](type-mapping.md#postgresql-%E7%89%B9%E5%88%AB%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84)
 
 ## 时序数据库
 

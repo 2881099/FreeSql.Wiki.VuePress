@@ -21,7 +21,7 @@ using (var uow = fsql.CreateUnitOfWork())
 
 > Tip: Within the `uow` scope, try not to use the `fsql` object to avoid being in different transactions.
 
-Dependency Injection (Reference): [Implementing Various Transaction Propagation with TransactionalAttribute + UnitOfWorkManager in ASP.NET Core](unitofwork-manager)
+Dependency Injection (Reference): [Implementing Various Transaction Propagation with TransactionalAttribute + UnitOfWorkManager in ASP.NET Core](unitofwork-manager.md)
 
 ## Interface Definition
 

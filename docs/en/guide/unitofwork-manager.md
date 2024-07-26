@@ -143,9 +143,9 @@ services.AddScoped<ISongRepository, SongRepository>();
 
 ## Extension: Multi-Database
 
-FreeSql.Cloud provides [cross-database access](sharding#db-sharding-freesql-cloud). This section explains how to integrate FreeSql.Cloud with UowManager for multi-database scenarios.
+FreeSql.Cloud provides [cross-database access](sharding.md#db-sharding-freesql-cloud). This section explains how to integrate FreeSql.Cloud with UowManager for multi-database scenarios.
 
-> Note: [Multi-tenant Database](multi-tenancy#approach-3-tenant-specific-databases) should be skipped as multi-tenant requests usually only operate on one database. Just switch tenants in the middleware.
+> Note: [Multi-tenant Database](multi-tenancy.md#approach-3-tenant-specific-databases) should be skipped as multi-tenant requests usually only operate on one database. Just switch tenants in the middleware.
 
 ---
 

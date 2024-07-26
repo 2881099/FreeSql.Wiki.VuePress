@@ -4,12 +4,12 @@ FreeSql has invested heavily in querying data, offering features like fluent sty
 
 | | | |
 | --- | --- | --- |
-| [《Paging Queries》](paging) | [《Repository Layer》](repository) | [《Read-Write Separation》](read-write-splitting) |
-| [《Single Table Queries》](select-single-table) | [《Filters》](filters) | [《LinqToSql》](linq-to-sql) |
-| [《Multi-Table Queries》](select-multi-table) | [《Lazy Loading》](select-lazy-loading) | [《Performance》](performance) |
-| [《Nested Queries》](withtempquery) | [《Eager Loading》](select-include) | [《Sharding》](sharding) |
-| [《Group By Aggregation Queries》](select-group-by) | [《Expression Functions》](expression-function) | [《Multi-Tenancy》](multi-tenancy) |
-| [《Return Data》](select-return-data) |  |  |
+| [《Paging Queries》](paging.md) | [《Repository Layer》](repository.md) | [《Read-Write Separation》](read-write-splitting.md) |
+| [《Single Table Queries》](select-single-table.md) | [《Filters》](filters.md) |  |
+| [《Multi-Table Queries》](select-multi-table.md) | [《Lazy Loading》](select-lazy-loading.md) | [《Performance》](performance.md) |
+| [《Nested Queries》](withtempquery.md) | [《Eager Loading》](select-include.md) | [《Sharding》](sharding.md) |
+| [《Group By Aggregation Queries》](select-group-by.md) | [《Expression Functions》](expression-function.md) | [《Multi-Tenancy》](multi-tenancy.md) |
+| [《Return Data》](select-return-data.md) |  |  |
 
 ## Expression Functions
 
@@ -29,7 +29,7 @@ FreeSql has invested heavily in querying data, offering features like fluent sty
 | Maximum | .Max(a => a.Score) | select max([Score]) from ... |
 | Minimum | .Min(a => a.Score) | select min([Score]) from ... |
 
-For more details, see [《Expression Functions》](expression-function)
+For more details, see [《Expression Functions》](expression-function.md)
 
 ## SqlServer WithLock/WithIndex
 
@@ -176,7 +176,7 @@ public void Test()
 | 【Condition】            |
 | Where               | \<this\>        | Lambda                             | Supports multi-table query expressions; using multiple times is equivalent to AND                                                                                                                                 |
 | WhereIf             | \<this\>        | bool, Lambda                       | Supports multi-table query expressions                                                                                                                                                     |
-| Where               | \<this\>        | string, parms                      | Native SQL syntax condition, Where("id = @id", new { id = 1 } ,[Note the prefix @, according to the specific database](ado#parameter) not explained elsewhere. Same applies)                                            |
+| Where               | \<this\>        | string, parms                      | Native SQL syntax condition, Where("id = @id", new { id = 1 } ,[Note the prefix @, according to the specific database](ado.md#parameter) not explained elsewhere. Same applies)                                            |
 | WhereIf             | \<this\>        | bool, string, parms                | Native SQL syntax condition, WhereIf(true, "id = @id", new { id = 1 }                                                                                                            |
 | WhereCascade        | \<this\>        | Lambda                             | Add conditions to each table in multi-table queries                                                                                                                                     |
 | WhereDynamicFilter  | \<this\>        | DynamicFilterInfo                  | Dynamic filtering conditions (interaction with the frontend)                                                                                                                                               |

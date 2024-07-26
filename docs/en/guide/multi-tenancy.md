@@ -135,7 +135,7 @@ var goodsRepository = fsql.GetRepository<Goods>(null, old => $"{Goods}_{TenantMa
 
 The above code creates a repository with tenant-specific tables, so operations will eventually affect the `Goods_1` table.
 
-> For more details, see: [《FreeSql.Repository Repository》](repository), [《Sharding》](sharding).
+> For more details, see: [《FreeSql.Repository Repository》](repository.md), [《Sharding》](sharding.md).
 
 > v3.2.833 Dynamic Table Name Setting
 

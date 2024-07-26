@@ -11,7 +11,7 @@ tag:
 
 FreeSql offers Fluent API methods for configuring entity database features using a chain of calls. The `Fluent API` method names match the feature names and there are three ways to use it. You only need to choose one of the methods:
 
-> `fsql` refers to an `IFreeSql` object. Configuration should generally be done only once to avoid performance issues. For more details, see: [《Entity Attributes》](entity-attribute).
+> `fsql` refers to an `IFreeSql` object. Configuration should generally be done only once to avoid performance issues. For more details, see: [《Entity Attributes》](entity-attribute.md).
 
 ## ConfigEntity
 
