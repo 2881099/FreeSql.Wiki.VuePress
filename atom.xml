@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-07-29T20:24:00.990Z</updated>
+  <updated>2024-08-03T07:07:47.051Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3713,7 +3713,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">ADO</title>
     <id>https://freesql.net/guide/ado.html</id>
     <link href="https://freesql.net/guide/ado.html"/>
-    <updated>2024-07-25T01:23:28.000Z</updated>
+    <updated>2024-08-03T07:06:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> ADO</h1>
 <p>Ado 是 IFreeSql 下重要的对象之一，它包括所有对 SQL 操作的封装，提供 ExecuteReader、ExecuteDataSet、ExecuteDataTable、ExecuteNonQuery、ExecuteScalar 等方法，使用起来和传统 SqlHelper 一样。</p>
 <h2> 查询 SQL 返回实体</h2>
@@ -3745,7 +3745,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <h2> 查询 SQL 返回实体</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 参数化</h2>
 <p>Ado 下面所有参数 object parms 都可以接受匿名对象，或者字典：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>关于<strong>参数前缀</strong>：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2> 参数前缀</h2>
 <ul>
 <li>odbc 是 <strong>?</strong> 并且没有标识，所以 freesql 禁用了 odbc 参数化</li>
 </ul>
@@ -3883,17 +3883,15 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">入门</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-08-03T07:06:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
-<p>反馈问题请前往 https://github.com/dotnetcore/FreeSql/issues</p>
-<h2> 安装包</h2>
-<p>需要访问什么数据库，就安装对应的 <code>FreeSql.Provider.XX</code>，也可直接安装 <code>FreeSql.All</code></p>]]></summary>
+<p>反馈问题请前往 <a href="https://github.com/dotnetcore/FreeSql/issues" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/issues</a></p>]]></summary>
     <content type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
-<p>反馈问题请前往 https://github.com/dotnetcore/FreeSql/issues</p>
+<p>反馈问题请前往 <a href="https://github.com/dotnetcore/FreeSql/issues" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/issues</a></p>
 <h2> 安装包</h2>
 <p>需要访问什么数据库，就安装对应的 <code>FreeSql.Provider.XX</code>，也可直接安装 <code>FreeSql.All</code></p>
 
