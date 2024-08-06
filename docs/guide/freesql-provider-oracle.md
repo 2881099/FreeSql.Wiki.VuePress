@@ -26,7 +26,7 @@ FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 
 public class DB
 {
     static Lazy<IFreeSql> oracleLazy = new Lazy<IFreeSql>(() => new FreeSql.FreeSqlBuilder()
-        .UseConnectionString(FreeSql.DataType.Oracle, "Provider=OraOLEDB.Oracle;user id=9user;password=123456;data source=//127.0.0.1:1521/XE;Pooling=true;Max Pool Size=2")
+        .UseConnectionString(DataType.Oracle, "Provider=OraOLEDB.Oracle;user id=9user;password=123456;data source=//127.0.0.1:1521/XE;Pooling=true;Max Pool Size=2")
         .UseNameConvert(NameConvertType.ToUpper)
         .UseNoneCommandParameter(true)
         .UseMonitorCommand(cmd => Trace.WriteLine(cmd.CommandText))
