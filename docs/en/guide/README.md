@@ -31,16 +31,16 @@ Install-Package FreeSql.Provider.Sqlite
 | Provider                                                                                                      | Description                                                                                             |
 |---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | FreeSql.Provider.MySql                                                                                       | Based on MySql.Data (official from Oracle)                                                              |
-| [FreeSql.Provider.MySqlConnector](freesql-provider-mysqlconnector.md)                                        | Based on MySqlConnector (open-source community, recommended++)<br>*Supports MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb, etc.* |
-| [FreeSql.Provider.PostgreSQL](freesql-provider-postgresql.md)                                                | Based on PostgreSQL 9.5+                                                                              |
+| FreeSql.Provider.MySqlConnector                                        | Based on MySqlConnector (open-source community, recommended++)<br>*Supports MySQL, MariaDB, Percona, Amazon Aurora, Azure Database for MySQL, Google Cloud SQL for MySQL, OceanBase, Doris, Tidb, etc.* |
+| FreeSql.Provider.PostgreSQL                                                | Based on PostgreSQL 9.5+                                                                              |
 | FreeSql.Provider.SqlServer                                                                                   | Based on SqlServer 2005+                                                                             |
 | FreeSql.Provider.SqlServerForSystem                                                                         | Based on System.Data.SqlClient + SqlServer 2005+                                                       |
 | FreeSql.Provider.Sqlite                                                                                      | Based on System.Data.SQLite.Core                                                                       |
-| [FreeSql.Provider.SqliteCore](freesql-provider-sqlitecore.md)                                                | Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx                                     |
+| FreeSql.Provider.SqliteCore                                                | Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx                                     |
 | FreeSql.Provider.ClickHouse                                                                                | Based on ClickHouse.Client                                                                           |
-| [FreeSql.Provider.QuestDb](freesql-provider-questdb.md)                                                      | Based on Npgsql and RestApi                                                                          |
+| FreeSql.Provider.QuestDb                                                      | Based on Npgsql and RestApi                                                                          |
 | FreeSql.Provider.Oracle                                                                                    |                                                                                                         |
-| [FreeSql.Provider.OracleOledb](freesql-provider-oracle.md)                                                   | Based on Oledb, addresses US7ASCII Chinese garbled text issue                                          |
+| FreeSql.Provider.OracleOledb                                                   | Based on Oledb, addresses US7ASCII Chinese garbled text issue                                          |
 | FreeSql.Provider.Firebird                                                                                      |                                                                                                         |
 | FreeSql.Provider.MsAccess                                                                                   |                                                                                                         |
 | FreeSql.Provider.Dameng                                                                                      | Based on Dameng Database                                                                              |
@@ -48,8 +48,8 @@ Install-Package FreeSql.Provider.Sqlite
 | FreeSql.Provider.KingbaseES                                                                                  | Based on RenDa JinCang Database                                                                        |
 | FreeSql.Provider.GBase                                                                                       | Based on NanDa General GBase Database                                                                  |
 | FreeSql.Provider.Xugu                                                                                        | Based on Xugu Database                                                                               |
-| [FreeSql.Provider.Odbc](freesql-provider-odbc.md)                                                            | Based on ODBC                                                                                        |
-| [FreeSql.Provider.Custom](freesql-provider-custom.md)                                                        | Custom adaptation<br>*Supports SqlServer2000, PolarDB, KunDB, other databases, etc.*         |
+| FreeSql.Provider.Odbc                                                            | Based on ODBC                                                                                        |
+| FreeSql.Provider.Custom                                                        | Custom adaptation<br>*Supports SqlServer2000, PolarDB, KunDB, other databases, etc.*         |
 
 ## Create Entity
 
