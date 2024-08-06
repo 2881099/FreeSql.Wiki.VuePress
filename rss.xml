@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 06 Aug 2024 06:34:26 GMT</pubDate>
-    <lastBuildDate>Tue, 06 Aug 2024 06:34:26 GMT</lastBuildDate>
+    <pubDate>Tue, 06 Aug 2024 09:10:00 GMT</pubDate>
+    <lastBuildDate>Tue, 06 Aug 2024 09:10:00 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2160,7 +2160,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <hr>
 <p>关于 Oracle US7ASCII 中文乱码的问题，Ado.Net 和 Odbc 无法解决。包括最新的.Net Core、.NET6、.NET7 都无法解决这个问题。</p>
 <p>安装 FreeSql.Provider.OracleOledb 使用 Oledb 驱动解决读取使用 US7ASCII 的 Oracle 数据库中文显示乱码问题。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
 <ul>
 <li>要么 FreeSql，原始用法；</li>
 <li>要么 FreeSql.DbContext，仓储+工作单元习惯；</li>

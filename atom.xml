@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-06T06:34:26.611Z</updated>
+  <updated>2024-08-06T09:10:00.516Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2525,7 +2525,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
     <title type="text">Oracle</title>
     <id>https://freesql.net/guide/freesql-provider-oracle.html</id>
     <link href="https://freesql.net/guide/freesql-provider-oracle.html"/>
-    <updated>2024-08-06T06:33:29.000Z</updated>
+    <updated>2024-08-06T09:09:00.000Z</updated>
     <summary type="html"><![CDATA[<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
 <p>若想以 Ado.net 驱动访问数据库，请安装：</p>
 <blockquote>
@@ -2551,7 +2551,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
 <hr>
 <p>关于 Oracle US7ASCII 中文乱码的问题，Ado.Net 和 Odbc 无法解决。包括最新的.Net Core、.NET6、.NET7 都无法解决这个问题。</p>
 <p>安装 FreeSql.Provider.OracleOledb 使用 Oledb 驱动解决读取使用 US7ASCII 的 Oracle 数据库中文显示乱码问题。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
 <ul>
 <li>要么 FreeSql，原始用法；</li>
 <li>要么 FreeSql.DbContext，仓储+工作单元习惯；</li>
