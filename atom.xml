@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-06T09:10:00.516Z</updated>
+  <updated>2024-08-06T09:10:30.508Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2525,7 +2525,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
     <title type="text">Oracle</title>
     <id>https://freesql.net/guide/freesql-provider-oracle.html</id>
     <link href="https://freesql.net/guide/freesql-provider-oracle.html"/>
-    <updated>2024-08-06T09:09:00.000Z</updated>
+    <updated>2024-08-06T09:09:38.000Z</updated>
     <summary type="html"><![CDATA[<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
 <p>若想以 Ado.net 驱动访问数据库，请安装：</p>
 <blockquote>
