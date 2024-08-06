@@ -349,53 +349,7 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 ---
 
-## 13、保存多对多数据 SaveMany
-
-之前：
-
-FreeSql.DbContext 和 仓储实现，已经实现了联级保存功能，可实现保存对象的时候，将其【OneToMany】、【ManyToMany】导航属性集合也一并保存。
-
-全局关闭：
-
-```csharp
-fsql.SetDbContextOptions(opt => opt.EnableCascadeSave = false);
-```
-
-局部关闭：
-
-```csharp
-var repo = fsql.GetRepository<T>();
-repo.DbContextOptions.EnableCascadeSave = false;
-```
-
-### 导航属性
-
-保存实体的指定【一对多】、【多对多】导航属性，SaveMany 方法实现在 BaseRepository、DbContext。
-
-解决问题：当实体类导航数据过于复杂的时候，选择关闭联级保存的功能是明智之选，但是此时【一对多】、【多对多】数据保存功能写起来非常繁琐麻烦（与现有数据对比后保存）。
-
-```csharp
-var song = new Song { Id = 1 };
-song.Tags = new List<Tag>();
-song.Tags.Add(new Tag ...);
-song.Tags.Add(new Tag ...);
-song.Tags.Add(new Tag ...);
-repo.SaveMany(song, "Tags");
-//轻松保存 song 与 tag 表的关联
-```
-
-SaveMany【一对多】的机制是完整对比保存。
-
-SaveMany【多对多】的机制规则与联级保存的一样，如下：
-
-我们对中间表的保存是完整对比操作，对外部实体的操作只作新增（注意不会更新）
-
-- 属性集合为空时，删除他们的所有关联数据（中间表）
-- 属性集合不为空时，与数据库存在的关联数据（中间表）完全对比，计算出应该删除和添加的记录
-
----
-
-## 14、自定义表达式函数
+## 13、自定义表达式函数
 
 ```csharp
 [ExpressionCall]
@@ -434,7 +388,7 @@ var sql1 = fsql.Select<SysModule>()
 
 ---
 
-## 15、自定义实体特性、与其他 ORM 共用特性
+## 14、自定义实体特性、与其他 ORM 共用特性
 
 本功能可实现与其他 ORM 使用一套 Attribute，避免维护两份实体特性的烦恼：
 
@@ -476,7 +430,7 @@ class MyColumnAttribute : Attribute {
 
 ---
 
-## 16、审计 CURD
+## 15、审计 CURD
 
 如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。
 
@@ -497,7 +451,7 @@ fsql.Aop.CurdAfter += (s, e) => {
 
 ---
 
-## 17、审计属性值
+## 16、审计属性值
 
 实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。
 
@@ -524,7 +478,7 @@ class Order {
 
 > v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件
 
-## 18、Ado .Net 扩展方法
+## 17、Ado .Net 扩展方法
 
 提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。
 

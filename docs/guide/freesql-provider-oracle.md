@@ -39,8 +39,7 @@ public class DB
 定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：
 
 - 要么 FreeSql，原始用法；
-- 要么 FreeSql.Repository，仓储+工作单元习惯；
-- 要么 FreeSql.DbContext，很像 EFCore 的使用习惯；
+- 要么 FreeSql.DbContext，仓储+工作单元习惯；
 - 要么 FreeSql.BaseEntity，充血模式；
 - 要么 直接像 dapper 那样使用 OracleConnection 扩展方法；
 
