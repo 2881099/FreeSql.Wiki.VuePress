@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-06T06:27:43.306Z</updated>
+  <updated>2024-08-06T06:34:26.611Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2525,7 +2525,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
     <title type="text">Oracle</title>
     <id>https://freesql.net/guide/freesql-provider-oracle.html</id>
     <link href="https://freesql.net/guide/freesql-provider-oracle.html"/>
-    <updated>2024-08-06T06:26:48.000Z</updated>
+    <updated>2024-08-06T06:33:29.000Z</updated>
     <summary type="html"><![CDATA[<p>FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。</p>
 <p>若想以 Ado.net 驱动访问数据库，请安装：</p>
 <blockquote>
@@ -2554,8 +2554,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：</p>
 <ul>
 <li>要么 FreeSql，原始用法；</li>
-<li>要么 FreeSql.Repository，仓储+工作单元习惯；</li>
-<li>要么 FreeSql.DbContext，很像 EFCore 的使用习惯；</li>
+<li>要么 FreeSql.DbContext，仓储+工作单元习惯；</li>
 <li>要么 FreeSql.BaseEntity，充血模式；</li>
 <li>要么 直接像 dapper 那样使用 OracleConnection 扩展方法；</li>
 </ul>
@@ -7281,7 +7280,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">你不知道的功能 ✨</title>
     <id>https://freesql.net/guide/more.html</id>
     <link href="https://freesql.net/guide/more.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-08-06T06:33:25.000Z</updated>
     <summary type="html"><![CDATA[<h1> 你不知道的功能 ✨</h1>
 <h2> 1、备注 -&gt; 迁移到数据库</h2>
 <p>FreeSql CodeFirst 支持将 c# 代码内的注释，迁移至数据库的备注。先决条件：</p>
@@ -7388,23 +7387,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <p>ISelect.ToUpdate 操作类似</p>
 </blockquote>
 <hr>
-<h2> 13、保存多对多数据 SaveMany</h2>
-<p>之前：</p>
-<p>FreeSql.DbContext 和 仓储实现，已经实现了联级保存功能，可实现保存对象的时候，将其【OneToMany】、【ManyToMany】导航属性集合也一并保存。</p>
-<p>全局关闭：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>局部关闭：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3> 导航属性</h3>
-<p>保存实体的指定【一对多】、【多对多】导航属性，SaveMany 方法实现在 BaseRepository、DbContext。</p>
-<p>解决问题：当实体类导航数据过于复杂的时候，选择关闭联级保存的功能是明智之选，但是此时【一对多】、【多对多】数据保存功能写起来非常繁琐麻烦（与现有数据对比后保存）。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>SaveMany【一对多】的机制是完整对比保存。</p>
-<p>SaveMany【多对多】的机制规则与联级保存的一样，如下：</p>
-<p>我们对中间表的保存是完整对比操作，对外部实体的操作只作新增（注意不会更新）</p>
-<ul>
-<li>属性集合为空时，删除他们的所有关联数据（中间表）</li>
-<li>属性集合不为空时，与数据库存在的关联数据（中间表）完全对比，计算出应该删除和添加的记录</li>
-</ul>
-<hr>
-<h2> 14、自定义表达式函数</h2>
+<h2> 13、自定义表达式函数</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>[ExpressionCall] 特性可在静态扩展类上标记，也可以在单个静态方法上标记；</p>
 <table>
 <thead>
@@ -7449,19 +7432,19 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <p>当不想解析指定参数时，使用特性 [RawValue] 标记</p>
 </blockquote>
 <hr>
-<h2> 15、自定义实体特性、与其他 ORM 共用特性</h2>
+<h2> 14、自定义实体特性、与其他 ORM 共用特性</h2>
 <p>本功能可实现与其他 ORM 使用一套 Attribute，避免维护两份实体特性的烦恼：</p>
 <blockquote>
 <p>v1.4.0+ 已自动识别 EFCore 实体特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
-<h2> 16、审计 CURD</h2>
+<h2> 15、审计 CURD</h2>
 <p>如果因为某个 sql 骚操作耗时很高，没有一个相关的审计功能，排查起来可以说无从下手。</p>
 <p>FreeSql 支持简单的类似功能：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>只需要一个事件，就可以对全局起到作用。</p>
 <p>还有一个 CurdBefore 在执行 sql 之前触发，常用于记录日志或开发调试。</p>
 <hr>
-<h2> 17、审计属性值</h2>
+<h2> 16、审计属性值</h2>
 <p>实现插入/更新时统一处理某些值，比如某属性的雪花算法值、创建时间值、甚至是业务值。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>当属性的类型是 long，并且标记了 [Snowflake]，并且当前值是 0，那么在插入/更新时它的值将设置为雪花id值。</p>
 <blockquote>
@@ -7471,7 +7454,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <blockquote>
 <p>v3.2.666 可设置 e.ObjectAuditBreak = true 中断对象审计，变相实现每个对象只触发一次 AuditValue 事件</p>
 </blockquote>
-<h2> 18、Ado .Net 扩展方法</h2>
+<h2> 17、Ado .Net 扩展方法</h2>
 <p>提供了类似 Dapper 的使用方法，FreeSql 增加了 IDbConnection/IDbTransaction 对象的扩展方法 Select/Insert/Update/Delete 实现 CRUD。</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>每个 SqlConnection GetFreeSql() 返回的 IFreeSql 实例相同；</li>
