@@ -34,6 +34,14 @@ public class DB
         .Build());
     public static IFreeSql oracle => oracleLazy.Value;
 }
+
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+class Topic
+{
+    public int Id { get; set; }
+    [OracleUS7Ascii("gb2312")]
+    public string Content { get; set; }
+}
 ```
 
 定义 DB.cs 类之后就可以快乐的 CRUD 了。FreeSql 提供多种 CRUD 使用习惯，请根据实际情况选择团队合适的一种：
