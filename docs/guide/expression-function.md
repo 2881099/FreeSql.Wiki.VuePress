@@ -400,7 +400,6 @@ public static class DbFunc {
 | DateTime.Equals(a, b) | a = b | a = b | a = b | a = b |
 | DateTime.IsLeapYear(a) | a%4=0 and a%100<>0 or a%400=0 | a%4=0 and a%100<>0 or a%400=0 | a%4=0 and a%100<>0 or a%400=0 | mod(a,4)=0 AND mod(a,100)<>0 OR mod(a,400)=0 |
 | DateTime.Parse(a) | cast(a as datetime) | cast(a as datetime) | a::timestamp | to_timestamp(a,'YYYY-MM-DD HH24:MI:SS.FF6') |
-| a.Add(b) | date_add(a, interval b microsecond) | dateadd(millisecond, b / 1000, a) | a::timestamp+(b||' microseconds')::interval | 增加TimeSpan值 | a + b |
 | a.AddDays(b) | date_add(a, interval b day) | dateadd(day, b, a) | a::timestamp+(b||' day')::interval | a + b |
 | a.AddHours(b) | date_add(a, interval b hour) | dateadd(hour, b, a) | a::timestamp+(b||' hour')::interval | a + b/24 |
 | a.AddMilliseconds(b) | date_add(a, interval b*1000 microsecond) | dateadd(millisecond, b, a) | a::timestamp+(b||' milliseconds')::interval | a + b/86400000 |
@@ -425,37 +424,6 @@ public static class DbFunc {
 | a.Equals(b) | a = b | a = b | a = b | a = b |
 | a.CompareTo(b) | a - b | a - b | a - b | a - b |
 | a.ToString() | date_format(a, '%Y-%m-%d %H:%i:%s.%f') | convert(varchar, a, 121) | to_char(a, 'YYYY-MM-DD HH24:MI:SS.US') | to_char(a,'YYYY-MM-DD HH24:MI:SS.FF6') |
-
-### 时间
-
-| 表达式 | MySql(微秒) | SqlServer(秒) | PostgreSQL(微秒) | Oracle(Interval day(9) to second(7)) |
-| - | - | - | - | - |
-| TimeSpan.Zero | 0 | 0 | - | 0微秒 | numtodsinterval(0,'second') |
-| TimeSpan.MaxValue | 922337203685477580 | 922337203685477580 | - | numtodsinterval(233720368.5477580,'second') |
-| TimeSpan.MinValue | -922337203685477580 | -922337203685477580 | - | numtodsinterval(-233720368.5477580,'second') |
-| TimeSpan.Compare(a, b) | a - b | a - b | - | extract(day from (a-b)) |
-| TimeSpan.Equals(a, b) | a = b | a = b | - | a = b |
-| TimeSpan.FromDays(a) | a *1000000* 60 *60* 24 | a *1000000* 60 *60* 24 | - | numtodsinterval(a*86400,'second') |
-| TimeSpan.FromHours(a) | a *1000000* 60 * 60 | a * 1000000 *60* 60 | - | numtodsinterval(a*3600,'second') |
-| TimeSpan.FromMilliseconds(a) | a * 1000 | a * 1000 | - | numtodsinterval(a/1000,'second') |
-| TimeSpan.FromMinutes(a) | a *1000000* 60 | a *1000000* 60 | - | numtodsinterval(a*60,'second') |
-| TimeSpan.FromSeconds(a) | a * 1000000 | a * 1000000 | - | numtodsinterval(a,'second') |
-| TimeSpan.FromTicks(a) | a / 10 | a / 10 | - | numtodsinterval(a/10000000,'second') |
-| a.Add(b) | a + b | a + b | - | a + b |
-| a.Subtract(b) | a - b | a - b | - | a - b |
-| a.CompareTo(b) | a - b | a - b | - | extract(day from (a-b)) |
-| a.Days | a div (1000000 *60* 60 * 24) | a div (1000000 * 60 *60* 24) | - | extract(day from a) |
-| a.Hours | a div (1000000 *60* 60) mod 24 | a div (1000000 *60* 60) mod 24 | - | extract(hour from a) |
-| a.Milliseconds | a div 1000 mod 1000 | a div 1000 mod 1000 | - | cast(substr(extract(second from a)-floor(extract(second from a)),2,3) as number) |
-| a.Seconds | a div 1000000 mod 60 | a div 1000000 mod 60 | - | extract(second from a) |
-| a.Ticks | a * 10 | a * 10 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a))*10000000 |
-| a.TotalDays | a / (1000000 *60* 60 * 24) | a / (1000000 * 60 *60* 24) | - | extract(day from a) |
-| a.TotalHours | a / (1000000 *60* 60) | a / (1000000 *60* 60) | - | (extract(day from a)*24+extract(hour from a)) |
-| a.TotalMilliseconds | a / 1000 | a / 1000 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a))*1000 |
-| a.TotalMinutes | a / (1000000 * 60) | a / (1000000 * 60) | - | | (extract(day from a)*1440+extract(hour from a)*60+extract(minute from a)) |
-| a.TotalSeconds | a / 1000000 | a / 1000000 | - | (extract(day from a)*86400+extract(hour from a)*3600+extract(minute from a)*60+extract(second from a)) |
-| a.Equals(b) | a = b | a = b | - | a = b |
-| a.ToString() | cast(a as varchar) | cast(a as varchar) | - | to_char(a) |
 
 ### 数学函数
 
