@@ -19,6 +19,17 @@ title:  MySql 系列数据库
 - Parameter '@xxx' must be defined.
 - Object cannot be cast from DBNull to other types.
 
+## MySql Enum 映射
+
+默认情况 c# 枚举会映射为 MySql Enum 类型，如果想映射为 int 在 FreeSqlBuilder Build 之后执行以下 Aop 统一处理：
+
+```cs
+fsql.Aop.ConfigEntityProperty += (s, e) => {
+    if (e.Property.PropertyType.IsEnum)
+        e.ModifyResult.MapType = typeof(int);
+};
+```
+
 ## 增删改 BulkCopy
 
 - 主键无值
