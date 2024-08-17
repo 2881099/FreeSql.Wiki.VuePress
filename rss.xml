@@ -6,10 +6,67 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 09 Aug 2024 02:59:53 GMT</pubDate>
-    <lastBuildDate>Fri, 09 Aug 2024 02:59:53 GMT</lastBuildDate>
+    <pubDate>Sat, 17 Aug 2024 09:28:12 GMT</pubDate>
+    <lastBuildDate>Sat, 17 Aug 2024 09:28:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>DuckDB（嵌入式 OLAP）</title>
+      <link>https://freesql.net/guide/freesql-provider-duckdb.html</link>
+      <guid>https://freesql.net/guide/freesql-provider-duckdb.html</guid>
+      <source url="https://freesql.net/rss.xml">DuckDB（嵌入式 OLAP）</source>
+      <description>介绍 DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。 DuckDB has two configurable options for concurrency: One process can both read and write to the database.; Multiple proc...</description>
+      <pubDate>Sat, 17 Aug 2024 09:27:08 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 介绍</h2>
+<p>DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。</p>
+<p>DuckDB has two configurable options for concurrency:</p>
+<ul>
+<li>One process can both read and write to the database.</li>
+<li>Multiple processes can read from the database, but no processes can write (access_mode = 'READ_ONLY').</li>
+</ul>
+<p><a href="https://duckdb.org/docs/" target="_blank" rel="noopener noreferrer">DuckDB | 官网 </a></p>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.DuckDB</p>
+<p>.NET CLI</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>依赖的第三方 ado.net 驱动源代码：https://github.com/Giorgi/DuckDB.NET</p>
+<table>
+<thead>
+<tr>
+<th>Connection String</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSource = :memory:</td>
+<td>Connect to a new in-memory database</td>
+</tr>
+<tr>
+<td>DataSource = :memory:?cache=shared</td>
+<td>Connect to a shared, in-memory database</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db</td>
+<td>Connect to train_services.db</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db;ACCESS_MODE=READ_ONLY</td>
+<td>Connect to train_services.db, make connection read-only</td>
+</tr>
+<tr>
+<td>DataSource = :memory:;threads=8;ACCESS_MODE=READ_ONLY</td>
+<td>Connect to a new in-memory database, limit threads to 8, make connection read-only</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db;ACCESS_MODE=READ_ONLY;memory_limit=10GB</td>
+<td>Connect to train_services.db, make connection read-only, limit RAM usage to 10GB</td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+    </item>
     <item>
       <title>ClickHouse</title>
       <link>https://freesql.net/guide/freesql-provider-clickhouse.html</link>
@@ -3114,6 +3171,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <td>基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx</td>
 </tr>
 <tr>
+<td><a href="/guide/freesql-provider-duckdb.html" target="blank">FreeSql.Provider.Duckdb</a></td>
+<td>基于 DuckDB.NET.Data.Full</td>
+</tr>
+<tr>
 <td>FreeSql.Provider.ClickHouse</td>
 <td>基于 ClickHouse.Client</td>
 </tr>
@@ -3305,6 +3366,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <tr>
 <td>DataType.Sqlite</td>
 <td>Data Source=|DataDirectory|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1</td>
+</tr>
+<tr>
+<td>DataType.DuckDB</td>
+<td><a href="https://duckdb.net/docs/connection-string.html" target="_blank" rel="noopener noreferrer">https://duckdb.net/docs/connection-string.html</a></td>
 </tr>
 <tr>
 <td>DataType.ClickHouse</td>
@@ -4034,6 +4099,7 @@ class table {...}</p>
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
@@ -4049,6 +4115,7 @@ class table {...}</p>
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -4279,7 +4346,7 @@ class table {...}</p>
 <p>v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 子表First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 子表ToList</h2>
@@ -5488,6 +5555,13 @@ class table {...}</p>
 <tr>
 <td>Firebird</td>
 <td>merge into</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
 <td></td>
 <td></td>
 <td></td>
@@ -7053,7 +7127,7 @@ class table {...}</p>
 </tbody>
 </table>
 <blockquote>
-<p>通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、翰高</p>
+<p>通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、DuckDB、达梦、人大金仓、南大通用、翰高</p>
 </blockquote>
 <p>姿势一：AsTreeCte() + ToTreeList</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>姿势二：AsTreeCte() + ToList</p>
@@ -7448,7 +7522,7 @@ FROM "Topic" a</p>
 <h2> 7、子表string.Join</h2>
 <p>v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 8、子表First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 9、子表ToList</h2>
@@ -8618,6 +8692,7 @@ FROM "Topic" a</p>
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
@@ -8632,6 +8707,7 @@ FROM "Topic" a</p>
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -11090,7 +11166,7 @@ FROM "Topic" a</p>
 <li>✒ 支持 丰富的表达式函数，以及灵活的自定义解析；</li>
 <li>🏁 支持 导航属性一对多、多对多贪婪加载，以及延时加载；</li>
 <li>📃 支持 读写分离、分表分库、过滤器、乐观锁、悲观锁；</li>
-<li>🌳 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB 等数据库；</li>
+<li>🌳 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB/DuckDB 等数据库；</li>
 </ul>
 <h4> 基础</h4>
 <ul>
@@ -11201,7 +11277,7 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<p>FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB，以及自定义适配。</p>
+<p>FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB/DuckDB，以及自定义适配。</p>
 <p>.NET ORM 各有自已看家本领，本文主要按 FreeSql 提供的功能进行列举比较，如有冒犯请见谅，也欢迎向 FreeSql 提出功能建议。</p>
 <p>每个功能实现的深度层次不一样（比如 EFCore 支持 SqlServer 2012，FreeSql 支持 SqlServer 2005），很难彻底比较，提示：</p>
 <ul>

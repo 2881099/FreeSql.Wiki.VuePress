@@ -3,10 +3,73 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-09T02:59:53.780Z</updated>
+  <updated>2024-08-17T09:28:12.731Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
+  <entry>
+    <title type="text">DuckDB（嵌入式 OLAP）</title>
+    <id>https://freesql.net/guide/freesql-provider-duckdb.html</id>
+    <link href="https://freesql.net/guide/freesql-provider-duckdb.html"/>
+    <updated>2024-08-17T09:27:08.000Z</updated>
+    <summary type="html"><![CDATA[<h2> 介绍</h2>
+<p>DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。</p>
+<p>DuckDB has two configurable options for concurrency:</p>
+<ul>
+<li>One process can both read and write to the database.</li>
+<li>Multiple processes can read from the database, but no processes can write (access_mode = 'READ_ONLY').</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2> 介绍</h2>
+<p>DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。</p>
+<p>DuckDB has two configurable options for concurrency:</p>
+<ul>
+<li>One process can both read and write to the database.</li>
+<li>Multiple processes can read from the database, but no processes can write (access_mode = 'READ_ONLY').</li>
+</ul>
+<p><a href="https://duckdb.org/docs/" target="_blank" rel="noopener noreferrer">DuckDB | 官网 </a></p>
+<h2> 安装包</h2>
+<p>FreeSql.Provider.DuckDB</p>
+<p>.NET CLI</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>依赖的第三方 ado.net 驱动源代码：https://github.com/Giorgi/DuckDB.NET</p>
+<table>
+<thead>
+<tr>
+<th>Connection String</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataSource = :memory:</td>
+<td>Connect to a new in-memory database</td>
+</tr>
+<tr>
+<td>DataSource = :memory:?cache=shared</td>
+<td>Connect to a shared, in-memory database</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db</td>
+<td>Connect to train_services.db</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db;ACCESS_MODE=READ_ONLY</td>
+<td>Connect to train_services.db, make connection read-only</td>
+</tr>
+<tr>
+<td>DataSource = :memory:;threads=8;ACCESS_MODE=READ_ONLY</td>
+<td>Connect to a new in-memory database, limit threads to 8, make connection read-only</td>
+</tr>
+<tr>
+<td>DataSource = train_services.db;ACCESS_MODE=READ_ONLY;memory_limit=10GB</td>
+<td>Connect to train_services.db, make connection read-only, limit RAM usage to 10GB</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    <published>2024-08-17T09:27:08.000Z</published>
+  </entry>
   <entry>
     <title type="text">ClickHouse</title>
     <id>https://freesql.net/guide/freesql-provider-clickhouse.html</id>
@@ -3884,7 +3947,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">入门</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2024-08-03T07:06:40.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
@@ -3931,6 +3994,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td><a href="/guide/freesql-provider-sqlitecore.html" target="blank">FreeSql.Provider.SqliteCore</a></td>
 <td>基于 Microsoft.Data.Sqlite.Core，需安装 bundle_xxx</td>
+</tr>
+<tr>
+<td><a href="/guide/freesql-provider-duckdb.html" target="blank">FreeSql.Provider.Duckdb</a></td>
+<td>基于 DuckDB.NET.Data.Full</td>
 </tr>
 <tr>
 <td>FreeSql.Provider.ClickHouse</td>
@@ -4124,6 +4191,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>DataType.Sqlite</td>
 <td>Data Source=|DataDirectory|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1</td>
+</tr>
+<tr>
+<td>DataType.DuckDB</td>
+<td><a href="https://duckdb.net/docs/connection-string.html" target="_blank" rel="noopener noreferrer">https://duckdb.net/docs/connection-string.html</a></td>
 </tr>
 <tr>
 <td>DataType.ClickHouse</td>
@@ -4879,7 +4950,7 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EF 特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
 <h2> 表名</h2>
@@ -4940,6 +5011,7 @@ class table {...}</p>
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
@@ -4955,6 +5027,7 @@ class table {...}</p>
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -5022,7 +5095,7 @@ class table {...}</p>
     <title type="text">表达式函数</title>
     <id>https://freesql.net/guide/expression-function.html</id>
     <link href="https://freesql.net/guide/expression-function.html"/>
-    <updated>2024-08-08T13:08:53.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 表达式函数</h1>
 <p>这是 <code>FreeSql</code> 非常特色的功能之一，请别错过文档的细节，可映射的类型基本都可以使用对应的表达式函数，例如 日期、字符串、<code>IN</code> 查询、数组（PostgreSQL 数组）、字典（PostgreSQL HStore）等等。</p>
 <p>SqlExt.xxx 是 FreeSql 默认提供常见的自定义函数，详细见<a href="#%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0">开窗函数</a>。</p>
@@ -5191,7 +5264,7 @@ class table {...}</p>
 <p>v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 子表First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 子表ToList</h2>
@@ -6366,7 +6439,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">插入或更新</title>
     <id>https://freesql.net/guide/insert-or-update.html</id>
     <link href="https://freesql.net/guide/insert-or-update.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 插入或更新</h1>
 <h2> 1、IFreeSql.InsertOrUpdate</h2>
 <p>IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用数据库特性：</p>
@@ -6419,6 +6492,13 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <tr>
 <td>Firebird</td>
 <td>merge into</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
 <td></td>
 <td></td>
 <td></td>
@@ -6477,6 +6557,13 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <tr>
 <td>Firebird</td>
 <td>merge into</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
 <td></td>
 <td></td>
 <td></td>
@@ -8174,7 +8261,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">树型查询 ✨</title>
     <id>https://freesql.net/guide/select-as-tree.html</id>
     <link href="https://freesql.net/guide/select-as-tree.html"/>
-    <updated>2024-07-25T07:47:58.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 树型查询 ✨</h1>
 <p>无限级分类（父子）是一种比较常用的表设计，每种设计方式突出优势的同时也带来缺陷，如：</p>
 <ul>
@@ -8234,7 +8321,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 </tbody>
 </table>
 <blockquote>
-<p>通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、翰高</p>
+<p>通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、DuckDB、达梦、人大金仓、南大通用、翰高</p>
 </blockquote>
 <p>姿势一：AsTreeCte() + ToTreeList</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>姿势二：AsTreeCte() + ToList</p>
@@ -8655,7 +8742,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">多表查询 ✨</title>
     <id>https://freesql.net/guide/select-multi-table.html</id>
     <link href="https://freesql.net/guide/select-multi-table.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 多表查询 ✨</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name">IFreeSql</span> fsql<span class="token punctuation">;</span> <span class="token comment">//如何创建请移步入门文档</span>
 
@@ -8710,7 +8797,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <h2> 7、子表string.Join</h2>
 <p>v1.8.0+ string.Join + ToList 实现将子查询的多行结果，拼接为一个字符串，如："1,2,3,4"</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 8、子表First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 9、子表ToList</h2>
@@ -9736,7 +9823,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2024-07-24T15:06:59.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 自定义类型映射(MapType)</h2>
 <h3> v3.2.701 自定义类型转换</h3>
@@ -10006,6 +10093,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
@@ -10020,6 +10108,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -12468,7 +12557,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">与 Dapper 比较</title>
     <id>https://freesql.net/reference/vs-dapper.html</id>
     <link href="https://freesql.net/reference/vs-dapper.html"/>
-    <updated>2023-03-10T02:58:17.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 与 Dapper 比较</h1>
 <p>众所周知 Dapper 是 .NET 下最轻最快的 ORM，它是喜欢写 SQL 码农的福音，相对于 SqlHelper 它更加方便，据统计 10 个 .NETer 有 9 个 用过 Dapper。</p>
 <p>这篇文章为准备使用 FreeSql 的朋友解惑，对比 Dapper 有何优势，为什么要使用 FreeSql？希望本文内容对大家有所帮助。</p>
@@ -12622,7 +12711,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <li>✒ 支持 丰富的表达式函数，以及灵活的自定义解析；</li>
 <li>🏁 支持 导航属性一对多、多对多贪婪加载，以及延时加载；</li>
 <li>📃 支持 读写分离、分表分库、过滤器、乐观锁、悲观锁；</li>
-<li>🌳 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB 等数据库；</li>
+<li>🌳 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB/DuckDB 等数据库；</li>
 </ul>
 <h4> 基础</h4>
 <ul>
@@ -12666,7 +12755,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">与 EntityFramework 比较</title>
     <id>https://freesql.net/reference/vs-entity-framework.html</id>
     <link href="https://freesql.net/reference/vs-entity-framework.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> 与 EntityFramework 比较</h1>
 <p>为什么要写这篇文章？</p>
 <p>2020 年 写下这篇完整一点的 .NET ORM 比较，为准备使用 FreeSql 的朋友解惑。</p>
@@ -12797,7 +12886,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tr>
 </tbody>
 </table>
-<p>FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB，以及自定义适配。</p>
+<p>FreeSql .NET ORM 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite/Firebird/达梦/人大金仓/神舟通用/南大通用/虚谷/翰高/Access/ClickHouse/QuestDB/DuckDB，以及自定义适配。</p>
 <p>.NET ORM 各有自已看家本领，本文主要按 FreeSql 提供的功能进行列举比较，如有冒犯请见谅，也欢迎向 FreeSql 提出功能建议。</p>
 <p>每个功能实现的深度层次不一样（比如 EFCore 支持 SqlServer 2012，FreeSql 支持 SqlServer 2005），很难彻底比较，提示：</p>
 <ul>

@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Fri, 09 Aug 2024 02:59:53 GMT</pubDate>
-    <lastBuildDate>Fri, 09 Aug 2024 02:59:53 GMT</lastBuildDate>
+    <pubDate>Sat, 17 Aug 2024 09:28:12 GMT</pubDate>
+    <lastBuildDate>Sat, 17 Aug 2024 09:28:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -713,11 +713,12 @@
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>DM</th>
 <th>Kingbase</th>
 <th>Shentong</th>
-<th>Nantong</th>
+<th>Gbase</th>
 </tr>
 </thead>
 <tbody>
@@ -728,6 +729,7 @@
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -956,7 +958,7 @@
 <p>v1.8.0+ uses string.Join + ToList to concatenate multiple rows of subquery results into a single string, such as "1,2,3,4"</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>Tip: Subquery string.Join + ToList adapts to sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>Tip: Subquery string.Join + ToList adapts to sqlserver/pgsql/oracle/mysql/sqlite/firebird/DuckDB/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> Subtable First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Subtable ToList</h2>
@@ -3064,6 +3066,13 @@ FROM "Topic" a</p>
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>When the entity class has auto-increment properties, bulk <code>InsertOrUpdate</code> may be split into two executions, with the system internally computing records with unset and set auto-increment values, executing <code>insert into</code> and <code>merge into</code> commands (using transactions).</p>
@@ -3745,7 +3754,7 @@ FROM "Topic" a</p>
 <h2> 7. Sub-table String.Join</h2>
 <p>From v1.8.0+, <code>string.Join</code> + <code>ToList</code> concatenates multiple rows of results from a subquery into a single string, e.g., "1,2,3,4".</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>Tip: Subquery <code>string.Join</code> + <code>ToList</code> is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/da-ming/jin-kang/nanda/hangao <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>Tip: Subquery <code>string.Join</code> + <code>ToList</code> is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/kingbase/gbase/hangao <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 8. Sub-table First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 9. Sub-table ToList</h2>
@@ -4618,6 +4627,7 @@ FROM "Topic" a</p>
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>Dameng</th>
 <th>Kingbase</th>
@@ -4632,6 +4642,7 @@ FROM "Topic" a</p>
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -5145,6 +5156,10 @@ FROM "Topic" a</p>
 <td>Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx</td>
 </tr>
 <tr>
+<td>FreeSql.Provider.Duckdb</td>
+<td>Based on DuckDB.NET.Data.Full</td>
+</tr>
+<tr>
 <td>FreeSql.Provider.ClickHouse</td>
 <td>Based on ClickHouse.Client</td>
 </tr>
@@ -5330,6 +5345,10 @@ FROM "Topic" a</p>
 <tr>
 <td>DataType.Sqlite</td>
 <td>Data Source=|DataDirectory|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1</td>
+</tr>
+<tr>
+<td>DataType.DuckDB</td>
+<td><a href="https://duckdb.net/docs/connection-string.html" target="_blank" rel="noopener noreferrer">https://duckdb.net/docs/connection-string.html</a></td>
 </tr>
 <tr>
 <td>DataType.ClickHouse</td>

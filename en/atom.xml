@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-09T02:59:53.780Z</updated>
+  <updated>2024-08-17T09:28:12.732Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -684,7 +684,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">Mapping Attributes✨</title>
     <id>https://freesql.net/en/guide/entity-attribute.html</id>
     <link href="https://freesql.net/en/guide/entity-attribute.html"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Mapping Attributes✨</h1>
 <p>v1.4.0+ automatically recognizes EF attributes such as</p>
 <p>Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column.</p>
@@ -766,11 +766,12 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>DM</th>
 <th>Kingbase</th>
 <th>Shentong</th>
-<th>Nantong</th>
+<th>Gbase</th>
 </tr>
 </thead>
 <tbody>
@@ -781,6 +782,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -850,7 +852,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">Expression Functions</title>
     <id>https://freesql.net/en/guide/expression-function.html</id>
     <link href="https://freesql.net/en/guide/expression-function.html"/>
-    <updated>2024-07-26T09:14:45.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Expression Functions</h1>
 <p>This is one of FreeSql's very special features, so don't miss the details in the documentation. Types that can be mapped can basically use corresponding expression functions, such as date, string, <code>IN</code> queries, arrays (PostgreSQL arrays), dictionaries (PostgreSQL HStore), etc.</p>]]></summary>
     <content type="html"><![CDATA[<h1> Expression Functions</h1>
@@ -1010,7 +1012,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <p>v1.8.0+ uses string.Join + ToList to concatenate multiple rows of subquery results into a single string, such as "1,2,3,4"</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>Tip: Subquery string.Join + ToList adapts to sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>Tip: Subquery string.Join + ToList adapts to sqlserver/pgsql/oracle/mysql/sqlite/firebird/DuckDB/达梦/金仓/南大/翰高 <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> Subtable First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Subtable ToList</h2>
@@ -3194,7 +3196,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Insert or Update</title>
     <id>https://freesql.net/en/guide/insert-or-update.html</id>
     <link href="https://freesql.net/en/guide/insert-or-update.html"/>
-    <updated>2024-07-26T09:14:45.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Insert or Update</h1>
 <h2> 1. IFreeSql.InsertOrUpdate</h2>
 <p>IFreeSql defines the <code>InsertOrUpdate</code> method to handle insert or update operations, utilizing database-specific features:</p>
@@ -3247,6 +3249,13 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>Firebird</td>
 <td>merge into</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
 <td></td>
 <td></td>
 <td></td>
@@ -3305,6 +3314,13 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>Firebird</td>
 <td>merge into</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DuckDB</td>
+<td>on conflict do update</td>
 <td></td>
 <td></td>
 <td></td>
@@ -3991,7 +4007,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Multiple Tables ✨</title>
     <id>https://freesql.net/en/guide/select-multi-table.html</id>
     <link href="https://freesql.net/en/guide/select-multi-table.html"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Multiple Tables ✨</h1>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token class-name">IFreeSql</span> fsql<span class="token punctuation">;</span> <span class="token comment">// For creation details, please refer to the Getting Started document</span>
 
@@ -4046,7 +4062,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <h2> 7. Sub-table String.Join</h2>
 <p>From v1.8.0+, <code>string.Join</code> + <code>ToList</code> concatenates multiple rows of results from a subquery into a single string, e.g., "1,2,3,4".</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>Tip: Subquery <code>string.Join</code> + <code>ToList</code> is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/da-ming/jin-kang/nanda/hangao <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
+<p>Tip: Subquery <code>string.Join</code> + <code>ToList</code> is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/kingbase/gbase/hangao <a href="https://github.com/dotnetcore/FreeSql/issues/405" target="_blank" rel="noopener noreferrer">#405</a></p>
 </blockquote>
 <h2> 8. Sub-table First/Count/Sum/Max/Min/Avg</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 9. Sub-table ToList</h2>
@@ -4751,7 +4767,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Type Mapping</title>
     <id>https://freesql.net/en/guide/type-mapping.html</id>
     <link href="https://freesql.net/en/guide/type-mapping.html"/>
-    <updated>2024-07-26T09:14:45.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Type Mapping</h1>
 <h2> Custom Type Mapping (MapType)</h2>
 <h3> v3.2.701 Custom Type Conversion</h3>
@@ -5021,6 +5037,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <th>Oracle</th>
 <th>Sqlite</th>
 <th>Firebird</th>
+<th>DuckDB</th>
 <th>MsAccess</th>
 <th>Dameng</th>
 <th>Kingbase</th>
@@ -5035,6 +5052,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>nclob</td>
 <td>text</td>
 <td>blob sub_type 1</td>
+<td>text</td>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
@@ -5514,7 +5532,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Get started</title>
     <id>https://freesql.net/en/guide/</id>
     <link href="https://freesql.net/en/guide/"/>
-    <updated>2024-07-26T15:35:02.000Z</updated>
+    <updated>2024-08-17T09:27:08.000Z</updated>
     <summary type="html"><![CDATA[<h1> Get started</h1>
 <p>FreeSql is a powerful Object-Relational Mapping (O/RM) component, supporting .NET Core 2.1+ and .NET Framework 4.0+.</p>
 <p>QQ Groups: 561616019 (Online), 4336577 (Full), 8578575 (Full), 52508226 (Full)</p>
@@ -5561,6 +5579,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>FreeSql.Provider.SqliteCore</td>
 <td>Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx</td>
+</tr>
+<tr>
+<td>FreeSql.Provider.Duckdb</td>
+<td>Based on DuckDB.NET.Data.Full</td>
 </tr>
 <tr>
 <td>FreeSql.Provider.ClickHouse</td>
@@ -5748,6 +5770,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <tr>
 <td>DataType.Sqlite</td>
 <td>Data Source=|DataDirectory|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1</td>
+</tr>
+<tr>
+<td>DataType.DuckDB</td>
+<td><a href="https://duckdb.net/docs/connection-string.html" target="_blank" rel="noopener noreferrer">https://duckdb.net/docs/connection-string.html</a></td>
 </tr>
 <tr>
 <td>DataType.ClickHouse</td>
