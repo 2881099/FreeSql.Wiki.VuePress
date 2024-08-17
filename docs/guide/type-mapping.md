@@ -129,9 +129,9 @@ public class S_SysConfig {
 
 > string 指定长度 [Column(DbType = "varchar(max)")] 或者 [MaxLength(-1)] 或者 [Column(StringLength = -1)]，当长度 -1 时产生的映射如下：
 
-| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | MsAccess | 达梦 | 金仓 | 神通 |
-| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | ---- | ---- | ---- |
-| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | longtext | text | text | text |
+| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | DuckDB   | MsAccess | 达梦 | 金仓 | 神通 |
+| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | -------- | ---- | ---- | ---- |
+| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | text     | longtext | text | text | text |
 
 > 注意：Oracle nclob 需要 v1.3.2+ 版本才支持，否则将映射 nvarchar2(4000)
 

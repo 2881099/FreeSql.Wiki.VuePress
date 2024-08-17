@@ -37,6 +37,7 @@ Install-Package FreeSql.Provider.Sqlite
 | FreeSql.Provider.SqlServerForSystem                                                                         | Based on System.Data.SqlClient + SqlServer 2005+                                                       |
 | FreeSql.Provider.Sqlite                                                                                      | Based on System.Data.SQLite.Core                                                                       |
 | FreeSql.Provider.SqliteCore                                                | Based on Microsoft.Data.Sqlite.Core, requires installing bundle_xxx                                     |
+| FreeSql.Provider.Duckdb                                                                                | Based on DuckDB.NET.Data.Full                                                                           |
 | FreeSql.Provider.ClickHouse                                                                                | Based on ClickHouse.Client                                                                           |
 | FreeSql.Provider.QuestDb                                                      | Based on Npgsql and RestApi                                                                          |
 | FreeSql.Provider.Oracle                                                                                    |                                                                                                         |
@@ -171,6 +172,7 @@ fsql.GlobalFilter // Global filter object
 | DataType.SqlServer                 | Data Source=.;User Id=sa;Password=123456;Initial Catalog=freesqlTest;Encrypt=True;TrustServerCertificate=True;Pooling=true;Min Pool Size=1                                                     |
 | DataType.Oracle                    | user id=user1;password=123456; data source=//127.0.0.1:1521/XE;Pooling=true;Min Pool Size=1                                                                                                     |
 | DataType.Sqlite                    | Data Source=\|DataDirectory\|\document.db; Attachs=xxxtb.db; Pooling=true;Min Pool Size=1                                                                                                       |
+| DataType.DuckDB                    | [https://duckdb.net/docs/connection-string.html](https://duckdb.net/docs/connection-string.html)               |
 | DataType.ClickHouse               | DataCompress=False;BufferSize=32768;SocketTimeout=10000;CheckCompressedHash=False;Encrypt=False;Compressor=lz4;Host=192.168.0.121;Port=8125;Database=PersonnelLocation;Username=root;Password=123     |
 | DataType.Firebird                  | database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456                                                                                                                           |
 | DataType.QuestDb | host=localhost;port=8812;username=admin;password=quest;database=qdb;ServerCompatibilityMode=NoTypeLoading; |

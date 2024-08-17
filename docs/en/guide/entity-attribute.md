@@ -114,9 +114,9 @@ class Topic
 
 When the length is -1, the mapping is as follows:
 
-| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | MsAccess | DM | Kingbase | Shentong | Nantong |
-| - | - | - | - | - | - | - | - | - | - | - |
-| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | longtext | text | text | text | text |
+| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | DuckDB | MsAccess | DM | Kingbase | Shentong | Gbase |
+| - | - | - | - | - | - | - | - | - | - | - | - |
+| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | text | longtext | text | text | text | text |
 
 > Note: MySql `[MaxLength(-2)]` or `[Column(StringLength = -2)]` maps to `longtext`. Other databases follow the same mapping rules as -1.
 

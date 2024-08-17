@@ -116,7 +116,7 @@ fsql.Select<Area>()
 | (可选) pathSeparator | 设置 pathSelector 的连接符，默认：->                              |
 | (可选) level         | 设置递归层级                                                      |
 
-> 通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、达梦、人大金仓、南大通用、翰高
+> 通过测试的数据库：MySql8.0、SqlServer、PostgreSQL、Oracle、Sqlite、Firebird、DuckDB、达梦、人大金仓、南大通用、翰高
 
 姿势一：AsTreeCte() + ToTreeList
 

@@ -12,6 +12,7 @@ IFreeSql 定义了 InsertOrUpdate 方法实现添加或修改的功能，利用�
 | Oracle     | merge into              |     | 南大通用 | merge into            |
 | Sqlite     | replace into            |     | MsAccess | 不支持                |
 | Firebird   | merge into              |     |          |                       |
+| DuckDB     | on conflict do update   |     |          |                       |
 
 ```csharp
 fsql.InsertOrUpdate<T>()

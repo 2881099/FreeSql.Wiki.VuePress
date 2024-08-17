@@ -161,7 +161,7 @@ fsql.Select<Topic>().ToList(a => new
 // FROM `Topic` a
 ```
 
-> Tip: Subquery `string.Join` + `ToList` is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/da-ming/jin-kang/nanda/hangao [#405](https://github.com/dotnetcore/FreeSql/issues/405)
+> Tip: Subquery `string.Join` + `ToList` is adapted for sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/kingbase/gbase/hangao [#405](https://github.com/dotnetcore/FreeSql/issues/405)
 
 ## 8. Sub-table First/Count/Sum/Max/Min/Avg
 

@@ -173,7 +173,7 @@ fsql.Select<Topic>().ToList(a => new {
 //FROM `Topic` a
 ```
 
-> 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/达梦/金仓/南大/翰高 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
+> 提示：子查询 string.Join + ToList 适配了 sqlserver/pgsql/oracle/mysql/sqlite/firebird/duckdb/达梦/金仓/南大/翰高 [#405](https://github.com/dotnetcore/FreeSql/issues/405)
 
 ## 子表First/Count/Sum/Max/Min/Avg
 

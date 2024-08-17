@@ -129,9 +129,9 @@ public class S_SysConfig {
 
 > For string specifying length [Column(DbType = "varchar(max)")] or [MaxLength(-1)] or [Column(StringLength = -1)], when length is -1, the mapping is as follows:
 
-| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | MsAccess | Dameng | Kingbase | Shentong |
-| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | ------ | -------- | -------- |
-| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | longtext | text   | text     | text     |
+| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | DuckDB   | MsAccess | Dameng | Kingbase | Shentong |
+| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | ------ | -------- | -------- |-------- |
+| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | text     | longtext | text   | text     | text     |
 
 > Note: Oracle nclob requires v1.3.2+ version for support; otherwise, it maps to nvarchar2(4000).
 

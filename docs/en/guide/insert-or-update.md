@@ -12,6 +12,7 @@ IFreeSql defines the `InsertOrUpdate` method to handle insert or update operatio
 | Oracle     | merge into              |     | Nanda General | merge into            |
 | Sqlite     | replace into            |     | MsAccess | Not supported          |
 | Firebird   | merge into              |     |          |                       |
+| DuckDB     | on conflict do update   |     |          |                       |
 
 ```csharp
 fsql.InsertOrUpdate<T>()

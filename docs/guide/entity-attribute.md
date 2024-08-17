@@ -113,9 +113,9 @@ class Topic
 
 当长度 -1 时产生的映射如下：
 
-| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | MsAccess | 达梦 | 金仓 | 神通 | 南通 |
-| - | - | - | - | - | - | - | - | - | - |- |
-| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | longtext | text | text | text | text | 
+| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | DuckDB | MsAccess | 达梦 | 金仓 | 神通 | 南通 |
+| - | - | - | - | - | - | - | - | - | - | - |- |
+| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | text | longtext | text | text | text | text | 
 
 > 注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext，其他数据库的映射规则与 -1 相同
 
