@@ -3,10 +3,78 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-19T07:14:08.968Z</updated>
+  <updated>2024-08-19T07:47:52.931Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
+  <entry>
+    <title type="text">BaseEntity</title>
+    <id>https://freesql.net/extra/freesql-extensions-baseentity.html</id>
+    <link href="https://freesql.net/extra/freesql-extensions-baseentity.html"/>
+    <updated>2024-08-19T07:29:16.000Z</updated>
+    <summary type="html"><![CDATA[<h2> 前言</h2>
+<p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
+<p>它们日常操作不方便之处：</p>
+<ul>
+<li>
+<p>每次使用前需要声明，再操作；</p>
+</li>
+<li>
+<p>很多人一个实体类，对应一个操作类（或DAL、DbContext、Repository）；</p>
+</li>
+</ul>
+<p>BaseEntity 是一种极简单的 CodeFirst 开发方式，特别对单表或多表CRUD，利用继承节省了每个实体类的重复属性（创建时间、ID等字段），软删除等功能，进行 crud 操作时不必时常考虑仓储的使用；</p>]]></summary>
+    <content type="html"><![CDATA[<h2> 前言</h2>
+<p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
+<p>它们日常操作不方便之处：</p>
+<ul>
+<li>
+<p>每次使用前需要声明，再操作；</p>
+</li>
+<li>
+<p>很多人一个实体类，对应一个操作类（或DAL、DbContext、Repository）；</p>
+</li>
+</ul>
+<p>BaseEntity 是一种极简单的 CodeFirst 开发方式，特别对单表或多表CRUD，利用继承节省了每个实体类的重复属性（创建时间、ID等字段），软删除等功能，进行 crud 操作时不必时常考虑仓储的使用；</p>
+<p>本文介绍 BaseEntity 一种极简约的 CRUD 操作方法。</p>
+<h2> 功能特点</h2>
+<ul>
+<li>
+<p>自动迁移实体结构（CodeFirst），到数据库；</p>
+</li>
+<li>
+<p>直接操作实体的方法，进行 CRUD 操作；</p>
+</li>
+<li>
+<p>简化用户定义实体类型，省去主键、常用字段的配置（如CreateTime、UpdateTime）；</p>
+</li>
+<li>
+<p>实现单表、多表查询的软删除逻辑；</p>
+</li>
+</ul>
+<h2> 声明</h2>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不想主键是自增键，可以重写属性：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>有关更多实体的特性配置，请参考资料：<a href="/guide/entity-attribute.html" target="blank">实体特性</a></p>
+</blockquote>
+<p>2、定义一个主键 Guid 的实体类型，保存数据时会自动产生有序不重复的 Guid 值（不用自己指定 Guid.NewGuid()）；</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> CRUD 使用</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实体类型.Select 是一个查询对象，使用方法和 FreeSql.ISelect 一样；</p>
+<p>支持多表查询时，软删除条件会附加在每个表中；</p>
+<blockquote>
+<p>有关更多查询方法，请参考资料：<a href="/guide/select.html" target="blank">查询</a></p>
+</blockquote>
+<h2> 事务建议</h2>
+<p>1、同线程事务，不支持异步：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、如果你是异步控</p>
+<p>由于 AsyncLocal 平台兼容不好，所以交给外部管理事务。</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
+<p>在 Scoped 结束时：_asyncUow.Value = null;</p>
+<p>如下：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+    <published>2024-08-19T07:29:16.000Z</published>
+  </entry>
   <entry>
     <title type="text">DuckDB（嵌入式 OLAP）</title>
     <id>https://freesql.net/guide/freesql-provider-duckdb.html</id>
@@ -716,74 +784,6 @@ fsql<span class="token punctuation">.</span><span class="token function">InsertO
 </ul>
 ]]></content>
     <published>2023-12-07T05:53:21.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">BaseEntity</title>
-    <id>https://freesql.net/guide/freesql-extensions-baseentity.html</id>
-    <link href="https://freesql.net/guide/freesql-extensions-baseentity.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
-    <summary type="html"><![CDATA[<h2> 前言</h2>
-<p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
-<p>它们日常操作不方便之处：</p>
-<ul>
-<li>
-<p>每次使用前需要声明，再操作；</p>
-</li>
-<li>
-<p>很多人一个实体类，对应一个操作类（或DAL、DbContext、Repository）；</p>
-</li>
-</ul>
-<p>BaseEntity 是一种极简单的 CodeFirst 开发方式，特别对单表或多表CRUD，利用继承节省了每个实体类的重复属性（创建时间、ID等字段），软删除等功能，进行 crud 操作时不必时常考虑仓储的使用；</p>]]></summary>
-    <content type="html"><![CDATA[<h2> 前言</h2>
-<p>尝试过 ado.net、dapper、ef，以及Repository仓储，甚至自己还写过生成器工具，以便做常规CRUD操作。</p>
-<p>它们日常操作不方便之处：</p>
-<ul>
-<li>
-<p>每次使用前需要声明，再操作；</p>
-</li>
-<li>
-<p>很多人一个实体类，对应一个操作类（或DAL、DbContext、Repository）；</p>
-</li>
-</ul>
-<p>BaseEntity 是一种极简单的 CodeFirst 开发方式，特别对单表或多表CRUD，利用继承节省了每个实体类的重复属性（创建时间、ID等字段），软删除等功能，进行 crud 操作时不必时常考虑仓储的使用；</p>
-<p>本文介绍 BaseEntity 一种极简约的 CRUD 操作方法。</p>
-<h2> 功能特点</h2>
-<ul>
-<li>
-<p>自动迁移实体结构（CodeFirst），到数据库；</p>
-</li>
-<li>
-<p>直接操作实体的方法，进行 CRUD 操作；</p>
-</li>
-<li>
-<p>简化用户定义实体类型，省去主键、常用字段的配置（如CreateTime、UpdateTime）；</p>
-</li>
-<li>
-<p>实现单表、多表查询的软删除逻辑；</p>
-</li>
-</ul>
-<h2> 声明</h2>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>1、定义一个主键 int 并且自增的实体类型，BaseEntity TKey 指定为 int/long 时，会认为主键是自增；</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不想主键是自增键，可以重写属性：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>有关更多实体的特性配置，请参考资料：<a href="/guide/entity-attribute.html" target="blank">实体特性</a></p>
-</blockquote>
-<p>2、定义一个主键 Guid 的实体类型，保存数据时会自动产生有序不重复的 Guid 值（不用自己指定 Guid.NewGuid()）；</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> CRUD 使用</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实体类型.Select 是一个查询对象，使用方法和 FreeSql.ISelect 一样；</p>
-<p>支持多表查询时，软删除条件会附加在每个表中；</p>
-<blockquote>
-<p>有关更多查询方法，请参考资料：<a href="/guide/select.html" target="blank">查询</a></p>
-</blockquote>
-<h2> 事务建议</h2>
-<p>1、同线程事务，不支持异步：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、如果你是异步控</p>
-<p>由于 AsyncLocal 平台兼容不好，所以交给外部管理事务。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)</p>
-<p>在 Scoped 结束时：_asyncUow.Value = null;</p>
-<p>如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
-    <published>2023-11-28T09:50:50.000Z</published>
   </entry>
   <entry>
     <title type="text">QuestDB</title>
@@ -2015,29 +2015,6 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <p>不建议前端直接 POST SQL 到后端使用它们，而应该在后端做一层映射，例如：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
     <published>2022-08-15T16:01:12.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">JsonMap</title>
-    <id>https://freesql.net/guide/freesql-extensions-jsonmap.html</id>
-    <link href="https://freesql.net/guide/freesql-extensions-jsonmap.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
-    <summary type="html"><![CDATA[<h1> JsonMap</h1>
-<blockquote>
-<p>推荐使用 v3.2.701+ 版本新增加的<a href="/guide/type-mapping.html" target="blank">自定义类型转换器</a></p>
-</blockquote>
-<p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>dotnet <span class="token function">add</span> package FreeSql.Extensions.JsonMap
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>]]></summary>
-    <content type="html"><![CDATA[<h1> JsonMap</h1>
-<blockquote>
-<p>推荐使用 v3.2.701+ 版本新增加的<a href="/guide/type-mapping.html" target="blank">自定义类型转换器</a></p>
-</blockquote>
-<p>FreeSql 扩展包，将值对象映射成 <code>typeof(string)</code>，安装扩展包：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 注意事项</h2>
-<p>[JsonMap]不能标记在 <b>T</b> 为string类型的实体上，否则会在特定情况下导致系统内所有标记了[Column(MapType=typeof(string)]的字段引发类型转换错误</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> [推荐]自定义类型转换</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
-    <published>2022-08-11T15:34:05.000Z</published>
   </entry>
   <entry>
     <title type="text">级联删除</title>
