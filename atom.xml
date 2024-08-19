@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-19T07:47:52.931Z</updated>
+  <updated>2024-08-19T07:53:21.334Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2609,7 +2609,7 @@ lst<span class="token punctuation">.</span><span class="token function">Add</spa
     <title type="text">PostgreSQL</title>
     <id>https://freesql.net/guide/freesql-provider-postgresql.html</id>
     <link href="https://freesql.net/guide/freesql-provider-postgresql.html"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-08-19T07:52:15.000Z</updated>
     <summary type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
 <p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
 <h2> 数组、字典</h2>
@@ -2682,8 +2682,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tbody>
 </table>
 <p>更多 lambda 表达式树函数，可以看下<a href="/guide/expression-function.html" target="blank">《表达式函数》</a>文档，支持自定义解析。</p>
-<p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1071" target="_blank" rel="noopener noreferrer">《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》</a></p>
-<h2> 空间地理类型</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 空间地理类型</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序</p>
 </blockquote>
@@ -9800,7 +9799,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2024-08-19T07:13:02.000Z</updated>
+    <updated>2024-08-19T07:52:15.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 类型映射（默认）</h2>
 <blockquote>

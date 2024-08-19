@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 19 Aug 2024 07:47:52 GMT</pubDate>
-    <lastBuildDate>Mon, 19 Aug 2024 07:47:52 GMT</lastBuildDate>
+    <pubDate>Mon, 19 Aug 2024 07:53:21 GMT</pubDate>
+    <lastBuildDate>Mon, 19 Aug 2024 07:53:21 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2275,8 +2275,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </tbody>
 </table>
 <p>更多 lambda 表达式树函数，可以看下<a href="/guide/expression-function.html" target="blank">《表达式函数》</a>文档，支持自定义解析。</p>
-<p>参考资料：<a href="https://github.com/dotnetcore/FreeSql/discussions/1071" target="_blank" rel="noopener noreferrer">《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》</a></p>
-<h2> 空间地理类型</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 空间地理类型</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>注意 NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis(); 与 FreeSqlBuilder 的顺序</p>
 </blockquote>
