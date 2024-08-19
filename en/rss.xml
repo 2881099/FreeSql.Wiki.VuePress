@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Mon, 19 Aug 2024 04:24:48 GMT</pubDate>
-    <lastBuildDate>Mon, 19 Aug 2024 04:24:48 GMT</lastBuildDate>
+    <pubDate>Mon, 19 Aug 2024 07:14:08 GMT</pubDate>
+    <lastBuildDate>Mon, 19 Aug 2024 07:14:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4404,19 +4404,11 @@ FROM "Topic" a</p>
       <link>https://freesql.net/en/guide/type-mapping.html</link>
       <guid>https://freesql.net/en/guide/type-mapping.html</guid>
       <source url="https://freesql.net/en/rss.xml">Type Mapping</source>
-      <description>Custom Type Mapping (MapType) v3.2.701 Custom Type Conversion Using MapType Enum -&amp;gt; string/int etc.: There should be no need for further explanation. BigInteger can also be mapp...</description>
+      <description>Type Mapping (Default) Note: Due to formatting issues, not all supported databases are displayed. CSharp MySql SqlServer PostgreSQL Oracle Sqlite Dameng ------------------------...</description>
       <pubDate>Sat, 21 Aug 2021 05:59:59 GMT</pubDate>
       <content:encoded><![CDATA[<h1> Type Mapping</h1>
-<h2> Custom Type Mapping (MapType)</h2>
-<h3> v3.2.701 Custom Type Conversion</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> Using MapType Enum -&gt; string/int etc.:</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>There should be no need for further explanation.</p>
-<p><code>BigInteger</code> can also be mapped, but please note: it is only for CURD convenience; operations like +, -, *, / are not supported.</p>
-<p>In version v0.9.15, you can map value objects as <code>typeof(string)</code> by installing the extension package:</p>
-<blockquote>
-<p>dotnet add package FreeSql.Extensions.JsonMap</p>
-</blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Default Type Mapping</h2>
+<h2> Type Mapping (Default)</h2>
+<p>Note: Due to formatting issues, not all supported databases are displayed.</p>
 <table>
 <thead>
 <tr>
@@ -4613,9 +4605,6 @@ FROM "Topic" a</p>
 </tbody>
 </table>
 <blockquote>
-<p>The above types and lengths are defaults. Column attributes DbType value can be set manually.</p>
-</blockquote>
-<blockquote>
 <p>For string specifying length [Column(DbType = "varchar(max)")] or [MaxLength(-1)] or [Column(StringLength = -1)], when length is -1, the mapping is as follows:</p>
 </blockquote>
 <table>
@@ -4631,7 +4620,6 @@ FROM "Topic" a</p>
 <th>MsAccess</th>
 <th>Dameng</th>
 <th>Kingbase</th>
-<th>Shentong</th>
 </tr>
 </thead>
 <tbody>
@@ -4646,20 +4634,24 @@ FROM "Topic" a</p>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
-<td>text</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>Note: Oracle nclob requires v1.3.2+ version for support; otherwise, it maps to nvarchar2(4000).</p>
-</blockquote>
-<blockquote>
-<p>Note: MySql [MaxLength(-2)] or [Column(StringLength = -2)] maps to longtext; other databases have the same mapping rules as -1.</p>
+<p>Note: MySql [MaxLength(-2)] or [Column(StringLength = -2)] maps to longtext</p>
 </blockquote>
 <blockquote>
 <p>For decimal specifying length [Column(Precision = 10, Scale = 2)]</p>
 </blockquote>
-<h2> MySql Special Type Mapping</h2>
+<h2> MapType</h2>
+<p>Using MapType Enum -&gt; string/int etc.:</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
+<blockquote>
+<p>dotnet add package FreeSql.Extensions.JsonMap</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> TypeHandlers (Custom)</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Type Mapping (Special)</h2>
+<p>FreeSql.Provider.MySql/MySqlConnector：</p>
 <table>
 <thead>
 <tr>
@@ -4694,9 +4686,8 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<h2> MySql Considerations</h2>
 <p>If <code>int</code>, <code>byte</code> types specify <code>DbType="tinyint(1)"</code>, please note that <code>tinyint(1)</code> is by default mapped to <code>bool</code> in ado.net. You can specify <code>TreatTinyAsBoolean=false</code> in the connection string to map <code>tinyint(1)</code> to <code>SByte</code> instead of <code>bool</code>.</p>
-<h2> PostgreSQL Special Type Mapping</h2>
+<p>FreeSql.Provider.PostgreSQL：</p>
 <table>
 <thead>
 <tr>
@@ -4865,11 +4856,9 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<h2> RewriteSql, RereadSql</h2>
+<h2> Rewrite/Re-read</h2>
 <p>Rewrite SQL on write and rewrite SQL on read, suitable for read/write scenarios with geography types.</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Priority</h2>
-<p>Database import attributes &gt; Entity attributes &gt; FluentApi &gt; Aop</p>
-]]></content:encoded>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>Update</title>

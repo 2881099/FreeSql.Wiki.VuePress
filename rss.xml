@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 19 Aug 2024 04:24:48 GMT</pubDate>
-    <lastBuildDate>Mon, 19 Aug 2024 04:24:48 GMT</lastBuildDate>
+    <pubDate>Mon, 19 Aug 2024 07:14:08 GMT</pubDate>
+    <lastBuildDate>Mon, 19 Aug 2024 07:14:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8469,19 +8469,13 @@ FROM "Topic" a</p>
       <link>https://freesql.net/guide/type-mapping.html</link>
       <guid>https://freesql.net/guide/type-mapping.html</guid>
       <source url="https://freesql.net/rss.xml">类型映射</source>
-      <description>自定义类型映射(MapType) v3.2.701 自定义类型转换 使用 MapType 枚举 -&amp;gt; string/int 等等如下： 应该不需要解释了吧？ BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - \* / 等操作； v0.9.15 版本还可以将值对象映射成 typ...</description>
+      <description>类型映射（默认） 提示：因排版问题，不显示所有支持的数据库 csharp MySql SqlServer PostgreSQL Oracle Sqlite 达梦 --------------------------------- -------------------- ---------------- ------------- ----------...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 类型映射</h1>
-<h2> 自定义类型映射(MapType)</h2>
-<h3> v3.2.701 自定义类型转换</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用 MapType 枚举 -&gt; string/int 等等如下：</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>应该不需要解释了吧？</p>
-<p>BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - * / 等操作；</p>
-<p>v0.9.15 版本还可以将值对象映射成 typeof(string)，安装扩展包：</p>
+<h2> 类型映射（默认）</h2>
 <blockquote>
-<p>dotnet add package FreeSql.Extensions.JsonMap</p>
+<p>提示：因排版问题，不显示所有支持的数据库</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 默认类型映射</h2>
 <table>
 <thead>
 <tr>
@@ -8678,9 +8672,6 @@ FROM "Topic" a</p>
 </tbody>
 </table>
 <blockquote>
-<p>以上类型和长度是默认值，可手工设置 Column 特性 DbType 值</p>
-</blockquote>
-<blockquote>
 <p>string 指定长度 [Column(DbType = "varchar(max)")] 或者 [MaxLength(-1)] 或者 [Column(StringLength = -1)]，当长度 -1 时产生的映射如下：</p>
 </blockquote>
 <table>
@@ -8696,7 +8687,6 @@ FROM "Topic" a</p>
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
-<th>神通</th>
 </tr>
 </thead>
 <tbody>
@@ -8711,20 +8701,24 @@ FROM "Topic" a</p>
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
-<td>text</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>注意：Oracle nclob 需要 v1.3.2+ 版本才支持，否则将映射 nvarchar2(4000)</p>
-</blockquote>
-<blockquote>
-<p>注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext，其他数据库的映射规则与 -1 相同</p>
+<p>注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext</p>
 </blockquote>
 <blockquote>
 <p>decimal 指定长度 [Column(Precision = 10, Scale = 2)]</p>
 </blockquote>
-<h2> MySql 特别类型映射</h2>
+<h2> MapType</h2>
+<p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
+<blockquote>
+<p>dotnet add package FreeSql.Extensions.JsonMap</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> TypeHandlers（自定义）</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 类型映射（特别）</h2>
+<p>FreeSql.Provider.MySql/MySqlConnector：</p>
 <table>
 <thead>
 <tr>
@@ -8759,9 +8753,10 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<h2> Mysql注意事项</h2>
-<p>如果<code>int、byte</code>类型，指定了 <code>DbType="tinyint(1)"</code>,请注意，<code>tinyint(1)</code>在ado.net中默认将此值映射为<code>bool</code>类型，可在链接串中指定<code>TreatTinyAsBoolean=false</code>,使映射 <code>tinyint(1) </code>为 <code>SByte</code> 而非 <code>bool</code>。</p>
-<h2> PostgreSQL 特别类型映射</h2>
+<blockquote>
+<p>MySql 如果 <code>int、byte</code>类型，指定了 <code>DbType="tinyint(1)"</code>,请注意，<code>tinyint(1)</code>在ado.net中默认将此值映射为<code>bool</code>类型，可在链接串中指定<code>TreatTinyAsBoolean=false</code>,使映射 <code>tinyint(1) </code>为 <code>SByte</code> 而非 <code>bool</code>。</p>
+</blockquote>
+<p>FreeSql.Provider.PostgreSQL：</p>
 <table>
 <thead>
 <tr>
@@ -8884,11 +8879,9 @@ FROM "Topic" a</p>
 </tr>
 </tbody>
 </table>
-<h2> 自定义重写(RewriteSql)、重读(RereadSql)</h2>
+<h2> 重写、重读</h2>
 <p>写入时重写 SQL、读取时重写 SQL，适合 geography 类型的读写场景。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 优先级</h2>
-<p>从数据库导入特性 &gt; 实体特性 &gt; FluentApi &gt; Aop</p>
-]]></content:encoded>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>UnitOfWork</title>

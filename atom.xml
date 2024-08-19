@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-19T04:24:48.795Z</updated>
+  <updated>2024-08-19T07:14:08.968Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9823,66 +9823,212 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2024-08-17T09:27:08.000Z</updated>
+    <updated>2024-08-19T07:13:02.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
-<h2> 自定义类型映射(MapType)</h2>
-<h3> v3.2.701 自定义类型转换</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code>FreeSql<span class="token punctuation">.</span>Internal<span class="token punctuation">.</span>Utils<span class="token punctuation">.</span>TypeHandlers<span class="token punctuation">.</span><span class="token function">TryAdd</span><span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">JsonClass</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">String_JsonClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-
-<span class="token keyword">class</span> <span class="token class-name">Product</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">Guid</span> id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Column</span><span class="token attribute-arguments"><span class="token punctuation">(</span>MapType <span class="token operator">=</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name"><span class="token keyword">string</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> StringLength <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">JsonClass</span> json <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">class</span> <span class="token class-name">JsonClass</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> a <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> b <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">class</span> <span class="token class-name">String_JsonClass</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">TypeHandler<span class="token punctuation">&lt;</span>JsonClass<span class="token punctuation">&gt;</span></span></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">object</span></span> <span class="token function">Serialize</span><span class="token punctuation">(</span><span class="token class-name">JsonClass</span> <span class="token keyword">value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> JsonConvert<span class="token punctuation">.</span><span class="token function">SerializeObject</span><span class="token punctuation">(</span><span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name">JsonClass</span> <span class="token function">Deserialize</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> <span class="token keyword">value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> JsonConvert<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">DeserializeObject</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>JsonClass<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">)</span><span class="token keyword">value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Class1</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">//自定义 DateTimeOffset</span>
-    <span class="token punctuation">[</span><span class="token function">Column</span><span class="token punctuation">(</span>MapType <span class="token operator">=</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name"><span class="token keyword">string</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> DbType <span class="token operator">=</span> <span class="token string">"datetime"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">DateTimeOffset</span> Join <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">class</span> <span class="token class-name">DateTimeOffsetTypeHandler</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">TypeHandler<span class="token punctuation">&lt;</span>DateTimeOffset<span class="token punctuation">&gt;</span></span></span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">object</span></span> <span class="token function">Serialize</span><span class="token punctuation">(</span><span class="token class-name">DateTimeOffset</span> <span class="token keyword">value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">value</span><span class="token punctuation">.</span><span class="token function">ToUniversalTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name">DateTimeOffset</span> <span class="token function">Deserialize</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> <span class="token keyword">value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> DateTimeOffset<span class="token punctuation">.</span>TryParse<span class="token class-name"><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">)</span><span class="token keyword">value</span><span class="token punctuation">,</span> <span class="token keyword">out</span> <span class="token keyword">var</span> dts<span class="token punctuation">)</span> <span class="token punctuation">?</span></span> dts <span class="token punctuation">:</span> DateTimeOffset<span class="token punctuation">.</span>MinValue<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
-    <content type="html"><![CDATA[<h1> 类型映射</h1>
-<h2> 自定义类型映射(MapType)</h2>
-<h3> v3.2.701 自定义类型转换</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 使用 MapType 枚举 -&gt; string/int 等等如下：</h3>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>应该不需要解释了吧？</p>
-<p>BigInteger 都可以映射使用了，但请注意：仅仅是 CURD 方便， Equals == 判断可以使用，无法实现 + - * / 等操作；</p>
-<p>v0.9.15 版本还可以将值对象映射成 typeof(string)，安装扩展包：</p>
+<h2> 类型映射（默认）</h2>
 <blockquote>
-<p>dotnet add package FreeSql.Extensions.JsonMap</p>
+<p>提示：因排版问题，不显示所有支持的数据库</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 默认类型映射</h2>
+<table>
+<thead>
+<tr>
+<th>csharp</th>
+<th>MySql</th>
+<th>SqlServer</th>
+<th>PostgreSQL</th>
+<th>Oracle</th>
+<th>Sqlite</th>
+<th>达梦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool | bool?</td>
+<td>bit(1)</td>
+<td>bit</td>
+<td>bool</td>
+<td>number(1)</td>
+<td>boolean</td>
+<td>number(1)</td>
+</tr>
+<tr>
+<td>sbyte | sbyte?</td>
+<td>tinyint(3)</td>
+<td>smallint</td>
+<td>int2</td>
+<td>number(4)</td>
+<td>smallint</td>
+<td>number(4)</td>
+</tr>
+<tr>
+<td>short | short?</td>
+<td>smallint(6)</td>
+<td>smallint</td>
+<td>int2</td>
+<td>number(6)</td>
+<td>smallint</td>
+<td>number(6)</td>
+</tr>
+<tr>
+<td>int | int?</td>
+<td>int(11)</td>
+<td>int</td>
+<td>int4</td>
+<td>number(11)</td>
+<td>integer</td>
+<td>number(11)</td>
+</tr>
+<tr>
+<td>long | long?</td>
+<td>bigint(20)</td>
+<td>bigint</td>
+<td>int8</td>
+<td>number(21)</td>
+<td>integer</td>
+<td>number(21)</td>
+</tr>
+<tr>
+<td>byte | byte?</td>
+<td>tinyint(3) unsigned</td>
+<td>tinyint</td>
+<td>int2</td>
+<td>number(3)</td>
+<td>int2</td>
+<td>number(3)</td>
+</tr>
+<tr>
+<td>ushort | ushort?</td>
+<td>smallint(5) unsigned</td>
+<td>int</td>
+<td>int4</td>
+<td>number(5)</td>
+<td>unsigned</td>
+<td>number(5)</td>
+</tr>
+<tr>
+<td>uint | uint?</td>
+<td>int(10) unsigned</td>
+<td>bigint</td>
+<td>int8</td>
+<td>number(10)</td>
+<td>decimal(10,0)</td>
+<td>number(10)</td>
+</tr>
+<tr>
+<td>ulong | ulong?</td>
+<td>bigint(20) unsigned</td>
+<td>decimal(20,0)</td>
+<td>numeric(20,0)</td>
+<td>number(20)</td>
+<td>decimal(21,0)</td>
+<td>number(20)</td>
+</tr>
+<tr>
+<td>double | double?</td>
+<td>double</td>
+<td>float</td>
+<td>float8</td>
+<td>float(126)</td>
+<td>double</td>
+<td>double</td>
+</tr>
+<tr>
+<td>float | float?</td>
+<td>float</td>
+<td>real</td>
+<td>float4</td>
+<td>float(63)</td>
+<td>float</td>
+<td>real</td>
+</tr>
+<tr>
+<td>decimal | decimal?</td>
+<td>decimal(10,2)</td>
+<td>decimal(10,2)</td>
+<td>numeric(10,2)</td>
+<td>number(10,2)</td>
+<td>decimal(10,2)</td>
+<td>number(10,2)</td>
+</tr>
+<tr>
+<td>Guid | Guid?</td>
+<td>char(36)</td>
+<td>uniqueidentifier</td>
+<td>uuid</td>
+<td>char(36 CHAR)</td>
+<td>character(36)</td>
+<td>char(36)</td>
+</tr>
+<tr>
+<td>TimeSpan | TimeSpan?</td>
+<td>time</td>
+<td>time</td>
+<td>time</td>
+<td>interval day(2) to second(6)</td>
+<td>bigint</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DateTime | DateTime?</td>
+<td>datetime</td>
+<td>datetime</td>
+<td>timestamp</td>
+<td>timestamp(6)</td>
+<td>datetime</td>
+<td>timestamp(6)</td>
+</tr>
+<tr>
+<td>DateTimeOffset | DateTimeOffset?</td>
+<td>-</td>
+<td>datetimeoffset</td>
+<td>-</td>
+<td>timestamp(6) with local time zone</td>
+<td>-</td>
+<td>timestamp(6)</td>
+</tr>
+<tr>
+<td>Enum | Enum?</td>
+<td>enum</td>
+<td>int</td>
+<td>int4</td>
+<td>number(16)</td>
+<td>mediumint</td>
+<td>number(16)</td>
+</tr>
+<tr>
+<td>FlagsEnum | FlagsEnum?</td>
+<td>set</td>
+<td>bigint</td>
+<td>int8</td>
+<td>number(32)</td>
+<td>bigint</td>
+<td>number(32)</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>varbinary(255)</td>
+<td>varbinary(255)</td>
+<td>bytea</td>
+<td>blob</td>
+<td>blob</td>
+<td>blob</td>
+</tr>
+<tr>
+<td>string</td>
+<td>varchar(255)</td>
+<td>nvarchar(255)</td>
+<td>varchar(255)</td>
+<td>nvarchar2(255)</td>
+<td>nvarchar(255)</td>
+<td>nvarchar2(255)</td>
+</tr>
+</tbody>
+</table>]]></summary>
+    <content type="html"><![CDATA[<h1> 类型映射</h1>
+<h2> 类型映射（默认）</h2>
+<blockquote>
+<p>提示：因排版问题，不显示所有支持的数据库</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -10079,9 +10225,6 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tbody>
 </table>
 <blockquote>
-<p>以上类型和长度是默认值，可手工设置 Column 特性 DbType 值</p>
-</blockquote>
-<blockquote>
 <p>string 指定长度 [Column(DbType = "varchar(max)")] 或者 [MaxLength(-1)] 或者 [Column(StringLength = -1)]，当长度 -1 时产生的映射如下：</p>
 </blockquote>
 <table>
@@ -10097,7 +10240,6 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <th>MsAccess</th>
 <th>达梦</th>
 <th>金仓</th>
-<th>神通</th>
 </tr>
 </thead>
 <tbody>
@@ -10112,20 +10254,24 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <td>longtext</td>
 <td>text</td>
 <td>text</td>
-<td>text</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>注意：Oracle nclob 需要 v1.3.2+ 版本才支持，否则将映射 nvarchar2(4000)</p>
-</blockquote>
-<blockquote>
-<p>注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext，其他数据库的映射规则与 -1 相同</p>
+<p>注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext</p>
 </blockquote>
 <blockquote>
 <p>decimal 指定长度 [Column(Precision = 10, Scale = 2)]</p>
 </blockquote>
-<h2> MySql 特别类型映射</h2>
+<h2> MapType</h2>
+<p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
+<blockquote>
+<p>dotnet add package FreeSql.Extensions.JsonMap</p>
+</blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> TypeHandlers（自定义）</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 类型映射（特别）</h2>
+<p>FreeSql.Provider.MySql/MySqlConnector：</p>
 <table>
 <thead>
 <tr>
@@ -10160,9 +10306,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tr>
 </tbody>
 </table>
-<h2> Mysql注意事项</h2>
-<p>如果<code>int、byte</code>类型，指定了 <code>DbType="tinyint(1)"</code>,请注意，<code>tinyint(1)</code>在ado.net中默认将此值映射为<code>bool</code>类型，可在链接串中指定<code>TreatTinyAsBoolean=false</code>,使映射 <code>tinyint(1) </code>为 <code>SByte</code> 而非 <code>bool</code>。</p>
-<h2> PostgreSQL 特别类型映射</h2>
+<blockquote>
+<p>MySql 如果 <code>int、byte</code>类型，指定了 <code>DbType="tinyint(1)"</code>,请注意，<code>tinyint(1)</code>在ado.net中默认将此值映射为<code>bool</code>类型，可在链接串中指定<code>TreatTinyAsBoolean=false</code>,使映射 <code>tinyint(1) </code>为 <code>SByte</code> 而非 <code>bool</code>。</p>
+</blockquote>
+<p>FreeSql.Provider.PostgreSQL：</p>
 <table>
 <thead>
 <tr>
@@ -10285,11 +10432,9 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </tr>
 </tbody>
 </table>
-<h2> 自定义重写(RewriteSql)、重读(RereadSql)</h2>
+<h2> 重写、重读</h2>
 <p>写入时重写 SQL、读取时重写 SQL，适合 geography 类型的读写场景。</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 优先级</h2>
-<p>从数据库导入特性 &gt; 实体特性 &gt; FluentApi &gt; Aop</p>
-]]></content>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
   <entry>
