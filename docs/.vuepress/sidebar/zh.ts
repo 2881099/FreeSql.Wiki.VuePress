@@ -20,6 +20,7 @@ export const zhSidebarConfig = sidebar({
             "insert-or-update",
             "entity-attribute",
             "navigate-attribute",
+            "type-mapping",
           ],
         },
         {
@@ -69,14 +70,6 @@ export const zhSidebarConfig = sidebar({
             "freesql-provider-duckdb",
           ],
         },
-        {
-          text: "扩展",
-          collapsible: true,
-          children: [
-            "freesql-extensions-baseentity",
-            "freesql-extensions-jsonmap",
-          ],
-        },
         "expression-function",
         "transaction",
         "filters",
@@ -88,7 +81,6 @@ export const zhSidebarConfig = sidebar({
           children: [
             "code-first",
             "fluent-api",
-            "type-mapping",
           ],
         },
         "db-first",
