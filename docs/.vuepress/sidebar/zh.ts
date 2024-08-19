@@ -158,6 +158,7 @@ export const zhSidebarConfig = sidebar({
         "freesql-cap",
         "idlebus-freesql",
         "iselect-depcopy",
+        "freesql-extensions-baseentity",
         "freesql-auditlog",
         "freesql-docker",
         "issues-mysql5_5",
