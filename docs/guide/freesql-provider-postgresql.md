@@ -70,7 +70,25 @@ fsql.Select<model>().Where(a => int.Parse(a.jsonb2["key1"]["key2"].ToString()) >
 
 更多 lambda 表达式树函数，可以看下[《表达式函数》](expression-function.md)文档，支持自定义解析。
 
-参考资料：[《PostgreSQL pgsql jsonb 类型 POCO 访问扩展现实方案 #1071》](https://github.com/dotnetcore/FreeSql/discussions/1071)
+```csharp
+fsql.UseJsonMap(); //开启功能
+
+class Table
+{
+    public int Id { get; set; }
+
+    [JsonMap, Column(DbType = "jsonb")]
+    public TableOptions Options { get; set; }
+}
+class TableOptions
+{
+    public int Value1 { get; set; }
+    public string Value2 { get; set; }
+}
+
+fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "xx").ToList();
+//WHERE a."Options"->>'Value1' = 100 AND a."Options"->>'Value2' = 'xx'
+```
 
 ## 空间地理类型
 
