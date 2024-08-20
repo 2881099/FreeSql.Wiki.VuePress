@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 20 Aug 2024 18:51:19 GMT</pubDate>
-    <lastBuildDate>Tue, 20 Aug 2024 18:51:19 GMT</lastBuildDate>
+    <pubDate>Tue, 20 Aug 2024 18:53:06 GMT</pubDate>
+    <lastBuildDate>Tue, 20 Aug 2024 18:53:06 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8845,7 +8845,7 @@ FROM "Topic" a</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> DateOnly/TimeOnly</h2>
 <p>目前只有 FreeSql.Provider.SqlServer/PostgreSQL/MySql/MySqlConnector/KingbaseES/Duckdb 几个包实现了映射（v3.5.100）</p>
-<p>DateOnly/TimeOnly 定义在 .net6、7、8 中适配非常难受，其他 Provider 可参考 TypeHandlers（自定义） 解决映射。</p>
+<p>DateOnly/TimeOnly 定义在 .net6/7/8 适配非常难受，其他 Provider 可参考 TypeHandlers（自定义） 解决映射。</p>
 <h2> TypeHandlers（自定义）</h2>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 类型映射（特别）</h2>
 <p>FreeSql.Provider.MySql/MySqlConnector：</p>
