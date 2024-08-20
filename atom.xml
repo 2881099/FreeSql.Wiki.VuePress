@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-19T15:44:15.265Z</updated>
+  <updated>2024-08-20T15:01:04.087Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -79,7 +79,7 @@
     <title type="text">DuckDB（嵌入式 OLAP）</title>
     <id>https://freesql.net/guide/freesql-provider-duckdb.html</id>
     <link href="https://freesql.net/guide/freesql-provider-duckdb.html"/>
-    <updated>2024-08-17T09:27:08.000Z</updated>
+    <updated>2024-08-20T14:58:50.000Z</updated>
     <summary type="html"><![CDATA[<h2> 介绍</h2>
 <p>DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。</p>
 <p>DuckDB has two configurable options for concurrency:</p>
@@ -96,7 +96,7 @@
 </ul>
 <p><a href="https://duckdb.org/docs/" target="_blank" rel="noopener noreferrer">DuckDB | 官网 </a></p>
 <h2> 安装包</h2>
-<p>FreeSql.Provider.DuckDB</p>
+<p>FreeSql.Provider.Duckdb</p>
 <p>.NET CLI</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
@@ -135,6 +135,151 @@
 </tr>
 </tbody>
 </table>
+<p>默认映射类型：</p>
+<table>
+<thead>
+<tr>
+<th>CSharp</th>
+<th>DuckDB</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool/bool?</td>
+<td>BOOLEAN</td>
+<td>logical boolean (true/false)</td>
+</tr>
+<tr>
+<td>sbyte/sbyte?</td>
+<td>TINYINT</td>
+<td>signed one-byte integer</td>
+</tr>
+<tr>
+<td>short/short?</td>
+<td>SMALLINT</td>
+<td>signed two-byte integer</td>
+</tr>
+<tr>
+<td>int/int?</td>
+<td>INTEGER</td>
+<td>signed four-byte integer</td>
+</tr>
+<tr>
+<td>long/long?</td>
+<td>BIGINT</td>
+<td>signed eight-byte integer</td>
+</tr>
+<tr>
+<td>byte/byte?</td>
+<td>UTINYINT</td>
+<td></td>
+</tr>
+<tr>
+<td>ushort/ushort?</td>
+<td>USMALLINT</td>
+<td></td>
+</tr>
+<tr>
+<td>uint/uint?</td>
+<td>UINTEGER</td>
+<td></td>
+</tr>
+<tr>
+<td>ulong/ulong?</td>
+<td>UBIGINT</td>
+<td></td>
+</tr>
+<tr>
+<td>double/double?</td>
+<td>DOUBLE</td>
+<td>double precision floating-point number (8 bytes)</td>
+</tr>
+<tr>
+<td>float/float?</td>
+<td>FLOAT</td>
+<td>single precision floating-point number (4 bytes)</td>
+</tr>
+<tr>
+<td>decimal/decimal?</td>
+<td>DECIMAL(10,2)</td>
+<td>fixed-precision number with the given width (precision) and scale</td>
+</tr>
+<tr>
+<td>TimeSpan/TimeSpan?</td>
+<td>TIME</td>
+<td>time of day (no time zone)</td>
+</tr>
+<tr>
+<td>DateTime/DateTime?</td>
+<td>TIMESTAMP</td>
+<td>combination of time and date</td>
+</tr>
+<tr>
+<td>TimeOnly/TimeOnly?</td>
+<td>TIME</td>
+<td></td>
+</tr>
+<tr>
+<td>DateOnly/DateOnly?</td>
+<td>DATE</td>
+<td>calendar date (year, month day)</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>BLOB</td>
+<td>variable-length binary data</td>
+</tr>
+<tr>
+<td>string</td>
+<td>VARCHAR(255)</td>
+<td>variable-length character string</td>
+</tr>
+<tr>
+<td>char</td>
+<td>CHAR(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Guid/Guid?</td>
+<td>UUID</td>
+<td>UUID data type</td>
+</tr>
+<tr>
+<td>BitArray</td>
+<td>BIT</td>
+<td>string of 1s and 0s</td>
+</tr>
+<tr>
+<td>BigInteger/BigInteger?</td>
+<td>HUGEINT</td>
+<td>signed sixteen-byte integer</td>
+</tr>
+<tr>
+<td>T[]</td>
+<td>ARRAY</td>
+<td>如 int[]、string[]，不能是可空 int?[]</td>
+</tr>
+<tr>
+<td>List&lt;T&gt;</td>
+<td>LIST</td>
+<td>如 List&lt;int&gt;、List&lt;string&gt;，不能是可空 List&lt;int?&gt;</td>
+</tr>
+<tr>
+<td>Dictionary&lt;string, object&gt;</td>
+<td>STRUCT</td>
+<td>{'i': 42, 'j': 'a'}</td>
+</tr>
+<tr>
+<td>Dictionary&lt;TKey, TValue&gt;</td>
+<td>MAP</td>
+<td>map([1, 2], ['a', 'b'])</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>自定义映射，请移步<a href="/guide/type-mapping.html" target="blank">【类型映射】</a>文档。</p>
+</blockquote>
 ]]></content>
     <published>2024-08-17T09:27:08.000Z</published>
   </entry>
