@@ -86,7 +86,7 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 
 目前只有 FreeSql.Provider.SqlServer/PostgreSQL/MySql/MySqlConnector/KingbaseES/Duckdb 几个包实现了映射（v3.5.100）
 
-DateOnly/TimeOnly 定义在 .net6、7、8 中适配非常难受，其他 Provider 可参考 TypeHandlers（自定义） 解决映射。
+DateOnly/TimeOnly 定义在 .net6/7/8 适配非常难受，其他 Provider 可参考 TypeHandlers（自定义） 解决映射。
 
 ## TypeHandlers（自定义）
 
