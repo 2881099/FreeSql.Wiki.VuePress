@@ -78,7 +78,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 | BigInteger/BigInteger?  | HUGEINT | signed sixteen-byte integer |
 | T[] | ARRAY | 如 int[]、string[]，不能是可空 int?[] |
 | List\<T\> | LIST | 如 List\<int\>、List\<string\>，不能是可空 List\<int?\> |
-| Dictionary\<string, object\> | STRUCT | {'i': 42, 'j': 'a'} |
+| class + [JsonMap](type-mapping.md#json) | STRUCT | {'i': 42, 'j': 'a'} |
 | Dictionary\<TKey, TValue\> | MAP | map([1, 2], ['a', 'b']) |
 
 > 自定义映射，请移步[【类型映射】](type-mapping.md)文档。
