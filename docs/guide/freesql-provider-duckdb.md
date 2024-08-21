@@ -76,8 +76,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 | Guid/Guid?  | UUID | UUID data type |
 | BitArray  | BIT | string of 1s and 0s |
 | BigInteger/BigInteger?  | HUGEINT | signed sixteen-byte integer |
-| T[] | ARRAY | 如 int[]、string[]，不能是可空 int?[] |
-| List\<T\> | LIST | 如 List\<int\>、List\<string\>，不能是可空 List\<int?\> |
+| T[] | ARRAY/LIST | 如 int[]、string[]，不能是可空 int?[] |
 | class + [JsonMap](type-mapping.md#json) | STRUCT | {'i': 42, 'j': 'a'} |
 | Dictionary\<TKey, TValue\> | MAP | map([1, 2], ['a', 'b']) |
 
