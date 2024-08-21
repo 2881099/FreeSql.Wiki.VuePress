@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-21T10:14:49.749Z</updated>
+  <updated>2024-08-21T10:55:12.986Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -79,7 +79,7 @@
     <title type="text">DuckDB（嵌入式 OLAP）</title>
     <id>https://freesql.net/guide/freesql-provider-duckdb.html</id>
     <link href="https://freesql.net/guide/freesql-provider-duckdb.html"/>
-    <updated>2024-08-21T10:13:41.000Z</updated>
+    <updated>2024-08-21T10:54:04.000Z</updated>
     <summary type="html"><![CDATA[<h2> 介绍</h2>
 <p>DuckDB 是一款进程内分析数据库，它可以在无需维护分布式多服务器系统的情况下处理出人意料的大型数据集。</p>
 <p>DuckDB has two configurable options for concurrency:</p>
@@ -257,13 +257,8 @@
 </tr>
 <tr>
 <td>T[]</td>
-<td>ARRAY</td>
+<td>ARRAY/LIST</td>
 <td>如 int[]、string[]，不能是可空 int?[]</td>
-</tr>
-<tr>
-<td>List&lt;T&gt;</td>
-<td>LIST</td>
-<td>如 List&lt;int&gt;、List&lt;string&gt;，不能是可空 List&lt;int?&gt;</td>
 </tr>
 <tr>
 <td>class + <a href="/guide/type-mapping.html#json" target="blank">JsonMap</a></td>

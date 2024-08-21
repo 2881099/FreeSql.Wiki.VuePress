@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 21 Aug 2024 10:14:49 GMT</pubDate>
-    <lastBuildDate>Wed, 21 Aug 2024 10:14:49 GMT</lastBuildDate>
+    <pubDate>Wed, 21 Aug 2024 10:55:12 GMT</pubDate>
+    <lastBuildDate>Wed, 21 Aug 2024 10:55:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -244,13 +244,8 @@
 </tr>
 <tr>
 <td>T[]</td>
-<td>ARRAY</td>
+<td>ARRAY/LIST</td>
 <td>如 int[]、string[]，不能是可空 int?[]</td>
-</tr>
-<tr>
-<td>List&lt;T&gt;</td>
-<td>LIST</td>
-<td>如 List&lt;int&gt;、List&lt;string&gt;，不能是可空 List&lt;int?&gt;</td>
 </tr>
 <tr>
 <td>class + <a href="/guide/type-mapping.html#json" target="blank">JsonMap</a></td>
