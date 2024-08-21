@@ -50,7 +50,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 | DataSource = :memory:;threads=8;ACCESS_MODE=READ_ONLY	| Connect to a new in-memory database, limit threads to 8, make connection read-only| 
 | DataSource = train_services.db;ACCESS_MODE=READ_ONLY;memory_limit=10GB	| Connect to train_services.db, make connection read-only, limit RAM usage to 10GB| 
 
-默认映射类型：
+## 类型映射
 
 | CSharp	| DuckDB | 说明 |
 | - | - | - |
