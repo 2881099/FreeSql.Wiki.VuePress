@@ -198,67 +198,80 @@ class Topic
 使用 MapType 枚举 -> string/int 等等如下：
 
 ```csharp
-class Topic
+class Table
 {
     [Column(MapType = typeof(string))]
-    public EnumType Enum1 { get; set; }
+    public PeopleType t1 { get; set; }
 
     [Column(MapType = typeof(int))]
-    public EnumType Enum2 { get; set; }
+    public PeopleType t2 { get; set; }
 
     [Column(MapType = typeof(string))]
-    public BigInteger Num1 { get; set; }
+    public BigInteger t3 { get; set; }
 }
-public enum EnumType { 中国人, abc, 香港 }
+public enum PeopleType { 中国人, abc, 香港 }
 ```
 
-v3.2.701 自定义类型转换
+TypeHandlers（自定义）：
 
 ```csharp
-FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonClass), new String_JsonClass());
+FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(JsonPoco), new JsonPocoTypeHandler());
+FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(DateOnly), new DateOnlyTypeHandler());
+FreeSql.Internal.Utils.TypeHandlers.TryAdd(typeof(DateTimeOffset), new DateTimeOffsetTypeHandler());
 
-class Topic
+class Product
 {
-    public Guid id { get; set; }
-    [Column(MapType = typeof(string), StringLength = -1)]
-    public JsonClass json { get; set; }
+    public JsonPoco json { get; set; }
+    public DateOnly date { get; set; }
+    public DateTimeOffset dateTimeOffset { get; set; }
 }
-
-class JsonClass
+class JsonPoco
 {
     public int a { get; set; }
     public int b { get; set; }
 }
-class String_JsonClass : TypeHandler<JsonClass>
+class JsonPocoTypeHandler : TypeHandler<JsonPoco>
 {
-    public override object Serialize(JsonClass value)
-    {
-        return JsonConvert.SerializeObject(value);
-    }
-    public override JsonClass Deserialize(object value)
-    {
-        return JsonConvert.DeserializeObject<JsonClass>((string)value);
-    }
+    public override object Serialize(JsonPoco value) => JsonConvert.SerializeObject(value);
+    public override JsonPoco Deserialize(object value) => JsonConvert.DeserializeObject<JsonPoco>((string)value);
+    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(-1);
+}
+class DateOnlyTypeHandler : TypeHandler<DateOnly>
+{
+    public override object Serialize(DateOnly value) => value.ToString("yyyy-MM-dd");
+    public override DateOnly Deserialize(object value) => DateOnly.TryParse(string.Concat(value), out var trydo) ? trydo : DateOnly.MinValue;
+    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(12);
+}
+class DateTimeOffsetTypeHandler : TypeHandler<DateTimeOffset>
+{
+    public override object Serialize(DateTimeOffset value) => value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+    public override DateTimeOffset Deserialize(object value) => DateTimeOffset.TryParse((string)value, out var dts) ? dts : DateTimeOffset.MinValue;
+    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).DbType("datetime");
 }
 ```
 
-v0.9.15 JsonMap
+JsonMap：
 
 > dotnet add package FreeSql.Extensions.JsonMap
 
 ```csharp
 fsql.UseJsonMap(); //开启功能
 
-public class Topic
+class Table
 {
+    public int Id { get; set; }
+
     [JsonMap]
-    public TestConfig Config { get; set; }
+    public TableOptions Options { get; set; }
 }
-class TestConfig
+class TableOptions
 {
-    public int Clicks { get; set; }
-    public string Title { get; set; }
+    public int Value1 { get; set; }
+    public string Value2 { get; set; }
 }
+
+fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "xx").ToList();
+//WHERE json_extract(a."Options",'$.Value1') = 100 AND json_extract(a."Options",'$.Value2') = 'xx'
 ```
 
 ## 字段位置(Position)

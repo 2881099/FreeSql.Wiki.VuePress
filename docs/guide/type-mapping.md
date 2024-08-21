@@ -44,8 +44,6 @@
 ```csharp
 class Table
 {
-    public int id { get; set; }
-
     [Column(MapType = typeof(string))]
     public PeopleType t1 { get; set; }
 
