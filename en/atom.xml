@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-21T10:02:30.458Z</updated>
+  <updated>2024-08-21T10:13:44.603Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -684,7 +684,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">Mapping Attributes✨</title>
     <id>https://freesql.net/en/guide/entity-attribute.html</id>
     <link href="https://freesql.net/en/guide/entity-attribute.html"/>
-    <updated>2024-08-17T09:27:08.000Z</updated>
+    <updated>2024-08-21T10:12:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> Mapping Attributes✨</h1>
 <p>v1.4.0+ automatically recognizes EF attributes such as</p>
 <p>Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column.</p>
@@ -816,13 +816,13 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
 <p>Applicable to <a href="/en/guide/update.html#_5-setsource-entity" target="blank"><code>SetSource</code></a> for updating data. Regardless of how the version value is updated, it will be incremented by 1.</p>
 </blockquote>
 <h2> Custom Type Mapping (MapType)</h2>
-<p>Use the <code>MapType</code> enumeration -&gt; <code>string/int</code> and so on, as follows:</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>v3.2.701 Custom Type Conversion</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>v0.9.15 JsonMap</p>
+<p>Using MapType Enum -&gt; string/int etc.:</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TypeHandlers (Custom):</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>JsonMap:</p>
 <blockquote>
 <p>dotnet add package FreeSql.Extensions.JsonMap</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Field Position</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Field Position</h2>
 <p>Applicable scenario: When inheriting entity classes, the order of fields created by CodeFirst might not be desired. Use this attribute to set the order.</p>
 <p>Specify field positions when creating tables, e.g., <code>[Column(Position = 1)]</code>, negative values are for reverse positions.</p>
 <h2> CanInsert, CanUpdate</h2>
@@ -4767,7 +4767,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Type Mapping</title>
     <id>https://freesql.net/en/guide/type-mapping.html</id>
     <link href="https://freesql.net/en/guide/type-mapping.html"/>
-    <updated>2024-08-19T15:43:10.000Z</updated>
+    <updated>2024-08-21T10:12:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> Type Mapping</h1>
 <h2> Type Mapping (Default)</h2>
 <p>Note: Due to formatting issues, not all supported databases are displayed.</p>
@@ -5205,7 +5205,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </blockquote>
 <h2> MapType</h2>
 <p>Using MapType Enum -&gt; string/int etc.:</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
 <blockquote>
 <p>dotnet add package FreeSql.Extensions.JsonMap</p>
 </blockquote>

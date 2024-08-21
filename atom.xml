@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-08-21T10:02:30.458Z</updated>
+  <updated>2024-08-21T10:13:44.602Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -5071,7 +5071,7 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2024-08-17T09:27:08.000Z</updated>
+    <updated>2024-08-21T10:12:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EF 特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
 <h2> 表名</h2>
@@ -5183,12 +5183,12 @@ class table {...}</p>
 </blockquote>
 <h2> 自定义类型映射(MapType)</h2>
 <p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>v3.2.701 自定义类型转换</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>v0.9.15 JsonMap</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TypeHandlers（自定义）：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>JsonMap：</p>
 <blockquote>
 <p>dotnet add package FreeSql.Extensions.JsonMap</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 字段位置(Position)</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 字段位置(Position)</h2>
 <p>适用场景：当实体类继承时，CodeFirst 创建表的字段顺序可能不是想要的，通过该特性可以设置顺序。</p>
 <p>创建表时指定字段位置，如：[Column(Position = 1]，可为负数即反方向位置；</p>
 <h2> 可插入(CanInsert)、可更新(CanUpdate)</h2>
@@ -9944,7 +9944,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2024-08-20T18:52:14.000Z</updated>
+    <updated>2024-08-21T10:12:42.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 类型映射（默认）</h2>
 <blockquote>
@@ -10386,7 +10386,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </blockquote>
 <h2> MapType</h2>
 <p>使用 MapType 枚举 -&gt; string/int 等等如下：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Json</h2>
 <blockquote>
 <p>dotnet add package FreeSql.Extensions.JsonMap</p>
 </blockquote>
