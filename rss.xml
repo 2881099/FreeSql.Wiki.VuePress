@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 22 Aug 2024 04:23:51 GMT</pubDate>
-    <lastBuildDate>Thu, 22 Aug 2024 04:23:51 GMT</lastBuildDate>
+    <pubDate>Thu, 22 Aug 2024 04:25:28 GMT</pubDate>
+    <lastBuildDate>Thu, 22 Aug 2024 04:25:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1318,7 +1318,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <p>dotnet add package FreeIM</p>
 </blockquote>
 <h2> ImServer 服务端</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>一套永远不需要迭代更新的 <code>ImServer</code> 服务端，支持 .NET6.0、.NETCore2.1+、NETStandard2.0</p>
 </blockquote>
 <h2> WebApi 业务端</h2>
