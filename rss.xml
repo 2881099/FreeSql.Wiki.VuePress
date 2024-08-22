@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 21 Aug 2024 10:55:12 GMT</pubDate>
-    <lastBuildDate>Wed, 21 Aug 2024 10:55:12 GMT</lastBuildDate>
+    <pubDate>Thu, 22 Aug 2024 04:23:51 GMT</pubDate>
+    <lastBuildDate>Thu, 22 Aug 2024 04:23:51 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1401,6 +1401,11 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <td>SendChanMessage</td>
 <td>(clientId, 频道名, 消息内容)</td>
 <td>发送消息，所有在线的用户将收到消息</td>
+</tr>
+<tr>
+<td>SendBroadcastMessage</td>
+<td>(clientId, 频道名, 消息内容)</td>
+<td>发送广播消息</td>
 </tr>
 </tbody>
 </table>
