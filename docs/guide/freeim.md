@@ -63,6 +63,7 @@ public void Configure(IApplicationBuilder app)
 | GetChanListByClientId | (clientId) | 获取用户参与的所有频道 |
 | GetChanOnline | (频道名) | 获取频道的在线人数 |
 | SendChanMessage | (clientId, 频道名, 消息内容) | 发送消息，所有在线的用户将收到消息 |
+| SendBroadcastMessage | (clientId, 频道名, 消息内容) | 发送广播消息 |
 
 - clientId 应该与用户id相同，或者关联；
 - 频道适用临时的群聊需求，如聊天室、讨论区；
