@@ -24,6 +24,7 @@ public void Configure(IApplicationBuilder app)
         Server = "127.0.0.1:6001"
     });
 }
+//dotnet run --urls=http://127.0.0.1:6001
 ```
 > 一套永远不需要迭代更新的 `ImServer` 服务端，支持 .NET6.0、.NETCore2.1+、NETStandard2.0
 
