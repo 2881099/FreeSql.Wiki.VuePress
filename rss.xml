@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 22 Aug 2024 16:15:36 GMT</pubDate>
-    <lastBuildDate>Thu, 22 Aug 2024 16:15:36 GMT</lastBuildDate>
+    <pubDate>Sat, 24 Aug 2024 13:16:04 GMT</pubDate>
+    <lastBuildDate>Sat, 24 Aug 2024 13:16:04 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1306,9 +1306,16 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
       <link>https://freesql.net/guide/freeim.html</link>
       <guid>https://freesql.net/guide/freeim.html</guid>
       <source url="https://freesql.net/rss.xml">FreeIM</source>
-      <description>FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。 使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。 接受定制项目开发，详细请联系作者 开源地址：https://github.com/2881099/FreeIM (https://gi...</description>
+      <description>FreeIM v2.0.0 调整：已将 ClientId Guid 改为 long；; 修复：JoinChan/LeaveChan 数量统计问题；; 增加：SendBroadcastMessage 广播消息；; 优化：SendChanMessage 性能；; FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通...</description>
       <pubDate>Tue, 30 Aug 2022 05:43:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> FreeIM</h1>
+<h2> FreeIM v2.0.0</h2>
+<ul>
+<li>调整：已将 ClientId Guid 改为 long；</li>
+<li>修复：JoinChan/LeaveChan 数量统计问题；</li>
+<li>增加：SendBroadcastMessage 广播消息；</li>
+<li>优化：SendChanMessage 性能；</li>
+</ul>
 <p>FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。</p>
 <p>使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。</p>
 <p><em>接受定制项目开发，详细请联系作者</em></p>
