@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 24 Aug 2024 13:16:04 GMT</pubDate>
-    <lastBuildDate>Sat, 24 Aug 2024 13:16:04 GMT</lastBuildDate>
+    <pubDate>Tue, 03 Sep 2024 05:40:28 GMT</pubDate>
+    <lastBuildDate>Tue, 03 Sep 2024 05:40:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2508,20 +2508,13 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>QQ 技术群：561616019(在线)、4336577(满员)、8578575(满员)、52508226(满员)</p>
 <p>反馈问题请前往 <a href="https://github.com/dotnetcore/FreeSql/issues" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/issues</a></p>
 <h2> 💕 自愿捐赠</h2>
+<blockquote>
+<p>Donate the author to have a cup of coffee</p>
+</blockquote>
+<figure><img src="/barcode_x2.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <p>L*y 58 元、花花 88 元、麦兜很乖 50 元、网络来者 2000 元、John 99.99 元、alex 666 元、bacongao 36 元、无名 100 元、Eternity 188 元、无名 10 元、⌒.Helper~..oO 66 元、习惯与被习惯 100 元、无名 100 元、蔡易喋 88.88 元、中讯科技 1000 元、Good Good Work 24 元、炽焰 6.6 元、Nothing 100 元、兰州天擎赵 500 元、哈利路亚 300 元、
 无名 100 元、蛰伏 99.99 元、TCYM 66.66 元、MOTA 5 元、LDZXG 30 元、Near 30 元、建爽 66 元、无名 200 元、LambertWu 100 元、无名 18.88 元、乌龙 50 元、无名 100 元、陳怼怼 66.66 元、陳怼怼 66.66 元、丁淮 100 元、李伟坚-Excel 催化剂 100 元、白狐 6.66 元、她微笑的脸 y 30 元、Eternity²º²¹ 588 元、夜归柴门 88 元、蔡易喋 666.66 元、
 <em>礼 10 元、litrpa 88 元、Alax CHOW 200 元、Daily 66 元、k</em>t 66 元、蓝 100 元、*菜 10 元、生命如歌 1000 元、山鸡 88元、平凡 100元、大树 1000元、软软的毛毛虫 66.66元、问卷星 2000元、与你无关 5000元、看门大爷 1000元，*来 88.88元，*博 500元，*南 88元，*园 500元，WPF机器视觉活动全体成员 2000元</p>
-<blockquote>
-<p>超级感谢你的打赏。</p>
-</blockquote>
-<ul>
-<li>
-<p><a href="https://www.cnblogs.com/FreeSql/gallery/image/338860.html" target="_blank" rel="noopener noreferrer">Alipay</a></p>
-</li>
-<li>
-<p><a href="https://www.cnblogs.com/FreeSql/gallery/image/338859.html" target="_blank" rel="noopener noreferrer">WeChat</a></p>
-</li>
-</ul>
 <h2> 🌳 有偿服务</h2>
 <table>
 <thead>
@@ -2554,6 +2547,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>开源不易，未来营造，感恩有你，伴我同行</p>
 </blockquote>
 ]]></content:encoded>
+      <enclosure url="https://freesql.net/barcode_x2.png" type="image/png"/>
     </item>
     <item>
       <title>Sqlite</title>
