@@ -49,19 +49,18 @@ features:
 footer: MIT Licensed | Copyright © 2018-present nicye
 ---
 
+## 💕 Donation (捐赠)
+
+> 扫码捐助请作者喝一杯咖啡
+
+![](barcode_x2.png)
+
 ## 👯 Contributors (贡献者)
 
 <a href="https://contributors-img.web.app/image?repo=dotnetcore/FreeSql">
   <img src="https://contributors-img.web.app/image?repo=dotnetcore/FreeSql" />
 </a>
 
-## 💕 Donation (捐赠)
-
-> 超级感谢你的打赏。[详情捐赠内容](./reference/donation.md)
-
-- [Alipay](https://www.cnblogs.com/FreeSql/gallery/image/338860.html)
-
-- [WeChat](https://www.cnblogs.com/FreeSql/gallery/image/338859.html)
 
 ## 🗄 License (许可证)
 
