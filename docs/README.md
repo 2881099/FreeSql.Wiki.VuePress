@@ -53,7 +53,7 @@ footer: MIT Licensed | Copyright © 2018-present nicye
 
 > 扫码捐助请作者喝一杯咖啡
 
-![](/barcode_x2.png)
+![](/barcode_2x1.png)
 
 ## 👯 Contributors (贡献者)
 

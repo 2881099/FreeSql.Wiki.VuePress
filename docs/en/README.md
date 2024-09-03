@@ -50,7 +50,7 @@ footer: MIT Licensed | Copyright © 2018-present nicye
 
 > Donate the author to have a cup of coffee
 
-![](/barcode_x2.png)
+![](/barcode_2x1.png)
 
 ## 👯 Contributors
 
