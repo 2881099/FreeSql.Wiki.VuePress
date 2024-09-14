@@ -202,9 +202,11 @@ fsql.Delete<T>();
 
 ```csharp
 fsql.Change(DbEnum.db2).Select<T>();
+//仅支持 net461+、netcore
 //同一线程，或异步await 后续 fsql.Select/Insert/Update/Delete 操作是 db2
 
 fsql.Use(DbEnum.db2).Select<T>();
+//支持 net40
 //单次有效
 
 using (fsql.Change(DbEnum.db2)) {
