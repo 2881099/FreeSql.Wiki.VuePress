@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-09-03T17:12:53.719Z</updated>
+  <updated>2024-09-14T01:14:08.651Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9764,7 +9764,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">分表分库</title>
     <id>https://freesql.net/guide/sharding.html</id>
     <link href="https://freesql.net/guide/sharding.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-09-14T01:13:14.000Z</updated>
     <summary type="html"><![CDATA[<h1> 分表分库</h1>
 <h2> 理论知识</h2>
 <p>分表 - 从表面意思上看呢，就是把一张表分成 N 多个小表，每一个小表都是完整的一张表。分表后数据都是存放在分表里，总表只是一个外壳，存取数据发生在一个一个的分表里面。分表后单表的并发能力提高了，磁盘 I/O 性能也提高了。并发能力为什么提高了呢，因为查寻一次所花的时间变短了，如果出现高并发的话，总表可以根据不同 的查询，将并发压力分到不同的小表里面。</p>
@@ -9882,7 +9882,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </blockquote>
 <p>FreeSqlCloud 的访问方式和 IFreeSql 一样：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>1、切换数据库（多线程安全）：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、自动定向数据库配置：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、自动定向数据库配置：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>3、静态仓储对象</p>
 <p>FreeSql.Repository/UnitOfWorkManager 对象创建时固定了 IFreeSql，因此无法跟随 FreeSqlCloud 切换数据库。</p>
 <blockquote>

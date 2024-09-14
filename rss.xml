@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 03 Sep 2024 17:12:53 GMT</pubDate>
-    <lastBuildDate>Tue, 03 Sep 2024 17:12:53 GMT</lastBuildDate>
+    <pubDate>Sat, 14 Sep 2024 01:14:08 GMT</pubDate>
+    <lastBuildDate>Sat, 14 Sep 2024 01:14:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -8545,7 +8545,7 @@ FROM "Topic" a</p>
 </blockquote>
 <p>FreeSqlCloud 的访问方式和 IFreeSql 一样：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>1、切换数据库（多线程安全）：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、自动定向数据库配置：</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2、自动定向数据库配置：</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>3、静态仓储对象</p>
 <p>FreeSql.Repository/UnitOfWorkManager 对象创建时固定了 IFreeSql，因此无法跟随 FreeSqlCloud 切换数据库。</p>
 <blockquote>
