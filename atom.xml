@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-09-14T01:14:08.651Z</updated>
+  <updated>2024-09-20T08:36:27.354Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3263,7 +3263,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Awesome FreeSql</title>
     <id>https://freesql.net/reference/awesome-freesql.html</id>
     <link href="https://freesql.net/reference/awesome-freesql.html"/>
-    <updated>2024-01-30T14:02:21.000Z</updated>
+    <updated>2024-09-20T08:32:49.000Z</updated>
     <summary type="html"><![CDATA[<h1> Awesome FreeSql</h1>
 <h2> 基于 FreeSql 的仓库项目</h2>
 <div class="flex">

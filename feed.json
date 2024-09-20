@@ -433,7 +433,7 @@
       "summary": "基于 FreeSql 的仓库项目 .flex{ display: flex; flex-wrap: wrap; justify-content: flex-start; } .vp-banner{ flex-basis: 38%; margin-top: 1.5%; padding:2rem; } .vp-banner-content{ max-wid...",
       "content_html": "<h1> Awesome FreeSql</h1>\n<h2> 基于 FreeSql 的仓库项目</h2>\n<div class=\"flex\">\n</div>\n<h2> FreeSql 官方博客</h2>\n<ul>\n<li><a href=\"https://www.cnblogs.com/kellynic/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.cnblogs.com/kellynic/</a></li>\n<li><a href=\"https://www.cnblogs.com/freesql/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.cnblogs.com/freesql/</a></li>\n</ul>\n<h2> 官方文档</h2>\n<ul>\n<li><a href=\"https://freesql.net\" target=\"_blank\" rel=\"noopener noreferrer\">https://freesql.net</a></li>\n<li><a href=\"https://github.com/dotnetcore/FreeSql/wiki\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/dotnetcore/FreeSql/wiki</a></li>\n<li><a href=\"http://101.34.7.82:8082/api/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">API 参考(国内镜像)</a></li>\n<li><a href=\"https://dotnetcore.github.io/FreeSql/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">API 参考</a></li>\n</ul>\n<h2> 源码</h2>\n<ul>\n<li>GitHub <a href=\"https://github.com/dotnetcore/FreeSql\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/dotnetcore/FreeSql</a></li>\n<li>Gitee <a href=\"https://gitee.com/FreeSql/FreeSql-ORM\" target=\"_blank\" rel=\"noopener noreferrer\">https://gitee.com/FreeSql/FreeSql-ORM</a></li>\n</ul>\n",
       "date_published": "2021-02-09T12:13:50.000Z",
-      "date_modified": "2024-01-30T14:02:21.000Z",
+      "date_modified": "2024-09-20T08:32:49.000Z",
       "authors": [],
       "tags": []
     },
