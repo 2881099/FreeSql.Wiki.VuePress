@@ -5,18 +5,6 @@
 <div class="flex">
 
 <VPBanner
-    title="NetAdmin"
-    content="通用后台权限管理系统、快速开发框架（基于C#12/.NET9、Vue3/Vite、Element Plus等现代技术构建，具有十分整洁、优雅的编码规范）"
-    :actions='[
-        {
-            text: "仓库",
-            link:"https://github.com/nsnail/NetAdmin",
-            type: "primary",
-        },
-    ]'
-/>
-
-<VPBanner
     title="中台Admin"
     content="Admin后端，前后端分离的权限管理系统。支持多租户、动态Api、任务调度、滑块拼图验证、国内外主流数据库自由切换和动态高级查询。基于.Net跨平台开发的WebApi。集成统一认证授权、数据验证、缓存、Ip限流、全Api鉴权、集成测试、性能分析、接口文档等。"
     :actions='[
@@ -141,7 +129,17 @@
     ]'
 />
 
-
+<VPBanner
+    title="NetAdmin"
+    content="通用后台权限管理系统、快速开发框架（基于C#12/.NET9、Vue3/Vite、Element Plus等现代技术构建，具有十分整洁、优雅的编码规范）"
+    :actions='[
+        {
+            text: "仓库",
+            link:"https://github.com/nsnail/NetAdmin",
+            type: "primary",
+        },
+    ]'
+/>
 </div>
 
 <style>
