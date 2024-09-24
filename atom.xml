@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-09-24T14:03:43.469Z</updated>
+  <updated>2024-09-24T14:05:33.338Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -5076,7 +5076,7 @@ db.Add(new Xxx());</p>
     <title type="text">实体特性✨</title>
     <id>https://freesql.net/guide/entity-attribute.html</id>
     <link href="https://freesql.net/guide/entity-attribute.html"/>
-    <updated>2024-08-21T10:12:42.000Z</updated>
+    <updated>2024-09-24T14:04:40.000Z</updated>
     <summary type="html"><![CDATA[<h1> 实体特性✨</h1>
 <p>v1.4.0+ 已自动识别 EF 特性 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column</p>
 <h2> 表名</h2>
