@@ -278,7 +278,7 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 
 适用场景：当实体类继承时，CodeFirst 创建表的字段顺序可能不是想要的，通过该特性可以设置顺序。
 
-创建表时指定字段位置，如：[Column(Position = 1]，可为负数即反方向位置；
+创建表时指定字段位置，如：[Column(Position = 1)]，可为负数即反方向位置；
 
 ## 可插入(CanInsert)、可更新(CanUpdate)
 
