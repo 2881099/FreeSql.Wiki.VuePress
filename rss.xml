@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 10 Oct 2024 02:32:31 GMT</pubDate>
-    <lastBuildDate>Thu, 10 Oct 2024 02:32:31 GMT</lastBuildDate>
+    <pubDate>Mon, 14 Oct 2024 00:53:27 GMT</pubDate>
+    <lastBuildDate>Mon, 14 Oct 2024 00:53:27 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4284,7 +4284,7 @@ class table {...}</p>
 </blockquote>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 字段位置(Position)</h2>
 <p>适用场景：当实体类继承时，CodeFirst 创建表的字段顺序可能不是想要的，通过该特性可以设置顺序。</p>
-<p>创建表时指定字段位置，如：[Column(Position = 1]，可为负数即反方向位置；</p>
+<p>创建表时指定字段位置，如：[Column(Position = 1)]，可为负数即反方向位置；</p>
 <h2> 可插入(CanInsert)、可更新(CanUpdate)</h2>
 <p>该字段是否可以插入或更新，默认 true，指定为 false 插入或更新时该字段会被忽略。</p>
 <p>当指明了 InsertColumn/UpdateColumns 等方法时，该特性作用可能失效。</p>
