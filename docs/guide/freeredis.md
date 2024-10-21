@@ -12,8 +12,7 @@
 - 🎣 支持主从分离（Master-Slave）
 - 📡 支持发布订阅（Pub-Sub）
 - 📃 支持 Redis Lua 脚本
-- 💻 支持管道（Pipeline）
-- 📰 支持事务
+- 💻 支持管道（Pipeline）、支持事务、延迟队列、RediSearch
 - 🌴 支持 GEO 命令（服务端要求 3.2 及以上版本）
 - 🌲 支持 STREAM 类型命令（服务端要求 5.0 及以上版本）
 - ⚡ 支持本地缓存（Client-side-cahing，服务端要求 6.0 及以上版本）
@@ -165,6 +164,94 @@ using (var db = cli.GetDatabase(10))
     db.Set("key1", 10);
     var val1 = db.Get("key1");
 }
+```
+
+### 🔍 Scan (扫描)
+
+> 支持集群模式
+
+```csharp
+foreach (var keys in cli.Scan("*", 10, null))
+{
+    Console.WriteLine(string.Join(", ", keys));
+}
+```
+
+### 🍡DelayQueue (延时队列)
+
+```c#
+var delayQueue = cli.DelayQueue("TestDelayQueue");
+
+//添加队列
+delayQueue.Enqueue($"Execute in 5 seconds.", TimeSpan.FromSeconds(5));
+delayQueue.Enqueue($"Execute in 10 seconds.", DateTime.Now.AddSeconds(10));
+delayQueue.Enqueue($"Execute in 15 seconds.", DateTime.Now.AddSeconds(15));
+delayQueue.Enqueue($"Execute in 20 seconds.", TimeSpan.FromSeconds(20));
+delayQueue.Enqueue($"Execute in 25 seconds.", DateTime.Now.AddSeconds(25));
+delayQueue.Enqueue($"Execute in 2024-07-02 14:30:15", DateTime.Parse("2024-07-02 14:30:15"));
+
+//消费延时队列
+await delayQueue.DequeueAsync(s =>
+{
+    output.WriteLine($"{DateTime.Now}：{s}");
+
+    return Task.CompletedTask;
+});
+```
+
+### 🐆 RediSearch
+
+```csharp
+cli.FtCreate(...).Execute();
+cli.FtSearch(...).Execute();
+cli.FtAggregate(...).Execute();
+//... or ...
+
+[FtDocument("index_post", Prefix = "blog:post:")]
+class TestDoc
+{
+    [FtKey]
+    public int Id { get; set; }
+
+    [FtTextField("title", Weight = 5.0)]
+    public string Title { get; set; }
+
+    [FtTextField("category")]
+    public string Category { get; set; }
+
+    [FtTextField("content", Weight = 1.0, NoIndex = true)]
+    public string Content { get; set; }
+
+    [FtTagField("tags")]
+    public string Tags { get; set; }
+
+    [FtNumericField("views")]
+    public int Views { get; set; }
+}
+
+var repo = cli.FtDocumentRepository<TestDoc>();
+repo.CreateIndex();
+
+repo.Save(new TestDoc { Id = 1, Title = "test title1 word", Category = "class 1", Content = "test content 1 suffix", Tags = "user1,user2", Views = 101 });
+repo.Save(new TestDoc { Id = 2, Title = "prefix test title2", Category = "class 2", Content = "test infix content 2", Tags = "user2,user3", Views = 201 });
+repo.Save(new TestDoc { Id = 3, Title = "test title3 word", Category = "class 1", Content = "test word content 3", Tags = "user2,user5", Views = 301 });
+
+repo.Delete(1, 2, 3);
+
+repo.Save(new[]
+{
+    new TestDoc { Id = 1, Title = "test title1 word", Category = "class 1", Content = "test content 1 suffix", Tags = "user1,user2", Views = 101 },
+    new TestDoc { Id = 2, Title = "prefix test title2", Category = "class 2", Content = "test infix content 2", Tags = "user2,user3", Views = 201 },
+    new TestDoc { Id = 3, Title = "test title3 word", Category = "class 1", Content = "test word content 3", Tags = "user2,user5", Views = 301 }
+});
+
+var list = repo.Search("*").InFields(a => new { a.Title }).ToList();
+list = repo.Search("*").Return(a => new { a.Title, a.Tags }).ToList();
+list = repo.Search("*").Return(a => new { tit1 = a.Title, tgs1 = a.Tags, a.Title, a.Tags }).ToList();
+
+list = repo.Search(a => a.Title == "word").Filter(a => a.Views, 1, 1000).ToList();
+list = repo.Search("word").ToList();
+list = repo.Search("@title:word").ToList();
 ```
 
 ## 🔍 Scan (扫描)
