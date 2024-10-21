@@ -166,7 +166,7 @@ using (var db = cli.GetDatabase(10))
 }
 ```
 
-### 🔍 Scan (扫描)
+## 🔍 Scan (扫描)
 
 > 支持集群模式
 
@@ -177,7 +177,7 @@ foreach (var keys in cli.Scan("*", 10, null))
 }
 ```
 
-### 🍡DelayQueue (延时队列)
+## 🍡DelayQueue (延时队列)
 
 ```c#
 var delayQueue = cli.DelayQueue("TestDelayQueue");
@@ -199,7 +199,7 @@ await delayQueue.DequeueAsync(s =>
 });
 ```
 
-### 🐆 RediSearch
+## 🐆 RediSearch
 
 ```csharp
 cli.FtCreate(...).Execute();
@@ -252,15 +252,4 @@ list = repo.Search("*").Return(a => new { tit1 = a.Title, tgs1 = a.Tags, a.Title
 list = repo.Search(a => a.Title == "word").Filter(a => a.Views, 1, 1000).ToList();
 list = repo.Search("word").ToList();
 list = repo.Search("@title:word").ToList();
-```
-
-## 🔍 Scan (扫描)
-
-> 支持集群模式
-
-```csharp
-foreach (var keys in cli.Scan("*", 10, null))
-{
-    Console.WriteLine(string.Join(", ", keys));
-}
 ```
