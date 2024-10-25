@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-10-23T01:10:44.570Z</updated>
+  <updated>2024-10-25T06:48:56.400Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -1712,7 +1712,7 @@ fsql<span class="token punctuation">.</span>GlobalFilter
     <title type="text">Repository</title>
     <id>https://freesql.net/en/guide/repository.html</id>
     <link href="https://freesql.net/en/guide/repository.html"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-10-25T06:14:33.000Z</updated>
     <summary type="html"><![CDATA[<p><code>FreeSql.DbContext</code> references the abp vnext interface specification and implements a generic repository layer functionality (CURD), which can be understood as an enhanced version of traditional Data Access Layer (DAL).</p>
 
 <ul>
@@ -1743,7 +1743,8 @@ fsql<span class="token punctuation">.</span>GlobalFilter
 <p>Only update changed properties:</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Does it seem cumbersome to query first and then update?</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>repo.CompareState(item)</code> can retrieve the status change information of <code>item</code>.</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Login Information (Dependency Injection)</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>It should be noted that when using Repository updates, <code>ServerTime</code> should not be specified in ColumnAttribute.</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Login Information (Dependency Injection)</h2>
 <p><code>repo.DbContextOptions.AuditValue</code> is suitable for integration with AddScoped (Dependency Injection) to uniformly set login information.</p>
 <p>Example: Automatically use login information when inserting/updating with repository</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> Compatibility Issues</h2>
