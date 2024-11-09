@@ -256,11 +256,11 @@ fsql.Select<object>()
     )
     .FromQuery(
         fsql.Select<T1, T2>().InnerJoin((a,b) => ...)
-            .WHere((a,b) => a.CreateDate.BetweenEnd(startDate, endDate)
+            .Where((a,b) => a.CreateDate.BetweenEnd(startDate, endDate)
             .GroupBy((a,b) => a.CreateDate.Date.ToString("yyyy-MM-dd"))
             .WithTempQuery(g => new { Date = g.Key, Type1Total = g.Sum(g.Value.Item2.Qty1) }),
         fsql.Select<T3>()
-            .WHere(a => a.CreateDate.BetweenEnd(startDate, endDate)
+            .Where(a => a.CreateDate.BetweenEnd(startDate, endDate)
             .GroupBy(a => a.CreateDate.Date.ToString("yyyy-MM-dd"))
             .WithTempQuery(g => new { Date = g.Key, Type2Total = g.Sum(g.Value.Qty2) }),
         //... 最多支持 16 个 ISelect 合并
