@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-11-09T03:10:50.056Z</updated>
+  <updated>2024-11-09T03:12:32.464Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2204,7 +2204,7 @@ repo<span class="token punctuation">.</span><span class="token function">InsertO
     <title type="text">嵌套查询 ✨</title>
     <id>https://freesql.net/guide/withtempquery.html</id>
     <link href="https://freesql.net/guide/withtempquery.html"/>
-    <updated>2024-11-09T03:09:55.000Z</updated>
+    <updated>2024-11-09T03:11:33.000Z</updated>
     <summary type="html"><![CDATA[<h1> 嵌套查询 ✨</h1>
 <h2> WithTempQuery</h2>
 <p>需求版本：v3.2.666+</p>
