@@ -240,6 +240,42 @@ INNER JOIN [Unit] c ON a.[UnitId] = c.[UnitId]
 WHERE (b.[RN] < 2)
 ```
 
+## 场景7：报表（每日）
+
+1. 从内存创建连续的日期 List
+2. 使用 FromQuery 与多个 ISelect 横向 LeftJoin
+
+```csharp
+var startDate = DateTime.Parse("2024-11-1");
+var endDate = DateTime.Parse("2024-12-1");
+fsql.Select<object>()
+    .WithMemory(
+        Enumerable.Range(0, (int)endDate.Subtract(startDate).TotalDays)
+            .Select(a => new { Date = startDate.AddDays(a).ToString("yyyy-MM-dd") })
+            .ToList()
+    )
+    .FromQuery(
+        fsql.Select<T1, T2>().InnerJoin((a,b) => ...)
+            .Where((a,b) => a.CreateDate.BetweenEnd(startDate, endDate)
+            .GroupBy((a,b) => a.CreateDate.Date.ToString("yyyy-MM-dd"))
+            .WithTempQuery(g => new { Date = g.Key, Type1Total = g.Sum(g.Value.Item2.Qty1) }),
+        fsql.Select<T3>()
+            .Where(a => a.CreateDate.BetweenEnd(startDate, endDate)
+            .GroupBy(a => a.CreateDate.Date.ToString("yyyy-MM-dd"))
+            .WithTempQuery(g => new { Date = g.Key, Type2Total = g.Sum(g.Value.Qty2) }),
+        //... 最多支持 16 个 ISelect 合并
+    )
+    .LeftJoin(t => t.t2.Date = t.t1.Date)
+    .LeftJoin(t => t.t3.Date = t.t1.Date)
+    .OrderByDescending(t => t.t1.Date)
+    .ToList(t => new
+    {
+        t.t1.Date,
+        Sum1 = t.t2.Type1Total,
+        Sum2 t.t3.Type2Total
+    });
+```
+
 ## WithParameters 参数化共享
 
 开启参数化查询功能后，使用 WithParameters 共享参数化，可避免产生相同的参数名称：

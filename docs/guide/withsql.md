@@ -69,7 +69,7 @@ FROM ( select * from TestClass ) a
 WHERE ...
 ```
 
-### 4.返回`List<Tuplue>` 即`List<(string,string)>` 元组
+### 4.返回`List<Tuple>` 即`List<(string,string)>` 元组
 
 ```csharp
 List<(string,string)> list1 = _fsql

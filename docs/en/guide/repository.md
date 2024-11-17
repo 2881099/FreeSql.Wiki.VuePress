@@ -115,6 +115,29 @@ repo.Update(item); // Compare changes from snapshot
 Dictionary<string, object[]> CompareState(TEntity newdata);
 ```
 
+It should be noted that when using Repository updates, `ServerTime` should not be specified in ColumnAttribute.
+
+~~~csharp
+var repo = fsql.GetRepository<Dictionaries>();
+var item = await repo.Where(a => a.DictId == "1").FirstAsync();
+
+//If the ServerTime property exists in the Column attribute, it may result in the inability to modify it
+item.UpdateTime =  DateTime.Now;
+await repo.UpdateAsync(item);
+
+public class Dictionaries
+{
+    [Column(Name = "id", IsPrimary = true)]
+    public string Id { get; set; }
+
+    [Column(Name = "name")]
+    public string Name { get; set; }
+
+    [Column(Name = "update_time", ServerTime = DateTimeKind.Local)]
+    public DateTime? UpdateTime { get; set; }
+}
+~~~
+
 ## Login Information (Dependency Injection)
 
 `repo.DbContextOptions.AuditValue` is suitable for integration with AddScoped (Dependency Injection) to uniformly set login information.

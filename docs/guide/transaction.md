@@ -77,15 +77,21 @@ public class SongService
 {
     readonly IBaseRepository<Song> _songRepository;
     readonly IBaseRepository<Detail> _detailRepository;
+    readonly UnitOfWorkManager _unitOfWorkManager;
 
-    public SongService(IBaseRepository<Song> songRepository, IBaseRepository<Detail> detailRepository)
+    public SongService(
+      IBaseRepository<Song> songRepository, 
+      IBaseRepository<Detail> detailRepository,
+      UnitOfWorkManager unitOfWorkManager
+    )
     {
         _songRepository = songRepository;
         _detailRepository = detailRepository;
+        _unitOfWorkManager = unitOfWorkManager;
     }
 
     [Transactional]
-    async public Task Test1()
+    public async Task Test1()
     {
         //所有注入的仓储对象，都是一个事务
         await _songRepository.InsertAsync(xxx1);
@@ -96,6 +102,16 @@ public class SongService
     [Transactional(Propagation = Propagation.Nested)]
     public void Test2() //嵌套事务
     {
+    }
+
+    public async Task Test3() 
+    {
+      using (var uow = _unitOfWorkManager.Begin())
+      {
+          await _songRepository.InsertAsync(xxx1);
+          await _detailRepository.DeleteAsync(xxx2);
+          uow.Commit();
+      }
     }
 }
 ```

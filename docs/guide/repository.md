@@ -115,6 +115,29 @@ repo.CompareState(item) 可获取 item 的状态变化信息
 Dictionary<string, object[]> CompareState(TEntity newdata);
 ```
 
+需要注意在使用Repository更新时，不应在ColumnAttribute中指定ServerTime
+
+~~~csharp
+var repo = fsql.GetRepository<Dictionaries>();
+var item = await repo.Where(a => a.DictId == "1").FirstAsync();
+
+//如果Column特性中存在ServerTime属性可能导致无法修改的情况
+item.UpdateTime =  DateTime.Now;
+await repo.UpdateAsync(item);
+
+public class Dictionaries
+{
+    [Column(Name = "id", IsPrimary = true)]
+    public string Id { get; set; }
+
+    [Column(Name = "name")]
+    public string Name { get; set; }
+
+    [Column(Name = "update_time", ServerTime = DateTimeKind.Local)]
+    public DateTime? UpdateTime { get; set; }
+}
+~~~
+
 ## 登陆信息（依赖注入）
 
 repo.DbContextOptions.AuditValue 适合与 AddScoped（依赖注入） 信息结合，统一设置登陆信息。
