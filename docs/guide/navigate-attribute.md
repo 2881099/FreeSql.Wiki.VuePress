@@ -20,16 +20,20 @@ OneToMany/ManyToMany 支持的类型：ICollection\<T\>、List\<T\>、Observable
 
 ```csharp
 //OneToMany
-class Group
+public class Group
 {
+    [Column(IsPrimary = true, IsIdentity = true)]
+    public int Id { get; set; }
     [Navigate(nameof(User.GroupId))]
     public List<User> Users { get; set; }
     //在 User 查找 GroupId 属性，与 本实体.主键 关联
 }
 
 //ManyToOne
-class User
+public class User
 {
+    [Column(IsPrimary = true, IsIdentity = true)]
+    public int Id { get; set; }
     public int GroupId { get; set; }
     [Navigate(nameof(GroupId))]
     public Group Group { get; set; }
