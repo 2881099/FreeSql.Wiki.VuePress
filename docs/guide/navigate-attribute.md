@@ -19,15 +19,6 @@ FreeSql 提供 OneToMany, ManyToOne, ManyToMany, OneToOne, Parent, [PgArrayToMan
 OneToMany/ManyToMany 支持的类型：ICollection\<T\>、List\<T\>、ObservableCollection\<T\>
 
 ```csharp
-//OneToMany
-public class Group
-{
-    [Column(IsPrimary = true, IsIdentity = true)]
-    public int Id { get; set; }
-    [Navigate(nameof(User.GroupId))]
-    public List<User> Users { get; set; }
-    //在 User 查找 GroupId 属性，与 本实体.主键 关联
-}
 
 //ManyToOne
 public class User
@@ -35,9 +26,22 @@ public class User
     [Column(IsPrimary = true, IsIdentity = true)]
     public int Id { get; set; }
     public int GroupId { get; set; }
+
+    //在 本实体 查找 GroupId 属性，与 Group.主键 关联
     [Navigate(nameof(GroupId))]
     public Group Group { get; set; }
-    //在 本实体 查找 GroupId 属性，与 Group.主键 关联
+}
+
+//OneToMany
+public class Group
+{
+    [Column(IsPrimary = true, IsIdentity = true)]
+    public int Id { get; set; }
+    public string GroupName { get; set; }
+
+    //在 User 查找 GroupId 属性，与 本实体.主键 关联
+    [Navigate(nameof(User.GroupId))]
+    public List<User> Users { get; set; }
 }
 
 //ManyToMany
