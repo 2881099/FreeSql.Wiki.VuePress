@@ -80,6 +80,8 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 //WHERE json_extract(a."Options",'$.Value1') = 100 AND json_extract(a."Options",'$.Value2') = 'xx'
 ```
 
+也可以使用 string 映射 JSON，拉姆达表达式内使用[自定义函数解析](expression-function.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90)。
+
 ## DateOnly/TimeOnly
 
 目前只有 FreeSql.Provider.SqlServer/PostgreSQL/MySql/MySqlConnector/KingbaseES/Duckdb 几个包实现了映射（v3.5.100）
