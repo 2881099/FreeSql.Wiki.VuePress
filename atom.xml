@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-11-17T04:41:57.154Z</updated>
+  <updated>2024-11-19T03:09:11.033Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9956,7 +9956,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">类型映射</title>
     <id>https://freesql.net/guide/type-mapping.html</id>
     <link href="https://freesql.net/guide/type-mapping.html"/>
-    <updated>2024-09-24T14:02:47.000Z</updated>
+    <updated>2024-11-19T03:08:18.000Z</updated>
     <summary type="html"><![CDATA[<h1> 类型映射</h1>
 <h2> 类型映射（默认）</h2>
 <blockquote>
@@ -10402,7 +10402,8 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <blockquote>
 <p>dotnet add package FreeSql.Extensions.JsonMap</p>
 </blockquote>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> DateOnly/TimeOnly</h2>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>也可以使用 string 映射 JSON，拉姆达表达式内使用<a href="/guide/expression-function.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90" target="blank">自定义函数解析</a>。</p>
+<h2> DateOnly/TimeOnly</h2>
 <p>目前只有 FreeSql.Provider.SqlServer/PostgreSQL/MySql/MySqlConnector/KingbaseES/Duckdb 几个包实现了映射（v3.5.100）</p>
 <p>DateOnly/TimeOnly 定义在 .net6/7/8 适配非常难受，其他 Provider 可参考 TypeHandlers（自定义） 解决映射。</p>
 <h2> TypeHandlers（自定义）</h2>
