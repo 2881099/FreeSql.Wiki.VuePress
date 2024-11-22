@@ -102,9 +102,9 @@ fsql.Select<T>()
 //正常用法应该是这样
 
 fsql.Select<T>()
-  .Where(a => a.CreateTime.Subtract(DateTime.Today).TotalSeconds > 0)
+  .Where(a => a.CreateTime.Subtract(DateTime.Today).TotalDays == 0)
   .ToList();
-//datediff(second, date1, date2)
+//WHERE datediff(day, date1, date2) = 0
 ```
 
 > SqlServer nvarchar/varchar 已兼容表达式解析，分别解析为：N'' 和 ''，优化索引执行计划；
