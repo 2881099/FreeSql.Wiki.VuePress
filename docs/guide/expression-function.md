@@ -100,6 +100,11 @@ fsql.Select<T>()
   .Where(a => a.CreateTime.Between(DateTime.Today, DateTime.Today.AddDays(1)))
   .ToList();
 //正常用法应该是这样
+
+fsql.Select<T>()
+  .Where(a => a.CreateTime.Subtract(DateTime.Today).TotalSeconds > 0)
+  .ToList();
+//datediff(second, date1, date2)
 ```
 
 > SqlServer nvarchar/varchar 已兼容表达式解析，分别解析为：N'' 和 ''，优化索引执行计划；
