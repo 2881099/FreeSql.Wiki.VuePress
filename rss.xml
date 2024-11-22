@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 19 Nov 2024 03:09:11 GMT</pubDate>
-    <lastBuildDate>Tue, 19 Nov 2024 03:09:11 GMT</lastBuildDate>
+    <pubDate>Fri, 22 Nov 2024 08:52:55 GMT</pubDate>
+    <lastBuildDate>Fri, 22 Nov 2024 08:52:55 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4350,7 +4350,7 @@ class table {...}</p>
 <p>提示：由于子查询的实体类与上层相同，使用 As("b") 指明别名，以便区分</p>
 </blockquote>
 <h2> 查找今天创建的数据</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>SqlServer nvarchar/varchar 已兼容表达式解析，分别解析为：N'' 和 ''，优化索引执行计划；</p>
 </blockquote>
 <h2> 日期格式化</h2>
