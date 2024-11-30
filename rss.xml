@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 30 Nov 2024 04:02:50 GMT</pubDate>
-    <lastBuildDate>Sat, 30 Nov 2024 04:02:50 GMT</lastBuildDate>
+    <pubDate>Sat, 30 Nov 2024 16:01:05 GMT</pubDate>
+    <lastBuildDate>Sat, 30 Nov 2024 16:01:05 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3364,6 +3364,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <td>基于 ClickHouse.Client</td>
 </tr>
 <tr>
+<td><a href="/guide/freesql-provider-tdengine.html" target="blank">FreeSql.Provider.TDengine</a></td>
+<td>基于 Npgsql 和 RestApi</td>
+</tr>
+<tr>
 <td><a href="/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
 <td>基于 Npgsql 和 RestApi</td>
 </tr>
@@ -3563,6 +3567,10 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <tr>
 <td>DataType.Firebird</td>
 <td>database=localhost:D:\fbdata\EXAMPLES.fdb;user=sysdba;password=123456</td>
+</tr>
+<tr>
+<td>DataType.TDengine</td>
+<td>host=localhost;port=6030;username=root;password=taosdata;protocol=Native;db=test;</td>
 </tr>
 <tr>
 <td>DataType.QuestDb</td>
