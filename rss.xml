@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 30 Nov 2024 16:02:38 GMT</pubDate>
-    <lastBuildDate>Sat, 30 Nov 2024 16:02:38 GMT</lastBuildDate>
+    <pubDate>Sat, 30 Nov 2024 16:07:08 GMT</pubDate>
+    <lastBuildDate>Sat, 30 Nov 2024 16:07:08 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3365,7 +3365,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-tdengine.html" target="blank">FreeSql.Provider.TDengine</a></td>
-<td>基于 Npgsql 和 RestApi</td>
+<td>基于 TDengine.Connector（TaoS 官方驱动）</td>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-questdb.html" target="blank">FreeSql.Provider.QuestDb</a></td>
