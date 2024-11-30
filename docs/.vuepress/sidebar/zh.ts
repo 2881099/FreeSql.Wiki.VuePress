@@ -68,6 +68,7 @@ export const zhSidebarConfig = sidebar({
             "freesql-provider-questdb",
             "freesql-provider-firebird",
             "freesql-provider-duckdb",
+            "freesql-provider-tdengine",
           ],
         },
         "expression-function",
