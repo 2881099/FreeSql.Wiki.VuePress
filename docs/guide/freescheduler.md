@@ -14,6 +14,7 @@ FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持集
 
 ```csharp
 static Scheduler scheduler = new FreeSchedulerBuilder()
+    .UseTimeZone(TimeSpan.FromHours(8)) //默认为UTC时间，国内可指定时区+8，任务将按本地时间执行
     .OnExecuting(task =>
     {
         Console.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss.fff")}] {task.Topic} 被执行");

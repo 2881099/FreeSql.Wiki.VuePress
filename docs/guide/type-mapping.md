@@ -80,6 +80,8 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 //WHERE json_extract(a."Options",'$.Value1') = 100 AND json_extract(a."Options",'$.Value2') = 'xx'
 ```
 
+也可以使用 string 映射 JSON，拉姆达表达式内使用[自定义函数解析](expression-function.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%A3%E6%9E%90)。
+
 ## DateOnly/TimeOnly
 
 目前只有 FreeSql.Provider.SqlServer/PostgreSQL/MySql/MySqlConnector/KingbaseES/Duckdb 几个包实现了映射（v3.5.100）
@@ -108,19 +110,19 @@ class JsonPocoTypeHandler : TypeHandler<JsonPoco>
 {
     public override object Serialize(JsonPoco value) => JsonConvert.SerializeObject(value);
     public override JsonPoco Deserialize(object value) => JsonConvert.DeserializeObject<JsonPoco>((string)value);
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(-1);
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).StringLength(-1);
 }
 class DateOnlyTypeHandler : TypeHandler<DateOnly>
 {
     public override object Serialize(DateOnly value) => value.ToString("yyyy-MM-dd");
     public override DateOnly Deserialize(object value) => DateOnly.TryParse(string.Concat(value), out var trydo) ? trydo : DateOnly.MinValue;
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(12);
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).StringLength(12);
 }
 class DateTimeOffsetTypeHandler : TypeHandler<DateTimeOffset>
 {
     public override object Serialize(DateTimeOffset value) => value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
     public override DateTimeOffset Deserialize(object value) => DateTimeOffset.TryParse((string)value, out var dts) ? dts : DateTimeOffset.MinValue;
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).DbType("datetime");
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).DbType("datetime");
 }
 ```
 

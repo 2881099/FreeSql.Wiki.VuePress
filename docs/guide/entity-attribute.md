@@ -234,19 +234,19 @@ class JsonPocoTypeHandler : TypeHandler<JsonPoco>
 {
     public override object Serialize(JsonPoco value) => JsonConvert.SerializeObject(value);
     public override JsonPoco Deserialize(object value) => JsonConvert.DeserializeObject<JsonPoco>((string)value);
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(-1);
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).StringLength(-1);
 }
 class DateOnlyTypeHandler : TypeHandler<DateOnly>
 {
     public override object Serialize(DateOnly value) => value.ToString("yyyy-MM-dd");
     public override DateOnly Deserialize(object value) => DateOnly.TryParse(string.Concat(value), out var trydo) ? trydo : DateOnly.MinValue;
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).StringLength(12);
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).StringLength(12);
 }
 class DateTimeOffsetTypeHandler : TypeHandler<DateTimeOffset>
 {
     public override object Serialize(DateTimeOffset value) => value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
     public override DateTimeOffset Deserialize(object value) => DateTimeOffset.TryParse((string)value, out var dts) ? dts : DateTimeOffset.MinValue;
-    public override void FluentApi(FluentColumn col) => col.MapType(typeof(string)).DbType("datetime");
+    public override void FluentApi(ColumnFluent col) => col.MapType(typeof(string)).DbType("datetime");
 }
 ```
 
@@ -278,7 +278,7 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 
 适用场景：当实体类继承时，CodeFirst 创建表的字段顺序可能不是想要的，通过该特性可以设置顺序。
 
-创建表时指定字段位置，如：[Column(Position = 1]，可为负数即反方向位置；
+创建表时指定字段位置，如：[Column(Position = 1)]，可为负数即反方向位置；
 
 ## 可插入(CanInsert)、可更新(CanUpdate)
 

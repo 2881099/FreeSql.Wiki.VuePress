@@ -129,7 +129,17 @@
     ]'
 />
 
-
+<VPBanner
+    title="NetAdmin"
+    content="通用后台权限管理系统、快速开发框架（基于C#12/.NET9、Vue3/Vite、Element Plus等现代技术构建，具有十分整洁、优雅的编码规范）"
+    :actions='[
+        {
+            text: "仓库",
+            link:"https://github.com/nsnail/NetAdmin",
+            type: "primary",
+        },
+    ]'
+/>
 </div>
 
 <style>
