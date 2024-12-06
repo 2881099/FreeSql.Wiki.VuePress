@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Sat, 30 Nov 2024 16:07:08 GMT</pubDate>
-    <lastBuildDate>Sat, 30 Nov 2024 16:07:08 GMT</lastBuildDate>
+    <pubDate>Fri, 06 Dec 2024 06:25:52 GMT</pubDate>
+    <lastBuildDate>Fri, 06 Dec 2024 06:25:52 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2700,8 +2700,8 @@ FROM "Topic" a</p>
 </table>
 <h2> Extension: Custom Repository</h2>
 <p>The above example uses generic repositories. If you need to override a repository, how to ensure it shares the same transaction with <code>UnitOfWorkManager</code>?</p>
-<p>Inherit from the existing <code>DefaultRepository&lt;,&gt;</code> to implement a custom repository <code>SongRepository.cs</code>:</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Interface: <code>ISongRepository.cs</code></p>
+<p>Inherit from the existing <code>BaseRepository&lt;,&gt;</code> to implement a custom repository <code>SongRepository.cs</code>:</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Interface: <code>ISongRepository.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Register this service in <code>startup.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> Extension: Multi-Database</h2>

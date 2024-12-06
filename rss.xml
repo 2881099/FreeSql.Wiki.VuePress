@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 30 Nov 2024 16:07:08 GMT</pubDate>
-    <lastBuildDate>Sat, 30 Nov 2024 16:07:08 GMT</lastBuildDate>
+    <pubDate>Fri, 06 Dec 2024 06:25:52 GMT</pubDate>
+    <lastBuildDate>Fri, 06 Dec 2024 06:25:52 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2757,8 +2757,8 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </table>
 <h2> 扩展：重写仓储</h2>
 <p>以上使用的是泛型仓储，那我们如果是重写一个仓储，如何保持和 <code>UnitOfWorkManager</code> 同一个事务呢。</p>
-<p>继承现有的 <code>DefaultRepository&lt;,&gt;</code>，实现自定义的仓储 <code>SongRepository.cs</code>：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中接口。<code>ISongRepository.cs</code></p>
+<p>继承现有的<code>BaseRepository&lt;,&gt;</code>仓储，实现自定义的仓储<code>SongRepository.cs</code>,</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中接口。<code>ISongRepository.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 startup.cs 注入此服务</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> 扩展：多库场景</h2>

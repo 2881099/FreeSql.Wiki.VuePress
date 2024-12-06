@@ -3,7 +3,7 @@
   <id>https://freesql.net/en/</id>
   <title>FreeSql Documents</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-11-30T16:07:08.618Z</updated>
+  <updated>2024-12-06T06:25:52.145Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -2815,7 +2815,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">UnitOfWork Manager ✨</title>
     <id>https://freesql.net/en/guide/unitofwork-manager.html</id>
     <link href="https://freesql.net/en/guide/unitofwork-manager.html"/>
-    <updated>2024-07-26T14:54:57.000Z</updated>
+    <updated>2024-12-06T06:24:46.000Z</updated>
     <summary type="html"><![CDATA[<h1> UnitOfWork Manager ✨</h1>
 <p>This article guides how to manage transactions using attributes (annotations) in an ASP.NET Core project.</p>
 <blockquote>
@@ -2869,8 +2869,8 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </table>
 <h2> Extension: Custom Repository</h2>
 <p>The above example uses generic repositories. If you need to override a repository, how to ensure it shares the same transaction with <code>UnitOfWorkManager</code>?</p>
-<p>Inherit from the existing <code>DefaultRepository&lt;,&gt;</code> to implement a custom repository <code>SongRepository.cs</code>:</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Interface: <code>ISongRepository.cs</code></p>
+<p>Inherit from the existing <code>BaseRepository&lt;,&gt;</code> to implement a custom repository <code>SongRepository.cs</code>:</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Interface: <code>ISongRepository.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Register this service in <code>startup.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> Extension: Multi-Database</h2>

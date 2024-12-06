@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-11-30T16:07:08.617Z</updated>
+  <updated>2024-12-06T06:25:52.145Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3143,7 +3143,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">UowManager 事务 ✨</title>
     <id>https://freesql.net/guide/unitofwork-manager.html</id>
     <link href="https://freesql.net/guide/unitofwork-manager.html"/>
-    <updated>2024-07-26T14:40:00.000Z</updated>
+    <updated>2024-12-06T06:24:46.000Z</updated>
     <summary type="html"><![CDATA[<h1> UowManager 事务 ✨</h1>
 <p>本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。</p>
 <blockquote>
@@ -3205,8 +3205,8 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </table>
 <h2> 扩展：重写仓储</h2>
 <p>以上使用的是泛型仓储，那我们如果是重写一个仓储，如何保持和 <code>UnitOfWorkManager</code> 同一个事务呢。</p>
-<p>继承现有的 <code>DefaultRepository&lt;,&gt;</code>，实现自定义的仓储 <code>SongRepository.cs</code>：</p>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中接口。<code>ISongRepository.cs</code></p>
+<p>继承现有的<code>BaseRepository&lt;,&gt;</code>仓储，实现自定义的仓储<code>SongRepository.cs</code>,</p>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中接口。<code>ISongRepository.cs</code></p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 startup.cs 注入此服务</p>
 <div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><hr>
 <h2> 扩展：多库场景</h2>
