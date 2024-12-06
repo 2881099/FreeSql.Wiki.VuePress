@@ -111,12 +111,15 @@ public class TransactionalAttribute : Rougamo.MoAttribute
 
 以上使用的是泛型仓储，那我们如果是重写一个仓储，如何保持和 `UnitOfWorkManager` 同一个事务呢。
 
-继承现有的 `DefaultRepository<,>`，实现自定义的仓储 `SongRepository.cs`：
+继承现有的`BaseRepository<,>`仓储，实现自定义的仓储`SongRepository.cs`,
 
 ```csharp
-public class SongRepository : DefaultRepository<Song, int>, ISongRepository
+public class SongRepository : BaseRepository<Song, int>, ISongRepository
 {
-    public SongRepository(UnitOfWorkManager uowm) : base(uowm?.Orm, uowm) { }
+    public SongRepository(UnitOfWorkManager uowManger) : base(uowManger?.Orm)
+    {
+        uowManger?.Binding(this);
+    }
     public List<Song> GetSongs()
     {
         return Select.Page(1, 10).ToList();
@@ -234,11 +237,11 @@ class UnitOfWorkManagerCloud
     }
 }
 
-class RepositoryCloud<T> : DefaultRepository<T, int> where T : class
+class RepositoryCloud<T> : BaseRepository<T, int> where T : class
 {
     public RepositoryCloud(UnitOfWorkManagerCloud uomw) : this(DbEnum.db1, uomw) { } //DI
     public RepositoryCloud(DbEnum db, UnitOfWorkManagerCloud uomw) : this(uomw.GetUnitOfWorkManager(db.ToString())) { }
-    RepositoryCloud(UnitOfWorkManager uomw) : base(uomw.Orm, uomw)
+    RepositoryCloud(UnitOfWorkManager uomw) : base(uomw.Orm)
     {
         uomw.Binding(this);
     }
