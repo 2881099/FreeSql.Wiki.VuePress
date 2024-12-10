@@ -2,6 +2,40 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.102
+
+- 更新 到 .NET9.0；
+- **增加 DuckDB 数据库支持；** https://freesql.net/guide/freesql-provider-duckdb.html
+- **增加 TDengine 数据库支持（感谢Daily贡献）；** https://freesql.net/guide/freesql-provider-tdengine.html
+- 增加 KingBaseES 支持数组等类型（参考 PostgreSQL）；
+- 增加 Pgsql/MySql DateOnly/TimeOnly 映射；#1868 #1763 #939 #991
+- 增加 OracleUs7ascii 写入处理特性；
+- 增加 JsonMap Poco Lambda 表达式成员解析；
+- 增加 FromQuery 参数由5个加到16个；
+- 优化 FromQuery/UnionAll 在子查中继续嵌套；
+- 优化 ISelect<object>.WithMemory 对匿名类型的支持；
+- 优化 Lambda Dto 指定 .Any() 自动转成 Case when；
+- 优化 ExpressionCall + DynamicInvoke 的解析；
+- 优化 LIKE 表达式解析 #1870；
+- 优化 Lambda Min/Max/First 针对 DateTime 类型不自动处理 IsNull 逻辑，因为各数据库没有统一默认值；
+- 优化 DateTime.Subtract(date).TotalSecods 等 lambda 表达式解析，对应 datediff；
+- 优化 DbSet/Repository 删除多主键分批300，防止 SQL AND OR 过长问题；
+- 优化 DM/KDB/ST 默认使用 ado.net 连接池；
+- 扩展 TypeHandler override FluentApi 设置；
+- 扩展 SqlExt.DateDiff 时间差值计算；
+- 扩展 a.Id.In(..) 自定义函数解析，或 new[]{ 1,2,3 }.Contains(a.Id) 相同；
+- 修复 Repository + AuditValue + Attach 问题；#1931 #1746
+- 修复 GBase serial8/bigserial 自增回填的问题；#1919
+- 修复 Xugu DataType 对应问题；#1934 #1933
+- 修复 Firebird 批量插入 varchar 追加空格的问题；#1923
+- 修复 Guid.NewGuid().ToString().Replace("-", "") 3.2.810 之后版本的解析问题；
+- 修复 UnionAll + OrderBy 未处理嵌套的问题；
+- 移除 TimeSpan 过度 Lambda 解析；
+- 移除 OdbcDameng/OdbcKingbaseES；
+- 移除 Resources 转换成 static class 静态类；#1917
+- 移除 fsql.GetGuidRepository 改用 fsql.GetRepository<T, Guid>()；
+- 修复 DateOnly/TimeOnly 映射问题；#1868 #1855 #1763 #939 #991
+
 ## v3.2.833
 
 - 添加 Aop.ConfigEntity 动态设置表名功能；#364 #1835 #1729 #1542 #1248 #1247 #407 #387
