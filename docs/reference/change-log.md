@@ -13,7 +13,7 @@
 - 增加 JsonMap Poco Lambda 表达式成员解析；
 - 增加 FromQuery 参数由5个加到16个；
 - 优化 FromQuery/UnionAll 在子查中继续嵌套；
-- 优化 ISelect<object>.WithMemory 对匿名类型的支持；
+- 优化 ISelect\<object\>.WithMemory 对匿名类型的支持；
 - 优化 Lambda Dto 指定 .Any() 自动转成 Case when；
 - 优化 ExpressionCall + DynamicInvoke 的解析；
 - 优化 LIKE 表达式解析 #1870；
@@ -33,7 +33,7 @@
 - 移除 TimeSpan 过度 Lambda 解析；
 - 移除 OdbcDameng/OdbcKingbaseES；
 - 移除 Resources 转换成 static class 静态类；#1917
-- 移除 fsql.GetGuidRepository 改用 fsql.GetRepository<T, Guid>()；
+- 移除 fsql.GetGuidRepository 改用 fsql.GetRepository\<T, Guid\>()；
 - 修复 DateOnly/TimeOnly 映射问题；#1868 #1855 #1763 #939 #991
 
 ## v3.2.833
