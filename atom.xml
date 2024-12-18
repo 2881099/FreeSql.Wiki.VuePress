@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-12-10T03:16:56.369Z</updated>
+  <updated>2024-12-18T12:41:33.205Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3327,7 +3327,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">Awesome FreeSql</title>
     <id>https://freesql.net/reference/awesome-freesql.html</id>
     <link href="https://freesql.net/reference/awesome-freesql.html"/>
-    <updated>2024-09-20T08:32:49.000Z</updated>
+    <updated>2024-12-18T12:39:52.000Z</updated>
     <summary type="html"><![CDATA[<h1> Awesome FreeSql</h1>
 <h2> 基于 FreeSql 的仓库项目</h2>
 <div class="flex">
@@ -3350,7 +3350,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 <ul>
 <li><a href="https://freesql.net" target="_blank" rel="noopener noreferrer">https://freesql.net</a></li>
 <li><a href="https://github.com/dotnetcore/FreeSql/wiki" target="_blank" rel="noopener noreferrer">https://github.com/dotnetcore/FreeSql/wiki</a></li>
-<li><a href="http://101.34.7.82:8082/api/index.html" target="_blank" rel="noopener noreferrer">API 参考(国内镜像)</a></li>
+<li><a href="http://124.221.134.143:8082/api/index.html" target="_blank" rel="noopener noreferrer">API 参考(国内镜像)</a></li>
 <li><a href="https://dotnetcore.github.io/FreeSql/index.html" target="_blank" rel="noopener noreferrer">API 参考</a></li>
 </ul>
 <h2> 源码</h2>
@@ -10965,10 +10965,10 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">API 文档</title>
     <id>https://freesql.net/reference/api.html</id>
     <link href="https://freesql.net/reference/api.html"/>
-    <updated>2024-01-30T13:55:37.000Z</updated>
+    <updated>2024-12-18T12:39:52.000Z</updated>
     <summary type="html"><![CDATA[<h1> API 文档</h1>
 <ul>
-<li><a href="http://101.34.7.82:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://101.34.7.82:8082/api/FreeSql.html</a></li>
+<li><a href="http://124.221.134.143:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://124.221.134.143:8082/api/FreeSql.html</a></li>
 </ul>
 <h2> FreeSqlBuilder</h2>
 <table>
@@ -11059,7 +11059,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </table>]]></summary>
     <content type="html"><![CDATA[<h1> API 文档</h1>
 <ul>
-<li><a href="http://101.34.7.82:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://101.34.7.82:8082/api/FreeSql.html</a></li>
+<li><a href="http://124.221.134.143:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://124.221.134.143:8082/api/FreeSql.html</a></li>
 </ul>
 <h2> FreeSqlBuilder</h2>
 <table>
@@ -12203,78 +12203,18 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
 </table>
 <hr>
 <h2> IDelete</h2>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>返回值</th>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Where</td>
-<td>&lt;this&gt;</td>
-<td>Lambda</td>
-<td>表达式条件，仅支持实体基础成员（不包含导航对象）</td>
-</tr>
-<tr>
-<td>Where</td>
-<td>&lt;this&gt;</td>
-<td>string, parms</td>
-<td>原生 sql 语法条件，Where("id = ?id", new { id = 1 })</td>
-</tr>
-<tr>
-<td>Where</td>
-<td>&lt;this&gt;</td>
-<td>T1 | IEnumerable&lt;T1&gt;</td>
-<td>传入实体或集合，将其主键作为条件</td>
-</tr>
-<tr>
-<td>WhereExists</td>
-<td>&lt;this&gt;</td>
-<td>ISelect</td>
-<td>子查询是否存在</td>
-</tr>
-<tr>
-<td>CommandTimeout</td>
-<td>&lt;this&gt;</td>
-<td>int</td>
-<td>命令超时设置(秒)</td>
-</tr>
-<tr>
-<td>WithTransaction</td>
-<td>&lt;this&gt;</td>
-<td>DbTransaction</td>
-<td>设置事务对象</td>
-</tr>
-<tr>
-<td>WithConnection</td>
-<td>&lt;this&gt;</td>
-<td>DbConnection</td>
-<td>设置连接对象</td>
-</tr>
-<tr>
-<td>ToSql</td>
-<td>string</td>
-<td></td>
-<td>返回即将执行的 SQL 语句</td>
-</tr>
-<tr>
-<td>ExecuteAffrows</td>
-<td>long</td>
-<td></td>
-<td>执行 SQL 语句，返回影响的行数</td>
-</tr>
-<tr>
-<td>ExecuteDeleted</td>
-<td>List&lt;T1&gt;</td>
-<td></td>
-<td>执行 SQL 语句，返回被删除的记录</td>
-</tr>
-</tbody>
-</table>
+<p>| 方法            | 返回值     | 参数                    | 描述                                                 |
+| --------------- | ---------- | ----------------------- | ---------------------------------------------------- | --- |
+| Where           | &lt;this&gt;   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）     |
+| Where           | &lt;this&gt;   | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 }) |
+| Where           | &lt;this&gt;   | T1 | IEnumerable&lt;T1&gt; | 传入实体或集合，将其主键作为条件                     |
+| WhereExists     | &lt;this&gt;   | ISelect                 | 子查询是否存在                                       |
+| CommandTimeout  | &lt;this&gt;   | int                     | 命令超时设置(秒)                                     |
+| WithTransaction | &lt;this&gt;   | DbTransaction           | 设置事务对象                                         |
+| WithConnection  | &lt;this&gt;   | DbConnection            | 设置连接对象                                         |
+| ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
+| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
+| ExecuteDeleted  | List&lt;T1&gt; |                         | 执行 SQL 语句，返回被删除的记录                      | \   |</p>
 ]]></content>
     <published>2021-02-04T16:03:18.000Z</published>
   </entry>
