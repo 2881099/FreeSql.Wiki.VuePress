@@ -140,6 +140,7 @@
         },
     ]'
 />
+
 </div>
 
 <style>
@@ -158,7 +159,6 @@
 }
 </style>
 
-
 ## FreeSql 官方博客
 
 - [https://www.cnblogs.com/kellynic/](https://www.cnblogs.com/kellynic/)
@@ -168,7 +168,7 @@
 
 - [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API 参考(国内镜像)](http://101.34.7.82:8082/api/index.html)
+- [API 参考(国内镜像)](http://124.221.134.143:8082/api/index.html)
 - [API 参考](https://dotnetcore.github.io/FreeSql/index.html)
 
 ## 源码

@@ -1,26 +1,26 @@
 # API 文档
 
-- [http://101.34.7.82:8082/api/FreeSql.html](http://101.34.7.82:8082/api/FreeSql.html)
+- [http://124.221.134.143:8082/api/FreeSql.html](http://124.221.134.143:8082/api/FreeSql.html)
 
 ## FreeSqlBuilder
 
-| 方法 | 返回值 | 说明 |
-| -- | -- | -- |
-| UseConnectionString | this | 设置连接串 |
-| UseAdoConnectionPool | this | 设置连接池方案（默认 false，远程访问建议设置 true） |
-| UseSlave | this | 设置从数据库，支持多个 |
-| UseSlaveWeight | this | 设置从数据库权重 |
-| UseConnectionFactory | this | 设置自定义数据库连接对象（放弃内置对象连接池技术） |
-| UseAutoSyncStructure | this | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构 |
-| UseNoneCommandParameter | this | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter() |
-| UseGenerateCommandParameterWithLambda | this | 生成命令参数化执行，针对 lambda 表达式解析 |
-| UseLazyLoading | this | 开启延时加载功能 |
-| UseMonitorCommand | this | 监视全局 SQL 执行前后 |
-| UseMappingPriority | this | 指定映射优先级（默认 Aop < FluentApi < Attribute） |
-| **UseNameConvert** | this | 自动转换名称 Entity -\> Db |
-| UseQuoteSqlName | this | SQL名称是否使用 \[\] `` "" |
-| UseExitAutoDisposePool | this | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认true) |
-| Build\<T\> | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建 |
+| 方法                                  | 返回值        | 说明                                                                                          |
+| ------------------------------------- | ------------- | --------------------------------------------------------------------------------------------- |
+| UseConnectionString                   | this          | 设置连接串                                                                                    |
+| UseAdoConnectionPool                  | this          | 设置连接池方案（默认 false，远程访问建议设置 true）                                           |
+| UseSlave                              | this          | 设置从数据库，支持多个                                                                        |
+| UseSlaveWeight                        | this          | 设置从数据库权重                                                                              |
+| UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                            |
+| UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                  |
+| UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()        |
+| UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                    |
+| UseLazyLoading                        | this          | 开启延时加载功能                                                                              |
+| UseMonitorCommand                     | this          | 监视全局 SQL 执行前后                                                                         |
+| UseMappingPriority                    | this          | 指定映射优先级（默认 Aop < FluentApi < Attribute）                                            |
+| **UseNameConvert**                    | this          | 自动转换名称 Entity -\> Db                                                                    |
+| UseQuoteSqlName                       | this          | SQL名称是否使用 \[\] `` ""                                                                    |
+| UseExitAutoDisposePool                | this          | 监听 AppDomain.CurrentDomain.ProcessExit/Console.CancelKeyPress 事件自动释放连接池 (默认true) |
+| Build\<T\>                            | IFreeSql\<T\> | 创建一个 IFreeSql 对象，注意：单例设计，不要重复创建                                          |
 
 ## IFreeSql
 
@@ -130,8 +130,8 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 
 ## ISelect
 
-| 方法                | 返回值          | 参数                               | 描述|                                                                                                                                                                   |
-| ------------------- | --------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| 方法                | 返回值          | 参数                               | 描述                                                                                                                                                                   |     |
+| ------------------- | --------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
 | ToSql               | string          |                                    | 返回即将执行的 SQL 语句                                                                                                                                                |
 | ToList              | List\<T1\>      |                                    | 执行 SQL 查询，返回 T1 实体所有字段的记录，若存在导航属性则一起查询返回，记录不存在时返回 Count 为 0 的列表                                                            |
 | ToList\<T\>         | List\<T\>       | Lambda                             | 执行 SQL 查询，返回指定字段的记录，记录不存在时返回 Count 为 0 的列表                                                                                                  |
@@ -157,7 +157,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WhereIf             | \<this\>        | bool, string, parms                | 原生 sql 语法条件，WhereIf(true, "id = ?id", new { id = 1 })                                                                                                           |
 | WhereCascade        | \<this\>        | Lambda                             | 实现多表查询时，向每个表中附加条件                                                                                                                                     |
 | 【分组】            |
-| GroupBy             | \<this\>        | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)、GroupBy(a => new{a.Name,a.Time}) |
+| GroupBy             | \<this\>        | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)、GroupBy(a => new{a.Name,a.Time})                                                                                                 |
 | GroupBy             | \<this\>        | string, parms                      | 按原生 sql 语法分组，GroupBy("concat(name, ?cc)", new { cc = 1 })                                                                                                      |
 | Having              | \<this\>        | string, parms                      | 按原生 sql 语法聚合条件过滤，Having("count(name) = ?cc", new { cc = 1 })                                                                                               |
 | Distinct            | \<this\>        |                                    | .Distinct().ToList(x => x.GroupName) 是对指定字段                                                                                                                      |
@@ -212,32 +212,32 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 
 ## IUpdate
 
-| 方法            | 返回值     | 参数                    | 描述                                                                          |
-| --------------- | ---------- | ----------------------- | ----------------------------------------------------------------------------- |
-| SetSource       | \<this\>   | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体                                                      |
-| IgnoreColumns   | \<this\>   | Lambda                  | 忽略的列                                                                      |
-| Set             | \<this\>   | Lambda, value           | 设置列的新值，Set(a => a.Name, "newvalue")                                    |
-| Set             | \<this\>   | Lambda                  | 设置列的的新值为基础上增加，Set(a => a.Clicks + 1)，相当于 clicks=clicks+1    |
-| SetDto          | \<this\>   | object                  | 根据 dto 更新的方法                                                           |
-| SetRaw          | \<this\>   | string, parms           | 设置值，自定义 SQL 语法，SetRaw("title = ?title", new { title = "newtitle" }) |
-| Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                              |
-| Where           | \<this\>   | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 })                          |
-| Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                                              |
-| WhereExists     | \<this\>   | ISelect                 | 子查询是否存在                                                                |
-| CommandTimeout  | \<this\>   | int                     | 命令超时设置(秒)                                                              |
-| WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                                                  |
-| WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                                                  |
-| ToSql           | string     |                         | 返回即将执行的 SQL 语句                                                       |
-| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                                                 |
-| ExecuteUpdated  | List\<T1\> |                         | 执行 SQL 语句，返回更新后的记录                                               |
-| Join | IUpdateJoin | | 联表更新 |
+| 方法            | 返回值      | 参数                    | 描述                                                                          |
+| --------------- | ----------- | ----------------------- | ----------------------------------------------------------------------------- |
+| SetSource       | \<this\>    | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体                                                      |
+| IgnoreColumns   | \<this\>    | Lambda                  | 忽略的列                                                                      |
+| Set             | \<this\>    | Lambda, value           | 设置列的新值，Set(a => a.Name, "newvalue")                                    |
+| Set             | \<this\>    | Lambda                  | 设置列的的新值为基础上增加，Set(a => a.Clicks + 1)，相当于 clicks=clicks+1    |
+| SetDto          | \<this\>    | object                  | 根据 dto 更新的方法                                                           |
+| SetRaw          | \<this\>    | string, parms           | 设置值，自定义 SQL 语法，SetRaw("title = ?title", new { title = "newtitle" }) |
+| Where           | \<this\>    | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                              |
+| Where           | \<this\>    | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 })                          |
+| Where           | \<this\>    | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                                              |
+| WhereExists     | \<this\>    | ISelect                 | 子查询是否存在                                                                |
+| CommandTimeout  | \<this\>    | int                     | 命令超时设置(秒)                                                              |
+| WithTransaction | \<this\>    | DbTransaction           | 设置事务对象                                                                  |
+| WithConnection  | \<this\>    | DbConnection            | 设置连接对象                                                                  |
+| ToSql           | string      |                         | 返回即将执行的 SQL 语句                                                       |
+| ExecuteAffrows  | long        |                         | 执行 SQL 语句，返回影响的行数                                                 |
+| ExecuteUpdated  | List\<T1\>  |                         | 执行 SQL 语句，返回更新后的记录                                               |
+| Join            | IUpdateJoin |                         | 联表更新                                                                      |
 
 ---
 
 ## IDelete
 
 | 方法            | 返回值     | 参数                    | 描述                                                 |
-| --------------- | ---------- | ----------------------- | ---------------------------------------------------- |
+| --------------- | ---------- | ----------------------- | ---------------------------------------------------- | --- |
 | Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）     |
 | Where           | \<this\>   | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 }) |
 | Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                     |
@@ -247,5 +247,4 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
-| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |\
-
+| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      | \   |
