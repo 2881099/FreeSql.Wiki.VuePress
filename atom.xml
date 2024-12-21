@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-12-18T12:41:33.205Z</updated>
+  <updated>2024-12-21T03:51:23.250Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -4137,7 +4137,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">入门</title>
     <id>https://freesql.net/guide/</id>
     <link href="https://freesql.net/guide/"/>
-    <updated>2024-11-30T16:06:15.000Z</updated>
+    <updated>2024-12-21T03:50:26.000Z</updated>
     <summary type="html"><![CDATA[<h1> 入门</h1>
 <p>FreeSql 是一款功能强大的对象关系映射（O/RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+</p>
 <p>QQ 群：561616019(在线)、4336577(已满)、8578575(已满)、52508226(已满)</p>
