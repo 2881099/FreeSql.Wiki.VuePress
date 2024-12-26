@@ -78,13 +78,16 @@ fsql.Aop.SyncStructureBefore、fsql.Aop.SyncStructureAfter 这两个事件将排
 
 ## ConfigEntity
 
-### 统一设置架构
+### 统一设置架构名
+
+提前设置 FreeSqlBuilder AOP 优先级：
+
+UseMappingPriority(MappingPriorityType.Attribute, MappingPriorityType.FluentApi, MappingPriorityType.Aop)
 
 ```csharp
-//提前设置 FreeSqlBuilder AOP 优先级
-//UseMappingPriority(MappingPriorityType.Attribute, MappingPriorityType.FluentApi, MappingPriorityType.Aop)
 
-fsql.Aop.ConfigEntity += (s, e) => {
+fsql.Aop.ConfigEntity += (s, e) =>
+{
     e.ModifyResult.Name = "public." + e.ModifyResult.Name;
     //提示：可以利用 AsyncLocal 动态设置表名 v3.2.833
 };
@@ -95,7 +98,8 @@ fsql.Aop.ConfigEntity += (s, e) => {
 默认情况 c# 枚举会映射为 MySql Enum 类型，如果想映射为 int 在 FreeSqlBuilder Build 之后执行以下 Aop 统一处理：
 
 ```csharp
-fsql.Aop.ConfigEntityProperty += (s, e) => {
+fsql.Aop.ConfigEntityProperty += (s, e) =>
+{
     if (e.Property.PropertyType.IsEnum)
         e.ModifyResult.MapType = typeof(int);
 };
