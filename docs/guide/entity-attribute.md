@@ -21,7 +21,7 @@ class Topic { }
 - 4、[Table(Name = "public.tabname")]
 - 5、AsTable fsql.Select\<T\>().AsTable((_, old) => "public.tabname").ToList()
 
-> v3.2.660 可通过 UseMappingPriority 调整优先级
+> v3.2.833 可通过 UseMappingPriority 调整优先级，使用 Aop 实现动态表名
 
 属性：[Column(Name = "xxx")]
 
