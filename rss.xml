@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 26 Dec 2024 00:50:09 GMT</pubDate>
-    <lastBuildDate>Thu, 26 Dec 2024 00:50:09 GMT</lastBuildDate>
+    <pubDate>Thu, 26 Dec 2024 00:53:02 GMT</pubDate>
+    <lastBuildDate>Thu, 26 Dec 2024 00:53:02 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4254,7 +4254,7 @@ db.Add(new Xxx());</p>
 <li>5、AsTable fsql.Select&lt;T&gt;().AsTable((_, old) =&gt; "public.tabname").ToList()</li>
 </ul>
 <blockquote>
-<p>v3.2.660 可通过 UseMappingPriority 调整优先级</p>
+<p>v3.2.833 可通过 UseMappingPriority 调整优先级，使用 Aop 实现动态表名</p>
 </blockquote>
 <p>属性：[Column(Name = "xxx")]</p>
 <h2> 主键(Primary Key)</h2>
