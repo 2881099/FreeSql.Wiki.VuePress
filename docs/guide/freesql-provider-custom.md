@@ -8,7 +8,7 @@
 | 南大通用 | FreeSql.Provider.GBase | Informix |
 | 虚谷 | FreeSql.Provider.Xugu | Oracle |
 | 翰高 | FreeSql.Provider.Custom、FreeSql.Provider.Odbc | PostgreSQL |
-| OpenGuass(华为) | FreeSql.Provider.PostgreSQL | PostgreSQL |
+| 华为(OpenGuass) | FreeSql.Provider.PostgreSQL | PostgreSQL |
 
 由于太多，在此不一一列举，它们大多数语法兼容 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库之一。
 
