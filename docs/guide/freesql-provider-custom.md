@@ -35,7 +35,7 @@ fsql.SetDbProviderFactory(MySqlConnectorFactory.Instance);
 
 提示：对方 DLL 一般都会提供这两个现实类
 
-# OpenGuass(华为)
+---
 
 报错：Received AuthenticationSASL message with 0 mechanisms!
 
