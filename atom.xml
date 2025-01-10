@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2025-01-10T03:37:48.283Z</updated>
+  <updated>2025-01-10T06:03:22.823Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2373,7 +2373,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">国产数据库</title>
     <id>https://freesql.net/guide/freesql-provider-custom.html</id>
     <link href="https://freesql.net/guide/freesql-provider-custom.html"/>
-    <updated>2025-01-10T03:36:54.000Z</updated>
+    <updated>2025-01-10T06:02:23.000Z</updated>
     <summary type="html"><![CDATA[<h1> 国产数据库</h1>
 <table>
 <thead>
@@ -2479,10 +2479,10 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 </ul>
 <p>提示：对方 DLL 一般都会提供这两个现实类</p>
 <hr>
-<p>报错：Received AuthenticationSASL message with 0 mechanisms!</p>
-<p>解决方法：</p>
-<p>1、pg_hba.conf</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>2、postgresql.conf</p>
+<p>华为报错：Received AuthenticationSASL message with 0 mechanisms!</p>
+<p>1、连接串</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>2、pg_hba.conf</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>3、postgresql.conf</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h1> 自定义适配</h1>
 <p>除了上面，还提供了自定义适配更多的数据库，比如 mssql2000、db2，自定义适配将牺牲一些功能：</p>
 <ul>

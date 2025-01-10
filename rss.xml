@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 10 Jan 2025 03:37:48 GMT</pubDate>
-    <lastBuildDate>Fri, 10 Jan 2025 03:37:48 GMT</lastBuildDate>
+    <pubDate>Fri, 10 Jan 2025 06:03:22 GMT</pubDate>
+    <lastBuildDate>Fri, 10 Jan 2025 06:03:22 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2180,10 +2180,10 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 </ul>
 <p>提示：对方 DLL 一般都会提供这两个现实类</p>
 <hr>
-<p>报错：Received AuthenticationSASL message with 0 mechanisms!</p>
-<p>解决方法：</p>
-<p>1、pg_hba.conf</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>2、postgresql.conf</p>
+<p>华为报错：Received AuthenticationSASL message with 0 mechanisms!</p>
+<p>1、连接串</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>2、pg_hba.conf</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>3、postgresql.conf</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h1> 自定义适配</h1>
 <p>除了上面，还提供了自定义适配更多的数据库，比如 mssql2000、db2，自定义适配将牺牲一些功能：</p>
 <ul>
