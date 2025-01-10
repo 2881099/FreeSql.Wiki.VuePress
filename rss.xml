@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 10 Jan 2025 03:37:20 GMT</pubDate>
-    <lastBuildDate>Fri, 10 Jan 2025 03:37:20 GMT</lastBuildDate>
+    <pubDate>Fri, 10 Jan 2025 03:37:48 GMT</pubDate>
+    <lastBuildDate>Fri, 10 Jan 2025 03:37:48 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2163,7 +2163,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <td>PostgreSQL</td>
 </tr>
 <tr>
-<td>OpenGuass(华为)</td>
+<td>华为(OpenGuass)</td>
 <td>FreeSql.Provider.PostgreSQL</td>
 <td>PostgreSQL</td>
 </tr>
