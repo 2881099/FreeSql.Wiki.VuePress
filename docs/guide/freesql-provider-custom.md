@@ -8,6 +8,7 @@
 | 南大通用 | FreeSql.Provider.GBase | Informix |
 | 虚谷 | FreeSql.Provider.Xugu | Oracle |
 | 翰高 | FreeSql.Provider.Custom、FreeSql.Provider.Odbc | PostgreSQL |
+| OpenGuass(华为) | FreeSql.Provider.PostgreSQL | PostgreSQL |
 
 由于太多，在此不一一列举，它们大多数语法兼容 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库之一。
 
@@ -33,6 +34,25 @@ fsql.SetDbProviderFactory(MySqlConnectorFactory.Instance);
 - 将上面 MySqlConnectorFactory.Instance 替换成对应的 DbProviderFactory
 
 提示：对方 DLL 一般都会提供这两个现实类
+
+# OpenGuass(华为)
+
+报错：Received AuthenticationSASL message with 0 mechanisms!
+
+解决方法：
+
+1、pg_hba.conf
+
+```shell
+host    all             all             0.0.0.0/0               sha256
+host    all             all             127.0.0.1/32            trust
+```
+
+2、postgresql.conf
+
+```shell
+password_encryption_type = 1
+```
 
 # 自定义适配
 
