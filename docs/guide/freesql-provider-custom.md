@@ -37,18 +37,22 @@ fsql.SetDbProviderFactory(MySqlConnectorFactory.Instance);
 
 ---
 
-报错：Received AuthenticationSASL message with 0 mechanisms!
+华为报错：Received AuthenticationSASL message with 0 mechanisms!
 
-解决方法：
+1、连接串
 
-1、pg_hba.conf
+```shell
+Host=127.0.0.1;Port=15432;Username=qadmin;Password=******;Database=db;No Reset On Close=true;Pooling=true;Minimum Pool Size=1
+```
+
+2、pg_hba.conf
 
 ```shell
 host    all             all             0.0.0.0/0               sha256
 host    all             all             127.0.0.1/32            trust
 ```
 
-2、postgresql.conf
+3、postgresql.conf
 
 ```shell
 password_encryption_type = 1
