@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 10 Jan 2025 03:35:42 GMT</pubDate>
-    <lastBuildDate>Fri, 10 Jan 2025 03:35:42 GMT</lastBuildDate>
+    <pubDate>Fri, 10 Jan 2025 03:37:20 GMT</pubDate>
+    <lastBuildDate>Fri, 10 Jan 2025 03:37:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -2179,7 +2179,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <li>将上面 MySqlConnectorFactory.Instance 替换成对应的 DbProviderFactory</li>
 </ul>
 <p>提示：对方 DLL 一般都会提供这两个现实类</p>
-<h1> OpenGuass(华为)</h1>
+<hr>
 <p>报错：Received AuthenticationSASL message with 0 mechanisms!</p>
 <p>解决方法：</p>
 <p>1、pg_hba.conf</p>

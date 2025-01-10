@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2025-01-10T03:35:42.710Z</updated>
+  <updated>2025-01-10T03:37:20.559Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2373,7 +2373,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">国产数据库</title>
     <id>https://freesql.net/guide/freesql-provider-custom.html</id>
     <link href="https://freesql.net/guide/freesql-provider-custom.html"/>
-    <updated>2025-01-10T03:34:44.000Z</updated>
+    <updated>2025-01-10T03:36:23.000Z</updated>
     <summary type="html"><![CDATA[<h1> 国产数据库</h1>
 <table>
 <thead>
@@ -2478,7 +2478,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <li>将上面 MySqlConnectorFactory.Instance 替换成对应的 DbProviderFactory</li>
 </ul>
 <p>提示：对方 DLL 一般都会提供这两个现实类</p>
-<h1> OpenGuass(华为)</h1>
+<hr>
 <p>报错：Received AuthenticationSASL message with 0 mechanisms!</p>
 <p>解决方法：</p>
 <p>1、pg_hba.conf</p>
