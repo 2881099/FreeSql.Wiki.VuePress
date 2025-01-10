@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2024-12-26T00:53:02.397Z</updated>
+  <updated>2025-01-10T03:35:42.710Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -2373,7 +2373,7 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
     <title type="text">国产数据库</title>
     <id>https://freesql.net/guide/freesql-provider-custom.html</id>
     <link href="https://freesql.net/guide/freesql-provider-custom.html"/>
-    <updated>2024-01-05T04:10:01.000Z</updated>
+    <updated>2025-01-10T03:34:44.000Z</updated>
     <summary type="html"><![CDATA[<h1> 国产数据库</h1>
 <table>
 <thead>
@@ -2412,6 +2412,11 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <tr>
 <td>翰高</td>
 <td>FreeSql.Provider.Custom、FreeSql.Provider.Odbc</td>
+<td>PostgreSQL</td>
+</tr>
+<tr>
+<td>OpenGuass(华为)</td>
+<td>FreeSql.Provider.PostgreSQL</td>
 <td>PostgreSQL</td>
 </tr>
 </tbody>
@@ -2456,6 +2461,11 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <td>FreeSql.Provider.Custom、FreeSql.Provider.Odbc</td>
 <td>PostgreSQL</td>
 </tr>
+<tr>
+<td>OpenGuass(华为)</td>
+<td>FreeSql.Provider.PostgreSQL</td>
+<td>PostgreSQL</td>
+</tr>
 </tbody>
 </table>
 <p>由于太多，在此不一一列举，它们大多数语法兼容 MySql、Oracle、SqlServer、PostgreSQL 四种常用数据库之一。</p>
@@ -2468,7 +2478,12 @@ dotnet <span class="token function">add</span> package FreeSql.Provider.MySqlCon
 <li>将上面 MySqlConnectorFactory.Instance 替换成对应的 DbProviderFactory</li>
 </ul>
 <p>提示：对方 DLL 一般都会提供这两个现实类</p>
-<h1> 自定义适配</h1>
+<h1> OpenGuass(华为)</h1>
+<p>报错：Received AuthenticationSASL message with 0 mechanisms!</p>
+<p>解决方法：</p>
+<p>1、pg_hba.conf</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>2、postgresql.conf</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h1> 自定义适配</h1>
 <p>除了上面，还提供了自定义适配更多的数据库，比如 mssql2000、db2，自定义适配将牺牲一些功能：</p>
 <ul>
 <li>不支持 CodeFirst 自动迁移</li>
