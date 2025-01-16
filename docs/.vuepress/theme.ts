@@ -43,6 +43,7 @@ export default hopeTheme({
 
   markdown: {
     codeTabs: true,
+    component: true,
     figure: true,
     hint: false,
     imgLazyload: true,
@@ -50,7 +51,7 @@ export default hopeTheme({
 
   plugins: {
     components: {
-      components: ["BiliBili", "VPBanner", "VPCard", "Badge", "Share"],
+      components: ["VPBanner"],
     },
 
     docsearch: {
