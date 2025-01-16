@@ -50,24 +50,13 @@ docker push igeekfan/freesql-doc:latest
 docker run --name freesql-doc -d -p 8081:80 igeekfan/freesql-doc:latest
 ```
 
-## upgrade package
-
-```bash
-pnpm up vuepress-theme-hope@2.0.0-beta.124
-pnpm up @vuepress/cli@2.0.0-beta.53
-pnpm up @vuepress/client@2.0.0-beta.53
-pnpm up @vuepress/plugin-docsearch@2.0.0-beta.53
-pnpm up @vuepress/plugin-google-analytics@2.0.0-beta.53
-pnpm up vuepress@2.0.0-beta.53
-```
-
 ## vuepress-next
 
-- [https://vuepress.github.io/zh/guide/](https://vuepress.github.io/zh/guide/)
+- <https://vuepress.vuejs.org/zh/guide/>
 
 ## vuepress-theme-hope
 
-- [https://vuepress-theme-hope.github.io/v2/](https://vuepress-theme-hope.github.io/v2/)
+- <https://theme-hope.vuejs.press/zh/>
 
 ## 源码
 
@@ -78,5 +67,5 @@ pnpm up vuepress@2.0.0-beta.53
 
 - [https://freesql.net](https://freesql.net)
 - [https://github.com/dotnetcore/FreeSql/wiki](https://github.com/dotnetcore/FreeSql/wiki)
-- [API参考(国内镜像)](http://124.221.134.143:8082/api/index.html)
+- [API参考 (国内镜像)](http://124.221.134.143:8082/api/index.html)
 - [API参考](https://dotnetcore.github.io/FreeSql/index.html)
