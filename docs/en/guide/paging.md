@@ -57,18 +57,18 @@ For SqlServer 2012+ versions, the latest fetch next rows paging is used;
 
 ## API
 
-| Method       | Return Type | Parameters                   | Description                                                                                                          |
-| ------------ | ------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| ToSql        | string       |                              | Returns the SQL statement that will be executed                                                                      |
-| ToList       | List\<T1\>   |                              | Executes SQL query and returns all fields of T1 entity records. If there are navigation properties, they are also returned. If no records exist, returns a list with Count 0. |
-| ToList\<T\>  | List\<T\>    | Lambda                       | Executes SQL query and returns specified fields of records. If no records exist, returns a list with Count 0.        |
-| ToList\<T\>  | List\<T\>    | string field                 | Executes SQL query and returns records for the specified field, and receives as tuples or basic types (int, string, long). If no records exist, returns a list with Count 0. |
-| 【Paging】    |
-| Count        | long         |                              | Number of records in the query                                                                                         |
-| Count        | \<this\>     | out long                     | Number of records in the query, returned as an out parameter                                                            |
-| Skip         | \<this\>     | int offset                   | Query with an offset of rows                                                                                           |
-| Offset       | \<this\>     | int offset                   | Query with an offset of rows                                                                                           |
-| Limit        | \<this\>     | int limit                    | Query how many records                                                                                                 |
-| Take         | \<this\>     | int limit                    | Query how many records                                                                                                 |
-| Page         | \<this\>     | int pageIndex, int pageSize  | Paging                                                                                                               |
-| Page         | \<this\>     | BasePagingInfo(int PageNumber, int PageSize, long Count) | Paging and calculate Count                                                                                   |
+| Method      | Return Type | Parameters                                               | Description                                                                                                                                                                   |
+| ----------- | ----------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ToSql       | string      |                                                          | Returns the SQL statement that will be executed                                                                                                                               |
+| ToList      | List\<T1\>  |                                                          | Executes SQL query and returns all fields of T1 entity records. If there are navigation properties, they are also returned. If no records exist, returns a list with Count 0. |
+| ToList\<T\> | List\<T\>   | Lambda                                                   | Executes SQL query and returns specified fields of records. If no records exist, returns a list with Count 0.                                                                 |
+| ToList\<T\> | List\<T\>   | string field                                             | Executes SQL query and returns records for the specified field, and receives as tuples or basic types (int, string, long). If no records exist, returns a list with Count 0.  |
+| 【Paging】  |
+| Count       | long        |                                                          | Number of records in the query                                                                                                                                                |
+| Count       | \<this\>    | out long                                                 | Number of records in the query, returned as an out parameter                                                                                                                  |
+| Skip        | \<this\>    | int offset                                               | Query with an offset of rows                                                                                                                                                  |
+| Offset      | \<this\>    | int offset                                               | Query with an offset of rows                                                                                                                                                  |
+| Limit       | \<this\>    | int limit                                                | Query how many records                                                                                                                                                        |
+| Take        | \<this\>    | int limit                                                | Query how many records                                                                                                                                                        |
+| Page        | \<this\>    | int pageIndex, int pageSize                              | Paging                                                                                                                                                                        |
+| Page        | \<this\>    | BasePagingInfo(int PageNumber, int PageSize, long Count) | Paging and calculate Count                                                                                                                                                    |

@@ -111,69 +111,114 @@ The `ctx` object depends on the JSON configuration as follows:
 ```json
 [
   {
-    "Name":"User",
-    "Comment":"User Table",
+    "Name": "User",
+    "Comment": "User Table",
     "Columns": [
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"Name","MapType":"System.String"}
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "Name", "MapType": "System.String" }
     ],
-    "Navigates":[
-      {"Name":"Ext","Type":"OneToOne","RelTable":"UserExt"},
-      {"Name":"Claims","Type":"OneToMany","RelTable":"UserClaim","Bind":"UserId"},
-      {"Name":"Roles","Type":"ManyToMany","RelTable":"Role","ManyToMany":"UserRole"}
+    "Navigates": [
+      { "Name": "Ext", "Type": "OneToOne", "RelTable": "UserExt" },
+      {
+        "Name": "Claims",
+        "Type": "OneToMany",
+        "RelTable": "UserClaim",
+        "Bind": "UserId"
+      },
+      {
+        "Name": "Roles",
+        "Type": "ManyToMany",
+        "RelTable": "Role",
+        "ManyToMany": "UserRole"
+      }
     ],
-    "Indexes":[]
+    "Indexes": []
   },
   {
-    "Name":"UserExt",
-    "Comment":"User Extension Information Table",
-    "Columns":[
-      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
+    "Name": "UserExt",
+    "Comment": "User Extension Information Table",
+    "Columns": [
+      { "Name": "UserId", "IsPrimary": true, "MapType": "System.Int32" }
     ],
-    "Navigates":[
-      {"Name":"Remarks","Type":"OneToMany","RelTable":"UserExtRemarks","Bind":"UserId"},
-    ],
+    "Navigates": [
+      {
+        "Name": "Remarks",
+        "Type": "OneToMany",
+        "RelTable": "UserExtRemarks",
+        "Bind": "UserId"
+      }
+    ]
   },
   {
-    "Name":"UserExtRemarks",
-    "Comment":"User Extension Information Table - Sub Table",
-    "Columns":[
-      {"Name":"RemarkId","IsPrimary":true,"MapType":"System.Guid"},
-      {"Name":"UserId","MapType":"System.Int32"},
-      {"Name":"Remark","MapType":"System.String"},
-    ],
+    "Name": "UserExtRemarks",
+    "Comment": "User Extension Information Table - Sub Table",
+    "Columns": [
+      { "Name": "RemarkId", "IsPrimary": true, "MapType": "System.Guid" },
+      { "Name": "UserId", "MapType": "System.Int32" },
+      { "Name": "Remark", "MapType": "System.String" }
+    ]
   },
   {
-    "Name":"UserClaim",
-    "Comment":"One-to-Many Test Table",
-    "Columns":[
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"UserId","MapType":"System.Int32"},
-      {"Name":"ClaimName","MapType":"System.String"},
-    ],
+    "Name": "UserClaim",
+    "Comment": "One-to-Many Test Table",
+    "Columns": [
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "UserId", "MapType": "System.Int32" },
+      { "Name": "ClaimName", "MapType": "System.String" }
+    ]
   },
   {
-    "Name":"Role",
-    "Comment":"Permission Table",
-    "Columns":[
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"Name","MapType":"System.String"}
+    "Name": "Role",
+    "Comment": "Permission Table",
+    "Columns": [
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "Name", "MapType": "System.String" }
     ],
-    "Navigates":[
-      {"Name":"Users","Type":"ManyToMany","RelTable":"User","ManyToMany":"UserRole"}
+    "Navigates": [
+      {
+        "Name": "Users",
+        "Type": "ManyToMany",
+        "RelTable": "User",
+        "ManyToMany": "UserRole"
+      }
     ],
-    "Indexes":[]
+    "Indexes": []
   },
   {
-    "Name":"UserRole",
-    "Comment":"Many-to-Many Intermediate Table",
-    "Columns":[
-      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
-      {"Name":"RoleId","IsPrimary":true,"MapType":"System.Int32"}
+    "Name": "UserRole",
+    "Comment": "Many-to-Many Intermediate Table",
+    "Columns": [
+      { "Name": "UserId", "IsPrimary": true, "MapType": "System.Int32" },
+      { "Name": "RoleId", "IsPrimary": true, "MapType": "System.Int32" }
     ],
-    "Navigates":[
-      {"Name":"User","Type":"ManyToOne","RelTable":"User","Bind":"UserId"},
-      {"Name":"Role","Type":"ManyToOne","RelTable":"Role","Bind":"RoleId"}
+    "Navigates": [
+      {
+        "Name": "User",
+        "Type": "ManyToOne",
+        "RelTable": "User",
+        "Bind": "UserId"
+      },
+      {
+        "Name": "Role",
+        "Type": "ManyToOne",
+        "RelTable": "Role",
+        "Bind": "RoleId"
+      }
     ]
   }
 ]
@@ -204,16 +249,16 @@ Comparing and Saving:
 
 Compare the current operation's aggregate root with the snapshot copy to calculate the changes in columns.
 
-| Navigation Property | Snapshot | Latest | Action |
-| -- | -- | -- | -- |
-| OneToOne | NULL | Object | Add new record |
-| OneToOne | Object | NULL | Delete snapshot record |
-| OneToOne | Object | Object | Update if changed, otherwise ignore |
-| OneToMany | NULL/Empty | List | Add latest List records |
-| OneToMany | List | NULL | Ignore |
-| OneToMany | List | Empty | Delete snapshot List records |
-| OneToMany | List | List | Compare and save, calculate add/update/delete actions |
-| Many-to-Many Intermediate Table | | | Same as OneToMany |
+| Navigation Property             | Snapshot   | Latest | Action                                                |
+| ------------------------------- | ---------- | ------ | ----------------------------------------------------- |
+| OneToOne                        | NULL       | Object | Add new record                                        |
+| OneToOne                        | Object     | NULL   | Delete snapshot record                                |
+| OneToOne                        | Object     | Object | Update if changed, otherwise ignore                   |
+| OneToMany                       | NULL/Empty | List   | Add latest List records                               |
+| OneToMany                       | List       | NULL   | Ignore                                                |
+| OneToMany                       | List       | Empty  | Delete snapshot List records                          |
+| OneToMany                       | List       | List   | Compare and save, calculate add/update/delete actions |
+| Many-to-Many Intermediate Table |            |        | Same as OneToMany                                     |
 
 Insert:
 

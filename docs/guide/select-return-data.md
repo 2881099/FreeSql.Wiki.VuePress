@@ -133,7 +133,7 @@ fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
 
 这种映射支持单表/多表，在查询数据之前映射（不是先查询所有字段再到内存映射）
 
-查找规则，查找属性名，会循环内部对象 _tables（join 查询后会增长），以 主表优先查，直到查到相同的字段。
+查找规则，查找属性名，会循环内部对象 \_tables（join 查询后会增长），以 主表优先查，直到查到相同的字段。
 
 如：
 
@@ -183,16 +183,16 @@ List<dynamic> t13 = fsql.Ado.Query<dynamic>("select * from song");
 
 ## 11、API
 
-| 方法 | 返回值 | 参数 | 描述 |
-| ------------- | - | - | - |
-| ToSql | string | | 返回即将执行的SQL语句 |
-| ToList | List\<T1\> | | 执行SQL查询，返回 T1 实体所有字段的记录，若存在导航属性则一起查询返回，记录不存在时返回 Count 为 0 的列表 |
-| ToList\<Dto\> | List\<Dto\> | Lambda | 执行SQL查询，返回指定字段或Dto映射的记录，记录不存在时返回 Count 为 0 的列表 |
-| ToList\<T\> | List\<T\> | string field | 执行SQL查询，返回 field 指定字段的记录，并以元组或基础类型(int,string,long)接收，记录不存在时返回 Count 为 0 的列表 |
-| ToOne | T1 | | 执行SQL查询，返回 T1 实体所有字段的第一条记录，记录不存在时返回 null |
-| ToChunk | \<空\> | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | 执行SQL查询，分块返回数据，可减少内存开销。比如读取10万条数据，每次返回100条处理。 |
-| Any | bool | | 执行SQL查询，是否有记录 |
-| Sum | T | Lambda | 指定一个列求和 |
-| Min | T | Lambda | 指定一个列求最小值 |
-| Max | T | Lambda | 指定一个列求最大值 |
-| Avg | T | Lambda | 指定一个列求平均值 |
+| 方法          | 返回值      | 参数                                                     | 描述                                                                                                                |
+| ------------- | ----------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| ToSql         | string      |                                                          | 返回即将执行的SQL语句                                                                                               |
+| ToList        | List\<T1\>  |                                                          | 执行SQL查询，返回 T1 实体所有字段的记录，若存在导航属性则一起查询返回，记录不存在时返回 Count 为 0 的列表           |
+| ToList\<Dto\> | List\<Dto\> | Lambda                                                   | 执行SQL查询，返回指定字段或Dto映射的记录，记录不存在时返回 Count 为 0 的列表                                        |
+| ToList\<T\>   | List\<T\>   | string field                                             | 执行SQL查询，返回 field 指定字段的记录，并以元组或基础类型(int,string,long)接收，记录不存在时返回 Count 为 0 的列表 |
+| ToOne         | T1          |                                                          | 执行SQL查询，返回 T1 实体所有字段的第一条记录，记录不存在时返回 null                                                |
+| ToChunk       | \<空\>      | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | 执行SQL查询，分块返回数据，可减少内存开销。比如读取10万条数据，每次返回100条处理。                                  |
+| Any           | bool        |                                                          | 执行SQL查询，是否有记录                                                                                             |
+| Sum           | T           | Lambda                                                   | 指定一个列求和                                                                                                      |
+| Min           | T           | Lambda                                                   | 指定一个列求最小值                                                                                                  |
+| Max           | T           | Lambda                                                   | 指定一个列求最大值                                                                                                  |
+| Avg           | T           | Lambda                                                   | 指定一个列求平均值                                                                                                  |

@@ -35,23 +35,23 @@ string[] vals = cli.MGet("key1", "key2");
 
 > 支持 STRING、HASH、LIST、SET、ZSET、BITMAP、HyperLogLog、GEO、Stream 以及布隆过滤器等。
 
-| 参数               | 默认值     | 说明 |
-| :---------------- | --------: | :------------------- |
-| protocol          | RESP2     | 若使用 RESP3 协议，你需要 Redis 6.0 环境 |
-| user              | \<empty\> | Redis 服务端用户名，要求 Redis 6.0 环境 |
-| password          | \<empty\> | Redis 服务端密码 |
-| defaultDatabase   | 0         | Redis 服务端数据库 |
-| max poolsize      | 100       | 连接池最大连接数 |
-| min poolsize      | 5         | 连接池最小连接数 |
-| idleTimeout       | 20000     | 连接池中元素的空闲时间（单位为毫秒 ms），适用于连接到远程服务器 |
-| connectTimeout    | 10000     | 连接超时，单位为毫秒（ms） |
-| receiveTimeout    | 10000     | 接收超时，单位为毫秒（ms） |
-| sendTimeout       | 10000     | 发送超时，单位为毫秒（ms） |
-| encoding          | utf-8     | 字符串字符集 |
-| retry             | 0         | 协议发生错误时，重试执行的次数 |
-| ssl               | false     | 启用加密传输 |
-| name              | \<empty\> | 连接名，使用 CLIENT LIST 命令查看 |
-| prefix            | \<empty\> | `key` 前辍，所有方法都会附带此前辍，cli.Set(prefix + "key", 111); |
+| 参数            |    默认值 | 说明                                                              |
+| :-------------- | --------: | :---------------------------------------------------------------- |
+| protocol        |     RESP2 | 若使用 RESP3 协议，你需要 Redis 6.0 环境                          |
+| user            | \<empty\> | Redis 服务端用户名，要求 Redis 6.0 环境                           |
+| password        | \<empty\> | Redis 服务端密码                                                  |
+| defaultDatabase |         0 | Redis 服务端数据库                                                |
+| max poolsize    |       100 | 连接池最大连接数                                                  |
+| min poolsize    |         5 | 连接池最小连接数                                                  |
+| idleTimeout     |     20000 | 连接池中元素的空闲时间（单位为毫秒 ms），适用于连接到远程服务器   |
+| connectTimeout  |     10000 | 连接超时，单位为毫秒（ms）                                        |
+| receiveTimeout  |     10000 | 接收超时，单位为毫秒（ms）                                        |
+| sendTimeout     |     10000 | 发送超时，单位为毫秒（ms）                                        |
+| encoding        |     utf-8 | 字符串字符集                                                      |
+| retry           |         0 | 协议发生错误时，重试执行的次数                                    |
+| ssl             |     false | 启用加密传输                                                      |
+| name            | \<empty\> | 连接名，使用 CLIENT LIST 命令查看                                 |
+| prefix          | \<empty\> | `key` 前辍，所有方法都会附带此前辍，cli.Set(prefix + "key", 111); |
 
 > IPv6: [fe80::b164:55b3:4b4f:7ce6%15]:6379
 
@@ -73,7 +73,7 @@ var value = cli.Get("key1");
 
 ```csharp
 public static RedisClient cli = new RedisClient(
-    "mymaster,password=123", 
+    "mymaster,password=123",
     new [] { "192.169.1.10:26379", "192.169.1.11:26379", "192.169.1.12:26379" },
     true //是否读写分离
     );
@@ -120,14 +120,15 @@ void ondata(string channel, string data) =>
 ## 📃 Scripting (脚本)
 
 ```csharp
-var r1 = cli.Eval("return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}", 
+var r1 = cli.Eval("return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}",
     new[] { "key1", "key2" }, "first", "second") as object[];
 
 var r2 = cli.Eval("return {1,2,{3,'Hello World!'}}") as object[];
 
-cli.Eval("return redis.call('set',KEYS[1],'bar')", 
+cli.Eval("return redis.call('set',KEYS[1],'bar')",
     new[] { Guid.NewGuid().ToString() })
 ```
+
 ## 💻 Pipeline (管道)
 
 ```csharp

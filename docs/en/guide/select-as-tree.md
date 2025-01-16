@@ -51,13 +51,13 @@ repo.Insert(new Area
 {
     Code = "100000",
     Name = "中国",
-    Childs = new List<Area>(new[] 
+    Childs = new List<Area>(new[]
     {
         new Area
         {
             Code = "110000",
             Name = "北京",
-            Childs = new List<Area>(new[] 
+            Childs = new List<Area>(new[]
             {
                 new Area{ Code="110100", Name = "北京市" },
                 new Area{ Code="110101", Name = "东城区" },
@@ -111,12 +111,12 @@ fsql.Select<Area>()
 
 `AsTreeCte` handles recursive queries efficiently. Parameters include:
 
-| Parameter           | Description                                               |
-| ------------------- | --------------------------------------------------------- |
-| (Optional) `pathSelector`  | Path content selection; e.g., 中国 -> 北京 -> 东城区 |
+| Parameter                  | Description                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------- |
+| (Optional) `pathSelector`  | Path content selection; e.g., 中国 -> 北京 -> 东城区                          |
 | (Optional) `up`            | false (default): Query from parent to child; true: Query from child to parent |
-| (Optional) `pathSeparator` | Separator for `pathSelector`, default: ->                  |
-| (Optional) `level`         | Set recursion level                                      |
+| (Optional) `pathSeparator` | Separator for `pathSelector`, default: ->                                     |
+| (Optional) `level`         | Set recursion level                                                           |
 
 ### Examples
 

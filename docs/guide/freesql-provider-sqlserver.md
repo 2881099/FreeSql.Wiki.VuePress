@@ -1,5 +1,5 @@
 ---
-title:  SqlServer
+title: SqlServer
 ---
 
 FreeSql 最多支持 SqlServer2000，根据不同的需求选择驱动包，微软提供了两个 SqlClient 访问包，因此我们也发布了两个，分别是：
@@ -42,7 +42,7 @@ var list = Select<Region, T2>()
     })
     .Limit(1).ToList();
 //SELECT TOP 1 ..
-//FROM [Region] a With(index=idx_01, NoLock) 
+//FROM [Region] a With(index=idx_01, NoLock)
 //INNER JOIN [T2] b With(index=idx_02) ON a.[x] = b.[xx]
 ```
 
@@ -95,7 +95,7 @@ class Mssql2000Adapter : FreeSql.Custom.CustomAdapter
 
 public class DB
 {
-   static Lazy<IFreeSql> sqliteLazy = new Lazy<IFreeSql>(() => 
+   static Lazy<IFreeSql> sqliteLazy = new Lazy<IFreeSql>(() =>
    {
         var fsql = new FreeSql.FreeSqlBuilder()
             .UseConnectionString(DataType.Custom, () => new OdbcConnection(...))

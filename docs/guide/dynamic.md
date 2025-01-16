@@ -103,7 +103,7 @@ fsql.Select<Region>().Where("a.id > 0") //提示：存在SQL注入安全问题
 
 2、动态 Lambda 表达式
 
-- ``And``、``Or``扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
+- `And`、`Or`扩展方法 [LambadaExpressionExtensions.cs](https://github.com/dotnetcore/FreeSql/blob/master/FreeSql/Extensions/LambadaExpressionExtensions.cs)
 
 ```csharp
 Expression<Func<Region, bool>> where = null;
@@ -151,19 +151,17 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 
 ```json
 {
-  Logic: 'And',
-  Filters:
-  [
-    { Field: 'id', Operator: 'Equals', Value: 1 },
+  "Logic": "And",
+  "Filters": [
+    { "Field": "id", "Operator": "Equals", "Value": 1 },
     {
-      Logic: 'Or',
-      Filters:
-      [
-        { Field: 'id', Operator: 'Equals', Value: 2 },
+      "Logic": "Or",
+      "Filters": [
+        { "Field": "id", "Operator": "Equals", "Value": 2 },
         {
-            Field: '{{ DynamicFilterCustomImpl.CustomLinq }}', 
-            Operator: 'Custom', 
-            Value: 'Title.StartsWith(\'new topic 1\')'
+          "Field": "{{ DynamicFilterCustomImpl.CustomLinq }}",
+          "Operator": "Custom",
+          "Value": "Title.StartsWith('new topic 1')"
         }
       ]
     }
@@ -229,10 +227,10 @@ fsql.Select<Region>()
 var dtos = fsql.Select<Region>().ToList<Dto>();
 
 dtos.IncludeByPropertyName(
-    orm: fsql, 
-    property: "Childs", 
+    orm: fsql,
+    property: "Childs",
     where: "ParentId=Id", //临时关系
-    take: 5, 
+    take: 5,
     select: "id,name",
     then => then.IncludeByPropertyName("Parent")
 );
@@ -280,11 +278,11 @@ var orderByMapping = new Dictionary<string, string>
 //假设前端 POST 内容是 postWhere=where1&postWhereValue=100&postOrder=order1
 fsql.Select<Region>()
     .WhereIf(
-        whereMapping.TryGetValue(postWhere, out var whereSql), 
+        whereMapping.TryGetValue(postWhere, out var whereSql),
         string.Format(whereSql, postWhereValue)
     )
     .OrderBy(
-        orderByMapping.TryGetValue(postOrder, out var orderSql), 
+        orderByMapping.TryGetValue(postOrder, out var orderSql),
         orderSql
     )
 ```

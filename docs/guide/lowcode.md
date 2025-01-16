@@ -111,69 +111,114 @@ ctx.SelectNoTracking("User")
 ```json
 [
   {
-    "Name":"User",
-    "Comment":"用户表",
+    "Name": "User",
+    "Comment": "用户表",
     "Columns": [
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"Name","MapType":"System.String"}
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "Name", "MapType": "System.String" }
     ],
-    "Navigates":[
-      {"Name":"Ext","Type":"OneToOne","RelTable":"UserExt"},
-      {"Name":"Claims","Type":"OneToMany","RelTable":"UserClaim","Bind":"UserId"},
-      {"Name":"Roles","Type":"ManyToMany","RelTable":"Role","ManyToMany":"UserRole"}
+    "Navigates": [
+      { "Name": "Ext", "Type": "OneToOne", "RelTable": "UserExt" },
+      {
+        "Name": "Claims",
+        "Type": "OneToMany",
+        "RelTable": "UserClaim",
+        "Bind": "UserId"
+      },
+      {
+        "Name": "Roles",
+        "Type": "ManyToMany",
+        "RelTable": "Role",
+        "ManyToMany": "UserRole"
+      }
     ],
-    "Indexes":[]
+    "Indexes": []
   },
   {
-    "Name":"UserExt",
-    "Comment":"用户扩展信息表",
-    "Columns":[
-      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
+    "Name": "UserExt",
+    "Comment": "用户扩展信息表",
+    "Columns": [
+      { "Name": "UserId", "IsPrimary": true, "MapType": "System.Int32" }
     ],
-    "Navigates":[
-      {"Name":"Remarks","Type":"OneToMany","RelTable":"UserExtRemarks","Bind":"UserId"},
-    ],
+    "Navigates": [
+      {
+        "Name": "Remarks",
+        "Type": "OneToMany",
+        "RelTable": "UserExtRemarks",
+        "Bind": "UserId"
+      }
+    ]
   },
   {
-    "Name":"UserExtRemarks",
-    "Comment":"用户扩展信息表-子表",
-    "Columns":[
-      {"Name":"RemarkId","IsPrimary":true,"MapType":"System.Guid"},
-      {"Name":"UserId","MapType":"System.Int32"},
-      {"Name":"Remark","MapType":"System.String"},
-    ],
+    "Name": "UserExtRemarks",
+    "Comment": "用户扩展信息表-子表",
+    "Columns": [
+      { "Name": "RemarkId", "IsPrimary": true, "MapType": "System.Guid" },
+      { "Name": "UserId", "MapType": "System.Int32" },
+      { "Name": "Remark", "MapType": "System.String" }
+    ]
   },
   {
-    "Name":"UserClaim",
-    "Comment":"一对多测试表",
-    "Columns":[
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"UserId","MapType":"System.Int32"},
-      {"Name":"ClaimName","MapType":"System.String"},
-    ],
+    "Name": "UserClaim",
+    "Comment": "一对多测试表",
+    "Columns": [
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "UserId", "MapType": "System.Int32" },
+      { "Name": "ClaimName", "MapType": "System.String" }
+    ]
   },
   {
-    "Name":"Role",
-    "Comment":"权限表",
-    "Columns":[
-      {"Name":"Id","IsPrimary":true,"IsIdentity":true,"MapType":"System.Int32"},
-      {"Name":"Name","MapType":"System.String"}
+    "Name": "Role",
+    "Comment": "权限表",
+    "Columns": [
+      {
+        "Name": "Id",
+        "IsPrimary": true,
+        "IsIdentity": true,
+        "MapType": "System.Int32"
+      },
+      { "Name": "Name", "MapType": "System.String" }
     ],
-    "Navigates":[
-      {"Name":"Users","Type":"ManyToMany","RelTable":"User","ManyToMany":"UserRole"}
+    "Navigates": [
+      {
+        "Name": "Users",
+        "Type": "ManyToMany",
+        "RelTable": "User",
+        "ManyToMany": "UserRole"
+      }
     ],
-    "Indexes":[]
+    "Indexes": []
   },
   {
-    "Name":"UserRole",
-    "Comment":"多对多中间表",
-    "Columns":[
-      {"Name":"UserId","IsPrimary":true,"MapType":"System.Int32"},
-      {"Name":"RoleId","IsPrimary":true,"MapType":"System.Int32"}
+    "Name": "UserRole",
+    "Comment": "多对多中间表",
+    "Columns": [
+      { "Name": "UserId", "IsPrimary": true, "MapType": "System.Int32" },
+      { "Name": "RoleId", "IsPrimary": true, "MapType": "System.Int32" }
     ],
-    "Navigates":[
-      {"Name":"User","Type":"ManyToOne","RelTable":"User","Bind":"UserId"},
-      {"Name":"Role","Type":"ManyToOne","RelTable":"Role","Bind":"RoleId"}
+    "Navigates": [
+      {
+        "Name": "User",
+        "Type": "ManyToOne",
+        "RelTable": "User",
+        "Bind": "UserId"
+      },
+      {
+        "Name": "Role",
+        "Type": "ManyToOne",
+        "RelTable": "Role",
+        "Bind": "RoleId"
+      }
     ]
   }
 ]
@@ -204,16 +249,16 @@ CURD 都是基于 schemas[0] 聚合根进行操作
 
 将当前操作的聚合根与状态管理的副本进行对比，计算出发生变化的列
 
-| 导航属性 | 副本 | 最新 | 动作 |
-| -- | -- | -- | -- |
-| OneToOne | NULL | Object | 添加新记录 |
-| OneToOne | Object | NULL | 删除副本记录 |
-| OneToOne | Object | Object | 发生变化则更新，否则忽略 |
-| OneToMany | NULL/Empty | List | 添加最新List记录 |
-| OneToMany | List | NULL | 忽略 |
-| OneToMany | List | Empty | 删除副本List记录 |
-| OneToMany | List | List | 对比保存，计算出添加/更新/删除三种行为 |
-| 多对多中间表 | | | 与 OneToMany 一致 |
+| 导航属性     | 副本       | 最新   | 动作                                   |
+| ------------ | ---------- | ------ | -------------------------------------- |
+| OneToOne     | NULL       | Object | 添加新记录                             |
+| OneToOne     | Object     | NULL   | 删除副本记录                           |
+| OneToOne     | Object     | Object | 发生变化则更新，否则忽略               |
+| OneToMany    | NULL/Empty | List   | 添加最新List记录                       |
+| OneToMany    | List       | NULL   | 忽略                                   |
+| OneToMany    | List       | Empty  | 删除副本List记录                       |
+| OneToMany    | List       | List   | 对比保存，计算出添加/更新/删除三种行为 |
+| 多对多中间表 |            |        | 与 OneToMany 一致                      |
 
 插入：
 
@@ -230,6 +275,7 @@ CURD 都是基于 schemas[0] 聚合根进行操作
 - ManyToMany 先对比保存外部根，再更新聚合根，再对比保存中间表
 
 删除：
+
 - OneToOne 级联删除
 - OneToMany 级联删除
 - ManyToOne 忽略

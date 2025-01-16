@@ -74,14 +74,14 @@ var t2 = fsql.Insert(items).ExecuteAffrows();
 
 ## 4、高性能 BulkCopy
 
-| 程序包 | 扩展方法 | 说明 |
-| -- | -- | -- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
-| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
-| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
+| 程序包                          | 扩展方法              | 说明     |
+| ------------------------------- | --------------------- | -------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |          |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |          |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |          |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |          |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | 达梦     |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | 人大金仓 |
 
 批量插入测试参考(52 个字段)
 
@@ -206,20 +206,20 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = VALUES(`time`)
 ```
 
 OnDuplicateKeyUpdate() 之后可以调用的方法：
 
-| 方法名 | 描述 |
-| -- | -- |
-| IgnoreColumns | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
-| UpdateColumns | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
-| Set | 手工指定更新的列，与 IUpdate.Set 功能一样 |
-| SetRaw | 作为 Set 方法的补充，可传入 SQL 字符串 |
-| ToSql | 返回即将执行的 SQL 语句 |
-| ExecuteAffrows | 执行，返回影响的行数 |
+| 方法名         | 描述                                            |
+| -------------- | ----------------------------------------------- |
+| IgnoreColumns  | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
+| UpdateColumns  | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
+| Set            | 手工指定更新的列，与 IUpdate.Set 功能一样       |
+| SetRaw         | 作为 Set 方法的补充，可传入 SQL 字符串          |
+| ToSql          | 返回即将执行的 SQL 语句                         |
+| ExecuteAffrows | 执行，返回影响的行数                            |
 
 IInsert 与 OnDuplicateKeyUpdate 都有 IgnoreColumns、UpdateColumns 方法。
 
@@ -232,7 +232,7 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = '2000-01-01 00:00:00.000'
 ```
 
@@ -268,13 +268,13 @@ fsql.Insert(items)
 | InsertIdentity       | \<this\>                   | 无                      | 指明插入自增列                                        |
 | InsertColumns        | \<this\>                   | Lambda                  | 只插入的列                                            |
 | IgnoreColumns        | \<this\>                   | Lambda                  | 忽略的列                                              |
-| IgnoreInsertValueSql | \<this\>                   | Lambda                  | 忽略的设置过 InsertValueSql 的列                        |
+| IgnoreInsertValueSql | \<this\>                   | Lambda                  | 忽略的设置过 InsertValueSql 的列                      |
 | CommandTimeout       | \<this\>                   | int                     | 命令超时设置(秒)                                      |
 | WithTransaction      | \<this\>                   | DbTransaction           | 设置事务对象                                          |
 | WithConnection       | \<this\>                   | DbConnection            | 设置连接对象                                          |
 | ToSql                | string                     |                         | 返回即将执行的 SQL 语句                               |
-| OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能 On Duplicate Key Update             |
-| OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能 On Conflict Do Update          |
+| OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能 On Duplicate Key Update              |
+| OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能 On Conflict Do Update           |
 | ExecuteAffrows       | long                       |                         | 执行 SQL 语句，返回影响的行数                         |
 | ExecuteIdentity      | long                       |                         | 执行 SQL 语句，返回自增值                             |
 | ExecuteInserted      | List\<T1\>                 |                         | 执行 SQL 语句，返回插入后的记录                       |

@@ -35,7 +35,6 @@ fsql.Update<Topic>(object dywhere)
 fsql.Update<Topic>(1).AsTable("Topic_201903").ExecuteAffrows(); //对 Topic_201903 表更新
 ```
 
-
 ## 3、更新条件
 
 > 除了上面介绍的 `dywhere` 构造参数外，还支持 `Where lambda/sql` 方法
@@ -298,14 +297,14 @@ SET a.`bcode` = b.`xcode`
 
 ## 13、高性能 BulkCopy
 
-| 程序包 | 扩展方法 | 说明 (v3.2.693) |
-| -- | -- | -- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
-| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
-| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
+| 程序包                          | 扩展方法              | 说明 (v3.2.693) |
+| ------------------------------- | --------------------- | --------------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |                 |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |                 |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |                 |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |                 |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | 达梦            |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | 人大金仓        |
 
 原理：使用 BulkCopy 将数据插入到临时表，再使用 UPDATE FROM JOIN 联表更新。
 
@@ -317,21 +316,21 @@ fsql.Update<T1>().SetSource(list).ExecuteSqlBulkCopy();
 
 # API
 
-| 方法            | 返回值     | 参数                    | 描述                                                                            |
-| --------------- | ---------- | ----------------------- | ------------------------------------------------------------------------------- |
-| SetSource       | \<this\>   | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体                                                        |
-| IgnoreColumns   | \<this\>   | Lambda                  | 忽略的列                                                                        |
-| Set             | \<this\>   | Lambda, value           | 设置列的新值，`Set(a => a.Name, "newvalue")`                                    |
-| Set             | \<this\>   | Lambda                  | 设置列的的新值为基础上增加，`Set(a => a.Clicks + 1)`，相当于 clicks=clicks+1    |
-| SetDto          | \<this\>   | object                  | 根据 DTO 更新的方法                                                             |
-| SetRaw          | \<this\>   | string, parms           | 设置值，自定义 SQL 语法，`SetRaw("title = @title", new { title = "newtitle" })` |
-| Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                                |
-| Where           | \<this\>   | string, parms           | 原生 sql 语法条件，`Where("id = @id", new { id = 1 })`                          |
-| Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                                                |
-| CommandTimeout  | \<this\>   | int                     | 命令超时设置(秒)                                                                |
-| WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                                                    |
-| WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                                                    |
-| ToSql           | string     |                         | 返回即将执行的 SQL 语句                                                         |
-| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                                                   |
-| ExecuteUpdated  | List\<T1\> |                         | 执行 SQL 语句，返回更新后的记录                                                 |
-| Join | IUpdateJoin | | 联表更新 |
+| 方法            | 返回值      | 参数                    | 描述                                                                            |
+| --------------- | ----------- | ----------------------- | ------------------------------------------------------------------------------- |
+| SetSource       | \<this\>    | T1 \| IEnumerable\<T1\> | 更新数据，设置更新的实体                                                        |
+| IgnoreColumns   | \<this\>    | Lambda                  | 忽略的列                                                                        |
+| Set             | \<this\>    | Lambda, value           | 设置列的新值，`Set(a => a.Name, "newvalue")`                                    |
+| Set             | \<this\>    | Lambda                  | 设置列的的新值为基础上增加，`Set(a => a.Clicks + 1)`，相当于 clicks=clicks+1    |
+| SetDto          | \<this\>    | object                  | 根据 DTO 更新的方法                                                             |
+| SetRaw          | \<this\>    | string, parms           | 设置值，自定义 SQL 语法，`SetRaw("title = @title", new { title = "newtitle" })` |
+| Where           | \<this\>    | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                                |
+| Where           | \<this\>    | string, parms           | 原生 sql 语法条件，`Where("id = @id", new { id = 1 })`                          |
+| Where           | \<this\>    | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                                                |
+| CommandTimeout  | \<this\>    | int                     | 命令超时设置(秒)                                                                |
+| WithTransaction | \<this\>    | DbTransaction           | 设置事务对象                                                                    |
+| WithConnection  | \<this\>    | DbConnection            | 设置连接对象                                                                    |
+| ToSql           | string      |                         | 返回即将执行的 SQL 语句                                                         |
+| ExecuteAffrows  | long        |                         | 执行 SQL 语句，返回影响的行数                                                   |
+| ExecuteUpdated  | List\<T1\>  |                         | 执行 SQL 语句，返回更新后的记录                                                 |
+| Join            | IUpdateJoin |                         | 联表更新                                                                        |

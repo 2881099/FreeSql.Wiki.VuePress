@@ -51,7 +51,7 @@ fsql.Update<Topic>()
 // WHERE (Id = 1)
 ```
 
-## 4. Set Columns 
+## 4. Set Columns
 
 ```csharp
 fsql.Update<Topic>(1)
@@ -82,7 +82,7 @@ fsql.Update<Topic>(1)
 // WHERE (`Id` = 1)
 ```
 
-## 5. SetSource Entity 
+## 5. SetSource Entity
 
 Method 1: (Recommended)
 
@@ -295,14 +295,14 @@ SET a.`bcode` = b.`xcode`
 
 ## 13. High-Performance BulkCopy
 
-| Package | Extension Method | Description (v3.2.693) |
-| -- | -- | -- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
-| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
-| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | Dameng |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | KingbaseES |
+| Package                         | Extension Method      | Description (v3.2.693) |
+| ------------------------------- | --------------------- | ---------------------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |                        |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |                        |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |                        |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |                        |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | Dameng                 |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | KingbaseES             |
 
 Principle: Use BulkCopy to insert data into a temporary table, and then use UPDATE FROM JOIN for table updates.
 
@@ -314,21 +314,21 @@ fsql.Update<T1>().SetSource(list).ExecuteSqlBulkCopy();
 
 # API
 
-| Method            | Return Value | Parameters               | Description                                                                      |
-| ----------------- | ------------ | ------------------------ | -------------------------------------------------------------------------------- |
-| SetSource         | \<this\>     | T1 \| IEnumerable\<T1\> | Updates data, sets the entities to update                                        |
-| IgnoreColumns     | \<this\>     | Lambda                   | Columns to ignore                                                                 |
-| Set               | \<this\>     | Lambda, value            | Sets the new value for a column, e.g., `Set(a => a.Name, "newvalue")`           |
-| Set               | \<this\>     | Lambda                   | Sets the new value by incrementing, e.g., `Set(a => a.Clicks + 1)`, equivalent to clicks=clicks+1 |
-| SetDto            | \<this\>     | object                   | Update method based on DTO                                                         |
-| SetRaw            | \<this\>     | string, parms            | Sets value using custom SQL syntax, e.g., `SetRaw("title = @title", new { title = "newtitle" })` |
-| Where             | \<this\>     | Lambda                   | Expression condition, supports only basic entity members (no navigation objects)  |
-| Where             | \<this\>     | string, parms            | Native SQL condition, e.g., `Where("id = @id", new { id = 1 })`                  |
-| Where             | \<this\>     | T1 \| IEnumerable\<T1\> | Pass entity or collection, using primary key as condition                          |
-| CommandTimeout    | \<this\>     | int                      | Command timeout setting (seconds)                                                  |
-| WithTransaction   | \<this\>     | DbTransaction            | Sets transaction object                                                             |
-| WithConnection    | \<this\>     | DbConnection             | Sets connection object                                                             |
-| ToSql             | string       |                          | Returns the SQL statement to be executed                                           |
-| ExecuteAffrows    | long         |                          | Executes SQL statement, returns the number of affected rows                       |
-| ExecuteUpdated    | List\<T1\>   |                          | Executes SQL statement, returns the updated records                               |
-| Join              | IUpdateJoin   |                          | Join table update                                                                 |
+| Method          | Return Value | Parameters              | Description                                                                                       |
+| --------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------- |
+| SetSource       | \<this\>     | T1 \| IEnumerable\<T1\> | Updates data, sets the entities to update                                                         |
+| IgnoreColumns   | \<this\>     | Lambda                  | Columns to ignore                                                                                 |
+| Set             | \<this\>     | Lambda, value           | Sets the new value for a column, e.g., `Set(a => a.Name, "newvalue")`                             |
+| Set             | \<this\>     | Lambda                  | Sets the new value by incrementing, e.g., `Set(a => a.Clicks + 1)`, equivalent to clicks=clicks+1 |
+| SetDto          | \<this\>     | object                  | Update method based on DTO                                                                        |
+| SetRaw          | \<this\>     | string, parms           | Sets value using custom SQL syntax, e.g., `SetRaw("title = @title", new { title = "newtitle" })`  |
+| Where           | \<this\>     | Lambda                  | Expression condition, supports only basic entity members (no navigation objects)                  |
+| Where           | \<this\>     | string, parms           | Native SQL condition, e.g., `Where("id = @id", new { id = 1 })`                                   |
+| Where           | \<this\>     | T1 \| IEnumerable\<T1\> | Pass entity or collection, using primary key as condition                                         |
+| CommandTimeout  | \<this\>     | int                     | Command timeout setting (seconds)                                                                 |
+| WithTransaction | \<this\>     | DbTransaction           | Sets transaction object                                                                           |
+| WithConnection  | \<this\>     | DbConnection            | Sets connection object                                                                            |
+| ToSql           | string       |                         | Returns the SQL statement to be executed                                                          |
+| ExecuteAffrows  | long         |                         | Executes SQL statement, returns the number of affected rows                                       |
+| ExecuteUpdated  | List\<T1\>   |                         | Executes SQL statement, returns the updated records                                               |
+| Join            | IUpdateJoin  |                         | Join table update                                                                                 |

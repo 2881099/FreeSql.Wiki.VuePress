@@ -14,6 +14,7 @@ where = where.And(b => b.num > 0);
 where = where.Or(b => b.num > 0);
 fsql.Select<T>().Where(where)
 ```
+
 - Multiple Tables
 
 ```csharp
@@ -52,7 +53,7 @@ var t2 = fsql.Select<T>()
   .Where(a => lst.Contains(a.Id, a.ct1))
   .ToList();
 //SELECT .. FROM ..
-//WHERE (a."Id" = '685ee1f6-bdf6-4719-a291-c709b8a1378f' AND a."ct1" = '2019-12-07 23:55:27' OR 
+//WHERE (a."Id" = '685ee1f6-bdf6-4719-a291-c709b8a1378f' AND a."ct1" = '2019-12-07 23:55:27' OR
 //a."Id" = '5ecd838a-06a0-4c81-be43-1e77633b7404' AND a."ct1" = '2019-12-07 23:55:27')
 ```
 
@@ -109,8 +110,8 @@ fsql.Select<T>()
 ```csharp
 fsql.Select<T>()
   .First(a => a.CreateTime.ToString("HH:mm:ss"));
-// SELECT date_format(a.`CreateTime`, '%H:%i:%s') as1 
-// FROM `xxx` a 
+// SELECT date_format(a.`CreateTime`, '%H:%i:%s') as1
+// FROM `xxx` a
 // limit 0,1
 ```
 
@@ -135,27 +136,27 @@ fsql.Select<T1, T2>()
 
 FreeSql integrates SqlExt.cs extension parsing methods by default:
 
-| lambda | sql | Description |
-| -- | -- | -- |
-| SqlExt.IsNull(id, 0) | isnull/ifnull/coalesce/nvl | Compatible with major databases |
-| SqlExt.DistinctCount(id) | count(distinct id) | |
-| SqlExt.GreaterThan | &gt; | Greater than |
-| SqlExt.GreaterThanOrEqual | &gt;= | Greater than or equal to |
-| SqlExt.LessThan | &lt; | Less than |
-| SqlExt.LessThanOrEqual | &lt;= | Less than or equal to |
-| SqlExt.EqualIsNull | IS NULL | Is NULL |
-| SqlExt.Case(Dictionary) | case when .. end | Case based on dictionary |
-| SqlExt.GroupConcat | group_concat(distinct .. order by .. separator ..) | MySql |
-| SqlExt.FindInSet | find_in_set(str, strlist) | MySql |
-| SqlExt.StringAgg | string_agg(.., ..) | PostgreSQL |
-| SqlExt.Rank().Over().PartitionBy().ToValue() | rank() over(partition by xx) | Window function |
-| SqlExt.DenseRank().Over().PartitionBy().ToValue() | dense_rank() over(partition by xx) | |
-| SqlExt.Count(id).Over().PartitionBy().ToValue() | count(id) over(partition by xx) | |
-| SqlExt.Sum(id).Over().PartitionBy().ToValue() | sum(id) over(partition by xx) | |
-| SqlExt.Avg(id).Over().PartitionBy().ToValue() | avg(id) over(partition by xx) | |
-| SqlExt.Max(id).Over().PartitionBy().ToValue() | max(id) over(partition by xx) | |
-| SqlExt.Min(id).Over().PartitionBy().ToValue() | min(id) over(partition by xx) | |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx) | |
+| lambda                                              | sql                                                | Description                     |
+| --------------------------------------------------- | -------------------------------------------------- | ------------------------------- |
+| SqlExt.IsNull(id, 0)                                | isnull/ifnull/coalesce/nvl                         | Compatible with major databases |
+| SqlExt.DistinctCount(id)                            | count(distinct id)                                 |                                 |
+| SqlExt.GreaterThan                                  | &gt;                                               | Greater than                    |
+| SqlExt.GreaterThanOrEqual                           | &gt;=                                              | Greater than or equal to        |
+| SqlExt.LessThan                                     | &lt;                                               | Less than                       |
+| SqlExt.LessThanOrEqual                              | &lt;=                                              | Less than or equal to           |
+| SqlExt.EqualIsNull                                  | IS NULL                                            | Is NULL                         |
+| SqlExt.Case(Dictionary)                             | case when .. end                                   | Case based on dictionary        |
+| SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql                           |
+| SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql                           |
+| SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL                      |
+| SqlExt.Rank().Over().PartitionBy().ToValue()        | rank() over(partition by xx)                       | Window function                 |
+| SqlExt.DenseRank().Over().PartitionBy().ToValue()   | dense_rank() over(partition by xx)                 |                                 |
+| SqlExt.Count(id).Over().PartitionBy().ToValue()     | count(id) over(partition by xx)                    |                                 |
+| SqlExt.Sum(id).Over().PartitionBy().ToValue()       | sum(id) over(partition by xx)                      |                                 |
+| SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                                 |
+| SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                                 |
+| SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                                 |
+| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                                 |
 
 > The above functionalities are implemented using the [custom parsing](#custom-parsing) feature
 
@@ -168,8 +169,8 @@ fsql.Select<Topic>().ToList(a => new {
   id = a.Id,
   concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
 });
-//SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',') 
-//    FROM `StringJoin01` b) 
+//SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',')
+//    FROM `StringJoin01` b)
 //FROM `Topic` a
 ```
 
@@ -178,7 +179,7 @@ fsql.Select<Topic>().ToList(a => new {
 ## Subtable First/Count/Sum/Max/Min/Avg
 
 ```csharp
-fsql.Select<Category>().ToList(a => new 
+fsql.Select<Category>().ToList(a => new
 {
   all = a,
   first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
@@ -205,7 +206,7 @@ fsql.Select<Topic>().ToList(a => new
 fsql.Select<Topic>()
   .GroupBy(a => new { a.Author })
   .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-  .ToList(a => new 
+  .ToList(a => new
   {
     a.Author, a.Count,
     list1 = fsql.Select<T2>().ToList(),
@@ -232,19 +233,19 @@ public static class DbFunc {
 
 var sql1 = fsql.Select<SysModule>()
   .ToSql(a => a.CreateTime.FormatDateTime("yyyy-MM-dd"));
-//SELECT date_format(a."CreateTime", 'yyyy-MM-dd') as1 
+//SELECT date_format(a."CreateTime", 'yyyy-MM-dd') as1
 //FROM "SysModule" a
 ```
 
 The `[ExpressionCall]` attribute can be marked on static extension classes as well as on individual static methods.
 
-| ExpressionCallContext Property | Type                         | Description                             |
-| ------------------------------ | ---------------------------- | --------------------------------------- |
+| ExpressionCallContext Property | Type                         | Description                                                |
+| ------------------------------ | ---------------------------- | ---------------------------------------------------------- |
 | DataType                       | FreeSql.DataType             | Used to implement different database adaptation conditions |
-| ParsedContent                  | Dictionary\<string, string\> | Parsing results of function parameters  |
-| DbParameter                    | DbParameter                  | The parameterized object for `that` (may be null) |
-| UserParameters                 | List\<DbParameter\>          | Additional parameterized objects        |
-| Result                         | string                       | The SQL string representing the expression function |
+| ParsedContent                  | Dictionary\<string, string\> | Parsing results of function parameters                     |
+| DbParameter                    | DbParameter                  | The parameterized object for `that` (may be null)          |
+| UserParameters                 | List\<DbParameter\>          | Additional parameterized objects                           |
+| Result                         | string                       | The SQL string representing the expression function        |
 
 > When the return value of the extension method is `string`, its return value can also be used as `context.Value.Result`.
 

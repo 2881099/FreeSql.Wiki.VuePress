@@ -1,5 +1,5 @@
 ---
-title:  TDengine
+title: TDengine
 ---
 
 ## 介绍
@@ -32,7 +32,7 @@ Install-Package FreeSql.Provider.TDengine
 
 ## 声明
 
-> 建议尽量使用无参数化 
+> 建议尽量使用无参数化
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
@@ -69,7 +69,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ### 例子
 
-~~~csharp
+```csharp
    [TDengineSuperTable(Name = "meters")]
    class Meters
    {
@@ -112,20 +112,20 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
        [TDengineTag(Name = "group_id")]
        public new int GroupId { get; set; } = 2;
    }
-~~~
+```
 
 > CodeFirst创建表
 
-~~~csharp
+```csharp
 //尽量确定表结构
 //同步子表会自动创建超表
 fsql.CodeFirst.SyncStructure<D1001>();
 fsql.CodeFirst.SyncStructure<D1002>();
-~~~
+```
 
 > 插入数据
 
-~~~csharp
+```csharp
 //向子表插入数据
 var affrows = fsql.Insert(new D1002()
 {
@@ -160,25 +160,22 @@ var batchRes = fsql.Insert(new List<D1002>()
         Describe = "D10024"
     }
 }).ExecuteAffrows();
-~~~
+```
 
 > 查询
 
-~~~csharp
+```csharp
 //查询子表
 var list = fsql.Select<D1001>().ToList();
 //查询超表
 var metersList = fsql.Select<Meters>().Where(d => d.GroupId == 2).ToList();
-~~~
+```
 
 > 删除
 
-~~~csharp
+```csharp
 var startTime = DateTime.Parse("2024-11-30T02:33:52.308+00:00");
 var endTime = DateTime.Parse("2024-11-30T02:40:58.961+00:00");
 //必须包含时间戳
 var executeAffrows = fsql.Delete<Meters>().Where(meters => meters.Ts >= startTime && meters.Ts <= endTime && meters.GroupId == 1).ExecuteAffrows();
-~~~
-
-
-
+```

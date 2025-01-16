@@ -93,16 +93,16 @@ C:\WINDOWS\system32>FreeSql.Generator --help
 
 ### Common Options
 
-| Option        | Description                                                                                                                                             |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -Razor        | Choose a template: Entity class + attributes `-Razor 1` / Entity class + attributes + navigation properties `-Razor 2` / Custom template file `-Razor "d:\diy.cshtml"` |
-| -NameOptions  | Naming convention for the generated entities. Set only one of the four boolean values to 1. Options are: `Pascal Case` / `Pascal Case, others lowercase` / `All lowercase` / `Underscore to camel case` (`-NameOptions 0,0,0,1`) |
-| -NameSpace    | Namespace                                                                                                                                               |
-| -DB           | Refer to the -DB parameter section below                                                                                                                 |
-| -Filter       | Table+View+StoreProcedure (default: generates tables, views, and stored procedures). To exclude views and stored procedures, use -Filter View+StoreProcedure |
-| -Match        | Table name or regular expression to match specific tables, e.g., dbo\.TB_.+                                                                             |
-| -FileName     | File name, default: {name}.cs                                                                                                                            |
-| -Output       | Recommended to create gen.bat in the entity directory. Double-click it to regenerate all entity classes.                                                |
+| Option       | Description                                                                                                                                                                                                                      |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -Razor       | Choose a template: Entity class + attributes `-Razor 1` / Entity class + attributes + navigation properties `-Razor 2` / Custom template file `-Razor "d:\diy.cshtml"`                                                           |
+| -NameOptions | Naming convention for the generated entities. Set only one of the four boolean values to 1. Options are: `Pascal Case` / `Pascal Case, others lowercase` / `All lowercase` / `Underscore to camel case` (`-NameOptions 0,0,0,1`) |
+| -NameSpace   | Namespace                                                                                                                                                                                                                        |
+| -DB          | Refer to the -DB parameter section below                                                                                                                                                                                         |
+| -Filter      | Table+View+StoreProcedure (default: generates tables, views, and stored procedures). To exclude views and stored procedures, use -Filter View+StoreProcedure                                                                     |
+| -Match       | Table name or regular expression to match specific tables, e.g., dbo\.TB\_.+                                                                                                                                                     |
+| -FileName    | File name, default: {name}.cs                                                                                                                                                                                                    |
+| -Output      | Recommended to create gen.bat in the entity directory. Double-click it to regenerate all entity classes.                                                                                                                         |
 
 ### -DB Parameter
 

@@ -29,9 +29,9 @@
 
 > string 指定长度 [Column(DbType = "varchar(max)")] 或者 [MaxLength(-1)] 或者 [Column(StringLength = -1)]，当长度 -1 时产生的映射如下：
 
-| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | DuckDB   | MsAccess | 达梦 | 金仓 |
-| ----- | ---------- | ------------ | ------ | ------ | --------------- | -------- | -------- | ---- | ---- |
-| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | text     | longtext | text | text |
+| MySql | PostgreSQL | SqlServer    | Oracle | Sqlite | Firebird        | DuckDB | MsAccess | 达梦 | 金仓 |
+| ----- | ---------- | ------------ | ------ | ------ | --------------- | ------ | -------- | ---- | ---- |
+| text  | text       | varchar(max) | nclob  | text   | blob sub_type 1 | text   | longtext | text | text |
 
 > 注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext
 
@@ -139,7 +139,7 @@ FreeSql.Provider.MySql/MySqlConnector：
 | MygisMultiLineString | multilinestring |
 | MygisMultiPolygon    | multipolygon    |
 
-> MySql 如果 ``int、byte``类型，指定了 ``DbType="tinyint(1)"``,请注意，``tinyint(1)``在ado.net中默认将此值映射为``bool``类型，可在链接串中指定``TreatTinyAsBoolean=false``,使映射 ``tinyint(1) ``为 ``SByte`` 而非 ``bool``。
+> MySql 如果 `int、byte`类型，指定了 `DbType="tinyint(1)"`,请注意，`tinyint(1)`在ado.net中默认将此值映射为`bool`类型，可在链接串中指定`TreatTinyAsBoolean=false`,使映射 `tinyint(1) `为 `SByte` 而非 `bool`。
 
 FreeSql.Provider.PostgreSQL：
 
@@ -180,15 +180,15 @@ FreeSql.Provider.PostgreSQL：
 
 ```csharp
 [Column(
-    DbType = "geography", 
-    RewriteSql = "geography::STGeomFromText({0}, 4236)", 
+    DbType = "geography",
+    RewriteSql = "geography::STGeomFromText({0}, 4236)",
     RereadSql = "{0}.STAsText()"
 )]
 public string geo { get; set; }
 
 //插入：INSERT INTO [ts_geocrud01]([id], [geo]) VALUES(@id_0, geography::STGeomFromText(@geo_0, 4236))
 
-//查询：SELECT TOP 1 a.[id], a.[geo].STAsText() 
-//FROM [ts_geocrud01] a 
+//查询：SELECT TOP 1 a.[id], a.[geo].STAsText()
+//FROM [ts_geocrud01] a
 //WHERE (a.[id] = 'c7227d5e-0bcf-4b71-8f0f-d69a552fe84e')
 ```

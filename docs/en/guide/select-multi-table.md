@@ -3,7 +3,7 @@
 ```csharp
 IFreeSql fsql; // For creation details, please refer to the Getting Started document
 
-class Topic 
+class Topic
 {
     [Column(IsIdentity = true)]
     public int Id { get; set; }
@@ -14,7 +14,7 @@ class Topic
     public int CategoryId { get; set; }
     public Category Category { get; set; }
 }
-class Category 
+class Category
 {
     [Column(IsIdentity = true)]
     public int Id { get; set; }
@@ -46,14 +46,14 @@ fsql.Select<Topic>().From<Category, CategoryType>((s, b, c) => s
     .LeftJoin(a => b.ParentId == c.Id))
     .Where((a,b,c) => c.Id > 0)
     .ToList((a,b,c) => new { a,b,c });
-  
+
 // Reducing the definition of a,b,c
 fsql.Select<Topic, Category, CategoryType>()
     .LeftJoin(w => w.t1.CategoryId == w.t2.Id)
     .LeftJoin(w => w.t2.ParentId == w.t3.Id)
     .Where(w => w.t3.Id > 0)
     .ToList(w => new { w.t1,w.t2,w.t3 });
-  
+
 // SELECT ...
 // FROM `Topic` a
 // LEFT JOIN `Category` b ON a.`CategoryId` = b.`Id`
@@ -156,8 +156,8 @@ fsql.Select<Topic>().ToList(a => new
     id = a.Id,
     concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
 });
-// SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',') 
-//    FROM `StringJoin01` b) 
+// SELECT a.`Id`, (SELECT group_concat(b.`Id` separator ',')
+//    FROM `StringJoin01` b)
 // FROM `Topic` a
 ```
 
@@ -166,7 +166,7 @@ fsql.Select<Topic>().ToList(a => new
 ## 8. Sub-table First/Count/Sum/Max/Min/Avg
 
 ```csharp
-fsql.Select<Category>().ToList(a => new 
+fsql.Select<Category>().ToList(a => new
 {
     all = a,
     first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
@@ -219,7 +219,7 @@ The resulting SQL:
 ```sql
 SELECT ...
 FROM t1
-LEFT JOIN t2 on ... AND (t2.IsDeleted = 0) 
+LEFT JOIN t2 on ... AND (t2.IsDeleted = 0)
 WHERE t1.IsDeleted = 0
 ```
 

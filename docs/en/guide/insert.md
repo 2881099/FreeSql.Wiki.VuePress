@@ -74,38 +74,38 @@ You can also set appropriate values through `BatchOptions`. When no external tra
 
 ## 4. High-Performance BulkCopy
 
-| Package                   | Extension Method        | Description |
-| ------------------------- | ------------------------ | ----------- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy      |             |
+| Package                         | Extension Method      | Description |
+| ------------------------------- | --------------------- | ----------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |             |
 | FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |             |
-| FreeSql.Provider.Oracle   | ExecuteOracleBulkCopy   |             |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy          |             |
-| FreeSql.Provider.Dameng   | ExecuteDmBulkCopy       | Dameng      |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy          | KingbaseES  |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |             |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |             |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | Dameng      |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | KingbaseES  |
 
 Batch Insert Performance Test Reference (52 Fields)
 
-|                                | 180K   | 10K    | 5K    | 2K    | 1K    | 500  | 100  | 50   |
-| ------------------------------ | ------ | ------ | ----- | ----- | ----- | ---- | ---- | ---- |
-| MySql 5.5 ExecuteAffrows       | 38,481 | 2,234  | 1,136 | 284   | 239   | 167  | 66   | 30   |
-| MySql 5.5 ExecuteMySqlBulkCopy | 28,405 | 1,142  | 657   | 451   | 435   | 592  | 47   | 22   |
-| SqlServer Express ExecuteAffrows | 402,355 | 24,847 | 11,465 | 4,971 | 2,437 | 915  | 138  | 88   |
-| SqlServer Express ExecuteSqlBulkCopy | 21,065 | 578   | 326   | 139   | 105   | 79   | 60   | 48   |
-| PostgreSQL 10 ExecuteAffrows   | 46,756 | 3,294  | 2,269 | 1,019 | 374   | 209  | 51   | 37   |
-| PostgreSQL 10 ExecutePgCopy    | 10,090 | 583    | 337   | 136   | 88    | 61   | 30   | 25   |
+|                                      | 180K    | 10K    | 5K     | 2K    | 1K    | 500 | 100 | 50  |
+| ------------------------------------ | ------- | ------ | ------ | ----- | ----- | --- | --- | --- |
+| MySql 5.5 ExecuteAffrows             | 38,481  | 2,234  | 1,136  | 284   | 239   | 167 | 66  | 30  |
+| MySql 5.5 ExecuteMySqlBulkCopy       | 28,405  | 1,142  | 657    | 451   | 435   | 592 | 47  | 22  |
+| SqlServer Express ExecuteAffrows     | 402,355 | 24,847 | 11,465 | 4,971 | 2,437 | 915 | 138 | 88  |
+| SqlServer Express ExecuteSqlBulkCopy | 21,065  | 578    | 326    | 139   | 105   | 79  | 60  | 48  |
+| PostgreSQL 10 ExecuteAffrows         | 46,756  | 3,294  | 2,269  | 1,019 | 374   | 209 | 51  | 37  |
+| PostgreSQL 10 ExecutePgCopy          | 10,090  | 583    | 337    | 136   | 88    | 61  | 30  | 25  |
 
 > 180K Explanation: Inserting 180,000 rows, the numbers in the table represent execution time (ms).
 
 Batch Insert Performance Test Reference (10 Fields)
 
-|                                | 180K   | 10K   | 5K    | 2K   | 1K   | 500  | 100  | 50   |
-| ------------------------------ | ------ | ----- | ----- | ---- | ---- | ---- | ---- | ---- |
-| MySql 5.5 ExecuteAffrows       | 11,171 | 866   | 366   | 80   | 83   | 50   | 24   | 34   |
-| MySql 5.5 ExecuteMySqlBulkCopy | 6,504  | 399   | 257   | 116  | 87   | 100  | 16   | 16   |
-| SqlServer Express ExecuteAffrows | 47,204 | 2,275 | 1,108 | 488  | 279  | 123  | 35   | 16   |
-| SqlServer Express ExecuteSqlBulkCopy | 4,248 | 127   | 71    | 30   | 48   | 14   | 11   | 10   |
-| PostgreSQL 10 ExecuteAffrows   | 9,786  | 568   | 336   | 157  | 102  | 34   | 9    | 6    |
-| PostgreSQL 10 ExecutePgCopy    | 4,081  | 167   | 93    | 39   | 21   | 12   | 4    | 2    |
+|                                      | 180K   | 10K   | 5K    | 2K  | 1K  | 500 | 100 | 50  |
+| ------------------------------------ | ------ | ----- | ----- | --- | --- | --- | --- | --- |
+| MySql 5.5 ExecuteAffrows             | 11,171 | 866   | 366   | 80  | 83  | 50  | 24  | 34  |
+| MySql 5.5 ExecuteMySqlBulkCopy       | 6,504  | 399   | 257   | 116 | 87  | 100 | 16  | 16  |
+| SqlServer Express ExecuteAffrows     | 47,204 | 2,275 | 1,108 | 488 | 279 | 123 | 35  | 16  |
+| SqlServer Express ExecuteSqlBulkCopy | 4,248  | 127   | 71    | 30  | 48  | 14  | 11  | 10  |
+| PostgreSQL 10 ExecuteAffrows         | 9,786  | 568   | 336   | 157 | 102 | 34  | 9   | 6   |
+| PostgreSQL 10 ExecutePgCopy          | 4,081  | 167   | 93    | 39  | 21  | 12  | 4   | 2   |
 
 > Test results are performed under the same operating system and all have been warmed up.
 
@@ -206,20 +206,20 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = VALUES(`time`)
 ```
 
 Methods that can be called after `OnDuplicateKeyUpdate()`:
 
-| Method Name           | Description |
-| --------------------- | ----------- |
-| IgnoreColumns         | Ignore the columns to be updated, similar to `IUpdate.IgnoreColumns` |
-| UpdateColumns         | Specify the columns to be updated, similar to `IUpdate.UpdateColumns` |
-| Set                   | Manually specify the columns to be updated, similar to `IUpdate.Set` |
-| SetRaw                | Supplement to `Set` method, can pass SQL strings |
-| ToSql                 | Return the SQL statement to be executed |
-| ExecuteAffrows        | Execute and return the number of affected rows |
+| Method Name    | Description                                                           |
+| -------------- | --------------------------------------------------------------------- |
+| IgnoreColumns  | Ignore the columns to be updated, similar to `IUpdate.IgnoreColumns`  |
+| UpdateColumns  | Specify the columns to be updated, similar to `IUpdate.UpdateColumns` |
+| Set            | Manually specify the columns to be updated, similar to `IUpdate.Set`  |
+| SetRaw         | Supplement to `Set` method, can pass SQL strings                      |
+| ToSql          | Return the SQL statement to be executed                               |
+| ExecuteAffrows | Execute and return the number of affected rows                        |
 
 Both `IInsert` and `OnDuplicateKeyUpdate` have `IgnoreColumns` and `UpdateColumns` methods.
 
@@ -232,7 +232,7 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = '2000-01-01 00:00:00.000'
 ```
 
@@ -262,21 +262,21 @@ fsql.Insert(items)
 
 ## API
 
-| Method                | Return Value                | Parameters                | Description                                           |
-| --------------------- | --------------------------- | ------------------------- | ----------------------------------------------------- |
-| AppendData            | \<this\>                    | T1 \| IEnumerable\<T1\>  | Append entities to be inserted                      |
-| InsertIdentity        | \<this\>                    | None                      | Specify auto-increment column                        |
-| InsertColumns         | \<this\>                    | Lambda                    | Columns to be inserted                               |
-| IgnoreColumns         | \<this\>                    | Lambda                    | Columns to be ignored                                |
-| IgnoreInsertValueSql  | \<this\>                    | Lambda                    | Columns with `InsertValueSql` to be ignored          |
-| CommandTimeout        | \<this\>                    | int                       | Command timeout setting (seconds)                    |
-| WithTransaction       | \<this\>                    | DbTransaction             | Set transaction object                               |
-| WithConnection        | \<this\>                    | DbConnection              | Set connection object                                |
-| ToSql                 | string                      |                           | Return the SQL statement to be executed              |
-| OnDuplicateKeyUpdate  | OnDuplicateKeyUpdate\<T1\>  | None                      | MySQL-specific feature `On Duplicate Key Update`     |
-| OnConflictDoUpdate    | OnConflictDoUpdate\<T1\>    | None                      | PostgreSQL-specific feature `On Conflict Do Update`  |
-| ExecuteAffrows        | long                        |                           | Execute SQL statement and return the number of affected rows |
-| ExecuteIdentity       | long                        |                           | Execute SQL statement and return auto-increment value |
-| ExecuteInserted       | List\<T1\>                  |                           | Execute SQL statement and return the inserted records |
-| ExecuteSqlBulkCopy    | void                        |                           | SQL Server-specific feature, execute `SqlBulkCopy` batch insert |
-| ExecutePgCopy         | void                        |                           | PostgreSQL-specific feature, execute `Copy` batch import data |
+| Method               | Return Value               | Parameters              | Description                                                     |
+| -------------------- | -------------------------- | ----------------------- | --------------------------------------------------------------- |
+| AppendData           | \<this\>                   | T1 \| IEnumerable\<T1\> | Append entities to be inserted                                  |
+| InsertIdentity       | \<this\>                   | None                    | Specify auto-increment column                                   |
+| InsertColumns        | \<this\>                   | Lambda                  | Columns to be inserted                                          |
+| IgnoreColumns        | \<this\>                   | Lambda                  | Columns to be ignored                                           |
+| IgnoreInsertValueSql | \<this\>                   | Lambda                  | Columns with `InsertValueSql` to be ignored                     |
+| CommandTimeout       | \<this\>                   | int                     | Command timeout setting (seconds)                               |
+| WithTransaction      | \<this\>                   | DbTransaction           | Set transaction object                                          |
+| WithConnection       | \<this\>                   | DbConnection            | Set connection object                                           |
+| ToSql                | string                     |                         | Return the SQL statement to be executed                         |
+| OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | None                    | MySQL-specific feature `On Duplicate Key Update`                |
+| OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | None                    | PostgreSQL-specific feature `On Conflict Do Update`             |
+| ExecuteAffrows       | long                       |                         | Execute SQL statement and return the number of affected rows    |
+| ExecuteIdentity      | long                       |                         | Execute SQL statement and return auto-increment value           |
+| ExecuteInserted      | List\<T1\>                 |                         | Execute SQL statement and return the inserted records           |
+| ExecuteSqlBulkCopy   | void                       |                         | SQL Server-specific feature, execute `SqlBulkCopy` batch insert |
+| ExecutePgCopy        | void                       |                         | PostgreSQL-specific feature, execute `Copy` batch import data   |

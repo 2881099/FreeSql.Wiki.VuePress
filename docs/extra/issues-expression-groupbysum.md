@@ -37,7 +37,7 @@ var ids = new int[] { 1,2,3 };
 fsql.Select<table>()
     .Where(a => ids.Contains(a.Id))
     .GroupBy(a => a.Time)
-    .ToList(g => new 
+    .ToList(g => new
     {
         Time = g.Key,
         Values = MyExt.SumCase(ids, g.Value.Id)
@@ -56,12 +56,12 @@ public static class MyExt
     {
         var ctx = expContext.Value;
         ctx.Result = ctx.Utility.CommonUtils.StringConcat(
-            values.Select((val, idx) => 
+            values.Select((val, idx) =>
                 new [] {
                     ctx._commonExp._common.IsNull($"SUM(case when {ctx.ParsedContent["column"]} = {ctx.FormatSql(val)} then 1 else 0 end)", 0),
                     idx == values.Length - 1 ? "''" : "','"
-                }).SelectMany(a => a).ToArray(), 
-            values.Select(val => 
+                }).SelectMany(a => a).ToArray(),
+            values.Select(val =>
                 new[]{
                     typeof(TValue),
                     typeof(string)
