@@ -7,7 +7,7 @@ export default hopeTheme({
   logo: "/logo.png",
   author: "nicye",
 
-  iconAssets: "iconfont",
+  favicon: "/favicon-32x32.png",
   repo: "dotnetcore/FreeSql",
   docsRepo: "https://github.com/2881099/FreeSql.Wiki.VuePress",
   docsDir: "docs",
@@ -41,19 +41,53 @@ export default hopeTheme({
     "Word",
   ],
 
+  markdown: {
+    codeTabs: true,
+    figure: true,
+    hint: false,
+    imgLazyload: true,
+  },
+
   plugins: {
+    components: {
+      components: ["BiliBili", "VPBanner", "VPCard", "Badge", "Share"],
+    },
+
+    docsearch: {
+      appId: "8QM97XX5VE",
+      apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
+      indexName: "freesql",
+    },
+
+    icon: {
+      assets: "fontawesome",
+    },
+
     feed: {
       atom: true,
       json: true,
       rss: true,
     },
-    git: true,
-    mdEnhance: {
-      codetabs: true,
-      figure: true,
-      hint: false,
-      imgLazyload: true,
+
+    pwa: {
+      manifest: {
+        icons: [
+          {
+            src: "android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+
+      apple: {
+        icon: "/apple-touch-icon.png",
+      },
     },
-    pwa: true,
   },
 });

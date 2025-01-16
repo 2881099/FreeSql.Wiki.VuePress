@@ -1,5 +1,5 @@
 ---
-title:  ClickHouse
+title: ClickHouse
 ---
 
 ## 介绍
@@ -28,9 +28,9 @@ Install-Package FreeSql.Provider.ClickHouse
 
 ```csharp
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-    .UseConnectionString(FreeSql.DataType.ClickHouse, 
-        "DataCompress=False;BufferSize=32768;SocketTimeout=10000;CheckCompressedHash=False;Encrypt=False;Compressor=lz4;" + 
+    .UseConnectionString(FreeSql.DataType.ClickHouse,
+        "DataCompress=False;BufferSize=32768;SocketTimeout=10000;CheckCompressedHash=False;Encrypt=False;Compressor=lz4;" +
         "Host=192.168.0.121;Port=8125;Database=PersonnelLocation;Username=root;Password=123")
-    .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}")) 
+    .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
     .Build();
 ```

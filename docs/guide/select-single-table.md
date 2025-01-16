@@ -47,8 +47,8 @@ fsql.Select<Topic>()
     .WithSql("select * from Topic where clicks > @val", new { val = 10 })
     .Page(1, 10)
     .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (select * from Topic where clicks > @val) a 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM (select * from Topic where clicks > @val) a
 ```
 
 > 使用多次 WithSql 等于 UNION ALL 查询
@@ -67,10 +67,10 @@ list.Add(new Topic { ... });
 fsql.Select<Topic>()
     .WithMemory(list)
     .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
 //FROM (
 //  SELECT ...
 //  UNION ALL
 //  SELECT ...
-//) a 
+//) a
 ```

@@ -1,6 +1,6 @@
 # Delete
 
-Deleting records is a very dangerous operation. FreeSql by default only supports single-table deletions with conditions. 
+Deleting records is a very dangerous operation. FreeSql by default only supports single-table deletions with conditions.
 
 If the `Where` condition is empty, no actual SQL delete operation will be executed.
 
@@ -25,11 +25,11 @@ fsql.Delete<Topic>(object dywhere).ExecuteAffrows()
 
 `dywhere` can be:
 
-* Primary key value
-* `new[] { primaryKeyValue1, primaryKeyValue2 }`
-* Topic object
-* `new[] { TopicObject1, TopicObject2 }`
-* `new { id = 1 }`
+- Primary key value
+- `new[] { primaryKeyValue1, primaryKeyValue2 }`
+- Topic object
+- `new[] { TopicObject1, TopicObject2 }`
+- `new { id = 1 }`
 
 ```csharp
 var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ExecuteAffrows();
@@ -99,8 +99,8 @@ DELETE FROM `T1` WHERE id IN (SELECT a.id FROM T1 a LEFT JOIN Options b ON b.t1i
 
 Benefits of using this method:
 
-* Preview and test data before deletion to prevent errors.
-* Supports complex deletion operations, such as deleting the top 10 records meeting the criteria using `ISelect` with `Limit(10)`.
+- Preview and test data before deletion to prevent errors.
+- Supports complex deletion operations, such as deleting the top 10 records meeting the criteria using `ISelect` with `Limit(10)`.
 
 ## 6. Cascading Deletion
 
@@ -190,14 +190,14 @@ public class UserExt
 
 ## API
 
-| Method           | Return Value | Parameters              | Description                                               |
-| ---------------- | ------------ | ----------------------- | --------------------------------------------------------- |
-| `Where`          | `<this>`     | Lambda                  | Expression condition, only supports entity basic members (excluding navigation objects) |
-| `Where`          | `<this>`     | string, parms           | Native SQL syntax condition, such as `Where("id = @id", new { id = 1 })` |
-| `Where`          | `<this>`     | T1 \| IEnumerable\<T1\> | Pass an entity or collection, using its primary key as the condition |
-| `CommandTimeout` | `<this>`     | int                     | Command timeout setting (in seconds)                     |
-| `WithTransaction`| `<this>`     | `DbTransaction`         | Set the transaction object                               |
-| `WithConnection` | `<this>`     | `DbConnection`          | Set the connection object                                |
-| `ToSql`          | string       |                         | Return the SQL statement that is about to be executed    |
-| `ExecuteAffrows` | long         |                         | Execute the SQL statement and return the number of affected rows |
-| `ExecuteDeleted` | `List<T1>`   |                         | Execute the SQL statement and return the deleted records |
+| Method            | Return Value | Parameters              | Description                                                                             |
+| ----------------- | ------------ | ----------------------- | --------------------------------------------------------------------------------------- |
+| `Where`           | `<this>`     | Lambda                  | Expression condition, only supports entity basic members (excluding navigation objects) |
+| `Where`           | `<this>`     | string, parms           | Native SQL syntax condition, such as `Where("id = @id", new { id = 1 })`                |
+| `Where`           | `<this>`     | T1 \| IEnumerable\<T1\> | Pass an entity or collection, using its primary key as the condition                    |
+| `CommandTimeout`  | `<this>`     | int                     | Command timeout setting (in seconds)                                                    |
+| `WithTransaction` | `<this>`     | `DbTransaction`         | Set the transaction object                                                              |
+| `WithConnection`  | `<this>`     | `DbConnection`          | Set the connection object                                                               |
+| `ToSql`           | string       |                         | Return the SQL statement that is about to be executed                                   |
+| `ExecuteAffrows`  | long         |                         | Execute the SQL statement and return the number of affected rows                        |
+| `ExecuteDeleted`  | `List<T1>`   |                         | Execute the SQL statement and return the deleted records                                |

@@ -92,7 +92,7 @@ public class TransactionalAttribute : Attribute
 
 ## Autofac集成
 
-Program.CS  替换默认的DI CreateHostBuilder方法
+Program.CS 替换默认的DI CreateHostBuilder方法
 
 ```csharp
  Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -127,11 +127,11 @@ public class AutofacModule : Autofac.Module
     {
         builder.RegisterType<UnitOfWorkInterceptor>();
         builder.RegisterType<UnitOfWorkAsyncInterceptor>();
-        
+
         builder.RegisterType<BlogService>()
             .InterceptedBy(typeof(UnitOfWorkInterceptor))
             .EnableClassInterceptors();
-            
+
 }
 ```
 
@@ -340,17 +340,17 @@ public class ServiceModule : Autofac.Module
         List<Type> interceptorServiceTypes = new List<Type>()
         {
             typeof(UnitOfWorkInterceptor)
-        };  
+        };
         //service所在dll，LinCms.Application为程序集名称，也可以通过typeof(程序集中的某个类即可).Assembly获取
         Assembly servicesDllFile = Assembly.Load("LinCms.Application");
-        
+
         builder.RegisterAssemblyTypes(servicesDllFile)
                 .Where(a => a.Name.EndsWith("Service") && !a.IsAbstract && !a.IsInterface && a.IsPublic)
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope()
                 .PropertiesAutowired()// 属性注入
                 .InterceptedBy(interceptorServiceTypes.ToArray())
-                .EnableInterfaceInterceptors(); 
+                .EnableInterfaceInterceptors();
      }
 }
 ```

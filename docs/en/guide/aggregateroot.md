@@ -25,11 +25,13 @@ The following content heavily relies on the correct configuration of [**Navigati
 Define a primary entity class as the aggregate root and establish a safe jurisdictional boundary. During CRUD operations, everything within the boundary is treated as a whole.
 
 Navigation properties outside the boundary will be ignored during recursive `insert, update, delete` operations:
+
 - ManyToOne
 - ManyToMany (external tables)
 - PgArrayToMany
 
 Navigation properties within the boundary will be cascaded during recursive `insert, update, delete` operations:
+
 - OneToOne
 - OneToMany
 - ManyToMany (intermediate tables)
@@ -159,9 +161,9 @@ This is equivalent to:
 ```csharp
 var list = fsql.Select<Order>()
     .Include(a => a.Extdata)
-    .IncludeMany(a => a.Details, 
+    .IncludeMany(a => a.Details,
         then => then.Include(b => b.Extdata))
-    .IncludeMany(a => a.Tags) 
+    .IncludeMany(a => a.Tags)
     .Where(a => a.Id < 10)
     .ToList();
 ```
@@ -182,7 +184,7 @@ class OrderRepository : AggregateRootRepository<Order>
     public override ISelect<IFreeSql> Select => this.SelectDiy
         //.TrackToList(this.SelectAggregateRootTracking) State tracking
         .Include(a => a.Extdata)
-        .IncludeMany(a => a.Details, 
+        .IncludeMany(a => a.Details,
             then => then.Include(b => b.Extdata))
         .IncludeMany(a => a.Tags);
 }
@@ -276,15 +278,15 @@ repository.Update(order);
 
 `Comparison Saving` Rule Explanation:
 
-| Navigation Property | Snapshot | Latest | Result |
-| --- | --- | --- | --- |
-| OneToOne | NULL | Object | `Add` latest record |
-| OneToOne | Object | NULL | `Delete` snapshot record |
-| OneToOne | Object | Object | If content changes, `Update` latest record; otherwise, `Ignore` |
-| OneToMany | NULL/Empty | List | `Add` latest list records |
-| OneToMany | List | NULL | `Ignore` |
-| OneToMany | List | Empty | `Delete` snapshot list records |
-| OneToMany | List | List | `Comparison Saving` calculates `Add`, `Update`, and `Delete` behaviors |
+| Navigation Property | Snapshot   | Latest | Result                                                                 |
+| ------------------- | ---------- | ------ | ---------------------------------------------------------------------- |
+| OneToOne            | NULL       | Object | `Add` latest record                                                    |
+| OneToOne            | Object     | NULL   | `Delete` snapshot record                                               |
+| OneToOne            | Object     | Object | If content changes, `Update` latest record; otherwise, `Ignore`        |
+| OneToMany           | NULL/Empty | List   | `Add` latest list records                                              |
+| OneToMany           | List       | NULL   | `Ignore`                                                               |
+| OneToMany           | List       | Empty  | `Delete` snapshot list records                                         |
+| OneToMany           | List       | List   | `Comparison Saving` calculates `Add`, `Update`, and `Delete` behaviors |
 
 > ManyToMany only operates on the `intermediate table` (external table is out of scope), with the comparison saving mechanism being the same as OneToMany
 
@@ -296,10 +298,10 @@ repository.Update(order);
 
 - If no value, `Insert data`;
 - If there is a value, determine state management;
-    * If exists, compare with the snapshot to `Update data`;
-    * If not exists, query the database; (performance issues with large content)
-        - If exists, compare with the queried content to `Update data`;
-        - If not exists, `Insert data`;
+  - If exists, compare with the snapshot to `Update data`;
+  - If not exists, query the database; (performance issues with large content)
+    - If exists, compare with the queried content to `Update data`;
+    - If not exists, `Insert data`;
 
 2. If the primary key is not auto-increment:
 

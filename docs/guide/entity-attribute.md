@@ -16,10 +16,10 @@ class Topic { }
 表名映射的几种方法，优先级从小到大：
 
 - 1、实体类名
-- 2、Aop fsql.Aop.ConfigEntity += (_, e) => e.ModifyResult.Name = "public.tabname"
+- 2、Aop fsql.Aop.ConfigEntity += (\_, e) => e.ModifyResult.Name = "public.tabname"
 - 3、FluentApi fsql.CodeFirst.ConfigEntity(a => a.Name("public.tabname"))
 - 4、[Table(Name = "public.tabname")]
-- 5、AsTable fsql.Select\<T\>().AsTable((_, old) => "public.tabname").ToList()
+- 5、AsTable fsql.Select\<T\>().AsTable((\_, old) => "public.tabname").ToList()
 
 > v3.2.833 可通过 UseMappingPriority 调整优先级，使用 Aop 实现动态表名
 
@@ -35,13 +35,13 @@ class Topic
 }
 ```
 
-* 当没有指明主键时，命名为 id 的字段将成为主键；（不区分大小写）
-* 当主键是 Guid 类型时，插入时会自动创建（有序、不重复）的值，所以不需要自己赋值；（支持分布式）
+- 当没有指明主键时，命名为 id 的字段将成为主键；（不区分大小写）
+- 当主键是 Guid 类型时，插入时会自动创建（有序、不重复）的值，所以不需要自己赋值；（支持分布式）
 
 > 联合主键，在多个属性标记特性
 
 > Oracle 主键名长度大于30 \[OraclePrimaryKeyName(name)\]
-class table {...}
+> class table {...}
 
 ## 自增(Identity)
 
@@ -53,8 +53,8 @@ class Topic
 }
 ```
 
-* 当没有指明主键时，标记自增的成员将成为主键；
-* DbFirst 模式序列：[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]
+- 当没有指明主键时，标记自增的成员将成为主键；
+- DbFirst 模式序列：[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]
 
 ## 唯一键(Unique Key)、索引（Index）
 
@@ -73,8 +73,8 @@ class Topic
 }
 ```
 
-* 第三个参数 true 的时候是唯一键，false 的时候是普通索引。
-* 分表场景的索引：[Index("{tablename}_idx_01", "phone")]
+- 第三个参数 true 的时候是唯一键，false 的时候是普通索引。
+- 分表场景的索引：[Index("{tablename}_idx_01", "phone")]
 
 ## 数据库类型(DbType)
 
@@ -113,9 +113,9 @@ class Topic
 
 当长度 -1 时产生的映射如下：
 
-| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | DuckDB | MsAccess | 达梦 | 金仓 | 神通 | 南通 |
-| - | - | - | - | - | - | - | - | - | - | - |- |
-| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | text | longtext | text | text | text | text | 
+| MySql | PostgreSQL | SqlServer     | Oracle | Sqlite | Firebird        | DuckDB | MsAccess | 达梦 | 金仓 | 神通 | 南通 |
+| ----- | ---------- | ------------- | ------ | ------ | --------------- | ------ | -------- | ---- | ---- | ---- | ---- |
+| text  | text       | nvarchar(max) | nclob  | text   | blob sub_type 1 | text   | longtext | text | text | text | text |
 
 > 注意：MySql [MaxLength(-2)] 或者 [Column(StringLength = -2)] 映射类型 longtext，其他数据库的映射规则与 -1 相同
 
@@ -131,8 +131,8 @@ class Topic
 
 在不指定 DbType、IsNullable 时，FreeSql 提供默认设定，如：
 
-* int -> not null（不可为空）
-* int? -> null（可空）
+- int -> not null（不可为空）
+- int? -> null（可空）
 
 一般在使用 string 类型时，才需要手工指明是否可空（string 默认可空）；
 
@@ -143,7 +143,7 @@ class Topic
 {
     [Column(ServerTime = DateTimeKind.Utc, CanUpdate = false)]
     public DateTime CreateTime { get; set; }
-    
+
     [Column(ServerTime = DateTimeKind.Utc)]
     public DateTime UpdateTime { get; set; }
 }
@@ -151,8 +151,8 @@ class Topic
 
 使用数据库时间执行插入数据，注意：
 
-* 插入时设置实体的值是无效的；
-* 插入实体执行成功后，实体的值还是 c# 时间；
+- 插入时设置实体的值是无效的；
+- 插入实体执行成功后，实体的值还是 c# 时间；
 
 ## 忽略(Ignore)
 
@@ -293,7 +293,7 @@ fsql.Select<Table>().Where(a => a.Options.Value1 == 100 && a.Options.Value2 == "
 注意：如果是 getdate() 这种请可考虑使用 ServerTime，因为适配了所有数据库。
 
 ```csharp
-class Topic 
+class Topic
 {
     [Column(InsertValueSql = "'xxx'")]
     public string Name { get; set; }
@@ -312,18 +312,18 @@ fsql.Insert(new Type()).IgnoreInsertValueSql(a => a.Name).ExecuteAffrows();
 写入时重写 SQL、读取时重写 SQL，例如 geography 类型的读写场景：
 
 ```csharp
-class Topic 
+class Topic
 {
-    [Column(DbType = "geography", 
-        RewriteSql = "geography::STGeomFromText({0}, 4236)", 
+    [Column(DbType = "geography",
+        RewriteSql = "geography::STGeomFromText({0}, 4236)",
         RereadSql = "{0}.STAsText()")]
     public string geo { get; set; }
 }
-//插入：INSERT INTO [ts_geocrud01]([id], [geo]) 
+//插入：INSERT INTO [ts_geocrud01]([id], [geo])
 //VALUES(@id_0, geography::STGeomFromText(@geo_0, 4236))
 
-//查询：SELECT TOP 1 a.[id], a.[geo].STAsText() 
-//FROM [ts_geocrud01] a 
+//查询：SELECT TOP 1 a.[id], a.[geo].STAsText()
+//FROM [ts_geocrud01] a
 //WHERE (a.[id] = 'c7227d5e-0bcf-4b71-8f0f-d69a552fe84e')
 ```
 

@@ -109,7 +109,7 @@ Same-thread transactions are built into FreeSql.dll, managed by `fsql.Transactio
 A user purchases a product worth 100 yuan: deduct balance, deduct inventory.
 
 ```csharp
-fsql.Transaction(() => 
+fsql.Transaction(() =>
 {
     // fsql.Ado.TransactionCurrentThread gets the current transaction object
 
@@ -124,7 +124,7 @@ fsql.Transaction(() =>
     affrows = fsql.Update<Goods>()
         .Set(a => a.Stock - 1)
         .Where(a => a.Stock >= 1).ExecuteAffrows();
-        
+
     if (affrows < 1) throw new Exception("Product stock insufficient");
 });
 ```

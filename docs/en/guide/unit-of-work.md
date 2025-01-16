@@ -5,7 +5,7 @@ UnitOfWork is a wrapper around the `DbTransaction` transaction object, facilitat
 ## How to Use
 
 ```csharp
-using (var uow = fsql.CreateUnitOfWork()) 
+using (var uow = fsql.CreateUnitOfWork())
 {
     await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API is the same as IFreeSql
     await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
@@ -74,7 +74,7 @@ Individual Settings:
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
-    uow.OnEntityChange = report => 
+    uow.OnEntityChange = report =>
     {
         Console.WriteLine(report);
     };
@@ -96,12 +96,12 @@ public class ChangeInfo
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```
 
-| Change Type | Description             |
-| ----------- | ----------------------- |
-| Insert      | Entity object inserted  |
-| Update      | Entity object updated   |
-| Delete      | Entity object deleted   |
-| SqlRaw      | SQL statement executed  |
+| Change Type | Description            |
+| ----------- | ---------------------- |
+| Insert      | Entity object inserted |
+| Update      | Entity object updated  |
+| Delete      | Entity object deleted  |
+| SqlRaw      | SQL statement executed |
 
 `SqlRaw` currently has two special cases:
 

@@ -26,7 +26,7 @@ repo.Insert(new UserGroup
 //INSERT INTO "userext"("userid", "remark") VALUES(3, '用户备注01'), (4, '用户备注02'), (5, '用户备注03')
 
 var groups = repo.Select
-    .IncludeMany(a => a.Users, 
+    .IncludeMany(a => a.Users,
         then => then.Include(b => b.UserExt))
     .ToList();
 repo.Delete(groups); //级联删除，递归向下遍历 group OneToOne/OneToMany/ManyToMany 导航属性

@@ -25,11 +25,13 @@ var repository = fsql.GetAggregateRootRepository<Order>();
 将一个主要的实体类认定为聚合根，设定好安全的管辖范围（边界），CRUD 时会把边界之内的所有内容看作一个整体。
 
 边界之外的导航属性，`增删改` 递归时会忽略：
+
 - ManyToOne
-- ManyToMany(外部表) 
+- ManyToMany(外部表)
 - PgArrayToMany
 
 边界之内的导航属性，`增删改` 递归时会级联操作：
+
 - OneToOne
 - OneToMany
 - ManyToMany(中间表)
@@ -159,9 +161,9 @@ var list = repository.Select
 ```csharp
 var list = fsql.Select<Order>()
     .Include(a => a.Extdata)
-    .IncludeMany(a => a.Details, 
+    .IncludeMany(a => a.Details,
         then => then.Include(b => b.Extdata))
-    .IncludeMany(a => a.Tags) 
+    .IncludeMany(a => a.Tags)
     .Where(a => a.Id < 10)
     .ToList();
 ```
@@ -182,7 +184,7 @@ class OrderRepository : AggregateRootRepository<Order>
     public override ISelect<IFreeSql> Select => this.SelectDiy
         //.TrackToList(this.SelectAggregateRootTracking) 状态跟踪
         .Include(a => a.Extdata)
-        .IncludeMany(a => a.Details, 
+        .IncludeMany(a => a.Details,
             then => then.Include(b => b.Extdata))
         .IncludeMany(a => a.Tags);
 }
@@ -272,15 +274,15 @@ repository.Update(order);
 
 `对比保存` 规则说明：
 
-| 导航属性 | 副本 | 最新 | 结果 |
-| --- | --- | --- | --- |
-| OneToOne | NULL | Object | `添加` 最新 记录 |
-| OneToOne | Object | NULL | `删除` 副本 记录 |
-| OneToOne | Object | Object | 内容发生变化则 `更新` 最新 记录，否则 `忽略` |
-| OneToMany | NULL/Empty | List | `添加` 最新 List 记录 |
-| OneToMany | List | NULL | `忽略` |
-| OneToMany | List | Empty | `删除` 副本 List 记录 |
-| OneToMany | List | List | `对比保存` 计算出 `添加`、`更新`、`删除` 三种行为 |
+| 导航属性  | 副本       | 最新   | 结果                                              |
+| --------- | ---------- | ------ | ------------------------------------------------- |
+| OneToOne  | NULL       | Object | `添加` 最新 记录                                  |
+| OneToOne  | Object     | NULL   | `删除` 副本 记录                                  |
+| OneToOne  | Object     | Object | 内容发生变化则 `更新` 最新 记录，否则 `忽略`      |
+| OneToMany | NULL/Empty | List   | `添加` 最新 List 记录                             |
+| OneToMany | List       | NULL   | `忽略`                                            |
+| OneToMany | List       | Empty  | `删除` 副本 List 记录                             |
+| OneToMany | List       | List   | `对比保存` 计算出 `添加`、`更新`、`删除` 三种行为 |
 
 > ManyToMany 只会操作 `中间表`（外部表不属于管辖范围），对比保存的机制与 OneToMany 一致
 
@@ -292,10 +294,10 @@ InsertOrUpdate 执行逻辑依托聚合根对象的 `主键` 和 `状态管理`�
 
 - 无值，则 `插入数据`；
 - 有值，则判断 状态管理;
-    * 存在，则与副本对比 `更新数据`；
-    * 不存在，则查询 数据库；（内容庞大时有性能问题）
-        - 存在，则与查询的内容对比 `更新数据`；
-        - 不存在，则 `插入数据`；
+  - 存在，则与副本对比 `更新数据`；
+  - 不存在，则查询 数据库；（内容庞大时有性能问题）
+    - 存在，则与查询的内容对比 `更新数据`；
+    - 不存在，则 `插入数据`；
 
 2、如果主键不是 自增：
 

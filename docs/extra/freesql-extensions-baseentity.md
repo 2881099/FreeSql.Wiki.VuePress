@@ -1,5 +1,5 @@
 ---
-title:  BaseEntity
+title: BaseEntity
 ---
 
 ## 前言
@@ -122,9 +122,9 @@ static AsyncLocal<IUnitOfWork> _asyncUow = new AsyncLocal<IUnitOfWork>();
 BaseEntity.Initialization(fsql, () => _asyncUow.Value);
 ```
 
-在 Scoped 开始时：_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)
+在 Scoped 开始时：\_asyncUow.Value = fsql.CreateUnitOfWork(); (也可以使用 UnitOfWorkManager 对象获取 uow)
 
-在 Scoped 结束时：_asyncUow.Value = null;
+在 Scoped 结束时：\_asyncUow.Value = null;
 
 如下：
 
@@ -141,7 +141,7 @@ using (var uow = fsql.CreateUnitOfWork())
     {
         _asyncUow.Value = null;
     }
-    
+
     uow.Commit();
 }
 ```

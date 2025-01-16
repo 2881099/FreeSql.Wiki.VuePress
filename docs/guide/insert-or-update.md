@@ -57,14 +57,14 @@ fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows
 
 ## 3、高性能 BulkCopy
 
-| 程序包 | 扩展方法 | 说明 (v3.2.693) |
-| -- | -- | -- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
-| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
-| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | 达梦 |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | 人大金仓 |
+| 程序包                          | 扩展方法              | 说明 (v3.2.693) |
+| ------------------------------- | --------------------- | --------------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |                 |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |                 |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |                 |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | 达梦            |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |                 |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | 人大金仓        |
 
 原理：使用 BulkCopy 将数据插入到临时表，再使用 MERGE INTO 联表操作。
 
@@ -146,20 +146,20 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = VALUES(`time`)
 ```
 
 OnDuplicateKeyUpdate() 之后可以调用的方法：
 
-| 方法名 | 描述 |
-| -- | -- |
-| IgnoreColumns | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
-| UpdateColumns | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
-| Set | 手工指定更新的列，与 IUpdate.Set 功能一样 |
-| SetRaw | 作为 Set 方法的补充，可传入 SQL 字符串 |
-| ToSql | 返回即将执行的 SQL 语句 |
-| ExecuteAffrows | 执行，返回影响的行数 |
+| 方法名         | 描述                                            |
+| -------------- | ----------------------------------------------- |
+| IgnoreColumns  | 忽略更新的列，机制和 IUpdate.IgnoreColumns 一样 |
+| UpdateColumns  | 指定更新的列，机制和 IUpdate.UpdateColumns 一样 |
+| Set            | 手工指定更新的列，与 IUpdate.Set 功能一样       |
+| SetRaw         | 作为 Set 方法的补充，可传入 SQL 字符串          |
+| ToSql          | 返回即将执行的 SQL 语句                         |
+| ExecuteAffrows | 执行，返回影响的行数                            |
 
 IInsert 与 OnDuplicateKeyUpdate 都有 IgnoreColumns、UpdateColumns 方法。
 
@@ -172,7 +172,7 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = '2000-01-01 00:00:00.000'
 ```
 

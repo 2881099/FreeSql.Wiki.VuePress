@@ -133,7 +133,7 @@ fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
 
 This mapping supports single-table/multi-table and maps before querying data (not querying all fields first and then mapping in memory).
 
-Search rules: Search for property names by looping through internal objects _tables (which will grow after join queries), prioritizing the main table to search until the same field is found.
+Search rules: Search for property names by looping through internal objects \_tables (which will grow after join queries), prioritizing the main table to search until the same field is found.
 
 For example:
 
@@ -183,16 +183,16 @@ List<dynamic> t13 = fsql.Ado.Query<dynamic>("select * from song");
 
 ## 11. API
 
-| Method | Return Value | Parameter | Description |
-| ------------- | - | - | - |
-| ToSql | string | | Returns the SQL statement to be executed |
-| ToList | List\<T1\> | | Executes SQL query and returns records with all fields of T1 entity. If navigation properties exist, they are queried and returned together. If no records are found, returns a list with Count equal to 0 |
-| ToList\<Dto\> | List\<Dto\> | Lambda | Executes SQL query and returns records with specified fields or DTO mapping. If no records are found, returns a list with Count equal to 0 |
-| ToList\<T\> | List\<T\> | string field | Executes SQL query and returns records of the specified field, received as a tuple or basic type (int, string, long). If no records are found, returns a list with Count equal to 0 |
-| ToOne | T1 | | Executes SQL query and returns the first record with all fields of T1 entity. If no records are found, returns null |
-| ToChunk | \<empty\> | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | Executes SQL query and returns data in chunks to reduce memory overhead. For example, reads 100,000 records, processing 100 at a time. |
-| Any | bool | | Executes SQL query to check if there are any records |
-| Sum | T | Lambda | Specifies a column to calculate the sum |
-| Min | T | Lambda | Specifies a column to find the minimum value |
-| Max | T | Lambda | Specifies a column to find the maximum value |
-| Avg | T | Lambda | Specifies a column to calculate the average value |
+| Method        | Return Value | Parameter                                                | Description                                                                                                                                                                                                |
+| ------------- | ------------ | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ToSql         | string       |                                                          | Returns the SQL statement to be executed                                                                                                                                                                   |
+| ToList        | List\<T1\>   |                                                          | Executes SQL query and returns records with all fields of T1 entity. If navigation properties exist, they are queried and returned together. If no records are found, returns a list with Count equal to 0 |
+| ToList\<Dto\> | List\<Dto\>  | Lambda                                                   | Executes SQL query and returns records with specified fields or DTO mapping. If no records are found, returns a list with Count equal to 0                                                                 |
+| ToList\<T\>   | List\<T\>    | string field                                             | Executes SQL query and returns records of the specified field, received as a tuple or basic type (int, string, long). If no records are found, returns a list with Count equal to 0                        |
+| ToOne         | T1           |                                                          | Executes SQL query and returns the first record with all fields of T1 entity. If no records are found, returns null                                                                                        |
+| ToChunk       | \<empty\>    | int size, Action\<FetchCallbackArgs\<List\<T1\>\>\> done | Executes SQL query and returns data in chunks to reduce memory overhead. For example, reads 100,000 records, processing 100 at a time.                                                                     |
+| Any           | bool         |                                                          | Executes SQL query to check if there are any records                                                                                                                                                       |
+| Sum           | T            | Lambda                                                   | Specifies a column to calculate the sum                                                                                                                                                                    |
+| Min           | T            | Lambda                                                   | Specifies a column to find the minimum value                                                                                                                                                               |
+| Max           | T            | Lambda                                                   | Specifies a column to find the maximum value                                                                                                                                                               |
+| Avg           | T            | Lambda                                                   | Specifies a column to calculate the average value                                                                                                                                                          |

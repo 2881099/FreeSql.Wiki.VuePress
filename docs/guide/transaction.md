@@ -80,7 +80,7 @@ public class SongService
     readonly UnitOfWorkManager _unitOfWorkManager;
 
     public SongService(
-      IBaseRepository<Song> songRepository, 
+      IBaseRepository<Song> songRepository,
       IBaseRepository<Detail> detailRepository,
       UnitOfWorkManager unitOfWorkManager
     )
@@ -104,7 +104,7 @@ public class SongService
     {
     }
 
-    public async Task Test3() 
+    public async Task Test3()
     {
       using (var uow = _unitOfWorkManager.Begin())
       {
@@ -125,7 +125,7 @@ public class SongService
 用户购买了价值 100 元的商品：扣余额、扣库存。
 
 ```csharp
-fsql.Transaction(() => 
+fsql.Transaction(() =>
 {
     //fsql.Ado.TransactionCurrentThread 获得当前事务对象
 
@@ -140,7 +140,7 @@ fsql.Transaction(() =>
     affrows = fsql.Update<Goods>()
         .Set(a => a.Stock - 1)
         .Where(a => a.Stock >= 1).ExecuteAffrows();
-        
+
     if (affrows < 1) throw new Exception("商品库存不足");
 });
 ```
@@ -163,4 +163,3 @@ for update 在 Oracle/PostgreSQL/MySql 是通用的写法，我们对 SqlServer 
 ```sql
 SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ```
-

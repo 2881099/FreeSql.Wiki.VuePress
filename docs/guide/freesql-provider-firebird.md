@@ -1,5 +1,5 @@
 ---
-title:  Firebird（嵌入式）
+title: Firebird（嵌入式）
 ---
 
 ## 介绍
