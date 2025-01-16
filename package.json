@@ -22,5 +22,10 @@
     "vuepress": "2.0.0-rc.19",
     "vuepress-theme-hope": "2.0.0-rc.70"
   },
-  "packageManager": "pnpm@10.0.0"
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
