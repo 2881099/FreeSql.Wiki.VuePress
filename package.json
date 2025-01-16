@@ -6,6 +6,7 @@
   "scripts": {
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
+    "docs:update": "pnpm dlx vp-update",
     "lint": "prettier --check --write .",
     "lint:check": "prettier --check ."
   },
