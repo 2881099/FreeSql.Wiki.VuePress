@@ -51,7 +51,7 @@ fsql.Select<Topic>()
 //FROM (select * from Topic where clicks > @val) a 
 ```
 
-> 使用多次 WithSql 等于 UNION ALL 查询
+> 使用多次 WithSql 等于 UNION ALL 查询 [请注意参数前缀](ado.md#%E5%8F%82%E6%95%B0%E5%89%8D%E7%BC%80)
 
 > v3.2.666 [UnionAll 联合查询](unionall.md)、[WithTempQuery + FromQuery 嵌套查询](withtempquery.md)
 
