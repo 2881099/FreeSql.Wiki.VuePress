@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 07 Feb 2025 01:56:27 GMT</pubDate>
-    <lastBuildDate>Fri, 07 Feb 2025 01:56:27 GMT</lastBuildDate>
+    <pubDate>Mon, 10 Feb 2025 13:10:35 GMT</pubDate>
+    <lastBuildDate>Mon, 10 Feb 2025 13:10:35 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -10559,11 +10559,42 @@ FROM "Topic" a</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.5.102 更新 到 .NET9.0；; 增加 DuckDB 数据库支持； https://freesql.net/guide/freesql-provider-duckdb.html; 增加 TDengine 数据库支持（感谢Daily贡献）； https://freesql.net/guide/f...</description>
+      <description>大约每月一次版本号，暂时以修复 bug 为主 v3.5.102-v3.5.105 增加 ISelect.Join 与 InnerJoin 方式行为一致；; 增加 ToChunkAsync 异步 Api；#1952; 增加 SqlExt.AggregateCount/AggregateSum 等方法，区分 SqlExt.Count/SqlExt.Sum ...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.5.102</h2>
+<h2> v3.5.102-v3.5.105</h2>
+<ul>
+<li>增加 ISelect.Join 与 InnerJoin 方式行为一致；</li>
+<li>增加 ToChunkAsync 异步 Api；#1952</li>
+<li>增加 SqlExt.AggregateCount/AggregateSum 等方法，区分 SqlExt.Count/SqlExt.Sum 开窗方法；</li>
+<li>修复 ExpressionTree 无法将 double -&gt; 转成 int 的问题；</li>
+<li>修复 PgCopy DateTime 映射 date 失败的情况；</li>
+<li>修复 Npgsql postgis 条件编译问题；#1940</li>
+<li>修复 MySql.Data MySqlDateTime 读取为 null 的情况；#1960 #1948</li>
+<li>修复 Oracle CodeFirst clob/blob cast 转换问题；</li>
+<li>修复 KingBase .net8.0 等目标框架 dll 引用问题；</li>
+<li>修复 Firebird 表注释迁移问题（列注释正常）；#1913</li>
+<li>修复 Firebird 批量插入类型转换问题；#1923</li>
+<li>修复 GBase IsNull 日期解析问题；#1953</li>
+<li>修复 DmPrivider 连接达梦主从集群会出错问题；#1955</li>
+<li>修复 达梦数据库上时间相减永远输出为0的问题；#1973</li>
+<li>修复 CodeFirst 修改表名时重建索引的问题；</li>
+<li>修复 GroupBy + WithTempQuery + 子查询参数化问题；#1965</li>
+<li>修复 DateOnly/TimeOnly AOT 裁剪默认报错的问题；</li>
+<li>修复 DateTime 相减时，出现 IIF 无法转换表达式的错误</li>
+<li>修复 AdoConnectionPool 默认不生效的问题；</li>
+<li>修复 CreateInstance 发生歧义的问题；#1962</li>
+<li>修复 In + MapType 无效的问题；</li>
+<li>修复 In + 子查询 别名问题；#1967</li>
+<li>优化 ToList 针对 bool 自动转成 CASE When；</li>
+<li>优化 SqlServer WithIndex 使用习惯；</li>
+<li>忧化 DbFirst Oracle 自动批量插入问题；(2020年方法忘记生效）</li>
+<li>忧化 DateTime.Subtract(date).TotalDays 表达式解析对应 datediff(day, date1, date2)；</li>
+<li>优化 表达式解析 dArray.Select(p =&gt; p.Key).Contains(a.Id)；</li>
+<li>优化 非 join 的多表查询的 SQL 格式；</li>
+</ul>
+<h2> v3.5.101</h2>
 <ul>
 <li>更新 到 .NET9.0；</li>
 <li><strong>增加 DuckDB 数据库支持；</strong> https://freesql.net/guide/freesql-provider-duckdb.html</li>

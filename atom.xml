@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2025-02-07T01:56:27.791Z</updated>
+  <updated>2025-02-10T13:10:35.808Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -12239,46 +12239,74 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2024-12-10T03:16:00.000Z</updated>
+    <updated>2025-02-10T13:09:36.000Z</updated>
     <summary type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.5.102</h2>
+<h2> v3.5.102-v3.5.105</h2>
 <ul>
-<li>更新 到 .NET9.0；</li>
-<li><strong>增加 DuckDB 数据库支持；</strong> https://freesql.net/guide/freesql-provider-duckdb.html</li>
-<li><strong>增加 TDengine 数据库支持（感谢Daily贡献）；</strong> https://freesql.net/guide/freesql-provider-tdengine.html</li>
-<li>增加 KingBaseES 支持数组等类型（参考 PostgreSQL）；</li>
-<li>增加 Pgsql/MySql DateOnly/TimeOnly 映射；#1868 #1763 #939 #991</li>
-<li>增加 OracleUs7ascii 写入处理特性；</li>
-<li>增加 JsonMap Poco Lambda 表达式成员解析；</li>
-<li>增加 FromQuery 参数由5个加到16个；</li>
-<li>优化 FromQuery/UnionAll 在子查中继续嵌套；</li>
-<li>优化 ISelect&lt;object&gt;.WithMemory 对匿名类型的支持；</li>
-<li>优化 Lambda Dto 指定 .Any() 自动转成 Case when；</li>
-<li>优化 ExpressionCall + DynamicInvoke 的解析；</li>
-<li>优化 LIKE 表达式解析 #1870；</li>
-<li>优化 Lambda Min/Max/First 针对 DateTime 类型不自动处理 IsNull 逻辑，因为各数据库没有统一默认值；</li>
-<li>优化 DateTime.Subtract(date).TotalSecods 等 lambda 表达式解析，对应 datediff；</li>
-<li>优化 DbSet/Repository 删除多主键分批300，防止 SQL AND OR 过长问题；</li>
-<li>优化 DM/KDB/ST 默认使用 ado.net 连接池；</li>
-<li>扩展 TypeHandler override FluentApi 设置；</li>
-<li>扩展 SqlExt.DateDiff 时间差值计算；</li>
-<li>扩展 a.Id.In(..) 自定义函数解析，或 new[]{ 1,2,3 }.Contains(a.Id) 相同；</li>
-<li>修复 Repository + AuditValue + Attach 问题；#1931 #1746</li>
-<li>修复 GBase serial8/bigserial 自增回填的问题；#1919</li>
-<li>修复 Xugu DataType 对应问题；#1934 #1933</li>
-<li>修复 Firebird 批量插入 varchar 追加空格的问题；#1923</li>
-<li>修复 Guid.NewGuid().ToString().Replace("-", "") 3.2.810 之后版本的解析问题；</li>
-<li>修复 UnionAll + OrderBy 未处理嵌套的问题；</li>
-<li>移除 TimeSpan 过度 Lambda 解析；</li>
-<li>移除 OdbcDameng/OdbcKingbaseES；</li>
-<li>移除 Resources 转换成 static class 静态类；#1917</li>
-<li>移除 fsql.GetGuidRepository 改用 fsql.GetRepository&lt;T, Guid&gt;()；</li>
-<li>修复 DateOnly/TimeOnly 映射问题；#1868 #1855 #1763 #939 #991</li>
+<li>增加 ISelect.Join 与 InnerJoin 方式行为一致；</li>
+<li>增加 ToChunkAsync 异步 Api；#1952</li>
+<li>增加 SqlExt.AggregateCount/AggregateSum 等方法，区分 SqlExt.Count/SqlExt.Sum 开窗方法；</li>
+<li>修复 ExpressionTree 无法将 double -&gt; 转成 int 的问题；</li>
+<li>修复 PgCopy DateTime 映射 date 失败的情况；</li>
+<li>修复 Npgsql postgis 条件编译问题；#1940</li>
+<li>修复 MySql.Data MySqlDateTime 读取为 null 的情况；#1960 #1948</li>
+<li>修复 Oracle CodeFirst clob/blob cast 转换问题；</li>
+<li>修复 KingBase .net8.0 等目标框架 dll 引用问题；</li>
+<li>修复 Firebird 表注释迁移问题（列注释正常）；#1913</li>
+<li>修复 Firebird 批量插入类型转换问题；#1923</li>
+<li>修复 GBase IsNull 日期解析问题；#1953</li>
+<li>修复 DmPrivider 连接达梦主从集群会出错问题；#1955</li>
+<li>修复 达梦数据库上时间相减永远输出为0的问题；#1973</li>
+<li>修复 CodeFirst 修改表名时重建索引的问题；</li>
+<li>修复 GroupBy + WithTempQuery + 子查询参数化问题；#1965</li>
+<li>修复 DateOnly/TimeOnly AOT 裁剪默认报错的问题；</li>
+<li>修复 DateTime 相减时，出现 IIF 无法转换表达式的错误</li>
+<li>修复 AdoConnectionPool 默认不生效的问题；</li>
+<li>修复 CreateInstance 发生歧义的问题；#1962</li>
+<li>修复 In + MapType 无效的问题；</li>
+<li>修复 In + 子查询 别名问题；#1967</li>
+<li>优化 ToList 针对 bool 自动转成 CASE When；</li>
+<li>优化 SqlServer WithIndex 使用习惯；</li>
+<li>忧化 DbFirst Oracle 自动批量插入问题；(2020年方法忘记生效）</li>
+<li>忧化 DateTime.Subtract(date).TotalDays 表达式解析对应 datediff(day, date1, date2)；</li>
+<li>优化 表达式解析 dArray.Select(p =&gt; p.Key).Contains(a.Id)；</li>
+<li>优化 非 join 的多表查询的 SQL 格式；</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<h1> 更新日志</h1>
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2> v3.5.102</h2>
+<h2> v3.5.102-v3.5.105</h2>
+<ul>
+<li>增加 ISelect.Join 与 InnerJoin 方式行为一致；</li>
+<li>增加 ToChunkAsync 异步 Api；#1952</li>
+<li>增加 SqlExt.AggregateCount/AggregateSum 等方法，区分 SqlExt.Count/SqlExt.Sum 开窗方法；</li>
+<li>修复 ExpressionTree 无法将 double -&gt; 转成 int 的问题；</li>
+<li>修复 PgCopy DateTime 映射 date 失败的情况；</li>
+<li>修复 Npgsql postgis 条件编译问题；#1940</li>
+<li>修复 MySql.Data MySqlDateTime 读取为 null 的情况；#1960 #1948</li>
+<li>修复 Oracle CodeFirst clob/blob cast 转换问题；</li>
+<li>修复 KingBase .net8.0 等目标框架 dll 引用问题；</li>
+<li>修复 Firebird 表注释迁移问题（列注释正常）；#1913</li>
+<li>修复 Firebird 批量插入类型转换问题；#1923</li>
+<li>修复 GBase IsNull 日期解析问题；#1953</li>
+<li>修复 DmPrivider 连接达梦主从集群会出错问题；#1955</li>
+<li>修复 达梦数据库上时间相减永远输出为0的问题；#1973</li>
+<li>修复 CodeFirst 修改表名时重建索引的问题；</li>
+<li>修复 GroupBy + WithTempQuery + 子查询参数化问题；#1965</li>
+<li>修复 DateOnly/TimeOnly AOT 裁剪默认报错的问题；</li>
+<li>修复 DateTime 相减时，出现 IIF 无法转换表达式的错误</li>
+<li>修复 AdoConnectionPool 默认不生效的问题；</li>
+<li>修复 CreateInstance 发生歧义的问题；#1962</li>
+<li>修复 In + MapType 无效的问题；</li>
+<li>修复 In + 子查询 别名问题；#1967</li>
+<li>优化 ToList 针对 bool 自动转成 CASE When；</li>
+<li>优化 SqlServer WithIndex 使用习惯；</li>
+<li>忧化 DbFirst Oracle 自动批量插入问题；(2020年方法忘记生效）</li>
+<li>忧化 DateTime.Subtract(date).TotalDays 表达式解析对应 datediff(day, date1, date2)；</li>
+<li>优化 表达式解析 dArray.Select(p =&gt; p.Key).Contains(a.Id)；</li>
+<li>优化 非 join 的多表查询的 SQL 格式；</li>
+</ul>
+<h2> v3.5.101</h2>
 <ul>
 <li>更新 到 .NET9.0；</li>
 <li><strong>增加 DuckDB 数据库支持；</strong> https://freesql.net/guide/freesql-provider-duckdb.html</li>
