@@ -2,7 +2,7 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.5.102-v3.5.105
+## v3.5.102-3.5.105
 
 - 增加 ISelect.Join 与 InnerJoin 方式行为一致；
 - 增加 ToChunkAsync 异步 Api；#1952
