@@ -17,7 +17,7 @@ features:
   - title: 超前理念
     details: MIT 开源，零依赖包
   - title: 数据库
-    details: 支持常见 26 种数据库
+    details: 支持常见 28 种数据库
     link: /guide/
   - title: 查询
     details: 多表/嵌套/联合/递归等
