@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 10 Feb 2025 13:10:35 GMT</pubDate>
-    <lastBuildDate>Mon, 10 Feb 2025 13:10:35 GMT</lastBuildDate>
+    <pubDate>Mon, 10 Feb 2025 13:20:36 GMT</pubDate>
+    <lastBuildDate>Mon, 10 Feb 2025 13:20:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3423,7 +3423,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </tr>
 <tr>
 <td><a href="/guide/freesql-provider-custom.html" target="blank">FreeSql.Provider.Custom</a></td>
-<td>自定义适配<br><em>SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等</em></td>
+<td>自定义适配<br><em>SqlServer2000, PolarDB, KunDB, 阿里(OceanBase), 华为(OpenGuass), 其它国产数据库 等等</em></td>
 </tr>
 </tbody>
 </table>
