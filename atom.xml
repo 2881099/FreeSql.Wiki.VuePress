@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2025-02-10T13:22:47.983Z</updated>
+  <updated>2025-02-11T09:05:45.970Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -361,7 +361,7 @@
     <title type="text">Firebird（嵌入式）</title>
     <id>https://freesql.net/guide/freesql-provider-firebird.html</id>
     <link href="https://freesql.net/guide/freesql-provider-firebird.html"/>
-    <updated>2024-07-26T09:14:45.000Z</updated>
+    <updated>2025-02-11T09:04:51.000Z</updated>
     <summary type="html"><![CDATA[<h2> 介绍</h2>
 <p><code>Firebird</code> 是一个开源的关系型数据库管理系统，它支持嵌入式部署。<code>Firebird</code> 嵌入式数据库适用于需要在本地应用程序中直接集成数据库的场景，无需单独的数据库服务器。它提供了强大的事务处理、数据完整性和并发控制功能，同时保持轻量级和高效。适合小型到中型应用程序，特别是那些需要在不依赖外部数据库服务器的情况下进行本地数据存储和操作的情况。</p>
 <p><code>Firebird</code> 和 <code>Sqlite</code> 都是本地数据库，<code>Firebird</code> 支持并发读写，<code>Sqlite</code> 不支持并发写。</p>]]></summary>
@@ -374,7 +374,9 @@
 <p>.NET CLI</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 嵌入式例子</h2>
+<p><a href="https://github.com/user-attachments/files/18747494/freesql_firebird_embed.zip" target="_blank" rel="noopener noreferrer">freesql_firebird_embed.zip</a></p>
+]]></content>
     <published>2024-07-26T09:14:45.000Z</published>
   </entry>
   <entry>

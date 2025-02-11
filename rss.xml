@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql Documents</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 10 Feb 2025 13:22:47 GMT</pubDate>
-    <lastBuildDate>Mon, 10 Feb 2025 13:22:47 GMT</lastBuildDate>
+    <pubDate>Tue, 11 Feb 2025 09:05:45 GMT</pubDate>
+    <lastBuildDate>Tue, 11 Feb 2025 09:05:45 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -349,7 +349,9 @@
 <p>.NET CLI</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Package Manager</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2> 声明</h2>
-<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="language-csharp line-numbers-mode" data-ext="cs"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 嵌入式例子</h2>
+<p><a href="https://github.com/user-attachments/files/18747494/freesql_firebird_embed.zip" target="_blank" rel="noopener noreferrer">freesql_firebird_embed.zip</a></p>
+]]></content:encoded>
     </item>
     <item>
       <title>SqlServer</title>
