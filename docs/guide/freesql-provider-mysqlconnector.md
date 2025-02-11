@@ -1,5 +1,5 @@
 ---
-title:  MySql 系列数据库
+title: MySql 系列数据库
 ---
 
 <!-- # FreeSql.Provider.MySqlConnector -->

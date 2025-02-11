@@ -101,11 +101,11 @@ public class TransactionalAttribute : Rougamo.MoAttribute
 }
 ```
 
-| UnitOfWorkManager 成员 | 说明 |
-| -- | -- |
-| IUnitOfWork Current | 返回当前的工作单元 |
-| void Binding(repository) | 将仓储的事务交给它管理 |
-| IUnitOfWork Begin(propagation, isolationLevel) | 创建工作单元 |
+| UnitOfWorkManager 成员                         | 说明                   |
+| ---------------------------------------------- | ---------------------- |
+| IUnitOfWork Current                            | 返回当前的工作单元     |
+| void Binding(repository)                       | 将仓储的事务交给它管理 |
+| IUnitOfWork Begin(propagation, isolationLevel) | 创建工作单元           |
 
 ## 扩展：重写仓储
 
@@ -217,7 +217,7 @@ class UnitOfWorkManagerCloud
     {
         m_cloud = cloud;
     }
-    
+
     public UnitOfWorkManager GetUnitOfWorkManager(string db)
     {
         if (m_managers.TryGetValue(db, out var uowm) == false)

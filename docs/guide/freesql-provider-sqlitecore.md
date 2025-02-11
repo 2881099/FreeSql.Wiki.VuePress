@@ -19,10 +19,10 @@ dotnet add package SQLitePCLRaw.bundle_e_sqlite3
 
 `SQLitePCLRaw.bundle_e_sqlite3` 不支持加密，但此方式是官方实现的`SQlite`版本，以下二选一：
 
-捆绑 | 描述
----|---
-SQLitePCLRaw.bundle_e_sqlite3| 在所有平台上提供一致版本的 `SQLite`。 包括 FTS4、FTS5、JSON1 和 R* 树扩展。 建议使用
-SQLitePCLRaw.bundle_e_sqlcipher | 提供 `SQLCipher` 的非官方开放源代码内部版本，**支持加密**。
+| 捆绑                            | 描述                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------- |
+| SQLitePCLRaw.bundle_e_sqlite3   | 在所有平台上提供一致版本的 `SQLite`。 包括 FTS4、FTS5、JSON1 和 R\* 树扩展。 建议使用 |
+| SQLitePCLRaw.bundle_e_sqlcipher | 提供 `SQLCipher` 的非官方开放源代码内部版本，**支持加密**。                           |
 
 ## 只有 **SQLitePCLRaw.bundle_e_sqlcipher** 才支持加密
 
@@ -102,7 +102,7 @@ dotnet run
 重新运行时，删除 连接串中的Password,发现无法获取数据。或使用`Navicat Premium`工具发现无法连接。
 
 ```diff
-+ .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=local.db;") 
++ .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=local.db;")
 - .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=|DataDirectory|local.db;Password=123qwe")
 ```
 
@@ -156,7 +156,7 @@ public class DB
 
 ```
 
-具体的链接串，请参考  [https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/connection-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/connection-strings)
+具体的链接串，请参考 [https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/connection-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/connection-strings)
 
 #### 数学函数
 
@@ -174,7 +174,7 @@ public class DB
 测试 类中 不通过、ulong最大值，最小值，超出范围。
 
 - 不支持
-  
+
 ```cs
   public void Days()
   {
@@ -184,7 +184,7 @@ public class DB
 ```
 
 - 不支持
-  
+
 ```cs
  public void Minutes()
   {
@@ -203,7 +203,7 @@ public class DB
 
 `Microsoft.Data.Sqlite` 尝试自动初始化 `SQLitePCLRaw` 捆绑。 遗憾的是，由于针对 `Xamarin.iOS` 的预先 (AOT) 编译存在限制，因此尝试失败，并出现以下错误。
 
->需要调用 `SQLitePCL.raw.SetProvider()`。 如果使用的是捆绑包，可以通过调用 `SQLitePCL.Batteries.Init()` 来完成此操作。
+> 需要调用 `SQLitePCL.raw.SetProvider()`。 如果使用的是捆绑包，可以通过调用 `SQLitePCL.Batteries.Init()` 来完成此操作。
 
 若要初始化该绑定，请在使用 `Microsoft.Data.Sqlite` 之前，将以下代码行添加到应用。
 

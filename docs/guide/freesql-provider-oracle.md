@@ -1,5 +1,5 @@
 ---
-title:  Oracle
+title: Oracle
 ---
 
 FreeSql 对 Oracle 支持非常友好，是 c#.net ORM 不二之选，提供了 Ado.net/Odbc/Oledb 三种实现包，他们都支持 .NETCore2.1+、.NET4.0+ 等最新或较低的 .NETFramework 版本。
@@ -53,10 +53,10 @@ class Topic
 ## 主键名长度大于30
 
 ```csharp
-[OraclePrimaryKeyName("TB_xxx_pk")] 
+[OraclePrimaryKeyName("TB_xxx_pk")]
 class Topic
 {
-    
+
 }
 ```
 

@@ -25,7 +25,7 @@ public class TenantManager
     public static int Current
     {
         get => _asyncLocal.Value;
-        set => _asyncLocal.Value = value;    
+        set => _asyncLocal.Value = value;
     }
 }
 ```

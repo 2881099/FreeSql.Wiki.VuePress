@@ -5,7 +5,7 @@ UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据
 ## 如何使用
 
 ```csharp
-using (var uow = fsql.CreateUnitOfWork()) 
+using (var uow = fsql.CreateUnitOfWork())
 {
     await uow.Orm.Insert(item).ExecuteAffrowsAsync(); //uow.Orm API 和 IFreeSql 一样
     await uow.Orm.Ado.ExecuteNoneQueryAsync(sql);
@@ -74,7 +74,7 @@ fsql.SetDbContextOptions(opt =>
 ```csharp
 using (var uow = fsql.CreateUnitOfWork())
 {
-    uow.OnEntityChange = report => 
+    uow.OnEntityChange = report =>
     {
         Console.WriteLine(report);
     };

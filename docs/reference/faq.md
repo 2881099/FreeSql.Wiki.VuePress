@@ -183,7 +183,6 @@ if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.And
 
 深入讨论请转到 https://github.com/dotnetcore/FreeSql/issues/992#issuecomment-1005305027
 
-
 ---
 
 ### 10、 怎么样设置数据库超时时间?
@@ -194,12 +193,11 @@ if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.And
 在freesql声明中的build里  
 .UseMonitorCommand(cmd => cmd.CommandTimeout = 9999, null) 这样设置
 
-
 **单个设置**
+
 - fsql.Insert(list).CommandTimeout(500).xxxxxx
 - fsql.Update<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
 - fsql.Select<Entities.SysAdmin>().CommandTimeout(300).xxxxxx
 - fsql.Delete<Entities.SysAdmin>().CommandTimeout(400).xxxxxx
-
 
 ---

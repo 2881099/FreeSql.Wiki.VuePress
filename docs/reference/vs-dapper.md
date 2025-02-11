@@ -30,16 +30,16 @@ Intel Core i7-8700K CPU 3.70GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical 
 BuildConfiguration=Debug  InvocationCount=1  UnrollFactor=1
 ```
 
-|         Method | size |       Mean |    Error |    StdDev |     Median | Rank |
-|--------------- |----- |-----------:|---------:|----------:|-----------:|-----:|
-|  FreeSqlSelect |    1 |   271.6 us | 14.03 us |  41.16 us |   272.6 us |    2 |
-| SqlSugarSelect |    1 |   323.5 us | 15.75 us |  45.18 us |   314.9 us |    3 |
-|   EfCoreSelect |    1 |   392.8 us | 17.61 us |  49.39 us |   376.2 us |    4 |
-|   DapperSelete |    1 |   215.9 us | 11.88 us |  33.52 us |   213.8 us |    1 |
-|  FreeSqlSelect |  500 |   811.8 us | 18.86 us |  55.02 us |   798.5 us |    5 |
-| SqlSugarSelect |  500 | 1,148.6 us | 53.94 us | 157.34 us | 1,116.3 us |    7 |
-|   EfCoreSelect |  500 | 1,310.2 us | 89.90 us | 262.25 us | 1,219.3 us |    8 |
-|   DapperSelete |  500 |   942.1 us | 18.46 us |  42.05 us |   931.1 us |    6 |
+| Method         | size |       Mean |    Error |    StdDev |     Median | Rank |
+| -------------- | ---- | ---------: | -------: | --------: | ---------: | ---: |
+| FreeSqlSelect  | 1    |   271.6 us | 14.03 us |  41.16 us |   272.6 us |    2 |
+| SqlSugarSelect | 1    |   323.5 us | 15.75 us |  45.18 us |   314.9 us |    3 |
+| EfCoreSelect   | 1    |   392.8 us | 17.61 us |  49.39 us |   376.2 us |    4 |
+| DapperSelete   | 1    |   215.9 us | 11.88 us |  33.52 us |   213.8 us |    1 |
+| FreeSqlSelect  | 500  |   811.8 us | 18.86 us |  55.02 us |   798.5 us |    5 |
+| SqlSugarSelect | 500  | 1,148.6 us | 53.94 us | 157.34 us | 1,116.3 us |    7 |
+| EfCoreSelect   | 500  | 1,310.2 us | 89.90 us | 262.25 us | 1,219.3 us |    8 |
+| DapperSelete   | 500  |   942.1 us | 18.46 us |  42.05 us |   931.1 us |    6 |
 
 > 如上测试 Top1、Top500 单表查询水平结果
 

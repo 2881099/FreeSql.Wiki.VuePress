@@ -1,5 +1,5 @@
 ---
-title : CodeFirst
+title: CodeFirst
 tag:
   - CodeFirst
   - 备注

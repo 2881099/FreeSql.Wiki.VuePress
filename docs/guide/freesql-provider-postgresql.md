@@ -1,5 +1,5 @@
 ---
-title:  PostgreSQL
+title: PostgreSQL
 ---
 
 <!-- # FreeSql.Provider.PostgreSQL -->
@@ -16,7 +16,7 @@ class model
     public int id { get; set; }
     public int[] tagIds { get; set; } //映射数组
     public string[] tagNames { get; set; }
-    
+
     public Dictionary<string, string> dict { get; set; } //映射 hstore
 }
 
@@ -58,15 +58,15 @@ fsql.Select<model>().Where(a => int.Parse(a.jsonb2["key1"]["key2"].ToString()) >
 //SQL: WHERE (a.jsonb2->key1->key2)::text::int4 > 100
 ```
 
-| lambda 表达式树函数 | PostgreSQL | 功能说明 |
-| - | - | - |
-| a.Count | jsonb_array_length(coalesce(a, '[])) | json数组类型的长度 |
-| a.Any() | jsonb_array_length(coalesce(a, '[])) > 0 | json数组类型，是否为空 |
-| a.Contains(b) | coalesce(a, '{}') @> b::jsonb | json中是否包含b |
-| a.ContainsKey(b) | coalesce(a, '{}') ? b | json中是否包含键b |
-| a.Concat(b) | coalesce(a, '{}') || b::jsonb | 连接两个json |
-| JObject.Parse(a) | a::jsonb | 转化字符串为json类型 |
-| a["x"]["y"] | a->x->y | json成员访问 |
+| lambda 表达式树函数 | PostgreSQL                               | 功能说明               |
+| ------------------- | ---------------------------------------- | ---------------------- | -------- | ------------ |
+| a.Count             | jsonb_array_length(coalesce(a, '[]))     | json数组类型的长度     |
+| a.Any()             | jsonb_array_length(coalesce(a, '[])) > 0 | json数组类型，是否为空 |
+| a.Contains(b)       | coalesce(a, '{}') @> b::jsonb            | json中是否包含b        |
+| a.ContainsKey(b)    | coalesce(a, '{}') ? b                    | json中是否包含键b      |
+| a.Concat(b)         | coalesce(a, '{}')                        |                        | b::jsonb | 连接两个json |
+| JObject.Parse(a)    | a::jsonb                                 | 转化字符串为json类型   |
+| a["x"]["y"]         | a->x->y                                  | json成员访问           |
 
 更多 lambda 表达式树函数，可以看下[《表达式函数》](expression-function.md)文档，支持自定义解析。
 

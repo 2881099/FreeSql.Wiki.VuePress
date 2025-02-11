@@ -30,7 +30,7 @@ dotnet add package DotNetCore.CAP.Dashboard
 {
   "ConnectionStrings": {
     "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"
-    }
+  }
 }
 ```
 
@@ -50,13 +50,13 @@ dotnet add package DotNetCore.CAP.Dashboard
 ```
 
 - CAP相关服务
-[https://cap.dotnetcore.xyz/user-guide/zh/storage/mysql/](https://cap.dotnetcore.xyz/user-guide/zh/storage/mysql/)
+  [https://cap.dotnetcore.xyz/user-guide/zh/storage/mysql/](https://cap.dotnetcore.xyz/user-guide/zh/storage/mysql/)
 
 至少你要配置一个消息队列和一个事件存储（UseMySql）
 
 ```csharp
   services.AddCap(x =>
-    {   
+    {
         x.UseInMemoryMessageQueue();
         x.UseMySql(opt=>{
             //MySqlOptions
@@ -132,19 +132,19 @@ public class BookController : Controller
 }
 
 [Table(Name = "book")]
-public class Book 
+public class Book
 {
    [Column(IsIdentity = true, IsPrimary = true)]
-    public long Id { get; set; } 
-   
+    public long Id { get; set; }
+
     [Column(StringLength = 30)]
-    public string Author { get; set; } 
+    public string Author { get; set; }
 
     [Column(StringLength = 1000)]
-    public string Summary { get; set; } 
+    public string Summary { get; set; }
 
     [Column(StringLength = 50)]
-    public string Title { get; set; } 
+    public string Title { get; set; }
 
 }
 ```

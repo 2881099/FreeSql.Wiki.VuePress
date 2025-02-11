@@ -1,20 +1,20 @@
 # 其他作品
 
-FreeSql 作者是一个入行 18年的老批，他目前写的开源项目还有：
+FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有：
 
-| 开源项目 | 描述 | 开源地址 | 开源协议 |
-| --- | --- | --- | --- |
-| [AdminBlazor](AdminBlazor.md) | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor | Apache2.0 |
-| [FreeIM](freeim.md) | 聊天系统架构 | https://github.com/2881099/FreeIM | MIT |
-| [FreeRedis](freeredis.md) | Redis SDK | https://github.com/2881099/FreeRedis | MIT |
-| [FreeScheduler](freescheduler.md) | 定时任务 | https://github.com/2881099/FreeScheduler | MIT |
-| csredis |  | https://github.com/2881099/csredis | MIT |
-| FightLandlord | 斗DI主网络版 | https://github.com/2881099/FightLandlord | 学习用途 |
-| IdleBus | 空闲容器 | https://github.com/2881099/IdleBus | MIT |
-| FreeSql| ORM | https://github.com/dotnetcore/FreeSql | MIT |
-| FreeSql.Cloud | 分布式tcc/saga | https://github.com/2881099/FreeSql.Cloud | MIT |
-| FreeSql.AdminLTE | 低代码后台生成 | https://github.com/2881099/FreeSql.AdminLTE | MIT |
-| FreeSql.DynamicProxy | 动态代理 | https://github.com/2881099/FreeSql.DynamicProxy | 学习用途 |
+| 开源项目                          | 描述                | 开源地址                                        | 开源协议  |
+| --------------------------------- | ------------------- | ----------------------------------------------- | --------- |
+| [AdminBlazor](AdminBlazor.md)     | Blazor 后台权限管理 | https://gitee.com/FreeSql/AdminBlazor           | Apache2.0 |
+| [FreeIM](freeim.md)               | 聊天系统架构        | https://github.com/2881099/FreeIM               | MIT       |
+| [FreeRedis](freeredis.md)         | Redis SDK           | https://github.com/2881099/FreeRedis            | MIT       |
+| [FreeScheduler](freescheduler.md) | 定时任务            | https://github.com/2881099/FreeScheduler        | MIT       |
+| csredis                           |                     | https://github.com/2881099/csredis              | MIT       |
+| FightLandlord                     | 斗DI主网络版        | https://github.com/2881099/FightLandlord        | 学习用途  |
+| IdleBus                           | 空闲容器            | https://github.com/2881099/IdleBus              | MIT       |
+| FreeSql                           | ORM                 | https://github.com/dotnetcore/FreeSql           | MIT       |
+| FreeSql.Cloud                     | 分布式tcc/saga      | https://github.com/2881099/FreeSql.Cloud        | MIT       |
+| FreeSql.AdminLTE                  | 低代码后台生成      | https://github.com/2881099/FreeSql.AdminLTE     | MIT       |
+| FreeSql.DynamicProxy              | 动态代理            | https://github.com/2881099/FreeSql.DynamicProxy | 学习用途  |
 
 更早的作品可以直接访问 https://github.com/2881099 查看。
 
@@ -46,7 +46,7 @@ FreeScheduler 是利用 IdleBus 实现的轻量化定时任务调度，支持临
 
 ## FreeIM
 
-FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。 
+FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接）、集群即时通讯组件，支持点对点通讯、群聊通讯、上线下线事件消息等众多实用性功能。
 
 使用场景：好友聊天、群聊天、直播间、实时评论区、游戏。
 
@@ -66,7 +66,7 @@ AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/�
 
 ## FightLandlord
 
-.NETCore斗地主服务端 + HTML5前端，使用了 FreeIM 网络通讯
+.NETCore 斗地主服务端 + HTML5 前端，使用了 FreeIM 网络通讯
 
 开源地址：[https://github.com/2881099/FightLandlord](https://github.com/2881099/FightLandlord)
 

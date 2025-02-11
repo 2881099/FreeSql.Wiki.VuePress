@@ -49,13 +49,13 @@ repo.Insert(new Area
 {
     Code = "100000",
     Name = "中国",
-    Childs = new List<Area>(new[] 
+    Childs = new List<Area>(new[]
     {
         new Area
         {
             Code = "110000",
             Name = "北京",
-            Childs = new List<Area>(new[] 
+            Childs = new List<Area>(new[]
             {
                 new Area{ Code="110100", Name = "北京市" },
                 new Area{ Code="110101", Name = "东城区" },

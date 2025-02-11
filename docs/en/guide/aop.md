@@ -15,7 +15,7 @@ It is recommended to enable the non-parameterized mode in development mode using
 > Tip: `new FreeSqlBuilder().UseMonitorCommand` can also audit command execution before and after.
 
 ```csharp
-fsql.Aop.CommandBefore += (s, e) => 
+fsql.Aop.CommandBefore += (s, e) =>
 {
     // e.Command.CommandText = null; can intercept the command
 };
@@ -218,7 +218,7 @@ public class EnumToValueStringHandler : ITypeHandler
 {
     // ModelType here uses ModelType to express which type the Handler is targeting
     private readonly Type enumType;
-    Type ITypeHandler.Type { get => this.enumType; } 
+    Type ITypeHandler.Type { get => this.enumType; }
     public Type ModelType { get => this.enumType; }
 
     // Constructor passes specific type information to handle the conversion

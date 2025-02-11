@@ -42,12 +42,12 @@ Regarding **parameter prefixes**:
 
 - `odbc` uses **?** and does not have a specific identifier, so `freesql` disables `odbc` parameterization.
 
-| Type        | Prefix Symbol |
-|-------------|---------------|
-| oracle      | **:**         |
-| mysql.data  | **?**         |
-| mysqlconnector | **@**     |
-| Others      | **@**         |
+| Type           | Prefix Symbol |
+| -------------- | ------------- |
+| oracle         | **:**         |
+| mysql.data     | **?**         |
+| mysqlconnector | **@**         |
+| Others         | **@**         |
 
 IN parameterization queries:
 

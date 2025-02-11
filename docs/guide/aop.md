@@ -15,7 +15,7 @@ fsql.Aop.CommandBefore、fsql.Aop.CommandAfter 这两个事件触发所有 SQL �
 > 提示：new FreeSqlBuilder().UseMonitorCommand 也可以审计命令执行前后。
 
 ```csharp
-fsql.Aop.CommandBefore += (s, e) => 
+fsql.Aop.CommandBefore += (s, e) =>
 {
     //e.Command.CommandText = null; 可拦截命令
 };
@@ -225,7 +225,7 @@ public class EnumToValueStringHandler : ITypeHandler
 {
     //ModelType这里使用 ModelType 来表达最后Handler针对那个Type进行处理
     private readonly Type enumType;
-    Type ITypeHandler.Type { get => this.enumType; } 
+    Type ITypeHandler.Type { get => this.enumType; }
     public Type ModelType { get => this.enumType; }
 
     //构造函数上传递具体的 type 信息，就能针对具体的枚举执行转换了
@@ -248,6 +248,7 @@ public class EnumToValueStringHandler : ITypeHandler
     }
 }
 ```
+
 核心思路是 `ITypeHandler.Type` 变成变量，可以从外部传递。额外有些问题要注意：
 
 1. 所有的 "xxxEnum" 都会执行这个转换，如果有多个数据库多种格式，需要在 `Handler` 中处理

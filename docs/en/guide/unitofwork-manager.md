@@ -101,11 +101,11 @@ public class TransactionalAttribute : Rougamo.MoAttribute
 }
 ```
 
-| UnitOfWorkManager Members | Description |
-| -- | -- |
-| IUnitOfWork Current | Returns the current unit of work |
-| void Binding(repository) | Manages the transaction of the repository |
-| IUnitOfWork Begin(propagation, isolationLevel) | Creates a unit of work |
+| UnitOfWorkManager Members                      | Description                               |
+| ---------------------------------------------- | ----------------------------------------- |
+| IUnitOfWork Current                            | Returns the current unit of work          |
+| void Binding(repository)                       | Manages the transaction of the repository |
+| IUnitOfWork Begin(propagation, isolationLevel) | Creates a unit of work                    |
 
 ## Extension: Custom Repository
 
@@ -217,7 +217,7 @@ class UnitOfWorkManagerCloud
     {
         m_cloud = cloud;
     }
-    
+
     public UnitOfWorkManager GetUnitOfWorkManager(string db)
     {
         if (m_managers.TryGetValue(db, out var uowm) == false)

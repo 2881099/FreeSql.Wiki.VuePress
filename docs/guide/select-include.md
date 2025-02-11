@@ -15,7 +15,7 @@ fsql.Select<Song>().ToList(a => new
 fsql.Select<Song>()
     .GroupBy(a => new { a.Author })
     .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-    .ToList(a => new 
+    .ToList(a => new
     {
         a.Author, a.Count,
         list1 = fsql.Select<T2>().ToList(),
@@ -24,7 +24,6 @@ fsql.Select<Song>()
 ```
 
 ---
-
 
 接下来的内容，严重依赖[【导航属性】](navigate-attribute.md)的正确配置，请先学会再继续向下！
 
@@ -109,14 +108,14 @@ var list = fsql.Select<SysModule>()
 ```
 
 ```sql
-SELECT a."Id" as1 
-FROM "SysModule" a 
+SELECT a."Id" as1
+FROM "SysModule" a
 limit 0,10
 
-SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status", 
-a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime" 
-FROM "SysModulePermission" a 
-LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId" 
+SELECT a."Id", a."SysModuleId", a."SysModuleButtonId", a."Status",
+a__Button."Id" as5, a__Button."Name", a__Button."EventName", a__Button."EnCode", a__Button."Icon", a__Button."Sort", a__Button."CreateTime"
+FROM "SysModulePermission" a
+LEFT JOIN "SysModuleButton" a__Button ON a__Button."Id" = a."SysModuleButtonId"
 WHERE ((a."SysModuleId") in ('menu1','menu2'))
 ```
 

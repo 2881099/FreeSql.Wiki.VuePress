@@ -8,7 +8,7 @@ public static AsyncLocal<int> TenantId { get; set; } = new AsyncLocal<int>();
 fsql.GlobalFilter
     .Apply<ITenant>("test1", a => a.TenantId == TenantId.Value)
     .Apply<AuthorTest>("test2", a => a.Name == "11")
-    
+
     .ApplyOnly<AuthorTest>("test3", a => a.Name == "11")
     //指定类型精准设置
 

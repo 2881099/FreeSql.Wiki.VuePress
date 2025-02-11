@@ -85,8 +85,8 @@ fsql.Select<Topic>()
   .WithSql("select * from Topic where clicks > @val", new { val = 10 })
   .Page(1, 10)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
-//FROM (select * from Topic where clicks > @val) a 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
+//FROM (select * from Topic where clicks > @val) a
 ```
 
 - WithSql 使用多次为 UNION ALL 查询
@@ -105,12 +105,12 @@ list.Add(new Topic { ... });
 fsql.Select<Topic>()
   .WithMemory(list)
   .ToList()
-//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime` 
+//SELECT a.`Id`, a.`Clicks`, a.`CategoryId`, a.`Title`, a.`CreateTime`
 //FROM (
 //  SELECT ...
 //  UNION ALL
 //  SELECT ...
-//) a 
+//) a
 ```
 
 ---
@@ -145,7 +145,7 @@ fsql.Select<t1>()
 
 映射查询支持单表/多表，在查询数据之前映射（不是先查询所有字段再到内存映射）
 
-规则：查找属性名，会循环内部对象 _tables（多表会增长），以 主表优先查，直到查到相同的字段。
+规则：查找属性名，会循环内部对象 \_tables（多表会增长），以 主表优先查，直到查到相同的字段。
 
 如：
 
@@ -155,13 +155,13 @@ A, B, C 都有 id，Dto { id, a1, a2, b1, b2 }，A.id 被映射。也可以指�
 fsql.Select<Song>().ToList<Dto>();
 //情况1：Dto 与 Song 属性名相同的字段被查询，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new Dto { xxx = a.ext }) 
+fsql.Select<Song>().ToList(a => new Dto { xxx = a.ext })
 //情况2：Dto 与 Song 属性名相同的字段被查询，纠正映射 ext，返回 List<Dto>
 
-fsql.Select<Song>().ToList(a => new Song { id = a.id }) 
+fsql.Select<Song>().ToList(a => new Song { id = a.id })
 //情况3：Lambda 与 Song 类型一样，只查询指定字段 id，返回 List<Song>
 
-fsql.Select<Song>().ToList(a => new { id = a.id }) 
+fsql.Select<Song>().ToList(a => new { id = a.id })
 //情况4：Lambda 匿名类型，只查询指定字段 id，返回 List<匿名对象>
 ```
 
@@ -457,8 +457,8 @@ fsql.Aop.CurdAfter += (s, e) => {
 
 ```csharp
 fsql.Aop.AuditValue += (s, e) => {
-  if (e.Column.CsType == typeof(long) && 
-    e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null && 
+  if (e.Column.CsType == typeof(long) &&
+    e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null &&
     e.Value?.ToString() == "0")
     e.Value = new Snowflake().GetId();
 };

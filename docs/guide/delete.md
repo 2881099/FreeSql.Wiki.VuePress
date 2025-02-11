@@ -25,11 +25,11 @@ fsql.Delete<Topic>(object dywhere).ExecuteAffrows()
 
 `dywhere` 可以是：
 
-* 主键值
-* `new[] { 主键值1, 主键值2 }`
-* Topic 对象
-* `new[] { Topic对象1, Topic对象2 }`
-* `new { id = 1 }`
+- 主键值
+- `new[] { 主键值1, 主键值2 }`
+- Topic 对象
+- `new[] { Topic对象1, Topic对象2 }`
+- `new { id = 1 }`
 
 ```csharp
 var t1 = fsql.Delete<Topic>(new[] { 1, 2 }).ExecuteAffrows();
@@ -99,8 +99,8 @@ DELETE FROM `T1` WHERE id in (select a.id from T1 a left join Options b on b.t1i
 
 复杂删除使用此方法的好处：
 
-* 删除前可预览测试数据，防止错误删除操作；
-* 支持复杂的删除操作，例如：`ISelect` 上使用 `Limit(10)` 删除附合条件的前 10 条记录；
+- 删除前可预览测试数据，防止错误删除操作；
+- 支持复杂的删除操作，例如：`ISelect` 上使用 `Limit(10)` 删除附合条件的前 10 条记录；
 
 ## 6、IBaseRepository 级联删除
 

@@ -17,18 +17,18 @@ var sql = fsql.Select<User>().Where(a => a.Id == 1)
 ```
 
 ```sql
-SELECT a."Id", a."GroupId", a."Username" 
-FROM ( SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User" a 
-    WHERE (a."Id" = 1) 
-    UNION ALL 
-    SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User" a 
-    WHERE (a."Id" = 2) 
-    UNION ALL 
-    SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User" a 
-    WHERE (a."Id" = 3) ) a 
+SELECT a."Id", a."GroupId", a."Username"
+FROM ( SELECT a."Id", a."GroupId", a."Username"
+    FROM "User" a
+    WHERE (a."Id" = 1)
+    UNION ALL
+    SELECT a."Id", a."GroupId", a."Username"
+    FROM "User" a
+    WHERE (a."Id" = 2)
+    UNION ALL
+    SELECT a."Id", a."GroupId", a."Username"
+    FROM "User" a
+    WHERE (a."Id" = 3) ) a
 WHERE ((a."Id" = 1 OR a."Id" = 2))
 ```
 
@@ -51,34 +51,34 @@ var sql = fsql.Select<User, Group>()
 ```
 
 ```sql
-SELECT * 
-FROM ( SELECT * 
-    FROM ( 
-        SELECT a."Id", a."GroupId", a."Username", b."Id", b."GroupName" 
-        FROM "User" a 
-        INNER JOIN "UserGroup" b ON a."GroupId" = b."Id" 
-        WHERE (a."Id" = 1) ) a 
-    UNION ALL 
-    SELECT * 
-    FROM ( 
-        SELECT a."Id", a."GroupId", a."Username", b."Id", b."GroupName" 
-        FROM "User" a 
-        INNER JOIN "UserGroup" b ON a."GroupId" = b."Id" 
-        WHERE (a."Id" = 2) ) a ) a 
+SELECT *
+FROM ( SELECT *
+    FROM (
+        SELECT a."Id", a."GroupId", a."Username", b."Id", b."GroupName"
+        FROM "User" a
+        INNER JOIN "UserGroup" b ON a."GroupId" = b."Id"
+        WHERE (a."Id" = 1) ) a
+    UNION ALL
+    SELECT *
+    FROM (
+        SELECT a."Id", a."GroupId", a."Username", b."Id", b."GroupName"
+        FROM "User" a
+        INNER JOIN "UserGroup" b ON a."GroupId" = b."Id"
+        WHERE (a."Id" = 2) ) a ) a
 WHERE ((a."Id" = 1 OR a."Id" = 2))
 ```
 
 Note: The above SQL may result in an error because both `User` and `UserGroup` have the same `Id` field name. The temporary solution is to specify the fields.
 
 ```csharp
-    .WithTempQuery((a, b) => new 
-    { 
-        user = a, 
+    .WithTempQuery((a, b) => new
+    {
+        user = a,
         group = new
         {
             GroupId = b.Id,
             GroupName = b.GroupName
-        } 
+        }
     })
 ```
 
@@ -105,13 +105,13 @@ var sql = fsql.Select<User>()
 ```
 
 ```sql
-SELECT a."Id", a."GroupId", a."Username" 
-FROM ( SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User1" a 
-    WHERE (a."Id" = @exp_0) 
-    UNION ALL 
-    SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User1" a 
-    WHERE (a."Id" = @exp_1) ) a 
+SELECT a."Id", a."GroupId", a."Username"
+FROM ( SELECT a."Id", a."GroupId", a."Username"
+    FROM "User1" a
+    WHERE (a."Id" = @exp_0)
+    UNION ALL
+    SELECT a."Id", a."GroupId", a."Username"
+    FROM "User1" a
+    WHERE (a."Id" = @exp_1) ) a
 WHERE ((a."Id" = 1 OR a."Id" = 2))
 ```

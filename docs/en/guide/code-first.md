@@ -16,17 +16,17 @@ IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ## Migrating Structures
 
-| Create Database | Sqlite | Sql Server                                                                                                                         | MySql                                                                                                                              | PostgreSQL                                                                                                                        | Oracle |
-| --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Create Database | Sqlite | Sql Server                                                                                                                              | MySql                                                                                                                                   | PostgreSQL                                                                                                                             | Oracle |
+| --------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------ |
 |                 | √      | X [Reference](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L153) | X [Reference](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L129) | X[Reference](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Infrastructure/FreeSql/FreeSqlExtension.cs#L233) | X      |
 
 | Entity & Table Comparison | Add | Rename | Delete |
 | ------------------------- | --- | ------ | ------ |
-|                         | √   | √      | X      |
+|                           | √   | √      | X      |
 
 | Entity Property & Field Comparison | Add | Modify Nullable | Modify Auto-Increment | Modify Type | Rename | Delete | Notes |
-| --------------------------------- | --- | --------------- | --------------------- | ----------- | ------ | ------ | ----- |
-|                                   | √   | √               | √                     | √           | √      | X      | √     |
+| ---------------------------------- | --- | --------------- | --------------------- | ----------- | ------ | ------ | ----- |
+|                                    | √   | √               | √                     | √           | √      | X      | √     |
 
 > To ensure safety, field deletion is not provided.
 
