@@ -8,7 +8,7 @@ actions:
     link: /guide/
     type: primary
   - text: 视频教程 💻
-    link: https://b23.tv/TCDCBLg
+    link: https://www.bilibili.com/video/BV18p4y1d7iC/
     type: default
 features:
   - title: 轻松入门
