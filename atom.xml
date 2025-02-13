@@ -3,7 +3,7 @@
   <id>https://freesql.net/</id>
   <title>FreeSql 官方文档</title>
   <subtitle>FreeSql Documents</subtitle>
-  <updated>2025-02-11T09:39:27.517Z</updated>
+  <updated>2025-02-13T05:37:58.456Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3160,7 +3160,7 @@ fsql<span class="token punctuation">.</span><span class="token generic-method"><
     <title type="text">UowManager 事务 ✨</title>
     <id>https://freesql.net/guide/unitofwork-manager.html</id>
     <link href="https://freesql.net/guide/unitofwork-manager.html"/>
-    <updated>2024-12-06T06:24:46.000Z</updated>
+    <updated>2025-02-13T05:37:02.000Z</updated>
     <summary type="html"><![CDATA[<h1> UowManager 事务 ✨</h1>
 <p>本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。</p>
 <blockquote>
