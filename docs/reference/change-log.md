@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.106
+
+- 增加 sqlite 批量插入方式 ExecuteSqliteBulkInsert；#1975
+- 修复 Oracle CodeFirst nclob cast 转换问题；
+- 修复 JsonMap Deserialize surpport JsonSerializerSettings；
+- 修复 Kingbase 判断 v8r3 版本号问题；#1976
+- 修复 TDengine DateTime 默认值读取异常；#1980 #1977
+  
 ## v3.5.102-3.5.105
 
 - 增加 ISelect.Join 与 InnerJoin 方式行为一致；
