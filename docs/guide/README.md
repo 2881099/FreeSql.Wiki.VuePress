@@ -51,7 +51,7 @@ Install-Package FreeSql.Provider.Sqlite
 | FreeSql.Provider.GBase                                                | 基于 南大通用GBase数据库                                                                                                                                               |
 | FreeSql.Provider.Xugu                                                 | 基于 虚谷数据库                                                                                                                                                        |
 | [FreeSql.Provider.Odbc](freesql-provider-odbc.md)                     | 基于 ODBC                                                                                                                                                              |
-| [FreeSql.Provider.Custom](freesql-provider-custom.md)                 | 自定义适配<br>_SqlServer2000, PolarDB, KunDB, 其它国产数据库 等等_                                                                                                     |
+| [FreeSql.Provider.Custom](freesql-provider-custom.md)                 | 自定义适配<br>_SqlServer2000, PolarDB, KunDB, 阿里(OceanBase), 华为(OpenGuass), 其它国产数据库 等等_                                                                      |
 
 ## 创建实体
 

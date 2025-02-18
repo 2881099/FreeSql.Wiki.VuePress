@@ -27,7 +27,7 @@ public class SongService
         _detailRepository = detailRepository;
     }
 
-    [Transactional]
+    [Transactional(Propagation.Requierd)]
     async public Task Test1()
     {
         //所有注入的仓储对象，都是一个事务

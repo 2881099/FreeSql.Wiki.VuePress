@@ -2,7 +2,46 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.5.102
+## v3.5.106
+
+- 增加 sqlite 批量插入方式 ExecuteSqliteBulkInsert；#1975
+- 修复 Oracle CodeFirst nclob cast 转换问题；
+- 修复 JsonMap Deserialize surpport JsonSerializerSettings；
+- 修复 Kingbase 判断 v8r3 版本号问题；#1976
+- 修复 TDengine DateTime 默认值读取异常；#1980 #1977
+  
+## v3.5.102-3.5.105
+
+- 增加 ISelect.Join 与 InnerJoin 方式行为一致；
+- 增加 ToChunkAsync 异步 Api；#1952
+- 增加 SqlExt.AggregateCount/AggregateSum 等方法，区分 SqlExt.Count/SqlExt.Sum 开窗方法；
+- 修复 ExpressionTree 无法将 double -> 转成 int 的问题；
+- 修复 PgCopy DateTime 映射 date 失败的情况；
+- 修复 Npgsql postgis 条件编译问题；#1940
+- 修复 MySql.Data MySqlDateTime 读取为 null 的情况；#1960 #1948
+- 修复 Oracle CodeFirst clob/blob cast 转换问题；
+- 修复 KingBase .net8.0 等目标框架 dll 引用问题；
+- 修复 Firebird 表注释迁移问题（列注释正常）；#1913
+- 修复 Firebird 批量插入类型转换问题；#1923
+- 修复 GBase IsNull 日期解析问题；#1953
+- 修复 DmPrivider 连接达梦主从集群会出错问题；#1955
+- 修复 达梦数据库上时间相减永远输出为0的问题；#1973
+- 修复 CodeFirst 修改表名时重建索引的问题；
+- 修复 GroupBy + WithTempQuery + 子查询参数化问题；#1965
+- 修复 DateOnly/TimeOnly AOT 裁剪默认报错的问题；
+- 修复 DateTime 相减时，出现 IIF 无法转换表达式的错误
+- 修复 AdoConnectionPool 默认不生效的问题；
+- 修复 CreateInstance 发生歧义的问题；#1962
+- 修复 In + MapType 无效的问题；
+- 修复 In + 子查询 别名问题；#1967
+- 优化 ToList 针对 bool 自动转成 CASE When；
+- 优化 SqlServer WithIndex 使用习惯；
+- 忧化 DbFirst Oracle 自动批量插入问题；(2020年方法忘记生效）
+- 忧化 DateTime.Subtract(date).TotalDays 表达式解析对应 datediff(day, date1, date2)；
+- 优化 表达式解析 dArray.Select(p => p.Key).Contains(a.Id)；
+- 优化 非 join 的多表查询的 SQL 格式；
+
+## v3.5.101
 
 - 更新 到 .NET9.0；
 - **增加 DuckDB 数据库支持；** https://freesql.net/guide/freesql-provider-duckdb.html

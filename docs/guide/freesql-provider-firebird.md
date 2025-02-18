@@ -35,3 +35,7 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .UseAutoSyncStructure(true) //自动创建表
     .Build();
 ```
+
+## 嵌入式例子
+
+[freesql_firebird_embed.zip](https://github.com/user-attachments/files/18747494/freesql_firebird_embed.zip)

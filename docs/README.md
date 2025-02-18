@@ -10,9 +10,9 @@ actions:
     link: /guide/
     type: primary
 
-  - text: 视频教程
-    laptop: true
-    link: https://b23.tv/TCDCBLg
+  - text: 视频教程 💻
+    link: https://www.bilibili.com/video/BV18p4y1d7iC/
+    type: default
 
 features:
   - title: 轻松入门
@@ -23,7 +23,7 @@ features:
     details: MIT 开源，零依赖包
 
   - title: 数据库
-    details: 支持常见 26 种数据库
+    details: 支持常见 28 种数据库
     link: /guide/
 
   - title: 查询
