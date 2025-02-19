@@ -96,12 +96,12 @@ public class ChangeInfo
 public enum EntityChangeType { Insert, Update, Delete, SqlRaw }
 ```
 
-| 变化类型 | 说明 |
-| -- | -- |
-| Insert | 实体对象被插入 |
-| Update | 实体对象被更新 |
-| Delete | 实体对象被删除 |
-| SqlRaw | 执行了SQL语句 |
+| 变化类型 | 说明           |
+| -------- | -------------- |
+| Insert   | 实体对象被插入 |
+| Update   | 实体对象被更新 |
+| Delete   | 实体对象被删除 |
+| SqlRaw   | 执行了SQL语句  |
 
 SqlRaw 目前有两处地方比较特殊：
 

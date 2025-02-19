@@ -117,7 +117,7 @@ Dictionary<string, object[]> CompareState(TEntity newdata);
 
 It should be noted that when using Repository updates, `ServerTime` should not be specified in ColumnAttribute.
 
-~~~csharp
+```csharp
 var repo = fsql.GetRepository<Dictionaries>();
 var item = await repo.Where(a => a.DictId == "1").FirstAsync();
 
@@ -136,7 +136,7 @@ public class Dictionaries
     [Column(Name = "update_time", ServerTime = DateTimeKind.Local)]
     public DateTime? UpdateTime { get; set; }
 }
-~~~
+```
 
 ## Login Information (Dependency Injection)
 
@@ -198,35 +198,35 @@ Please refer to the document [《Cascade Save》](cascade-saving.md)
 
 ## API
 
-| Property          | Return Value            | Description                                      |
-| ----------------- | ------------------------ | ------------------------------------------------ |
-| EntityType        | Type                     | The entity type the repository is currently operating on, note that it may not be TEntity |
-| UnitOfWork        | IUnitOfWork              | The unit of work currently in use               |
-| Orm               | IFreeSql                 | The ORM currently in use                        |
-| DbContextOptions  | DbContextOptions         | The DbContext settings currently in use, changes to these settings do not affect others |
-| UpdateDiy         | IUpdate\<TEntity\>       | Preparing to update data, in the same transaction as the repository |
-| Select            | ISelect\<TEntity\>       | Preparing to query data                          |
+| Property         | Return Value       | Description                                                                               |
+| ---------------- | ------------------ | ----------------------------------------------------------------------------------------- |
+| EntityType       | Type               | The entity type the repository is currently operating on, note that it may not be TEntity |
+| UnitOfWork       | IUnitOfWork        | The unit of work currently in use                                                         |
+| Orm              | IFreeSql           | The ORM currently in use                                                                  |
+| DbContextOptions | DbContextOptions   | The DbContext settings currently in use, changes to these settings do not affect others   |
+| UpdateDiy        | IUpdate\<TEntity\> | Preparing to update data, in the same transaction as the repository                       |
+| Select           | ISelect\<TEntity\> | Preparing to query data                                                                   |
 
-| Method                                                                                     | Return Value   | Parameters             | Description                                            |
-| ------------------------------------------------------------------------------------------ | -------------- | ---------------------- | ------------------------------------------------------ |
-| AsType                                                                                     | void           | Type                   | Change the entity type the repository is currently operating on |
-| Get                                                                                        | TEntity        | TKey                   | Query data by primary key                             |
-| Find                                                                                       | TEntity        | TKey                   | Query data by primary key                             |
-| Delete                                                                                     | int            | TKey                   | Delete data by primary key                            |
-| Delete                                                                                     | int            | Lambda                 | Delete data based on lambda conditions                |
-| Delete                                                                                     | int            | TEntity                | Delete data                                           |
-| Delete                                                                                     | int            | IEnumerable\<TEntity\> | Batch delete data                                     |
-| [DeleteCascadeByDatabase](cascade-delete.md)                   | List\<object\> | Lambda                 | Recursively delete data by navigation properties      |
-| Insert                                                                                     | -              | TEntity                | Insert data, if the entity has auto-increment columns, the auto-increment value will be filled into the entity after insertion |
-| Insert                                                                                     | -              | IEnumerable\<TEntity\> | Batch insert data                                     |
-| Update                                                                                     | -              | TEntity                | Update data                                           |
-| Update                                                                                     | -              | IEnumerable\<TEntity\> | Batch update data                                     |
-| InsertOrUpdate                                                                             | -              | TEntity                | Insert or update data                                |
-| FlushState                                                                               | -              | None                   | Clear state management data                          |
-| Attach                                                                                     | -              | TEntity                | Attach entity to state management, used for updating or deleting without querying |
-| Attach                                                                                     | -              | IEnumerable\<TEntity\> | Batch attach entities to state management            |
-| AttachOnlyPrimary                                                                          | -              | TEntity                | Attach only primary key data of entity to state management |
-| [BeginEdit](insert-or-update.md#_4-table-beginedit) | -              | List\<TEntity\>        | Prepare to edit a list of entities                    |
-| EndEdit                                                                                    | int            | None                   | Complete editing data and perform save actions       |
+| Method                                              | Return Value   | Parameters             | Description                                                                                                                    |
+| --------------------------------------------------- | -------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| AsType                                              | void           | Type                   | Change the entity type the repository is currently operating on                                                                |
+| Get                                                 | TEntity        | TKey                   | Query data by primary key                                                                                                      |
+| Find                                                | TEntity        | TKey                   | Query data by primary key                                                                                                      |
+| Delete                                              | int            | TKey                   | Delete data by primary key                                                                                                     |
+| Delete                                              | int            | Lambda                 | Delete data based on lambda conditions                                                                                         |
+| Delete                                              | int            | TEntity                | Delete data                                                                                                                    |
+| Delete                                              | int            | IEnumerable\<TEntity\> | Batch delete data                                                                                                              |
+| [DeleteCascadeByDatabase](cascade-delete.md)        | List\<object\> | Lambda                 | Recursively delete data by navigation properties                                                                               |
+| Insert                                              | -              | TEntity                | Insert data, if the entity has auto-increment columns, the auto-increment value will be filled into the entity after insertion |
+| Insert                                              | -              | IEnumerable\<TEntity\> | Batch insert data                                                                                                              |
+| Update                                              | -              | TEntity                | Update data                                                                                                                    |
+| Update                                              | -              | IEnumerable\<TEntity\> | Batch update data                                                                                                              |
+| InsertOrUpdate                                      | -              | TEntity                | Insert or update data                                                                                                          |
+| FlushState                                          | -              | None                   | Clear state management data                                                                                                    |
+| Attach                                              | -              | TEntity                | Attach entity to state management, used for updating or deleting without querying                                              |
+| Attach                                              | -              | IEnumerable\<TEntity\> | Batch attach entities to state management                                                                                      |
+| AttachOnlyPrimary                                   | -              | TEntity                | Attach only primary key data of entity to state management                                                                     |
+| [BeginEdit](insert-or-update.md#_4-table-beginedit) | -              | List\<TEntity\>        | Prepare to edit a list of entities                                                                                             |
+| EndEdit                                             | int            | None                   | Complete editing data and perform save actions                                                                                 |
 
 > State management allows Update to only update changed fields (not all fields), and using Attach and Update is very comfortable.

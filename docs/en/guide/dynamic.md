@@ -149,19 +149,17 @@ Example of implementing Custom:
 
 ```json
 {
-  Logic: 'And',
-  Filters:
-  [
-    { Field: 'id', Operator: 'Equals', Value: 1 },
+  "Logic": "And",
+  "Filters": [
+    { "Field": "id", "Operator": "Equals", "Value": 1 },
     {
-      Logic: 'Or',
-      Filters:
-      [
-        { Field: 'id', Operator: 'Equals', Value: 2 },
+      "Logic": "Or",
+      "Filters": [
+        { "Field": "id", "Operator": "Equals", "Value": 2 },
         {
-            Field: '{{ DynamicFilterCustomImpl.CustomLinq }}', 
-            Operator: 'Custom', 
-            Value: 'Title.StartsWith(\'new topic 1\')'
+          "Field": "{{ DynamicFilterCustomImpl.CustomLinq }}",
+          "Operator": "Custom",
+          "Value": "Title.StartsWith('new topic 1')"
         }
       ]
     }
@@ -227,10 +225,10 @@ fsql.Select<Region>()
 var dtos = fsql.Select<Region>().ToList<Dto>();
 
 dtos.IncludeByPropertyName(
-    orm: fsql, 
-    property: "Childs", 
+    orm: fsql,
+    property: "Childs",
     where: "ParentId=Id", // Temporary relationship
-    take: 5, 
+    take: 5,
     select: "id,name",
     then => then.IncludeByPropertyName("Parent")
 );
@@ -278,11 +276,11 @@ var orderByMapping = new Dictionary<string, string>
 // Suppose the frontend POST content is postWhere=where1&postWhereValue=100&postOrder=order1
 fsql.Select<Region>()
     .WhereIf(
-        whereMapping.TryGetValue(postWhere, out var whereSql), 
+        whereMapping.TryGetValue(postWhere, out var whereSql),
         string.Format(whereSql, postWhereValue)
     )
     .OrderBy(
-        orderByMapping.TryGetValue(postOrder, out var orderSql), 
+        orderByMapping.TryGetValue(postOrder, out var orderSql),
         orderSql
     )
 ```

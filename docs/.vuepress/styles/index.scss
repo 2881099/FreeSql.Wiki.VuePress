@@ -1,15 +1,18 @@
 @use "@sass-palette/hope-config";
 
-:root {
-    @media (min-width: hope-config.$laptop) {
-        --content-width: calc(100vw - 18rem);
-    }
+html {
+  @media (min-width: hope-config.$laptop) {
+    --content-width: calc(100vw - 18rem);
+  }
 
-    @media (min-width: hope-config.$pc) {
-        --content-width: calc(100vw - 40rem);
-    }
+  @media (min-width: hope-config.$pc) {
+    --content-width: calc(100vw - 40rem) !important;
+  }
+}
 
-    #main-title {
-        -webkit-text-fill-color: var(--theme-color) !important;
-    }
+.vp-hero-title {
+  background: transparent;
+  background-clip: unset;
+  color: var(--vp-c-accent);
+  -webkit-text-fill-color: initial;
 }

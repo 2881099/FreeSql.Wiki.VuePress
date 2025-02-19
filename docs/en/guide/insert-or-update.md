@@ -4,15 +4,15 @@
 
 IFreeSql defines the `InsertOrUpdate` method to handle insert or update operations, utilizing database-specific features:
 
-| Database   | Features                |     | Database | Features              |
-| ---------- | ----------------------- | --- | -------- | --------------------- |
-| MySql      | on duplicate key update |     | DM       | merge into            |
-| PostgreSQL | on conflict do update   |     | Kingbase | on conflict do update |
-| SqlServer  | merge into              |     | ShengTong | merge into            |
+| Database   | Features                |     | Database      | Features              |
+| ---------- | ----------------------- | --- | ------------- | --------------------- |
+| MySql      | on duplicate key update |     | DM            | merge into            |
+| PostgreSQL | on conflict do update   |     | Kingbase      | on conflict do update |
+| SqlServer  | merge into              |     | ShengTong     | merge into            |
 | Oracle     | merge into              |     | Nanda General | merge into            |
-| Sqlite     | replace into            |     | MsAccess | Not supported          |
-| Firebird   | merge into              |     |          |                       |
-| DuckDB     | on conflict do update   |     |          |                       |
+| Sqlite     | replace into            |     | MsAccess      | Not supported         |
+| Firebird   | merge into              |     |               |                       |
+| DuckDB     | on conflict do update   |     |               |                       |
 
 ```csharp
 fsql.InsertOrUpdate<T>()
@@ -57,14 +57,14 @@ fsql.InsertOrUpdateDict(dic).AsTable("table1").WherePrimary("id").ExecuteAffrows
 
 ## 3. High-Performance BulkCopy
 
-| Package | Extension Method        | Description (v3.2.693) |
-| ------- | ----------------------- | ----------------------- |
-| FreeSql.Provider.SqlServer | ExecuteSqlBulkCopy | |
-| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy | |
-| FreeSql.Provider.Oracle | ExecuteOracleBulkCopy | |
-| FreeSql.Provider.Dameng | ExecuteDmBulkCopy | DM |
-| FreeSql.Provider.PostgreSQL | ExecutePgCopy | |
-| FreeSql.Provider.KingbaseES | ExecuteKdbCopy | Kingbase |
+| Package                         | Extension Method      | Description (v3.2.693) |
+| ------------------------------- | --------------------- | ---------------------- |
+| FreeSql.Provider.SqlServer      | ExecuteSqlBulkCopy    |                        |
+| FreeSql.Provider.MySqlConnector | ExecuteMySqlBulkCopy  |                        |
+| FreeSql.Provider.Oracle         | ExecuteOracleBulkCopy |                        |
+| FreeSql.Provider.Dameng         | ExecuteDmBulkCopy     | DM                     |
+| FreeSql.Provider.PostgreSQL     | ExecutePgCopy         |                        |
+| FreeSql.Provider.KingbaseES     | ExecuteKdbCopy        | Kingbase               |
 
 Principle: Use BulkCopy to insert data into a temporary table, then use MERGE INTO for join operations.
 
@@ -146,20 +146,20 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`, `time`) VALUES(100, 'title-100', '2000-01-01 00:00:00.000')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = VALUES(`time`)
 ```
 
 Methods that can be called after `OnDuplicateKeyUpdate()`:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| IgnoreColumns | Ignore columns to update, similar to `IUpdate.IgnoreColumns` |
-| UpdateColumns | Specify columns to update, similar to `IUpdate.UpdateColumns` |
-| Set | Manually specify columns to update, similar to `IUpdate.Set` |
-| SetRaw | Supplement to the `Set` method, can pass SQL strings |
-| ToSql | Returns the SQL statement to be executed |
-| ExecuteAffrows | Executes and returns the number of affected rows |
+| Method Name    | Description                                                   |
+| -------------- | ------------------------------------------------------------- |
+| IgnoreColumns  | Ignore columns to update, similar to `IUpdate.IgnoreColumns`  |
+| UpdateColumns  | Specify columns to update, similar to `IUpdate.UpdateColumns` |
+| Set            | Manually specify columns to update, similar to `IUpdate.Set`  |
+| SetRaw         | Supplement to the `Set` method, can pass SQL strings          |
+| ToSql          | Returns the SQL statement to be executed                      |
+| ExecuteAffrows | Executes and returns the number of affected rows              |
 
 Both `IInsert` and `OnDuplicateKeyUpdate` have `IgnoreColumns` and `UpdateColumns` methods.
 
@@ -172,7 +172,7 @@ fsql.Insert(item)
     .OnDuplicateKeyUpdate().ToSql();
 //INSERT INTO `TestInfo`(`id`, `title`) VALUES(200, 'title-200')
 //ON DUPLICATE KEY UPDATE
-//`title` = VALUES(`title`), 
+//`title` = VALUES(`title`),
 //`time` = '2000-01-01 00:00:00.000'
 ```
 

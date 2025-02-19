@@ -27,15 +27,15 @@ static Scheduler scheduler = new FreeSchedulerBuilder()
     .Build();
 ```
 
-| Method | 说明 |
-| -- | -- |
-| OnExecuting(Action\<TaskInfo\> executing) | 任务触发 |
-| UseTimeZone()	| 设置时区 |
-| UseStorage() | 基于 数据库或者 Redis 持久化 |
-| UseCluster() | 开启集群（依赖 Redis），支持跨进程互通 |
-| UseCustomInterval() | 自定义间隔（可实现 cron） |
-| UseScanInterval() | 扫描间隔（默认200ms），值越小触发精准 |
-| Build() | 创建 Scheduler 对象 |
+| Method                                    | 说明                                   |
+| ----------------------------------------- | -------------------------------------- |
+| OnExecuting(Action\<TaskInfo\> executing) | 任务触发                               |
+| UseTimeZone()                             | 设置时区                               |
+| UseStorage()                              | 基于 数据库或者 Redis 持久化           |
+| UseCluster()                              | 开启集群（依赖 Redis），支持跨进程互通 |
+| UseCustomInterval()                       | 自定义间隔（可实现 cron）              |
+| UseScanInterval()                         | 扫描间隔（默认200ms），值越小触发精准  |
+| Build()                                   | 创建 Scheduler 对象                    |
 
 使用 ASP.NET Core 项目，一行代码解决如下：
 
@@ -53,7 +53,6 @@ app.UseFreeSchedulerUI("/freescheduler/");
 - 支持 进程互通，任意进程都可以执行（RemoveTask/ExistsTask/PauseTask/RunNowTask/RemoveTempTask/ExistsTempTask）
 - 支持 进程意外离线后，卸载进程内的任务，重新安排上线
 
-
 ## 临时任务(不可持久化)
 
 ```csharp
@@ -65,12 +64,12 @@ void Callback()
 scheduler.AddTempTask(TimeSpan.FromSeconds(10), Callback);
 ```
 
-| Method | 说明 |
-| -- | -- |
+| Method                               | 说明                        |
+| ------------------------------------ | --------------------------- |
 | string AddTempTask(TimeSpan, Action) | 创建临时的延时任务，返回 id |
-| bool RemoveTempTask(string id) | 删除任务(临时任务) |
-| bool ExistsTempTask(string id) | 判断任务是否存在(临时任务) |
-| int QuantityTempTask | 任务数量(临时任务) |
+| bool RemoveTempTask(string id)       | 删除任务(临时任务)          |
+| bool ExistsTempTask(string id)       | 判断任务是否存在(临时任务)  |
+| int QuantityTempTask                 | 任务数量(临时任务)          |
 
 ## 循环任务/可持久化
 
@@ -105,22 +104,22 @@ new FreeSchedulerBuilder()
     .Build();
 ```
 
-| Method | 说明 |
-| -- | -- |
-| void ctor(ITaskHandler) | 指定任务调度器（单例） |
-| string AddTask(string topic, string body, int round, int seconds) | 创建循环定时任务，返回 id |
-| string AddTask(string topic, string body, int[] seconds) | 创建每轮间隔不同的定时任务，返回 id |
-| string AddTaskRunOnDay(..) | 创建每日循环任务，指定utc时间，返回 id |
-| string AddTaskRunOnWeek(..) | 创建每周循环任务，指定utc时间，返回 id |
-| string AddTaskRunOnMonth(..) | 创建每月循环任务，指定utc时间，返回 id |
-| string AddTaskCustom(string topic, string body, string expression) | 创建自定义任务，返回 id |
-| bool RemoveTask(string id) | 删除任务 |
-| bool ExistsTask(string id) | 判断任务是否存在 |
-| bool ResumeTask(string id) | 恢复已暂停的任务 |
-| bool PauseTask(string id) | 暂停正在运行的任务 |
-| bool RunNowTask(string id) | 立刻运行任务（人工触发） |
-| TaskInfo[] FindTask(lambda) | 查询正在运行中的任务 |
-| int QuantityTask | 任务数量 |
+| Method                                                             | 说明                                   |
+| ------------------------------------------------------------------ | -------------------------------------- |
+| void ctor(ITaskHandler)                                            | 指定任务调度器（单例）                 |
+| string AddTask(string topic, string body, int round, int seconds)  | 创建循环定时任务，返回 id              |
+| string AddTask(string topic, string body, int[] seconds)           | 创建每轮间隔不同的定时任务，返回 id    |
+| string AddTaskRunOnDay(..)                                         | 创建每日循环任务，指定utc时间，返回 id |
+| string AddTaskRunOnWeek(..)                                        | 创建每周循环任务，指定utc时间，返回 id |
+| string AddTaskRunOnMonth(..)                                       | 创建每月循环任务，指定utc时间，返回 id |
+| string AddTaskCustom(string topic, string body, string expression) | 创建自定义任务，返回 id                |
+| bool RemoveTask(string id)                                         | 删除任务                               |
+| bool ExistsTask(string id)                                         | 判断任务是否存在                       |
+| bool ResumeTask(string id)                                         | 恢复已暂停的任务                       |
+| bool PauseTask(string id)                                          | 暂停正在运行的任务                     |
+| bool RunNowTask(string id)                                         | 立刻运行任务（人工触发）               |
+| TaskInfo[] FindTask(lambda)                                        | 查询正在运行中的任务                   |
+| int QuantityTask                                                   | 任务数量                               |
 
 ## 系统预留任务
 
@@ -154,4 +153,3 @@ app.UseFreeSchedulerUI("/freescheduler/");
 
 https://github.com/2881099/FreeScheduler/tree/master/Examples/Examples_FreeScheduler_Net60
 ![Admin Dashboard](/281375469-a5d5f4bb-6af9-4695-9570-8777c39d7329.png)
-

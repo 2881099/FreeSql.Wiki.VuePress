@@ -30,7 +30,7 @@ repo.Insert(new UserGroup
 //INSERT INTO "userext"("userid", "remark") VALUES(3, 'User Remark 01'), (4, 'User Remark 02'), (5, 'User Remark 03')
 
 var groups = repo.Select
-    .IncludeMany(a => a.Users, 
+    .IncludeMany(a => a.Users,
         then => then.Include(b => b.UserExt))
     .ToList();
 repo.Delete(groups); // Cascade delete, recursively traverses group OneToOne/OneToMany/ManyToMany navigation properties

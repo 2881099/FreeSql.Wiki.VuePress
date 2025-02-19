@@ -1,6 +1,6 @@
 # Mapping Attributes✨
 
-v1.4.0+ automatically recognizes EF attributes such as 
+v1.4.0+ automatically recognizes EF attributes such as
 
 Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column.
 
@@ -37,8 +37,8 @@ class Topic
 }
 ```
 
-* If no primary key is specified, a field named `id` will be treated as the primary key (case insensitive).
-* When the primary key is of type Guid, a value will be automatically created (ordered, unique) upon insertion, so you don't need to assign it yourself (supports distributed systems).
+- If no primary key is specified, a field named `id` will be treated as the primary key (case insensitive).
+- When the primary key is of type Guid, a value will be automatically created (ordered, unique) upon insertion, so you don't need to assign it yourself (supports distributed systems).
 
 > Composite primary keys use attributes on multiple properties.
 
@@ -54,8 +54,8 @@ class Topic
 }
 ```
 
-* If no primary key is specified, the auto-incremented member will be used as the primary key.
-* For DbFirst mode sequences: `[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]`
+- If no primary key is specified, the auto-incremented member will be used as the primary key.
+- For DbFirst mode sequences: `[Column(IsIdentity = true, InsertValueSql = "seqname.nextval")]`
 
 ## Unique Key, Index
 
@@ -74,8 +74,8 @@ class Topic
 }
 ```
 
-* The third parameter `true` indicates a unique key, while `false` indicates a regular index.
-* For sharding scenarios: `[Index("{tablename}_idx_01", "phone")]`
+- The third parameter `true` indicates a unique key, while `false` indicates a regular index.
+- For sharding scenarios: `[Index("{tablename}_idx_01", "phone")]`
 
 ## Database Type (DbType)
 
@@ -114,9 +114,9 @@ class Topic
 
 When the length is -1, the mapping is as follows:
 
-| MySql | PostgreSQL | SqlServer | Oracle | Sqlite | Firebird | DuckDB | MsAccess | DM | Kingbase | Shentong | Gbase |
-| - | - | - | - | - | - | - | - | - | - | - | - |
-| text | text | nvarchar(max) | nclob | text | blob sub_type 1 | text | longtext | text | text | text | text |
+| MySql | PostgreSQL | SqlServer     | Oracle | Sqlite | Firebird        | DuckDB | MsAccess | DM   | Kingbase | Shentong | Gbase |
+| ----- | ---------- | ------------- | ------ | ------ | --------------- | ------ | -------- | ---- | -------- | -------- | ----- |
+| text  | text       | nvarchar(max) | nclob  | text   | blob sub_type 1 | text   | longtext | text | text     | text     | text  |
 
 > Note: MySql `[MaxLength(-2)]` or `[Column(StringLength = -2)]` maps to `longtext`. Other databases follow the same mapping rules as -1.
 
@@ -132,8 +132,8 @@ class Topic
 
 If `DbType` and `IsNullable` are not specified, FreeSql provides default settings, such as:
 
-* `int` -> not null
-* `int?` -> nullable
+- `int` -> not null
+- `int?` -> nullable
 
 Typically, only specify `IsNullable` for `string` types (string is nullable by default).
 
@@ -144,7 +144,7 @@ class Topic
 {
     [Column(ServerTime = DateTimeKind.Utc, CanUpdate = false)]
     public DateTime CreateTime { get; set; }
-    
+
     [Column(ServerTime = DateTimeKind.Utc)]
     public DateTime UpdateTime { get; set; }
 }
@@ -152,8 +152,8 @@ class Topic
 
 When using database time to insert data:
 
-* Setting the entity's value is ineffective upon insertion.
-* The value of the entity will still be the C# time after the successful insert.
+- Setting the entity's value is ineffective upon insertion.
+- The value of the entity will still be the C# time after the successful insert.
 
 ## Ignore
 
@@ -294,7 +294,7 @@ Use this value when executing the Insert method; its syntax is SQL.
 Note: For functions like `getdate()`, consider using `ServerTime` as it is adapted for all databases.
 
 ```csharp
-class Topic 
+class Topic
 {
     [Column(InsertValueSql = "'xxx'")]
     public string Name { get; set; }
@@ -313,18 +313,18 @@ fsql.Insert(new Type()).IgnoreInsertValueSql(a => a.Name).ExecuteAffrows();
 Rewrite SQL for insertion and read SQL for querying. For example, handling geography type read and write scenarios:
 
 ```csharp
-class Topic 
+class Topic
 {
-    [Column(DbType = "geography", 
-        RewriteSql = "geography::STGeomFromText({0}, 4236)", 
+    [Column(DbType = "geography",
+        RewriteSql = "geography::STGeomFromText({0}, 4236)",
         RereadSql = "{0}.STAsText()")]
     public string Geo { get; set; }
 }
-// Insert: INSERT INTO [ts_geocrud01]([id], [geo]) 
+// Insert: INSERT INTO [ts_geocrud01]([id], [geo])
 // VALUES(@id_0, geography::STGeomFromText(@geo_0, 4236))
 
-// Query: SELECT TOP 1 a.[id], a.[geo].STAsText() 
-// FROM [ts_geocrud01] a 
+// Query: SELECT TOP 1 a.[id], a.[geo].STAsText()
+// FROM [ts_geocrud01] a
 // WHERE (a.[id] = 'c7227d5e-0bcf-4b71-8f0f-d69a552fe84e')
 ```
 

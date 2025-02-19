@@ -47,12 +47,12 @@ fsql.Select<User1>()
 ```
 
 ```sql
-SELECT b.[Id], b.[Nickname] 
-FROM ( 
-    SELECT min(a.[Id]) [min] 
-    FROM [User1] a 
-    WHERE a.[Id] < 1000 
-    GROUP BY a.[Nickname] ) a 
+SELECT b.[Id], b.[Nickname]
+FROM (
+    SELECT min(a.[Id]) [min]
+    FROM [User1] a
+    WHERE a.[Id] < 1000
+    GROUP BY a.[Nickname] ) a
 INNER JOIN [User1] b ON a.[min] = b.[Id]
 ```
 
@@ -83,15 +83,15 @@ fsql.Select<User1>()
 ```
 
 ```sql
-SELECT ... 
-FROM ( 
-    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
-    FROM [User1] a 
-    WHERE a.[Id] < 1000 ) a 
-INNER JOIN ( 
-    SELECT a.[UserId], a.[Remark] 
-    FROM [TwoTablePartitionBy_UserExt] a 
-    WHERE (a.[UserId] > 0) ) b ON a.[Id] = b.[UserId] 
+SELECT ...
+FROM (
+    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum]
+    FROM [User1] a
+    WHERE a.[Id] < 1000 ) a
+INNER JOIN (
+    SELECT a.[UserId], a.[Remark]
+    FROM [TwoTablePartitionBy_UserExt] a
+    WHERE (a.[UserId] > 0) ) b ON a.[Id] = b.[UserId]
 WHERE (a.[rownum] = 1)
 ```
 
@@ -119,15 +119,15 @@ fsql.Select<User1>()
 ```
 
 ```sql
-SELECT ... 
-FROM ( 
-    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum] 
-    FROM [User] a ) a 
-INNER JOIN ( 
-    SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [sum1] 
-    FROM [UserExt] a 
-    WHERE (a.[UserId] > 0) 
-    GROUP BY a.[UserId], a.[Remark] ) b ON a.[Id] = b.[UserId] 
+SELECT ...
+FROM (
+    SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum]
+    FROM [User] a ) a
+INNER JOIN (
+    SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [sum1]
+    FROM [UserExt] a
+    WHERE (a.[UserId] > 0)
+    GROUP BY a.[UserId], a.[Remark] ) b ON a.[Id] = b.[UserId]
 WHERE (a.[rownum] = 1) AND ((a.[Nickname] = N'name03' OR a.[Nickname] = N'name02'))
 ```
 
@@ -178,23 +178,23 @@ var result = fsql.Select<Statistics>()
 ```
 
 ```sql
-SELECT a.`shareId` as1, sum( a.`field1` ) as3, sum( a.`field2` ) as5 
-FROM ( 
-    SELECT ... 
-    FROM ( 
-        SELECT ... 
-        FROM `Statistics_2023` a 
-        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00') 
-    ) ftb 
+SELECT a.`shareId` as1, sum( a.`field1` ) as3, sum( a.`field2` ) as5
+FROM (
+    SELECT ...
+    FROM (
+        SELECT ...
+        FROM `Statistics_2023` a
+        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00')
+    ) ftb
     UNION ALL
-    SELECT ... 
-    FROM ( 
-        SELECT ... 
-        FROM `Statistics_2022` a 
-        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00') 
-    ) ftb 
-) a 
-GROUP BY a.`shareId` 
+    SELECT ...
+    FROM (
+        SELECT ...
+        FROM `Statistics_2022` a
+        WHERE (a.`createtime` >= '2022-01-01 00:00:00' AND a.`createtime` < '2023-01-14 00:00:00')
+    ) ftb
+) a
+GROUP BY a.`shareId`
 LIMIT 0,30
 ```
 
@@ -230,13 +230,13 @@ fsql.Select<UnitLog>()
 ```
 
 ```sql
-SELECT a.[CkassIfCation] as1, b.[DeliveryInstractionStatus] as2, b.[UpTime] as3, 1 as4, c.[RunNo] as5 
-FROM [UnitLog] a 
-INNER JOIN (SELECT a.[LoadNo], a.[SeqNoLog], c.[DeliveryInstractionStatus], c.[UpTime], row_number() over( partition by a.[UnitId] order by a.[SeqNoLog] desc) [RN] 
-    FROM [UnitLog] a 
-    INNER JOIN [LoadPlan] b ON a.[LoadNo] = b.[LoadNo] AND a.[UnitTransactionType] = N'TO' 
-    INNER JOIN [Instruction] c ON b.[InstructionNo] = c.[InstructionNo] ) b ON a.[SeqNoLog] = b.[SeqNoLog] 
-INNER JOIN [Unit] c ON a.[UnitId] = c.[UnitId] 
+SELECT a.[CkassIfCation] as1, b.[DeliveryInstractionStatus] as2, b.[UpTime] as3, 1 as4, c.[RunNo] as5
+FROM [UnitLog] a
+INNER JOIN (SELECT a.[LoadNo], a.[SeqNoLog], c.[DeliveryInstractionStatus], c.[UpTime], row_number() over( partition by a.[UnitId] order by a.[SeqNoLog] desc) [RN]
+    FROM [UnitLog] a
+    INNER JOIN [LoadPlan] b ON a.[LoadNo] = b.[LoadNo] AND a.[UnitTransactionType] = N'TO'
+    INNER JOIN [Instruction] c ON b.[InstructionNo] = c.[InstructionNo] ) b ON a.[SeqNoLog] = b.[SeqNoLog]
+INNER JOIN [Unit] c ON a.[UnitId] = c.[UnitId]
 WHERE (b.[RN] < 2)
 ```
 
@@ -263,15 +263,15 @@ var sql = fsql.Select<User1>()
 ```
 
 ```sql
-SELECT a."Id", a."GroupId", a."Username" 
+SELECT a."Id", a."GroupId", a."Username"
 FROM (
-    SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User1" a 
-    WHERE (a."Id" = @exp_0) 
+    SELECT a."Id", a."GroupId", a."Username"
+    FROM "User1" a
+    WHERE (a."Id" = @exp_0)
 ) a
-INNER JOIN ( 
-    SELECT a."Id", a."GroupId", a."Username" 
-    FROM "User1" a 
+INNER JOIN (
+    SELECT a."Id", a."GroupId", a."Username"
+    FROM "User1" a
     WHERE (a."Id" = @exp_1) ) b ON b."Id" = a."Id"
 ```
 
@@ -314,15 +314,15 @@ fsql.Select<Topic>().ToList(a => new {
     id = a.Id,
     concat = string.Join(",", fsql.Select<StringJoin01>().ToList(b => b.Id))
 });
-//SELECT a.[Id], (SELECT group_concat(b.[Id] separator ',') 
-//    FROM [StringJoin01] b) 
+//SELECT a.[Id], (SELECT group_concat(b.[Id] separator ',')
+//    FROM [StringJoin01] b)
 //FROM [Topic] a
 ```
 
 ## Subquery First/Count/Sum/Max/Min/Avg
 
 ```csharp
-fsql.Select<Category>().ToList(a => new 
+fsql.Select<Category>().ToList(a => new
 {
     all = a,
     first = fsql.Select<Topic>().Where(b => b.CategoryId == a.Id).First(b => b.Id),
@@ -349,7 +349,7 @@ fsql.Select<Topic>().ToList(a => new
 fsql.Select<Topic>()
     .GroupBy(a => new { a.Author })
     .WithTempQuery(a => new { Author = a.Key.Author, Count = a.Count() })
-    .ToList(a => new 
+    .ToList(a => new
     {
         a.Author, a.Count,
         list1 = fsql.Select<T2>().ToList(),
@@ -377,7 +377,7 @@ fsql.Select<User1>()
 ```
 
 ```sql
-SELECT a.[Id], a.[Nickname] 
+SELECT a.[Id], a.[Nickname]
 FROM (
     SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum]
     FROM [User1] a

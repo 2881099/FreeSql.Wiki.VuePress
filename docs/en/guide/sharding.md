@@ -86,15 +86,15 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
     fsql.CodeFirst.SyncStructure(typeof(AsTableLog), tableName);
 ```
 
-| Example | Description |
-| -- | -- |
-| AsTable = "createtime=2022-1-1(1 year)" | Create a shard table every year |
-| AsTable = "createtime=2022-1-1(2 year)" | Create a shard table every two years |
-| AsTable = "createtime=2022-1-1(1 month)" | Create a shard table every month |
+| Example                                  | Description                             |
+| ---------------------------------------- | --------------------------------------- |
+| AsTable = "createtime=2022-1-1(1 year)"  | Create a shard table every year         |
+| AsTable = "createtime=2022-1-1(2 year)"  | Create a shard table every two years    |
+| AsTable = "createtime=2022-1-1(1 month)" | Create a shard table every month        |
 | AsTable = "createtime=2022-1-1(3 month)" | Create a shard table every three months |
-| AsTable = "createtime=2022-1-1(1 day)" | Create a shard table every day |
-| AsTable = "createtime=2022-1-1(7 day)" | Create a shard table every seven days |
-| AsTable = "createtime=2022-1-1(12 hour)" | Create a shard table every 12 hours |
+| AsTable = "createtime=2022-1-1(1 day)"   | Create a shard table every day          |
+| AsTable = "createtime=2022-1-1(7 day)"   | Create a shard table every seven days   |
+| AsTable = "createtime=2022-1-1(12 hour)" | Create a shard table every 12 hours     |
 
 The first table is for 12 months, and the subsequent tables are for each month:
 
@@ -106,7 +106,7 @@ The first table has a non-time-based name:
 
 Sharding every month on the 1st at 10 AM:
 
-> \[Table(Name = "as_table_log_{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
+> \[Table(Name = "as*table_log*{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
 
 When no time condition is set, only the latest 3 shard tables are used:
 
@@ -114,7 +114,7 @@ When no time condition is set, only the latest 3 shard tables are used:
 
 For detailed information: [https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
-Indexes for sharded tables can be set as follows: \[Index("{tablename}_idx_01", "phone")\]
+Indexes for sharded tables can be set as follows: \[Index("{tablename}\_idx_01", "phone")\]
 
 ## [DB Sharding] Common
 

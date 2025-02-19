@@ -3,7 +3,7 @@
 ```csharp
 IFreeSql fsql; // For how to create it, please refer to the introductory documentation
 
-class Topic 
+class Topic
 {
     [Column(IsIdentity = true, IsPrimary = true)]
     public int Id { get; set; }
@@ -22,21 +22,21 @@ var list = fsql.Select<Topic>()
     .Having(g => g.Count() < 300 || g.Avg(g.Key.mod4) < 100)
     .OrderBy(g => g.Key.tt2)
     .OrderByDescending(g => g.Count())
-    .ToList(g => new 
+    .ToList(g => new
     {
-        g.Key, 
-        cou1 = g.Count(), 
-        arg1 = g.Avg(g.Value.Clicks), 
+        g.Key,
+        cou1 = g.Count(),
+        arg1 = g.Avg(g.Value.Clicks),
         arg2 = g.Sum(g.Value.Clicks > 100 ? 1 : 0)
     });
-//SELECT 
+//SELECT
 //substr(a.`Title`, 1, 2) as1,
-//(a.`Id` % 4) as2, 
-//count(1) as3, 
-//avg(a.`Clicks`) as4, 
-//sum(case when a.`Clicks` > 100 then 1 else 0 end) as5 
-//FROM `Topic` a 
-//GROUP BY substr(a.`Title`, 1, 2), (a.`Id` % 4) 
+//(a.`Id` % 4) as2,
+//count(1) as3,
+//avg(a.`Clicks`) as4,
+//sum(case when a.`Clicks` > 100 then 1 else 0 end) as5
+//FROM `Topic` a
+//GROUP BY substr(a.`Title`, 1, 2), (a.`Id` % 4)
 //HAVING (count(1) > 0 AND avg((a.`Id` % 4)) > 0 AND max((a.`Id` % 4)) > 0) AND (count(1) < 300 OR avg((a.`Id` % 4)) < 100)
 //ORDER BY substr(a.`Title`, 1, 2), count(1) DESC
 ```
@@ -45,10 +45,10 @@ var list = fsql.Select<Topic>()
 
 ```csharp
 var list = fsql.Select<Topic>()
-    .ToAggregate(g => new 
+    .ToAggregate(g => new
     {
-        cou1 = g.Count(), 
-        arg1 = g.Avg(g.Key.Clicks), 
+        cou1 = g.Count(),
+        arg1 = g.Avg(g.Key.Clicks),
         arg2 = g.Sum(g.Key.Clicks > 100 ? 1 : 0)
     });
 ```
@@ -74,35 +74,35 @@ var list = fsql.Select<Topic, Category, Area>()
 - g.Value.Item2 corresponds to Category
 - g.Value.Item3 corresponds to Area
 
-| Description | Method | SQL |
-| --- | --- | --- |
-| Count | .Count() | select count(*) from ... |
-| Sum | .Sum(a => a.Score) | select sum([Score]) from ... |
-| Average | .Avg(a => a.Score) | select avg([Score]) from ... |
-| Maximum | .Max(a => a.Score) | select max([Score]) from ... |
-| Minimum | .Min(a => a.Score) | select min([Score]) from ... |
+| Description | Method             | SQL                          |
+| ----------- | ------------------ | ---------------------------- |
+| Count       | .Count()           | select count(\*) from ...    |
+| Sum         | .Sum(a => a.Score) | select sum([Score]) from ... |
+| Average     | .Avg(a => a.Score) | select avg([Score]) from ... |
+| Maximum     | .Max(a => a.Score) | select max([Score]) from ... |
+| Minimum     | .Min(a => a.Score) | select min([Score]) from ... |
 
-| lambda | sql | Description |
-| -- | -- | -- |
-| SqlExt.IsNull(id, 0) | isnull/ifnull/coalesce/nvl | Compatible with various databases |
-| SqlExt.DistinctCount(id) | count(distinct id) | |
-| SqlExt.GreaterThan | &gt; | Greater than |
-| SqlExt.GreaterThanOrEqual | &gt;= | Greater than or equal to |
-| SqlExt.LessThan | &lt; | Less than |
-| SqlExt.LessThanOrEqual | &lt;= | Less than or equal to |
-| SqlExt.EqualIsNull | IS NULL | Is NULL |
-| SqlExt.Case(dictionary) | case when .. end | Case based on dictionary |
-| SqlExt.GroupConcat | group_concat(distinct .. order by .. separator ..) | MySql |
-| SqlExt.FindInSet | find_in_set(str, strlist) | MySql |
-| SqlExt.StringAgg | string_agg(.., ..) | PostgreSQL |
-| SqlExt.Rank().Over().PartitionBy().ToValue() | rank() over(partition by xx) | Window function |
-| SqlExt.DenseRank().Over().PartitionBy().ToValue() | dense_rank() over(partition by xx) | |
-| SqlExt.Count(id).Over().PartitionBy().ToValue() | count(id) over(partition by xx) | |
-| SqlExt.Sum(id).Over().PartitionBy().ToValue() | sum(id) over(partition by xx) | |
-| SqlExt.Avg(id).Over().PartitionBy().ToValue() | avg(id) over(partition by xx) | |
-| SqlExt.Max(id).Over().PartitionBy().ToValue() | max(id) over(partition by xx) | |
-| SqlExt.Min(id).Over().PartitionBy().ToValue() | min(id) over(partition by xx) | |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx) | |
+| lambda                                              | sql                                                | Description                       |
+| --------------------------------------------------- | -------------------------------------------------- | --------------------------------- |
+| SqlExt.IsNull(id, 0)                                | isnull/ifnull/coalesce/nvl                         | Compatible with various databases |
+| SqlExt.DistinctCount(id)                            | count(distinct id)                                 |                                   |
+| SqlExt.GreaterThan                                  | &gt;                                               | Greater than                      |
+| SqlExt.GreaterThanOrEqual                           | &gt;=                                              | Greater than or equal to          |
+| SqlExt.LessThan                                     | &lt;                                               | Less than                         |
+| SqlExt.LessThanOrEqual                              | &lt;=                                              | Less than or equal to             |
+| SqlExt.EqualIsNull                                  | IS NULL                                            | Is NULL                           |
+| SqlExt.Case(dictionary)                             | case when .. end                                   | Case based on dictionary          |
+| SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql                             |
+| SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql                             |
+| SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL                        |
+| SqlExt.Rank().Over().PartitionBy().ToValue()        | rank() over(partition by xx)                       | Window function                   |
+| SqlExt.DenseRank().Over().PartitionBy().ToValue()   | dense_rank() over(partition by xx)                 |                                   |
+| SqlExt.Count(id).Over().PartitionBy().ToValue()     | count(id) over(partition by xx)                    |                                   |
+| SqlExt.Sum(id).Over().PartitionBy().ToValue()       | sum(id) over(partition by xx)                      |                                   |
+| SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                                   |
+| SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                                   |
+| SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                                   |
+| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                                   |
 
 ## 3. First Record in Group
 
@@ -143,12 +143,12 @@ fsql.Select<User1>()
 ```
 
 ```sql
-SELECT b.[Id], b.[Nickname] 
-FROM ( 
-    SELECT min(a.[Id]) [min] 
-    FROM [User1] a 
-    WHERE a.[Id] < 1000 
-    GROUP BY a.[Nickname] ) a 
+SELECT b.[Id], b.[Nickname]
+FROM (
+    SELECT min(a.[Id]) [min]
+    FROM [User1] a
+    WHERE a.[Id] < 1000
+    GROUP BY a.[Nickname] ) a
 INNER JOIN [User1] b ON a.[min] = b.[Id]
 ```
 
@@ -163,11 +163,12 @@ var list = fsql.Select<Topic>()
     .Aggregate(a => Convert.ToInt32("count(distinct title)"), out var count)
     .ToList();
 ```
-> SELECT count(distinct title) as1 
-FROM "Topic" a
 
-> SELECT a."Id", a."Clicks", a."Title", a."CreateTime" 
-FROM "Topic" a
+> SELECT count(distinct title) as1
+> FROM "Topic" a
+
+> SELECT a."Id", a."Clicks", a."Title", a."CreateTime"
+> FROM "Topic" a
 
 ### SqlExt.DistinctCount
 
@@ -189,8 +190,8 @@ var distinctAggregate = fsql.Select<Topic>().ToAggregate(a => new
 );
 ```
 
-> SELECT count(distinct a."Title") as1, count(distinct a."Clicks") as2 
-FROM "Topic" a
+> SELECT count(distinct a."Title") as1, count(distinct a."Clicks") as2
+> FROM "Topic" a
 
 ## 5. Navigation Property Grouping
 
@@ -223,20 +224,20 @@ var list = fsql.Select<Topic>()
 
 ## API
 
-| Method | Return Type | Parameters | Description |
-| ------------- | - | - | - |
-| ToSql            | string    |               | Returns the SQL query that will be executed                                                                                               |
-| ToList\<T\>      | List\<T\> | Lambda        | Executes the SQL query and returns a list of records for the specified fields; if no records exist, returns a list with Count 0                                                 |
-| ToList\<T\>      | List\<T\> | string field  | Executes the SQL query and returns a list of records for the field specified by `field`, which can be received as a tuple or basic type (int, string, long); if no records exist, returns a list with Count 0 |
-| ToAggregate\<T\> | List\<T\> | Lambda        | Executes the SQL query and returns aggregated results for the specified fields (suitable for cases where GroupBy is not needed)                                                    |
-| Sum              | T         | Lambda        | Specifies a column to calculate the sum                                                                                                        |
-| Min              | T         | Lambda        | Specifies a column to calculate the minimum value                                                                                                    |
-| Max              | T         | Lambda        | Specifies a column to calculate the maximum value                                                                                                    |
-| Avg              | T         | Lambda        | Specifies a column to calculate the average value                                                                                                    |
-| **Group** |
-| GroupBy | \<this\> | Lambda | Groups by selected columns, e.g., GroupBy(a => a.Name) | GroupBy(a => new{a.Name,a.Time}) |
-| GroupBy | \<this\> | string, parms | Groups by native SQL syntax, e.g., GroupBy("concat(name, @cc)", new { cc = 1 }) |
-| Having | \<this\> | string, parms | Filters aggregated conditions by native SQL syntax, e.g., Having("count(name) = @cc", new { cc = 1 }) |
-| **Members** |
-| Key              |           |               | Returns the object selected by GroupBy                                                                                               |
-| Value            |           |               | Returns the field selector for the main table or From\<T2,T3....\>                                                                            |
+| Method           | Return Type | Parameters    | Description                                                                                                                                                                                                   |
+| ---------------- | ----------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| ToSql            | string      |               | Returns the SQL query that will be executed                                                                                                                                                                   |
+| ToList\<T\>      | List\<T\>   | Lambda        | Executes the SQL query and returns a list of records for the specified fields; if no records exist, returns a list with Count 0                                                                               |
+| ToList\<T\>      | List\<T\>   | string field  | Executes the SQL query and returns a list of records for the field specified by `field`, which can be received as a tuple or basic type (int, string, long); if no records exist, returns a list with Count 0 |
+| ToAggregate\<T\> | List\<T\>   | Lambda        | Executes the SQL query and returns aggregated results for the specified fields (suitable for cases where GroupBy is not needed)                                                                               |
+| Sum              | T           | Lambda        | Specifies a column to calculate the sum                                                                                                                                                                       |
+| Min              | T           | Lambda        | Specifies a column to calculate the minimum value                                                                                                                                                             |
+| Max              | T           | Lambda        | Specifies a column to calculate the maximum value                                                                                                                                                             |
+| Avg              | T           | Lambda        | Specifies a column to calculate the average value                                                                                                                                                             |
+| **Group**        |
+| GroupBy          | \<this\>    | Lambda        | Groups by selected columns, e.g., GroupBy(a => a.Name)                                                                                                                                                        | GroupBy(a => new{a.Name,a.Time}) |
+| GroupBy          | \<this\>    | string, parms | Groups by native SQL syntax, e.g., GroupBy("concat(name, @cc)", new { cc = 1 })                                                                                                                               |
+| Having           | \<this\>    | string, parms | Filters aggregated conditions by native SQL syntax, e.g., Having("count(name) = @cc", new { cc = 1 })                                                                                                         |
+| **Members**      |
+| Key              |             |               | Returns the object selected by GroupBy                                                                                                                                                                        |
+| Value            |             |               | Returns the field selector for the main table or From\<T2,T3....\>                                                                                                                                            |

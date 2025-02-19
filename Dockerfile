@@ -1,5 +1,5 @@
 # node 构建
-FROM node:20-alpine as build-stage
+FROM node:22-alpine as build-stage
 
 ENV WORKDIR=/app
 
@@ -10,8 +10,7 @@ COPY ./ $WORKDIR/
 # 设置 node 阿里镜像
 RUN npm config set registry https://registry.npmmirror.com
 
-RUN npm i -g pnpm@next-7
-
+RUN corepack enable
 RUN pnpm install
 RUN pnpm docs:build
 RUN echo "🎉 编 🎉 译 🎉 成 🎉 功 🎉"

@@ -83,7 +83,7 @@
 
 ## v3.2.832
 
-- 修复 */表达式解析问题；#1836
+- 修复 \*/表达式解析问题；#1836
 - 修复 Extesions.Linq COUNT Distinct 生成sql错误；#1838
 - 优化 Ado读写分离存储过程默认使用从库；#1833
 - 增加 ZeroEntity 自定义异常及相关；
@@ -190,7 +190,7 @@
 - 修复 Xugu Insert + AsTable + ExecuteIdentity bug；
 - 修复 虚谷日期格式化函数映射；
 - 优化 RereadSql 支持表的其他字段使用；#1655
-  
+
 ## v3.2.802
 
 - 增加 Aop.AuditDataReader 参数属性 PropertyInfo，实现自定义拦截；
@@ -278,7 +278,7 @@
 - 增加 部分 LocalExecuteScalar Aop.CommandAfter 事件；#1481
 - 增加 QuestDB SampleBy 对准日历参数；
 - 增加 动态操作创建实体API，fsql.CodeFirst.DynamicEntity；（感谢 Daily 贡献）
-- 修复 OracleOledb 引起的读取类型问题； 
+- 修复 OracleOledb 引起的读取类型问题；
 
 ## v3.2.693
 
@@ -352,7 +352,7 @@
 - 修复 HzyTuple 嵌套解析问题；#1390
 - 修复 AsType 表达式解析问题；#1389
 - 修复 pgsql OnConflictDoUpdate 临时主键问题；#1393
-- 修复 ClickHouse 联表查询 GLOBAL left join、Ado.Query * 问题；#1383
+- 修复 ClickHouse 联表查询 GLOBAL left join、Ado.Query \* 问题；#1383
 - 优化 ClickHouse like 为 positionCaseInsensitive #1386
 - 优化 JsonMap 对基础类型的无效判断；#1385
 - 优化 IUpdate 批量 case when 同值的 SQL 生成；#1393
@@ -370,7 +370,7 @@
 ## v3.2.684
 
 - **修复 Firebird CodeFirst.SyncStructure 自增主键错误；(受影响版本 3.2.666-3.2.683)**
-- 修复 Firebird \[Index("{tablename}_Name" 分表索引名未处理的 bug；#1346
+- 修复 Firebird \[Index("{tablename}\_Name" 分表索引名未处理的 bug；#1346
 - 修复 InsertDict DBNull.Value 值无法插入的问题；#1336
 - 修复 fsql.InsertOrUpdate SetSource(sql) 无效的 bug；
 - 优化 string[].Any(..) 表达式树解析；ReplaceParameterVisitor
@@ -518,11 +518,11 @@
 ## v3.2.651
 
 - **增加 DTO 映射非导航属性的子表查询 ToList，可直接返回集合；**
-- 增加 Array.Any(x => x.id == a.Id && ..) 表达式树解析；[#243](https://github.com/dotnetcore/FreeSql/issues/243)  
-- 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100) 
+- 增加 Array.Any(x => x.id == a.Id && ..) 表达式树解析；[#243](https://github.com/dotnetcore/FreeSql/issues/243)
+- 增加 pgsql numeric -> BigInteger 映射；[#1100](https://github.com/dotnetcore/FreeSql/issues/1100)
 - 增加 [#1108](https://github.com/dotnetcore/FreeSql/issues/1108) Exception 国际化；
-- 增加 DynamicFilterCustom 参数 object sender；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113) 
-- 增加 Fluent API 以继承接口的形式配置实体；[#937](https://github.com/dotnetcore/FreeSql/issues/937) 
+- 增加 DynamicFilterCustom 参数 object sender；[#1113](https://github.com/dotnetcore/FreeSql/issues/1113)
+- 增加 Fluent API 以继承接口的形式配置实体；[#937](https://github.com/dotnetcore/FreeSql/issues/937)
 - 修复 Oracle AsTable 分表嵌套 SQL 拼错错误；[#1098](https://github.com/dotnetcore/FreeSql/issues/1098)
 - 修复 AsTable ManyToMany IncludeMany 无效的问题；[#1103](https://github.com/dotnetcore/FreeSql/issues/1103)
 - 修复 AsTable 分表 ToAggregate 无法得到汇总；[#1115](https://github.com/dotnetcore/FreeSql/issues/1115)

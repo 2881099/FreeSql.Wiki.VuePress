@@ -1,5 +1,5 @@
 ---
-title:  QuestDB
+title: QuestDB
 ---
 
 ## 介绍
@@ -30,7 +30,7 @@ Install-Package FreeSql.Provider.QuestDb
 static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
     .UseConnectionString(FreeSql.DataType.QuestDb,
        @"host=localhost;port=8812;username=admin;password=quest;database=qdb;ServerCompatibilityMode=NoTypeLoading;")  //连接字符串
-    .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}")) 
+    .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
     .UseQuestDbRestAPI("localhost:9000", "username", "password")  //RestAPI，建议开启
     .Build();
 ```
@@ -126,7 +126,7 @@ fsql.Select<Table>()
 ```sql
 SELECT  a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx", a."xxx"
 FROM "Table" a
-LATEST ON a.xxxx  PARTITION BY a.xxxx 
+LATEST ON a.xxxx  PARTITION BY a.xxxx
 ```
 
 #### BulkCopy
@@ -149,12 +149,12 @@ fsql.Insert(list).ExecuteBulkCopyAsync();
 class Table
 {
     //索引类型必须是symbol
-    [Column(DbType = "symbol")] 
+    [Column(DbType = "symbol")]
     public string Id { get; set; }
     public string Name { get; set; }
     public double? Activos { get; set; }
-    //按天分表 
-    [AutoSubtable(SubtableType.Day)] 
+    //按天分表
+    [AutoSubtable(SubtableType.Day)]
     //特性标记类型必须是DateTime
     public DateTime? CreateTime { get; set; }
     public bool? IsCompra { get; set; }
@@ -163,18 +163,18 @@ class Table
 
 ## 常见问题
 
-####  table busy
+#### table busy
 
 **多线程并发查询时会出现 table busy [reason=insert] 异常**
 
-[官网说明 | table busy  ](https://questdb.io/docs/troubleshooting/faq/#why-do-i-get-table-busy-error-messages-when-inserting-data-over-postgresql-wire-protocol)
+[官网说明 | table busy ](https://questdb.io/docs/troubleshooting/faq/#why-do-i-get-table-busy-error-messages-when-inserting-data-over-postgresql-wire-protocol)
 
 > 解决方案，启用RestAPI后 Insert/Update就会默认使用HTTP方式
 
 ```csharp
 //在FreeSqlBuilder增加UseQuestDbRestAPI()
 new FreeSql.FreeSqlBuilder()
-    .UseQuestDbRestAPI("localhost:9000", "username", "password") 
+    .UseQuestDbRestAPI("localhost:9000", "username", "password")
 ```
 
 注意：RestAPI 不经过 ado.net，因为不触发 UseMonitorCommand/Aop.CommandBefore/After 等事件
@@ -197,12 +197,12 @@ QuestDb WebConsole并不支持设置账号密码，但是官网给出解决方�
 - Trades: live crytocurrency market data with 30M+ rows per month
 - Pos: geolocations of 250k unique ships over time
 
-| Query                                                        | Execution time                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| SELECT sum(double) FROM trips                                | [0.15 secs](https://demo.questdb.io/?query=SELECT sum(trip_distance) FROM trips;&executeQuery=true) |
-| SELECT sum(double), avg(double) FROM trips                   | [0.5 secs](https://demo.questdb.io/?query=SELECT sum(fare_amount), avg(fare_amount) FROM trips;&executeQuery=true) |
-| SELECT avg(double) FROM trips WHERE time in '2019'           | [0.02 secs](https://demo.questdb.io/?query=SELECT avg(trip_distance) FROM trips WHERE pickup_datetime IN '2019';&executeQuery=true) |
+| Query                                                                       | Execution time                                                                                                                                                          |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SELECT sum(double) FROM trips                                               | [0.15 secs](https://demo.questdb.io/?query=SELECT sum(trip_distance) FROM trips;&executeQuery=true)                                                                     |
+| SELECT sum(double), avg(double) FROM trips                                  | [0.5 secs](https://demo.questdb.io/?query=SELECT sum(fare_amount), avg(fare_amount) FROM trips;&executeQuery=true)                                                      |
+| SELECT avg(double) FROM trips WHERE time in '2019'                          | [0.02 secs](https://demo.questdb.io/?query=SELECT avg(trip_distance) FROM trips WHERE pickup_datetime IN '2019';&executeQuery=true)                                     |
 | SELECT time, avg(double) FROM trips WHERE time in '2019-01-01' SAMPLE BY 1h | [0.01 secs](https://demo.questdb.io/?query=SELECT pickup_datetime, avg(trip_distance) FROM trips WHERE pickup_datetime IN '2019-01-01' SAMPLE BY 1h;&executeQuery=true) |
-| SELECT * FROM trades LATEST ON time PARTITION BY symbol      | [0.00025 secs](https://demo.questdb.io/?query=SELECT * FROM trades LATEST ON timestamp PARTITION BY symbol;&executeQuery=true) |
+| SELECT \* FROM trades LATEST ON time PARTITION BY symbol                    | [0.00025 secs](https://demo.questdb.io/?query=SELECT \* FROM trades LATEST ON timestamp PARTITION BY symbol;&executeQuery=true)                                         |
 
-Our demo is running on `c5.metal` instance and using 24 cores out of 
+Our demo is running on `c5.metal` instance and using 24 cores out of

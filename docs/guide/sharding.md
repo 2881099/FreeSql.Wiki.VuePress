@@ -86,14 +86,14 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
     fsql.CodeFirst.SyncStructure(typeof(AsTableLog), tableName);
 ```
 
-| 示范 | 说明 |
-| -- | -- | 
-| AsTable = "createtime=2022-1-1(1 year)" | 一年一个分表 |
-| AsTable = "createtime=2022-1-1(2 year)" | 两年一个分表 |
-| AsTable = "createtime=2022-1-1(1 month)" | 一月一个分表 |
-| AsTable = "createtime=2022-1-1(3 month)" | 三月一个分表 |
-| AsTable = "createtime=2022-1-1(1 day)" | 一天一个分表 |
-| AsTable = "createtime=2022-1-1(7 day)" | 七天一个分表 |
+| 示范                                     | 说明           |
+| ---------------------------------------- | -------------- |
+| AsTable = "createtime=2022-1-1(1 year)"  | 一年一个分表   |
+| AsTable = "createtime=2022-1-1(2 year)"  | 两年一个分表   |
+| AsTable = "createtime=2022-1-1(1 month)" | 一月一个分表   |
+| AsTable = "createtime=2022-1-1(3 month)" | 三月一个分表   |
+| AsTable = "createtime=2022-1-1(1 day)"   | 一天一个分表   |
+| AsTable = "createtime=2022-1-1(7 day)"   | 七天一个分表   |
 | AsTable = "createtime=2022-1-1(12 hour)" | 12小时一个分表 |
 
 第一个表12个月，后面的表按1个月：
@@ -106,7 +106,7 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 每个月1日10点分表：
 
-> \[Table(Name = "as_table_log_{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
+> \[Table(Name = "as*table_log*{yyyyMMddHH}", AsTable = "createtime=2022-1-1 10(1 month)")\]
 
 未设置时间条件时，只命中最新的 3个分表：
 
@@ -114,7 +114,7 @@ if (fsql.DbFirst.ExistsTable(tableName) == false)
 
 详细介绍：[https://github.com/dotnetcore/FreeSql/discussions/1066](https://github.com/dotnetcore/FreeSql/discussions/1066)
 
-分表场景的索引可以这样：\[Index("{tablename}_idx_01", "phone")\]
+分表场景的索引可以这样：\[Index("{tablename}\_idx_01", "phone")\]
 
 ## 【分库】常规技巧
 
