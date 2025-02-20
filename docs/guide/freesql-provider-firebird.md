@@ -38,4 +38,4 @@ static IFreeSql fsql = new FreeSql.FreeSqlBuilder()
 
 ## 嵌入式例子
 
-[freesql_firebird_embed.zip](https://github.com/user-attachments/files/18747494/freesql_firebird_embed.zip)
+[freesql_firebird_embed.zip](https://github.com/user-attachments/files/18879676/freesql_firebird_embed.zip)
