@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 19 Feb 2025 03:02:31 GMT</pubDate>
-    <lastBuildDate>Wed, 19 Feb 2025 03:02:31 GMT</lastBuildDate>
+    <pubDate>Thu, 20 Feb 2025 02:01:35 GMT</pubDate>
+    <lastBuildDate>Thu, 20 Feb 2025 02:01:35 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -239,7 +239,7 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    .</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">UseAutoSyncStructure</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">true</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//自动创建表</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    .</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Build</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">();</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>嵌入式例子</h2>
-<p><a href="https://github.com/user-attachments/files/18747494/freesql_firebird_embed.zip" target="_blank" rel="noopener noreferrer">freesql_firebird_embed.zip</a></p>
+<p><a href="https://github.com/user-attachments/files/18879676/freesql_firebird_embed.zip" target="_blank" rel="noopener noreferrer">freesql_firebird_embed.zip</a></p>
 ]]></content:encoded>
     </item>
     <item>
