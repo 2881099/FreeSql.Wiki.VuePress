@@ -2,6 +2,15 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.107
+
+- 修复 ISelectGroupingAggregate 自定义解析方法报错的问题；
+- 修复 Custom/Odbc char CodeFirst 映射问题；
+- 修复 AggregateRoot CompareEntityValue 错误；
+- 优化 AggregateRoot MapEntityValue 支持将实体映射到字典；
+- 优化 AggregateRoot 不对比 CanUpdate = false 的字段 ；
+- 优化 多对多中间表主键配置错误的友好提醒；
+
 ## v3.5.106
 
 - 增加 sqlite 批量插入方式 ExecuteSqliteBulkInsert；#1975
