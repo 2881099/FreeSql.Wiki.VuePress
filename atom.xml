@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-04T13:09:53.976Z</updated>
+  <updated>2025-03-06T04:40:42.440Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -4821,7 +4821,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
     <title type="text">分组聚合</title>
     <id>https://freesql.net/guide/select-group-by.html</id>
     <link href="https://freesql.net/guide/select-group-by.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-03-06T04:39:53.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//如何创建请移步入门文档</span></span>
 <span class="line"></span>
