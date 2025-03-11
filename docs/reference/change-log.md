@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.108
+
+- 修复 DbSet/Repository CompareState 报错的问题；#1994
+- 增加 ISelect.GroupBySelf 返回 ISelect；
+
 ## v3.5.107
 
 - 修复 ISelectGroupingAggregate 自定义解析方法报错的问题；
