@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-06T04:40:42.440Z</updated>
+  <updated>2025-03-11T12:30:45.953Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9024,9 +9024,14 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-03-04T13:08:52.000Z</updated>
+    <updated>2025-03-11T12:29:50.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.108</h2>
+<ul>
+<li>修复 DbSet/Repository CompareState 报错的问题；#1994</li>
+<li>增加 ISelect.GroupBySelf 返回 ISelect；</li>
+</ul>
 <h2>v3.5.107</h2>
 <ul>
 <li>修复 ISelectGroupingAggregate 自定义解析方法报错的问题；</li>
@@ -9038,6 +9043,11 @@ class table {...}</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.108</h2>
+<ul>
+<li>修复 DbSet/Repository CompareState 报错的问题；#1994</li>
+<li>增加 ISelect.GroupBySelf 返回 ISelect；</li>
+</ul>
 <h2>v3.5.107</h2>
 <ul>
 <li>修复 ISelectGroupingAggregate 自定义解析方法报错的问题；</li>
