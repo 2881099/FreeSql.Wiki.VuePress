@@ -120,6 +120,62 @@ fsql1.Aop.ConfigEntityProperty += (s, e) =>
 };
 ```
 
+### 字典表应用
+
+```csharp
+[MapTable(typeof(SysParam), nameof(SysParam.Value), "001")]
+class Param001
+{
+    [Column(Name = "Value2")]
+    public string Name { get; set; }
+    [Column(Name = "Value3")]
+    public int Age { get; set; }
+}
+fsql.Select<Param001>().ToList();
+//SELECT * FROM SysParam WHERE Value = '001'
+
+public class SysParam
+{
+    public int Id { get; set; }
+    public string Value { get; set; }
+    public string Value2 { get; set; }
+    public string Value3 { get; set; }
+    //...
+}
+
+//实现关键
+fsql.Aop.ConfigEntity += (s, e) =>
+{
+    var attr = e.EntityType.GetCustomAttribute<MapTableAttribute>();
+    if (attr != null)
+    {
+        var dbname = (fsql.CodeFirst as CodeFirstProvider)._commonUtils.GetEntityTableAttribute(attr.Type).Name;
+        var prop = attr.Type.GetProperty(attr.PropertyName);
+        var propValue = Utils.GetDataReaderValue(prop.PropertyType, attr.PropertyValue);
+        e.ModifyResult.Name = dbname;
+        e.ModifyResult.DisableSyncStructure = true;
+        var paramExp = Expression.Parameter(e.EntityType);
+        var lambdaExp = Expression.Lambda(typeof(Func<,>).MakeGenericType(e.EntityType, typeof(bool)),
+            Expression.Equal(Expression.MakeMemberAccess(Expression.TypeAs(paramExp, attr.Type), prop), Expression.Constant(propValue)), paramExp);
+        var applyOnly = fsql.GlobalFilter.GetType().GetMethods().Where(a => a.Name == "ApplyOnly").FirstOrDefault();
+        applyOnly.MakeGenericMethod(e.EntityType).Invoke(fsql.GlobalFilter, new object[] { $"MapTable_filter_{e.EntityType.FullName}", lambdaExp, false });
+    }
+};
+public class MapTableAttribute : Attribute
+{
+    public Type Type { get; set; }
+    public string PropertyName { get; set; }
+    public object PropertyValue { get; set; }
+
+    public MapTableAttribute(Type type = null, string propertyName = null, object propertyValue = null)
+    {
+        Type = type;
+        PropertyName = propertyName;
+        PropertyValue = propertyValue;
+    }
+}
+```
+
 ### 自定义实体特性
 
 比如项目内已经使用了其它 orm，如 efcore，这样意味着实体中可能存在 [Key]，但它与 FreeSql [Column(IsPrimary = true] 不同。
