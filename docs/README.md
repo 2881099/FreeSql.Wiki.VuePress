@@ -69,23 +69,8 @@ footer: MIT Licensed | Copyright © 2018-present nicye
 
 > 扫码捐助请作者喝一杯咖啡
 
-<div class="vp-donation">
-    <div class="vp-donation-item">
-        <img src="/barcode_2x1.png" style="width:400px;height:255px;" />
-    </div>
-    <div class="vp-donation-item">
-        <a style="margin-left:20px;cursor:pointer" target="_blank" href="https://curl.qcloud.com/lj8Rbc9Y">
-            <img src="/rhino-design.png" style="width:400px;" />
-            <h4>【腾讯云】2核2G云服务器新老同享 99元/年，续费同价</h4>
-        </a>
-    </div> 
-    <div class="vp-donation-item">
-        <a style="margin-left:20px;cursor:pointer" target="_blank" href="https://t.aliyun.com/U/rs0mOj">
-            <img src="/aliyun.png" style="width:400px;" />
-            <h4>【阿里云】云服务器经济型e实例/2核2G/3M/40g，新人专享渠道特惠价只要99元！</h4>
-        </a> 
-    </div> 
-</div>
+<img src="/barcode_2x1.png" style="width:400px;height:255px;" />
+
 
 ## 👯 Contributors (贡献者)
 
