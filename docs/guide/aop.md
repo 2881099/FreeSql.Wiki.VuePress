@@ -122,6 +122,8 @@ fsql1.Aop.ConfigEntityProperty += (s, e) =>
 
 ### 字典表应用
 
+利用 全局过滤器 + Aop 实现如下效果：
+
 ```csharp
 [MapTable(typeof(SysParam), nameof(SysParam.Value), "001")]
 class Param001
@@ -132,7 +134,7 @@ class Param001
     public int Age { get; set; }
 }
 fsql.Select<Param001>().ToList();
-//SELECT * FROM SysParam WHERE Value = '001'
+//SELECT Value2, Value3 FROM SysParam WHERE Value = '001'
 
 public class SysParam
 {
@@ -142,39 +144,9 @@ public class SysParam
     public string Value3 { get; set; }
     //...
 }
-
-//实现关键
-fsql.Aop.ConfigEntity += (s, e) =>
-{
-    var attr = e.EntityType.GetCustomAttribute<MapTableAttribute>();
-    if (attr != null)
-    {
-        var dbname = (fsql.CodeFirst as CodeFirstProvider)._commonUtils.GetEntityTableAttribute(attr.Type).Name;
-        var prop = attr.Type.GetProperty(attr.PropertyName);
-        var propValue = Utils.GetDataReaderValue(prop.PropertyType, attr.PropertyValue);
-        e.ModifyResult.Name = dbname;
-        e.ModifyResult.DisableSyncStructure = true;
-        var paramExp = Expression.Parameter(e.EntityType);
-        var lambdaExp = Expression.Lambda(typeof(Func<,>).MakeGenericType(e.EntityType, typeof(bool)),
-            Expression.Equal(Expression.MakeMemberAccess(Expression.TypeAs(paramExp, attr.Type), prop), Expression.Constant(propValue)), paramExp);
-        var applyOnly = fsql.GlobalFilter.GetType().GetMethods().Where(a => a.Name == "ApplyOnly").FirstOrDefault();
-        applyOnly.MakeGenericMethod(e.EntityType).Invoke(fsql.GlobalFilter, new object[] { $"MapTable_filter_{e.EntityType.FullName}", lambdaExp, false });
-    }
-};
-public class MapTableAttribute : Attribute
-{
-    public Type Type { get; set; }
-    public string PropertyName { get; set; }
-    public object PropertyValue { get; set; }
-
-    public MapTableAttribute(Type type = null, string propertyName = null, object propertyValue = null)
-    {
-        Type = type;
-        PropertyName = propertyName;
-        PropertyValue = propertyValue;
-    }
-}
 ```
+
+实现参考：https://github.com/dotnetcore/FreeSql/issues/1997
 
 ### 自定义实体特性
 
