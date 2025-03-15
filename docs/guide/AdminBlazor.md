@@ -82,9 +82,10 @@ void ButtonClick()
 
 - 待提交/反审，可修改/删除
 - 审核中/通过，不可修改/删除
-- EntityAudited 有版本管理功能，审计历史变化
+- EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）
 
 ![image](/adminblazor/006.png)
+![image](/adminblazor/007.png)
 
 ## 租户
 
