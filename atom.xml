@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-15T16:03:52.132Z</updated>
+  <updated>2025-03-15T16:26:51.004Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -378,7 +378,7 @@
     <title type="text">AdminBlazor</title>
     <id>https://freesql.net/guide/AdminBlazor.html</id>
     <link href="https://freesql.net/guide/AdminBlazor.html"/>
-    <updated>2025-03-15T15:56:44.000Z</updated>
+    <updated>2025-03-15T16:25:52.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。</p>
@@ -454,6 +454,19 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
 <figure><img src="/adminblazor/003.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<h2>审批</h2>
+<ul>
+<li>实体类继承 EntityAudited</li>
+<li>菜单编辑选择 【审批】</li>
+</ul>
+<figure><img src="/adminblazor/005.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<ul>
+<li>待提交/反审，可修改/删除</li>
+<li>审核中/通过，不可修改/删除</li>
+<li>EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）</li>
+</ul>
+<p><img src="/adminblazor/006.png" alt="image" loading="lazy">
+<img src="/adminblazor/007.png" alt="image" loading="lazy"></p>
 <h2>租户</h2>
 <p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> AdminContext</span></span>
