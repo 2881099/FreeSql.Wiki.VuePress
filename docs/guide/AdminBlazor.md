@@ -93,7 +93,7 @@ class XxxController : ControllerBase
 ![image](/adminblazor/005.png)
 
 - 待提交/反审，可修改/删除
-- 审核中/通过，不可修改/删除
+- 审核中/通过，已锁定业务数据，不可修改/删除
 - EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）
 
 ![image](/adminblazor/006.png)
