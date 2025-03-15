@@ -21,6 +21,8 @@ AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单
 
 > dotnet new admin
 
+> 项目结构简洁（没有过多的分层）
+
 3. 运行访问
 
 > http://localhost:5231
@@ -66,6 +68,16 @@ class AdminContext
 [AdminButton("name")]
 void ButtonClick()
 {
+}
+
+//或者 webapi
+[Route("api/菜单路么")]
+class XxxController : ControllerBase
+{
+    [HttpGet("@name")]
+    public JsonResult ButtonClick()
+    {
+    }
 }
 ```
 
