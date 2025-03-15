@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-15T15:56:15.128Z</updated>
+  <updated>2025-03-15T15:56:49.566Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -378,15 +378,15 @@
     <title type="text">AdminBlazor</title>
     <id>https://freesql.net/guide/AdminBlazor.html</id>
     <link href="https://freesql.net/guide/AdminBlazor.html"/>
-    <updated>2025-03-15T15:55:07.000Z</updated>
+    <updated>2025-03-15T15:55:50.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。</p>
 <p>集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <ul>
-<li>免费版: https://gitee.com/FreeSql/AdminBlazor</li>
-<li>高级版：暂不开源</li>
+<li>老版本: https://gitee.com/FreeSql/AdminBlazor</li>
+<li>新版本：暂不开源</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <h2>项目介绍</h2>
@@ -394,8 +394,8 @@
 <p>集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <ul>
-<li>免费版: https://gitee.com/FreeSql/AdminBlazor</li>
-<li>高级版：暂不开源</li>
+<li>老版本: https://gitee.com/FreeSql/AdminBlazor</li>
+<li>新版本：暂不开源</li>
 </ul>
 <h2>快速开始</h2>
 <ol>
