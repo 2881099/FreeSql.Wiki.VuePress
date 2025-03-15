@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 15 Mar 2025 15:56:49 GMT</pubDate>
-    <lastBuildDate>Sat, 15 Mar 2025 15:56:49 GMT</lastBuildDate>
+    <pubDate>Sat, 15 Mar 2025 15:57:48 GMT</pubDate>
+    <lastBuildDate>Sat, 15 Mar 2025 15:57:48 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -351,7 +351,7 @@
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <ul>
 <li>老版本: https://gitee.com/FreeSql/AdminBlazor</li>
-<li>新版本：暂不开源</li>
+<li>新版本：暂不开源（商业技术支持）</li>
 </ul>
 <h2>快速开始</h2>
 <ol>
