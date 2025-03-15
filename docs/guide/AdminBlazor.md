@@ -71,7 +71,7 @@ void ButtonClick()
 }
 
 //或者 webapi
-[Route("api/菜单路么")]
+[Route("api/菜单路径")]
 class XxxController : ControllerBase
 {
     [HttpGet("@name")]
