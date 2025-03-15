@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 13 Mar 2025 02:04:22 GMT</pubDate>
-    <lastBuildDate>Thu, 13 Mar 2025 02:04:22 GMT</lastBuildDate>
+    <pubDate>Sat, 15 Mar 2025 15:56:15 GMT</pubDate>
+    <lastBuildDate>Sat, 15 Mar 2025 15:56:15 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -342,23 +342,17 @@
       <link>https://freesql.net/guide/AdminBlazor.html</link>
       <guid>https://freesql.net/guide/AdminBlazor.html</guid>
       <source url="https://freesql.net/rss.xml">AdminBlazor</source>
-      <description>AdminBlazor 项目介绍 AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。 集成功能：菜单、角色、用户、定时任务、数据字典、租户 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rou...</description>
+      <description>AdminBlazor 项目介绍 AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。 集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计 依赖组件：BootstrapBlazor、Free...</description>
       <pubDate>Wed, 31 Jan 2024 07:25:26 GMT</pubDate>
       <content:encoded><![CDATA[
 <h2>项目介绍</h2>
-<p>AdminBlazor 是一款 Blazor Server SaaS 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。</p>
-<p>集成功能：菜单、角色、用户、定时任务、数据字典、租户</p>
+<p>AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。</p>
+<p>集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <ul>
-<li>github: https://github.com/2881099/AdminBlazor</li>
-<li>gitee: https://gitee.com/FreeSql/AdminBlazor</li>
+<li>免费版: https://gitee.com/FreeSql/AdminBlazor</li>
+<li>高级版：暂不开源</li>
 </ul>
-<p>正常更新一行记录</p>
-<ul>
-<li>vue -&gt; webapi orm 查询数据 -&gt; 转成 dto 返回 -&gt; 绑定 js 对象 -&gt; 前端提交时把 js 对象转成 http post DTO -&gt; webapi 获取 dto 转成实体对象 -&gt; orm.Update() -&gt; 更新成功</li>
-<li>blazor server -&gt; orm 查询数据 item -&gt; item 与 html 控件双向绑定 -&gt; 前端提交时 orm.Update(item) -&gt; 更新成功</li>
-</ul>
-<p>自己体会一下。。~~</p>
 <h2>快速开始</h2>
 <ol>
 <li>安装模板</li>
@@ -376,38 +370,38 @@
 <li>运行访问</li>
 </ol>
 <blockquote>
-<p>http://localhost:5231/Admin</p>
+<p>http://localhost:5231</p>
 </blockquote>
-<p>用户名：admin 密码：freesql</p>
+<p>用户名：admin 密码：admin</p>
 <ol start="4">
 <li>新建菜单，类型选择增删改查</li>
 </ol>
-<figure><img src="/adminblazor/01.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/001.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <ol start="5">
 <li>生成代码，在实体类型维护注释、导航属性</li>
 </ol>
 <ul>
 <li>实体上的注释，会生成 HTML Label</li>
 <li>实体上的导航属性，会生成丰富的 UI</li>
-<li>创建实体类型，建议继承 Entity/EntityCreated/EntityModifed</li>
+<li>创建实体类型，建议继承 Entity/EntityCreated/EntityModifed/EntityAudited</li>
 </ul>
-<figure><img src="/adminblazor/02.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/002.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>权限</h2>
 <ul>
-<li>UserEntity 多对多 RoleEntity</li>
-<li>RoleEntity 多对多 MenuEntity</li>
+<li>SysUser 多对多 SysRole</li>
+<li>SysRole 多对多 SysMenu</li>
 </ul>
 <p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> AdminContext</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
 <span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> IServiceProvider</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> Service</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> UserEntity</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> User</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">set</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">RoleEntity</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">Roles</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">MenuEntity</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">RoleMenus</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> SysUser</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> User</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">set</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">SysRole</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">Roles</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">SysMenus</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">RoleMenus</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    //路由、按钮权限验证</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Task</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">bool</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">AuthPath</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">string</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Task</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">bool</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">AuthButton</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">string</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> bool</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> AuthPath</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">string</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> bool</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> AuthButton</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">string</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>按钮权限，在 razor 中设置特性：</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">AdminButton</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"name"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
@@ -415,13 +409,13 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
-<figure><img src="/adminblazor/03.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/003.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>租户</h2>
 <p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> AdminContext</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
 <span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> IServiceProvider</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> Service</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
-<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> TenantEntity</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> Tenant</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> SysTenant</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> Tenant</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每个租户独立数据库，注入方式：</p>
 <ul>
@@ -432,7 +426,7 @@
 <p>FreeSqlCloud API 访问方式与 IFreeSql 一样
 IAggregateRootRepository 是级联操作友好的仓储模式</p>
 </blockquote>
-<figure><img src="/adminblazor/04.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/004.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>定时任务</h2>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Scheduler</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"任务1"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"0/30 * * * * *"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
 <span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">static</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> void</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Scheduler001</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
@@ -455,13 +449,10 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>组件</h2>
 <p>以下几个是 AdminBlazor 封装的组件，更多丰富的 UI 组件可以看：BootstrapBlazor</p>
 <h3>1. 增删改查 AdminTable2&lt;TItem&gt;</h3>
-<blockquote>
-<p>使用 FreeSql 对实体类型 TItem 增删改查</p>
-</blockquote>
 <p>| 名称                                                        | 说明                            |
 |</p>
 ]]></content:encoded>
-      <enclosure url="https://freesql.net/adminblazor/01.png" type="image/png"/>
+      <enclosure url="https://freesql.net/adminblazor/001.png" type="image/png"/>
     </item>
     <item>
       <title>低代码</title>
