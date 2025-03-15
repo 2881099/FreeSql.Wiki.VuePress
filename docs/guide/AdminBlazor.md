@@ -9,7 +9,7 @@ AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单
 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
 
 - 老版本: https://gitee.com/FreeSql/AdminBlazor
-- 新版本：暂不开源
+- 新版本：暂不开源（商业技术支持）
 
 ## 快速开始
 
