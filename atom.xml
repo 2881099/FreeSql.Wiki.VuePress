@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-15T15:57:48.364Z</updated>
+  <updated>2025-03-15T16:03:52.132Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1366,34 +1366,20 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
     <title type="text">FreeSql.AdminLTE</title>
     <id>https://freesql.net/guide/freesqladminlte.html</id>
     <link href="https://freesql.net/guide/freesqladminlte.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-03-15T16:02:54.000Z</updated>
     <summary type="html"><![CDATA[
 <p>它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。</p>
 <blockquote>
-<p>dotnet add packages FreeSql.AdminLTE.Preview</p>
+<p>推荐使用：<a href="AdminBlazor">AdminBlazor</a> 集成了菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计等功能。</p>
 </blockquote>
-<p>输入：实体1、实体2、实体3</p>
-<p>输出：后台管理的功能</p>
-<div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">app</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">UseFreeAdminLtePreview</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Config</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Role</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Menu</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">User</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Department</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Employee</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Position</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">AppLog</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">LoginLog</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">OprationLog</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">FreeScheduler</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TaskInfo</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">),</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    typeof</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">FreeScheduler</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TaskLog</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></summary>
+<blockquote>
+<p>dotnet add packages FreeSql.AdminLTE.Preview</p>
+</blockquote>]]></summary>
     <content type="html"><![CDATA[
 <p>它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。</p>
+<blockquote>
+<p>推荐使用：<a href="AdminBlazor">AdminBlazor</a> 集成了菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计等功能。</p>
+</blockquote>
 <blockquote>
 <p>dotnet add packages FreeSql.AdminLTE.Preview</p>
 </blockquote>
@@ -1585,7 +1571,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
     <title type="text">其他作品</title>
     <id>https://freesql.net/guide/otherworks.html</id>
     <link href="https://freesql.net/guide/otherworks.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-03-15T16:02:54.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有：</p>
 <table>

@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 15 Mar 2025 15:57:48 GMT</pubDate>
-    <lastBuildDate>Sat, 15 Mar 2025 15:57:48 GMT</lastBuildDate>
+    <pubDate>Sat, 15 Mar 2025 16:03:52 GMT</pubDate>
+    <lastBuildDate>Sat, 15 Mar 2025 16:03:52 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1291,10 +1291,13 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
       <link>https://freesql.net/guide/freesqladminlte.html</link>
       <guid>https://freesql.net/guide/freesqladminlte.html</guid>
       <source url="https://freesql.net/rss.xml">FreeSql.AdminLTE</source>
-      <description>FreeSql.AdminLTE 它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。 dotnet add packages FreeSql.AdminLTE.Preview 输入：实体1、实体2、实体3 输出：...</description>
+      <description>FreeSql.AdminLTE 它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。 推荐使用：AdminBlazor 集成了菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计等功能。 d...</description>
       <pubDate>Tue, 30 Aug 2022 23:01:53 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。</p>
+<blockquote>
+<p>推荐使用：<a href="AdminBlazor">AdminBlazor</a> 集成了菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计等功能。</p>
+</blockquote>
 <blockquote>
 <p>dotnet add packages FreeSql.AdminLTE.Preview</p>
 </blockquote>
@@ -1473,7 +1476,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
       <link>https://freesql.net/guide/otherworks.html</link>
       <guid>https://freesql.net/guide/otherworks.html</guid>
       <source url="https://freesql.net/rss.xml">其他作品</source>
-      <description>其他作品 FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有： 更早的作品可以直接访问 https://github.com/2881099 查看。 csredis .NET Core or .NET Framework 4.0+ client for Redis and Redis Sentinel (2.8) and Clust...</description>
+      <description>其他作品 FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有： 更早的作品可以直接访问 https://github.com/2881099 查看。 AdminBlazor AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的...</description>
       <pubDate>Tue, 30 Aug 2022 05:35:49 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有：</p>
