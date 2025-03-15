@@ -73,6 +73,19 @@ void ButtonClick()
 
 ![image](/adminblazor/003.png)
 
+## 审批
+
+- 实体类继承 EntityAudited
+- 菜单编辑选择 【审批】
+
+![image](/adminblazor/005.png)
+
+- 待提交/反审，可修改/删除
+- 审核中/通过，不可修改/删除
+- EntityAudited 有版本管理功能，审计历史变化
+
+![image](/adminblazor/006.png)
+
 ## 租户
 
 提示：AdminContext 类型已注入为 Scoped
