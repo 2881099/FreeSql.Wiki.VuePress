@@ -18,6 +18,17 @@ FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还�
 
 更早的作品可以直接访问 https://github.com/2881099 查看。
 
+## AdminBlazor
+
+AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。
+
+集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计
+
+依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
+
+- 老版本: https://gitee.com/FreeSql/AdminBlazor
+- 新版本：暂不开源（商业技术支持）
+
 ## csredis
 
 .NET Core or .NET Framework 4.0+ client for Redis and Redis Sentinel (2.8) and Cluster. Includes both synchronous and asynchronous clients.
@@ -53,16 +64,6 @@ FreeIM 使用 websocket 协议实现简易、高性能（单机支持5万+连接
 开源地址：[https://github.com/2881099/FreeIM](https://github.com/2881099/FreeIM)
 
 扩展资料：[《C#.NET im 聊天通讯架构设计 -- FreeIM 支持集群、职责分明、高性能》](https://www.cnblogs.com/FreeSql/p/16632727.html)
-
-## AdminBlazor
-
-AdminBlazor 是一款 Blazor SSR 后台管理项目，支持 RABC 权限菜单/按钮，支持一对一、一对多、多对多代码生成 .razor 界面。
-
-集成功能：菜单管理、角色管理、用户管理、定时任务、字典管理
-
-依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
-
-开源地址：[https://github.com/2881099/AdminBlazor](https://github.com/2881099/AdminBlazor)
 
 ## FightLandlord
 

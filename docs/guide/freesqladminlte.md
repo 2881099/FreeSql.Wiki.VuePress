@@ -2,6 +2,8 @@
 
 它是 FreeSql 衍生出来的 .NETCore MVC 中间件扩展包 FreeSql.AdminLTE.Preview.dll，基于 AdminLTE 前端框架动态产生实体的增删查改界面。
 
+> 推荐使用：[AdminBlazor](AdminBlazor) 集成了菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计等功能。
+
 > dotnet add packages FreeSql.AdminLTE.Preview
 
 输入：实体1、实体2、实体3

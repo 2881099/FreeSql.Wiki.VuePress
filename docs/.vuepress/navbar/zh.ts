@@ -32,7 +32,7 @@ export const zhNavbarConfig = navbar([
     prefix: "/guide/",
     children: [
       {
-        text: "AdminBlazor SaaS（后台管理系统）",
+        text: "AdminBlazor SaaS（中台项目）",
         link: "AdminBlazor",
       },
       {
