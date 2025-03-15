@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 15 Mar 2025 16:52:36 GMT</pubDate>
-    <lastBuildDate>Sat, 15 Mar 2025 16:52:36 GMT</lastBuildDate>
+    <pubDate>Sat, 15 Mar 2025 16:54:43 GMT</pubDate>
+    <lastBuildDate>Sat, 15 Mar 2025 16:54:43 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -434,8 +434,8 @@
 <li>审核中/通过，不可修改/删除</li>
 <li>EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）</li>
 </ul>
-<p><img src="/adminblazor/006.png" alt="image" loading="lazy">
-<img src="/adminblazor/007.png" alt="image" loading="lazy"></p>
+<figure><img src="/adminblazor/006.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/007.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>租户</h2>
 <p>提示：AdminContext 类型已注入为 Scoped</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> AdminContext</span></span>
