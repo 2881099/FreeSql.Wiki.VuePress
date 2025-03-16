@@ -17,22 +17,12 @@ export const zhNavbarConfig = navbar([
       },
       {
         text: "学习与交流",
-        children: ["faq", "donation", "awesome-freesql"],
-      },
-      {
-        text: "扩展",
-        prefix: "/extra/",
         children: [
-          "",
-          "freesql-cap",
-          "idlebus-freesql",
-          "iselect-depcopy",
-          "freesql-extensions-baseentity",
-          "freesql-auditlog",
-          "freesql-docker",
-          "issues-mysql5_5",
-          "issues-expression-groupbysum",
-          "aop-freesql-autofac",
+          "faq", "donation", "awesome-freesql",
+          {
+            text: "扩展资料",
+            link: "/extra/",
+          },
         ],
       },
     ],
