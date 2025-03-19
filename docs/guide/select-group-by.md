@@ -15,6 +15,8 @@ class Topic
 
 ## 1、单表分组
 
+> 注意：v3.5.108 GroupBySelf 返回 ISelect 而非 ISelectGrouping
+
 ```csharp
 var list = fsql.Select<Topic>()
     .GroupBy(a => new { tt2 = a.Title.Substring(0, 2), mod4 = a.Id % 4 })
@@ -95,6 +97,11 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql          |
 | SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql          |
 | SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL     |
+| SqlExt.AggregateCount                               | count()                                            | 总数           |
+| SqlExt.AggregateSum                                 | sum(id)                                            | 求和           |
+| SqlExt.AggregateAvg                                 | avg(id)                                            | 平均           |
+| SqlExt.AggregateMax                                 | max(id)                                            | 最大值         |
+| SqlExt.AggregateMin                                 | min(id)                                            | 最小值         |
 | SqlExt.Rank().Over().PartitionBy().ToValue()        | rank() over(partition by xx)                       | 开窗函数       |
 | SqlExt.DenseRank().Over().PartitionBy().ToValue()   | dense_rank() over(partition by xx)                 |                |
 | SqlExt.Count(id).Over().PartitionBy().ToValue()     | count(id) over(partition by xx)                    |                |
@@ -220,6 +227,26 @@ var list = fsql.Select<Topic>()
 var list = fsql.Select<Topic>()
     .GroupBy(a => new { a.Clicks, a.Category, a.Category.Area })
     .ToList(g => new { g.Key.Area.Name });
+```
+
+## 6、动态分组
+
+```csharp
+.GroupBy(x => new
+{
+    Field1 = req.query1 == 1 ? x.XID : null,
+    Field2 = req.query2 == 1 ? x.GID : null,
+    Field3 = req.query3 == 1 ? x.LXX : null,
+    Field4 = req.query4 == 1 ? x.DXX : null
+})
+.ToList(x => new Dto
+{
+    Field1 = x.Key.Field1,
+    Field2 = x.Key.Field2,
+    Field3 = x.Key.Field3,
+    Field4 = x.Key.Field4,
+    Total = (int)x.Sum(x.Value.Amount)
+});
 ```
 
 ## API
