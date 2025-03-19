@@ -2,6 +2,17 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.109
+
+- 忧化 GroupBySelf.Where 自动转 having；
+- 忧化 FreeSql.Provider.PostgreSQL IPostgreSQLProviderOptions 多态参数接口，设置 InsertOrUpdate 采用 MERGE INTO；
+
+在 FreeSqlBuilder().Build() 之后设置如下：
+
+```csharp
+(fsql as IPostgreSQLProviderOptions).UseMergeInto = true;
+```
+
 ## v3.5.108
 
 - 修复 DbSet/Repository CompareState 报错的问题；#1994

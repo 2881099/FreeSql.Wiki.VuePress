@@ -58,6 +58,12 @@ host    all             all             127.0.0.1/32            trust
 password_encryption_type = 1
 ```
 
+华为魔改 PostgreSQL 不支持 ON CONFLICT DO UPDATE，解决方法 FreeSqlBuilder().Build() 之后设置：
+
+```csharp
+(fsql as IPostgreSQLProviderOptions).UseMergeInto = true;
+```
+
 # 自定义适配
 
 除了上面，还提供了自定义适配更多的数据库，比如 mssql2000、db2，自定义适配将牺牲一些功能：
