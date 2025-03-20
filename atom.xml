@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-20T05:54:08.625Z</updated>
+  <updated>2025-03-20T05:58:52.331Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1597,7 +1597,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
     <title type="text">其他作品</title>
     <id>https://freesql.net/guide/otherworks.html</id>
     <link href="https://freesql.net/guide/otherworks.html"/>
-    <updated>2025-03-15T16:02:54.000Z</updated>
+    <updated>2025-03-20T05:57:57.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还有：</p>
 <table>
@@ -1674,6 +1674,12 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <td>FreeSql.DynamicProxy</td>
 <td>动态代理</td>
 <td>https://github.com/2881099/FreeSql.DynamicProxy</td>
+<td>学习用途</td>
+</tr>
+<tr>
+<td><a href="/reference/awesome-freesql.html" target="_blank">Awesome-FreeSql</a></td>
+<td>网友推荐-基于 FreeSql 的开源项目</td>
+<td>-</td>
 <td>学习用途</td>
 </tr>
 </tbody>
