@@ -15,6 +15,7 @@ FreeSql 作者是一个入行 18 年的老批，他目前写的开源项目还�
 | FreeSql.Cloud                     | 分布式tcc/saga      | https://github.com/2881099/FreeSql.Cloud        | MIT       |
 | FreeSql.AdminLTE                  | 低代码后台生成      | https://github.com/2881099/FreeSql.AdminLTE     | MIT       |
 | FreeSql.DynamicProxy              | 动态代理            | https://github.com/2881099/FreeSql.DynamicProxy | 学习用途  |
+| [Awesome-FreeSql](/reference/awesome-freesql.md)  | 网友推荐-基于 FreeSql 的开源项目 | - | 学习用途  |
 
 更早的作品可以直接访问 https://github.com/2881099 查看。
 
