@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 20 Mar 2025 05:58:52 GMT</pubDate>
-    <lastBuildDate>Thu, 20 Mar 2025 05:58:52 GMT</lastBuildDate>
+    <pubDate>Thu, 27 Mar 2025 09:06:13 GMT</pubDate>
+    <lastBuildDate>Thu, 27 Mar 2025 09:06:13 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3774,7 +3774,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/reference/donation.html</link>
       <guid>https://freesql.net/reference/donation.html</guid>
       <source url="https://freesql.net/rss.xml">特别鸣谢</source>
-      <description>特别鸣谢</description>
+      <description>特别鸣谢 🌟 我们由衷感谢 OhOhMan 为本项目提供的服务器支持！ OhOhMan 开源社区的慷慨助力为项目的稳定运行注入强大动力，特此深表感谢！</description>
       <pubDate>Tue, 09 Feb 2021 12:13:50 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>| 捐赠者              | 金额      | 时间       |
