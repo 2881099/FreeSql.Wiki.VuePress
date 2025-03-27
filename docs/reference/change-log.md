@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.200
+
+- 修复 MySql8.0.30 无法使用 ExecuteInserted 的问题；#2001
+- 修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002
+
 ## v3.5.109
 
 - 忧化 GroupBySelf.Where 自动转 having；
