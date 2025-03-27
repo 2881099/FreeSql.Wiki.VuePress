@@ -59,3 +59,11 @@
 | 与你无关            | 5000元    |
 | 看门大爷            | 1000 元   |
 | 建爽                | 200元     | 2023-12-13 |
+
+<div style="background-color: #F0F8FF; margin-top:30px; padding: 15px; border-radius: 8px; border-left: 5px solid #1E90FF;">
+  <span style="font-size: 1.2em;"><img alt="🌟" draggable="false" src="https://jsdelivr.topthink.com/npm/twemoji@latest/2/svg/1f31f.svg
+" title="发亮的星" width="18" height="18"  > 我们由衷感谢 <a href="https://www.ohohman.com" style="color: #1E90FF" rel="noopener noreferrer nofollow">OhOhMan</a> 为本项目提供的服务器支持！</span>
+
+  <a href="https://www.ohohman.com" style="color: #1E90FF" rel="noopener noreferrer nofollow">OhOhMan</a> 开源社区的慷慨助力为项目的稳定运行注入强大动力，特此深表感谢！
+</div>
+
