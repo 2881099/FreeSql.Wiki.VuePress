@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-27T15:52:19.113Z</updated>
+  <updated>2025-03-28T06:01:46.418Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3506,7 +3506,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
     <title type="text">PostgreSQL</title>
     <id>https://freesql.net/guide/freesql-provider-postgresql.html</id>
     <link href="https://freesql.net/guide/freesql-provider-postgresql.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-03-28T04:00:05.000Z</updated>
     <summary type="html"><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
 <p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
 <h2>数组、字典</h2>
