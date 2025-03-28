@@ -59,7 +59,7 @@ fsql.Select<model>().Where(a => int.Parse(a.jsonb2["key1"]["key2"].ToString()) >
 ```
 
 | lambda 表达式树函数 | PostgreSQL                               | 功能说明               |
-| ------------------- | ---------------------------------------- | ---------------------- | -------- | ------------ |
+| ------------------- | ---------------------------------------- | ---------------------- |
 | a.Count             | jsonb_array_length(coalesce(a, '[]))     | json数组类型的长度     |
 | a.Any()             | jsonb_array_length(coalesce(a, '[])) > 0 | json数组类型，是否为空 |
 | a.Contains(b)       | coalesce(a, '{}') @> b::jsonb            | json中是否包含b        |
