@@ -2,10 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.5.200
+## v3.5.201
 
-- 修复 MySql8.0.30 无法使用 ExecuteInserted 的问题；#2001
 - 修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002
+- 忧化 IDbFirst Columns 序列与数据库相同；
+- 补充 UnitOfWorkManager 支持 DbContext 托管工作单元；
 
 ## v3.5.109
 
