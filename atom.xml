@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-03-28T06:01:46.418Z</updated>
+  <updated>2025-04-01T13:44:24.933Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9058,13 +9058,14 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-03-27T15:51:26.000Z</updated>
+    <updated>2025-04-01T13:43:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.200</h2>
+<h2>v3.5.201</h2>
 <ul>
-<li>修复 MySql8.0.30 无法使用 ExecuteInserted 的问题；#2001</li>
 <li>修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002</li>
+<li>忧化 IDbFirst Columns 序列与数据库相同；</li>
+<li>补充 UnitOfWorkManager 支持 DbContext 托管工作单元；</li>
 </ul>
 <h2>v3.5.109</h2>
 <ul>
@@ -9073,10 +9074,11 @@ class table {...}</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.200</h2>
+<h2>v3.5.201</h2>
 <ul>
-<li>修复 MySql8.0.30 无法使用 ExecuteInserted 的问题；#2001</li>
 <li>修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002</li>
+<li>忧化 IDbFirst Columns 序列与数据库相同；</li>
+<li>补充 UnitOfWorkManager 支持 DbContext 托管工作单元；</li>
 </ul>
 <h2>v3.5.109</h2>
 <ul>
