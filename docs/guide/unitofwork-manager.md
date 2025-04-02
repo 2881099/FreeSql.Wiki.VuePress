@@ -43,7 +43,9 @@ public class SongService
 ```csharp
 //依赖注入
 services.AddFreeRepository(typeof(Startup).Assembly);
-services.AddScoped<UnitOfWorkManager>();
+services.AddScoped<IFreeSql>(r => r.GetService<UnitOfWorkManager>().Orm);
+services.AddScoped<UnitOfWorkManager>(r => new UnitOfWorkManager(fsql));
+//以这种方式注入的 IFreeSql 会跟随 UowManager 切换事务，原始 fsql 对象为 static 单例
 
 //中间件
 public void Configure(IApplicationBuilder app)
