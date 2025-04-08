@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 02 Apr 2025 01:54:01 GMT</pubDate>
-    <lastBuildDate>Wed, 02 Apr 2025 01:54:01 GMT</lastBuildDate>
+    <pubDate>Tue, 08 Apr 2025 14:27:32 GMT</pubDate>
+    <lastBuildDate>Tue, 08 Apr 2025 14:27:32 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7355,10 +7355,14 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.201 修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002 忧化 IDbFirst Columns 序列与数据库相同； 补充 UnitOfWorkManager 支持 DbContext 托管工作单元； v3.5.109 忧化 GroupBySelf.Wher...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.202 补充 Utils.IsStrict = false 可配置支持中间表有 Id 主键；（解决v3.5.107版本调整影响） v3.5.201 修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002 忧化 IDbFirst Columns 序列与数据库相同； ...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.202</h2>
+<ul>
+<li>补充 Utils.IsStrict = false 可配置支持中间表有 Id 主键；（解决v3.5.107版本调整影响）</li>
+</ul>
 <h2>v3.5.201</h2>
 <ul>
 <li>修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002</li>
