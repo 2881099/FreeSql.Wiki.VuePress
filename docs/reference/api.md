@@ -237,7 +237,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 ## IDelete
 
 | 方法            | 返回值     | 参数                    | 描述                                                 |
-| --------------- | ---------- | ----------------------- | ---------------------------------------------------- | --- |
+| --------------- | ---------- | ----------------------- | ---------------------------------------------------- |
 | Where           | \<this\>   | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）     |
 | Where           | \<this\>   | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 }) |
 | Where           | \<this\>   | T1 \| IEnumerable\<T1\> | 传入实体或集合，将其主键作为条件                     |
@@ -247,4 +247,4 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
 | ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
-| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      | \   |
+| ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      | 
