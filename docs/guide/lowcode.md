@@ -108,6 +108,8 @@ ctx.SelectNoTracking("User")
 
 上述 ctx 对象依赖 json 配置如下：
 
+> 提示：ctx.LoadSchemaFromDatabase("User") 从数据库动态加载描述（可能不完善）
+
 ```json
 [
   {
