@@ -9,7 +9,7 @@
 - 修复 MySqlCodeFirst Primary 迁移逻辑；#2005
 - 修复 .In() 非表达式解析场景的 null 处理；
 - 忧化 Oracle DbFirst 表特别多的时候生成速度；
-- 忧化 GroupBySelf + ToList<Dto> 不自动映射；
+- 忧化 GroupBySelf + ToList\<Dto\> 不自动映射；
 - 调整 SqlExt 聚合函数 Count 统一返回 int；
 
 ## v3.5.202
