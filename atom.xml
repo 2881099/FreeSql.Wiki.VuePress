@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-04-18T06:22:39.237Z</updated>
+  <updated>2025-04-19T13:30:47.967Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -5342,22 +5342,31 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-04-08T14:26:40.000Z</updated>
+    <updated>2025-04-19T13:29:52.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.202</h2>
+<h2>v3.5.203</h2>
 <ul>
-<li>补充 Utils.IsStrict = false 可配置支持中间表有 Id 主键；（解决v3.5.107版本调整影响）</li>
-</ul>
-<h2>v3.5.201</h2>
-<ul>
-<li>修复 .Contains in 表达式函数解析在ar-AE区域问题；#2002</li>
-<li>忧化 IDbFirst Columns 序列与数据库相同；</li>
-<li>补充 UnitOfWorkManager 支持 DbContext 托管工作单元；</li>
-</ul>
-<h2>v3.5.109</h2>]]></summary>
+<li>增加 ISelect.Clone() 克隆查询对象；</li>
+<li>增加 ZeroDbContext.LoadSchemaFromDatabase 方法从数据库中加载描述对象；</li>
+<li>修复 MySqlCodeFirst Primary 迁移逻辑；#2005</li>
+<li>修复 .In() 非表达式解析场景的 null 处理；</li>
+<li>忧化 Oracle DbFirst 表特别多的时候生成速度；</li>
+<li>忧化 GroupBySelf + ToList&lt;Dto&gt; 不自动映射；</li>
+<li>调整 SqlExt 聚合函数 Count 统一返回 int；</li>
+</ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.203</h2>
+<ul>
+<li>增加 ISelect.Clone() 克隆查询对象；</li>
+<li>增加 ZeroDbContext.LoadSchemaFromDatabase 方法从数据库中加载描述对象；</li>
+<li>修复 MySqlCodeFirst Primary 迁移逻辑；#2005</li>
+<li>修复 .In() 非表达式解析场景的 null 处理；</li>
+<li>忧化 Oracle DbFirst 表特别多的时候生成速度；</li>
+<li>忧化 GroupBySelf + ToList&lt;Dto&gt; 不自动映射；</li>
+<li>调整 SqlExt 聚合函数 Count 统一返回 int；</li>
+</ul>
 <h2>v3.5.202</h2>
 <ul>
 <li>补充 Utils.IsStrict = false 可配置支持中间表有 Id 主键；（解决v3.5.107版本调整影响）</li>
