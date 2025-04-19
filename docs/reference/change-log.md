@@ -2,6 +2,16 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.203
+
+- 增加 ISelect.Clone() 克隆查询对象；
+- 增加 ZeroDbContext.LoadSchemaFromDatabase 方法从数据库中加载描述对象；
+- 修复 MySqlCodeFirst Primary 迁移逻辑；#2005
+- 修复 .In() 非表达式解析场景的 null 处理；
+- 忧化 Oracle DbFirst 表特别多的时候生成速度；
+- 忧化 GroupBySelf + ToList<Dto> 不自动映射；
+- 调整 SqlExt 聚合函数 Count 统一返回 int；
+
 ## v3.5.202
 
 - 补充 Utils.IsStrict = false 可配置支持中间表有 Id 主键；（解决v3.5.107版本调整影响）
