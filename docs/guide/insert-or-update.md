@@ -188,6 +188,8 @@ fsql.Insert(item)
 
 FreeSql.Provider.PostgreSQL 支持 PostgreSQL 9.5+ 特有的功能 On Conflict(id) Do Update，使用方法 MySql OnDuplicateKeyUpdate 大致相同。
 
+> fsql.InsertOrUpdate 强制使用 MERGE INTO： "(fsql as IPostgreSQLProviderOptions).UseMergeInto = true" 
+
 ```csharp
 class TestInfo {
     [Column(IsIdentity = true)]
