@@ -208,7 +208,7 @@ static void Scheduler003()
 
 ### 3. 其他
 
-```razor
+```html
 <SelectDict ParentName="WLPZ" @bind-Value="item.xxx" />
 
 <SelectEntity TItem="Classify" TKey="long?" @bind-Value="item.ClassifyId" DisplayText="e => e.ClassifyName" />
