@@ -4,7 +4,7 @@
 
 AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。
 
-集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计
+集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计、OSS文件管理
 
 依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo
 
@@ -206,6 +206,18 @@ static void Scheduler003()
 | EventCallback\<TItem\> OnClose | 关闭时                                                                  |
 | RenderFragment ChildContent    | 内容模板                                                                |
 
-### 3. 更多参考 blazor.zone
+### 3. 其他
+
+```razor
+<SelectDict ParentName="WLPZ" @bind-Value="item.xxx" />
+
+<SelectEntity TItem="Classify" TKey="long?" @bind-Value="item.ClassifyId" DisplayText="e => e.ClassifyName" />
+
+<SelectEnum TEnum="ArticleType" @bind-Value="item.ArticleType" />
+
+<InputFile2 @bind-Value="item.Path" />
+```
+
+### 4. 更多参考 blazor.zone
 
 [Bootstrap Blazor UI](https://www.blazor.zone/components)
