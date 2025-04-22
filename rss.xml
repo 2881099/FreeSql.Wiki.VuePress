@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 20 Apr 2025 01:23:53 GMT</pubDate>
-    <lastBuildDate>Sun, 20 Apr 2025 01:23:53 GMT</lastBuildDate>
+    <pubDate>Tue, 22 Apr 2025 13:57:02 GMT</pubDate>
+    <lastBuildDate>Tue, 22 Apr 2025 13:57:02 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -342,12 +342,12 @@
       <link>https://freesql.net/guide/AdminBlazor.html</link>
       <guid>https://freesql.net/guide/AdminBlazor.html</guid>
       <source url="https://freesql.net/rss.xml">AdminBlazor</source>
-      <description>AdminBlazor 项目介绍 AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。 集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计 依赖组件：BootstrapBlazor、Free...</description>
+      <description>AdminBlazor 项目介绍 AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。 集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计、OSS文件管理 依赖组件：BootstrapBla...</description>
       <pubDate>Wed, 31 Jan 2024 07:25:26 GMT</pubDate>
       <content:encoded><![CDATA[
 <h2>项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。</p>
-<p>集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计</p>
+<p>集成功能：菜单、角色、用户、公司组织、定时任务、数据字典、参数配置、租户、审批、审计、OSS文件管理</p>
 <p>依赖组件：BootstrapBlazor、FreeSql、FreeScheduler、Rougamo</p>
 <ul>
 <li>老版本: https://gitee.com/FreeSql/AdminBlazor</li>
