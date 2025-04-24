@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-04-24T11:15:39.285Z</updated>
+  <updated>2025-04-24T11:17:19.039Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8235,7 +8235,7 @@ class table {...}</p>
     <title type="text">返回数据 ✨</title>
     <id>https://freesql.net/guide/select-return-data.html</id>
     <link href="https://freesql.net/guide/select-return-data.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-04-24T11:16:26.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql 使用 ExpressionTree 读取数据记录，.NET 技术下除了原生代码，最快的方案是 Emit 和 ExpressionTree。</p>
 <p>ExpressionTree 天然支持 .NET AOT 编译，FreeSql 在 2018 年做出的技术决策将在未来一直受益。</p>
@@ -8364,8 +8364,16 @@ class table {...}</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
 <span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">    List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">list</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> done</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Object</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    //done.IsBreak = true; v1.7.0 停止读取</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">});</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>9、ToSql</h2>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//新版本</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> asyncEnum</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Select</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt;().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">OrderBy</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt; </span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Id</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">).</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ToChunkAsyncEnumerable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">100</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">await </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">foreach</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> items</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> in</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> asyncEnum</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    foreach</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> item</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> in</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> items</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">        Console</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WriteLine</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">item</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Nickname</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>9、ToSql</h2>
 <p>每个 ToList 都可以使用 ToSql 返回 SQL String，有两个选项：</p>
 <ul>
 <li>FieldAliasOptions.AsIndex(默认) 自动产生 as1, as2, as3 .... 字段别名，可以最大程度防止多表，存在相同字段的问题；</li>
