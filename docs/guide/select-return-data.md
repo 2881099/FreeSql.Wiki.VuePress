@@ -155,6 +155,14 @@ fsql.Select<Song>().OrderBy(a => a.Id).ToChunk(100, done =>
     List<Song> list = done.Object;
     //done.IsBreak = true; v1.7.0 停止读取
 });
+
+//新版本
+var asyncEnum = fsql.Select<Song>().OrderBy(a => a.Id).ToChunkAsyncEnumerable(100);
+await foreach (var items in asyncEnum)
+{
+    foreach (var item in items)
+        Console.WriteLine(item.Nickname);
+}
 ```
 
 ## 9、ToSql
