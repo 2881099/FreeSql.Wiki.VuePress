@@ -161,6 +161,7 @@ public void Test()
 | ToList\<T\>         | List\<T\>         | string field                       | 执行 SQL 查询，返回 field 指定字段的记录，并以元组或基础类型(int,string,long)接收，记录不存在时返回 Count 为 0 的列表                                                  |
 | ToOne               | T1                |                                    | 执行 SQL 查询，返回 T1 实体所有字段的第一条记录，记录不存在时返回 null                                                                                                 |
 | ToAggregate\<T\>    | List\<T\>         | Lambda                             | 执行 SQL 查询，返回指定字段的聚合结果（适合不需要 GroupBy 的场景）                                                                                                     |
+| ToChunkAsyncEnumerable | IAsyncEnumerable\<List\<T1\>\>  | int               | 分段返回 T1 记录                                                            |
 | Any                 | bool              |                                    | 执行 SQL 查询，是否有记录                                                                                                                                              |
 | Sum                 | T                 | Lambda                             | 指定一个列求和                                                                                                                                                         |
 | Min                 | T                 | Lambda                             | 指定一个列求最小值                                                                                                                                                     |
