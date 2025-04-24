@@ -130,6 +130,8 @@ fsql.Select<Region>().WhereDynamicFilter(dyfilter).ToList();
 
 ## 克隆查询 ISelect
 
+> 新版本使用 fsql.Select\<T\>().Where(...).Clone();
+
 科普：csharp 7.0 支持本地函数，方法内再定义临时方法，这个特性向大家推荐，在很多时候都非常有效。
 
 方法内还可以定义方法，那就称它：本地函数/嵌套方法。
