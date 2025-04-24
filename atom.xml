@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-04-22T14:28:35.872Z</updated>
+  <updated>2025-04-24T11:15:39.285Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -4923,7 +4923,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
     <title type="text">查询</title>
     <id>https://freesql.net/guide/select.html</id>
     <link href="https://freesql.net/guide/select.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-04-24T11:14:42.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。</p>
 <table>
