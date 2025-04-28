@@ -17,7 +17,7 @@ class Topic { }
 
 - 1、实体类名
 - 2、Aop fsql.Aop.ConfigEntity += (\_, e) => e.ModifyResult.Name = "public.tabname"
-- 3、FluentApi fsql.CodeFirst.ConfigEntity(a => a.Name("public.tabname"))
+- 3、[FluentApi](fluent-api.md) fsql.CodeFirst.ConfigEntity(a => a.Name("public.tabname"))
 - 4、[Table(Name = "public.tabname")]
 - 5、AsTable fsql.Select\<T\>().AsTable((\_, old) => "public.tabname").ToList()
 
