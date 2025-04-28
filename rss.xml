@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 28 Apr 2025 13:24:41 GMT</pubDate>
-    <lastBuildDate>Mon, 28 Apr 2025 13:24:41 GMT</lastBuildDate>
+    <pubDate>Mon, 28 Apr 2025 13:27:18 GMT</pubDate>
+    <lastBuildDate>Mon, 28 Apr 2025 13:27:18 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -5219,7 +5219,7 @@ db.Add(new Xxx());</p>
 <ul>
 <li>1、实体类名</li>
 <li>2、Aop fsql.Aop.ConfigEntity += (_, e) =&gt; e.ModifyResult.Name = "public.tabname"</li>
-<li>3、FluentApi fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</li>
+<li>3、<a href="/guide/fluent-api.html" target="_blank">FluentApi</a> fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</li>
 <li>4、[Table(Name = "public.tabname")]</li>
 <li>5、AsTable fsql.Select&lt;T&gt;().AsTable((_, old) =&gt; "public.tabname").ToList()</li>
 </ul>
