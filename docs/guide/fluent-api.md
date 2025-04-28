@@ -17,33 +17,24 @@ FreeSql 提供了 Fluent Api 的方式,使用链式调用，可在外部配置�
 
 ```csharp
 fsql.CodeFirst
-    .ConfigEntity<TestFluenttb1>(a =>
+    .ConfigEntity<Table1>(a =>
     {
-        a.Name("xxdkdkdk1");
-        a.Property(b => b.Id).Name("Id22").IsIdentity(true);
-        a.Property(b => b.name).DbType("varchar(100)").IsNullable(true);
+        a.Name("dbo.table1");
+        a.Property(b => b.Id).Name("table1_id").IsIdentity(true);
+        a.Property(b => b.Name).DbType("varchar(100)").IsNullable(true);
     })
-    .ConfigEntity<TestFluenttb2>(a =>
+    .ConfigEntity<Table2>(a =>
     {
-        a.Name("xxdkdkdk2");
-        a.Property(b => b.Id).Name("Id22").IsIdentity(true);
-        a.Property(b => b.name).DbType("varchar(100)").IsNullable(true);
+        a.Name("dbo.table2");
+        a.Property(b => b.Id).Name("table2_id").IsIdentity(true);
     });
-
-//以下为实体类
-class TestFluenttb1 {
-    public int Id { get; set; }
-    public string name { get; set; } = "defaultValue";
-}
-
-[Table(Name = "cccccdddwww")]
-class TestFluenttb2 {
-    public int Id { get; set; }
-    public string name { get; set; } = "defaultValue";
-}
 ```
 
-> FreeSql.DbContext v1.4.0+ 实现了 EfCore FluentApi 99% 相似的语法
+> FreeSql.Extensions.EFModel（实验室） 实现了 EFCore FluentApi 代码让 FreeSql 生效
+
+```csharp
+fsql.CodeFirst.ApplyConfigurationFromEFCore(typeof(BloggingContext), typeof(OrderingContext));
+```
 
 ## Entity
 
