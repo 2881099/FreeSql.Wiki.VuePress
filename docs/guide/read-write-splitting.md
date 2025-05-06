@@ -31,3 +31,40 @@ fsql.Select<T>().Master().WhereId(a => a.Id == 1).ToOne(); //强制读【主库�
 
 fsql.Ado.Query<T>("/*master*/ select * from t where ..."); //强制读【主库】
 ```
+
+## 使用 FreeSqlCloud 另一种读写分离
+
+```csharp
+public enum DbEnum { db1, db2, db3 }
+
+var fsql = new FreeSqlCloud();
+
+fsql.Register(DbEnum.db3, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=:memory:;max pool size=1")
+    .UseAutoSyncStructure(true).Build());
+fsql.Register(DbEnum.db2, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=:memory:;max pool size=2")
+    .UseAutoSyncStructure(true).Build());
+fsql.Register(DbEnum.db1, () => new FreeSqlBuilder()
+    .UseConnectionString(DataType.Sqlite, @"Data Source=:memory:;max pool size=3")
+    .UseAutoSyncStructure(true).Build());
+
+fsql.EntitySteering = (_, e) =>
+{
+    switch (e.MethodName)
+    {
+        case "Select":
+            if (e.DBKey == DbEnum.db1) //判断主库时
+            {
+                var dbkeyIndex = new Random().Next(0, e.AvailableDBKeys.Length);
+                e.DBKey = e.AvailableDBKeys[dbkeyIndex]; //重新定向到其他 db
+            }
+            break;
+        case "Insert":
+        case "Update":
+        case "Delete":
+        case "InsertOrUpdate":
+            break;
+    }
+};
+```
