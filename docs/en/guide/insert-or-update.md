@@ -188,6 +188,8 @@ When columns do not exist in the insert part, they are set as constants in the u
 
 FreeSql.Provider.PostgreSQL supports PostgreSQL 9.5+ specific `On Conflict(id) Do Update` functionality, similar to MySql's `OnDuplicateKeyUpdate`.
 
+> fsql.InsertOrUpdate enforces the use of MERGE INTO： "(fsql as IPostgreSQLProviderOptions).UseMergeInto = true" 
+
 ```csharp
 class TestInfo {
     [Column(IsIdentity = true)]
