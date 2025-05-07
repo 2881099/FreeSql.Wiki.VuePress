@@ -36,6 +36,9 @@ fsql.Select<Tag>().Include(a => a.Parent.Parent).ToList();
 
 fsql.Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList();
 //这样写，不需要再标记 Include，解析表达式时自动处理
+
+fsql.Select<Tag>().LeftJoin(a => a.Parent.Id == a.ParentId && a.Parent.xxx > 0).ToList();
+//这样写，给 ManyToOne 增加过滤条件
 ```
 
 ## 3、集合属性 OneToMany/ManyToMany/PgArrayToMany
@@ -44,6 +47,9 @@ IncludeMany 最终在 ToList 之后再查询子表的方式（总共查询两次
 
 ```csharp
 fsql.Select<Tag>().IncludeMany(a => a.Songs).ToList();
+
+fsql.Select<Tag>().IncludeMany(a => a.Songs, then => then.Where(song => song.xxx > 0)).ToList();
+//这样写，给 OneToMany/ManyToMany 增加过滤条件
 ```
 
 ## 4、IncludeMany 增强
