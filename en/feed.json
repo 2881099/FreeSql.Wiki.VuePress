@@ -278,7 +278,7 @@
       "summary": "Insert or Update 1. IFreeSql.InsertOrUpdate IFreeSql defines the InsertOrUpdate method to handle insert or update operations, utilizing database-specific features: When the enti...",
       "content_html": "\n<h2>1. IFreeSql.InsertOrUpdate</h2>\n<p>IFreeSql defines the <code>InsertOrUpdate</code> method to handle insert or update operations, utilizing database-specific features:</p>\n<p>| Database   | Features                |     | Database      | Features              |\n|</p>\n",
       "date_published": "2021-08-21T05:59:59.000Z",
-      "date_modified": "2025-01-16T10:00:00.000Z",
+      "date_modified": "2025-05-07T04:35:25.000Z",
       "authors": [],
       "tags": []
     },
