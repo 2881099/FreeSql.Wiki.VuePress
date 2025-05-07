@@ -36,6 +36,9 @@ fsql.Select<Tag>().Include(a => a.Parent.Parent).ToList();
 
 fsql.Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList();
 // This query does not require Include; the expression is automatically processed during parsing
+
+fsql.Select<Tag>().LeftJoin(a => a.Parent.Id == a.ParentId && a.Parent.xxx > 0).ToList();
+//Write this way to add filtering conditions to ManyToOne
 ```
 
 ## 3. Collection Properties OneToMany/ManyToMany/PgArrayToMany
@@ -44,6 +47,9 @@ fsql.Select<Tag>().Where(a => a.Parent.Parent.Name == "1").ToList();
 
 ```csharp
 fsql.Select<Tag>().IncludeMany(a => a.Songs).ToList();
+
+fsql.Select<Tag>().IncludeMany(a => a.Songs, then => then.Where(song => song.xxx > 0)).ToList();
+//Write this way to add filtering conditions to OneToMany/ManyToMany
 ```
 
 ## 4. IncludeMany Enhanced
