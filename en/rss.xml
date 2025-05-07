@@ -6,8 +6,8 @@
     <link>https://freesql.net/en/</link>
     <description>FreeSql Documents</description>
     <language>en-US</language>
-    <pubDate>Wed, 07 May 2025 04:25:33 GMT</pubDate>
-    <lastBuildDate>Wed, 07 May 2025 04:25:33 GMT</lastBuildDate>
+    <pubDate>Wed, 07 May 2025 04:31:57 GMT</pubDate>
+    <lastBuildDate>Wed, 07 May 2025 04:31:57 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -625,7 +625,7 @@
 </li>
 <li>
 <ol start="3">
-<li>Fluent API <code>fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</code></li>
+<li><a href="/en/guide/fluent-api.html" target="_blank">FluentApi</a> <code>fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</code></li>
 </ol>
 </li>
 <li>

@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql Documents</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-05-07T04:25:33.210Z</updated>
+  <updated>2025-05-07T04:31:57.796Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -624,7 +624,7 @@
     <title type="text">Mapping Attributes✨</title>
     <id>https://freesql.net/en/guide/entity-attribute.html</id>
     <link href="https://freesql.net/en/guide/entity-attribute.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-05-07T04:31:02.000Z</updated>
     <summary type="html"><![CDATA[
 <p>v1.4.0+ automatically recognizes EF attributes such as</p>
 <p>Key/Required/NotMapped/MaxLength/StringLength/DatabaseGenerated/Table/Column.</p>
@@ -654,7 +654,7 @@
 </li>
 <li>
 <ol start="3">
-<li>Fluent API <code>fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</code></li>
+<li><a href="/en/guide/fluent-api.html" target="_blank">FluentApi</a> <code>fsql.CodeFirst.ConfigEntity(a =&gt; a.Name("public.tabname"))</code></li>
 </ol>
 </li>
 <li>
