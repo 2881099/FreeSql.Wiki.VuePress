@@ -17,33 +17,24 @@ FreeSql offers Fluent API methods for configuring entity database features using
 
 ```csharp
 fsql.CodeFirst
-    .ConfigEntity<TestFluenttb1>(a =>
+    .ConfigEntity<Table1>(a =>
     {
-        a.Name("xxdkdkdk1");
-        a.Property(b => b.Id).Name("Id22").IsIdentity(true);
-        a.Property(b => b.name).DbType("varchar(100)").IsNullable(true);
+        a.Name("dbo.table1");
+        a.Property(b => b.Id).Name("table1_id").IsIdentity(true);
+        a.Property(b => b.Name).DbType("varchar(100)").IsNullable(true);
     })
-    .ConfigEntity<TestFluenttb2>(a =>
+    .ConfigEntity<Table2>(a =>
     {
-        a.Name("xxdkdkdk2");
-        a.Property(b => b.Id).Name("Id22").IsIdentity(true);
-        a.Property(b => b.name).DbType("varchar(100)").IsNullable(true);
+        a.Name("dbo.table2");
+        a.Property(b => b.Id).Name("table2_id").IsIdentity(true);
     });
-
-// Example entity classes
-class TestFluenttb1 {
-    public int Id { get; set; }
-    public string name { get; set; } = "defaultValue";
-}
-
-[Table(Name = "cccccdddwww")]
-class TestFluenttb2 {
-    public int Id { get; set; }
-    public string name { get; set; } = "defaultValue";
-}
 ```
 
-> FreeSql.DbContext v1.4.0+ implements a syntax similar to EfCore Fluent API 99%.
+> FreeSql.Extensions.EFModel（Labs）Implemented EFCore FluentApi code to make FreeSql effective
+
+```csharp
+fsql.CodeFirst.ApplyConfigurationFromEFCore(typeof(BloggingContext), typeof(OrderingContext));
+```
 
 ## Entity
 
