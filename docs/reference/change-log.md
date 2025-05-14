@@ -2,6 +2,18 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.206
+
+- 增加 ISelect.ToChunkAsyncEnumerable 异步流功能；
+- 增加 FreeSql.Extensions.EFModel 从 efcore modelBuilder FluentApi 同步到 IFreeSql；
+- 增加 Firebird ForUpdate skiplocked 查询参数；
+- 修复 Firebird Inserted/Deleted 与 Repository 级联冲突 bug；#2023
+- 修复 Duckdb CodeFirst Create Index异常；#2027
+- 修复 ToList 子查询 bug；
+- 修复 InsertOrUpdate 更新时触发两次 AuditValue；#2020
+- 调整 Repository 状态管理支持 Ignore 属性（非副本）；
+- 完善 低代码扩展 FreeSql.Extensions.ZeroEntity；
+
 ## v3.5.203
 
 - 增加 ISelect.Clone() 克隆查询对象；
