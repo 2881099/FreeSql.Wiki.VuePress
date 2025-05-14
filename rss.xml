@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 07 May 2025 04:39:27 GMT</pubDate>
-    <lastBuildDate>Wed, 07 May 2025 04:39:27 GMT</lastBuildDate>
+    <pubDate>Wed, 14 May 2025 14:04:06 GMT</pubDate>
+    <lastBuildDate>Wed, 14 May 2025 14:04:06 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7387,10 +7387,22 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.203 增加 ISelect.Clone() 克隆查询对象； 增加 ZeroDbContext.LoadSchemaFromDatabase 方法从数据库中加载描述对象； 修复 MySqlCodeFirst Primary 迁移逻辑；#2005 修复 .In() 非表达式解析场景的 nu...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.206 增加 ISelect.ToChunkAsyncEnumerable 异步流功能； 增加 FreeSql.Extensions.EFModel 从 efcore modelBuilder FluentApi 同步到 IFreeSql； 增加 Firebird ForUpdate s...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.206</h2>
+<ul>
+<li>增加 ISelect.ToChunkAsyncEnumerable 异步流功能；</li>
+<li>增加 FreeSql.Extensions.EFModel 从 efcore modelBuilder FluentApi 同步到 IFreeSql；</li>
+<li>增加 Firebird ForUpdate skiplocked 查询参数；</li>
+<li>修复 Firebird Inserted/Deleted 与 Repository 级联冲突 bug；#2023</li>
+<li>修复 Duckdb CodeFirst Create Index异常；#2027</li>
+<li>修复 ToList 子查询 bug；</li>
+<li>修复 InsertOrUpdate 更新时触发两次 AuditValue；#2020</li>
+<li>调整 Repository 状态管理支持 Ignore 属性（非副本）；</li>
+<li>完善 低代码扩展 FreeSql.Extensions.ZeroEntity；</li>
+</ul>
 <h2>v3.5.203</h2>
 <ul>
 <li>增加 ISelect.Clone() 克隆查询对象；</li>
