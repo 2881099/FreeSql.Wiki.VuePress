@@ -6,7 +6,7 @@
 
 支持六种传播方式(propagation)，跨方法的事务非常方便，支持同步异步：
 
-- Requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。
+- Required：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。
 - Supports：支持当前事务，如果没有当前事务，就以非事务方法执行。
 - Mandatory：使用当前事务，如果没有当前事务，就抛出异常。
 - NotSupported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
@@ -27,7 +27,7 @@ public class SongService
         _detailRepository = detailRepository;
     }
 
-    [Transactional(Propagation.Requierd)]
+    [Transactional(Propagation.Required)]
     async public Task Test1()
     {
         //所有注入的仓储对象，都是一个事务
