@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-05-14T14:04:06.647Z</updated>
+  <updated>2025-05-15T13:48:10.126Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -3778,7 +3778,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
     <title type="text">UowManager 事务 ✨</title>
     <id>https://freesql.net/guide/unitofwork-manager.html</id>
     <link href="https://freesql.net/guide/unitofwork-manager.html"/>
-    <updated>2025-04-02T01:53:11.000Z</updated>
+    <updated>2025-05-15T13:47:09.000Z</updated>
     <summary type="html"><![CDATA[
 <p>本篇文章内容引导，如何在 asp.net core 项目中使用特性(注解) 的方式管理事务。</p>
 <blockquote>
@@ -3786,7 +3786,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </blockquote>
 <p>支持六种传播方式(propagation)，跨方法的事务非常方便，支持同步异步：</p>
 <ul>
-<li>Requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。</li>
+<li>Required：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。</li>
 <li>Supports：支持当前事务，如果没有当前事务，就以非事务方法执行。</li>
 <li>Mandatory：使用当前事务，如果没有当前事务，就抛出异常。</li>
 <li>NotSupported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
@@ -3800,7 +3800,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 </blockquote>
 <p>支持六种传播方式(propagation)，跨方法的事务非常方便，支持同步异步：</p>
 <ul>
-<li>Requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。</li>
+<li>Required：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。</li>
 <li>Supports：支持当前事务，如果没有当前事务，就以非事务方法执行。</li>
 <li>Mandatory：使用当前事务，如果没有当前事务，就抛出异常。</li>
 <li>NotSupported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
@@ -3819,7 +3819,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">        _detailRepository</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> detailRepository</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    [</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Transactional</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Propagation</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Requierd</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    [</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Transactional</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Propagation</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Required</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
 <span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    async</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> public</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Task</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Test1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    {</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        //所有注入的仓储对象，都是一个事务</span></span>
