@@ -2,6 +2,10 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.207
+
+- 修复 Lambda .Contains 通配符解析为非 Like 问题；
+
 ## v3.5.206
 
 - 增加 ISelect.ToChunkAsyncEnumerable 异步流功能；
