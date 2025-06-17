@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.208
+
+- 修复 MySql Enum MapType(int) .Contains 解析问题；
+- 修复 MySql JsonMap Enum 统一解析为 int；#2040
+
 ## v3.5.207
 
 - 修复 Lambda .Contains 通配符解析为非 Like 问题；
