@@ -151,7 +151,7 @@ class Topic
 
 使用数据库时间执行插入数据，注意：
 
-- 插入时设置实体的值是无效的；
+- 插入时设置实体的值是无效的，解决方法：fsql.Insert\<T\>().IgnoreInsertValueSql("CreateTime")；
 - 插入实体执行成功后，实体的值还是 c# 时间；
 
 ## 忽略(Ignore)
