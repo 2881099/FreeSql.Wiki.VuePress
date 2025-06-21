@@ -2,6 +2,10 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.209
+
+- 修复 AsTreeCte + InsertInto 语法错误问题；#2045
+
 ## v3.5.208
 
 - 修复 MySql Enum MapType(int) .Contains 解析问题；
