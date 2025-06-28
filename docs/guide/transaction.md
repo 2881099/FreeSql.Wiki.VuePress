@@ -55,6 +55,8 @@ using (var uowManager = new UnitOfWorkManager(fsql))
 
 ## 2、仓储事务（依赖注入）
 
+- [TransactionalAttribute ](https://freesql.net/guide/unitofwork-manager.html#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%BA%93)
+
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
