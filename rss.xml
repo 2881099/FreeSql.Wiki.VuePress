@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 21 Jun 2025 05:54:04 GMT</pubDate>
-    <lastBuildDate>Sat, 21 Jun 2025 05:54:04 GMT</lastBuildDate>
+    <pubDate>Sat, 28 Jun 2025 06:10:09 GMT</pubDate>
+    <lastBuildDate>Sat, 28 Jun 2025 06:10:09 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -6927,7 +6927,7 @@ class table {...}</p>
       <link>https://freesql.net/guide/transaction.html</link>
       <guid>https://freesql.net/guide/transaction.html</guid>
       <source url="https://freesql.net/rss.xml">事务Transaction</source>
-      <description>事务Transaction 1、常规事务 UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务 使用 UnitOfWorkManager 管理 UnitOfWork，如下： 2、仓储事务（依赖注入） 具体请移步文档：- 3、同线程事务 同线程事务...</description>
+      <description>事务Transaction 1、常规事务 UnitOfWork 是对 DbTransaction 事务对象的封装，方便夹带私有数据。 提示：uow 范围内，尽量别使用 fsql 对象，以免不处在一个事务 使用 UnitOfWorkManager 管理 UnitOfWork，如下： 2、仓储事务（依赖注入） TransactionalAttribute ...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 
@@ -6961,6 +6961,9 @@ class table {...}</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>2、仓储事务（依赖注入）</h2>
+<ul>
+<li><a href="https://freesql.net/guide/unitofwork-manager.html#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%BA%93" target="_blank" rel="noopener noreferrer">TransactionalAttribute </a></li>
+</ul>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> builder</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> WebApplication</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">CreateBuilder</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">args</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
 <span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IServiceProvider</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">fsqlFactory</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> r</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt;</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>

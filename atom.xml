@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-06-21T05:54:04.852Z</updated>
+  <updated>2025-06-28T06:10:09.235Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -8589,7 +8589,7 @@ class table {...}</p>
     <title type="text">事务Transaction</title>
     <id>https://freesql.net/guide/transaction.html</id>
     <link href="https://freesql.net/guide/transaction.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-06-28T06:09:16.000Z</updated>
     <summary type="html"><![CDATA[
 
 <h2>1、常规事务</h2>
@@ -8639,6 +8639,9 @@ class table {...}</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>2、仓储事务（依赖注入）</h2>
+<ul>
+<li><a href="https://freesql.net/guide/unitofwork-manager.html#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%BA%93" target="_blank" rel="noopener noreferrer">TransactionalAttribute </a></li>
+</ul>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" data-title="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> builder</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> WebApplication</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">CreateBuilder</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">args</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
 <span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IServiceProvider</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt; </span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">fsqlFactory</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> r</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt;</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
