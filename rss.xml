@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 28 Jun 2025 06:10:36 GMT</pubDate>
-    <lastBuildDate>Sat, 28 Jun 2025 06:10:36 GMT</lastBuildDate>
+    <pubDate>Mon, 30 Jun 2025 03:10:12 GMT</pubDate>
+    <lastBuildDate>Mon, 30 Jun 2025 03:10:12 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -4117,12 +4117,9 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/reference/api.html</link>
       <guid>https://freesql.net/reference/api.html</guid>
       <source url="https://freesql.net/rss.xml">API 文档</source>
-      <description>API 文档 http://124.221.134.143:8082/api/FreeSql.html FreeSqlBuilder IFreeSql BaseRepository&amp;lt;TEntity, TKey&amp;gt; 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。 DbConte...</description>
+      <description>API 文档 FreeSqlBuilder IFreeSql BaseRepository&amp;lt;TEntity, TKey&amp;gt; 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。 DbContext 与 BaseRepository 功能大致类似。 DbContext 自身 = 完整...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[
-<ul>
-<li><a href="http://124.221.134.143:8082/api/FreeSql.html" target="_blank" rel="noopener noreferrer">http://124.221.134.143:8082/api/FreeSql.html</a></li>
-</ul>
 <h2>FreeSqlBuilder</h2>
 <p>| 方法                                  | 返回值        | 说明                                                                                          |
 |</p>

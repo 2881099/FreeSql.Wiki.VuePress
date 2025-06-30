@@ -532,10 +532,10 @@
       "title": "API 文档",
       "url": "https://freesql.net/reference/api.html",
       "id": "https://freesql.net/reference/api.html",
-      "summary": "API 文档 http://124.221.134.143:8082/api/FreeSql.html FreeSqlBuilder IFreeSql BaseRepository<TEntity, TKey> 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。 DbConte...",
-      "content_html": "\n<ul>\n<li><a href=\"http://124.221.134.143:8082/api/FreeSql.html\" target=\"_blank\" rel=\"noopener noreferrer\">http://124.221.134.143:8082/api/FreeSql.html</a></li>\n</ul>\n<h2>FreeSqlBuilder</h2>\n<p>| 方法                                  | 返回值        | 说明                                                                                          |\n|</p>\n",
+      "summary": "API 文档 FreeSqlBuilder IFreeSql BaseRepository<TEntity, TKey> 状态管理，可实现 Update 只更新变化的字段（不更新所有字段），灵活使用 Attach 和 Update 用起来非常舒服。 DbContext 与 BaseRepository 功能大致类似。 DbContext 自身 = 完整...",
+      "content_html": "\n<h2>FreeSqlBuilder</h2>\n<p>| 方法                                  | 返回值        | 说明                                                                                          |\n|</p>\n",
       "date_published": "2021-02-04T16:03:18.000Z",
-      "date_modified": "2025-04-10T02:35:20.000Z",
+      "date_modified": "2025-06-30T03:09:19.000Z",
       "authors": [],
       "tags": []
     },
