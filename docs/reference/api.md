@@ -1,7 +1,5 @@
 # API 文档
 
-- [http://124.221.134.143:8082/api/FreeSql.html](http://124.221.134.143:8082/api/FreeSql.html)
-
 ## FreeSqlBuilder
 
 | 方法                                  | 返回值        | 说明                                                                                          |
