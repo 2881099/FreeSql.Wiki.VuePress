@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 30 Jun 2025 03:10:12 GMT</pubDate>
-    <lastBuildDate>Mon, 30 Jun 2025 03:10:12 GMT</lastBuildDate>
+    <pubDate>Wed, 09 Jul 2025 11:31:04 GMT</pubDate>
+    <lastBuildDate>Wed, 09 Jul 2025 11:31:04 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7387,10 +7387,19 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.209 修复 AsTreeCte + InsertInto 语法错误问题；#2045 v3.5.208 修复 MySql Enum MapType(int) .Contains 解析问题； 修复 MySql JsonMap Enum 统一解析为 int；#2040 v3.5.207 修复...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.210 增强 全局过滤器支持查询、更新、删除指定生效；#2061 修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065 修复 WithMemory 首行为 NULL 值的情况；#2047 修复 ExecuteSqlBulkCop...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.210</h2>
+<ul>
+<li>增强 全局过滤器支持查询、更新、删除指定生效；#2061</li>
+<li>修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065</li>
+<li>修复 WithMemory 首行为 NULL 值的情况；#2047</li>
+<li>修复 ExecuteSqlBulkCopy() 对于表名有空格的情况处理异常；#2055</li>
+<li>修复 pgsql + JsonMap 无法解析 poco 表达式树的问题；#2060</li>
+<li>优化 pgsql + JsonMap 自动映射为 jsonb；#2060</li>
+</ul>
 <h2>v3.5.209</h2>
 <ul>
 <li>修复 AsTreeCte + InsertInto 语法错误问题；#2045</li>

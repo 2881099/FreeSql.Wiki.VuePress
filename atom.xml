@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-06-30T03:10:12.342Z</updated>
+  <updated>2025-07-09T11:31:04.644Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9089,24 +9089,29 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-06-21T05:53:12.000Z</updated>
+    <updated>2025-07-09T11:30:07.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.209</h2>
+<h2>v3.5.210</h2>
 <ul>
-<li>修复 AsTreeCte + InsertInto 语法错误问题；#2045</li>
-</ul>
-<h2>v3.5.208</h2>
-<ul>
-<li>修复 MySql Enum MapType(int) .Contains 解析问题；</li>
-<li>修复 MySql JsonMap Enum 统一解析为 int；#2040</li>
-</ul>
-<h2>v3.5.207</h2>
-<ul>
-<li>修复 Lambda .Contains 通配符解析为非 Like 问题；</li>
+<li>增强 全局过滤器支持查询、更新、删除指定生效；#2061</li>
+<li>修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065</li>
+<li>修复 WithMemory 首行为 NULL 值的情况；#2047</li>
+<li>修复 ExecuteSqlBulkCopy() 对于表名有空格的情况处理异常；#2055</li>
+<li>修复 pgsql + JsonMap 无法解析 poco 表达式树的问题；#2060</li>
+<li>优化 pgsql + JsonMap 自动映射为 jsonb；#2060</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.210</h2>
+<ul>
+<li>增强 全局过滤器支持查询、更新、删除指定生效；#2061</li>
+<li>修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065</li>
+<li>修复 WithMemory 首行为 NULL 值的情况；#2047</li>
+<li>修复 ExecuteSqlBulkCopy() 对于表名有空格的情况处理异常；#2055</li>
+<li>修复 pgsql + JsonMap 无法解析 poco 表达式树的问题；#2060</li>
+<li>优化 pgsql + JsonMap 自动映射为 jsonb；#2060</li>
+</ul>
 <h2>v3.5.209</h2>
 <ul>
 <li>修复 AsTreeCte + InsertInto 语法错误问题；#2045</li>
