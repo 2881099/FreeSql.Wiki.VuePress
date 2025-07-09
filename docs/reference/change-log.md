@@ -2,6 +2,15 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.210
+
+- 增强 全局过滤器支持查询、更新、删除指定生效；#2061
+- 修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065
+- 修复 WithMemory 首行为 NULL 值的情况；#2047
+- 修复 ExecuteSqlBulkCopy() 对于表名有空格的情况处理异常；#2055
+- 修复 pgsql + JsonMap 无法解析 poco 表达式树的问题；#2060
+- 优化 pgsql + JsonMap 自动映射为 jsonb；#2060
+
 ## v3.5.209
 
 - 修复 AsTreeCte + InsertInto 语法错误问题；#2045
