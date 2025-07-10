@@ -24,11 +24,13 @@ export default defineUserConfig({
   head: [
     ["meta", { name: "keywords", content: "FreeSql,.NET,ORM" }],
     [
+      /*
       "script",
       {
         crossorigin: "anonymous",
         src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7223766210897652",
       },
+      */
     ],
     [
       "script",
