@@ -83,7 +83,7 @@ public class TransactionalAttribute : Rougamo.MoAttribute
     }
     public override void OnExit(MethodContext context)
     {
-		if (typeof(Task).IsAssignableFrom(context.ReturnType) && context.ReturnValue != null)
+	if (typeof(Task).IsAssignableFrom(context.ReturnType) && context.ReturnValue != null && context.ReturnValue is Task)
             ((Task)context.ReturnValue).ContinueWith(t => _OnExit());
         else _OnExit();
 
