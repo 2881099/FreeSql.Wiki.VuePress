@@ -2,6 +2,19 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.211
+
+- 修复 ToChunkAsyncEnumerable 少读一条数据的 bug；#1982 #2056 #2016 #2015
+- 修复 System.MemoryExtensions.Contains 解析问题；#1993
+- 修复 Group 查询不支持 aot 问题；#2077
+- 修复 WithTempQuery + AsTreeCte 生成SQL错误；#2080
+- 修复 Oracle DbFirst.GetTableByName() 没有返回字段信息；#2074
+- 修复 GBase DbFirst 字典配置问题；#2078
+- 修复 GBase 时间类型精度问题；#2079
+- 修复 Sqlite CodeFirst 特殊表名问题；
+- 完善 ClickHouse/QuestDB/TDengine 支持 enum 映射；
+- 增加 SqlExt.Ntile ntile(5) over (order by ...)；
+
 ## v3.5.210
 
 - 增强 全局过滤器支持查询、更新、删除指定生效；#2061
