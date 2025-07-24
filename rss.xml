@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 11 Jul 2025 10:22:26 GMT</pubDate>
-    <lastBuildDate>Fri, 11 Jul 2025 10:22:26 GMT</lastBuildDate>
+    <pubDate>Thu, 24 Jul 2025 15:17:48 GMT</pubDate>
+    <lastBuildDate>Thu, 24 Jul 2025 15:17:48 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7387,10 +7387,23 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.210 增强 全局过滤器支持查询、更新、删除指定生效；#2061 修复 SqliteCore AOT Expression 隐式将 decimal 转成 int 问题；#2065 修复 WithMemory 首行为 NULL 值的情况；#2047 修复 ExecuteSqlBulkCop...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.211 修复 ToChunkAsyncEnumerable 少读一条数据的 bug；#1982 #2056 #2016 #2015 修复 System.MemoryExtensions.Contains 解析问题；#1993 修复 Group 查询不支持 aot 问题；#2077 修复 ...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.211</h2>
+<ul>
+<li>修复 ToChunkAsyncEnumerable 少读一条数据的 bug；#1982 #2056 #2016 #2015</li>
+<li>修复 System.MemoryExtensions.Contains 解析问题；#1993</li>
+<li>修复 Group 查询不支持 aot 问题；#2077</li>
+<li>修复 WithTempQuery + AsTreeCte 生成SQL错误；#2080</li>
+<li>修复 Oracle DbFirst.GetTableByName() 没有返回字段信息；#2074</li>
+<li>修复 GBase DbFirst 字典配置问题；#2078</li>
+<li>修复 GBase 时间类型精度问题；#2079</li>
+<li>修复 Sqlite CodeFirst 特殊表名问题；</li>
+<li>完善 ClickHouse/QuestDB/TDengine 支持 enum 映射；</li>
+<li>增加 SqlExt.Ntile ntile(5) over (order by ...)；</li>
+</ul>
 <h2>v3.5.210</h2>
 <ul>
 <li>增强 全局过滤器支持查询、更新、删除指定生效；#2061</li>
