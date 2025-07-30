@@ -2,6 +2,10 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.212
+
+- 修复 Oracle InsertOrUpdate Bug；#2047
+
 ## v3.5.211
 
 - 修复 ToChunkAsyncEnumerable 少读一条数据的 bug；#1982 #2056 #2016 #2015
