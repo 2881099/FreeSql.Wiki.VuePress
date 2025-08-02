@@ -80,6 +80,18 @@ fsql.Select<Tag>().IncludeMany(a => a.TestManys.Take(10));
 fsql.Select<Tag>().IncludeMany(a => a.TestManys.Select(b => new TestMany { Title = b.Title ... }));
 ```
 
+```csharp
+//v3.2.605+
+fsql.Select<Region>()
+    .IncludeByPropertyName("Parent.Parent.Parent")
+    .IncludeByPropertyName("TestManys")
+
+    .IncludeByPropertyName("Childs", then => then
+        .IncludeByPropertyName("Parent.Parent")
+        .IncludeByPropertyName("Parent.Childs"))
+    .ToList();
+```
+
 ## 5、IncludeMany 扩展方法
 
 当主数据已存在内存中，子数据怎么加载？所以我们增加了 List\<T\> 扩展方法，示例如下：
