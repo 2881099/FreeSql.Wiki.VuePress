@@ -16,3 +16,7 @@ html {
   color: var(--vp-c-accent);
   -webkit-text-fill-color: initial;
 }
+
+.vp-sidebar{
+  scrollbar-color: var(--vp-c-bg-2) transparent;
+}
