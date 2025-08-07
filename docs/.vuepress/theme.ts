@@ -56,7 +56,7 @@ export default hopeTheme({
 
     docsearch: {
       appId: "8QM97XX5VE",
-      apiKey: "11391e727d4f1891cbde50fee82af4e3",
+      apiKey: "5110e946ab01a84a298aebef76e22b69",
       indexName: "freesql",
     },
 
