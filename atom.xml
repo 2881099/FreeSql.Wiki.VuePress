@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-08-07T15:08:50.119Z</updated>
+  <updated>2025-08-26T13:22:56.567Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9089,28 +9089,35 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-07-30T14:03:06.000Z</updated>
+    <updated>2025-08-26T13:22:01.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.212</h2>
+<h2>v3.5.213</h2>
 <ul>
-<li>修复 Oracle InsertOrUpdate Bug；#2047</li>
-</ul>
-<h2>v3.5.211</h2>
-<ul>
-<li>修复 ToChunkAsyncEnumerable 少读一条数据的 bug；#1982 #2056 #2016 #2015</li>
-<li>修复 System.MemoryExtensions.Contains 解析问题；#1993</li>
-<li>修复 Group 查询不支持 aot 问题；#2077</li>
-<li>修复 WithTempQuery + AsTreeCte 生成SQL错误；#2080</li>
-<li>修复 Oracle DbFirst.GetTableByName() 没有返回字段信息；#2074</li>
-<li>修复 GBase DbFirst 字典配置问题；#2078</li>
-<li>修复 GBase 时间类型精度问题；#2079</li>
-<li>修复 Sqlite CodeFirst 特殊表名问题；</li>
-<li>完善 ClickHouse/QuestDB/TDengine 支持 enum 映射；</li>
-<li>增加 SqlExt.Ntile ntile(5) over (order by ...)；</li>
+<li>调整 ManyToMany 不一定非要双边设置；</li>
+<li>修复 pgsql WithTempQuery + ToList 对于 bool 类型处理导致的性能问题；#2093</li>
+<li>修复 非公开无参的实体无法获取默认值问题；#2085</li>
+<li>修复 ZeroDbEntity WhereDynamic 多表匹配问题；</li>
+<li>修复 Aop.AuditValue 值变化状态的判断问题；#2101</li>
+<li>修复 SqlServer DbFirst 大小写判断问题；</li>
+<li>修复 MySql 生成 DDL 会报错问题；</li>
+<li>补充 MySql DbFirst Index Name 值；</li>
+<li>补充 pgsql FreeSql.Generator 默认值 uuid_generate_v4() 生成；#2088</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.213</h2>
+<ul>
+<li>调整 ManyToMany 不一定非要双边设置；</li>
+<li>修复 pgsql WithTempQuery + ToList 对于 bool 类型处理导致的性能问题；#2093</li>
+<li>修复 非公开无参的实体无法获取默认值问题；#2085</li>
+<li>修复 ZeroDbEntity WhereDynamic 多表匹配问题；</li>
+<li>修复 Aop.AuditValue 值变化状态的判断问题；#2101</li>
+<li>修复 SqlServer DbFirst 大小写判断问题；</li>
+<li>修复 MySql 生成 DDL 会报错问题；</li>
+<li>补充 MySql DbFirst Index Name 值；</li>
+<li>补充 pgsql FreeSql.Generator 默认值 uuid_generate_v4() 生成；#2088</li>
+</ul>
 <h2>v3.5.212</h2>
 <ul>
 <li>修复 Oracle InsertOrUpdate Bug；#2047</li>
