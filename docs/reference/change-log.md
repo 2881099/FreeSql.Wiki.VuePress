@@ -2,6 +2,18 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.213
+
+- 调整 ManyToMany 不一定非要双边设置；
+- 修复 pgsql WithTempQuery + ToList 对于 bool 类型处理导致的性能问题；#2093
+- 修复 非公开无参的实体无法获取默认值问题；#2085
+- 修复 ZeroDbEntity WhereDynamic 多表匹配问题；
+- 修复 Aop.AuditValue 值变化状态的判断问题；#2101
+- 修复 SqlServer DbFirst 大小写判断问题；
+- 修复 MySql 生成 DDL 会报错问题；
+- 补充 MySql DbFirst Index Name 值；
+- 补充 pgsql FreeSql.Generator 默认值 uuid_generate_v4() 生成；#2088
+
 ## v3.5.212
 
 - 修复 Oracle InsertOrUpdate Bug；#2047
