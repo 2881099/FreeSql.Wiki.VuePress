@@ -145,6 +145,12 @@ FreeSql 默认集成了 SqlExt.cs 扩展解析方法：
 | --------------------------------------------------- | -------------------------------------------------- | -------------- |
 | SqlExt.IsNull(id, 0)                                | isnull/ifnull/coalesce/nvl                         | 兼容各大数据库 |
 | SqlExt.DistinctCount(id)                            | count(distinct id)                                 |                |
+| SqlExt.AggregateCount()                             | count(1)                                           | 聚合函数       |
+| SqlExt.AggregateCount(id > 0)                       | sum(case when id > 0 then 1 else 0 end)            |                |
+| SqlExt.AggregateSum(id)                             | sum(id)                                            |                |
+| SqlExt.AggregateAvg(id)                             | avg(id)                                            |                |
+| SqlExt.AggregateMax(id)                             | max(id)                                            |                |
+| SqlExt.AggregateMin(id)                             | min(id)                                            |                |
 | SqlExt.GreaterThan                                  | &gt;                                               | 大于           |
 | SqlExt.GreaterThanOrEqual                           | &gt;=                                              | 大于或等于     |
 | SqlExt.LessThan                                     | &lt;                                               | 小于           |
