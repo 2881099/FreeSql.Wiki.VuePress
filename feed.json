@@ -513,7 +513,7 @@
       "summary": "查询 FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。 表达式函数 更详细请前往 SqlServer WithLock/WithIndex 多表： 全局设置 NoLock： 动态过滤 WhereDynamicFilter 《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》 ...",
       "content_html": "\n<p>FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。</p>\n<p>|                                        |                                          |                                         |\n|</p>\n",
       "date_published": "2021-02-04T16:03:18.000Z",
-      "date_modified": "2025-06-06T08:58:16.000Z",
+      "date_modified": "2025-10-22T05:29:03.000Z",
       "authors": [],
       "tags": []
     },
