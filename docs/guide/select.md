@@ -186,7 +186,7 @@ public void Test()
 | GroupBy             | \<this\>          | Lambda                             | 按选择的列分组，GroupBy(a => a.Name)                                                                                                                                   | GroupBy(a => new{a.Name,a.Time}) |
 | GroupBy             | \<this\>          | string, parms                      | 按原生 sql 语法分组，GroupBy("concat(name, @cc)", new { cc = 1 })                                                                                                      |
 | Having              | \<this\>          | string, parms                      | 按原生 sql 语法聚合条件过滤，Having("count(name) = @cc", new { cc = 1 })                                                                                               |
-| Disdinct            | \<this\>          |                                    | .Distinct().ToList(x => x.GroupName) 是对指定字段                                                                                                                      |
+| Distinct            | \<this\>          |                                    | .Distinct().ToList(x => x.GroupName) 是对指定字段                                                                                                                      |
 | 【排序】            |
 | OrderBy             | \<this\>          | Lambda                             | 按列排序，OrderBy(a => a.Time)，可多次使用                                                                                                                             |
 | OrderByDescending   | \<this\>          | Lambda                             | 按列倒向排序，OrderByDescending(a => a.Time)                                                                                                                           |
