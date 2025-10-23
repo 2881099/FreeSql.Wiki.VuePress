@@ -2,6 +2,21 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.215
+
+- 修复 Clickhouse 批量新增因未指定 Columns 导致报错；
+- 修复 ClickHouse .LimitBy；#2114
+- 修复 AOP 优先级最高 Aop.ConfigEntity 无法获取 ModifyIndexResult；
+- 修复 ZeroDbContext WhereDyanmicFilter DataRange bug；
+- 修复 ZeroDbContext 多表 Schema 问题；
+- 修复 OracleDBFirst 生成实体 Schema 清空导致的 -match 无法匹配表；
+- 修复 子查询In ToList.Contains 开启参数化后可能丢失参数的 bug；UseGenerateCommandParameterWithLambda
+- 优化 WithLock(NoLock) 同时兼容 SqlServer、达梦；#2058
+- 优化 SqliteDbFirst 输入参数处理；
+- 优化 QuestDb IHttpClientFactory、IServiceCollection 相关逻辑；
+- 优化 QuestDb Insert Update 相关逻辑；
+- 调整 ClickHouse 驱动 ClickHouse.Client 改成 ClickHouse.Driver；
+
 ## v3.5.213
 
 - 调整 ManyToMany 不一定非要双边设置；
