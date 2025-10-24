@@ -31,7 +31,7 @@ AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单
 
 4. 新建菜单，类型选择增删改查
 
-![image](/adminblazor/001.png)
+![image](/adminblazor/0001.png)
 
 5. 生成代码，在实体类型维护注释、导航属性
 
@@ -39,7 +39,7 @@ AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单
 - 实体上的导航属性，会生成丰富的 UI
 - 创建实体类型，建议继承 Entity/EntityCreated/EntityModifed/EntityAudited
 
-![image](/adminblazor/002.png)
+![image](/adminblazor/0002.png)
 
 ## 权限
 
@@ -83,22 +83,22 @@ class XxxController : ControllerBase
 
 之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。
 
-![image](/adminblazor/003.png)
+![image](/adminblazor/0003.png)
 
 ## 审批
 
 - 实体类继承 EntityAudited
 - 菜单编辑选择 【审批】
 
-![image](/adminblazor/005.png)
+![image](/adminblazor/0005.png)
 
 - 待提交/反审，可修改/删除
 - 审核中/通过，已锁定业务数据，不可修改/删除
 - EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）
 
-![image](/adminblazor/006.png)
+![image](/adminblazor/0006.png)
 
-![image](/adminblazor/007.png)
+![image](/adminblazor/0007.png)
 
 ## 租户
 
@@ -120,7 +120,7 @@ class AdminContext
 > FreeSqlCloud API 访问方式与 IFreeSql 一样
 > IAggregateRootRepository 是级联操作友好的仓储模式
 
-![image](/adminblazor/004.png)
+![image](/adminblazor/0004.png)
 
 ## 定时任务
 
