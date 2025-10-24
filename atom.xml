@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-10-24T09:26:28.664Z</updated>
+  <updated>2025-10-24T09:31:14.912Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -378,7 +378,7 @@
     <title type="text">AdminBlazor</title>
     <id>https://freesql.net/guide/AdminBlazor.html</id>
     <link href="https://freesql.net/guide/AdminBlazor.html"/>
-    <updated>2025-10-24T09:25:19.000Z</updated>
+    <updated>2025-10-24T09:30:00.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>项目介绍</h2>
 <p>AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单/按钮，支持快速代码生成一对一、一对多、多对多导航属性的 .razor 界面。</p>
@@ -397,6 +397,7 @@
 <li>老版本: https://gitee.com/FreeSql/AdminBlazor</li>
 <li>新版本：暂不开源（商业技术支持）</li>
 </ul>
+<figure><img src="/adminblazor/0008.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>快速开始</h2>
 <ol>
 <li>安装模板</li>
@@ -423,7 +424,7 @@
 <ol start="4">
 <li>新建菜单，类型选择增删改查</li>
 </ol>
-<figure><img src="/adminblazor/0001.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0002.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <ol start="5">
 <li>生成代码，在实体类型维护注释、导航属性</li>
 </ol>
@@ -432,7 +433,7 @@
 <li>实体上的导航属性，会生成丰富的 UI</li>
 <li>创建实体类型，建议继承 Entity/EntityCreated/EntityModifed/EntityAudited</li>
 </ul>
-<figure><img src="/adminblazor/0002.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0003.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>权限</h2>
 <ul>
 <li>SysUser 多对多 SysRole</li>
@@ -466,19 +467,18 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后菜单管理，会出现对应的按钮项，勾选设置角色是否有按钮的权限。</p>
-<figure><img src="/adminblazor/0003.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0004.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>审批</h2>
 <ul>
 <li>实体类继承 EntityAudited</li>
 <li>菜单编辑选择 【审批】</li>
 </ul>
-<figure><img src="/adminblazor/0005.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0006.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <ul>
 <li>待提交/反审，可修改/删除</li>
 <li>审核中/通过，已锁定业务数据，不可修改/删除</li>
 <li>EntityAudited 带版本功能、审计历史变化，且多端无法同时编辑（提示正在被[admin]编辑）</li>
 </ul>
-<figure><img src="/adminblazor/0006.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <figure><img src="/adminblazor/0007.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>租户</h2>
 <p>提示：AdminContext 类型已注入为 Scoped</p>
@@ -496,7 +496,7 @@
 <p>FreeSqlCloud API 访问方式与 IFreeSql 一样
 IAggregateRootRepository 是级联操作友好的仓储模式</p>
 </blockquote>
-<figure><img src="/adminblazor/0004.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0005.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>定时任务</h2>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Scheduler</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"任务1"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"0/30 * * * * *"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
 <span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">static</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> void</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Scheduler001</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
