@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 24 Oct 2025 09:31:14 GMT</pubDate>
-    <lastBuildDate>Fri, 24 Oct 2025 09:31:14 GMT</lastBuildDate>
+    <pubDate>Fri, 24 Oct 2025 09:54:13 GMT</pubDate>
+    <lastBuildDate>Fri, 24 Oct 2025 09:54:13 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -354,6 +354,7 @@
 <li>新版本：暂不开源（商业技术支持）</li>
 </ul>
 <figure><img src="/adminblazor/0008.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
+<figure><img src="/adminblazor/0001.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>快速开始</h2>
 <ol>
 <li>安装模板</li>
