@@ -210,7 +210,7 @@ static void Scheduler003()
 
 ### 3. 其他
 
-```html
+```razor
 <SelectDict ParentName="WLPZ" @bind-Value="item.xxx" />
 
 <SelectEntity TItem="Classify" TKey="long?" @bind-Value="item.ClassifyId" DisplayText="e => e.ClassifyName" />
@@ -218,6 +218,14 @@ static void Scheduler003()
 <SelectEnum TEnum="ArticleType" @bind-Value="item.ArticleType" />
 
 <InputFile2 @bind-Value="item.Path" />
+
+<InputTags TItem="ModelTag" @bind-Value="item.Tags"
+    OnSearch="OnSearchTags"
+    OnCreate="tagName => new ModelTag { Name = tagName }"
+    DisplayText="tag => tag.Name"
+    Placeholder="输入标签名搜索或创建..." 
+    DropdownAsGrid="true"
+    GridMinItemWidth="120" />
 ```
 
 ### 4. 更多参考 blazor.zone
