@@ -13,6 +13,8 @@ AdminBlazor 是一款 Blazor Server SaaS 中台项目，支持 RABC 权限菜单
 
 ![image](/adminblazor/0008.png)
 
+![image](/adminblazor/0001.png)
+
 ## 快速开始
 
 1. 安装模板
