@@ -2,6 +2,18 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.216
+
+- 修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化命令）；#2139
+- 修复 KingbaseES bool 类型解析为 true/false；
+- 优化 KingbaseES V9 支持和读取链接字符串中的 SearchPath 来确定架构模式；
+- 优化 强制索引(WithIndex)同时支持 MySql/Oracle/SqlServer/Sqlite；#2130
+- 优化 PG临时主键插入或更新时自增主键不插入；#2133
+- 修复 ClickHouseBulkCopy 没传 ColumnNames 与未调用 InitAsync 可能导致 Column names not initialized. Call InitAsync once to load column data；
+- 补充 IUnitOfWorkManager；#2127
+- 升级 DuckDB to v1.4.1；#2128
+- 升级 kdbndp.dll to V9.3.7.1030
+
 ## v3.5.215
 
 - 修复 Clickhouse 批量新增因未指定 Columns 导致报错；
