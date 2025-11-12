@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-11-12T12:33:06.547Z</updated>
+  <updated>2025-11-12T12:49:18.504Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9090,10 +9090,10 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-11-12T12:32:13.000Z</updated>
+    <updated>2025-11-12T12:48:28.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.301</h2>
+<h2>v3.5.302</h2>
 <ul>
 <li>升级到 .NET 10.0；</li>
 <li>添加 IUpdate.SetByPropertyName 动态指定属性更新；</li>
@@ -9110,7 +9110,7 @@ class table {...}</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.301</h2>
+<h2>v3.5.302</h2>
 <ul>
 <li>升级到 .NET 10.0；</li>
 <li>添加 IUpdate.SetByPropertyName 动态指定属性更新；</li>
