@@ -2,7 +2,7 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.5.300
+## v3.5.301
 
 - 升级到 .NET 10.0；
 - 添加 IUpdate.SetByPropertyName 动态指定属性更新；
