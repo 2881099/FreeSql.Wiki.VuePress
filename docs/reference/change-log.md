@@ -2,8 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
-## v3.5.216
+## v3.5.300
 
+- 升级到 .NET 10.0；
+- 添加 IUpdate.SetByPropertyName 动态指定属性更新；
+- 修复 MySql Enum MapType(int) 表达式值解析 bug；
 - 修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化命令）；#2139
 - 修复 KingbaseES bool 类型解析为 true/false；
 - 优化 KingbaseES V9 支持和读取链接字符串中的 SearchPath 来确定架构模式；
