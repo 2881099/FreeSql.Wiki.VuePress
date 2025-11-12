@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 12 Nov 2025 02:17:21 GMT</pubDate>
-    <lastBuildDate>Wed, 12 Nov 2025 02:17:21 GMT</lastBuildDate>
+    <pubDate>Wed, 12 Nov 2025 12:33:06 GMT</pubDate>
+    <lastBuildDate>Wed, 12 Nov 2025 12:33:06 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7388,11 +7388,11 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.300 升级到 .NET 10.0； 添加 IUpdate.SetByPropertyName 动态指定属性更新； 修复 MySql Enum MapType(int) 表达式值解析 bug； 修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.301 升级到 .NET 10.0； 添加 IUpdate.SetByPropertyName 动态指定属性更新； 修复 MySql Enum MapType(int) 表达式值解析 bug； 修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.300</h2>
+<h2>v3.5.301</h2>
 <ul>
 <li>升级到 .NET 10.0；</li>
 <li>添加 IUpdate.SetByPropertyName 动态指定属性更新；</li>
