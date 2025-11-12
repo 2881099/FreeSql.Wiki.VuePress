@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-11-04T14:12:23.608Z</updated>
+  <updated>2025-11-12T02:17:21.314Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9090,11 +9090,14 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2025-11-04T14:11:29.000Z</updated>
+    <updated>2025-11-12T02:16:27.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.216</h2>
+<h2>v3.5.300</h2>
 <ul>
+<li>升级到 .NET 10.0；</li>
+<li>添加 IUpdate.SetByPropertyName 动态指定属性更新；</li>
+<li>修复 MySql Enum MapType(int) 表达式值解析 bug；</li>
 <li>修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化命令）；#2139</li>
 <li>修复 KingbaseES bool 类型解析为 true/false；</li>
 <li>优化 KingbaseES V9 支持和读取链接字符串中的 SearchPath 来确定架构模式；</li>
@@ -9107,8 +9110,11 @@ class table {...}</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.216</h2>
+<h2>v3.5.300</h2>
 <ul>
+<li>升级到 .NET 10.0；</li>
+<li>添加 IUpdate.SetByPropertyName 动态指定属性更新；</li>
+<li>修复 MySql Enum MapType(int) 表达式值解析 bug；</li>
 <li>修复 Firebird 批量插入异常问题（BLOB SUB_TYPE BINARY 需要参数化命令）；#2139</li>
 <li>修复 KingbaseES bool 类型解析为 true/false；</li>
 <li>优化 KingbaseES V9 支持和读取链接字符串中的 SearchPath 来确定架构模式；</li>
