@@ -2,6 +2,18 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.304
+
+- **修复 Contains 解决可能在 net10 出现的问题；**#2144
+- 增加 Clickhouse DateOnly 支持；
+- 增加 GBase ExecuteInserted/ExecuteUpdated/ExecuteDeleted 方法；
+- 增加 GBase CodeFirst 可新增列；
+- 修复 南大通用使用 DateTime.Date 操作无法比较的问题；
+- 修复 南大通用对 text 写入报错的问题；
+- 修复 pgsql 驱动使用 UseMergeInto 语法在 InsertOrUpdate PgCopy 生成了错误的 SQL；
+- 修复 opengauss 使用 pg 驱动时 merge 语法错误和增加二进制字段值显式类型转换；
+- 修复 DataType 在 Custom 项目下的设置问题；#2153
+
 ## v3.5.302
 
 - 升级到 .NET 10.0；
