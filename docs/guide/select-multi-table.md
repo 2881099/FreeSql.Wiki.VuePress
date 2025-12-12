@@ -81,8 +81,6 @@ fsql.Select<Topic>()
 
 ## 3、WithoutJoin
 
-`WithoutJoin()` 方法提供了一种强大的机制，用于在 FreeSql 的多表查询（例如 `fsql.Select<T1, T2, T3>()`）中，**严格地控制哪些泛型类型对应的表最终会被 JOIN 到生成的 SQL 语句中**。这使得你可以在应用程序层面精确地动态构建查询，替代传统手动拼接 SQL 中对 JOIN 子句的条件控制。
-
 ```csharp
 fsql.Select<Order, Product, User>()
     .InnerJoin((o, p, u) => o.UserId == u.Id)
