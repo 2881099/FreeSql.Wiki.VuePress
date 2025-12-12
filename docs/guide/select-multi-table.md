@@ -79,26 +79,26 @@ fsql.Select<Topic>()
 
 > 提示：正确配置 【导航关系】后，不需要手工调用 LeftJoin
 
-## 3、WithSql
+## 3、WithoutJoin
+
+`WithoutJoin()` 方法提供了一种强大的机制，用于在 FreeSql 的多表查询（例如 `fsql.Select<T1, T2, T3>()`）中，**严格地控制哪些泛型类型对应的表最终会被 JOIN 到生成的 SQL 语句中**。这使得你可以在应用程序层面精确地动态构建查询，替代传统手动拼接 SQL 中对 JOIN 子句的条件控制。
 
 ```csharp
-fsql.Select<Topic, Category, CategoryType>()
-    .WithSql(
-        "select * from Topic where id=@id1",
-        "select * from Category where id=@id2",
-        null, //不设置 CategoryType 对应的 SQL
-        new { id1 = 10, id2 = 11, id3 = 13 }
-    )
-    .LeftJoin((a,b,c) => a.CategoryId == b.Id)
-    .LeftJoin((a,b,c) => b.ParentId == c.Id)
-    .ToList();
-//SELECT ...
-//FROM ( select * from Topic where id=@id1 ) a
-//LEFT JOIN ( select * from Category where id=@id2 ) b ON a.`CategoryId` = b.`Id`
-//LEFT JOIN `CategoryType` c ON b.`ParentId` = c.`Id`
-```
+fsql.Select<Order, Product, User>()
+    .InnerJoin((o, p, u) => o.UserId == u.Id)
+    .LeftJoin((o, p, u) => o.ProductId == p.Id)
+    .WithoutJoin(t2: !includeProductInfo)
+    .ToList((o, p, u) => new OrderDetailDto
+    {
+        OrderId = o.Id,
+        OrderNo = o.OrderNo,
+        Username = u.Username, // User (T3) 始终 JOIN，可直接引用
+        ProductName = includeProductInfo ? p.Name : "N/A"
+    });
 
-> 提示：ISelect.ToSql 可与 WithSql 配合使用
+// includeProductInfo = true: SQL 将 JOIN Product
+// includeProductInfo = false: SQL 将不 JOIN Product，ProductName 会是 "N/A"
+```
 
 ## 4、子表Exists
 
