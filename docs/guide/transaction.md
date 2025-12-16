@@ -170,7 +170,7 @@ SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 
 ```csharp
 // 场景：已经有一个开启的 Connection 和 Transaction
-using (var conn = new Microsoft.Data.SqlClient.SqlConnection("..."))
+using (var conn = new SqlConnection("..."))
 {
     conn.Open();
     using (var tran = conn.BeginTransaction())
