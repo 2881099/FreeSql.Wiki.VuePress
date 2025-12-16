@@ -165,3 +165,37 @@ for update 在 Oracle/PostgreSQL/MySql 是通用的写法，我们对 SqlServer 
 ```sql
 SELECT ... FROM [User] a With(UpdLock, RowLock, NoWait)
 ```
+
+## 5. 外部事务
+
+```csharp
+// 场景：已经有一个开启的 Connection 和 Transaction
+using (var conn = new Microsoft.Data.SqlClient.SqlConnection("..."))
+{
+    conn.Open();
+    using (var tran = conn.BeginTransaction())
+    {
+        // 1. 原生/Dapper 操作
+        // command.Transaction = tran;
+        // command.ExecuteNonQuery();
+
+        // 2. 桥接给 FreeSql
+        // 使用扩展方法创建适配器，传入现有的 tran
+        using (var uow = fsql.CreateUnitOfWork(tran)) 
+        {
+            // 在此 uow 下获取的仓储或 Orm，都会使用传入的 tran
+            var repo = uow.GetRepository<MyEntity>();
+            repo.Insert(new MyEntity { Name = "FreeSql Insert" });
+            
+            // 或者直接使用 Orm
+            uow.Orm.Insert(new MyEntity { Name = "Direct Orm Insert" }).ExecuteAffrows();
+
+            // 这里的 Commit 只会触发 FreeSql 的事件，不会提交物理事务
+            uow.Commit(); 
+        }
+
+        // 3. 真正的提交由最外层控制
+        tran.Commit();
+    }
+}
+```
