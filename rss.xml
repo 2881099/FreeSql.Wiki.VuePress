@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 18 Dec 2025 03:47:29 GMT</pubDate>
-    <lastBuildDate>Thu, 18 Dec 2025 03:47:29 GMT</lastBuildDate>
+    <pubDate>Thu, 18 Dec 2025 10:34:39 GMT</pubDate>
+    <lastBuildDate>Thu, 18 Dec 2025 10:34:39 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -1402,22 +1402,22 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <table>
 <thead>
 <tr>
-<th><img width="391" height="844" src="https://github.com/user-attachments/assets/309b67ce-d15c-47ca-b9b0-d26304245a18"></th>
-<th><img width="392" height="843" src="https://github.com/user-attachments/assets/46149156-c2bb-4a37-b22c-339aa9cab28c"></th>
+<th><img src="/freeim/001.png" alt="image" loading="lazy"></th>
+<th><img src="/freeim/002.png" alt="image" loading="lazy"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img width="389" height="844" src="https://github.com/user-attachments/assets/ad19962f-7e9c-46da-88cc-79548f37ee09"></td>
-<td><img width="390" height="845" src="https://github.com/user-attachments/assets/f9581338-fe92-41c6-ad72-568d5f508876"></td>
+<td><img src="/freeim/003.png" alt="image" loading="lazy"></td>
+<td><img src="/freeim/004.png" alt="image" loading="lazy"></td>
 </tr>
 <tr>
-<td><img width="387" height="844" src="https://github.com/user-attachments/assets/46f5f9ad-f53f-4b47-8bad-23cec5081704"></td>
-<td><img width="391" height="843" src="https://github.com/user-attachments/assets/4515a75c-2ff5-4061-9afb-6ffdb34849df"></td>
+<td><img src="/freeim/005.png" alt="image" loading="lazy"></td>
+<td><img src="/freeim/006.png" alt="image" loading="lazy"></td>
 </tr>
 </tbody>
 </table>
-<img width="1250" height="1191" alt="image" src="https://github.com/user-attachments/assets/75fb9117-c922-4e6e-99dc-27e9c36fa99d">
+<figure><img src="/freeim/007.png" alt="image" tabindex="0" loading="lazy"><figcaption>image</figcaption></figure>
 <h2>ImServer 服务端</h2>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> void</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Configure</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IApplicationBuilder</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> app</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
@@ -1450,6 +1450,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>| ImHelper方法          | 参数                                 | 描述                            |
 |</p>
 ]]></content:encoded>
+      <enclosure url="https://freesql.net/freeim/001.png" type="image/png"/>
     </item>
     <item>
       <title>FreeScheduler</title>
