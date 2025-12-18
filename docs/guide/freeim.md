@@ -27,12 +27,12 @@ _接受定制项目开发，详细请联系作者_
 - 配置：会员等级、谁不能删除谁、谁能领红包等等
 - 价格：根据功能谈价
 
-| <img width="391" height="844" src="https://github.com/user-attachments/assets/309b67ce-d15c-47ca-b9b0-d26304245a18" /> | <img width="392" height="843" src="https://github.com/user-attachments/assets/46149156-c2bb-4a37-b22c-339aa9cab28c" /> |
+| ![image](/freeim/001.png) | ![image](/freeim/002.png)|
 | -- | -- |
-| <img width="389" height="844" src="https://github.com/user-attachments/assets/ad19962f-7e9c-46da-88cc-79548f37ee09" /> | <img width="390" height="845" src="https://github.com/user-attachments/assets/f9581338-fe92-41c6-ad72-568d5f508876" /> |
-| <img width="387" height="844" src="https://github.com/user-attachments/assets/46f5f9ad-f53f-4b47-8bad-23cec5081704" /> | <img width="391" height="843" src="https://github.com/user-attachments/assets/4515a75c-2ff5-4061-9afb-6ffdb34849df" /> |
+| ![image](/freeim/003.png) | ![image](/freeim/004.png) |
+| ![image](/freeim/005.png) | ![image](/freeim/006.png) |
 
-<img width="1250" height="1191" alt="image" src="https://github.com/user-attachments/assets/75fb9117-c922-4e6e-99dc-27e9c36fa99d" />
+![image](/freeim/007.png)
 
 ## ImServer 服务端
 
