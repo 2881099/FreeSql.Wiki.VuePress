@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2025-12-16T01:57:15.046Z</updated>
+  <updated>2025-12-18T03:46:45.842Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -1454,7 +1454,7 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
     <title type="text">FreeIM</title>
     <id>https://freesql.net/guide/freeim.html</id>
     <link href="https://freesql.net/guide/freeim.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2025-12-18T03:45:47.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>FreeIM v2.0.0</h2>
 <ul>
@@ -1481,6 +1481,33 @@ IAggregateRootRepository 是级联操作友好的仓储模式</p>
 <blockquote>
 <p>dotnet add package FreeIM</p>
 </blockquote>
+<h1>定制服务</h1>
+<ul>
+<li>前端：Flutter、uniapp</li>
+<li>后端：.NET10 + Redis + MySql + Clickhouse + Kafka (高性能、万人群、群直播）</li>
+<li>功能：好友、群、签到、红包、直播、语聊、后台管理系统、系统推送</li>
+<li>配置：会员等级、谁不能删除谁、谁能领红包等等</li>
+<li>价格：根据功能谈价</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><img width="391" height="844" src="https://github.com/user-attachments/assets/309b67ce-d15c-47ca-b9b0-d26304245a18"></th>
+<th><img width="392" height="843" src="https://github.com/user-attachments/assets/46149156-c2bb-4a37-b22c-339aa9cab28c"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img width="389" height="844" src="https://github.com/user-attachments/assets/ad19962f-7e9c-46da-88cc-79548f37ee09"></td>
+<td><img width="390" height="845" src="https://github.com/user-attachments/assets/f9581338-fe92-41c6-ad72-568d5f508876"></td>
+</tr>
+<tr>
+<td><img width="387" height="844" src="https://github.com/user-attachments/assets/46f5f9ad-f53f-4b47-8bad-23cec5081704"></td>
+<td><img width="387" height="844" src="https://github.com/user-attachments/assets/aa0b33af-c655-44bd-b8a5-d7fedefcefaa"></td>
+</tr>
+</tbody>
+</table>
+<img width="1250" height="1191" alt="image" src="https://github.com/user-attachments/assets/75fb9117-c922-4e6e-99dc-27e9c36fa99d">
 <h2>ImServer 服务端</h2>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> void</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Configure</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IApplicationBuilder</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> app</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
