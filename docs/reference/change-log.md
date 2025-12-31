@@ -2,6 +2,17 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.305
+
+- 增加 ISelect.WithoutJoin 多表查询时排除某个表；
+- 增加 CreateUnitOfWork 从外部事务创建；
+- 增加 TDengine 对Decimal类型支持；
+- 修复 UnitlOfWorkManager 绑定 DbContext 事务问题；
+- 修复 Select0Provider.Finalize 可能存在的问题；#2183
+- 修复 MySql InsertInto Enum MapType(int) 赋值未能解析为 int ；
+- 修复 Clickhouse 参数化处理 Enum 的问题；
+- 补充 ObjectPool Async CancellationToken 参数；#2177
+
 ## v3.5.304
 
 - **修复 Contains 解决可能在 net10 出现的问题；**#2144
