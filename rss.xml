@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 18 Dec 2025 10:34:39 GMT</pubDate>
-    <lastBuildDate>Thu, 18 Dec 2025 10:34:39 GMT</lastBuildDate>
+    <pubDate>Wed, 31 Dec 2025 07:57:36 GMT</pubDate>
+    <lastBuildDate>Wed, 31 Dec 2025 07:57:36 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7473,10 +7473,21 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.304 修复 Contains 解决可能在 net10 出现的问题；#2144 增加 Clickhouse DateOnly 支持； 增加 GBase ExecuteInserted/ExecuteUpdated/ExecuteDeleted 方法； 增加 GBase CodeFirst...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.305 增加 ISelect.WithoutJoin 多表查询时排除某个表； 增加 CreateUnitOfWork 从外部事务创建； 增加 TDengine 对Decimal类型支持； 修复 UnitlOfWorkManager 绑定 DbContext 事务问题； 修复 Select...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.305</h2>
+<ul>
+<li>增加 ISelect.WithoutJoin 多表查询时排除某个表；</li>
+<li>增加 CreateUnitOfWork 从外部事务创建；</li>
+<li>增加 TDengine 对Decimal类型支持；</li>
+<li>修复 UnitlOfWorkManager 绑定 DbContext 事务问题；</li>
+<li>修复 Select0Provider.Finalize 可能存在的问题；#2183</li>
+<li>修复 MySql InsertInto Enum MapType(int) 赋值未能解析为 int ；</li>
+<li>修复 Clickhouse 参数化处理 Enum 的问题；</li>
+<li>补充 ObjectPool Async CancellationToken 参数；#2177</li>
+</ul>
 <h2>v3.5.304</h2>
 <ul>
 <li><strong>修复 Contains 解决可能在 net10 出现的问题；</strong>#2144</li>
