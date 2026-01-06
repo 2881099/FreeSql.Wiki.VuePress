@@ -90,8 +90,8 @@ FROM (
     WHERE a.[Id] < 1000 ) a
 INNER JOIN (
     SELECT a.[UserId], a.[Remark]
-    FROM [TwoTablePartitionBy_UserExt] a
-    WHERE (a.[UserId] > 0) ) b ON a.[Id] = b.[UserId]
+    FROM [UserExt] a
+    WHERE (a.[Id] > 0) ) b ON a.[Id] = b.[UserId]
 WHERE (a.[rownum] = 1)
 ```
 
@@ -122,7 +122,7 @@ fsql.Select<User1>()
 SELECT ...
 FROM (
     SELECT a.[Id], a.[Nickname], row_number() over( partition by a.[Nickname] order by a.[Id]) [rownum]
-    FROM [User] a ) a
+    FROM [User1] a ) a
 INNER JOIN (
     SELECT a.[UserId], a.[Remark], sum(a.[UserId]) [sum1]
     FROM [UserExt] a
