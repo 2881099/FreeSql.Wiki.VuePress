@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.306
+
+- 修复 ClickHouse 读取到错误列导致插入失败问题；#2194
+- 补充 SqlExt.DateDiff 对其他数据库的支持；
+
 ## v3.5.305
 
 - 增加 ISelect.WithoutJoin 多表查询时排除某个表；
