@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 16 Feb 2026 08:42:13 GMT</pubDate>
-    <lastBuildDate>Mon, 16 Feb 2026 08:42:13 GMT</lastBuildDate>
+    <pubDate>Fri, 06 Mar 2026 16:19:25 GMT</pubDate>
+    <lastBuildDate>Fri, 06 Mar 2026 16:19:25 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7473,10 +7473,15 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.306 修复 ClickHouse 读取到错误列导致插入失败问题；#2194 补充 SqlExt.DateDiff 对其他数据库的支持； v3.5.305 增加 ISelect.WithoutJoin 多表查询时排除某个表； 增加 CreateUnitOfWork 从外部事务创建； 增加...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.307 feat: add support for including ignored columns in MapEntityValue method. fix: Override Firebird&amp;apos;s bitwise operators. v3.5.306 修复 ClickHouse...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.307</h2>
+<ul>
+<li>feat: add support for including ignored columns in MapEntityValue method.</li>
+<li>fix: Override Firebird's bitwise operators.</li>
+</ul>
 <h2>v3.5.306</h2>
 <ul>
 <li>修复 ClickHouse 读取到错误列导致插入失败问题；#2194</li>
