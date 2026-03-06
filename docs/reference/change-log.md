@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.307
+
+- feat: add support for including ignored columns in MapEntityValue method.
+- fix: Override Firebird's bitwise operators.
+
 ## v3.5.306
 
 - 修复 ClickHouse 读取到错误列导致插入失败问题；#2194
