@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2026-03-06T16:19:25.315Z</updated>
+  <updated>2026-04-04T09:33:47.519Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9174,21 +9174,25 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2026-03-06T16:18:28.000Z</updated>
+    <updated>2026-04-04T09:32:52.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.307</h2>
+<h2>v3.5.308</h2>
 <ul>
-<li>feat: add support for including ignored columns in MapEntityValue method.</li>
-<li>fix: Override Firebird's bitwise operators.</li>
-</ul>
-<h2>v3.5.306</h2>
-<ul>
-<li>修复 ClickHouse 读取到错误列导致插入失败问题；#2194</li>
-<li>补充 SqlExt.DateDiff 对其他数据库的支持；</li>
+<li>增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223</li>
+<li>修复 FreeSql.DbContext .net5-.net9 发布问题；#2221</li>
+<li>修复 FreeSql.Extensions.LazyLoading 单文件发布问题，删除 CS-Script.Core 改用官方的库 Microsoft.CodeAnalysis.CSharp；#2217</li>
+<li>优化 实体类映射忽略静态属性；#2218</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.308</h2>
+<ul>
+<li>增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223</li>
+<li>修复 FreeSql.DbContext .net5-.net9 发布问题；#2221</li>
+<li>修复 FreeSql.Extensions.LazyLoading 单文件发布问题，删除 CS-Script.Core 改用官方的库 Microsoft.CodeAnalysis.CSharp；#2217</li>
+<li>优化 实体类映射忽略静态属性；#2218</li>
+</ul>
 <h2>v3.5.307</h2>
 <ul>
 <li>feat: add support for including ignored columns in MapEntityValue method.</li>
