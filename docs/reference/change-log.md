@@ -2,6 +2,13 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.308
+
+- 增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223
+- 修复 FreeSql.DbContext .net5-.net9 发布问题；#2221
+- 修复 FreeSql.Extensions.LazyLoading 单文件发布问题，删除 CS-Script.Core 改用官方的库 Microsoft.CodeAnalysis.CSharp；#2217
+- 优化 实体类映射忽略静态属性；#2218
+
 ## v3.5.307
 
 - feat: add support for including ignored columns in MapEntityValue method.
