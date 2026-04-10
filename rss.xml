@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 04 Apr 2026 09:33:47 GMT</pubDate>
-    <lastBuildDate>Sat, 04 Apr 2026 09:33:47 GMT</lastBuildDate>
+    <pubDate>Fri, 10 Apr 2026 16:58:49 GMT</pubDate>
+    <lastBuildDate>Fri, 10 Apr 2026 16:58:49 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7473,10 +7473,16 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.308 增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223 修复 FreeSql.DbContext .net5-.net9 发布问题；#2221 修复 FreeSql.Extensions.LazyLoading 单文件发布问题，删除 CS-Sc...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.309 修复 浮点数解析的西班牙地区报错；#2184 增加 string compare 表达式函数解决；#2087 优化 WithTempQuery 重复字段处理逻辑； v3.5.308 增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223 修复 ...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.309</h2>
+<ul>
+<li>修复 浮点数解析的西班牙地区报错；#2184</li>
+<li>增加 string compare 表达式函数解决；#2087</li>
+<li>优化 WithTempQuery 重复字段处理逻辑；</li>
+</ul>
 <h2>v3.5.308</h2>
 <ul>
 <li>增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223</li>

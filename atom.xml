@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2026-04-04T09:33:47.519Z</updated>
+  <updated>2026-04-10T16:58:49.732Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9174,9 +9174,15 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2026-04-04T09:32:52.000Z</updated>
+    <updated>2026-04-10T16:57:55.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.309</h2>
+<ul>
+<li>修复 浮点数解析的西班牙地区报错；#2184</li>
+<li>增加 string compare 表达式函数解决；#2087</li>
+<li>优化 WithTempQuery 重复字段处理逻辑；</li>
+</ul>
 <h2>v3.5.308</h2>
 <ul>
 <li>增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223</li>
@@ -9186,6 +9192,12 @@ class table {...}</p>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.309</h2>
+<ul>
+<li>修复 浮点数解析的西班牙地区报错；#2184</li>
+<li>增加 string compare 表达式函数解决；#2087</li>
+<li>优化 WithTempQuery 重复字段处理逻辑；</li>
+</ul>
 <h2>v3.5.308</h2>
 <ul>
 <li>增加 FreeSql.Generator 多语言支持，添加中文和英文的提示信息；#2223</li>
