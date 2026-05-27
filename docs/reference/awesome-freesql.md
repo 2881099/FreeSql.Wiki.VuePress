@@ -106,6 +106,15 @@ actions:
     type: primary
 ```
 
+```component VPBanner
+title: EasyAdminBlazor
+content: 基于 .NET 10 + Blazor 技术栈的企业级后台管理框架，由 BootstrapBlazor 组件库驱动 UI，FreeSql 提供数据访问能力。功能全面、开箱即用、扩展灵活，完美兼容 PC 端与移动端小屏设备，是个人开发者接私活、外包项目的利器。
+actions:
+  - text: 文档
+    link: [https://easyadmim.wang-zhan.com.cn/doc](https://easyadmim.wang-zhan.com.cn/doc)
+    type: primary
+```
+
 </div>
 
 ## FreeSql 官方博客
