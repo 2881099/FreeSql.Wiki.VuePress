@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2026-04-10T16:58:49.732Z</updated>
+  <updated>2026-06-10T13:55:56.574Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -7092,7 +7092,7 @@ class table {...}</p>
     <title type="text">你不知道的功能 ✨</title>
     <id>https://freesql.net/guide/more.html</id>
     <link href="https://freesql.net/guide/more.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-06-10T13:54:41.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>1、备注 -&gt; 迁移到数据库</h2>
 <p>FreeSql CodeFirst 支持将 c# 代码内的注释，迁移至数据库的备注。先决条件：</p>
@@ -8275,7 +8275,7 @@ class table {...}</p>
     <title type="text">返回数据 ✨</title>
     <id>https://freesql.net/guide/select-return-data.html</id>
     <link href="https://freesql.net/guide/select-return-data.html"/>
-    <updated>2025-04-24T11:16:26.000Z</updated>
+    <updated>2026-06-10T13:54:41.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql 使用 ExpressionTree 读取数据记录，.NET 技术下除了原生代码，最快的方案是 Emit 和 ExpressionTree。</p>
 <p>ExpressionTree 天然支持 .NET AOT 编译，FreeSql 在 2018 年做出的技术决策将在未来一直受益。</p>
@@ -8382,7 +8382,7 @@ class table {...}</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Select</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt;().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ToList</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt; new </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">id</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//情况7：查询 id，返回 List&lt;Song&gt;</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Select</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt;().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ToList</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt; new </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">id</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) { </span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">xxx</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">ext</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> })</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Select</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&gt;().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ToList</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =&gt; new </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Song</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">id</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) { </span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">ext</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> a</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">ext</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> })</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//情况8：查询 id, ext，返回 List&lt;Song&gt;</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>GroupBy 所有方法不使用 DTO 映射规则</p>
