@@ -177,7 +177,7 @@ fsql.Select<Song>().ToList(a => new Dto(a.id) { xxx = a.ext })
 fsql.Select<Song>().ToList(a => new Song(a.id))
 //情况7：查询 id，返回 List<Song>
 
-fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
+fsql.Select<Song>().ToList(a => new Song(a.id) { ext = a.ext })
 //情况8：查询 id, ext，返回 List<Song>
 ```
 

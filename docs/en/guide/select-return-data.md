@@ -125,7 +125,7 @@ fsql.Select<Song>().ToList(a => new Dto(a.id) { xxx = a.ext })
 fsql.Select<Song>().ToList(a => new Song(a.id))
 //Case 7: Querying id, returning List<Song>
 
-fsql.Select<Song>().ToList(a => new Song(a.id) { xxx = a.ext })
+fsql.Select<Song>().ToList(a => new Song(a.id) { ext = a.ext })
 //Case 8: Querying id and ext, returning List<Song>
 ```
 
