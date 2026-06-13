@@ -2,6 +2,14 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.310
+
+- 添加 DefaultRepository 和 UnitOfWorkManager 的泛型实现；#2231
+- 添加 PgCopy 超时参数；#2238
+- 增强 ToList new T 也支持 dto 自动映射的细节规则（若未指定过）；#2241
+- 修复 UnitOfWork.Dispose 后未禁用Enable导致孤儿事务和连接泄漏；#2227
+- 修复 PG时间类型为NULL时也需要转换，否则插入或更新生成SQL执行会报错；#2198
+
 ## v3.5.309
 
 - 修复 浮点数解析的西班牙地区报错；#2184
