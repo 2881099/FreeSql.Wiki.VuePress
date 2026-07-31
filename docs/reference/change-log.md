@@ -2,6 +2,17 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## v3.5.311
+
+- 修复 MySql WithIndex 多表情况的问题；#2237
+- 修复 pgsql update .Set(a => a.array ==array ) 非参数化解析sql错误问题；#2254
+- 修复 Sqlite 驱动在 DbFirst 时无法读取视图（View）的 Bug；#2258
+- 修复 人大金仓 AsTreeCte().ToDelete() 缺少类型转换问题；#2250
+- 修复 ArrayLength 表达式树解析问题；#2267
+- 修复 InsertDict 批量插入Guid?问题；#2260
+- 修复 FromQuery + RereadSql 问题；#2261
+- 修复 .Page(1, int.MaxValue) 可能报错的问题；#2265
+
 ## v3.5.310
 
 - 添加 DefaultRepository 和 UnitOfWorkManager 的泛型实现；#2231
