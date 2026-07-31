@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql 文档</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2026-06-13T01:58:47.851Z</updated>
+  <updated>2026-07-31T17:54:17.895Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/"/>
@@ -9174,19 +9174,33 @@ class table {...}</p>
     <title type="text">更新日志</title>
     <id>https://freesql.net/reference/change-log.html</id>
     <link href="https://freesql.net/reference/change-log.html"/>
-    <updated>2026-06-13T01:57:51.000Z</updated>
+    <updated>2026-07-31T17:53:23.000Z</updated>
     <summary type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
-<h2>v3.5.310</h2>
+<h2>v3.5.311</h2>
 <ul>
-<li>添加 DefaultRepository 和 UnitOfWorkManager 的泛型实现；#2231</li>
-<li>添加 PgCopy 超时参数；#2238</li>
-<li>增强 ToList new T 也支持 dto 自动映射的细节规则（若未指定过）；#2241</li>
-<li>修复 UnitOfWork.Dispose 后未禁用Enable导致孤儿事务和连接泄漏；#2227</li>
-<li>修复 PG时间类型为NULL时也需要转换，否则插入或更新生成SQL执行会报错；#2198</li>
+<li>修复 MySql WithIndex 多表情况的问题；#2237</li>
+<li>修复 pgsql update .Set(a =&gt; a.array ==array ) 非参数化解析sql错误问题；#2254</li>
+<li>修复 Sqlite 驱动在 DbFirst 时无法读取视图（View）的 Bug；#2258</li>
+<li>修复 人大金仓 AsTreeCte().ToDelete() 缺少类型转换问题；#2250</li>
+<li>修复 ArrayLength 表达式树解析问题；#2267</li>
+<li>修复 InsertDict 批量插入Guid?问题；#2260</li>
+<li>修复 FromQuery + RereadSql 问题；#2261</li>
+<li>修复 .Page(1, int.MaxValue) 可能报错的问题；#2265</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>v3.5.311</h2>
+<ul>
+<li>修复 MySql WithIndex 多表情况的问题；#2237</li>
+<li>修复 pgsql update .Set(a =&gt; a.array ==array ) 非参数化解析sql错误问题；#2254</li>
+<li>修复 Sqlite 驱动在 DbFirst 时无法读取视图（View）的 Bug；#2258</li>
+<li>修复 人大金仓 AsTreeCte().ToDelete() 缺少类型转换问题；#2250</li>
+<li>修复 ArrayLength 表达式树解析问题；#2267</li>
+<li>修复 InsertDict 批量插入Guid?问题；#2260</li>
+<li>修复 FromQuery + RereadSql 问题；#2261</li>
+<li>修复 .Page(1, int.MaxValue) 可能报错的问题；#2265</li>
+</ul>
 <h2>v3.5.310</h2>
 <ul>
 <li>添加 DefaultRepository 和 UnitOfWorkManager 的泛型实现；#2231</li>
