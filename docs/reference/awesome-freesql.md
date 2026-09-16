@@ -115,6 +115,15 @@ actions:
     type: primary
 ```
 
+```component VPBanner
+title: CMS
+content: 独立实现的单站点内容管理系统。后端采用 .NET 10 + FreeSql，前端采用 Next.js + React + TypeScript，提供简体中文界面。已实现文章与独立页面、草稿与发布版本隔离、富文本与图片、分类标签、附件引用保护、审核评论、菜单、站点设置、管理员/编辑权限、操作日志，以及服务端渲染的前台和 SEO 页面。后台“主题外观”提供经典博客、极简阅读、杂志资讯、暗色科技，以及 Fuwari、Retypeset、Cactus、Chirpy、Oranges、Aircloud、Stellar、Halorum、Aurora、iEmo、Clarity，共十五套主题，支持独立配置、私密预览和版本冲突保护。社区主题为博客布局适配，来源及完整许可见 [第三方主题声明](https://github.com/256051/cms/blob/main/THIRD_PARTY_NOTICES.md)。
+actions:
+  - text: 仓库
+    link: https://github.com/256051/cms
+    type: primary
+```
+
 </div>
 
 ## FreeSql 官方博客
