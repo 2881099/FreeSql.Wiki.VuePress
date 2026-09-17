@@ -123,7 +123,14 @@ actions:
     link: https://github.com/256051/cms
     type: primary
 ```
-
+```component VPBanner
+title: 小黄豆CRM
+content: 小黄豆CRM v3.0，基于 .NET8 + FreeSQL + Layui 全新重构，项目结构清晰、架构成熟。全程深度实战使用 FreeSQL 各类核心特性，非常适合作为 FreeSQL 学习实战项目。同时业务功能完整，开箱即用，可直接用于中小企业私有化 CRM 部署与二次开发。
+actions:
+  - text: 仓库
+    link: https://gitee.com/xhd/XHD-CRM
+    type: primary
+```
 </div>
 
 ## FreeSql 官方博客
