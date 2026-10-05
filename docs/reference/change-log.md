@@ -2,6 +2,11 @@
 
 大约每月一次版本号，暂时以修复 bug 为主
 
+## 待发布
+
+- 增加 `SqlExt.InternalRawSql<T>(string)`，可在表达式中直接写入原生 SQL；使用时请确保 SQL 来源可信，并自行承担 SQL 注入风险。
+- 修复 PostgreSQL CodeFirst 创建自定义 schema 时未引用 schema 名称的问题；现在会按 PostgreSQL 标识符规则生成 `CREATE SCHEMA` 语句。#2285
+
 ## v3.5.311
 
 - 修复 MySql WithIndex 多表情况的问题；#2237

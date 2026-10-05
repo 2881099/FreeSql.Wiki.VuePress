@@ -93,15 +93,16 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.LessThan                                     | &lt;                                               | 小于           |
 | SqlExt.LessThanOrEqual                              | &lt;=                                              | 小于           |
 | SqlExt.EqualIsNull                                  | IS NULL                                            | 是否为 NULL    |
-| SqlExt.Case(字典)                                   | case when .. end                                   | 根据字典 case  |
+| SqlExt.CaseDict(input, dictionary)                 | case when .. end                                   | 根据字典 case  |
 | SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql          |
 | SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql          |
 | SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL     |
-| SqlExt.AggregateCount                               | count()                                            | 总数           |
-| SqlExt.AggregateSum                                 | sum(id)                                            | 求和           |
-| SqlExt.AggregateAvg                                 | avg(id)                                            | 平均           |
-| SqlExt.AggregateMax                                 | max(id)                                            | 最大值         |
-| SqlExt.AggregateMin                                 | min(id)                                            | 最小值         |
+| SqlExt.DateDiff("day", start, end)                 | 数据库对应的日期差值函数                          | 日期差值       |
+| SqlExt.AggregateCount()                             | count(1)                                           | 总数           |
+| SqlExt.AggregateSum(id)                             | sum(id)                                            | 求和           |
+| SqlExt.AggregateAvg(id)                             | avg(id)                                            | 平均           |
+| SqlExt.AggregateMax(id)                             | max(id)                                            | 最大值         |
+| SqlExt.AggregateMin(id)                             | min(id)                                            | 最小值         |
 | SqlExt.Rank().Over().PartitionBy().ToValue()        | rank() over(partition by xx)                       | 开窗函数       |
 | SqlExt.DenseRank().Over().PartitionBy().ToValue()   | dense_rank() over(partition by xx)                 |                |
 | SqlExt.Count(id).Over().PartitionBy().ToValue()     | count(id) over(partition by xx)                    |                |
@@ -109,7 +110,8 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                |
 | SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                |
 | SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                |
+| SqlExt.Ntile(5).Over().OrderBy(id).ToValue()        | ntile(5) over(order by id)                         | 开窗函数       |
+| SqlExt.RowNumber().Over().PartitionBy().ToValue()   | row_number() over(partition by xx)                |                |
 
 ## 3、分组第一条记录
 

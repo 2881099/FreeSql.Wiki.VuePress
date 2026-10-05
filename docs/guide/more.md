@@ -22,7 +22,7 @@ INSERT INTO `tb_topic`(`Title`) VALUES(?Title0)
 INSERT INTO `tb_topic`(`Title`) VALUES('Title_1')
 ```
 
-在 new FreeSqlBuilder().UseNoneParameter(true) 可以全局设置。
+在 new FreeSqlBuilder().UseNoneCommandParameter(true) 可以全局设置。
 
 在 单次 IInsert、IUpdate 上使用 NoneParameter() 设置单次生效。
 

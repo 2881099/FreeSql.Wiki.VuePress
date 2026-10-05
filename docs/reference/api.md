@@ -5,11 +5,13 @@
 | 方法                                  | 返回值        | 说明                                                                                          |
 | ------------------------------------- | ------------- | --------------------------------------------------------------------------------------------- |
 | UseConnectionString                   | this          | 设置连接串                                                                                    |
+| UseCustomTableEntityCacheFactory      | this          | 自定义 TableInfo 缓存工厂，适用于同一类型映射到不同表的多实例场景                             |
 | UseAdoConnectionPool                  | this          | 设置连接池方案（默认 false，远程访问建议设置 true）                                           |
 | UseSlave                              | this          | 设置从数据库，支持多个                                                                        |
 | UseSlaveWeight                        | this          | 设置从数据库权重                                                                              |
 | UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                            |
 | UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                  |
+| UseConfigEntityFromDbFirst             | this          | 从数据库导入主键、自增、索引配置，适用于 DbFirst 模式                                          |
 | UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()        |
 | UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                    |
 | UseLazyLoading                        | this          | 开启延时加载功能                                                                              |
@@ -107,10 +109,15 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | GetComparisonDDLStatements\<TEntity\> | string     | 无                         | 将实体类型与数据库对比，返回 DDL 语句           |
 | GetComparisonDDLStatements            | string     | Type[]                     | 将多个实体类型与数据库对比，返回 DDL 语句       |
 | GetComparisonDDLStatements            | string     | Type, string               | 将实体类型与数据库对比，返回 DDL 语句(指定表名) |
-| SyncStructure\<TEntity\>              | bool       | 无                         | 同步实体类型到数据库                            |
-| SyncStructure                         | bool       | Type[]                     | 同步实体类型集合到数据库                        |
-| SyncStructure                         | bool       | Type, string               | 同步实体类型到数据库（指定表名）                |
-| ConfigEntity                          | ICodeFirst | Action\<TableFluent\<T\>\> | FluentAPI 配置实体的特性                        |
+| GetComparisonDDLStatements            | string     | TableInfo, string          | 将表元数据与数据库对比，返回 DDL 语句(指定表名) |
+| SyncStructure\<TEntity\>              | void       | 无                         | 同步实体类型到数据库                            |
+| SyncStructure                         | void       | Type[]                     | 同步实体类型集合到数据库                        |
+| SyncStructure                         | void       | Type, string, bool         | 同步实体类型到数据库（指定表名，可强制同步）    |
+| SyncStructure                         | void       | TableInfo, string, bool    | 同步表元数据到数据库（可强制同步）              |
+| GetDbInfo                             | DbInfoResult | Type                     | 根据实体类型获取数据库信息                      |
+| ConfigEntity\<T\>                    | ICodeFirst | Action\<TableFluent\<T\>\> | FluentAPI 配置实体的特性                        |
+| ConfigEntity                          | ICodeFirst | Type, Action\<TableFluent\> | FluentAPI 动态配置实体的特性                    |
+| GetConfigEntity                       | TableAttribute | Type                  | 获取 FluentAPI 配置的实体元数据                 |
 | GetTableByEntity                      | TableInfo  | Type                       | 获取类型在 ORM 内部的元数据                     |
 
 ---
@@ -121,8 +128,17 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | ------------------- | ------------------- | -------- | ---------------------------------------------------------------------- |
 | GetDatabases        | List\<string\>      | 无       | 获取所有数据库                                                         |
 | GetTablesByDatabase | List\<DbTableInfo\> | string[] | 获取指定数据库的表信息，包括表、列详情、主键、唯一键、索引、外键、备注 |
-| GetTableByName      | DbTableInfo         | string   | 获取指定单表信息，包括列详情、主键、唯一键、索引、备注                 |
-| ExistsTable         | bool                | string   | 判断表名是否存在                                                       |
+| GetTableByName      | DbTableInfo         | string name, bool ignoreCase = true | 获取指定单表信息，包括列详情、主键、唯一键、索引、备注       |
+| ExistsTable         | bool                | string name, bool ignoreCase = true | 判断表名是否存在                                             |
+| GetDbType           | int                 | DbColumnInfo | 获取数据库枚举类型 int 值                                           |
+| GetCsConvert        | string              | DbColumnInfo | 获取 C# 转换表达式，如 `(int)`、`(long)`                              |
+| GetCsTypeValue      | string              | DbColumnInfo | 获取 C# 类型默认值表达式                                               |
+| GetCsType           | string              | DbColumnInfo | 获取 C# 类型名称，如 `int`、`long`                                    |
+| GetCsTypeInfo       | Type                | DbColumnInfo | 获取 C# 类型对象                                                      |
+| GetDataReaderMethod | string              | DbColumnInfo | 获取 ADO.NET 读取方法，如 `GetBoolean`、`GetInt64`                    |
+| GetCsStringify      | string              | DbColumnInfo | 获取序列化表达式                                                      |
+| GetCsParse          | string              | DbColumnInfo | 获取反序列化表达式                                                    |
+| GetEnumsByDatabase  | List\<DbEnumInfo\>  | string[]   | 获取数据库枚举类型，适用于 PostgreSQL                                  |
 
 ---
 
@@ -136,10 +152,10 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | ToList\<T\>         | List\<T\>       | string field                       | 执行 SQL 查询，返回 field 指定字段的记录，并以元组或基础类型(int,string,long)接收，记录不存在时返回 Count 为 0 的列表                                                  |
 | ToOne               | T1              |                                    | 执行 SQL 查询，返回 T1 实体所有字段的第一条记录，记录不存在时返回 null                                                                                                 |
 | Any                 | bool            |                                    | 执行 SQL 查询，是否有记录                                                                                                                                              |
-| Sum                 | T               | Lambda                             | 指定一个列求和                                                                                                                                                         |
+| Sum                 | decimal         | Lambda                             | 指定一个列求和                                                                                                                                                         |
 | Min                 | T               | Lambda                             | 指定一个列求最小值                                                                                                                                                     |
 | Max                 | T               | Lambda                             | 指定一个列求最大值                                                                                                                                                     |
-| Avg                 | T               | Lambda                             | 指定一个列求平均值                                                                                                                                                     |
+| Avg                 | double          | Lambda                             | 指定一个列求平均值                                                                                                                                                     |
 | 【分页】            |
 | Count               | long            |                                    | 查询的记录数量                                                                                                                                                         |
 | Count               | \<this\>        | out long                           | 查询的记录数量，以参数 out 形式返回                                                                                                                                    |
@@ -163,7 +179,8 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | OrderBy             | \<this\>        | Lambda                             | 按列排序，OrderBy(a => a.Time)，可多次使用                                                                                                                             |
 | OrderByDescending   | \<this\>        | Lambda                             | 按列倒向排序，OrderByDescending(a => a.Time)                                                                                                                           |
 | OrderBy             | \<this\>        | string, parms                      | 按原生 sql 语法排序，OrderBy("count(name) + ?cc", new { cc = 1 })                                                                                                      |
-| OrderByPropertyName | string, bool    | 按属性名字符串排序（支持导航属性） |
+| OrderByPropertyName | \<this\>        | string property, bool isAscending = true | 按属性名字符串排序（支持导航属性） |
+| OrderByPropertyNameIf | \<this\>      | bool condition, string property, bool isAscending = true | 按条件按属性名字符串排序（支持导航属性） |
 | 【联表】            |
 | LeftJoin            | \<this\>        | Lambda                             | 左联查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
 | InnerJoin           | \<this\>        | Lambda                             | 联接查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
@@ -200,7 +217,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | ToSql                | string                     |                         | 返回即将执行的 SQL 语句                               |
 | OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能，On Duplicate Key Update             |
 | OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能，On Conflict Do Update          |
-| ExecuteAffrows       | long                       |                         | 执行 SQL 语句，返回影响的行数                         |
+| ExecuteAffrows       | int                        |                         | 执行 SQL 语句，返回影响的行数                         |
 | ExecuteIdentity      | long                       |                         | 执行 SQL 语句，返回自增值                             |
 | ExecuteInserted      | List\<T1\>                 |                         | 执行 SQL 语句，返回插入后的记录                       |
 | ExecuteSqlBulkCopy   | void                       |                         | SqlServer 特有的功能，执行 SqlBulkCopy 批量插入的封装 |
@@ -217,6 +234,8 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | Set             | \<this\>    | Lambda, value           | 设置列的新值，Set(a => a.Name, "newvalue")                                    |
 | Set             | \<this\>    | Lambda                  | 设置列的的新值为基础上增加，Set(a => a.Clicks + 1)，相当于 clicks=clicks+1    |
 | SetDto          | \<this\>    | object                  | 根据 dto 更新的方法                                                           |
+| SetByPropertyName | \<this\>  | string column, object value | 按属性名字符串设置列的新值                                                   |
+| SetByPropertyNameIf | \<this\> | bool condition, string column, object value | 按条件按属性名字符串设置列的新值                                      |
 | SetRaw          | \<this\>    | string, parms           | 设置值，自定义 SQL 语法，SetRaw("title = ?title", new { title = "newtitle" }) |
 | Where           | \<this\>    | Lambda                  | 表达式条件，仅支持实体基础成员（不包含导航对象）                              |
 | Where           | \<this\>    | string, parms           | 原生 sql 语法条件，Where("id = ?id", new { id = 1 })                          |
@@ -226,7 +245,7 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WithTransaction | \<this\>    | DbTransaction           | 设置事务对象                                                                  |
 | WithConnection  | \<this\>    | DbConnection            | 设置连接对象                                                                  |
 | ToSql           | string      |                         | 返回即将执行的 SQL 语句                                                       |
-| ExecuteAffrows  | long        |                         | 执行 SQL 语句，返回影响的行数                                                 |
+| ExecuteAffrows  | int         |                         | 执行 SQL 语句，返回影响的行数                                                 |
 | ExecuteUpdated  | List\<T1\>  |                         | 执行 SQL 语句，返回更新后的记录                                               |
 | Join            | IUpdateJoin |                         | 联表更新                                                                      |
 
@@ -244,5 +263,5 @@ DbContext 自身 = 完整事务，BaseRepository 不一定有事务（可通过�
 | WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                         |
 | WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
-| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
+| ExecuteAffrows  | int        |                         | 执行 SQL 语句，返回影响的行数                        |
 | ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      | 

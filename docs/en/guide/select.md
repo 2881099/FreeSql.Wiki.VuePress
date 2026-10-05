@@ -31,7 +31,9 @@ FreeSql has invested heavily in querying data, offering features like fluent sty
 
 For more details, see [《Expression Functions》](expression-function.md)
 
-## SqlServer WithLock/WithIndex
+## WithLock/WithIndex
+
+`WithIndex` supports MySQL, Oracle, SQL Server, and SQLite; the examples below use SQL Server syntax.
 
 ```csharp
 var list = fsql.Select<Region>()
@@ -189,7 +191,8 @@ public void Test()
 | OrderBy             | \<this\>          | Lambda                                                        | Sort by column, OrderBy(a => a.Time), can be used multiple times                                                                                                                                                                                       |
 | OrderByDescending   | \<this\>          | Lambda                                                        | Sort by column in descending order, OrderByDescending(a => a.Time)                                                                                                                                                                                     |
 | OrderBy             | \<this\>          | string, parms                                                 | Sort by native SQL syntax, OrderBy("count(name) + @cc", new { cc = 1 })                                                                                                                                                                                |
-| OrderByPropertyName | string, bool      | Sort by property name string (supports navigation properties) |
+| OrderByPropertyName | \<this\>          | string property, bool isAscending = true; sort by property name string (supports navigation properties) |
+| OrderByPropertyNameIf | \<this\>        | bool condition, string property, bool isAscending = true; conditional property-name sorting |
 | 【Multi-tables】    |
 | LeftJoin            | \<this\>          | Lambda                                                        | Left join query, supports navigation properties or specifying associated entity types                                                                                                                                                                  |
 | InnerJoin           | \<this\>          | Lambda                                                        | Inner join query, supports navigation properties or specifying associated entity types                                                                                                                                                                 |

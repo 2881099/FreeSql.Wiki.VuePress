@@ -329,6 +329,6 @@ fsql.Update<T1>().SetSource(list).ExecuteSqlBulkCopy();
 | WithTransaction | \<this\>     | DbTransaction           | Sets transaction object                                                                           |
 | WithConnection  | \<this\>     | DbConnection            | Sets connection object                                                                            |
 | ToSql           | string       |                         | Returns the SQL statement to be executed                                                          |
-| ExecuteAffrows  | long         |                         | Executes SQL statement, returns the number of affected rows                                       |
+| ExecuteAffrows  | int         |                         | Executes SQL statement, returns the number of affected rows                                       |
 | ExecuteUpdated  | List\<T1\>   |                         | Executes SQL statement, returns the updated records                                               |
 | Join            | IUpdateJoin  |                         | Join table update                                                                                 |

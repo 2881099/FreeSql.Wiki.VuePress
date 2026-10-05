@@ -70,10 +70,10 @@ fsql.Select<T>().WithSql(sql).Page(1, 10).ToList();
 - a) 不要构建了 IFreeSql 再丢去注册
 
 ```csharp
-var fsql = new FreeSqlBulder()...Build();
+var fsql = new FreeSqlBuilder()...Build();
 ib.Register("key01", () => fsql); //错了，错了，错了
 
-ib.Register("key01", () => new FreeSqlBulder()...Build()); //正确
+ib.Register("key01", () => new FreeSqlBuilder()...Build()); //正确
 ```
 
 - b) 尽量每次都使用 ib.Get 获得 IFreeSql 对象(避免存对象引用)，IdleBus 内部超时释机制一时触发，再使用引用对象，就会报这个报错

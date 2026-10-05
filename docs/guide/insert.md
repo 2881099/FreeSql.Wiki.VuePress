@@ -275,7 +275,7 @@ fsql.Insert(items)
 | ToSql                | string                     |                         | 返回即将执行的 SQL 语句                               |
 | OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | 无                      | MySql 特有的功能 On Duplicate Key Update              |
 | OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | 无                      | PostgreSQL 特有的功能 On Conflict Do Update           |
-| ExecuteAffrows       | long                       |                         | 执行 SQL 语句，返回影响的行数                         |
+| ExecuteAffrows       | int                        |                         | 执行 SQL 语句，返回影响的行数                         |
 | ExecuteIdentity      | long                       |                         | 执行 SQL 语句，返回自增值                             |
 | ExecuteInserted      | List\<T1\>                 |                         | 执行 SQL 语句，返回插入后的记录                       |
 | ExecuteSqlBulkCopy   | void                       |                         | SqlServer 特有的功能，执行 SqlBulkCopy 批量插入的封装 |

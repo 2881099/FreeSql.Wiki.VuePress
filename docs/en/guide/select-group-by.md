@@ -91,10 +91,16 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.LessThan                                     | &lt;                                               | Less than                         |
 | SqlExt.LessThanOrEqual                              | &lt;=                                              | Less than or equal to             |
 | SqlExt.EqualIsNull                                  | IS NULL                                            | Is NULL                           |
-| SqlExt.Case(dictionary)                             | case when .. end                                   | Case based on dictionary          |
+| SqlExt.CaseDict(input, dictionary)                 | case when .. end                                   | Case based on dictionary          |
 | SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql                             |
 | SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql                             |
 | SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL                        |
+| SqlExt.DateDiff("day", start, end)                 | Database-specific date difference function        | Date difference                  |
+| SqlExt.AggregateCount()                             | count(1)                                           | Aggregate function                |
+| SqlExt.AggregateSum(id)                             | sum(id)                                            | Aggregate function                |
+| SqlExt.AggregateAvg(id)                             | avg(id)                                            | Aggregate function                |
+| SqlExt.AggregateMax(id)                             | max(id)                                            | Aggregate function                |
+| SqlExt.AggregateMin(id)                             | min(id)                                            | Aggregate function                |
 | SqlExt.Rank().Over().PartitionBy().ToValue()        | rank() over(partition by xx)                       | Window function                   |
 | SqlExt.DenseRank().Over().PartitionBy().ToValue()   | dense_rank() over(partition by xx)                 |                                   |
 | SqlExt.Count(id).Over().PartitionBy().ToValue()     | count(id) over(partition by xx)                    |                                   |
@@ -102,7 +108,8 @@ var list = fsql.Select<Topic, Category, Area>()
 | SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                                   |
 | SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                                   |
 | SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                                   |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                                   |
+| SqlExt.Ntile(5).Over().OrderBy(id).ToValue()        | ntile(5) over(order by id)                        | Window function                  |
+| SqlExt.RowNumber().Over().PartitionBy().ToValue()   | row_number() over(partition by xx)                |                                   |
 
 ## 3. First Record in Group
 

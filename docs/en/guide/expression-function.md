@@ -140,12 +140,20 @@ FreeSql integrates SqlExt.cs extension parsing methods by default:
 | --------------------------------------------------- | -------------------------------------------------- | ------------------------------- |
 | SqlExt.IsNull(id, 0)                                | isnull/ifnull/coalesce/nvl                         | Compatible with major databases |
 | SqlExt.DistinctCount(id)                            | count(distinct id)                                 |                                 |
+| SqlExt.DateDiff("day", start, end)                 | Database-specific date difference function        | Date difference                |
+| SqlExt.AggregateCount()                             | count(1)                                           | Aggregate function             |
+| SqlExt.AggregateCount(id > 0)                       | sum(case when id > 0 then 1 else 0 end)            |                                 |
+| SqlExt.AggregateSum(id)                             | sum(id)                                            |                                 |
+| SqlExt.AggregateAvg(id)                             | avg(id)                                            |                                 |
+| SqlExt.AggregateMax(id)                             | max(id)                                            |                                 |
+| SqlExt.AggregateMin(id)                             | min(id)                                            |                                 |
+| SqlExt.Ntile(5).Over().OrderBy(id).ToValue()        | ntile(5) over(order by id)                        | Window function                |
 | SqlExt.GreaterThan                                  | &gt;                                               | Greater than                    |
 | SqlExt.GreaterThanOrEqual                           | &gt;=                                              | Greater than or equal to        |
 | SqlExt.LessThan                                     | &lt;                                               | Less than                       |
 | SqlExt.LessThanOrEqual                              | &lt;=                                              | Less than or equal to           |
 | SqlExt.EqualIsNull                                  | IS NULL                                            | Is NULL                         |
-| SqlExt.Case(Dictionary)                             | case when .. end                                   | Case based on dictionary        |
+| SqlExt.CaseDict(input, dictionary)                 | case when .. end                                   | Case based on dictionary        |
 | SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql                           |
 | SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql                           |
 | SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL                      |
@@ -156,9 +164,24 @@ FreeSql integrates SqlExt.cs extension parsing methods by default:
 | SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                                 |
 | SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                                 |
 | SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                                 |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                                 |
+| SqlExt.RowNumber().Over().PartitionBy().ToValue()   | row_number() over(partition by xx)                |                                 |
 
 > The above functionalities are implemented using the [custom parsing](#custom-parsing) feature
+
+## Raw SQL expressions
+
+`SqlExt.InternalRawSql<T>` inserts the supplied SQL into the translated expression unchanged. It is useful for database-specific functions or temporary expressions:
+
+```csharp
+var sql = fsql.Select<Topic>()
+  .ToSql(a => new
+  {
+    Id = a.Id,
+    Score = SqlExt.InternalRawSql<int>("Id * 1")
+  });
+```
+
+The `InternalRawSql<T>` argument is marked with `[RawValue]`, so it is not parameterized or escaped. Only pass trusted fixed SQL; never concatenate user input.
 
 ## Subquery Join
 

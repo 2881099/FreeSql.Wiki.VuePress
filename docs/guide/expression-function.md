@@ -45,7 +45,7 @@ var t1 = fsql.Select<T>()
 
 ```csharp
 //元组集合
-vae lst = new List<(Guid, DateTime)>();
+var lst = new List<(Guid, DateTime)>();
 lst.Add((Guid.NewGuid(), DateTime.Now));
 lst.Add((Guid.NewGuid(), DateTime.Now));
 
@@ -145,18 +145,20 @@ FreeSql 默认集成了 SqlExt.cs 扩展解析方法：
 | --------------------------------------------------- | -------------------------------------------------- | -------------- |
 | SqlExt.IsNull(id, 0)                                | isnull/ifnull/coalesce/nvl                         | 兼容各大数据库 |
 | SqlExt.DistinctCount(id)                            | count(distinct id)                                 |                |
+| SqlExt.DateDiff("day", start, end)                 | 数据库对应的日期差值函数                          | 日期差值       |
 | SqlExt.AggregateCount()                             | count(1)                                           | 聚合函数       |
 | SqlExt.AggregateCount(id > 0)                       | sum(case when id > 0 then 1 else 0 end)            |                |
 | SqlExt.AggregateSum(id)                             | sum(id)                                            |                |
 | SqlExt.AggregateAvg(id)                             | avg(id)                                            |                |
 | SqlExt.AggregateMax(id)                             | max(id)                                            |                |
 | SqlExt.AggregateMin(id)                             | min(id)                                            |                |
+| SqlExt.Ntile(5).Over().OrderBy(id).ToValue()        | ntile(5) over(order by id)                        | 开窗函数       |
 | SqlExt.GreaterThan                                  | &gt;                                               | 大于           |
 | SqlExt.GreaterThanOrEqual                           | &gt;=                                              | 大于或等于     |
 | SqlExt.LessThan                                     | &lt;                                               | 小于           |
 | SqlExt.LessThanOrEqual                              | &lt;=                                              | 小于           |
 | SqlExt.EqualIsNull                                  | IS NULL                                            | 是否为 NULL    |
-| SqlExt.Case(字典)                                   | case when .. end                                   | 根据字典 case  |
+| SqlExt.CaseDict(input, dictionary)                 | case when .. end                                   | 根据字典 case  |
 | SqlExt.GroupConcat                                  | group_concat(distinct .. order by .. separator ..) | MySql          |
 | SqlExt.FindInSet                                    | find_in_set(str, strlist)                          | MySql          |
 | SqlExt.StringAgg                                    | string_agg(.., ..)                                 | PostgreSQL     |
@@ -167,9 +169,24 @@ FreeSql 默认集成了 SqlExt.cs 扩展解析方法：
 | SqlExt.Avg(id).Over().PartitionBy().ToValue()       | avg(id) over(partition by xx)                      |                |
 | SqlExt.Max(id).Over().PartitionBy().ToValue()       | max(id) over(partition by xx)                      |                |
 | SqlExt.Min(id).Over().PartitionBy().ToValue()       | min(id) over(partition by xx)                      |                |
-| SqlExt.RowNumber(id).Over().PartitionBy().ToValue() | row_number(id) over(partition by xx)               |                |
+| SqlExt.RowNumber().Over().PartitionBy().ToValue()   | row_number() over(partition by xx)                |                |
 
 > 以上是利用《自定义解析》实现的功能
+
+## 原生 SQL 表达式
+
+`SqlExt.InternalRawSql<T>` 会将传入的 SQL 原样放入表达式结果，适合数据库特有函数或临时表达式：
+
+```csharp
+var sql = fsql.Select<Topic>()
+  .ToSql(a => new
+  {
+    Id = a.Id,
+    Score = SqlExt.InternalRawSql<int>("Id * 1")
+  });
+```
+
+`InternalRawSql<T>` 的参数标记为 `[RawValue]`，不会进行参数化或转义。SQL 必须来自可信的固定内容，不能直接拼接用户输入。
 
 ## 子表Join
 

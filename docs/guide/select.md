@@ -31,7 +31,9 @@ FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式
 
 更详细请前往[《表达式函数》](expression-function.md)
 
-## SqlServer WithLock/WithIndex
+## WithLock/WithIndex
+
+`WithIndex` 支持 MySQL、Oracle、SQL Server 和 SQLite；下面示例使用 SQL Server 语法。
 
 ```csharp
 var list = fsql.Select<Region>()
@@ -191,7 +193,8 @@ public void Test()
 | OrderBy             | \<this\>          | Lambda                             | 按列排序，OrderBy(a => a.Time)，可多次使用                                                                                                                             |
 | OrderByDescending   | \<this\>          | Lambda                             | 按列倒向排序，OrderByDescending(a => a.Time)                                                                                                                           |
 | OrderBy             | \<this\>          | string, parms                      | 按原生 sql 语法排序，OrderBy("count(name) + @cc", new { cc = 1 })                                                                                                      |
-| OrderByPropertyName | string, bool      | 按属性名字符串排序（支持导航属性） |
+| OrderByPropertyName | \<this\>          | string property, bool isAscending = true，按属性名字符串排序（支持导航属性） |
+| OrderByPropertyNameIf | \<this\>        | bool condition, string property, bool isAscending = true，按条件按属性名字符串排序（支持导航属性） |
 | 【联表】            |
 | LeftJoin            | \<this\>          | Lambda                             | 左联查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |
 | InnerJoin           | \<this\>          | Lambda                             | 联接查询，可使用导航属性，或指定关联的实体类型                                                                                                                         |

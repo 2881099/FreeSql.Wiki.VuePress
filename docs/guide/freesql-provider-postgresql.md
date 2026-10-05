@@ -6,6 +6,20 @@ title: PostgreSQL
 
 nuget 安装：FreeSql.Provider.PostgreSQL
 
+## CodeFirst Schema
+
+使用 `[Table(Name = "schema.table")]` 可以将实体映射到指定的 PostgreSQL schema。CodeFirst 创建缺失的 schema 时会引用 schema 名称，包含大写字母或 PostgreSQL 保留字的名称也会按标识符规则生成 SQL：
+
+```csharp
+[Table(Name = "Order.SchemaTopic")]
+class SchemaTopic
+{
+    public int Id { get; set; }
+}
+```
+
+`Table.Name` 中的点号仅用于分隔 schema 和表名；当前 CodeFirst 不支持表名、schema 名或数据库名本身包含点号。
+
 ## 数组、字典
 
 PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary<string, string> 字典类型。
@@ -135,3 +149,5 @@ fsql.Update<T>.SetSource(items)
 fsql.InsertOrUpdate<T>.SetSource(items)
     .ExecutePgCopy(); //临时表 + MERGE INTO
 ```
+
+同步 `ExecutePgCopy` 方法可传入可选的 `timeout` 参数，单位为秒；省略时使用默认超时设置。

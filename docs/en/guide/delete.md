@@ -199,5 +199,5 @@ public class UserExt
 | `WithTransaction` | `<this>`     | `DbTransaction`         | Set the transaction object                                                              |
 | `WithConnection`  | `<this>`     | `DbConnection`          | Set the connection object                                                               |
 | `ToSql`           | string       |                         | Return the SQL statement that is about to be executed                                   |
-| `ExecuteAffrows`  | long         |                         | Execute the SQL statement and return the number of affected rows                        |
+| `ExecuteAffrows`  | int         |                         | Execute the SQL statement and return the number of affected rows                        |
 | `ExecuteDeleted`  | `List<T1>`   |                         | Execute the SQL statement and return the deleted records                                |

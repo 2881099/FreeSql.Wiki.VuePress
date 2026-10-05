@@ -199,5 +199,5 @@ public class UserExt
 | WithTransaction | \<this\>   | DbTransaction           | 设置事务对象                                         |
 | WithConnection  | \<this\>   | DbConnection            | 设置连接对象                                         |
 | ToSql           | string     |                         | 返回即将执行的 SQL 语句                              |
-| ExecuteAffrows  | long       |                         | 执行 SQL 语句，返回影响的行数                        |
+| ExecuteAffrows  | int        |                         | 执行 SQL 语句，返回影响的行数                        |
 | ExecuteDeleted  | List\<T1\> |                         | 执行 SQL 语句，返回被删除的记录                      |

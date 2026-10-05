@@ -151,11 +151,13 @@ fsql.GlobalFilter //全局过滤器对象
 | 方法                                  | 返回值        | 说明                                                                                           |
 | ------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------- |
 | UseConnectionString                   | this          | 设置连接串                                                                                     |
+| UseCustomTableEntityCacheFactory      | this          | 自定义 TableInfo 缓存工厂，适用于同一类型映射到不同表的多实例场景                              |
 | UseAdoConnectionPool                  | this          | 设置连接池方案（默认 false，远程访问建议设置 true）                                            |
 | UseSlave                              | this          | 设置从数据库，支持多个                                                                         |
 | UseSlaveWeight                        | this          | 设置从数据库权重                                                                               |
 | UseConnectionFactory                  | this          | 设置自定义数据库连接对象（放弃内置对象连接池技术）                                             |
 | UseAutoSyncStructure                  | this          | 【开发环境必备】自动同步实体结构到数据库，程序运行中检查实体创建或修改表结构                   |
+| UseConfigEntityFromDbFirst             | this          | 从数据库导入主键、自增、索引配置，适用于 DbFirst 模式                                          |
 | UseNoneCommandParameter               | this          | 不使用命令参数化执行，针对 Insert/Update，也可临时使用 IInsert/IUpdate.NoneParameter()         |
 | UseGenerateCommandParameterWithLambda | this          | 生成命令参数化执行，针对 lambda 表达式解析                                                     |
 | UseLazyLoading                        | this          | 开启延时加载功能                                                                               |

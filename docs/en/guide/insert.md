@@ -275,7 +275,7 @@ fsql.Insert(items)
 | ToSql                | string                     |                         | Return the SQL statement to be executed                         |
 | OnDuplicateKeyUpdate | OnDuplicateKeyUpdate\<T1\> | None                    | MySQL-specific feature `On Duplicate Key Update`                |
 | OnConflictDoUpdate   | OnConflictDoUpdate\<T1\>   | None                    | PostgreSQL-specific feature `On Conflict Do Update`             |
-| ExecuteAffrows       | long                       |                         | Execute SQL statement and return the number of affected rows    |
+| ExecuteAffrows       | int                        |                         | Execute SQL statement and return the number of affected rows    |
 | ExecuteIdentity      | long                       |                         | Execute SQL statement and return auto-increment value           |
 | ExecuteInserted      | List\<T1\>                 |                         | Execute SQL statement and return the inserted records           |
 | ExecuteSqlBulkCopy   | void                       |                         | SQL Server-specific feature, execute `SqlBulkCopy` batch insert |
