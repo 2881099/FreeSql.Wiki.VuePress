@@ -6,8 +6,8 @@
     <link>https://freesql.net/</link>
     <description>FreeSql 文档</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 17 Sep 2026 08:49:24 GMT</pubDate>
-    <lastBuildDate>Thu, 17 Sep 2026 08:49:24 GMT</lastBuildDate>
+    <pubDate>Mon, 05 Oct 2026 03:47:32 GMT</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2026 03:47:32 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -3138,10 +3138,18 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/guide/freesql-provider-postgresql.html</link>
       <guid>https://freesql.net/guide/freesql-provider-postgresql.html</guid>
       <source url="https://freesql.net/rss.xml">PostgreSQL</source>
-      <description>nuget 安装：FreeSql.Provider.PostgreSQL 数组、字典 PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&amp;lt;string, string&amp;gt; 字典类型。 参考资料：《PostgreSQL Array 数组类型与 FreeSql 打出一套【组合拳】》 JSONB Postgr...</description>
+      <description>nuget 安装：FreeSql.Provider.PostgreSQL CodeFirst Schema 使用 [Table(Name = &amp;quot;schema.table&amp;quot;)] 可以将实体映射到指定的 PostgreSQL schema。CodeFirst 创建缺失的 schema 时会引用 schema 名称，包含大写字母或 PostgreSQL 保留...</description>
       <pubDate>Fri, 24 Jun 2022 16:45:08 GMT</pubDate>
       <content:encoded><![CDATA[<!-- # FreeSql.Provider.PostgreSQL -->
 <p>nuget 安装：FreeSql.Provider.PostgreSQL</p>
+<h2>CodeFirst Schema</h2>
+<p>使用 <code>[Table(Name = "schema.table")]</code> 可以将实体映射到指定的 PostgreSQL schema。CodeFirst 创建缺失的 schema 时会引用 schema 名称，包含大写字母或 PostgreSQL 保留字的名称也会按标识符规则生成 SQL：</p>
+<div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Table</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">Name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "Order.SchemaTopic"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)]</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> SchemaTopic</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF"> Id</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> { </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">set</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>Table.Name</code> 中的点号仅用于分隔 schema 和表名；当前 CodeFirst 不支持表名、schema 名或数据库名本身包含点号。</p>
 <h2>数组、字典</h2>
 <p>PostgreSQL 数据类型丰富，支持 int[]、string[] 数组类型，Dictionary&lt;string, string&gt; 字典类型。</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> model</span></span>
@@ -3899,7 +3907,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
 <p>现在：where id in (1..500) or id in (501..1000) or id in (1001..1333)</p>
 <h2>In多列查询</h2>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">//元组集合</span></span>
-<span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">vae</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> lst</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> new </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Guid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">DateTime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)&gt;();</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> lst</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> new </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">List</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&lt;(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">Guid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">DateTime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)&gt;();</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">lst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Add</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">((</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Guid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">NewGuid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(), </span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">DateTime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Now</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">));</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">lst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Add</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">((</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Guid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">NewGuid</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(), </span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">DateTime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">Now</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">));</span></span>
 <span class="line"></span>
@@ -4117,7 +4125,7 @@ Centos版本：CentOS Linux release 7.9.2009 (Core)</p>
       <link>https://freesql.net/guide/select.html</link>
       <guid>https://freesql.net/guide/select.html</guid>
       <source url="https://freesql.net/rss.xml">查询</source>
-      <description>查询 FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。 表达式函数 更详细请前往 SqlServer WithLock/WithIndex 多表： 全局设置 NoLock： 动态过滤 WhereDynamicFilter 《高效理解 FreeSql WhereDynamicFilter，深入了解设计初衷》 ...</description>
+      <description>查询 FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。 表达式函数 更详细请前往 WithLock/WithIndex WithIndex 支持 MySQL、Oracle、SQL Server 和 SQLite；下面示例使用 SQL Server 语法。 多表： 全局设置 NoLock： 动态过滤 Wher...</description>
       <pubDate>Thu, 04 Feb 2021 16:03:18 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>FreeSql 在查询数据下足了功夫，链式风格、多表查询、表达式函数、导航属性支持得非常到位。</p>
@@ -7473,10 +7481,15 @@ class table {...}</p>
       <link>https://freesql.net/reference/change-log.html</link>
       <guid>https://freesql.net/reference/change-log.html</guid>
       <source url="https://freesql.net/rss.xml">更新日志</source>
-      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 v3.5.311 修复 MySql WithIndex 多表情况的问题；#2237 修复 pgsql update .Set(a =&amp;gt; a.array ==array ) 非参数化解析sql错误问题；#2254 修复 Sqlite 驱动在 DbFirst 时无法读取视图（View）的 Bug；#2...</description>
+      <description>更新日志 大约每月一次版本号，暂时以修复 bug 为主 待发布 增加 SqlExt.InternalRawSql&amp;lt;T&amp;gt;(string)，可在表达式中直接写入原生 SQL；使用时请确保 SQL 来源可信，并自行承担 SQL 注入风险。 修复 PostgreSQL CodeFirst 创建自定义 schema 时未引用 schema 名称的问题；现在会按 ...</description>
       <pubDate>Fri, 16 Oct 2020 05:57:03 GMT</pubDate>
       <content:encoded><![CDATA[
 <p>大约每月一次版本号，暂时以修复 bug 为主</p>
+<h2>待发布</h2>
+<ul>
+<li>增加 <code>SqlExt.InternalRawSql&lt;T&gt;(string)</code>，可在表达式中直接写入原生 SQL；使用时请确保 SQL 来源可信，并自行承担 SQL 注入风险。</li>
+<li>修复 PostgreSQL CodeFirst 创建自定义 schema 时未引用 schema 名称的问题；现在会按 PostgreSQL 标识符规则生成 <code>CREATE SCHEMA</code> 语句。#2285</li>
+</ul>
 <h2>v3.5.311</h2>
 <ul>
 <li>修复 MySql WithIndex 多表情况的问题；#2237</li>

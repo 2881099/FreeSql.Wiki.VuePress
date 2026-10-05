@@ -4,7 +4,7 @@
   <title>FreeSql</title>
   <subtitle>FreeSql Documents</subtitle>
   <icon>https://freesql.net/favicon-32x32.png</icon>
-  <updated>2026-09-17T08:49:24.416Z</updated>
+  <updated>2026-10-05T03:47:32.637Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://freesql.net/en/atom.xml"/>
   <link rel="alternate" href="https://freesql.net/en/"/>
@@ -746,7 +746,7 @@
     <title type="text">Expression Functions</title>
     <id>https://freesql.net/en/guide/expression-function.html</id>
     <link href="https://freesql.net/en/guide/expression-function.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <p>This is one of FreeSql's very special features, so don't miss the details in the documentation. Types that can be mapped can basically use corresponding expression functions, such as date, string, <code>IN</code> queries, arrays (PostgreSQL arrays), dictionaries (PostgreSQL HStore), etc.</p>
 <p>SqlExt.xxx provides commonly used custom functions by default in FreeSql. For details, see <a href="#window-functions">Window Functions</a>.</p>]]></summary>
@@ -2903,7 +2903,7 @@
     <title type="text">Delete</title>
     <id>https://freesql.net/en/guide/delete.html</id>
     <link href="https://freesql.net/en/guide/delete.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <p>Deleting records is a very dangerous operation. FreeSql by default only supports single-table deletions with conditions.</p>
 <p>If the <code>Where</code> condition is empty, no actual SQL delete operation will be executed.</p>
@@ -3160,7 +3160,7 @@
     <title type="text">Insert</title>
     <id>https://freesql.net/en/guide/insert.html</id>
     <link href="https://freesql.net/en/guide/insert.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// For creation details, please refer to the getting started document</span></span>
 <span class="line"></span>
@@ -3291,7 +3291,7 @@
     <title type="text">Select</title>
     <id>https://freesql.net/en/guide/select.html</id>
     <link href="https://freesql.net/en/guide/select.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql has invested heavily in querying data, offering features like fluent style, multi-table queries, expression functions, and strong support for navigation properties.</p>
 <table>
@@ -3454,7 +3454,7 @@
     <title type="text">Update</title>
     <id>https://freesql.net/en/guide/update.html</id>
     <link href="https://freesql.net/en/guide/update.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <p><code>FreeSql</code> provides rich database update functionalities, supporting both single and bulk updates. It can also return the updated records when executed on certain databases.</p>
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// For creation details, refer to the introductory documentation</span></span>
@@ -3745,7 +3745,7 @@
     <title type="text">Get started</title>
     <id>https://freesql.net/en/guide/</id>
     <link href="https://freesql.net/en/guide/"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <p>FreeSql is a powerful Object-Relational Mapping (O/RM) component, supporting .NET Core 2.1+ and .NET Framework 4.0+.</p>
 <p>QQ Groups: 561616019 (Online), 4336577 (Full), 8578575 (Full), 52508226 (Full)</p>
@@ -3790,7 +3790,7 @@
     <title type="text">Group By</title>
     <id>https://freesql.net/en/guide/select-group-by.html</id>
     <link href="https://freesql.net/en/guide/select-group-by.html"/>
-    <updated>2025-01-16T10:00:00.000Z</updated>
+    <updated>2026-10-05T03:39:19.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="language-csharp line-numbers-mode" data-highlighter="shiki" data-ext="csharp" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-csharp"><span class="line"><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">IFreeSql</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> fsql</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// For how to create it, please refer to the introductory documentation</span></span>
 <span class="line"></span>
